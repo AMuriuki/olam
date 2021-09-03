@@ -1671,3 +1671,268 @@ print incorrect line lengths
 2021-08-30 19:27:01,356 p=7452 u=amuriuki n=werkzeug | 127.0.0.1 - - [30/Aug/2021 19:27:01] "POST /selected_modules HTTP/1.1" 200 -
 2021-08-30 19:29:04,326 p=7452 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
 2021-08-30 19:29:04,439 p=344 u=amuriuki n=werkzeug |  * Restarting with stat
+2021-09-02 18:17:09,596 p=30966 u=amuriuki n=werkzeug | 127.0.0.1 - - [02/Sep/2021 18:17:09] "GET /new/database HTTP/1.1" 200 -
+2021-09-02 18:17:09,659 p=30966 u=amuriuki n=werkzeug | 127.0.0.1 - - [02/Sep/2021 18:17:09] "GET /jsglue.js HTTP/1.1" 200 -
+2021-09-02 18:17:09,895 p=30966 u=amuriuki n=werkzeug | 127.0.0.1 - - [02/Sep/2021 18:17:09] "GET /static/images/favicon.png HTTP/1.1" 200 -
+2021-09-02 18:25:00,151 p=30971 u=amuriuki n=werkzeug | 127.0.0.1 - - [02/Sep/2021 18:25:00] "GET / HTTP/1.1" 200 -
+2021-09-02 18:25:00,242 p=30971 u=amuriuki n=werkzeug | 127.0.0.1 - - [02/Sep/2021 18:25:00] "GET /static/css/theme.css HTTP/1.1" 200 -
+2021-09-02 18:25:00,247 p=30971 u=amuriuki n=werkzeug | 127.0.0.1 - - [02/Sep/2021 18:25:00] "GET /static/css/dashlite.css HTTP/1.1" 200 -
+2021-09-02 18:25:00,257 p=30971 u=amuriuki n=werkzeug | 127.0.0.1 - - [02/Sep/2021 18:25:00] "GET /static/images/logo-dark.png HTTP/1.1" 304 -
+2021-09-02 18:25:00,263 p=30971 u=amuriuki n=werkzeug | 127.0.0.1 - - [02/Sep/2021 18:25:00] "GET /static/images/logo.png HTTP/1.1" 304 -
+2021-09-02 18:25:00,263 p=30971 u=amuriuki n=werkzeug | 127.0.0.1 - - [02/Sep/2021 18:25:00] "GET /static/images/bg/a.jpg HTTP/1.1" 200 -
+2021-09-02 18:25:00,285 p=30971 u=amuriuki n=werkzeug | 127.0.0.1 - - [02/Sep/2021 18:25:00] "GET /static/images/gfx/g.png HTTP/1.1" 200 -
+2021-09-02 18:25:00,292 p=30971 u=amuriuki n=werkzeug | 127.0.0.1 - - [02/Sep/2021 18:25:00] "GET /static/images/bg/b.jpg HTTP/1.1" 200 -
+2021-09-02 18:25:00,293 p=30971 u=amuriuki n=werkzeug | 127.0.0.1 - - [02/Sep/2021 18:25:00] "GET /static/js/bundle.js HTTP/1.1" 200 -
+2021-09-02 18:25:00,302 p=30971 u=amuriuki n=werkzeug | 127.0.0.1 - - [02/Sep/2021 18:25:00] "GET /static/js/scripts.js HTTP/1.1" 200 -
+2021-09-02 18:25:01,391 p=30971 u=amuriuki n=werkzeug | 127.0.0.1 - - [02/Sep/2021 18:25:01] "GET / HTTP/1.1" 200 -
+2021-09-02 18:25:01,615 p=30971 u=amuriuki n=werkzeug | 127.0.0.1 - - [02/Sep/2021 18:25:01] "GET /static/fonts/Roboto-Regular.woff2 HTTP/1.1" 200 -
+2021-09-02 18:25:01,622 p=30971 u=amuriuki n=werkzeug | 127.0.0.1 - - [02/Sep/2021 18:25:01] "GET /static/fonts/Nioicon.ttf HTTP/1.1" 200 -
+2021-09-02 18:25:01,625 p=30971 u=amuriuki n=werkzeug | 127.0.0.1 - - [02/Sep/2021 18:25:01] "GET /static/fonts/Roboto-Bold.woff2 HTTP/1.1" 200 -
+2021-09-02 18:25:01,635 p=30971 u=amuriuki n=werkzeug | 127.0.0.1 - - [02/Sep/2021 18:25:01] "GET /static/fonts/Roboto-Medium.woff2 HTTP/1.1" 200 -
+2021-09-02 18:25:37,788 p=31712 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:25:37,963 p=31709 u=amuriuki n=werkzeug |  * Restarting with stat
+2021-09-02 18:25:38,765 p=30970 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:25:38,859 p=30971 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:25:40,803 p=31824 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:25:40,925 p=31709 u=amuriuki n=werkzeug |  * Restarting with stat
+2021-09-02 18:25:46,982 p=31842 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:25:47,168 p=31709 u=amuriuki n=werkzeug |  * Restarting with stat
+2021-09-02 18:25:47,310 p=31828 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:25:47,430 p=31829 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:25:59,855 p=31862 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:26:00,055 p=31709 u=amuriuki n=werkzeug |  * Restarting with stat
+2021-09-02 18:26:00,252 p=31864 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:26:00,358 p=31865 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:26:24,689 p=31899 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:26:24,919 p=31709 u=amuriuki n=werkzeug |  * Restarting with stat
+2021-09-02 18:26:25,050 p=31904 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:26:25,099 p=31905 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:26:30,320 p=31952 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:26:30,505 p=31957 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:26:30,528 p=31958 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:26:30,596 p=31709 u=amuriuki n=werkzeug |  * Restarting with stat
+2021-09-02 18:26:43,751 p=31985 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:26:43,759 p=31984 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:26:44,436 p=31983 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:26:44,607 p=31709 u=amuriuki n=werkzeug |  * Restarting with stat
+2021-09-02 18:26:49,128 p=32020 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:26:49,166 p=32021 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:26:49,595 p=32024 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:26:49,768 p=31709 u=amuriuki n=werkzeug |  * Restarting with stat
+2021-09-02 18:26:52,341 p=32049 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:26:52,347 p=32048 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:26:52,630 p=32052 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:26:52,796 p=31709 u=amuriuki n=werkzeug |  * Restarting with stat
+2021-09-02 18:27:04,342 p=32077 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:27:04,431 p=32076 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:27:04,463 p=32078 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:27:04,674 p=31709 u=amuriuki n=werkzeug |  * Restarting with stat
+2021-09-02 18:27:07,496 p=32112 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:27:07,507 p=32113 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:27:07,508 p=32114 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:27:07,705 p=31709 u=amuriuki n=werkzeug |  * Restarting with stat
+2021-09-02 18:27:11,806 p=32132 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:27:11,819 p=32131 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:27:11,822 p=32133 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/main/routes.py', reloading
+2021-09-02 18:27:12,021 p=31709 u=amuriuki n=werkzeug |  * Restarting with stat
+2021-09-02 18:27:35,916 p=32162 u=amuriuki n=werkzeug | 127.0.0.1 - - [02/Sep/2021 18:27:35] "GET / HTTP/1.1" 500 -
+2021-09-02 18:27:35,980 p=32162 u=amuriuki n=werkzeug | 127.0.0.1 - - [02/Sep/2021 18:27:35] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-09-02 18:27:35,981 p=32162 u=amuriuki n=werkzeug | 127.0.0.1 - - [02/Sep/2021 18:27:35] "GET /?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2021-09-02 18:27:35,983 p=32162 u=amuriuki n=werkzeug | 127.0.0.1 - - [02/Sep/2021 18:27:35] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-09-02 18:27:36,115 p=32162 u=amuriuki n=werkzeug | 127.0.0.1 - - [02/Sep/2021 18:27:36] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-02 18:27:36,140 p=32162 u=amuriuki n=werkzeug | 127.0.0.1 - - [02/Sep/2021 18:27:36] "GET /?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2021-09-02 18:27:36,195 p=32162 u=amuriuki n=werkzeug | 127.0.0.1 - - [02/Sep/2021 18:27:36] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:25:23,534 p=594 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:25:23] "GET / HTTP/1.1" 500 -
+2021-09-03 08:25:23,662 p=594 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:25:23] "GET /?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2021-09-03 08:25:23,670 p=594 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:25:23] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-09-03 08:25:23,673 p=594 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:25:23] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-09-03 08:25:23,884 p=594 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:25:23] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:25:23,912 p=594 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:25:23] "GET /?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2021-09-03 08:25:23,946 p=594 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:25:23] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:27:50,414 p=594 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:27:50] "GET / HTTP/1.1" 500 -
+2021-09-03 08:27:50,586 p=594 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:27:50] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-09-03 08:27:50,587 p=594 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:27:50] "GET /?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2021-09-03 08:27:50,587 p=594 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:27:50] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-09-03 08:27:50,694 p=594 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:27:50] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:27:50,739 p=594 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:27:50] "GET /?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2021-09-03 08:27:50,770 p=594 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:27:50] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:28:18,064 p=594 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/__init__.py', reloading
+2021-09-03 08:28:18,664 p=580 u=amuriuki n=werkzeug |  * Restarting with stat
+2021-09-03 08:28:21,896 p=905 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:28:21] "GET / HTTP/1.1" 500 -
+2021-09-03 08:28:21,920 p=905 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:28:21] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-09-03 08:28:21,921 p=905 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:28:21] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-09-03 08:28:21,922 p=905 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:28:21] "GET /?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2021-09-03 08:28:21,981 p=905 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:28:21] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:28:21,984 p=905 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:28:21] "GET /?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2021-09-03 08:28:22,003 p=905 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:28:22] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:28:40,763 p=905 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olam-erp/app/auth/__init__.py', reloading
+2021-09-03 08:28:40,897 p=580 u=amuriuki n=werkzeug |  * Restarting with stat
+2021-09-03 08:29:14,717 p=580 u=amuriuki n=werkzeug |  * Restarting with stat
+2021-09-03 08:29:52,961 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:29:52] "GET / HTTP/1.1" 302 -
+2021-09-03 08:29:53,054 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:29:53] "GET /auth/login?next=%2F HTTP/1.1" 500 -
+2021-09-03 08:29:53,076 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:29:53] "GET /auth/login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-09-03 08:29:53,076 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:29:53] "GET /auth/login?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2021-09-03 08:29:53,077 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:29:53] "GET /auth/login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-09-03 08:29:53,163 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:29:53] "GET /auth/login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:29:53,176 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:29:53] "GET /auth/login?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2021-09-03 08:29:53,199 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:29:53] "GET /auth/login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:31:19,283 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:31:19] "GET /auth/login?next=%2F HTTP/1.1" 200 -
+2021-09-03 08:31:19,310 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:31:19] "GET /static/base-2/css/theme.css HTTP/1.1" 304 -
+2021-09-03 08:31:19,310 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:31:19] "GET /static/base-2/css/style-email.css HTTP/1.1" 304 -
+2021-09-03 08:31:19,311 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:31:19] "GET /static/base-2/css/dashlite.css HTTP/1.1" 200 -
+2021-09-03 08:31:19,313 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:31:19] "GET /jsglue.js HTTP/1.1" 200 -
+2021-09-03 08:31:19,326 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:31:19] "GET /static/base-2/js/bundle.js HTTP/1.1" 304 -
+2021-09-03 08:31:19,355 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:31:19] "GET /static/base-2/js/scripts.js HTTP/1.1" 304 -
+2021-09-03 08:31:19,367 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:31:19] "GET /static/base-2/js/charts/gd-default.js HTTP/1.1" 304 -
+2021-09-03 08:31:19,385 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:31:19] "GET /static/base-2/js/libs/jkanban.js HTTP/1.1" 304 -
+2021-09-03 08:31:19,391 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:31:19] "GET /static/base-2/js/demo-settings.js HTTP/1.1" 304 -
+2021-09-03 08:31:19,391 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:31:19] "GET /static/base-2/js/apps/kanban.js HTTP/1.1" 304 -
+2021-09-03 08:31:19,396 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:31:19] "GET /static/base-2/js/kanban-custom.js HTTP/1.1" 304 -
+2021-09-03 08:31:19,418 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:31:19] "GET /static/base-2/js/custom.js HTTP/1.1" 304 -
+2021-09-03 08:31:19,419 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:31:19] "GET /static/images/logo.png HTTP/1.1" 304 -
+2021-09-03 08:31:19,423 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:31:19] "GET /static/images/logo-dark.png HTTP/1.1" 304 -
+2021-09-03 08:31:19,435 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:31:19] "GET /static/base-2/fonts/Roboto-Medium.woff2 HTTP/1.1" 304 -
+2021-09-03 08:31:19,435 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:31:19] "GET /static/base-2/fonts/Roboto-Bold.woff2 HTTP/1.1" 304 -
+2021-09-03 08:31:19,437 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:31:19] "GET /static/base-2/fonts/Nioiconc731.ttf?3rpiw1 HTTP/1.1" 304 -
+2021-09-03 08:31:19,447 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:31:19] "GET /static/base-2/fonts/Roboto-Regular.woff2 HTTP/1.1" 304 -
+2021-09-03 08:31:19,464 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:31:19] "GET /static/base-2/fonts/Nunito-Bold.woff2 HTTP/1.1" 304 -
+2021-09-03 08:31:19,552 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:31:19] "GET /static/images/favicon.png HTTP/1.1" 200 -
+2021-09-03 08:34:58,691 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:34:58] "GET /auth/login?next=%2F HTTP/1.1" 200 -
+2021-09-03 08:34:58,718 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:34:58] "GET /jsglue.js HTTP/1.1" 200 -
+2021-09-03 08:34:58,735 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:34:58] "GET /images/logo-dark.png HTTP/1.1" 404 -
+2021-09-03 08:34:58,735 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:34:58] "GET /images/logo.png HTTP/1.1" 404 -
+2021-09-03 08:34:58,757 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:34:58] "GET /images/flags/english.png HTTP/1.1" 404 -
+2021-09-03 08:34:58,760 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:34:58] "GET /images/flags/spanish.png HTTP/1.1" 404 -
+2021-09-03 08:34:58,762 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:34:58] "GET /images/flags/french.png HTTP/1.1" 404 -
+2021-09-03 08:34:58,780 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:34:58] "GET /images/flags/turkey.png HTTP/1.1" 404 -
+2021-09-03 08:34:58,880 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:34:58] "GET /static/images/favicon.png HTTP/1.1" 200 -
+2021-09-03 08:35:00,111 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:35:00] "GET /auth/login?next=%2F HTTP/1.1" 200 -
+2021-09-03 08:35:00,134 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:35:00] "GET /jsglue.js HTTP/1.1" 200 -
+2021-09-03 08:35:00,136 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:35:00] "GET /images/logo.png HTTP/1.1" 404 -
+2021-09-03 08:35:00,151 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:35:00] "GET /images/logo-dark.png HTTP/1.1" 404 -
+2021-09-03 08:35:00,153 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:35:00] "GET /images/flags/english.png HTTP/1.1" 404 -
+2021-09-03 08:35:00,156 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:35:00] "GET /images/flags/french.png HTTP/1.1" 404 -
+2021-09-03 08:35:00,158 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:35:00] "GET /images/flags/spanish.png HTTP/1.1" 404 -
+2021-09-03 08:35:00,179 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:35:00] "GET /images/flags/turkey.png HTTP/1.1" 404 -
+2021-09-03 08:35:00,228 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:35:00] "GET /static/images/favicon.png HTTP/1.1" 200 -
+2021-09-03 08:39:05,955 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:05] "GET /auth/login?next=%2F HTTP/1.1" 500 -
+2021-09-03 08:39:05,975 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:05] "GET /auth/login?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2021-09-03 08:39:05,977 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:05] "GET /auth/login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-09-03 08:39:05,978 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:05] "GET /auth/login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-09-03 08:39:06,067 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:06] "GET /auth/login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:39:06,089 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:06] "GET /auth/login?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2021-09-03 08:39:06,110 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:06] "GET /auth/login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:39:07,273 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:07] "GET /auth/login?next=%2F HTTP/1.1" 500 -
+2021-09-03 08:39:07,298 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:07] "GET /auth/login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-09-03 08:39:07,299 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:07] "GET /auth/login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-09-03 08:39:07,299 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:07] "GET /auth/login?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2021-09-03 08:39:07,350 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:07] "GET /auth/login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:39:07,371 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:07] "GET /auth/login?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2021-09-03 08:39:07,387 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:07] "GET /auth/login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:39:32,641 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:32] "GET /auth/login?next=%2F HTTP/1.1" 200 -
+2021-09-03 08:39:32,664 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:32] "GET /jsglue.js HTTP/1.1" 200 -
+2021-09-03 08:39:32,669 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:32] "GET /assets/css/dashlite.css?ver=2.7.0 HTTP/1.1" 404 -
+2021-09-03 08:39:32,693 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:32] "GET /assets/css/theme.css?ver=2.7.0 HTTP/1.1" 404 -
+2021-09-03 08:39:32,695 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:32] "GET /assets/js/bundle.js?ver=2.7.0 HTTP/1.1" 404 -
+2021-09-03 08:39:32,696 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:32] "GET /assets/js/scripts.js?ver=2.7.0 HTTP/1.1" 404 -
+2021-09-03 08:39:32,699 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:32] "GET /assets/css/dashlite.css?ver=2.7.0 HTTP/1.1" 404 -
+2021-09-03 08:39:32,718 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:32] "GET /images/logo.png HTTP/1.1" 404 -
+2021-09-03 08:39:32,722 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:32] "GET /images/flags/english.png HTTP/1.1" 404 -
+2021-09-03 08:39:32,724 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:32] "GET /images/logo-dark.png HTTP/1.1" 404 -
+2021-09-03 08:39:32,730 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:32] "GET /images/flags/spanish.png HTTP/1.1" 404 -
+2021-09-03 08:39:32,745 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:32] "GET /images/flags/french.png HTTP/1.1" 404 -
+2021-09-03 08:39:32,747 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:32] "GET /images/flags/turkey.png HTTP/1.1" 404 -
+2021-09-03 08:39:32,750 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:32] "GET /assets/css/theme.css?ver=2.7.0 HTTP/1.1" 404 -
+2021-09-03 08:39:32,767 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:32] "GET /assets/js/bundle.js?ver=2.7.0 HTTP/1.1" 404 -
+2021-09-03 08:39:32,772 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:32] "GET /assets/js/scripts.js?ver=2.7.0 HTTP/1.1" 404 -
+2021-09-03 08:39:32,869 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:39:32] "GET /static/images/favicon.png HTTP/1.1" 200 -
+2021-09-03 08:40:10,095 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:40:10] "GET /auth/login?next=%2F HTTP/1.1" 500 -
+2021-09-03 08:40:10,117 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:40:10] "GET /auth/login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-09-03 08:40:10,118 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:40:10] "GET /auth/login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-09-03 08:40:10,119 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:40:10] "GET /auth/login?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2021-09-03 08:40:10,174 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:40:10] "GET /auth/login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:40:10,192 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:40:10] "GET /auth/login?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2021-09-03 08:40:10,211 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:40:10] "GET /auth/login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:40:11,542 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:40:11] "GET /auth/login?next=%2F HTTP/1.1" 500 -
+2021-09-03 08:40:11,566 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:40:11] "GET /auth/login?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2021-09-03 08:40:11,569 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:40:11] "GET /auth/login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-09-03 08:40:11,570 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:40:11] "GET /auth/login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-09-03 08:40:11,613 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:40:11] "GET /auth/login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:40:11,629 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:40:11] "GET /auth/login?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2021-09-03 08:40:11,647 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:40:11] "GET /auth/login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:41:42,804 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:41:42] "GET /auth/login?next=%2F HTTP/1.1" 500 -
+2021-09-03 08:41:42,828 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:41:42] "GET /auth/login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-09-03 08:41:42,828 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:41:42] "GET /auth/login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-09-03 08:41:42,830 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:41:42] "GET /auth/login?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2021-09-03 08:41:42,888 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:41:42] "GET /auth/login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:41:42,908 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:41:42] "GET /auth/login?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2021-09-03 08:41:42,929 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:41:42] "GET /auth/login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:42:06,064 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:42:06] "GET /auth/login?next=%2F HTTP/1.1" 500 -
+2021-09-03 08:42:06,085 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:42:06] "GET /auth/login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-09-03 08:42:06,085 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:42:06] "GET /auth/login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-09-03 08:42:06,086 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:42:06] "GET /auth/login?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2021-09-03 08:42:06,135 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:42:06] "GET /auth/login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:42:06,152 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:42:06] "GET /auth/login?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2021-09-03 08:42:06,170 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:42:06] "GET /auth/login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:42:07,061 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:42:07] "GET /auth/login?next=%2F HTTP/1.1" 500 -
+2021-09-03 08:42:07,082 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:42:07] "GET /auth/login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-09-03 08:42:07,082 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:42:07] "GET /auth/login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-09-03 08:42:07,083 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:42:07] "GET /auth/login?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2021-09-03 08:42:07,129 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:42:07] "GET /auth/login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:42:07,146 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:42:07] "GET /auth/login?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2021-09-03 08:42:07,167 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:42:07] "GET /auth/login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:46:05,156 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:46:05] "GET /home HTTP/1.1" 500 -
+2021-09-03 08:46:05,176 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:46:05] "GET /home?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-09-03 08:46:05,180 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:46:05] "GET /home?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2021-09-03 08:46:05,182 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:46:05] "GET /home?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-09-03 08:46:05,266 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:46:05] "GET /home?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:46:05,280 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:46:05] "GET /home?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2021-09-03 08:46:05,300 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:46:05] "GET /home?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:47:33,019 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:47:33] "GET /auth/login?next=%2F HTTP/1.1" 500 -
+2021-09-03 08:47:33,044 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:47:33] "GET /auth/login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-09-03 08:47:33,045 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:47:33] "GET /auth/login?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2021-09-03 08:47:33,045 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:47:33] "GET /auth/login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-09-03 08:47:33,086 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:47:33] "GET /auth/login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:47:33,123 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:47:33] "GET /auth/login?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2021-09-03 08:47:33,144 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:47:33] "GET /auth/login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:47:33,947 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:47:33] "GET /auth/login?next=%2F HTTP/1.1" 500 -
+2021-09-03 08:47:33,972 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:47:33] "GET /auth/login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-09-03 08:47:33,973 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:47:33] "GET /auth/login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-09-03 08:47:33,974 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:47:33] "GET /auth/login?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2021-09-03 08:47:34,022 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:47:34] "GET /auth/login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:47:34,039 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:47:34] "GET /auth/login?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2021-09-03 08:47:34,059 p=995 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:47:34] "GET /auth/login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:47:55,044 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:47:55] "GET /auth/login?next=%2F HTTP/1.1" 500 -
+2021-09-03 08:47:55,068 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:47:55] "GET /auth/login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-09-03 08:47:55,069 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:47:55] "GET /auth/login?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2021-09-03 08:47:55,070 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:47:55] "GET /auth/login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-09-03 08:47:55,127 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:47:55] "GET /auth/login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:47:55,142 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:47:55] "GET /auth/login?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2021-09-03 08:47:55,157 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:47:55] "GET /auth/login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:47:57,263 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:47:57] "GET /auth/login?next=%2F HTTP/1.1" 500 -
+2021-09-03 08:47:57,287 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:47:57] "GET /auth/login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-09-03 08:47:57,288 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:47:57] "GET /auth/login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-09-03 08:47:57,288 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:47:57] "GET /auth/login?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2021-09-03 08:47:57,334 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:47:57] "GET /auth/login?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2021-09-03 08:47:57,338 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:47:57] "GET /auth/login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:47:57,368 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:47:57] "GET /auth/login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 08:49:27,586 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:49:27] "GET /auth/login?next=%2F HTTP/1.1" 200 -
+2021-09-03 08:49:27,609 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:49:27] "GET /jsglue.js HTTP/1.1" 200 -
+2021-09-03 08:49:27,650 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:49:27] "GET /images/logo.png HTTP/1.1" 404 -
+2021-09-03 08:49:27,651 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:49:27] "GET /images/flags/english.png HTTP/1.1" 404 -
+2021-09-03 08:49:27,651 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:49:27] "GET /images/logo-dark.png HTTP/1.1" 404 -
+2021-09-03 08:49:27,652 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:49:27] "GET /images/flags/spanish.png HTTP/1.1" 404 -
+2021-09-03 08:49:27,652 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:49:27] "GET /images/flags/french.png HTTP/1.1" 404 -
+2021-09-03 08:49:27,663 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:49:27] "GET /images/flags/turkey.png HTTP/1.1" 404 -
+2021-09-03 08:49:27,784 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:49:27] "GET /static/images/favicon.png HTTP/1.1" 200 -
+2021-09-03 08:49:46,985 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:49:46] "GET /home HTTP/1.1" 200 -
+2021-09-03 08:49:47,020 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:49:47] "GET /jsglue.js HTTP/1.1" 200 -
+2021-09-03 08:54:08,634 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:54:08] "GET /auth/login?next=%2F HTTP/1.1" 200 -
+2021-09-03 08:54:08,657 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:54:08] "GET /jsglue.js HTTP/1.1" 200 -
+2021-09-03 08:54:08,666 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:54:08] "GET /images/logo.png HTTP/1.1" 404 -
+2021-09-03 08:54:08,669 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:54:08] "GET /images/logo-dark.png HTTP/1.1" 404 -
+2021-09-03 08:54:08,696 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:54:08] "GET /images/flags/english.png HTTP/1.1" 404 -
+2021-09-03 08:54:08,698 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:54:08] "GET /images/flags/spanish.png HTTP/1.1" 404 -
+2021-09-03 08:54:08,701 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:54:08] "GET /images/flags/french.png HTTP/1.1" 404 -
+2021-09-03 08:54:08,717 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:54:08] "GET /images/flags/turkey.png HTTP/1.1" 404 -
+2021-09-03 08:54:08,760 p=1961 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 08:54:08] "GET /static/images/favicon.png HTTP/1.1" 200 -
