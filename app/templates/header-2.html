@@ -2,12 +2,7 @@
     <div class="container-lg wide-xl">
         <div class="nk-header-wrap">
             <div class="nk-header-brand">
-                <a href="{{url_for('main.index')}}" class="logo-link">
-                    <img class="logo-light logo-img" src="{{url_for('static', filename='images/logo.png')}}"
-                        srcset="../static/images/logo2x.png 2x" alt="logo">
-                    <img class="logo-dark logo-img" src="{{url_for('static', filename='images/logo-dark.png')}}"
-                        srcset="../static/images/logo-dark2x.png 2x" alt="logo-dark">
-                </a>
+                {% include "logo.html" %}
             </div><!-- .nk-header-brand -->
             <div class="nk-header-menu">
                 <ul class="nk-menu nk-menu-main">

@@ -23,4 +23,6 @@ class Config(object):
     REDIS_URL = os.environ.get('REDIS_URL') or 'redis://'
     POSTS_PER_PAGE = 25
     OLAM_ADMIN = os.environ.get('OLAM_ADMIN')
+    SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
+    
     # SERVER_NAME = 'teleioserp.com:5000'

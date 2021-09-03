@@ -1,5 +1,9 @@
+from app.auth.models.user import User
+import os
 from flask import render_template, current_app
 from flask_babel import _
+from sendgrid.helpers.mail import Mail
+from sendgrid.sendgrid import SendGridAPIClient
 from app.sendgrid_email import send_email
 
 
@@ -15,5 +19,8 @@ def send_password_reset_email(user):
 
 
 def send_database_activation_email(user, domain_name):
-    token = user.get_database_activation_email()
-    send_email(_(from_email=current_app.config['ADMINS'][0], to_emails=[user.email], subject='Activate ' + domain_name + '.olam-erp.com', html_content=render_template('email/activate_database.html', user=user, token=token, domain_name=domain_name)))
+    user = User.query.filter_by(id=user).first()
+    token = user.get_database_activation_token()
+    message = Mail(from_email=current_app.config['ADMINS'][0], to_emails=[user.email], subject='Activate ' + domain_name +
+                   '.olam-erp.com', html_content=render_template('email/activate_database.html', user=user, token=token, domain_name=domain_name))
+    send_email(message)

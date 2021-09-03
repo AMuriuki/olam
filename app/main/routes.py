@@ -1,3 +1,4 @@
+import os
 from app.auth.email import send_database_activation_email
 import re
 import time
