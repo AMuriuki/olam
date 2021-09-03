@@ -39,9 +39,10 @@ class User(UserMixin, PaginatedAPIMixin, db.Model):
     last_seen = db.Column(db.DateTime, default=datetime.now)
     registered_on = db.Column(db.DateTime, default=datetime.now)
     phone_no = db.Column(db.String(120), index=True)
+    password_hash = db.Column(db.String(128))
 
     def __repr__(self):
-        return '<User {}>'.format(self.username)
+        return '<User {}>'.format(self.name)
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -80,7 +81,7 @@ class User(UserMixin, PaginatedAPIMixin, db.Model):
     def to_dict(self, include_email=False):
         data = {
             'id': self.id,
-            'token': self.username,
+            'token': self.name,
             'token_expiration': self.token_expiration,
             'company_id': self.company_id,
             'is_active': self.is_active,

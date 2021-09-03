@@ -41,8 +41,7 @@ def all_apps():
     return render_template('main/apps.html', title=_('All Apps | Olam ERP'))
 
 
-@ bp.route('/home', methods=['GET', 'POST'])
-# @login_required
-def home():
-
-    return render_template('main/home.html', title=_('Home | Olam ERP'))
+@ bp.route('/invite_colleagues', methods=['GET', 'POST'])
+@login_required
+def invite_colleagues():
+    return render_template('main/invite.html', title=_('Invite Colleagues | Olam ERP'))
