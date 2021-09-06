@@ -3623,3 +3623,101 @@ print incorrect line lengths
 2021-09-03 15:47:30,231 p=6991 u=amuriuki n=werkzeug |  * Restarting with stat
 2021-09-03 15:47:44,817 p=7416 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olamerp-tenant/app/auth/routes.py', reloading
 2021-09-03 15:47:44,935 p=6991 u=amuriuki n=werkzeug |  * Restarting with stat
+2021-09-03 16:05:03,553 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:05:03] "GET /auth/login?next=%2F HTTP/1.1" 200 -
+2021-09-03 16:05:03,575 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:05:03] "GET /jsglue.js HTTP/1.1" 200 -
+2021-09-03 16:06:04,828 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:06:04] "GET /auth/set_password?username=Arnold%20Muriuki&companyname=artisan&domainname=artisan&email=arnoldnderitu%40gmail.com&phone_no=0708486068 HTTP/1.1" 500 -
+2021-09-03 16:06:04,865 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:06:04] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-09-03 16:06:04,865 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:06:04] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-09-03 16:06:04,865 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:06:04] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2021-09-03 16:06:04,964 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:06:04] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 16:06:04,990 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:06:04] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2021-09-03 16:10:30,934 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:10:30] "GET /auth/set_password?username=Arnold%20Muriuki&companyname=artisan&domainname=artisan1&email=arnoldnderitu@gmail.com&phone_no=0708486068 HTTP/1.1" 500 -
+2021-09-03 16:10:30,981 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:10:30] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-09-03 16:10:30,983 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:10:30] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2021-09-03 16:10:30,984 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:10:30] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-09-03 16:10:31,094 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:10:31] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 16:10:31,106 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:10:31] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2021-09-03 16:10:31,132 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:10:31] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 16:12:23,402 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:12:23] "GET /auth/set_password?username=Arnold%20Muriuki&companyname=artisan&domainname=artisan2&email=arnoldnderitu@gmail.com&phone_no=0708486068 HTTP/1.1" 500 -
+2021-09-03 16:12:23,446 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:12:23] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-09-03 16:12:23,447 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:12:23] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2021-09-03 16:12:23,448 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:12:23] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-09-03 16:12:23,502 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:12:23] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 16:12:23,517 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:12:23] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2021-09-03 16:12:50,134 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:12:50] "GET /auth/set_password?username=Arnold%20Muriuki&companyname=club%20house&domainname=club-house1&email=arnoldnderitu@gmail.com&phone_no=0708486068 HTTP/1.1" 500 -
+2021-09-03 16:12:50,187 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:12:50] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-09-03 16:12:50,189 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:12:50] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-09-03 16:12:50,190 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:12:50] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2021-09-03 16:12:50,235 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:12:50] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 16:12:50,247 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:12:50] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2021-09-03 16:18:38,978 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:18:38] "GET /auth/set_password?username=Arnold%20Muriuki&companyname=club%20house&domainname=club-house2&email=arnoldnderitu@gmail.com&phone_no=0708486068 HTTP/1.1" 500 -
+2021-09-03 16:18:39,031 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:18:39] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-09-03 16:18:39,031 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:18:39] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-09-03 16:18:39,031 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:18:39] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2021-09-03 16:18:39,119 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:18:39] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 16:18:39,121 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:18:39] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2021-09-03 16:19:06,813 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:19:06] "GET /auth/set_password?username=Arnold%20Muriuki&companyname=club%20house&domainname=club-house3&email=arnoldnderitu@gmail.com&phone_no=0708486068 HTTP/1.1" 500 -
+2021-09-03 16:19:06,839 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:19:06] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2021-09-03 16:19:06,839 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:19:06] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-09-03 16:19:06,840 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:19:06] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-09-03 16:19:06,914 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:19:06] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 16:19:06,926 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:19:06] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2021-09-03 16:19:41,639 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:19:41] "GET /auth/set_password?username=Arnold%20Muriuki&companyname=club%20house&domainname=club-house3&email=arnoldnderitu@gmail.com&phone_no=0708486068 HTTP/1.1" 500 -
+2021-09-03 16:19:41,668 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:19:41] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-09-03 16:19:41,668 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:19:41] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-09-03 16:19:41,668 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:19:41] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2021-09-03 16:19:41,714 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:19:41] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 16:19:41,732 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:19:41] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2021-09-03 16:19:41,752 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:19:41] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 16:20:07,697 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:20:07] "GET /auth/set_password?username=Arnold%20Muriuki&companyname=club%20house&domainname=club-house4&email=arnoldnderitu@gmail.com&phone_no=0708486068 HTTP/1.1" 500 -
+2021-09-03 16:20:07,719 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:20:07] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-09-03 16:20:07,719 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:20:07] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2021-09-03 16:20:07,719 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:20:07] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-09-03 16:20:07,789 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:20:07] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 16:20:07,801 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:20:07] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2021-09-03 16:20:55,464 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:20:55] "GET /auth/set_password?username=Arnold%20Muriuki&companyname=the%20artisan&domainname=the-artisan&email=arnoldnderitu@gmail.com&phone_no=0708486068 HTTP/1.1" 500 -
+2021-09-03 16:20:55,498 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:20:55] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-09-03 16:20:55,498 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:20:55] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-09-03 16:20:55,499 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:20:55] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2021-09-03 16:20:55,575 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:20:55] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 16:20:55,589 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:20:55] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2021-09-03 16:21:42,911 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:21:42] "GET /auth/set_password?username=Arnold%20Muriuki&companyname=club%20house&domainname=club-house5&email=arnoldnderitu@gmail.com&phone_no=0708486068 HTTP/1.1" 500 -
+2021-09-03 16:21:42,941 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:21:42] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-09-03 16:21:42,941 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:21:42] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2021-09-03 16:21:42,941 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:21:42] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-09-03 16:21:42,992 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:21:42] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-09-03 16:21:43,004 p=7428 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:21:43] "GET /auth/set_password?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2021-09-03 16:28:37,731 p=501 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:28:37] "GET / HTTP/1.1" 302 -
+2021-09-03 16:28:37,809 p=501 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:28:37] "GET /auth/login?next=%2F HTTP/1.1" 200 -
+2021-09-03 16:28:37,881 p=501 u=amuriuki n=werkzeug | 127.0.0.1 - - [03/Sep/2021 16:28:37] "GET /jsglue.js HTTP/1.1" 200 -
+2021-09-06 20:30:10,953 p=23688 u=amuriuki n=werkzeug | 127.0.0.1 - - [06/Sep/2021 20:30:10] "GET / HTTP/1.1" 302 -
+2021-09-06 20:30:10,998 p=23688 u=amuriuki n=werkzeug | 127.0.0.1 - - [06/Sep/2021 20:30:10] "GET /auth/login?next=%2F HTTP/1.1" 200 -
+2021-09-06 20:30:11,110 p=23688 u=amuriuki n=werkzeug | 127.0.0.1 - - [06/Sep/2021 20:30:11] "GET /static/base-2/css/theme.css HTTP/1.1" 200 -
+2021-09-06 20:30:11,117 p=23688 u=amuriuki n=werkzeug | 127.0.0.1 - - [06/Sep/2021 20:30:11] "GET /static/base-2/css/dashlite.css HTTP/1.1" 200 -
+2021-09-06 20:30:11,164 p=23688 u=amuriuki n=werkzeug | 127.0.0.1 - - [06/Sep/2021 20:30:11] "GET /jsglue.js HTTP/1.1" 200 -
+2021-09-06 20:30:11,165 p=23688 u=amuriuki n=werkzeug | 127.0.0.1 - - [06/Sep/2021 20:30:11] "GET /static/base-2/css/style-email.css HTTP/1.1" 200 -
+2021-09-06 20:30:11,763 p=23688 u=amuriuki n=werkzeug | 127.0.0.1 - - [06/Sep/2021 20:30:11] "GET /static/base-2/js/bundle.js HTTP/1.1" 200 -
+2021-09-06 20:30:11,840 p=23688 u=amuriuki n=werkzeug | 127.0.0.1 - - [06/Sep/2021 20:30:11] "GET /static/base-2/js/scripts.js HTTP/1.1" 200 -
+2021-09-06 20:30:12,028 p=23688 u=amuriuki n=werkzeug | 127.0.0.1 - - [06/Sep/2021 20:30:12] "GET /static/images/logo-dark.png HTTP/1.1" 200 -
+2021-09-06 20:30:12,028 p=23688 u=amuriuki n=werkzeug | 127.0.0.1 - - [06/Sep/2021 20:30:12] "GET /static/images/logo.png HTTP/1.1" 200 -
+2021-09-06 20:30:16,879 p=23688 u=amuriuki n=werkzeug | 127.0.0.1 - - [06/Sep/2021 20:30:16] "GET /static/images/favicon.png HTTP/1.1" 200 -
+2021-09-06 20:31:26,181 p=23688 u=amuriuki n=werkzeug | 127.0.0.1 - - [06/Sep/2021 20:31:26] "GET /auth/login?next=%2F HTTP/1.1" 200 -
+2021-09-06 20:31:26,312 p=23688 u=amuriuki n=werkzeug | 127.0.0.1 - - [06/Sep/2021 20:31:26] "GET /jsglue.js HTTP/1.1" 200 -
+2021-09-06 20:31:26,511 p=23688 u=amuriuki n=werkzeug | 127.0.0.1 - - [06/Sep/2021 20:31:26] "GET /static/images/favicon.png HTTP/1.1" 200 -
+2021-09-06 20:31:30,676 p=23688 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olamerp-tenant/app/auth/routes.py', reloading
+2021-09-06 20:31:31,400 p=23673 u=amuriuki n=werkzeug |  * Restarting with stat
+2021-09-06 20:31:34,799 p=23783 u=amuriuki n=werkzeug | 127.0.0.1 - - [06/Sep/2021 20:31:34] "GET /auth/login?next=%2F HTTP/1.1" 404 -
+2021-09-06 20:31:35,001 p=23783 u=amuriuki n=werkzeug | 127.0.0.1 - - [06/Sep/2021 20:31:35] "GET /favicon.ico HTTP/1.1" 404 -
+2021-09-06 20:31:38,102 p=23783 u=amuriuki n=werkzeug | 127.0.0.1 - - [06/Sep/2021 20:31:38] "GET /auth/login?next=%2F HTTP/1.1" 404 -
+2021-09-06 20:31:38,163 p=23783 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olamerp-tenant/app/auth/routes.py', reloading
+2021-09-06 20:31:38,286 p=23673 u=amuriuki n=werkzeug |  * Restarting with stat
+2021-09-06 20:31:53,461 p=23800 u=amuriuki n=werkzeug | 127.0.0.1 - - [06/Sep/2021 20:31:53] "GET /auth/login?next=%2F HTTP/1.1" 200 -
+2021-09-06 20:31:53,486 p=23800 u=amuriuki n=werkzeug | 127.0.0.1 - - [06/Sep/2021 20:31:53] "GET /jsglue.js HTTP/1.1" 200 -
+2021-09-06 20:31:53,642 p=23800 u=amuriuki n=werkzeug | 127.0.0.1 - - [06/Sep/2021 20:31:53] "GET /static/images/favicon.png HTTP/1.1" 200 -
+2021-09-06 20:32:21,853 p=23800 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olamerp-tenant/app/auth/routes.py', reloading
+2021-09-06 20:32:21,972 p=23673 u=amuriuki n=werkzeug |  * Restarting with stat
+2021-09-06 20:32:26,984 p=23815 u=amuriuki n=werkzeug |  * Detected change in '/home/amuriuki/projects/olamerp-tenant/app/auth/routes.py', reloading
+2021-09-06 20:32:27,255 p=23673 u=amuriuki n=werkzeug |  * Restarting with stat
+2021-09-06 20:32:28,676 p=23826 u=amuriuki n=werkzeug | 127.0.0.1 - - [06/Sep/2021 20:32:28] "GET /auth/login?next=%2F HTTP/1.1" 200 -
+2021-09-06 20:32:28,713 p=23826 u=amuriuki n=werkzeug | 127.0.0.1 - - [06/Sep/2021 20:32:28] "GET /jsglue.js HTTP/1.1" 200 -
+2021-09-06 20:32:28,838 p=23826 u=amuriuki n=werkzeug | 127.0.0.1 - - [06/Sep/2021 20:32:28] "GET /static/images/favicon.png HTTP/1.1" 200 -

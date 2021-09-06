@@ -18,35 +18,35 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
-    if current_user.is_authenticated:
-        domains = Domain.query.join(
-            User, Domain.user_id == current_user.id).all()
-        if len(domains) > 1:
-            return redirect(url_for('main.databases'))
-        if current_user.onboarding_status.value == 'Not done':
-            return redirect(url_for('main.getting_started'))
-        else:
-            return redirect(url_for('main.home'))
+    # if current_user.is_authenticated:
+    #     domains = Domain.query.join(
+    #         User, Domain.user_id == current_user.id).all()
+    #     if len(domains) > 1:
+    #         return redirect(url_for('main.databases'))
+    #     if current_user.onboarding_status.value == 'Not done':
+    #         return redirect(url_for('main.getting_started'))
+    #     else:
+    #         return redirect(url_for('main.home'))
     form = LoginForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
-        if user is None or not user.check_password(form.password.data):
-            flash(_('Invalid email or password'))
-            return redirect(url_for('auth.login'))
-        domains = Domain.query.join(User, Domain.user_id == User.id).all()
-        if len(domains) > 1:
-            return redirect(url_for('main.databases'))
-        login_user(user)
-        if user.onboarding_status.value == 'Not done':
-            return redirect(url_for('main.getting_started'))
-        else:
-            next_page = request.args.get('next')
-        if not next_page or url_parse(next_page).netloc != '':
-            if user.onboarding_status.value == 'Not done':
-                return redirect(url_for('main.getting_started'))
-            else:
-                next_page = url_for('main.home')
-        return redirect(next_page)
+    # if form.validate_on_submit():
+    #     user = User.query.filter_by(email=form.email.data).first()
+    #     if user is None or not user.check_password(form.password.data):
+    #         flash(_('Invalid email or password'))
+    #         return redirect(url_for('auth.login'))
+    #     domains = Domain.query.join(User, Domain.user_id == User.id).all()
+    #     if len(domains) > 1:
+    #         return redirect(url_for('main.databases'))
+    #     login_user(user)
+    #     if user.onboarding_status.value == 'Not done':
+    #         return redirect(url_for('main.getting_started'))
+    #     else:
+    #         next_page = request.args.get('next')
+    #     if not next_page or url_parse(next_page).netloc != '':
+    #         if user.onboarding_status.value == 'Not done':
+    #             return redirect(url_for('main.getting_started'))
+    #         else:
+    #             next_page = url_for('main.home')
+    #     return redirect(next_page)
     return render_template('auth/login.html', title=_('Sign In | Olam ERP'), form=form)
 
 
