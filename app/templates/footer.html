@@ -1,48 +1,17 @@
-<footer class="footer bg-dark is-dark">
-    <div class="container">
-        <div class="row g-gs justify-content-between py-4 py-md-6">
-            <div class="col-lg-4 col-md-6">
-                <div class="widget widget-about">
-                    <a href="html/index.html" class="logo-link">
-                        <img class="logo-light logo-img" src="{{url_for('static', filename='images/logo.png')}}"
-                            srcset="../static/images/logo2x.png 2x" alt="logo">
-                        <img class="logo-dark logo-img" src="{{url_for('static', filename='images/logo-dark.png')}}"
-                            srcset="../static/images/logo-dark2x.png 2x" alt="logo-dark">
-                    </a>
-                    <p>Olam ERP is a suite of business apps that covers all your business processes needs: CRM, accounting, inventory, point of sales, project management etc.</p>
-                </div>
-            </div><!-- .col -->
-            <div class="col-lg-6 col-12">
-                <div class="widget">
-                    <h6 class="widget-title">About us</h6>
-                    <ul class="widget-link link-inline link-inline-2col link-inline-md-3col g-2 py-1">
-                        <li><a href="#">Our Company</a></li>
-                        <li><a href="#">Contact us</a></li>
-                        <li><a href="#">Jobs</a></li>
-                        <li><a href="#">Legal</a></li>
-                        <li><a href="#">Privacy</a></li>
-                        <li><a href="#">Security</a></li>                        
-                    </ul>
-                </div>
-            </div><!-- .col -->
-        </div><!-- .row -->
-        <hr class="hr border-light mb-0 mt-n1">
-        <div class="row g-3 align-items-center justify-content-md-between py-4">
-            <div class="col-md-8">
-                <div>Copyright &copy; <span id="year"></span>
-                    <script>
-                        document.getElementById("year").innerHTML = new Date().getFullYear();
-                    </script> Olam ERP. Website made by the <a class="text-base fw-bold" href="#">Olam team</a>
-                </div>
-            </div><!-- .col -->
-            <div class="col-md-4 d-flex justify-content-md-end">
-                <ul class="social">
-                    <li><a href="#"><em class="icon ni ni-twitter"></em></a></li>
-                    <li><a href="#"><em class="icon ni ni-facebook-f"></em></a></li>
-                    <li><a href="#"><em class="icon ni ni-instagram"></em></a></li>
-                    <li><a href="#"><em class="icon ni ni-pinterest"></em></a></li>
-                </ul><!-- .footer-icon -->
-            </div><!-- .col -->
-        </div><!-- .row -->
-    </div><!-- .container -->
-</footer><!-- .footer -->
+<div class="nk-footer">
+    <div class="container wide-xl">
+        <div class="nk-footer-wrap g-2">
+            <div class="nk-footer-copyright"> &copy; <span id="year"></span>
+                <script>
+                    document.getElementById("year").innerHTML = new Date().getFullYear();
+                </script> Olam ERP. All Rights Reserved.
+            </div>
+            <div class="nk-footer-links">
+                <ul class="nav nav-sm">
+                    <li class="nav-item"><a class="nav-link" href="#">Terms</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Privacy</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
