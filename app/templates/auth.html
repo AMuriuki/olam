@@ -12,9 +12,9 @@
     <!-- Page Title  -->
     <title>{% if title %} {{title}} {% else %} Welcome to Olam {% endif %}</title>
     <!-- StyleSheets  -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='base-2/css/dashlite.css') }}">
-    <link id="skin-default" rel="stylesheet" href="{{ url_for('static', filename='base-2/css/theme.css') }}">
-    <link id="skin-default" rel="stylesheet" href="{{ url_for('static', filename='base-2/css/style-email.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashlite.css') }}">
+    <link id="skin-default" rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}">
+    <link id="skin-default" rel="stylesheet" href="{{ url_for('static', filename='css/style-email.css') }}">
     <link
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap"
         rel="stylesheet">
@@ -34,7 +34,7 @@
                         </div>
                         {% block auth %}{% endblock %}
                     </div>
-                    {% include "footer-2.html" %}
+                    {% include "footer.html" %}
                 </div>
                 <!-- wrap @e -->
             </div>
