@@ -39,6 +39,9 @@ babel = Babel()
 jsglue = JSGlue()
 cors = CORS()
 
+get_api_token = "http://127.0.0.1:5000/api/tokens"
+get_installed_modules = "http://127.0.0.1:5000/api/companies/"
+
 
 def create_app(config_class=Config):
     app = Flask(__name__)
@@ -60,7 +63,7 @@ def create_app(config_class=Config):
 
     from app.auth import bp as auth_bp
     app.register_blueprint(auth_bp, url_prefix='/auth')
-    
+
     from app.main import bp as main_bp
     app.register_blueprint(main_bp)
 
@@ -105,6 +108,3 @@ def create_app(config_class=Config):
 @babel.localeselector
 def get_locale():
     return request.accept_languages.best_match(current_app.config['LANGUAGES'])
-
-
-from app.main.models import module, company

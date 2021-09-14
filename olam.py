@@ -1,6 +1,6 @@
 from flask_migrate import upgrade
 from app import create_app, cli, db
-from app.main.models.module import Module, ModuleCategory
+from app.main.models.module import Module
 
 app = create_app()
 cli.register(app)

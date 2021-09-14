@@ -1,4 +1,4 @@
-from app.main.models.module import Module, ModuleCategory
+from app.main.models.module import Module
 import os
 import click
 from flask_migrate import upgrade
@@ -15,9 +15,6 @@ def register(app):
         """Run deployment tasks."""
         # migrate database to latest revision
         upgrade()
-
-        ModuleCategory.insert_categories()
-        Module.insert_modules()
 
 
     @translate.command()

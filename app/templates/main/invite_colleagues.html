@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="nk-content-body">
+    <div class="nk-content-wrap">
+        <div class="components-preview wide-md mx-auto">
+            <div class="nk-block-head nk-block-head-lg wide-sm">
+                <div class="nk-block-head-content">
+                    <h2 class="nk-block-title fw-normal">Invite your <strong>colleagues</strong></h2>
+                </div>
+            </div><!-- .nk-block -->
+            <div class="nk-block nk-block-lg">
+                <div class="card card-preview">
+                    <div class="card-inner">
+                        <div class="preview-block">
+                            <span class="preview-title-lg overline-title">User 1</span>
+                            <div class="row gy-4">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="user1_name">Name</label>
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control" id="user1_name"
+                                                placeholder="First and Last Name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="user1_email">Email</label>
+                                        <div class="form-control-wrap">
+                                            <div class="form-icon form-icon-right">
+                                                <em class="icon ni ni-mail"></em>
+                                            </div>
+                                            <input type="text" class="form-control" id="user1_email"
+                                                placeholder="Email">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="preview-hr">
+                            <span class="preview-title-lg overline-title">User 2</span>
+                            <div class="row gy-4">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="user2_name">Name</label>
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control" id="user2_name"
+                                                placeholder="First and Last Name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="user2_email">Email</label>
+                                        <div class="form-control-wrap">
+                                            <div class="form-icon form-icon-right">
+                                                <em class="icon ni ni-mail"></em>
+                                            </div>
+                                            <input type="text" class="form-control" id="user2_email"
+                                                placeholder="Email">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="preview-hr">
+                            <span class="preview-title-lg overline-title">User 3</span>
+                            <div class="row gy-4">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="user3_name">Name</label>
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control" id="user3_name"
+                                                placeholder="First and Last Name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="user3_email">Email</label>
+                                        <div class="form-control-wrap">
+                                            <div class="form-icon form-icon-right">
+                                                <em class="icon ni ni-mail"></em>
+                                            </div>
+                                            <input type="text" class="form-control" id="user3_email"
+                                                placeholder="Email">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row gy-4">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <a href="#" class="btn btn-primary">Skip</a>
+                                        <a href="#" class="btn btn-success">Send Invites</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- .card-preview -->
+
+            </div><!-- .nk-block -->
+        </div><!-- .components-preview -->
+    </div>
+    <!-- footer @s -->
+    {% include "footer.html" %}
+    <!-- footer @e -->
+</div>
+{% endblock %}
