@@ -12,7 +12,16 @@
                 </div>
             </div>
         </div>
-        <form action="html/index.html">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger">
+            {{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <form method="POST">
             {{form.hidden_tag()}}
             <div class="form-group">
                 <div class="form-label-group">
@@ -43,12 +52,13 @@
                 </div>
             </div>
             <div class="form-group">
-                <button class="btn btn-lg btn-primary btn-block">Sign in</button>
+                {{form.submit(class="btn btn-lg btn-primary btn-block")}}
+                <!-- <button class="btn btn-lg btn-primary btn-block">Sign in</button> -->
             </div>
         </form>
         <div class="form-note-s2 text-center pt-4">Don't have an account?&nbsp;<a
-            href="{{url_for('auth.register')}}">Create one</a>
-    </div>
+                href="{{url_for('auth.register')}}">Create one</a>
+        </div>
     </div>
 </div>
 

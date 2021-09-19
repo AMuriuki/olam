@@ -20,35 +20,20 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
-    # if current_user.is_authenticated:
-    #     domains = Domain.query.join(
-    #         User, Domain.user_id == current_user.id).all()
-    #     if len(domains) > 1:
-    #         return redirect(url_for('main.databases'))
-    #     if current_user.onboarding_status.value == 'Not done':
-    #         return redirect(url_for('main.getting_started'))
-    #     else:
-    #         return redirect(url_for('main.home'))
+    if current_user.is_authenticated:
+        return redirect(url_for('main.index'))
     form = LoginForm()
-    # if form.validate_on_submit():
-    #     user = User.query.filter_by(email=form.email.data).first()
-    #     if user is None or not user.check_password(form.password.data):
-    #         flash(_('Invalid email or password'))
-    #         return redirect(url_for('auth.login'))
-    #     domains = Domain.query.join(User, Domain.user_id == User.id).all()
-    #     if len(domains) > 1:
-    #         return redirect(url_for('main.databases'))
-    #     login_user(user)
-    #     if user.onboarding_status.value == 'Not done':
-    #         return redirect(url_for('main.getting_started'))
-    #     else:
-    #         next_page = request.args.get('next')
-    #     if not next_page or url_parse(next_page).netloc != '':
-    #         if user.onboarding_status.value == 'Not done':
-    #             return redirect(url_for('main.getting_started'))
-    #         else:
-    #             next_page = url_for('main.home')
-    #     return redirect(next_page)
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user is None or not user.check_password(form.password.data):
+            flash(_('Invalid email or password'))
+            return redirect(url_for('auth.login'))
+        login_user(user, remember=form.remember_me.data)
+        next_page = request.args.get('next')
+        if not next_page or url_parse(next_page).netloc != '':
+            next_page = url_for('main.index')
+        return redirect(next_page)
+    print(form.errors)
     return render_template('auth/login.html', title=_('Sign In | Olam ERP'), form=form)
 
 
@@ -106,9 +91,10 @@ def set_password():
             response = requests.get(
                 get_installed_modules + str(company_id) + '/modules', headers=head)
             response_dict = json.loads(response.content)
+            print(response.content)
             for i in range(len(response_dict)):
                 module = Module(technical_name=response_dict['items'][i]['technical_name'],
-                                official_name=response_dict['items'][i]['official_name'], summary=response_dict['items'][i]['summary'])
+                                official_name=response_dict['items'][i]['official_name'], bp_name=response_dict['items'][i]['bp_name'], summary=response_dict['items'][i]['summary'])
                 db.session.add(module)
                 db.session.commit()
             return redirect(url_for('main.invite_colleagues'))

@@ -9,7 +9,8 @@ import logging
 class Module(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     technical_name = db.Column(db.String(128), index=True)  # technical name
-    official_name = db.Column(db.String(128), index=True)  # technical name
+    official_name = db.Column(db.String(128), index=True)  # official name
+    bp_name = db.Column(db.String(128), index=True)  # blueprint name
     installed_version = db.Column(db.String(60))
     auto_install = db.Column(db.Boolean, default=False)
     state = db.Column(db.String(60))

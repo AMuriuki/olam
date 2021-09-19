@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: e7cb11bf18d8
+Revision ID: 42cd9caf7bde
 Revises: 
-Create Date: 2021-09-14 20:25:20.629837
+Create Date: 2021-09-19 21:15:16.212163
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'e7cb11bf18d8'
+revision = '42cd9caf7bde'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -32,6 +32,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('technical_name', sa.String(length=128), nullable=True),
     sa.Column('official_name', sa.String(length=128), nullable=True),
+    sa.Column('bp_name', sa.String(length=128), nullable=True),
     sa.Column('installed_version', sa.String(length=60), nullable=True),
     sa.Column('auto_install', sa.Boolean(), nullable=True),
     sa.Column('state', sa.String(length=60), nullable=True),
@@ -41,6 +42,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id', name=op.f('pk_module'))
     )
     with op.batch_alter_table('module', schema=None) as batch_op:
+        batch_op.create_index(batch_op.f('ix_module_bp_name'), ['bp_name'], unique=False)
         batch_op.create_index(batch_op.f('ix_module_official_name'), ['official_name'], unique=False)
         batch_op.create_index(batch_op.f('ix_module_technical_name'), ['technical_name'], unique=False)
 
@@ -99,6 +101,7 @@ def downgrade():
     with op.batch_alter_table('module', schema=None) as batch_op:
         batch_op.drop_index(batch_op.f('ix_module_technical_name'))
         batch_op.drop_index(batch_op.f('ix_module_official_name'))
+        batch_op.drop_index(batch_op.f('ix_module_bp_name'))
 
     op.drop_table('module')
     with op.batch_alter_table('database', schema=None) as batch_op:
