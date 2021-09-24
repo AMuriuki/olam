@@ -68,7 +68,7 @@ def set_password():
     company_id = request.args.get('companyid')
     if user is None:
         user = User(name=request.args.get('username'),
-                    email=request.args.get('email'), phone_no=request.args.get('phone_no'))
+                    email=request.args.get('email'), phone_no=request.args.get('phone_no'), is_active=True)
         db.session.add(user)
         db.session.commit()
     response = requests.post(get_api_token, auth=(
@@ -91,7 +91,7 @@ def set_password():
             response = requests.get(
                 get_installed_modules + str(company_id) + '/modules', headers=head)
             response_dict = json.loads(response.content)
-            print(response.content)
+            
             for i in range(len(response_dict)):
                 module = Module(technical_name=response_dict['items'][i]['technical_name'],
                                 official_name=response_dict['items'][i]['official_name'], bp_name=response_dict['items'][i]['bp_name'], summary=response_dict['items'][i]['summary'])

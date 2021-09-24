@@ -1,3 +1,4 @@
+from app.main.models.contact import Contact
 import os
 from app.auth.email import send_database_activation_email
 import re
@@ -16,7 +17,7 @@ from flask_babel import _, get_locale
 from guess_language import guess_language
 from app import db
 from app.main import bp
-from app.main.forms import GetStartedForm
+from app.main.forms import GetStartedForm, InviteForm
 from config import basedir
 from flask_login import login_user, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -45,4 +46,21 @@ def all_apps():
 @ bp.route('/invite_colleagues', methods=['GET', 'POST'])
 @login_required
 def invite_colleagues():
-    return render_template('main/invite_colleagues.html', title=_('Invite Colleagues | Olam ERP'))
+    form = InviteForm()
+    if form.validate_on_submit():
+        if form.data['user1name'] and form.data['user1email']:
+            contact = Contact(name=form.data['user1name'],
+                              email=form.data['user1email'])
+            db.session.add(contact)
+            db.session.commit()
+        if form.data['user2name'] and form.data['user2email']:
+            contact = Contact(name=form.data['user2name'],
+                              email=form.data['user2email'])
+            db.session.add(contact)
+            db.session.commit()
+        if form.data['user3name'] and form.data['user3email']:
+            contact = Contact(name=form.data['user3name'],
+                              email=form.data['user3email'])
+            db.session.add(contact)
+            db.session.commit()
+    return render_template('main/invite_colleagues.html', title=_('Invite Colleagues | Olam ERP'), form=form)

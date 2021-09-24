@@ -32,7 +32,7 @@ class User(UserMixin, PaginatedAPIMixin, db.Model):
     token = db.Column(db.String(32), index=True, unique=True)
     token_expiration = db.Column(db.DateTime)
     company = db.relationship('Company', backref='user_company', uselist=False)
-    is_active = db.Column(db.Boolean, default=True)
+    is_active = db.Column(db.Boolean, default=False)
     name = db.Column(db.String(128), index=True)
     email = db.Column(db.String(120), index=True, unique=True)
     is_staff = db.Column(db.Boolean, default=True)

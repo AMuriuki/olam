@@ -1,0 +1,23 @@
+from app.main.models.module import Module
+from flask_login import login_required
+from sqlalchemy import log
+from app import contacts
+from app.contacts import bp
+from app.main.models.contact import Contact
+from flask import render_template
+from flask_babel import _, get_locale
+
+
+@bp.route('/', methods=['GET', 'POST'])
+@login_required
+def index():
+    contacts = Contact.query.all()
+    modules = Module.query.all()
+    return render_template('contacts/index.html', title=_('Contacts | Olam ERP'), contacts=contacts, modules=modules)
+
+
+@bp.route('/new', methods=['GET', 'POST'])
+@login_required
+def create():
+    modules = Module.query.all()
+    return render_template('contacts/new.html', title=_('New Contact | Olam ERP'), modules=modules)

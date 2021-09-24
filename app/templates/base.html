@@ -20,6 +20,10 @@
         .nk-content-wrap {
             margin-bottom: 15px !important;
         }
+
+        .nk-aside {
+            display: none;
+        }
     </style>
 </head>
 
@@ -32,6 +36,61 @@
                 <div class="nk-header nk-header-fixed is-light">
                     <div class="container-lg wide-xl">
                         <div class="nk-header-wrap">
+                            <div class="nk-header-brand">
+                                <a href="html/index.html" id="toggle-anchr" data-target="sideNav"
+                                    class="toggle nk-quick-nav-icon mr-n1">
+                                    <em class="icon ni ni-menu-squared"></em>
+                                </a>
+                            </div>
+                            <div class="nk-header-menu">
+                                <ul class="nk-menu nk-menu-main">
+                                    {% if title == "CRM | Olam ERP" %}
+                                    <li class="nk-menu-item">
+                                        <a href="{{url_for('crm.sales')}}" class="nk-menu-link" data-original-title=""
+                                            title="">
+                                            <span class="nk-menu-text">Sales</span>
+                                        </a>
+                                    </li>
+                                    <li class="nk-menu-item">
+                                        <a href="{{url_for('crm.reporting')}}" class="nk-menu-link"
+                                            data-original-title="" title="">
+                                            <span class="nk-menu-text">Reporting</span>
+                                        </a>
+                                    </li>
+                                    <li class="nk-menu-item has-sub">
+                                        <a href="{{url_for('crm.configuration')}}" class="nk-menu-link nk-menu-toggle"
+                                            data-original-title="" title="">
+                                            <span class="nk-menu-text">Configuration</span>
+                                        </a>
+                                        <ul class="nk-menu-sub">
+                                            <li class="nk-menu-item">
+                                                <a href="html/apps-messages.html" class="nk-menu-link"
+                                                    data-original-title="" title=""><span
+                                                        class="nk-menu-text">Settings</span></a>
+                                            </li>
+                                            <li class="nk-menu-item">
+                                                <a href="html/apps-inbox.html" class="nk-menu-link"
+                                                    data-original-title="" title=""><span class="nk-menu-text">Sales Teams</span></a>
+                                            </li>
+                                            <li class="nk-menu-item">
+                                                <a href="html/apps-file-manager.html" class="nk-menu-link"
+                                                    data-original-title="" title=""><span class="nk-menu-text">Activity Types</span></a>
+                                            </li>
+                                            <li class="nk-menu-item">
+                                                <a href="html/apps-chats.html" class="nk-menu-link"
+                                                    data-original-title="" title=""><span class="nk-menu-text">Pipeline</span></a>
+                                            </li>
+                                            <li class="nk-menu-item">
+                                                <a href="html/apps-calendar.html" class="nk-menu-link"
+                                                    data-original-title="" title=""><span
+                                                        class="nk-menu-text">Lead Generation</span></a>
+                                            </li>
+                                        </ul><!-- .nk-menu-sub -->
+                                    </li><!-- .nk-menu-item -->
+                                    <!-- .nk-menu-item -->
+                                    {% endif %}
+                                </ul><!-- .nk-menu -->
+                            </div>
                             <div class="nk-header-tools">
                                 <ul class="nk-quick-nav">
                                     <li class="dropdown notification-dropdown">
@@ -49,7 +108,8 @@
                                                 <div class="nk-notification">
                                                     <div class="nk-notification-item dropdown-inner">
                                                         <div class="nk-notification-icon">
-                                                            <em class="7icon icon-circle bg-warning-dim ni ni-curve-down-right"></em>
+                                                            <em
+                                                                class="7icon icon-circle bg-warning-dim ni ni-curve-down-right"></em>
                                                         </div>
                                                         <div class="nk-notification-content">
                                                             <div class="nk-notification-text">You have requested to
@@ -128,6 +188,8 @@
                                                 <div class="user-avatar sm">
                                                     <em class="icon ni ni-user-alt"></em>
                                                 </div>
+                                                <div class="user-name dropdown-indicator d-none d-sm-block">
+                                                    {{current_user.company.name}}</div>
                                             </div>
                                         </a>
                                         <div
@@ -170,10 +232,6 @@
                                             </div>
                                         </div>
                                     </li><!-- .dropdown -->
-                                    <li class="d-lg-none">
-                                        <a href="#" id="toggle-anchr" class="toggle nk-quick-nav-icon mr-n1" data-target="sideNav"><em
-                                                class="icon ni ni-menu"></em></a>
-                                    </li>
                                 </ul><!-- .nk-quick-nav -->
                             </div><!-- .nk-header-tools -->
                         </div><!-- .nk-header-wrap -->

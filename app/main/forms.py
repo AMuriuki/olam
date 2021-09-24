@@ -1,3 +1,4 @@
+from app.main.models.contact import Contact
 from app.main.models.company import Company
 from flask import request
 from flask_wtf import FlaskForm
@@ -20,3 +21,12 @@ class GetStartedForm(FlaskForm):
                                validators=[DataRequired(), Regexp(r'^[\w.@+-]+$', message="Spaces are not allowed in domain names")], render_kw={'readonly': True})
     submit = SubmitField(_l('Start Now'))
 
+
+class InviteForm(FlaskForm):
+    user1name = StringField(_l('Name'))
+    user2name = StringField(_l('Name'))
+    user3name = StringField(_l('Name'))
+    user1email = StringField(_l('Email'))
+    user2email = StringField(_l('Email'))
+    user3email = StringField(_l('Email'))
+    submit = SubmitField(_('Send Invites'))

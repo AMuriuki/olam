@@ -2,7 +2,7 @@
 
 {% block content %}
 <style>
-    .nk-aside{
+    .nk-aside {
         display: none;
     }
 </style>
@@ -14,97 +14,109 @@
                     <h2 class="nk-block-title fw-normal">Invite your <strong>colleagues</strong></h2>
                 </div>
             </div><!-- .nk-block -->
-            <div class="nk-block nk-block-lg">
-                <div class="card card-preview">
-                    <div class="card-inner">
-                        <div class="preview-block">
-                            <span class="preview-title-lg overline-title">User 1</span>
-                            <div class="row gy-4">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="user1_name">Name</label>
-                                        <div class="form-control-wrap">
-                                            <input type="text" class="form-control" id="user1_name"
-                                                placeholder="First and Last Name">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="user1_email">Email</label>
-                                        <div class="form-control-wrap">
-                                            <div class="form-icon form-icon-right">
-                                                <em class="icon ni ni-mail"></em>
+            <form method="POST">
+                {{form.hidden_tag()}}
+                <div class="nk-block nk-block-lg">
+                    <div class="card card-preview">
+                        <div class="card-inner">
+                            <div class="preview-block">
+                                <span class="preview-title-lg overline-title">User 1</span>
+                                <div class="row gy-4">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            {{ form.user1name.label(class="form-label") }}
+                                            <div class="form-control-wrap">
+                                                {% for error in form.user1name.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}
+                                                {{ form.user1name(class="form-control form-control", id="user1name",
+                                                placeholder="First and Last name") }}
                                             </div>
-                                            <input type="text" class="form-control" id="user1_email"
-                                                placeholder="Email">
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <hr class="preview-hr">
-                            <span class="preview-title-lg overline-title">User 2</span>
-                            <div class="row gy-4">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="user2_name">Name</label>
-                                        <div class="form-control-wrap">
-                                            <input type="text" class="form-control" id="user2_name"
-                                                placeholder="First and Last Name">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="user2_email">Email</label>
-                                        <div class="form-control-wrap">
-                                            <div class="form-icon form-icon-right">
-                                                <em class="icon ni ni-mail"></em>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            {{ form.user1email.label(class="form-label") }}
+                                            <div class="form-control-wrap">
+                                                {% for error in form.user1email.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}
+                                                {{ form.user1email(class="form-control form-control", id="user1email",
+                                                placeholder="Email") }}
                                             </div>
-                                            <input type="text" class="form-control" id="user2_email"
-                                                placeholder="Email">
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <hr class="preview-hr">
-                            <span class="preview-title-lg overline-title">User 3</span>
-                            <div class="row gy-4">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="user3_name">Name</label>
-                                        <div class="form-control-wrap">
-                                            <input type="text" class="form-control" id="user3_name"
-                                                placeholder="First and Last Name">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="user3_email">Email</label>
-                                        <div class="form-control-wrap">
-                                            <div class="form-icon form-icon-right">
-                                                <em class="icon ni ni-mail"></em>
+                                <hr class="preview-hr">
+                                <span class="preview-title-lg overline-title">User 2</span>
+                                <div class="row gy-4">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            {{ form.user2name.label(class="form-label") }}
+                                            <div class="form-control-wrap">
+                                                {% for error in form.user2name.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}
+                                                {{ form.user2name(class="form-control form-control", id="user2name",
+                                                placeholder="First and Last name") }}
                                             </div>
-                                            <input type="text" class="form-control" id="user3_email"
-                                                placeholder="Email">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            {{ form.user2email.label(class="form-label") }}
+                                            <div class="form-control-wrap">
+                                                {% for error in form.user2email.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}
+                                                {{ form.user2email(class="form-control form-control", id="user2email",
+                                                placeholder="Email") }}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row gy-4">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <a href="{{url_for('main.index')}}" class="btn btn-primary">Skip</a>
-                                        <a href="#" class="btn btn-success">Send Invites</a>
+                                <hr class="preview-hr">
+                                <span class="preview-title-lg overline-title">User 3</span>
+                                <div class="row gy-4">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            {{ form.user2name.label(class="form-label") }}
+                                            <div class="form-control-wrap">
+                                                {% for error in form.user3name.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}
+                                                {{ form.user3name(class="form-control form-control", id="user3name",
+                                                placeholder="First and Last name") }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            {{ form.user3email.label(class="form-label") }}
+                                            <div class="form-control-wrap">
+                                                {% for error in form.user3email.errors %}
+                                                <span style="color: red;">[{{ error }}]</span>
+                                                {% endfor %}
+                                                {{ form.user3email(class="form-control form-control", id="user3email",
+                                                placeholder="Email") }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row gy-4">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <a href="{{url_for('main.index')}}" class="btn btn-primary">Skip</a>
+                                            {{form.submit(class="btn btn-success")}}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div><!-- .card-preview -->
+                    </div><!-- .card-preview -->
 
-            </div><!-- .nk-block -->
+                </div><!-- .nk-block -->
+            </form>
         </div><!-- .components-preview -->
     </div>
     <!-- footer @s -->

@@ -67,6 +67,12 @@ def create_app(config_class=Config):
     from app.crm import bp as crm_bp
     app.register_blueprint(crm_bp, url_prefix='/crm')
 
+    from app.contacts import bp as contact_bp
+    app.register_blueprint(contact_bp, url_prefix='/contacts')
+
+    from app.settings import bp as settings_bp
+    app.register_blueprint(settings_bp, url_prefix='/settings')
+
     from app.main import bp as main_bp
     app.register_blueprint(main_bp)
 
