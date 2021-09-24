@@ -1,3 +1,4 @@
+from app.main.models.contact import Contact
 from app.main.models.module import Module
 from app.main.models.database import Database
 from app.main.models.company import Company
@@ -69,6 +70,7 @@ def set_password():
     if user is None:
         user = User(name=request.args.get('username'),
                     email=request.args.get('email'), phone_no=request.args.get('phone_no'), is_active=True)
+        contact = Contact()
         db.session.add(user)
         db.session.commit()
     response = requests.post(get_api_token, auth=(

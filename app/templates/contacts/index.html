@@ -11,7 +11,7 @@
         <div class="nk-block-head nk-block-head-sm">
             <div class="nk-block-between">
                 <div class="nk-block-head-content">
-                    <h3 class="nk-block-title page-title">Users Card</h3>
+                    <h3 class="nk-block-title page-title">Contacts</h3>
                     <div class="nk-block-des text-soft">
                         <p>You have total 95 projects.</p>
                     </div>
@@ -45,6 +45,7 @@
         </div><!-- .nk-block-head -->
         <div class="nk-block">
             <div class="row g-gs">
+                {% for contact in contacts %}
                 <div class="col-sm-6 col-xl-4">
                     <div class="card card-bordered">
                         <div class="card-inner">
@@ -79,7 +80,7 @@
                                         <div class="status dot dot-lg dot-success"></div>
                                     </div>
                                     <div class="user-info">
-                                        <h6>Abu Bin Ishtiyak</h6>
+                                        <h6>{{contact.name}}</h6>
                                         <span class="sub-text">@ishtiyak</span>
                                     </div>
                                 </div>
@@ -99,6 +100,7 @@
                         </div><!-- .card-inner -->
                     </div><!-- .card -->
                 </div><!-- .col -->
+                {% endfor %}
                 <div class="col-sm-6 col-xl-4">
                     <div class="card card-bordered">
                         <div class="card-inner">

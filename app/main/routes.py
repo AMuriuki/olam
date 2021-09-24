@@ -46,6 +46,7 @@ def all_apps():
 @ bp.route('/invite_colleagues', methods=['GET', 'POST'])
 @login_required
 def invite_colleagues():
+    company = Company.query.filter_by(user_id=current_user.get_id()).first()
     form = InviteForm()
     if form.validate_on_submit():
         if form.data['user1name'] and form.data['user1email']:
