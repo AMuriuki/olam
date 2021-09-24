@@ -22,6 +22,15 @@ $('#btnDiscuss').on('click', function () {
   $('#dvDiscuss').removeClass('hide-dv')
 })
 
+$('.mr-n1').on('click', function() {
+  if (($(this)).hasClass('active')){
+    $('.nk-aside').hide();
+  }else{
+    $('.nk-aside').show();
+  }
+  
+})
+
 var backdrop = $('#dv_modal-backdrop')
 
 $('.close').on('click', function () {
@@ -285,3 +294,4 @@ jQuery(document).ready(function () {
     })
   })
 })
+

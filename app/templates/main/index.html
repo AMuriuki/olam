@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
+<style>
+    .nk-aside{
+        display: none;
+    }
+</style>
 <div class="nk-content-body">
     <div class="nk-content-wrap">
         <div class="nk-block-head nk-block-head-sm">
@@ -43,12 +48,12 @@
         <div class="nk-block">
             <div class="row g-gs">
                 {% for module in modules %}
-                <div class="col-sm-6 col-xl-4" onclick="location.href='/{{module.bp_name}}';" style="cursor: pointer;">
+                <div class="col-sm-6 col-xl-4" onclick="location.href='/{{module.bp_name}}/';" style="cursor: pointer;">
                     <div class="card card-bordered h-100">
                         <div class="card-inner">
                             <div class="project">
                                 <div class="project-head">
-                                    <a href="/{{module.bp_name}}" class="project-title">
+                                    <a href="/{{module.bp_name}}/" class="project-title">
                                         <div class="project-info">
                                             <h6 class="title">{{module.official_name}}</h6>
                                         </div>
