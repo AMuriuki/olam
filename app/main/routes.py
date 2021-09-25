@@ -27,8 +27,8 @@ from urllib.parse import urlparse
 @bp.route('/', methods=['GET', 'POST'])
 @login_required
 def index():
-    modules = Module.query.all()
-    return render_template('main/index.html', title=_('My Apps | Olam ERP'), modules=modules)
+    
+    return render_template('main/index.html', title=_('My Apps | Olam ERP'))
 
 
 @ bp.route('/dashboard')
@@ -51,17 +51,18 @@ def invite_colleagues():
     if form.validate_on_submit():
         if form.data['user1name'] and form.data['user1email']:
             contact = Contact(name=form.data['user1name'],
-                              email=form.data['user1email'])
+                              email=form.data['user1email'], company_id=company.id)
             db.session.add(contact)
             db.session.commit()
         if form.data['user2name'] and form.data['user2email']:
             contact = Contact(name=form.data['user2name'],
-                              email=form.data['user2email'])
+                              email=form.data['user2email'], company_id=company.id)
             db.session.add(contact)
             db.session.commit()
         if form.data['user3name'] and form.data['user3email']:
             contact = Contact(name=form.data['user3name'],
-                              email=form.data['user3email'])
+                              email=form.data['user3email'], company_id=company.id)
             db.session.add(contact)
             db.session.commit()
+        return redirect(url_for('main.index'))
     return render_template('main/invite_colleagues.html', title=_('Invite Colleagues | Olam ERP'), form=form)

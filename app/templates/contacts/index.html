@@ -13,7 +13,7 @@
                 <div class="nk-block-head-content">
                     <h3 class="nk-block-title page-title">Contacts</h3>
                     <div class="nk-block-des text-soft">
-                        <p>You have total 95 projects.</p>
+                        <p>You have {{contacts|length}} contacts.</p>
                     </div>
                 </div><!-- .nk-block-head-content -->
                 <div class="nk-block-head-content">
@@ -22,8 +22,23 @@
                                 class="icon ni ni-menu-alt-r"></em></a>
                         <div class="toggle-expand-content" data-content="pageMenu">
                             <ul class="nk-block-tools g-3">
-                                <li><a href="#" class="btn btn-white btn-outline-light"><em
-                                            class="icon ni ni-download-cloud"></em><span>Export</span></a></li>
+                                <li><input type="text" class="form-control border-transparent form-focus-none"
+                                        placeholder="Search by user or email"></li>
+                                <li>
+                                    <div class="drodown">
+                                        <a href="#" class="dropdown-toggle btn btn-white btn-dim btn-outline-light"
+                                            data-toggle="dropdown"><em
+                                                class="d-none d-sm-inline icon ni ni-filter-alt"></em><span>Filtered
+                                                By</span><em class="dd-indc icon ni ni-chevron-right"></em></a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <ul class="link-list-opt no-bdr">
+                                                <li><a href="#"><span>Open</span></a></li>
+                                                <li><a href="#"><span>Closed</span></a></li>
+                                                <li><a href="#"><span>Onhold</span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
                                 <li class="nk-block-tools-opt">
                                     <div class="drodown">
                                         <a href="#" class="dropdown-toggle btn btn-icon btn-primary"
@@ -50,15 +65,15 @@
                     <div class="card card-bordered">
                         <div class="card-inner">
                             <div class="team">
-                                <div class="team-status bg-danger text-white"><em class="icon ni ni-na"></em></div>
+                                <div data-toggle="tooltip" title="Disabled tooltip" class="team-status {% if contact.is_active %} bg-success {% else %} bg-light {% endif %} {% if contact.is_deleted %} bg-danger {% endif %} text-white">
+                                    {% if contact.is_deleted %}<em class="icon ni ni-na"></em>{% else %}<em
+                                        class="icon ni ni-check-thick"></em>{% endif %}</div>
                                 <div class="team-options">
                                     <div class="drodown">
                                         <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger"
                                             data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <ul class="link-list-opt no-bdr">
-                                                <li><a href="#"><em class="icon ni ni-focus"></em><span>Quick
-                                                            View</span></a></li>
                                                 <li><a href="#"><em class="icon ni ni-eye"></em><span>View
                                                             Details</span></a></li>
                                                 <li><a href="#"><em class="icon ni ni-mail"></em><span>Send
@@ -75,23 +90,16 @@
                                     </div>
                                 </div>
                                 <div class="user-card user-card-s2">
-                                    <div class="user-avatar md bg-primary">
-                                        <span>AB</span>
-                                        <div class="status dot dot-lg dot-success"></div>
-                                    </div>
                                     <div class="user-info">
-                                        <h6>{{contact.name}}</h6>
-                                        <span class="sub-text">@ishtiyak</span>
+                                        <h6>{{contact.company.name|upper}}<br>{{contact.name}}</h6>
+                                        <span class="sub-text">{{current_user.email}}</span>
                                     </div>
                                 </div>
                                 <div class="team-details">
-                                    <p>I am an UI/UX Designer and Love to be creative.</p>
+                                    <p>{% if contact.title.name %}{{contact.title.name}} at
+                                        {{contact.company.name|upper}}{% endif %}</p>
                                 </div>
-                                <ul class="team-statistics">
-                                    <li><span>213</span><span>Projects</span></li>
-                                    <li><span>87.5%</span><span>Performed</span></li>
-                                    <li><span>587</span><span>Tasks</span></li>
-                                </ul>
+                                
                                 <div class="team-view">
                                     <a href="html/user-details-regular.html"
                                         class="btn btn-round btn-outline-light w-150px"><span>View Profile</span></a>
@@ -113,8 +121,6 @@
                                             data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <ul class="link-list-opt no-bdr">
-                                                <li><a href="#"><em class="icon ni ni-focus"></em><span>Quick
-                                                            View</span></a></li>
                                                 <li><a href="#"><em class="icon ni ni-eye"></em><span>View
                                                             Details</span></a></li>
                                                 <li><a href="#"><em class="icon ni ni-mail"></em><span>Send

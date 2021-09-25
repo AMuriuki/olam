@@ -9,3 +9,9 @@ cli.register(app)
 @app.shell_context_processor
 def make_shell_context():
     return {'db': db}
+
+
+@app.context_processor
+def inject_modules():
+    modules = Module.query.all()
+    return dict(modules=modules)

@@ -12,12 +12,10 @@ from flask_babel import _, get_locale
 @login_required
 def index():
     contacts = Contact.query.all()
-    modules = Module.query.all()
-    return render_template('contacts/index.html', title=_('Contacts | Olam ERP'), contacts=contacts, modules=modules)
+    return render_template('contacts/index.html', title=_('Contacts | Olam ERP'), contacts=contacts)
 
 
 @bp.route('/new', methods=['GET', 'POST'])
 @login_required
 def create():
-    modules = Module.query.all()
-    return render_template('contacts/new.html', title=_('New Contact | Olam ERP'), modules=modules)
+    return render_template('contacts/new.html', title=_('New Contact | Olam ERP'))
