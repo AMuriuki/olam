@@ -18,4 +18,4 @@ def index():
 @bp.route('/new', methods=['GET', 'POST'])
 @login_required
 def create():
-    return render_template('contacts/new.html', title=_('New Contact | Olam ERP'))
+    return render_template('contacts/create.html', title=_('New Contact | Olam ERP'))
