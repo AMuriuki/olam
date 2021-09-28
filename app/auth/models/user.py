@@ -1,3 +1,4 @@
+from app.main.models.partner import Partner
 from app.main.models import company
 import base64
 from datetime import datetime, timedelta
@@ -29,20 +30,18 @@ import logging
 
 class User(UserMixin, PaginatedAPIMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    partner_id = db.Column(db.Integer, db.ForeignKey('partner.id'))
+    company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
     token = db.Column(db.String(32), index=True, unique=True)
     token_expiration = db.Column(db.DateTime)
-    company = db.relationship('Company', backref='user_company', uselist=False)
     is_active = db.Column(db.Boolean, default=False)
-    name = db.Column(db.String(128), index=True)
-    email = db.Column(db.String(120), index=True, unique=True)
     is_staff = db.Column(db.Boolean, default=True)
     last_seen = db.Column(db.DateTime, default=datetime.now)
     registered_on = db.Column(db.DateTime, default=datetime.now)
-    phone_no = db.Column(db.String(120), index=True)
     password_hash = db.Column(db.String(128))
 
     def __repr__(self):
-        return '<User {}>'.format(self.name)
+        return '<User {}>'.format(self.id)
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)

@@ -1,4 +1,4 @@
-from app.main.models.contact import Contact
+from app.main.models.partner import Partner
 import os
 from app.auth.email import send_database_activation_email
 import re
@@ -27,7 +27,7 @@ from urllib.parse import urlparse
 @bp.route('/', methods=['GET', 'POST'])
 @login_required
 def index():
-    
+
     return render_template('main/index.html', title=_('My Apps | Olam ERP'))
 
 
@@ -46,23 +46,31 @@ def all_apps():
 @ bp.route('/invite_colleagues', methods=['GET', 'POST'])
 @login_required
 def invite_colleagues():
-    company = Company.query.filter_by(user_id=current_user.get_id()).first()
     form = InviteForm()
     if form.validate_on_submit():
         if form.data['user1name'] and form.data['user1email']:
-            contact = Contact(name=form.data['user1name'],
-                              email=form.data['user1email'], company_id=company.id)
-            db.session.add(contact)
+            partner = Partner(name=form.data['user1name'],
+                              email=form.data['user1email'], company_id=current_user.company_id)
+            db.session.add(partner)
+            db.session.commit()
+            user = User(partner_id=partner.id)
+            db.session.add(user)
             db.session.commit()
         if form.data['user2name'] and form.data['user2email']:
-            contact = Contact(name=form.data['user2name'],
-                              email=form.data['user2email'], company_id=company.id)
-            db.session.add(contact)
+            partner = Partner(name=form.data['user2name'],
+                              email=form.data['user2email'], company_id=current_user.company_id)
+            db.session.add(partner)
+            db.session.commit()
+            user = User(partner_id=partner.id)
+            db.session.add(user)
             db.session.commit()
         if form.data['user3name'] and form.data['user3email']:
-            contact = Contact(name=form.data['user3name'],
-                              email=form.data['user3email'], company_id=company.id)
-            db.session.add(contact)
+            partner = Partner(name=form.data['user3name'],
+                              email=form.data['user3email'], company_id=current_user.company_id)
+            db.session.add(partner)
+            db.session.commit()
+            user = User(partner_id=partner.id)
+            db.session.add(user)
             db.session.commit()
         return redirect(url_for('main.index'))
     return render_template('main/invite_colleagues.html', title=_('Invite Colleagues | Olam ERP'), form=form)

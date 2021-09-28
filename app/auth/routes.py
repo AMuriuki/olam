@@ -1,4 +1,4 @@
-from app.main.models.contact import Contact
+from app.main.models.partner import Partner
 from app.main.models.module import Module
 from app.main.models.database import Database
 from app.main.models.company import Company
@@ -25,11 +25,15 @@ def login():
         return redirect(url_for('main.index'))
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
+        partner = Partner.query.filter_by(
+            email=form.email.data).first()
+        user = User.query.filter_by(partner_id=partner.id).first()
         if user is None or not user.check_password(form.password.data):
+            print("!!!!!!!!!!!!!")
             flash(_('Invalid email or password'))
             return redirect(url_for('auth.login'))
-        login_user(user, remember=form.remember_me.data)
+        print(login_user(user))
+        login_user(user)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('main.index')
@@ -63,24 +67,32 @@ def register():
 
 @bp.route('/set_password', methods=['GET', 'POST'])
 def set_password():
-    user = User.query.filter_by(email=request.args.get('email')).first()
+    partner = Partner.query.filter_by(email=request.args.get('email')).first()
     company = Company.query.filter_by(
         domain_name=request.args.get('domainname')).first()
-    company_id = request.args.get('companyid')
-    if user is None:
-        user = User(name=request.args.get('username'),
-                    email=request.args.get('email'), phone_no=request.args.get('phone_no'), is_active=True)
-        contact = Contact()
-        db.session.add(user)
-        db.session.commit()
-    response = requests.post(get_api_token, auth=(
-        user.email, 'api_user'))
-    response_dict = json.loads(response.content)
+
     if company is None:
-        company = Company(name=request.args.get('companyname'), user_id=user.id,
+        company = Company(name=request.args.get('companyname'),
                           domain_name=request.args.get('domainname'))
         db.session.add(company)
         db.session.commit()
+
+    if partner is None:
+        partner = Partner(name=request.args.get('username'),
+                          email=request.args.get('email'), phone_no=request.args.get('phone_no'), is_active=True, company_id=company.id)
+        db.session.add(partner)
+        db.session.commit()
+        user = User(partner_id=partner.id, company_id=company.id, is_active=True)
+        db.session.add(user)
+        db.session.commit()
+    else:
+        user = User.query.filter_by(partner_id=partner.id).first()
+
+    response = requests.post(get_api_token, auth=(
+        partner.email, 'api_user'))
+
+    response_dict = json.loads(response.content)
+
     form = SetPasswordForm()
     if user.password_hash:
         return redirect(url_for('main.index'))
@@ -90,11 +102,12 @@ def set_password():
             db.session.commit()
             login_user(user)
             head = {'Authorization': 'Bearer ' + response_dict['token']}
+            company_id = request.args.get('companyid')
             response = requests.get(
                 get_installed_modules + str(company_id) + '/modules', headers=head)
             response_dict = json.loads(response.content)
-            
-            for i in range(len(response_dict)):
+
+            for i in range(len(response_dict['items'])):
                 module = Module(technical_name=response_dict['items'][i]['technical_name'],
                                 official_name=response_dict['items'][i]['official_name'], bp_name=response_dict['items'][i]['bp_name'], summary=response_dict['items'][i]['summary'])
                 db.session.add(module)

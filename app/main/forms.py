@@ -1,4 +1,4 @@
-from app.main.models.contact import Contact
+from app.main.models.partner import Partner
 from app.main.models.company import Company
 from flask import request
 from flask_wtf import FlaskForm

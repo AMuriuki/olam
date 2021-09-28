@@ -2,7 +2,7 @@ from datetime import datetime
 from app import db
 
 
-class Contact(db.Model):
+class Partner(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), index=True)
     email = db.Column(db.String(120), index=True, unique=True)
@@ -11,11 +11,16 @@ class Contact(db.Model):
     is_company = db.Column(db.Boolean, default=True)
     is_active = db.Column(db.Boolean, default=False)
     is_deleted = db.Column(db.Boolean, default=False)
+    title_id = db.Column(db.Integer, db.ForeignKey('partner_title.id'))
+    phone_no = db.Column(db.String(120), index=True)
+    parent_id = db.Column(db.Integer, db.ForeignKey('partner.id'))
+    parent = db.relationship('Partner', remote_side=[id])
+    website = db.Column(db.String(120), index=True)
     company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
-    title_id = db.Column(db.Integer, db.ForeignKey('contact_title.id'))
+    users = db.relationship('User', backref='partner', lazy='dynamic')
 
 
-class ContactTitle(db.Model):
+class PartnerTitle(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), index=True)
-    contacts = db.relationship('Contact', backref='title', lazy=True)
+    partners = db.relationship('Partner', backref='title', lazy=True)
