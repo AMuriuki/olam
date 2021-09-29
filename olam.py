@@ -1,6 +1,8 @@
+from app.tasks import ManageTasks
 from flask_migrate import upgrade
 from app import create_app, cli, db
 from app.main.models.module import Module
+from flask_login import current_user
 
 app = create_app()
 cli.register(app)
@@ -15,3 +17,9 @@ def make_shell_context():
 def inject_modules():
     modules = Module.query.all()
     return dict(modules=modules)
+
+
+@app.before_first_request
+def seed_database():
+    ManageTasks.launch_task('seed_database', ('Seeding DB...'))
+    db.session.commit()

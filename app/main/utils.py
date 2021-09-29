@@ -1,4 +1,6 @@
 from configparser import SafeConfigParser
+import os
+import json
 
 parser = SafeConfigParser()
 
@@ -17,3 +19,24 @@ def search_dict(values, searchFor):
             if searchFor in v:
                 return v
     return None
+
+
+def get_countries():
+    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+    json_url = os.path.join(SITE_ROOT, "data", "countries.json")
+    data = json.load(open(json_url))
+    return data
+
+
+def get_countries_cities():
+    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+    json_url = os.path.join(SITE_ROOT, "data", "world_cities.json")
+    data = json.load(open(json_url))
+    return data
+
+
+def get_calling_codes():
+    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+    json_url = os.path.join(SITE_ROOT, "data", "calling_codes.json")
+    data = json.load(open(json_url))
+    return data

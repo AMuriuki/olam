@@ -97,15 +97,7 @@
                             </div>
                             <div class="data-item" data-toggle="modal" data-target="#address">
                                 <div class="data-col">
-                                    <span class="data-label">Street</span>
-                                    <span class="data-value">Click to add</span>
-                                </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#address">
-                                <div class="data-col">
-                                    <span class="data-label">Street 2</span>
+                                    <span class="data-label">Country</span>
                                     <span class="data-value">Click to add</span>
                                 </div>
                                 <div class="data-col data-col-end"><span class="data-more"><em
@@ -127,14 +119,7 @@
                                 <div class="data-col data-col-end"><span class="data-more"><em
                                             class="icon ni ni-forward-ios"></em></span></div>
                             </div>
-                            <div class="data-item" data-toggle="modal" data-target="#address">
-                                <div class="data-col">
-                                    <span class="data-label">Country</span>
-                                    <span class="data-value">Click to add</span>
-                                </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
+
                             <!-- data-item -->
                         </div><!-- data-list -->
                         <div class="nk-data data-list data-list-s2">
@@ -348,6 +333,25 @@
                         <div class="row gy-4">
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label class="form-label">Country</label>
+                                    <div class="form-control-wrap">
+                                        <select class="form-select" data-search="on">
+                                            <option value="default_option">Select Country</option>
+                                            {% for country in countries %}
+                                            <option value="{{country.id}}">{{country.name}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="city">City</label>
+                                    <input type="text" class="form-control form-control-m" id="city" placeholder="city">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
                                     <label class="form-label" for="street-1">Street</label>
                                     <input type="text" class="form-control form-control-m" id="street-1"
                                         placeholder="street 1">
@@ -360,24 +364,8 @@
                                         placeholder="street 2">
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label" for="city">City</label>
-                                    <input type="text" class="form-control form-control-m" id="city" placeholder="city">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label">Country</label>
-                                    <div class="form-control-wrap">
-                                        <select class="form-select" data-search="on">
-                                            <option value="default_option">Kenya</option>
-                                            <option value="option_select_name">Uganda</option>
-                                            <option value="option_select_name">Tanzania</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
+
+
                             <div class="col-12">
                                 <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                                     <li>
@@ -519,9 +507,10 @@
                                     <label class="form-label">Country</label>
                                     <div class="form-control-wrap">
                                         <select class="form-select" data-search="on">
-                                            <option value="default_option">Kenya</option>
-                                            <option value="option_select_name">Uganda</option>
-                                            <option value="option_select_name">Tanzania</option>
+                                            <option value="default_option">Select Country</option>
+                                            {% for country in countries %}
+                                            <option value="{{country.id}}">{{country.name}}</option>
+                                            {% endfor %}
                                         </select>
                                     </div>
                                 </div>

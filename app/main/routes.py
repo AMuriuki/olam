@@ -27,7 +27,6 @@ from urllib.parse import urlparse
 @bp.route('/', methods=['GET', 'POST'])
 @login_required
 def index():
-
     return render_template('main/index.html', title=_('My Apps | Olam ERP'))
 
 

@@ -15,7 +15,7 @@ import redis
 import rq
 from app import db, login_manager
 from app.search import add_to_index, remove_from_index, query_index
-from app.models import SearchableMixin, PaginatedAPIMixin
+from app.models import SearchableMixin, PaginatedAPIMixin, Task
 from flask_login import UserMixin, current_user
 from config import basedir
 

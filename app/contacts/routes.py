@@ -1,3 +1,5 @@
+from app.main.models.country import Country
+from app.main.utils import get_countries, get_countries_cities
 from flask import url_for, request
 from app.main.models.module import Module
 from flask_login import login_required
@@ -7,7 +9,7 @@ from app.contacts import bp
 from app.main.models.partner import Partner
 from flask import render_template, redirect
 from flask_babel import _, get_locale
-from app.contacts.forms import BasicCompanyInfoForm, BasicIndividualInfoForm, TITLES
+from app.contacts.forms import BasicCompanyInfoForm, BasicIndividualInfoForm, TITLES, AddressInfo
 from app import db
 
 
@@ -23,7 +25,9 @@ def index():
 def create():
     form1 = BasicCompanyInfoForm()
     form2 = BasicIndividualInfoForm()
+    form3 = AddressInfo()
     titles = TITLES
+    countries = Country.query.order_by('name').all()    
     companies = Partner.query.filter_by(is_company=True).all()
     if "submit1" in request.form and form1.validate_on_submit():
         partner = Partner(company_name=form1.companyname.data,
@@ -37,7 +41,9 @@ def create():
         db.session.add(partner)
         db.session.commit()
         return redirect(url_for('contacts.view_contact', id=partner.id))
-    return render_template('contacts/create.html', title=_('New Contact | Olam ERP'), form1=form1, form2=form2, companies=companies, titles=titles)
+    if "submit3" in request.form and form3.validate_on_submit():
+        partner = Partner()
+    return render_template('contacts/create.html', title=_('New Contact | Olam ERP'), form1=form1, form2=form2, companies=companies, titles=titles, countries=countries)
 
 
 @bp.route('/view_contact/<int:id>', methods=['GET', 'POST'])

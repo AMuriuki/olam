@@ -29,3 +29,12 @@ class BasicIndividualInfoForm(FlaskForm):
     website = StringField(_l('Website'))
     jobposition = StringField(_l('Job Position'))
     submit2 = SubmitField(_l('Save'))
+
+
+class AddressInfo(FlaskForm):
+    street = StringField(_l('Street'))
+    street2 = StringField(_l('Street 2'))
+    city = StringField(_l('City'))
+    county = StringField(_l('County'))
+    country = StringField(_l('Country'))
+    submit3 = SubmitField(_l('Save'))
