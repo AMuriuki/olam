@@ -74,8 +74,18 @@
                                 </div>
                                 <div class="user-card user-card-s2">
                                     <div class="user-info">
-                                        <h6>{{contact.company.name|upper}}<br>{{contact.name}}</h6>
-                                        <span class="sub-text">{{current_user.email}}</span>
+                                        <h6>
+                                            {% if contact.is_tenant %}
+                                            {{contact.company.name|title}},<br>{{contact.name}}
+                                            {% elif contact.is_company %}
+                                            {{ contact.company_name|title}}
+                                            {% elif contact.is_individual %}
+                                            {{contact.parent.company_name|title}}, <br>{{contact.name}}
+                                            {% endif %}
+                                        </h6>
+                                        <span class="sub-text">
+                                            {{contact.email}}
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="team-details">
@@ -84,7 +94,7 @@
                                 </div>
 
                                 <div class="team-view">
-                                    <a href="html/user-details-regular.html"
+                                    <a href="{{url_for('contacts.view_contact', id=contact.id)}}"
                                         class="btn btn-round btn-outline-light w-150px"><span>View Profile</span></a>
                                 </div>
                             </div><!-- .team -->

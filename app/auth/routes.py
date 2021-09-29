@@ -29,16 +29,16 @@ def login():
             email=form.email.data).first()
         user = User.query.filter_by(partner_id=partner.id).first()
         if user is None or not user.check_password(form.password.data):
-            print("!!!!!!!!!!!!!")
+            
             flash(_('Invalid email or password'))
             return redirect(url_for('auth.login'))
-        print(login_user(user))
+        
         login_user(user)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('main.index')
         return redirect(next_page)
-    print(form.errors)
+    
     return render_template('auth/login.html', title=_('Sign In | Olam ERP'), form=form)
 
 
@@ -79,7 +79,7 @@ def set_password():
 
     if partner is None:
         partner = Partner(name=request.args.get('username'),
-                          email=request.args.get('email'), phone_no=request.args.get('phone_no'), is_active=True, company_id=company.id)
+                          email=request.args.get('email'), phone_no=request.args.get('phone_no'), is_active=True, company_id=company.id, is_tenant=True)
         db.session.add(partner)
         db.session.commit()
         user = User(partner_id=partner.id, company_id=company.id, is_active=True)

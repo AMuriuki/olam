@@ -50,7 +50,7 @@ def invite_colleagues():
     if form.validate_on_submit():
         if form.data['user1name'] and form.data['user1email']:
             partner = Partner(name=form.data['user1name'],
-                              email=form.data['user1email'], company_id=current_user.company_id)
+                              email=form.data['user1email'], company_id=current_user.company_id, is_tenant=True)
             db.session.add(partner)
             db.session.commit()
             user = User(partner_id=partner.id)
@@ -58,7 +58,7 @@ def invite_colleagues():
             db.session.commit()
         if form.data['user2name'] and form.data['user2email']:
             partner = Partner(name=form.data['user2name'],
-                              email=form.data['user2email'], company_id=current_user.company_id)
+                              email=form.data['user2email'], company_id=current_user.company_id, is_tenant=True)
             db.session.add(partner)
             db.session.commit()
             user = User(partner_id=partner.id)
@@ -66,7 +66,7 @@ def invite_colleagues():
             db.session.commit()
         if form.data['user3name'] and form.data['user3email']:
             partner = Partner(name=form.data['user3name'],
-                              email=form.data['user3email'], company_id=current_user.company_id)
+                              email=form.data['user3email'], company_id=current_user.company_id, is_tenant=True)
             db.session.add(partner)
             db.session.commit()
             user = User(partner_id=partner.id)
