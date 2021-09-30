@@ -75,24 +75,31 @@
                                 <div class="user-card user-card-s2">
                                     <div class="user-info">
                                         <h6>
-                                            {% if contact.is_tenant %}
-                                            {{contact.company.name|title}},<br>{{contact.name}}
+                                            {% if contact.is_tenant or contact.is_individual %}
+                                            {{contact.name}}
                                             {% elif contact.is_company %}
-                                            {{ contact.company_name|title}}
-                                            {% elif contact.is_individual %}
-                                            {{contact.parent.company_name|title}}, <br>{{contact.name}}
+                                            {{contact.company_name}}
                                             {% endif %}
                                         </h6>
+                                        <h6>
+                                            {% if contact.is_tenant %}
+                                            {{contact.company.name|title}}
+                                            {% elif contact.is_individual %}
+                                            {{contact.parent.company_name|title}}
+                                            {% endif %}
+                                        </h6>
+                                        <span class="sub-text">
+                                            {% if (contact.is_tenant or contact.is_individual) and (contact.function) %}
+                                            {{contact.function}}
+                                            {% elif contact.is_company %}
+                                            {{contact.city.name}},&nbsp;{{contact.country.name}}
+                                            {% endif %}
+                                        </span>
                                         <span class="sub-text">
                                             {{contact.email}}
                                         </span>
                                     </div>
                                 </div>
-                                <div class="team-details">
-                                    <p>{% if contact.title.name %}{{contact.title.name}} at
-                                        {{contact.company.name|upper}}{% endif %}</p>
-                                </div>
-
                                 <div class="team-view">
                                     <a href="{{url_for('contacts.view_contact', id=contact.id)}}"
                                         class="btn btn-round btn-outline-light w-150px"><span>View Profile</span></a>

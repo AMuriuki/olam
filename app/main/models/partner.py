@@ -26,6 +26,7 @@ class Partner(db.Model):
     company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
     users = db.relationship('User', backref='partner', lazy='dynamic')
     is_tenant = db.Column(db.Boolean, default=False)
+    tax_id = db.Column(db.Integer, index=True)
 
     def __repr__(self):
         return self.company_name

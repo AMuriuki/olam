@@ -48,6 +48,11 @@ def create():
         db.session.add(partner)
         db.session.commit()
         return redirect(url_for('contacts.view_contact', id=partner.id))
+    if "submit4" in request.form and form4.validate_on_submit():
+        partner = Partner(tax_id=form4.taxid.data)
+        db.session.add(partner)
+        db.session.commit()
+        return redirect(url_for('contacts.view_contact', id=partner.id))
     return render_template('contacts/create.html', title=_('New Contact | Olam ERP'), form1=form1, form2=form2, form3=form3, form4=form4, companies=companies, titles=titles, countries=countries)
 
 
@@ -82,11 +87,14 @@ def view_contact(id):
             db.session.commit()
             return redirect(url_for('contacts.view_contact', id=id))
     if "submit3" in request.form and form3.validate_on_submit():
-        print(request.form)
         partner.country_id = request.form['select_country']
         partner.city_id = request.form['select_city']
         partner.postal_code = form3.postalcode.data
         partner.postal_address = form3.postaladdress.data
+        db.session.commit()
+        return redirect(url_for('contacts.view_contact', id=id))
+    if "submit4" in request.form and form4.validate_on_submit():
+        partner.tax_id = form4.taxid.data
         db.session.commit()
         return redirect(url_for('contacts.view_contact', id=id))
     return render_template('contacts/view.html', title=_('Contact Details | Olam ERP'), partner=partner, form1=form1, form2=form2, form3=form3, form4=form4, titles=titles, companies=companies, countries=countries)
