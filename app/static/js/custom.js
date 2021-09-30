@@ -1,3 +1,16 @@
+function getCookie(c_name) {
+  if (document.cookie.length > 0) {
+    c_start = document.cookie.indexOf(c_name + "=");
+    if (c_start != -1) {
+      c_start = c_start + c_name.length + 1;
+      c_end = document.cookie.indexOf(";", c_start);
+      if (c_end == -1) c_end = document.cookie.length;
+      return unescape(document.cookie.substring(c_start, c_end));
+    }
+  }
+  return "";
+}
+
 $(document).ready(function () {
   $('#Users').addClass('active current-page')
   if ($('.dv-module').length) {
@@ -308,3 +321,27 @@ $("#company").change(function () {
     $('#company-block').show();
   }
 });
+
+$('#select_country').change(function () {
+  country = $(this).val();
+  get_city(country);
+})
+
+async function get_city(country) {
+  const rawResponse = await fetch('/contacts/get_cities', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      "X-CSRFToken": getCookie("csrftoken")
+    },
+    body: JSON.stringify({ country: country })
+  })
+  const content = await rawResponse.json();
+  console.log(content['cities']['items'])
+  $('#select_city').find('option').remove();
+  $('#select_city').append($('<option>', { value: "#", text: "Select City" }))
+  $.map(content['cities']['items'], function (value, key) {
+    $('#select_city').append($('<option>', { value: value['id'], text: value['name'] }))
+  })
+}

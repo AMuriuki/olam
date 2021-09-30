@@ -74,7 +74,7 @@
                                 <div class="data-col data-col-end"><span class="data-more"><em
                                             class="icon ni ni-forward-ios"></em></span></div>
                             </div>
-                            {% elif partner.is_individual %}
+                            {% elif partner.is_individual or partner.is_tenant %}
                             <div class="data-item" data-toggle="modal" data-target="#basics">
                                 <div class="data-col">
                                     <span class="data-label">Name</span>
@@ -89,6 +89,7 @@
                                 <div class="data-col data-col-end"><span class="data-more"><em
                                             class="icon ni ni-forward-ios"></em></span></div>
                             </div>
+                            {% if partner.is_individual %}
                             <div class="data-item" data-toggle="modal" data-target="#basics">
                                 <div class="data-col">
                                     <span class="data-label">Company</span>
@@ -103,41 +104,29 @@
                                 <div class="data-col data-col-end"><span class="data-more"><em
                                             class="icon ni ni-forward-ios"></em></span></div>
                             </div>
+                            {% endif %}
+                            {% if partner.is_tenant %}
+                            <div class="data-item" data-toggle="modal" data-target="#basics">
+                                <div class="data-col">
+                                    <span class="data-label">Company</span>
+                                    <span class="data-value">
+                                        {% if partner.company.name %}
+                                        {{partner.company.name|upper}}
+                                        {% else %}
+                                        Click to add
+                                        {% endif %}
+                                    </span>
+                                </div>
+                                <div class="data-col data-col-end"><span class="data-more"><em
+                                            class="icon ni ni-forward-ios"></em></span></div>
+                            </div>
+                            {% endif %}
                             <div class="data-item" data-toggle="modal" data-target="#basics">
                                 <div class="data-col">
                                     <span class="data-label">Job Position</span>
                                     <span class="data-value">
                                         {% if partner.function %}
                                         {{partner.function}}
-                                        {% else %}
-                                        Click to add
-                                        {% endif %}
-                                    </span>
-                                </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            {% elif partner.is_tenant %}
-                            <div class="data-item" data-toggle="modal" data-target="#basics">
-                                <div class="data-col">
-                                    <span class="data-label">Name</span>
-                                    <span class="data-value">
-                                        {% if partner.name %}
-                                        {{partner.name}}
-                                        {% else %}
-                                        Click to add
-                                        {% endif %}
-                                    </span>
-                                </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#basics">
-                                <div class="data-col">
-                                    <span class="data-label">Company</span>
-                                    <span class="data-value">
-                                        {% if partner.company.name %}
-                                        {{partner.company.name}}
                                         {% else %}
                                         Click to add
                                         {% endif %}
@@ -180,16 +169,14 @@
                             </div>
                             <div class="data-item" data-toggle="modal" data-target="#address">
                                 <div class="data-col">
-                                    <span class="data-label">Street</span>
-                                    <span class="data-value">Click to add</span>
-                                </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#address">
-                                <div class="data-col">
-                                    <span class="data-label">Street 2</span>
-                                    <span class="data-value">Click to add</span>
+                                    <span class="data-label">Country</span>
+                                    <span class="data-value">
+                                        {% if partner.country_id %}
+                                        {{partner.country.name}}
+                                        {% else %}
+                                        Click to add
+                                        {% endif %}
+                                    </span>
                                 </div>
                                 <div class="data-col data-col-end"><span class="data-more"><em
                                             class="icon ni ni-forward-ios"></em></span></div>
@@ -197,23 +184,41 @@
                             <div class="data-item" data-toggle="modal" data-target="#address">
                                 <div class="data-col">
                                     <span class="data-label">City</span>
-                                    <span class="data-value">Click to add</span>
+                                    <span class="data-value">
+                                        {% if partner.city_id %}
+                                        {{partner.city.name}}
+                                        {% else %}
+                                        Click to add
+                                        {% endif %}
+                                    </span>
                                 </div>
                                 <div class="data-col data-col-end"><span class="data-more"><em
                                             class="icon ni ni-forward-ios"></em></span></div>
                             </div>
                             <div class="data-item" data-toggle="modal" data-target="#address">
                                 <div class="data-col">
-                                    <span class="data-label">County</span>
-                                    <span class="data-value">Click to add</span>
+                                    <span class="data-label">Postal/Zip Code</span>
+                                    <span class="data-value">
+                                        {% if partner.postal_code %}
+                                        {{partner.postal_code}}
+                                        {% else %}
+                                        Click to add
+                                        {% endif %}
+                                    </span>
                                 </div>
                                 <div class="data-col data-col-end"><span class="data-more"><em
                                             class="icon ni ni-forward-ios"></em></span></div>
                             </div>
                             <div class="data-item" data-toggle="modal" data-target="#address">
                                 <div class="data-col">
-                                    <span class="data-label">Country</span>
-                                    <span class="data-value">Click to add</span>
+                                    <span class="data-label">Postal Address</span>
+                                    <span class="data-value">
+                                        {% if partner.postal_address %}
+                                        {{partner.postal_address}}
+                                        {% else %}
+                                        Click to add
+                                        {% endif %}
+                                    </span>
                                 </div>
                                 <div class="data-col data-col-end"><span class="data-more"><em
                                             class="icon ni ni-forward-ios"></em></span></div>
@@ -283,51 +288,60 @@
             <div class="modal-body modal-body-lg">
                 <h5 class="title">Address Info</h5>
                 <div class="tab-content">
-                    <div class="tab-pane active" id="address">
-                        <div class="row gy-4">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label" for="street-1">Street</label>
-                                    <input type="text" class="form-control form-control-m" id="street-1"
-                                        placeholder="street 1">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label" for="street-2">Street 2</label>
-                                    <input type="text" class="form-control form-control-m" id="street-2"
-                                        placeholder="street 2">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label" for="city">City</label>
-                                    <input type="text" class="form-control form-control-m" id="city" placeholder="city">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label">Country</label>
-                                    <div class="form-control-wrap">
-                                        <select class="form-select" data-search="on">
-                                            <option value="default_option">Kenya</option>
-                                            <option value="option_select_name">Uganda</option>
-                                            <option value="option_select_name">Tanzania</option>
-                                        </select>
+                    <div class="tab-pane active" id="c_address">
+                        <form method="POST">
+                            {{form3.hidden_tag()}}
+                            <div class="row gy-4">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Country</label>
+                                        <div class="form-control-wrap">
+                                            <select name="select_country" id="select_country" class="form-select" data-search="on">
+                                                <option value="default_option">Select Country</option>
+                                                {% for country in countries %}
+                                                <option value="{{country.id}}">{{country.name}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">City</label>
+                                        <div class="form-control-wrap">
+                                            <select name="select_city" id="select_city" class="form-select" data-search="on">
+                                                <option value="default_option">Select City</option>
+                                                <option value="#"><i>Choose a country to list cities</i></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{form3.postalcode.label(class="form-label")}}
+                                        {{ form3.postalcode(class="form-control form-control-m",
+                                        placeholder="Postal/Zip Code") }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{form3.postaladdress.label(class="form-label")}}
+                                        {{ form3.postaladdress(class="form-control form-control-m",
+                                        placeholder="P.O Box") }}
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                                        <li>
+                                            {{form3.submit3(class="btn btn-lg btn-primary btn-block")}}
+                                        </li>
+                                        <li>
+                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="col-12">
-                                <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                    <li>
-                                        <a href="#" class="btn btn-lg btn-primary">Save</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                        </form>
                     </div><!-- .tab-pane -->
                 </div><!-- .tab-content -->
             </div><!-- .modal-body -->
@@ -345,7 +359,7 @@
                         <form method="POST">
                             {% if partner.is_company %}
                             {{form1.hidden_tag()}}
-                            {% elif partner.is_individual %}
+                            {% elif partner.is_individual or partner.is_tenant %}
                             {{form2.hidden_tag()}}
                             {% endif %}
                             <div class="row gy-4">
@@ -357,57 +371,6 @@
                                         placeholder="Company Name", value=partner.company_name) }}
                                     </div>
                                 </div>
-                                {% elif partner.is_individual %}
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">Title</label>
-                                        <div class="form-control-wrap">
-                                            <select name="select_title" class="form-select" data-search="on">
-                                                <option value="default_option">{{partner.title}}</option>
-                                                {% for title in titles %}
-                                                <option value="{{title}}">{{title}}</option>
-                                                {% endfor %}
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        {{ form2.name.label(class="form-label") }}
-                                        {{ form2.name(class="form-control form-control-m", value=partner.name,
-                                        placeholder="Name") }}
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">Company</label>
-                                        <div class="form-control-wrap">
-                                            <select name="select_company" class="form-select" data-search="on">
-                                                <option value="default_option">{{partner.parent.company_name}}</option>
-                                                {% for company in companies %}
-                                                <option value="{{company.id}}">{{company.company_name}}</option>
-                                                {% endfor %}
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        {{ form2.jobposition.label(class="form-label") }}
-                                        {{ form2.jobposition(class="form-control form-control-m",
-                                        value=partner.function,
-                                        placeholder="e.g Sales Director") }}
-                                    </div>
-                                </div>
-                                {% elif partner.is_tenant %}
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        {{ form1.companyname.label(class="form-label") }}
-                                        {{ form1.companyname(class="form-control form-control-m",
-                                        placeholder="Company Name", value=partner.company.name) }}
-                                    </div>
-                                </div>
-                                {% endif %}
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         {{ form1.phonenumber.label(class="form-label") }}
@@ -429,10 +392,123 @@
                                         placeholder="http://...", value=partner.website) }}
                                     </div>
                                 </div>
+                                {% elif partner.is_individual or partner.is_tenant %}
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Title</label>
+                                        <div class="form-control-wrap">
+                                            <select name="select_title" class="form-select" data-search="on">
+                                                {% if (partner.is_individual and partner.title) or (partner.is_tenant
+                                                and partner.title) %}
+                                                <option value="{{partner.title}}">{{partner.title}}</option>
+                                                {% for title in titles %}
+                                                <option value="{{title}}">{{title}}</option>
+                                                {% endfor %}
+                                                {% elif partner.is_individual or partner.is_tenant %}
+                                                <option value="default_option">Select title</option>
+                                                {% for title in titles %}
+                                                <option value="{{title}}">{{title}}</option>
+                                                {% endfor %}
+                                                {% endif %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form2.name.label(class="form-label") }}
+                                        {% if (partner.is_individual and partner.name) or (partner.is_tenant
+                                        and partner.name) %}
+                                        {{ form2.name(class="form-control form-control-m", value=partner.name,
+                                        placeholder="Name") }}
+                                        {% elif partner.is_individual or partner.is_tenant %}
+                                        {{ form2.name(class="form-control form-control-m", placeholder="Name") }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Company</label>
+                                        <div class="form-control-wrap">
+                                            <select name="select_company" class="form-select" data-search="on" disabled>
+                                                {% if partner.is_individual and partner.parent.company_name %}
+                                                <option value="default_option">{{partner.parent.company_name}}</option>
+                                                {% elif partner.is_individual %}
+                                                <option value="default_option">Select company</option>
+                                                {% for company in companies %}
+                                                <option value="{{company.id}}">{{company.company_name}}</option>
+                                                {% endfor %}
+                                                {% endif %}
+                                                {% if partner.is_tenant %}
+                                                <option value="default_option">{{partner.company.name|upper}}</option>
+                                                {% endif %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form2.jobposition.label(class="form-label") }}
+                                        {% if (partner.is_individual and partner.function) or (partner.is_tenant
+                                        and partner.function) %}
+                                        {{ form2.jobposition(class="form-control form-control-m",
+                                        value=partner.function,
+                                        placeholder="e.g Sales Director") }}
+                                        {% elif partner.is_individual or partner.is_tenant %}
+                                        {{ form2.jobposition(class="form-control form-control-m",
+                                        placeholder="e.g Sales Director") }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form2.phonenumber.label(class="form-label") }}
+                                        {% if (partner.is_individual and partner.phone_no) or (partner.is_tenant
+                                        and partner.phone_no) %}
+                                        {{ form2.phonenumber(class="form-control form-control-m",
+                                        placeholder="Phone Number", value=partner.phone_no) }}
+                                        {% elif partner.is_individual or partner.is_tenant %}
+                                        {{ form2.phonenumber(class="form-control form-control-m",
+                                        placeholder="Phone Number") }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form2.email.label(class="form-label") }}
+                                        {% if (partner.is_individual and partner.email) or (partner.is_tenant
+                                        and partner.email) %}
+                                        {{ form2.email(class="form-control form-control-m",
+                                        placeholder="Email Address", value=partner.email) }}
+                                        {% elif partner.is_individual or partner.is_tenant %}
+                                        {{ form2.email(class="form-control form-control-m",
+                                        placeholder="Email Address") }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form2.website.label(class="form-label") }}
+                                        {% if (partner.is_individual and partner.website) or (partner.is_tenant
+                                        and partner.website) %}
+                                        {{ form2.website(class="form-control form-control-m",
+                                        placeholder="http://...", value=partner.website) }}
+                                        {% elif partner.is_individual or partner.is_tenant %}
+                                        {{ form2.website(class="form-control form-control-m",
+                                        placeholder="http://...") }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endif %}
+
                                 <div class="col-12">
                                     <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                                         <li>
+                                            {% if partner.is_company %}
                                             {{form1.submit1(class="btn btn-lg btn-primary btn-block")}}
+                                            {% elif partner.is_individual or partner.is_tenant %}
+                                            {{form2.submit2(class="btn btn-lg btn-primary btn-block")}}
+                                            {% endif %}
                                         </li>
                                         <li>
                                             <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>

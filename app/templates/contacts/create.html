@@ -113,13 +113,20 @@
                             </div>
                             <div class="data-item" data-toggle="modal" data-target="#address">
                                 <div class="data-col">
-                                    <span class="data-label">County</span>
+                                    <span class="data-label">Postal/Zip Code</span>
                                     <span class="data-value">Click to add</span>
                                 </div>
                                 <div class="data-col data-col-end"><span class="data-more"><em
                                             class="icon ni ni-forward-ios"></em></span></div>
                             </div>
-
+                            <div class="data-item" data-toggle="modal" data-target="#address">
+                                <div class="data-col">
+                                    <span class="data-label">Postal Address</span>
+                                    <span class="data-value">Click to add</span>
+                                </div>
+                                <div class="data-col data-col-end"><span class="data-more"><em
+                                            class="icon ni ni-forward-ios"></em></span></div>
+                            </div>
                             <!-- data-item -->
                         </div><!-- data-list -->
                         <div class="nk-data data-list data-list-s2">
@@ -223,23 +230,15 @@
                             <div class="data-head">
                                 <h6 class="overline-title">Address</h6>
                             </div>
-                            <div class="data-item" data-toggle="modal" data-target="#individualaddress">
+                            <div class="data-item" data-toggle="modal" data-target="#address">
                                 <div class="data-col">
-                                    <span class="data-label">Street</span>
+                                    <span class="data-label">Country</span>
                                     <span class="data-value">Click to add</span>
                                 </div>
                                 <div class="data-col data-col-end"><span class="data-more"><em
                                             class="icon ni ni-forward-ios"></em></span></div>
                             </div>
-                            <div class="data-item" data-toggle="modal" data-target="#individualaddress">
-                                <div class="data-col">
-                                    <span class="data-label">Street 2</span>
-                                    <span class="data-value">Click to add</span>
-                                </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#individualaddress">
+                            <div class="data-item" data-toggle="modal" data-target="#address">
                                 <div class="data-col">
                                     <span class="data-label">City</span>
                                     <span class="data-value">Click to add</span>
@@ -247,17 +246,17 @@
                                 <div class="data-col data-col-end"><span class="data-more"><em
                                             class="icon ni ni-forward-ios"></em></span></div>
                             </div>
-                            <div class="data-item" data-toggle="modal" data-target="#individualaddress">
+                            <div class="data-item" data-toggle="modal" data-target="#address">
                                 <div class="data-col">
-                                    <span class="data-label">County</span>
+                                    <span class="data-label">Postal/Zip Code</span>
                                     <span class="data-value">Click to add</span>
                                 </div>
                                 <div class="data-col data-col-end"><span class="data-more"><em
                                             class="icon ni ni-forward-ios"></em></span></div>
                             </div>
-                            <div class="data-item" data-toggle="modal" data-target="#individualaddress">
+                            <div class="data-item" data-toggle="modal" data-target="#address">
                                 <div class="data-col">
-                                    <span class="data-label">Country</span>
+                                    <span class="data-label">Postal Address</span>
                                     <span class="data-value">Click to add</span>
                                 </div>
                                 <div class="data-col data-col-end"><span class="data-more"><em
@@ -269,7 +268,7 @@
                             <div class="data-head">
                                 <h6 class="overline-title">Tax Info</h6>
                             </div>
-                            <div class="data-item" data-toggle="modal" data-target="#individualtax">
+                            <div class="data-item" data-toggle="modal" data-target="#tax">
                                 <div class="data-col">
                                     <span class="data-label">Tax ID</span>
                                     <span class="data-value">Click to add</span>
@@ -300,15 +299,15 @@
                         <div class="row gy-4">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label" for="company-name">Tax ID</label>
-                                    <input type="text" class="form-control form-control-m" id="company-name"
-                                        placeholder="e.g. BE047727010">
+                                    {{form4.taxid.label(class="form-label")}}
+                                    {{ form4.taxid(class="form-control form-control-m",
+                                    placeholder="e.g. BE047727010") }}
                                 </div>
                             </div>
                             <div class="col-12">
                                 <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                                     <li>
-                                        <a href="#" class="btn btn-lg btn-primary">Save</a>
+                                        {{form4.submit4(class="btn btn-lg btn-primary btn-block")}}
                                     </li>
                                     <li>
                                         <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
@@ -329,54 +328,60 @@
             <div class="modal-body modal-body-lg">
                 <h5 class="title">Address Info</h5>
                 <div class="tab-content">
-                    <div class="tab-pane active" id="address">
-                        <div class="row gy-4">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label">Country</label>
-                                    <div class="form-control-wrap">
-                                        <select class="form-select" data-search="on">
-                                            <option value="default_option">Select Country</option>
-                                            {% for country in countries %}
-                                            <option value="{{country.id}}">{{country.name}}</option>
-                                            {% endfor %}
-                                        </select>
+                    <div class="tab-pane active" id="c_address">
+                        <form method="POST">
+                            {{form3.hidden_tag()}}
+                            <div class="row gy-4">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Country</label>
+                                        <div class="form-control-wrap">
+                                            <select id="select_country" class="form-select" data-search="on">
+                                                <option value="default_option">Select Country</option>
+                                                {% for country in countries %}
+                                                <option value="{{country.id}}">{{country.name}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label" for="city">City</label>
-                                    <input type="text" class="form-control form-control-m" id="city" placeholder="city">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">City</label>
+                                        <div class="form-control-wrap">
+                                            <select id="select_city" class="form-select" data-search="on">
+                                                <option value="default_option">Select City</option>
+                                                <option value="#"><i>Choose a country to list cities</i></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{form3.postalcode.label(class="form-label")}}
+                                        {{ form3.postalcode(class="form-control form-control-m",
+                                        placeholder="Postal/Zip Code") }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{form3.postaladdress.label(class="form-label")}}
+                                        {{ form3.postaladdress(class="form-control form-control-m",
+                                        placeholder="P.O Box") }}
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                                        <li>
+                                            {{form3.submit3(class="btn btn-lg btn-primary btn-block")}}
+                                        </li>
+                                        <li>
+                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label" for="street-1">Street</label>
-                                    <input type="text" class="form-control form-control-m" id="street-1"
-                                        placeholder="street 1">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label" for="street-2">Street 2</label>
-                                    <input type="text" class="form-control form-control-m" id="street-2"
-                                        placeholder="street 2">
-                                </div>
-                            </div>
-
-
-                            <div class="col-12">
-                                <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                    <li>
-                                        <a href="#" class="btn btn-lg btn-primary">Save</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                        </form>
                     </div><!-- .tab-pane -->
                 </div><!-- .tab-content -->
             </div><!-- .modal-body -->
@@ -434,98 +439,6 @@
                                 </div>
                             </div>
                         </form>
-                    </div><!-- .tab-pane -->
-                </div><!-- .tab-content -->
-            </div><!-- .modal-body -->
-        </div><!-- .modal-content -->
-    </div><!-- .modal-dialog -->
-</div><!-- .modal -->
-<div class="modal fade" role="dialog" id="individualtax">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
-            <div class="modal-body modal-body-lg">
-                <h5 class="title">Tax Info</h5>
-                <div class="tab-content">
-                    <div class="tab-pane active" id="personal">
-                        <div class="row gy-4">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label" for="company-name">Tax ID</label>
-                                    <input type="text" class="form-control form-control-m" id="company-name"
-                                        placeholder="e.g. BE047727010">
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                    <li>
-                                        <a href="#" class="btn btn-lg btn-primary">Save</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div><!-- .tab-pane -->
-                </div><!-- .tab-content -->
-            </div><!-- .modal-body -->
-        </div><!-- .modal-content -->
-    </div><!-- .modal-dialog -->
-</div><!-- .modal -->
-<div class="modal fade" role="dialog" id="individualaddress">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
-            <div class="modal-body modal-body-lg">
-                <h5 class="title">Address Info</h5>
-                <div class="tab-content">
-                    <div class="tab-pane active" id="address">
-                        <div class="row gy-4">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label" for="street-1">Street</label>
-                                    <input type="text" class="form-control form-control-m" id="street-1"
-                                        placeholder="street 1">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label" for="street-2">Street 2</label>
-                                    <input type="text" class="form-control form-control-m" id="street-2"
-                                        placeholder="street 2">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label" for="city">City</label>
-                                    <input type="text" class="form-control form-control-m" id="city" placeholder="city">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label">Country</label>
-                                    <div class="form-control-wrap">
-                                        <select class="form-select" data-search="on">
-                                            <option value="default_option">Select Country</option>
-                                            {% for country in countries %}
-                                            <option value="{{country.id}}">{{country.name}}</option>
-                                            {% endfor %}
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                    <li>
-                                        <a href="#" class="btn btn-lg btn-primary">Save</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
                     </div><!-- .tab-pane -->
                 </div><!-- .tab-content -->
             </div><!-- .modal-body -->
