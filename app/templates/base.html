@@ -28,7 +28,7 @@
     </style>
 </head>
 
-<body class="nk-body bg-lighter npc-default">
+<body class="nk-body bg-white npc-default apps-only">
     <div class="nk-app-root">
         <!-- main @s -->
         <div class="nk-main ">
@@ -71,20 +71,23 @@
                                             </li>
                                             <li class="nk-menu-item">
                                                 <a href="html/apps-inbox.html" class="nk-menu-link"
-                                                    data-original-title="" title=""><span class="nk-menu-text">Sales Teams</span></a>
+                                                    data-original-title="" title=""><span class="nk-menu-text">Sales
+                                                        Teams</span></a>
                                             </li>
                                             <li class="nk-menu-item">
                                                 <a href="html/apps-file-manager.html" class="nk-menu-link"
-                                                    data-original-title="" title=""><span class="nk-menu-text">Activity Types</span></a>
+                                                    data-original-title="" title=""><span class="nk-menu-text">Activity
+                                                        Types</span></a>
                                             </li>
                                             <li class="nk-menu-item">
                                                 <a href="html/apps-chats.html" class="nk-menu-link"
-                                                    data-original-title="" title=""><span class="nk-menu-text">Pipeline</span></a>
+                                                    data-original-title="" title=""><span
+                                                        class="nk-menu-text">Pipeline</span></a>
                                             </li>
                                             <li class="nk-menu-item">
                                                 <a href="html/apps-calendar.html" class="nk-menu-link"
-                                                    data-original-title="" title=""><span
-                                                        class="nk-menu-text">Lead Generation</span></a>
+                                                    data-original-title="" title=""><span class="nk-menu-text">Lead
+                                                        Generation</span></a>
                                             </li>
                                         </ul><!-- .nk-menu-sub -->
                                     </li><!-- .nk-menu-item -->
@@ -255,11 +258,19 @@
         </div>
         <!-- main @e -->
     </div>
+    {% if title == 'Meetings | Olam ERP' %}
     <script src="{{url_for('static', filename='js/bundle.js')}}"></script>
     <script src="{{url_for('static', filename='js/scripts.js')}}"></script>
     <script src="{{url_for('static', filename='js/custom.js')}}"></script>
-    <!-- <script src="{{url_for('static', filename='js/libs/jkanban.js')}}"></script> -->
+    <script src="{{url_for('static', filename='js/libs/fullcalendar.js')}}"></script>
+    <script src="{{url_for('static', filename='js/apps/calendar.js')}}"></script>
+    {% else %}
+    <script src="{{url_for('static', filename='js/bundle.js')}}"></script>
+    <script src="{{url_for('static', filename='js/scripts.js')}}"></script>
+    <script src="{{url_for('static', filename='js/custom.js')}}"></script>
+    <script src="{{url_for('static', filename='js/libs/jkanban.js')}}"></script>
     <script src="{{url_for('static', filename='js/apps/kanban.js')}}"></script>
+    {% endif %}
 </body>
 
 

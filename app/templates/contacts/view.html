@@ -9,39 +9,10 @@
 </style>
 <div class="nk-content-body">
     <div class="nk-content-wrap">
-        <div class="nk-block-head">
-            <div class="nk-block-head-content">
-                <h3 class="nk-block-title page-title">
-                    {% if partner.is_company %}
-                    {{partner.company_name|title}}
-                    {% elif partner.is_tenant %}
-                    {{partner.company.name|title}}
-                    {% elif partner.is_individual %}
-                    {{partner.name|title}}
-                    {% endif %}
-                </h3>
-            </div>
-        </div><!-- .nk-block-head -->
+        {% include "contacts/contacts_blockhead.html" %}
         <div class="nk-block">
             <div class="card card-bordered">
-                <ul class="nav nav-tabs nav-tabs-mb-icon nav-tabs-card">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="html/user-profile-regular.html"><em
-                                class="icon ni ni-user-fill-c"></em><span>Company</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="html/user-profile-notification.html"><em
-                                class="icon ni ni-bell-fill"></em><span>Notifications</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="html/user-profile-activity.html"><em
-                                class="icon ni ni-activity-round-fill"></em><span>Account Activity</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="html/user-profile-setting.html"><em
-                                class="icon ni ni-lock-alt-fill"></em><span>Security Settings</span></a>
-                    </li>
-                </ul><!-- .nav-tabs -->
+                {% include "contacts/contacts_tab.html" %}
                 <div class="card-inner card-inner-lg">
                     <div class="nk-block-head" style="padding-bottom: 0px !important">
                         <div class="nk-block-head-content">

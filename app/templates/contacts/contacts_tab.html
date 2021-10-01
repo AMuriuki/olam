@@ -1,0 +1,30 @@
+<ul class="nav nav-tabs nav-tabs-mb-icon nav-tabs-card">
+        <li class="nav-item">
+                {% if partner.is_company %}
+                <a class="nav-link" href="{{url_for('contacts.view_contact', id=partner.id)}}"><em
+                                class="icon ni ni-linux-server"></em></em><span>Company</span></a>
+                {% elif partner.is_tenant or partner.is_individual %}
+                <a class="nav-link" href="{{url_for('contacts.view_contact', id=partner.id)}}"><em
+                                class="icon ni ni-user-fill-c"></em><span>Personal</span></a>
+                {% endif %}
+        </li>
+        <li class="nav-item">
+                {% if partner.is_company %}
+                <a class="nav-link" href="{{url_for('contacts.addresses', id=partner.id)}}"><em
+                                class="icon ni ni-users-fill"></em><span>Contacts & Addresses</span></a>
+                {% elif partner.is_tenant or partner.is_individual %}
+                <a class="nav-link" href="{{url_for('contacts.meetings', id=partner.id)}}"><em
+                                class="icon ni ni-calendar-booking"></em><span>Meetings</span></a>
+                {% endif %}
+        </li>
+        <li class="nav-item">
+                {% if partner.is_company %}
+                <a class="nav-link" href="{{url_for('contacts.meetings', id=partner.id)}}"><em
+                                class="icon ni ni-calendar-booking"></em><span>Meetings</span></a>
+                {% endif %}
+        </li>
+        <li class="nav-item">
+                <a class="nav-link" href="html/user-profile-setting.html"><em
+                                class="icon ni ni-lock-alt-fill"></em><span>Security Settings</span></a>
+        </li>
+</ul><!-- .nav-tabs -->

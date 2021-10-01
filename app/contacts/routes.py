@@ -107,3 +107,18 @@ def get_city():
         cities = City.to_collection_dict(
             City.query.filter_by(country_id=request.json['country']).order_by('name'))
         return jsonify({'cities': cities})
+
+
+@bp.route('/address/<int:id>', methods=['GET', 'POST'])
+@login_required
+def addresses(id):
+    partner = Partner.query.filter_by(id=id).first()
+    children = Partner.query.filter_by(parent_id=partner.id).all()
+    return render_template('contacts/addresses.html', title=_(partner.company_name + ' | Olam ERP'), partner=partner, children=children)
+
+
+@bp.route('/meetings/<int:id>', methods=['GET', 'POST'])
+@login_required
+def meetings(id):
+    partner = Partner.query.filter_by(id=id).first()
+    return render_template('contacts/meetings.html', title=_('Meetings | Olam ERP'), partner=partner)
