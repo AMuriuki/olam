@@ -1,57 +1,44 @@
 <div class="nk-aside" data-content="sideNav" data-toggle-overlay="true" data-toggle-screen="lg" data-toggle-body="true">
     <div class="nk-sidebar-menu" data-simplebar>
         <ul class="nk-menu nk-menu-main">
+            {% if "/crm/" in url_for(request.endpoint) %}
             <li class="nk-menu-item">
-                <a href="html/index.html" class="nk-menu-link">
-                    <span class="nk-menu-text">Overview</span>
+                <a href="{{url_for('crm.sales')}}" class="nk-menu-link">
+                    <span class="nk-menu-text">Sales</span>
+                </a>
+            </li><!-- .nk-menu-item -->
+            <li class="nk-menu-item">
+                <a href="{{url_for('crm.reporting')}}" class="nk-menu-link">
+                    <span class="nk-menu-text">Reporting</span>
                 </a>
             </li><!-- .nk-menu-item -->
             <li class="nk-menu-item has-sub">
-                <a href="#" class="nk-menu-link nk-menu-toggle">
-                    <span class="nk-menu-text">Apps</span>
+                <a href="{{url_for('crm.configuration')}}" class="nk-menu-link nk-menu-toggle">
+                    <span class="nk-menu-text">Configuration</span>
                 </a>
                 <ul class="nk-menu-sub">
                     <li class="nk-menu-item">
                         <a href="html/apps-messages.html" class="nk-menu-link"><span
-                                class="nk-menu-text">Messages</span></a>
+                                class="nk-menu-text">Settings</span></a>
                     </li>
                     <li class="nk-menu-item">
-                        <a href="html/apps-inbox.html" class="nk-menu-link"><span class="nk-menu-text">Inbox /
-                                Mail</span></a>
+                        <a href="html/apps-inbox.html" class="nk-menu-link"><span class="nk-menu-text">Teams</span></a>
                     </li>
                     <li class="nk-menu-item">
-                        <a href="html/apps-file-manager.html" class="nk-menu-link"><span class="nk-menu-text">File
-                                Manager</span></a>
+                        <a href="html/apps-file-manager.html" class="nk-menu-link"><span
+                                class="nk-menu-text">Types</span></a>
                     </li>
                     <li class="nk-menu-item">
-                        <a href="html/apps-chats.html" class="nk-menu-link"><span class="nk-menu-text">Chats /
-                                Messenger</span></a>
+                        <a href="html/apps-chats.html" class="nk-menu-link"><span
+                                class="nk-menu-text">Pipeline</span></a>
                     </li>
                     <li class="nk-menu-item">
-                        <a href="html/apps-calendar.html" class="nk-menu-link"><span
-                                class="nk-menu-text">Calendar</span><span class="nk-menu-badge">New</span></a>
-                    </li>
-                    <li class="nk-menu-item">
-                        <a href="html/apps-kanban.html" class="nk-menu-link"><span class="nk-menu-text">Kanban
-                                Board</span><span class="nk-menu-badge">New</span></a>
+                        <a href="html/apps-calendar.html" class="nk-menu-link"><span class="nk-menu-text">Lead
+                                Generation</span></a>
                     </li>
                 </ul><!-- .nk-menu-sub -->
             </li><!-- .nk-menu-item -->
-            <li class="nk-menu-item">
-                <a href="html/components.html" class="nk-menu-link">
-                    <span class="nk-menu-text">Components</span>
-                </a>
-            </li><!-- .nk-menu-item -->
-            <li class="nk-menu-item">
-                <a href="html/support-kb.html" class="nk-menu-link">
-                    <span class="nk-menu-text">Support</span>
-                </a>
-            </li><!-- .nk-menu-item -->
-            <li class="nk-menu-item">
-                <a href="html/pages/contact.html" class="nk-menu-link">
-                    <span class="nk-menu-text">Contact</span>
-                </a>
-            </li><!-- .nk-menu-item -->
+            {% endif %}
         </ul><!-- .nk-menu -->
         <ul class="nk-menu">
             <li class="nk-menu-heading">

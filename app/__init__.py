@@ -113,6 +113,9 @@ def create_app(config_class=Config):
 
     return app
 
+from app.auth.models import user
+from app.crm.models import crm_lead, crm_team, organization
+from app.main.models import company, country, database, module
 
 @babel.localeselector
 def get_locale():

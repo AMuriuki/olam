@@ -3,4 +3,5 @@ from app import db
 
 
 class Organization(Partner):
-    id = db.Column(db.Integer, db.ForeignKey('contact.id'), primary_key=True)
+    __table_args__ = {'extend_existing': True}
+    id = db.Column(db.Integer, db.ForeignKey('partner.id'), primary_key=True)
