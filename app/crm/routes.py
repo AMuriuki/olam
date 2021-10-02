@@ -7,34 +7,34 @@ from flask_babel import _, get_locale
 
 @bp.route('/', methods=['GET', 'POST'])
 @login_required
-def index():
-    
-    return render_template('crm/index.html', title=_('CRM | Olam ERP'))
+def pipeline():
+
+    return render_template('crm/pipeline.html', title=_('CRM Pipeline | Olam ERP'))
 
 
 @bp.route('/pipeline', methods=['GET', 'POST'])
 @login_required
-def pipeline():
-    
+def empty():
+
     return render_template('crm/pipeline.html', title=_('CRM Pipeline | Olam ERP'))
 
 
 @bp.route('/sales', methods=['GET', 'POST'])
 @login_required
 def sales():
-    
+
     pass
 
 
 @bp.route('/reporting', methods=['GET', 'POST'])
 @login_required
 def reporting():
-    
+
     pass
 
 
 @bp.route('/configuration', methods=['GET', 'POST'])
 @login_required
 def configuration():
-    
+
     pass

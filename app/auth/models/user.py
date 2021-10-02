@@ -20,7 +20,7 @@ from flask_login import UserMixin, current_user
 from config import basedir
 
 from sqlalchemy import create_engine
-from sqlalchemy.orm import scoped_session, sessionmaker
+from sqlalchemy.orm import backref, scoped_session, sessionmaker
 from werkzeug.local import LocalProxy
 
 
@@ -39,6 +39,7 @@ class User(UserMixin, PaginatedAPIMixin, db.Model):
     last_seen = db.Column(db.DateTime, default=datetime.now)
     registered_on = db.Column(db.DateTime, default=datetime.now)
     password_hash = db.Column(db.String(128))
+    leads = db.relationship('Lead', backref='owner', lazy='dynamic')
 
     def __repr__(self):
         return '<User {}>'.format(self.id)

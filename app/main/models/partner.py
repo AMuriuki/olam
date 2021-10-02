@@ -1,4 +1,6 @@
 from datetime import datetime
+
+from sqlalchemy.orm import backref
 from app import db
 
 
@@ -27,6 +29,8 @@ class Partner(db.Model):
     users = db.relationship('User', backref='partner', lazy='dynamic')
     is_tenant = db.Column(db.Boolean, default=False)
     tax_id = db.Column(db.Integer, index=True)
+    partnerships = db.relationship(
+        'Lead', backref='opportunity', lazy='dynamic')
 
     def __repr__(self):
         return self.company_name
