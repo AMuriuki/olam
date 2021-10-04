@@ -222,15 +222,12 @@ $('.dv-module').on('click', function () {
   }
 })
 
-function select_modules() {
-  $.post('/selected_modules', {
-    selected_modules: selectedModules
+
+function select_priority(value) {
+  $.post('/selected_priority', {
+    selected_priority: value
   }).done(function (response) {
-    console.log(selectedModules);
-    $('#dv_new_database').css('display', 'none')
-    $('#dv_start_now').css('display', 'block')
-    $('.continue').css('display', 'none')
-    $('#responsivePricingPanel').css('display', 'none')
+
   }).fail(function () {
 
   });
@@ -357,3 +354,24 @@ $('#pipeline_select_org').on('change', function () {
 
   }
 });
+
+
+$('#selectPriority1').click(function (e) {
+  e.preventDefault()
+  var el = $('#priority1')
+  var value;
+  if (el.hasClass('asterisk-off')) {
+    el.removeClass('asterisk-off')
+    el.removeClass('ni-star')
+    el.addClass('ni-star-fill');
+    value = 1;
+  } else {
+    el.removeClass('ni-star-fill')
+    el.addClass('asterisk-off')
+    el.addClass('ni-star')
+    value = 0;
+  }
+  console.log(value);
+
+  select_priority(value);
+})

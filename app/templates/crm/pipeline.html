@@ -72,8 +72,8 @@
                                     <div class="form-group">
                                         <label class="form-label">Organization/Contact</label>
                                         <div class="form-control-wrap">
-                                            <select id="pipeline_select_org" class="form-select" data-search="on"
-                                                data-ui="sm">
+                                            <select id="pipeline_select_org" name="pipeline_select_org"
+                                                class="form-select" data-search="on" data-ui="sm">
                                                 <option value="default_option">Select or add new</option>
                                                 <option value="add_new">Add New +</option>
                                                 {% for partner in partners %}
@@ -143,17 +143,16 @@
                                     </li>
                                     <li>
                                         <div class="asterisk">
-                                            <a href="#">
-                                                <em id="" class="asterisk-off icon ni ni-star"></em>
-                                                <em id="" class="asterisk-on icon ni ni-star-fill"></em>
+                                            <a id="selectPriority1" href="#">
+                                                <em id="priority1" class="asterisk-off icon ni ni-star"></em>                                                
                                             </a>
-                                            <a href="#">
-                                                <em id="" class="asterisk-off icon ni ni-star"></em>
-                                                <em id="" class="asterisk-on icon ni ni-star-fill"></em>
+                                            <a id="selectPriority2" href="#">
+                                                <em id="priority2" class="asterisk-off icon ni ni-star"></em>
+                                                <!-- <em id="" class="asterisk-on icon ni ni-star-fill"></em> -->
                                             </a>
-                                            <a href="#">
-                                                <em id="" class="asterisk-off icon ni ni-star"></em>
-                                                <em id="" class="asterisk-on icon ni ni-star-fill"></em>
+                                            <a id="selectPriority3" href="#">
+                                                <em id="priority3" class="asterisk-off icon ni ni-star"></em>
+                                                <!-- <em id="" class="asterisk-on icon ni ni-star-fill"></em> -->
                                             </a>
                                         </div>
                                     </li>

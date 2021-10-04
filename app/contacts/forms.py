@@ -1,10 +1,7 @@
-from wtforms.fields.core import SelectField
 from app.main.models.partner import Partner
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
-from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
+from wtforms import StringField, SubmitField
 from flask_babel import _, lazy_gettext as _l
-from wtforms.ext.sqlalchemy.fields import QuerySelectField
 
 
 def get_companies():
