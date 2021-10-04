@@ -345,3 +345,15 @@ async function get_city(country) {
     $('#select_city').append($('<option>', { value: value['id'], text: value['name'] }))
   })
 }
+
+$("#new_addItem").click(function (e) {
+  e.preventDefault()
+  $('#newItem').show();
+});
+
+$('#pipeline_select_org').on('change', function () {
+  if (this.value === "add_new") {
+    $('#profile-edit').modal('show');
+
+  }
+});

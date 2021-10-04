@@ -1,3 +1,4 @@
+from app.crm.models.crm_lead import Lead
 from app.main.models.module import Module
 import os
 import click
@@ -15,7 +16,7 @@ def register(app):
         """Run deployment tasks."""
         # migrate database to latest revision
         upgrade()
-
+        Lead.insert_leads()
 
     @translate.command()
     @click.argument('lang')

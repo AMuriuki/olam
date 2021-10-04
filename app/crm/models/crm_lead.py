@@ -1,11 +1,23 @@
 from operator import index
-from app import db
+from app import db, current_app
+from config import basedir
+import os
+import csv
+import logging
+from datetime import datetime, timedelta
 
 AVAILABLE_PRIORITIES = [
     ('0', 'Low'),
     ('1', 'Medium'),
     ('2', 'High'),
     ('3', 'Very High'),
+]
+
+STAGES = [
+    ('0', 'New'),
+    ('1', 'Qualified'),
+    ('2', 'Proposition'),
+    ('3', 'Won'),
 ]
 
 
@@ -19,3 +31,29 @@ class Lead(db.Model):
     active = db.Column(db.Boolean, default=True)
     priority = db.Column(db.String(15), index=True)
     partner_id = db.Column(db.Integer, db.ForeignKey('partner.id'))
+    stage = db.Column(db.String(15), index=True)
+    expected_revenue = db.Column(db.Numeric(10, 2))
+    date_open = db.Column(db.DateTime, default=datetime.now)
+    partner_name = db.Column(db.String(120), index=True)
+    partner_email = db.Column(db.String(120), index=True)
+    partner_currency = db.Column(db.String(60), index=True)
+
+    @staticmethod
+    def insert_leads():
+        csv_file = os.path.join(
+            basedir, 'app/crm/data/leads.csv')
+        with open(csv_file, 'r') as fin:
+            dr = csv.DictReader(fin)
+            current_app.logger.setLevel(logging.INFO)
+            current_app.logger.info('seeding leads table')
+            for i in dr:
+                print(i)
+                exists = db.session.query(
+                    Lead.id).filter_by(id=i['lead_id']).first() is not None
+                if exists:
+                    pass
+                else:
+                    lead = Lead(
+                        id=i['lead_id'], name=i['name'], user_id=i['user_id'], company_id=i['company_id'], referred_by=i['referred_by'], description=i['description'], active=True if i['active'] == 1 else False, priority=i['priority'], partner_id=i['partner_id'], stage=i['stage'], expected_revenue=i['expected_revenue'], partner_name=i['partner_name'], partner_email=i['partner_email'], partner_currency=i['partner_currency'])
+                    db.session.add(lead)
+            db.session.commit()

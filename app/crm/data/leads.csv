@@ -1,2 +1,4 @@
-﻿id,name,user_id,company_id,referred_by,description,active,priority,partner_id
-1,150 Laptops,1,1,,,1,1,4
+lead_id,name,user_id,company_id,referred_by,description,active,priority,partner_id,stage,expected_revenue,partner_name,partner_email,partner_currency
+1,150 Laptops,1,1,,,1,1,4,0,100000,Moringa,contact@moringa.co.ke,KES
+2,200 Laptops,1,1,,,1,1,4,1,500000,Moringa,contact@moringa.co.ke,KES
+3,200 Laptops,1,2,,,1,1,5,0,300000,Institue of Software Technologies,contact@ist.co.ke,KES

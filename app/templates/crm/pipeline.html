@@ -5,6 +5,15 @@
     .nk-aside {
         display: none;
     }
+
+    .new-item {
+        display: none;
+        padding: 5px 5px;
+    }
+
+    .new-item-text {
+        padding-bottom: 5px;
+    }
 </style>
 <div class="nk-content-body">
     <div class="nk-content-wrap">
@@ -19,10 +28,8 @@
                                 class="icon ni ni-menu-alt-r"></em></a>
                         <div class="toggle-expand-content" data-content="pageMenu">
                             <ul class="nk-block-tools g-3">
-                                <li><a href="#" class="btn btn-white btn-outline-light"><em
-                                            class="icon ni ni-plus"></em><span>Add Task</span></a></li>
-                                <li><a href="#" class="btn btn-primary"><em class="icon ni ni-plus"></em><span>Add
-                                            Board</span></a></li>
+                                <li><a id="addBoard" href="#" class="btn btn-white btn-outline-light"><em
+                                            class="icon ni ni-plus"></em><span>Add Board</span></a></li>
                             </ul>
                         </div>
                     </div><!-- .toggle-wrap -->
@@ -38,21 +45,21 @@
                             <div class="kanban-title-board">
                                 <div class="kanban-title-content">
                                     <h6 class="title">New</h6>
-                                    <span class="badge badge-pill badge-outline-light text-dark">3</span>
+                                    <span
+                                        class="badge badge-pill badge-outline-light text-dark">{{0|get_pipeline_count}}</span>
                                 </div>
                                 <div class="kanban-title-content">
                                     <div class="drodown">
                                         <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mr-n1"
                                             data-toggle="dropdown" aria-expanded="false"><em
                                                 class="icon ni ni-more-h"></em></a>
-                                        <div class="dropdown-menu dropdown-menu-right" style="">
+                                        <div class="dropdown-menu dropdown-menu-right">
                                             <ul class="link-list-opt no-bdr">
                                                 <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit
                                                             Board</span></a></li>
-                                                <li><a href="#"><em class="icon ni ni-plus-sm"></em><span>Add
-                                                            Task</span></a></li>
-                                                <li><a href="#"><em class="icon ni ni-plus-sm"></em><span>Add
-                                                            Option</span></a></li>
+                                                <li><a id="new_addItem" href="#"><em
+                                                            class="icon ni ni-plus-sm"></em><span>Add
+                                                            Item</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -60,297 +67,149 @@
                             </div>
                         </header>
                         <main class="kanban-drag">
-                            <div class="kanban-item">
-                                <div class="kanban-item-title">
-                                    <h6 class="title">Techyspec Keyword Research</h6>
-                                    <div class="drodown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                            <div class="user-avatar-group">
-                                                <div class="user-avatar xs bg-danger"><span>V</span></div>
-                                            </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <ul class="link-list-opt no-bdr p-3 g-2">
-                                                <li>
-                                                    <div class="user-card">
-                                                        <div class="user-avatar sm bg-danger">
-                                                            <span>VL</span>
-                                                        </div>
-                                                        <div class="user-name">
-                                                            <span class="tb-lead">Victoria Lynch</span>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                            <div class="kanban-item new-item" id="newItem">
+                                <div class="kanban-item-text new-item-text">
+                                    <div class="form-group">
+                                        <label class="form-label">Organization/Contact</label>
+                                        <div class="form-control-wrap">
+                                            <select id="pipeline_select_org" class="form-select" data-search="on"
+                                                data-ui="sm">
+                                                <option value="default_option">Select or add new</option>
+                                                <option value="add_new">Add New +</option>
+                                                {% for partner in partners %}
+                                                <option value="{{partner.id}}">
+                                                    {% if partner.is_company %}{{partner.company_name}}{% elif
+                                                    partner.is_individual %}{{partner.name}} -
+                                                    {{partner.parent.company_name}}{%
+                                                    endif %}</option>
+                                                {% endfor %}
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="kanban-item-text">
-                                    <p>Keyword recarch for @techyspec business profile and there other websites, to
-                                        improve ranking.</p>
-                                </div>
-                                <ul class="kanban-item-tags">
-                                    <li><span class="badge badge-dark">Techyspec</span></li>
-                                    <li><span class="badge badge-success">SEO</span></li>
-                                </ul>
-                                <div class="kanban-item-meta">
-                                    <ul class="kanban-item-meta-list">
-                                        <li><em class="icon ni ni-calendar"></em><span>02 Jan 2021</span></li>
-                                        <li><em class="icon ni ni-notes"></em><span>Recharch</span></li>
-                                    </ul>
-                                    <ul class="kanban-item-meta-list">
-                                        <li><em class="icon ni ni-clip"></em><span>31</span></li>
-                                        <li><em class="icon ni ni-comments"></em><span>21</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="kanban-item">
-                                <div class="kanban-item-title">
-                                    <h6 class="title">Oberlo Development</h6>
-                                    <div class="drodown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                            <div class="user-avatar-group">
-                                                <div class="user-avatar xs bg-purple">
-                                                    <span>A</span>
-                                                </div>
-                                                <div class="user-avatar xs bg-success">
-                                                    <span>B</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <ul class="link-list-opt no-bdr p-3 g-2">
-                                                <li>
-                                                    <div class="user-card">
-                                                        <div class="user-avatar sm bg-primary">
-                                                            <span>AB</span>
-                                                        </div>
-                                                        <div class="user-name">
-                                                            <span class="tb-lead">Abu Bin Ishtiyak</span>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="user-card">
-                                                        <div class="user-avatar sm bg-success">
-                                                            <span>BA</span>
-                                                        </div>
-                                                        <div class="user-name">
-                                                            <span class="tb-lead">Butler Alan</span>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                <div class="kanban-item-text new-item-text">
+                                    <div class="form-group">
+                                        <label class="form-label" for="default-1-03">Opportunity</label>
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control form-control-sm"
+                                                placeholder="e.g Quote for 120 laptops">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="kanban-item-text">
-                                    <p>Complete website development for Oberlo limited.</p>
+                                <div class="kanban-item-text new-item-text">
+                                    <div class="form-group">
+                                        <label class="form-label" for="default-1-03">Email</label>
+                                        <div class="form-control-wrap">
+                                            <input type="email" class="form-control form-control-sm"
+                                                placeholder="Email">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="kanban-item-text new-item-text">
+                                    <div class="form-group">
+                                        <label class="form-label" for="default-1-03">Phone</label>
+                                        <div class="form-control-wrap">
+                                            <input type="phone" class="form-control form-control-sm"
+                                                placeholder="Phone">
+                                        </div>
+                                    </div>
                                 </div>
                                 <ul class="kanban-item-tags">
-                                    <li><span class="badge badge-info">Oberlo</span></li>
-                                    <li><span class="badge badge-danger">Development</span></li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label class="form-label" for="default-1-03">Expected Revenue</label>
+                                            <div class="form-control-wrap">
+                                                <input type="number" min="1" step="any"
+                                                    class="form-control form-control-sm" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label class="form-label">Intervals</label>
+                                            <div class="form-control-wrap">
+                                                <select class="form-select" data-search="on" data-ui="sm">
+                                                    <option value="default_option">E.g Monthly</option>
+                                                    <option value="monthly">Monthly</option>
+                                                    <option value="yearly">Yearly</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul class="kanban-item-tags">
+                                    <li>
+                                        <label class="form-label">Priority</label>
+                                    </li>
+                                    <li>
+                                        <div class="asterisk">
+                                            <a href="#">
+                                                <em id="" class="asterisk-off icon ni ni-star"></em>
+                                                <em id="" class="asterisk-on icon ni ni-star-fill"></em>
+                                            </a>
+                                            <a href="#">
+                                                <em id="" class="asterisk-off icon ni ni-star"></em>
+                                                <em id="" class="asterisk-on icon ni ni-star-fill"></em>
+                                            </a>
+                                            <a href="#">
+                                                <em id="" class="asterisk-off icon ni ni-star"></em>
+                                                <em id="" class="asterisk-on icon ni ni-star-fill"></em>
+                                            </a>
+                                        </div>
+                                    </li>
                                 </ul>
                                 <div class="kanban-item-meta">
                                     <ul class="kanban-item-meta-list">
-                                        <li class="text-danger"><em class="icon ni ni-calendar"></em><span>1d Due</span>
+                                        <li>
+                                            <a href="#" class="btn btn-primary">Add</a>
                                         </li>
-                                        <li><em class="icon ni ni-notes"></em><span>Backend</span></li>
-                                    </ul>
-                                    <ul class="kanban-item-meta-list">
-                                        <li><em class="icon ni ni-clip"></em><span>16</span></li>
-                                        <li><em class="icon ni ni-comments"></em><span>25</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="kanban-item">
-                                <div class="kanban-item-title">
-                                    <h6 class="title">Implement Design into Template</h6>
-                                    <div class="drodown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                            <div class="user-avatar-group">
-                                                <div class="user-avatar xs bg-dark"><span>S</span></div>
-                                            </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <ul class="link-list-opt no-bdr p-3 g-2">
-                                                <li>
-                                                    <div class="user-card">
-                                                        <div class="user-avatar sm bg-dark">
-                                                            <span>SD</span>
-                                                        </div>
-                                                        <div class="user-name">
-                                                            <span class="tb-lead">Sara Dervishi</span>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="kanban-item-text">
-                                    <p>Start implementing new design in Coding @dashlite.</p>
-                                </div>
-                                <ul class="kanban-item-tags">
-                                    <li><span class="badge badge-info">Dashlite</span></li>
-                                    <li><span class="badge badge-danger">HTML</span></li>
-                                </ul>
-                                <div class="kanban-item-meta">
-                                    <ul class="kanban-item-meta-list">
-                                        <li><em class="icon ni ni-calendar"></em><span>15 Dec 2020</span></li>
-                                        <li><em class="icon ni ni-notes"></em><span>Forntend</span></li>
-                                    </ul>
-                                    <ul class="kanban-item-meta-list">
-                                        <li><em class="icon ni ni-comments"></em><span>2</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="kanban-item is-moving">
-                                <div class="kanban-item-title">
-                                    <h6 class="title">Dashlite Design Kit Update</h6>
-                                    <div class="drodown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                            <div class="user-avatar-group">
-                                                <div class="user-avatar xs bg-primary"><span>A</span></div>
-                                            </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <ul class="link-list-opt no-bdr p-3 g-2">
-                                                <li>
-                                                    <div class="user-card">
-                                                        <div class="user-avatar sm bg-primary">
-                                                            <span>AB</span>
-                                                        </div>
-                                                        <div class="user-name">
-                                                            <span class="tb-lead">Abu Bin Ishtiyak</span>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="kanban-item-text">
-                                    <p>Update the new UI design for @dashlite template with based on feedback.</p>
-                                </div>
-                                <ul class="kanban-item-tags">
-                                    <li><span class="badge badge-info">Dashlite</span></li>
-                                    <li><span class="badge badge-warning">UI Design</span></li>
-                                </ul>
-                                <div class="kanban-item-meta">
-                                    <ul class="kanban-item-meta-list">
-                                        <li class="text-danger"><em class="icon ni ni-calendar"></em><span>2d Due</span>
+                                        <li>
+                                            <a href="#" class="link link-light">Discard</a>
                                         </li>
-                                        <li><em class="icon ni ni-notes"></em><span>Design</span></li>
-                                    </ul>
-                                    <ul class="kanban-item-meta-list">
-                                        <li><em class="icon ni ni-clip"></em><span>1</span></li>
-                                        <li><em class="icon ni ni-comments"></em><span>4</span></li>
                                     </ul>
                                 </div>
                             </div>
+                            {% for record in pipeline %}
+                            {% if record.stage == '0' %}
                             <div class="kanban-item">
                                 <div class="kanban-item-title">
-                                    <h6 class="title">Dashlite React Version</h6>
+                                    <h6 class="title">{{record.name}}</h6>
                                     <div class="drodown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                            <div class="user-avatar-group">
-                                                <div class="user-avatar xs bg-blue"><span>C</span></div>
+                                        <div class="drodown">
+                                            <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mr-n1"
+                                                data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <ul class="link-list-opt no-bdr">
+                                                    <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit
+                                                                Board</span></a></li>
+                                                    <li><a href="#"><em class="icon ni ni-plus-sm"></em><span>Add
+                                                                Task</span></a></li>
+                                                    <li><a href="#"><em class="icon ni ni-plus-sm"></em><span>Add
+                                                                Option</span></a></li>
+                                                </ul>
                                             </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <ul class="link-list-opt no-bdr p-3 g-2">
-                                                <li>
-                                                    <div class="user-card">
-                                                        <div class="user-avatar sm bg-blue">
-                                                            <span>CJ</span>
-                                                        </div>
-                                                        <div class="user-name">
-                                                            <span class="tb-lead">Cooper Jones</span>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="kanban-item-text">
-                                    <p>Implement new UI design in react version @dashlite template as soon as possible.
-                                    </p>
-                                </div>
-                                <ul class="kanban-item-tags">
-                                    <li><span class="badge badge-info">Dashlite</span></li>
-                                    <li><span class="badge badge-secondary">React</span></li>
-                                </ul>
-                                <div class="kanban-item-meta">
-                                    <ul class="kanban-item-meta-list">
-                                        <li><em class="icon ni ni-calendar"></em><span>5d Due</span></li>
-                                        <li><em class="icon ni ni-notes"></em><span>Forntend</span></li>
-                                    </ul>
-                                    <ul class="kanban-item-meta-list">
-                                        <li><em class="icon ni ni-clip"></em><span>3</span></li>
-                                        <li><em class="icon ni ni-comments"></em><span>5</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </main>
-                        <footer><button class="kanban-add-task btn btn-block"><em
-                                    class="icon ni ni-plus-sm"></em><span>Add another task</span></button></footer>
-                    </div>
-                    <div data-id="_qualified" data-order="2" class="kanban-board"
-                        style="width: 320px; margin-left: 0px; margin-right: 0px;">
-                        <header class="kanban-board-header kanban-primary">
-                            <div class="kanban-title-board">
-                                <div class="kanban-title-content">
-                                    <h6 class="title">Qualified</h6>
-                                    <span class="badge badge-pill badge-outline-light text-dark">4</span>
-                                </div>
-                                <div class="kanban-title-content">
-                                    <div class="drodown">
-                                        <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mr-n1"
-                                            data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <ul class="link-list-opt no-bdr">
-                                                <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit
-                                                            Board</span></a></li>
-                                                <li><a href="#"><em class="icon ni ni-plus-sm"></em><span>Add
-                                                            Task</span></a></li>
-                                                <li><a href="#"><em class="icon ni ni-plus-sm"></em><span>Add
-                                                            Option</span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </header>
-                        <main class="kanban-drag">
-                            <div class="kanban-item">
-                                <div class="kanban-item-title">
-                                    <h6 class="title">Fitness Next Website Design</h6>
-                                    <div class="drodown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                            <div class="user-avatar-group">
-                                                <div class="user-avatar xs bg-pink"><span>P</span></div>
-                                            </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <ul class="link-list-opt no-bdr p-3 g-2">
-                                                <li>
-                                                    <div class="user-card">
-                                                        <div class="user-avatar sm bg-pink">
-                                                            <span>PN</span>
-                                                        </div>
-                                                        <div class="user-name">
-                                                            <span class="tb-lead">Patrick Newman</span>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                    <p>{{record.partner_currency}}&nbsp;{{record.expected_revenue|numberFormat}}</p>
                                 </div>
                                 <div class="kanban-item-text">
-                                    <p>Design a awesome website for @fitness_next new product launch.</p>
+                                    <p>{{record.partner_name}}</p>
+                                </div>
+                                <div class="asterisk">
+                                    <a href="#">
+                                        <em id="" class="asterisk-off icon ni ni-star"></em>
+                                        <em id="" class="asterisk-on icon ni ni-star-fill"></em>
+                                    </a>
+                                    <a href="#">
+                                        <em id="" class="asterisk-off icon ni ni-star"></em>
+                                        <em id="" class="asterisk-on icon ni ni-star-fill"></em>
+                                    </a>
+                                    <a href="#">
+                                        <em id="" class="asterisk-off icon ni ni-star"></em>
+                                        <em id="" class="asterisk-on icon ni ni-star-fill"></em>
+                                    </a>
                                 </div>
                                 <ul class="kanban-item-tags">
                                     <li><span class="badge badge-primary">Fitness Next</span></li>
@@ -367,119 +226,21 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="kanban-item">
-                                <div class="kanban-item-title">
-                                    <h6 class="title">Runnergy Website Redesign</h6>
-                                    <div class="drodown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                            <div class="user-avatar-group">
-                                                <div class="user-avatar xs bg-purple">
-                                                    <span>J</span>
-                                                </div>
-                                                <div class="user-avatar xs bg-success">
-                                                    <span>I</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <ul class="link-list-opt no-bdr p-3 g-2">
-                                                <li>
-                                                    <div class="user-card">
-                                                        <div class="user-avatar sm bg-purple">
-                                                            <span>JH</span>
-                                                        </div>
-                                                        <div class="user-name">
-                                                            <span class="tb-lead">Jane Harris</span>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="user-card">
-                                                        <div class="user-avatar sm bg-success">
-                                                            <span>IH</span>
-                                                        </div>
-                                                        <div class="user-name">
-                                                            <span class="tb-lead">Iliash Hosain</span>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="kanban-item-text">
-                                    <p>Redesign there old/backdated website new modern and clean look keeping minilisim
-                                        in mind.</p>
-                                </div>
-                                <ul class="kanban-item-tags">
-                                    <li><span class="badge badge-gray">Redesign</span></li>
-                                    <li><span class="badge badge-primary">Runnergy</span></li>
-                                </ul>
-                                <div class="kanban-item-meta">
-                                    <ul class="kanban-item-meta-list">
-                                        <li><em class="icon ni ni-calendar"></em><span>10 Jan 2021</span></li>
-                                        <li><em class="icon ni ni-notes"></em><span>Design</span></li>
-                                    </ul>
-                                    <ul class="kanban-item-meta-list">
-                                        <li><em class="icon ni ni-clip"></em><span>12</span></li>
-                                        <li><em class="icon ni ni-comments"></em><span>8</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="kanban-item">
-                                <div class="kanban-item-title">
-                                    <h6 class="title">Wordlab Android App</h6>
-                                    <div class="drodown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                            <div class="user-avatar-group">
-                                                <div class="user-avatar xs bg-primary"><span>J</span></div>
-                                            </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <ul class="link-list-opt no-bdr p-3 g-2">
-                                                <li>
-                                                    <div class="user-card">
-                                                        <div class="user-avatar sm bg-primary">
-                                                            <span>JH</span>
-                                                        </div>
-                                                        <div class="user-name">
-                                                            <span class="tb-lead">Jane Harris</span>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="kanban-item-text">
-                                    <p>Wordlab Android App with with react native.</p>
-                                </div>
-                                <ul class="kanban-item-tags">
-                                    <li><span class="badge badge-success">Wordlab</span></li>
-                                    <li><span class="badge badge-light">Android</span></li>
-                                </ul>
-                                <div class="kanban-item-meta">
-                                    <ul class="kanban-item-meta-list">
-                                        <li><em class="icon ni ni-calendar"></em><span>21 Jan 2021</span></li>
-                                        <li><em class="icon ni ni-notes"></em><span>App</span></li>
-                                    </ul>
-                                    <ul class="kanban-item-meta-list">
-                                        <li><em class="icon ni ni-clip"></em><span>8</span></li>
-                                        <li><em class="icon ni ni-comments"></em><span>85</span></li>
-                                    </ul>
-                                </div>
-                            </div>
+                            {% endif %}
+                            {% endfor %}
                         </main>
                         <footer><button class="kanban-add-task btn btn-block"><em
-                                    class="icon ni ni-plus-sm"></em><span>Add another task</span></button></footer>
+                                    class="icon ni ni-plus-sm"></em><span>{% if record %}Add another item{% else %}Add
+                                    item{% endif %}</span></button></footer>
                     </div>
-                    <div data-id="_proposition" data-order="3" class="kanban-board"
+                    <div data-id="_qualified" data-order="2" class="kanban-board"
                         style="width: 320px; margin-left: 0px; margin-right: 0px;">
-                        <header class="kanban-board-header kanban-warning">
+                        <header class="kanban-board-header kanban-primary">
                             <div class="kanban-title-board">
                                 <div class="kanban-title-content">
-                                    <h6 class="title">Proposition</h6>
-                                    <span class="badge badge-pill badge-outline-light text-dark">2</span>
+                                    <h6 class="title">Qualified</h6>
+                                    <span
+                                        class="badge badge-pill badge-outline-light text-dark">{{1|get_pipeline_count}}</span>
                                 </div>
                                 <div class="kanban-title-content">
                                     <div class="drodown">
@@ -500,43 +261,56 @@
                             </div>
                         </header>
                         <main class="kanban-drag">
+                            {% for record in pipeline %}
+                            {% if record.stage == '1' %}
                             <div class="kanban-item">
                                 <div class="kanban-item-title">
-                                    <h6 class="title">IOS app for Getsocio</h6>
+                                    <h6 class="title">{{record.name}}</h6>
                                     <div class="drodown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                            <div class="user-avatar-group">
-                                                <div class="user-avatar xs bg-pink"><span>P</span></div>
+                                        <div class="drodown">
+                                            <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mr-n1"
+                                                data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <ul class="link-list-opt no-bdr">
+                                                    <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit
+                                                                Board</span></a></li>
+                                                    <li><a href="#"><em class="icon ni ni-plus-sm"></em><span>Add
+                                                                Task</span></a></li>
+                                                    <li><a href="#"><em class="icon ni ni-plus-sm"></em><span>Add
+                                                                Option</span></a></li>
+                                                </ul>
                                             </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <ul class="link-list-opt no-bdr p-3 g-2">
-                                                <li>
-                                                    <div class="user-card">
-                                                        <div class="user-avatar sm bg-pink">
-                                                            <span>PN</span>
-                                                        </div>
-                                                        <div class="user-name">
-                                                            <span class="tb-lead">Patrick Newman</span>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="kanban-item-text">
-                                    <p>Design and develop app for Getsocio IOS.</p>
+                                    <p>{{record.partner_currency}}&nbsp;{{record.expected_revenue|numberFormat}}</p>
+                                </div>
+                                <div class="kanban-item-text">
+                                    <p>{{record.partner_name}}</p>
+                                </div>
+                                <div class="asterisk">
+                                    <a href="#">
+                                        <em id="" class="asterisk-off icon ni ni-star"></em>
+                                        <em id="" class="asterisk-on icon ni ni-star-fill"></em>
+                                    </a>
+                                    <a href="#">
+                                        <em id="" class="asterisk-off icon ni ni-star"></em>
+                                        <em id="" class="asterisk-on icon ni ni-star-fill"></em>
+                                    </a>
+                                    <a href="#">
+                                        <em id="" class="asterisk-off icon ni ni-star"></em>
+                                        <em id="" class="asterisk-on icon ni ni-star-fill"></em>
+                                    </a>
                                 </div>
                                 <ul class="kanban-item-tags">
-                                    <li><span class="badge badge-dark">Getsocio</span></li>
-                                    <li><span class="badge badge-light">IOS</span></li>
+                                    <li><span class="badge badge-primary">Fitness Next</span></li>
+                                    <li><span class="badge badge-warning">UI Design</span></li>
                                 </ul>
                                 <div class="kanban-item-meta">
                                     <ul class="kanban-item-meta-list">
-                                        <li class="text-danger"><em class="icon ni ni-calendar"></em><span>4d Due</span>
-                                        </li>
-                                        <li><em class="icon ni ni-notes"></em><span>Forntend</span></li>
+                                        <li><em class="icon ni ni-calendar"></em><span>8d Due</span></li>
+                                        <li><em class="icon ni ni-notes"></em><span>Design</span></li>
                                     </ul>
                                     <ul class="kanban-item-meta-list">
                                         <li><em class="icon ni ni-clip"></em><span>3</span></li>
@@ -544,17 +318,21 @@
                                     </ul>
                                 </div>
                             </div>
+                            {% endif %}
+                            {% endfor %}
                         </main>
                         <footer><button class="kanban-add-task btn btn-block"><em
-                                    class="icon ni ni-plus-sm"></em><span>Add another task</span></button></footer>
+                                    class="icon ni ni-plus-sm"></em><span>{% if record %}Add another item{% else %}Add
+                                    item{% endif %}</span></button></footer>
                     </div>
-                    <div data-id="_won" data-order="4" class="kanban-board"
+                    <div data-id="_proposition" data-order="3" class="kanban-board"
                         style="width: 320px; margin-left: 0px; margin-right: 0px;">
-                        <header class="kanban-board-header kanban-success">
+                        <header class="kanban-board-header kanban-warning">
                             <div class="kanban-title-board">
                                 <div class="kanban-title-content">
-                                    <h6 class="title">Won</h6>
-                                    <span class="badge badge-pill badge-outline-light text-dark">0</span>
+                                    <h6 class="title">Proposition</h6>
+                                    <span
+                                        class="badge badge-pill badge-outline-light text-dark">{{2|get_pipeline_count}}</span>
                                 </div>
                                 <div class="kanban-title-content">
                                     <div class="drodown">
@@ -574,14 +352,310 @@
                                 </div>
                             </div>
                         </header>
-                        <main class="kanban-drag"></main>
+                        <main class="kanban-drag">
+                            {% for record in pipeline %}
+                            {% if record.stage == '2' %}
+                            <div class="kanban-item">
+                                <div class="kanban-item-title">
+                                    <h6 class="title">{{record.name}}</h6>
+                                    <div class="drodown">
+                                        <div class="drodown">
+                                            <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mr-n1"
+                                                data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <ul class="link-list-opt no-bdr">
+                                                    <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit
+                                                                Board</span></a></li>
+                                                    <li><a href="#"><em class="icon ni ni-plus-sm"></em><span>Add
+                                                                Task</span></a></li>
+                                                    <li><a href="#"><em class="icon ni ni-plus-sm"></em><span>Add
+                                                                Option</span></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="kanban-item-text">
+                                    <p>{{record.partner_currency}}&nbsp;{{record.expected_revenue|numberFormat}}</p>
+                                </div>
+                                <div class="kanban-item-text">
+                                    <p>{{record.partner_name}}</p>
+                                </div>
+                                <div class="asterisk">
+                                    <a href="#">
+                                        <em id="" class="asterisk-off icon ni ni-star"></em>
+                                        <em id="" class="asterisk-on icon ni ni-star-fill"></em>
+                                    </a>
+                                    <a href="#">
+                                        <em id="" class="asterisk-off icon ni ni-star"></em>
+                                        <em id="" class="asterisk-on icon ni ni-star-fill"></em>
+                                    </a>
+                                    <a href="#">
+                                        <em id="" class="asterisk-off icon ni ni-star"></em>
+                                        <em id="" class="asterisk-on icon ni ni-star-fill"></em>
+                                    </a>
+                                </div>
+                                <ul class="kanban-item-tags">
+                                    <li><span class="badge badge-primary">Fitness Next</span></li>
+                                    <li><span class="badge badge-warning">UI Design</span></li>
+                                </ul>
+                                <div class="kanban-item-meta">
+                                    <ul class="kanban-item-meta-list">
+                                        <li><em class="icon ni ni-calendar"></em><span>8d Due</span></li>
+                                        <li><em class="icon ni ni-notes"></em><span>Design</span></li>
+                                    </ul>
+                                    <ul class="kanban-item-meta-list">
+                                        <li><em class="icon ni ni-clip"></em><span>3</span></li>
+                                        <li><em class="icon ni ni-comments"></em><span>5</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </main>
                         <footer><button class="kanban-add-task btn btn-block"><em
-                                    class="icon ni ni-plus-sm"></em><span>Add another task</span></button></footer>
+                                    class="icon ni ni-plus-sm"></em><span>{% if record %}Add another item{% else %}Add
+                                    item{% endif %}</span></button></footer>
+                    </div>
+                    <div data-id="_won" data-order="4" class="kanban-board"
+                        style="width: 320px; margin-left: 0px; margin-right: 0px;">
+                        <header class="kanban-board-header kanban-success">
+                            <div class="kanban-title-board">
+                                <div class="kanban-title-content">
+                                    <h6 class="title">Won</h6>
+                                    <span
+                                        class="badge badge-pill badge-outline-light text-dark">{{3|get_pipeline_count}}</span>
+                                </div>
+                                <div class="kanban-title-content">
+                                    <div class="drodown">
+                                        <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mr-n1"
+                                            data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <ul class="link-list-opt no-bdr">
+                                                <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit
+                                                            Board</span></a></li>
+                                                <li><a href="#"><em class="icon ni ni-plus-sm"></em><span>Add
+                                                            Task</span></a></li>
+                                                <li><a href="#"><em class="icon ni ni-plus-sm"></em><span>Add
+                                                            Option</span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                        <main class="kanban-drag">
+                            {% for record in pipeline %}
+                            {% if record.stage == '2' %}
+                            <div class="kanban-item">
+                                <div class="kanban-item-title">
+                                    <h6 class="title">{{record.name}}</h6>
+                                    <div class="drodown">
+                                        <div class="drodown">
+                                            <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mr-n1"
+                                                data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <ul class="link-list-opt no-bdr">
+                                                    <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit
+                                                                Board</span></a></li>
+                                                    <li><a href="#"><em class="icon ni ni-plus-sm"></em><span>Add
+                                                                Task</span></a></li>
+                                                    <li><a href="#"><em class="icon ni ni-plus-sm"></em><span>Add
+                                                                Option</span></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="kanban-item-text">
+                                    <p>{{record.partner_currency}}&nbsp;{{record.expected_revenue|numberFormat}}</p>
+                                </div>
+                                <div class="kanban-item-text">
+                                    <p>{{record.partner_name}}</p>
+                                </div>
+                                <div class="asterisk">
+                                    <a href="#">
+                                        <em id="" class="asterisk-off icon ni ni-star"></em>
+                                        <em id="" class="asterisk-on icon ni ni-star-fill"></em>
+                                    </a>
+                                    <a href="#">
+                                        <em id="" class="asterisk-off icon ni ni-star"></em>
+                                        <em id="" class="asterisk-on icon ni ni-star-fill"></em>
+                                    </a>
+                                    <a href="#">
+                                        <em id="" class="asterisk-off icon ni ni-star"></em>
+                                        <em id="" class="asterisk-on icon ni ni-star-fill"></em>
+                                    </a>
+                                </div>
+                                <ul class="kanban-item-tags">
+                                    <li><span class="badge badge-primary">Fitness Next</span></li>
+                                    <li><span class="badge badge-warning">UI Design</span></li>
+                                </ul>
+                                <div class="kanban-item-meta">
+                                    <ul class="kanban-item-meta-list">
+                                        <li><em class="icon ni ni-calendar"></em><span>8d Due</span></li>
+                                        <li><em class="icon ni ni-notes"></em><span>Design</span></li>
+                                    </ul>
+                                    <ul class="kanban-item-meta-list">
+                                        <li><em class="icon ni ni-clip"></em><span>3</span></li>
+                                        <li><em class="icon ni ni-comments"></em><span>5</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </main>
+                        <footer><button class="kanban-add-task btn btn-block"><em
+                                    class="icon ni ni-plus-sm"></em><span>{% if record %}Add another item{% else %}Add
+                                    item{% endif %}</span></button></footer>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     {% include "footer.html" %}
+</div>
+<div class="modal fade" role="dialog" id="profile-edit">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
+            <div class="modal-body modal-body-lg">
+                <h5 class="title">New Organization/Contact</h5>
+                <ul class="nk-nav nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#individual">Individual</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#company">Company</a>
+                    </li>
+                </ul><!-- .nav-tabs -->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="company">
+                        <form method="POST">
+                            {{form1.hidden_tag()}}
+                            <div class="row gy-4">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form1.companyname.label(class="form-label") }}
+                                        {{ form1.companyname(class="form-control form-control-m",
+                                        placeholder="Company Name") }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form1.phonenumber.label(class="form-label") }}
+                                        {{ form1.phonenumber(class="form-control form-control-m",
+                                        placeholder="Phone Number") }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form1.email.label(class="form-label") }}
+                                        {{ form1.email(class="form-control form-control-m",
+                                        placeholder="Email Address") }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form1.website.label(class="form-label") }}
+                                        {{ form1.website(class="form-control form-control-m",
+                                        placeholder="http://...") }}
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                                        <li>
+                                            {{form1.submit1(class="btn btn-lg btn-primary btn-block")}}
+                                        </li>
+                                        <li>
+                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </form>
+                    </div><!-- .tab-pane -->
+                    <div class="tab-pane" id="individual">
+                        <form method="POST">
+                            {{form2.hidden_tag()}}
+                            <div class="row gy-4">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Title</label>
+                                        <div class="form-control-wrap">
+                                            <select name="select_title" class="form-select" data-search="on">
+                                                <option value="default_option">Select title</option>
+                                                {% for title in titles %}
+                                                <option value="{{title}}">{{title}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form2.name.label(class="form-label") }}
+                                        {{ form2.name(class="form-control form-control-m",
+                                        placeholder="Name") }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Company</label>
+                                        <div class="form-control-wrap">
+                                            <select name="select_company" class="form-select" data-search="on">
+                                                <option value="default_option">Select company</option>
+                                                {% for company in companies %}
+                                                <option value="{{company.id}}">{{company.company_name}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form2.phonenumber.label(class="form-label") }}
+                                        {{ form2.phonenumber(class="form-control form-control-m",
+                                        placeholder="Phone Number") }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form2.email.label(class="form-label") }}
+                                        {{ form2.email(class="form-control form-control-m",
+                                        placeholder="Email Address") }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form2.website.label(class="form-label") }}
+                                        {{ form2.website(class="form-control form-control-m",
+                                        placeholder="http://...") }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form2.jobposition.label(class="form-label") }}
+                                        {{ form2.jobposition(class="form-control form-control-m",
+                                        placeholder="e.g Sales Director") }}
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                                        <li>
+                                            {{form2.submit2(class="btn btn-lg btn-primary btn-block")}}
+                                        </li>
+                                        <li>
+                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </form>
+                    </div><!-- .tab-pane -->
+                </div><!-- .tab-content -->
+            </div><!-- .modal-body -->
+        </div><!-- .modal-content -->
+    </div><!-- .modal-dialog -->
 </div>
 {% endblock %}
