@@ -1,6 +1,5 @@
 from flask_login import login_required, current_user
-from flask import render_template, session, jsonify
-from werkzeug.wrappers import request
+from flask import json, render_template, session, jsonify, request
 from app.crm import bp
 from app.crm.models.crm_lead import Lead
 from app.main.models.module import Module
@@ -9,16 +8,55 @@ from app import db
 from app.auth.models.user import User
 from app.main.models.partner import Partner
 from app.main.models.company import Company
-from sqlalchemy import or_
+from sqlalchemy import log, or_
 from app.contacts.forms import TITLES, BasicCompanyInfoForm, BasicIndividualInfoForm
 from app.crm.forms import BoardItemForm
+from app.main.models.country import Country
 
 
+@login_required
+@bp.route('/get_partner_details', methods=['GET', 'POST'])
+def get_partner_details():
+    partner = Partner.query.filter_by(id=request.form['partner_id']).first()
+    return jsonify({"partner_email": partner.email, "partner_phone": partner.phone_no})
+
+
+@login_required
 @bp.route('/selected_priority', methods=['GET', 'POST'])
 def select_priority():
-    if request.method == "POST":
-        session['selected_priority'] = request.form['selected_priority']
-        return jsonify({"response": "success"})
+    session['selected_priority'] = request.form['selected_priority']
+    return jsonify({"response": "success"})
+
+
+@login_required
+@bp.route('/pipeline_stage', methods=['GET', 'POST'])
+def pipeline_stage():
+    session['pipeline_stage'] = request.form['pipeline_stage']
+    return jsonify({"response": "success"})
+
+
+@login_required
+@bp.route('/new_company_contact', methods=['GET', 'POST'])
+def new_company_contact():
+    form1 = BasicCompanyInfoForm()
+    if form1.validate_on_submit():
+        partner = Partner(company_name=form1.companyname.data,
+                          phone_no=form1.phonenumber.data, website=form1.website.data, is_company=True, is_active=True, email=form1.email.data)
+        db.session.add(partner)
+        db.session.commit()
+        return jsonify({"response": "success", "partner_name": partner.company_name, "partner_id": partner.id})
+
+
+@login_required
+@bp.route('/new_individual_contact', methods=['GET', 'POST'])
+def new_individual_contact():
+    form2 = BasicIndividualInfoForm()
+    if form2.validate_on_submit():
+        partner = Partner(name=form2.name.data,
+                          phone_no=form2.phonenumber.data, title=request.form['select_title'], parent_id=request.form['select_company'], website=form2.website.data, is_individual=True, is_active=True, function=form2.jobposition.data, email=form2.email.data)
+        db.session.add(partner)
+        db.session.commit()
+        return jsonify({"response": "success", "partner_name": partner.name, "partner_id": partner.id})
 
 
 @bp.route('/', methods=['GET', 'POST'])
@@ -33,14 +71,19 @@ def pipeline():
     partners = db.session.query(Partner).filter(or_(
         Partner.is_company == True, Partner.is_individual == True)).all()
     companies = Partner.query.filter_by(is_company=True).all()
-
+    query = db.session.query(
+        Country.currency_alphabetic_code.distinct().label("currency_alphabetic_code")).order_by(
+        'currency_alphabetic_code')
+    currencies = [row.currency_alphabetic_code for row in query.all()]
+    for currency in currencies:
+        print(currency)
     if form3.validate_on_submit():
         opportunity = Lead(name=form3.opportunity.data,
-                           user_id=current_user.get_id(), partner_id=request.form['pipeline_select_org'], priority=session['selected_priority'])
+                           user_id=current_user.get_id(), partner_id=request.form['pipeline_select_org'], priority=session['selected_priority'], stage=session['pipeline_stage'])
         db.session.add(opportunity)
         db.session.commit()
 
-    return render_template('crm/pipeline.html', title=_('CRM Pipeline | Olam ERP'), pipeline=pipeline, partners=partners, form1=form1, form2=form2, companies=companies, titles=titles)
+    return render_template('crm/pipeline.html', title=_('CRM Pipeline | Olam ERP'), pipeline=pipeline, partners=partners, form1=form1, form2=form2, companies=companies, titles=titles, currencies=currencies)
 
 
 @bp.route('/pipeline', methods=['GET', 'POST'])

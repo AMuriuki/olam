@@ -32,7 +32,7 @@ def create():
     companies = Partner.query.filter_by(is_company=True).all()
     if "submit1" in request.form and form1.validate_on_submit():
         partner = Partner(company_name=form1.companyname.data,
-                          phone_no=form1.phonenumber.data, website=form1.website.data, is_company=True, is_active=True)
+                          phone_no=form1.phonenumber.data, website=form1.website.data, is_company=True, is_active=True, email=form1.email.data)
         db.session.add(partner)
         db.session.commit()
         return redirect(url_for('contacts.view_contact', id=partner.id))

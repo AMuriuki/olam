@@ -14,6 +14,10 @@
     .new-item-text {
         padding-bottom: 5px;
     }
+
+    .ni-star-fill {
+        color: #f4bd0e !important;
+    }
 </style>
 <div class="nk-content-body">
     <div class="nk-content-wrap">
@@ -57,8 +61,8 @@
                                             <ul class="link-list-opt no-bdr">
                                                 <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit
                                                             Board</span></a></li>
-                                                <li><a id="new_addItem" href="#"><em
-                                                            class="icon ni ni-plus-sm"></em><span>Add
+                                                <li><a id="new_addItem1" href="#"><em
+                                                            class="icon ni ni-plus-sm add-item"></em><span>Add
                                                             Item</span></a></li>
                                             </ul>
                                         </div>
@@ -67,7 +71,7 @@
                             </div>
                         </header>
                         <main class="kanban-drag">
-                            <div class="kanban-item new-item" id="newItem">
+                            <div class="kanban-item new-item" id="newItem1">
                                 <div class="kanban-item-text new-item-text">
                                     <div class="form-group">
                                         <label class="form-label">Organization/Contact</label>
@@ -100,7 +104,7 @@
                                     <div class="form-group">
                                         <label class="form-label" for="default-1-03">Email</label>
                                         <div class="form-control-wrap">
-                                            <input type="email" class="form-control form-control-sm"
+                                            <input id="partner_email" type="email" class="form-control form-control-sm"
                                                 placeholder="Email">
                                         </div>
                                     </div>
@@ -109,12 +113,26 @@
                                     <div class="form-group">
                                         <label class="form-label" for="default-1-03">Phone</label>
                                         <div class="form-control-wrap">
-                                            <input type="phone" class="form-control form-control-sm"
+                                            <input id="partner_phone" type="phone" class="form-control form-control-sm"
                                                 placeholder="Phone">
                                         </div>
                                     </div>
                                 </div>
-                                <ul class="kanban-item-tags">
+                                <ul class="kanban-item-tags new-item-text">
+                                    <li>
+                                        <div class="form-group">
+                                            <label class="form-label">Currency</label>
+                                            <div class="form-control-wrap">
+                                                <select class="form-select" data-search="on" data-ui="sm">
+                                                    {% for currency in currencies %}
+                                                    {% if currency != None %}
+                                                    <option value="{{currency}}">{{currency}}</option>
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </li>
                                     <li>
                                         <div class="form-group">
                                             <label class="form-label" for="default-1-03">Expected Revenue</label>
@@ -124,35 +142,33 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li>
-                                        <div class="form-group">
-                                            <label class="form-label">Intervals</label>
-                                            <div class="form-control-wrap">
-                                                <select class="form-select" data-search="on" data-ui="sm">
-                                                    <option value="default_option">E.g Monthly</option>
-                                                    <option value="monthly">Monthly</option>
-                                                    <option value="yearly">Yearly</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </li>
                                 </ul>
+                                <div class="kanban-item-text new-item-text">
+                                    <div class="form-group">
+                                        <label class="form-label">Intervals</label>
+                                        <div class="form-control-wrap">
+                                            <select class="form-select" data-search="on" data-ui="sm">
+                                                <option value="default_option">E.g Monthly</option>
+                                                <option value="monthly">Monthly</option>
+                                                <option value="yearly">Yearly</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                                 <ul class="kanban-item-tags">
                                     <li>
                                         <label class="form-label">Priority</label>
                                     </li>
                                     <li>
                                         <div class="asterisk">
-                                            <a id="selectPriority1" href="#">
-                                                <em id="priority1" class="asterisk-off icon ni ni-star"></em>                                                
+                                            <a id="selectPriority1" class="select-priority" href="#">
+                                                <em id="priority1" class="asterisk-off icon ni ni-star"></em>
                                             </a>
-                                            <a id="selectPriority2" href="#">
+                                            <a id="selectPriority2" class="select-priority" href="#">
                                                 <em id="priority2" class="asterisk-off icon ni ni-star"></em>
-                                                <!-- <em id="" class="asterisk-on icon ni ni-star-fill"></em> -->
                                             </a>
-                                            <a id="selectPriority3" href="#">
+                                            <a id="selectPriority3" class="select-priority" href="#">
                                                 <em id="priority3" class="asterisk-off icon ni ni-star"></em>
-                                                <!-- <em id="" class="asterisk-on icon ni ni-star-fill"></em> -->
                                             </a>
                                         </div>
                                     </li>
@@ -228,9 +244,18 @@
                             {% endif %}
                             {% endfor %}
                         </main>
-                        <footer><button class="kanban-add-task btn btn-block"><em
-                                    class="icon ni ni-plus-sm"></em><span>{% if record %}Add another item{% else %}Add
-                                    item{% endif %}</span></button></footer>
+                        <footer>
+                            <button id="new_addItem_1" class="kanban-add-task btn btn-block add-item">
+                                <em class="icon ni ni-plus-sm"></em>
+                                <span>
+                                    {% if record %}
+                                    Add another item
+                                    {% else %}
+                                    Add item
+                                    {% endif %}
+                                </span>
+                            </button>
+                        </footer>
                     </div>
                     <div data-id="_qualified" data-order="2" class="kanban-board"
                         style="width: 320px; margin-left: 0px; margin-right: 0px;">
@@ -530,7 +555,7 @@
                 </ul><!-- .nav-tabs -->
                 <div class="tab-content">
                     <div class="tab-pane active" id="company">
-                        <form method="POST">
+                        <form id="new_company_contact" action="{{url_for('crm.new_company_contact')}}" method="POST">
                             {{form1.hidden_tag()}}
                             <div class="row gy-4">
                                 <div class="col-md-6">
@@ -575,7 +600,8 @@
                         </form>
                     </div><!-- .tab-pane -->
                     <div class="tab-pane" id="individual">
-                        <form method="POST">
+                        <form id="new_individual_contact" action="{{url_for('crm.new_individual_contact')}}"
+                            method="POST">
                             {{form2.hidden_tag()}}
                             <div class="row gy-4">
                                 <div class="col-md-6">
@@ -602,7 +628,8 @@
                                     <div class="form-group">
                                         <label class="form-label">Company</label>
                                         <div class="form-control-wrap">
-                                            <select name="select_company" class="form-select" data-search="on">
+                                            <select id="select_company" name="select_company" class="form-select"
+                                                data-search="on">
                                                 <option value="default_option">Select company</option>
                                                 {% for company in companies %}
                                                 <option value="{{company.id}}">{{company.company_name}}</option>

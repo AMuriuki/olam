@@ -72,7 +72,7 @@ $('.install').on('click', function () {
     backdrop.attr('class', 'modal-backdrop fade')
     backdrop.css('display', 'none')
     route = response['name'].toLowerCase() + '.dashboard'
-    console.log(Flask.url_for(route))
+
     location.href = Flask.url_for(route)
   }).fail(function () {
     $(destElem).text("{{ _('Error: Could not contact server.') }}");
@@ -202,7 +202,7 @@ $('.dv-module').on('click', function () {
     $('.total_price').text(price)
   } else {
     const index = selectedModules.indexOf(moduleId)
-    console.log(index)
+
     selectedModules.splice(index, 1)
 
     $('#check-' + moduleId).prop('checked', false)
@@ -210,7 +210,7 @@ $('.dv-module').on('click', function () {
 
     $('.noApps').text(selectedModules.length)
     $('#' + splitAppTitle[0]).remove()
-    console.log($('#' + splitAppTitle[0]).remove())
+
 
     price = 600 * selectedModules.length
 
@@ -224,8 +224,18 @@ $('.dv-module').on('click', function () {
 
 
 function select_priority(value) {
-  $.post('/selected_priority', {
+  $.post('/crm/selected_priority', {
     selected_priority: value
+  }).done(function (response) {
+
+  }).fail(function () {
+
+  });
+}
+
+function pipeline_stage(value) {
+  $.post('/crm/pipeline_stage', {
+    pipeline_stage: value
   }).done(function (response) {
 
   }).fail(function () {
@@ -335,7 +345,7 @@ async function get_city(country) {
     body: JSON.stringify({ country: country })
   })
   const content = await rawResponse.json();
-  console.log(content['cities']['items'])
+
   $('#select_city').find('option').remove();
   $('#select_city').append($('<option>', { value: "#", text: "Select City" }))
   $.map(content['cities']['items'], function (value, key) {
@@ -343,35 +353,152 @@ async function get_city(country) {
   })
 }
 
-$("#new_addItem").click(function (e) {
+function get_partner_details(value) {
+  $.post('/crm/get_partner_details', {
+    partner_id: value,
+  }).done(function (response) {
+    $('#partner_email').val(response['partner_email'])
+    $('#partner_phone').val(response['partner_phone'])
+
+  }).fail(function () {
+    $(destElem).text("{{ _('Error: Could not contact server.') }}");
+  });  
+  
+}
+
+$("#new_addItem1").click(function (e) {
   e.preventDefault()
-  $('#newItem').show();
+  var stage = 1;
+  $('#newItem1').show();
+  pipeline_stage(stage)
+});
+
+$("#new_addItem_1").click(function (e) {
+  e.preventDefault()
+  var stage = 1;
+  $('#newItem1').show();
+  pipeline_stage(stage)
 });
 
 $('#pipeline_select_org').on('change', function () {
   if (this.value === "add_new") {
     $('#profile-edit').modal('show');
-
+  }
+  else {
+    console.log(this.value);
+    get_partner_details(this.value);    
   }
 });
 
 
-$('#selectPriority1').click(function (e) {
+$('.select-priority').click(function (e) {
   e.preventDefault()
-  var el = $('#priority1')
+  var el, el2, el3;
   var value;
-  if (el.hasClass('asterisk-off')) {
-    el.removeClass('asterisk-off')
-    el.removeClass('ni-star')
-    el.addClass('ni-star-fill');
-    value = 1;
-  } else {
-    el.removeClass('ni-star-fill')
-    el.addClass('asterisk-off')
-    el.addClass('ni-star')
-    value = 0;
-  }
-  console.log(value);
 
+  if (this.id === "selectPriority1") {
+    el = $('#priority1')
+    el2 = $('#priority2')
+    el3 = $('#priority3')
+    if (el.hasClass('asterisk-off')) {
+      el.removeClass('asterisk-off')
+      el.removeClass('ni-star')
+      el.addClass('ni-star-fill');
+      value = 1;
+    } else {
+      el.removeClass('ni-star-fill')
+      el.addClass('asterisk-off')
+      el.addClass('ni-star')
+      el2.removeClass('ni-star-fill')
+      el2.addClass('asterisk-off')
+      el2.addClass('ni-star')
+      el3.removeClass('ni-star-fill')
+      el3.addClass('asterisk-off')
+      el3.addClass('ni-star')
+      value = 0;
+    }
+  } else if (this.id === "selectPriority2") {
+    el = $('#priority1')
+    el2 = $('#priority2')
+    el3 = $('#priority3')
+    if (el2.hasClass('asterisk-off')) {
+      el.removeClass('asterisk-off')
+      el.removeClass('ni-star')
+      el.addClass('ni-star-fill');
+      el2.removeClass('asterisk-off')
+      el2.removeClass('ni-star')
+      el2.addClass('ni-star-fill');
+      value = 2;
+    } else {
+      el2.removeClass('ni-star-fill')
+      el2.addClass('asterisk-off')
+      el2.addClass('ni-star')
+      el3.removeClass('ni-star-fill')
+      el3.addClass('asterisk-off')
+      el3.addClass('ni-star')
+      value = 1;
+    }
+  } else if (this.id === "selectPriority3") {
+    el = $('#priority1')
+    el2 = $('#priority2')
+    el3 = $('#priority3')
+    if (el3.hasClass('asterisk-off')) {
+      el.removeClass('asterisk-off')
+      el.removeClass('ni-star')
+      el.addClass('ni-star-fill');
+      el2.removeClass('asterisk-off')
+      el2.removeClass('ni-star')
+      el2.addClass('ni-star-fill');
+      el3.removeClass('asterisk-off')
+      el3.removeClass('ni-star')
+      el3.addClass('ni-star-fill');
+      value = 3;
+    } else {
+      el3.removeClass('ni-star-fill')
+      el3.addClass('asterisk-off')
+      el3.addClass('ni-star')
+      value = 2;
+    }
+  }
   select_priority(value);
+})
+
+
+$('#new_company_contact').submit(function (e) {
+  e.preventDefault();
+  var form = $(this)
+  var url = form.attr('action')
+
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: form.serialize(),
+    success: function (data) {
+
+      $('#profile-edit').modal('hide');
+      $('#newItem1').show();
+      $('#pipeline_select_org').append($('<option>', { value: data["partner_id"], text: data["partner_name"] }))
+      $('#select_company').append($('<option>', { value: data["partner_id"], text: data["partner_name"] }))
+      $("#pipeline_select_org").val(data["partner_id"]).change();
+    }
+  })
+})
+
+$('#new_individual_contact').submit(function (e) {
+  e.preventDefault();
+  var form = $(this)
+  var url = form.attr('action')
+
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: form.serialize(),
+    success: function (data) {
+
+      $('#profile-edit').modal('hide');
+      $('#newItem1').show();
+      $('#pipeline_select_org').append($('<option>', { value: data["partner_id"], text: data["partner_name"] }))
+      $("#pipeline_select_org").val(data["partner_id"]).change();
+    }
+  })
 })

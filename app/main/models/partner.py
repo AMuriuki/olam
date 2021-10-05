@@ -9,7 +9,7 @@ class Partner(db.Model):
     name = db.Column(db.String(120), index=True)
     title = db.Column(db.String(60), index=True)
     company_name = db.Column(db.String(120), index=True)
-    email = db.Column(db.String(120), index=True, unique=True)
+    email = db.Column(db.String(120), index=True)
     function = db.Column(db.String(60), index=True)
     date_added = db.Column(db.DateTime, default=datetime.now)
     is_individual = db.Column(db.Boolean, default=False)
