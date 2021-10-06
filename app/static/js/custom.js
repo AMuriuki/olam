@@ -361,28 +361,28 @@ function get_partner_details(value) {
     $('#partner_phone').val(response['partner_phone'])
 
   }).fail(function () {
-    $(destElem).text("{{ _('Error: Could not contact server.') }}");
+    alert("Get Partner Details Error");
   });
 
 }
 
 $("#new_addItem1").click(function (e) {
   e.preventDefault()
-  var stage = 1;
+  var stage = 0;
   $('#newItem1').show();
   pipeline_stage(stage)
 });
 
 $("#new_addItem_1").click(function (e) {
   e.preventDefault()
-  var stage = 1;
+  var stage = 0;
   $('#newItem1').show();
   pipeline_stage(stage)
 });
 
 $("#create_opportunity").click(function (e) {
   e.preventDefault()
-  var stage = 1;
+  var stage = 0;
   $('#newItem1').show();
   pipeline_stage(stage)
   $('#modalAlert').removeClass('show')
@@ -404,6 +404,12 @@ $('#pipeline_select_org').on('change', function () {
     get_partner_details(this.value);
   }
 });
+
+$('#recurring_plan').on('change', function () {
+  if (this.value === "new_plan") {
+    $('#modalNewPlan').modal('show');
+  }
+})
 
 
 $('.select-priority').click(function (e) {
@@ -478,6 +484,84 @@ $('.select-priority').click(function (e) {
   select_priority(value);
 })
 
+$('.select-priority-update').click(function (e) {
+  e.preventDefault()
+  var el, el2, el3;
+  var value;
+  var item_id = this.name
+  if (this.id === "_selectPriority1") {
+    el = $('#_priority1')
+    el2 = $('#_priority2')
+    el3 = $('#_priority3')
+    if (el.hasClass('asterisk-off')) {
+      el.removeClass('asterisk-off')
+      el.removeClass('ni-star')
+      el.addClass('ni-star-fill');
+      value = 1;
+      update_item(item_id, value);
+    } else {
+      el.removeClass('ni-star-fill')
+      el.addClass('asterisk-off')
+      el.addClass('ni-star')
+      el2.removeClass('ni-star-fill')
+      el2.addClass('asterisk-off')
+      el2.addClass('ni-star')
+      el3.removeClass('ni-star-fill')
+      el3.addClass('asterisk-off')
+      el3.addClass('ni-star')
+      value = 0;
+      update_item(item_id, value);
+    }
+  } else if (this.id === "_selectPriority2") {
+    el = $('#_priority1')
+    el2 = $('#_priority2')
+    el3 = $('#_priority3')
+    if (el2.hasClass('asterisk-off')) {
+      el.removeClass('asterisk-off')
+      el.removeClass('ni-star')
+      el.addClass('ni-star-fill');
+      el2.removeClass('asterisk-off')
+      el2.removeClass('ni-star')
+      el2.addClass('ni-star-fill');
+      value = 2;
+      update_item(item_id, value);
+    } else {
+      el2.removeClass('ni-star-fill')
+      el2.addClass('asterisk-off')
+      el2.addClass('ni-star')
+      el3.removeClass('ni-star-fill')
+      el3.addClass('asterisk-off')
+      el3.addClass('ni-star')
+      value = 1;
+      update_item(item_id, value);
+    }
+  } else if (this.id === "_selectPriority3") {
+    el = $('#_priority1')
+    el2 = $('#_priority2')
+    el3 = $('#_priority3')
+    if (el3.hasClass('asterisk-off')) {
+      el.removeClass('asterisk-off')
+      el.removeClass('ni-star')
+      el.addClass('ni-star-fill');
+      el2.removeClass('asterisk-off')
+      el2.removeClass('ni-star')
+      el2.addClass('ni-star-fill');
+      el3.removeClass('asterisk-off')
+      el3.removeClass('ni-star')
+      el3.addClass('ni-star-fill');
+      value = 3;
+      update_item(item_id, value);
+    } else {
+      el3.removeClass('ni-star-fill')
+      el3.addClass('asterisk-off')
+      el3.addClass('ni-star')
+      value = 2;
+      update_item(item_id, value);
+    }
+  }
+  // select_priority(value);
+})
+
 
 $('#new_company_contact').submit(function (e) {
   e.preventDefault();
@@ -518,6 +602,25 @@ $('#new_individual_contact').submit(function (e) {
   })
 })
 
+$('#new_recurring_plan').submit(function (e) {
+  e.preventDefault();
+  var form = $(this)
+  var url = form.attr('action')
+
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: form.serialize(),
+    success: function (data) {
+
+      $('#modalNewPlan').modal('hide');
+      $('#newItem1').show();
+      $('#recurring_plan').append($('<option>', { value: data["plan_id"], text: data["plan_name"] }))
+      $("#recurring_plan").val(data["plan_id"]).change();
+    }
+  })
+})
+
 $('.close').click(function (e) {
   e.preventDefault();
   $('#modalAlert').removeClass('show')
@@ -533,26 +636,37 @@ window.onclick = function (event) {
   }
 }
 
-function updateTextView(_obj){
+function updateTextView(_obj) {
   var num = getNumber(_obj.val());
-  if(num==0){
+  if (num == 0) {
     _obj.val('');
-  }else{
+  } else {
     _obj.val(num.toLocaleString());
   }
 }
-function getNumber(_str){
+function getNumber(_str) {
   var arr = _str.split('');
   var out = new Array();
-  for(var cnt=0;cnt<arr.length;cnt++){
-    if(isNaN(arr[cnt])==false){
+  for (var cnt = 0; cnt < arr.length; cnt++) {
+    if (isNaN(arr[cnt]) == false) {
       out.push(arr[cnt]);
     }
   }
   return Number(out.join(''));
 }
-$(document).ready(function(){
-  $('#expected_revenue').on('keyup',function(){
+$(document).ready(function () {
+  $('#expected_revenue').on('keyup', function () {
     updateTextView($(this));
   });
 });
+
+function update_priority(item_id, priority) {
+  $.post('/crm/update_item', {
+    item_id: item_id,
+    priority: priority
+  }).done(function (response) {
+
+  }).fail(function () {
+
+  });
+};

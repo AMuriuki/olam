@@ -23,6 +23,10 @@
         height: 50%;
         max-width: 50%;
     }
+
+    .kanban-item {
+        cursor: pointer !important;
+    }
 </style>
 <div class="nk-content-body">
     <div class="nk-content-wrap">
@@ -76,122 +80,133 @@
                             </div>
                         </header>
                         <main class="kanban-drag">
-                            <div class="kanban-item new-item" id="newItem1">
-                                <div class="kanban-item-text new-item-text">
-                                    <div class="form-group">
-                                        <label class="form-label">Organization/Contact</label>
-                                        <div class="form-control-wrap">
-                                            <select id="pipeline_select_org" name="pipeline_select_org"
-                                                class="form-select" data-search="on" data-ui="sm">
-                                                <option value="default_option">Select or add new</option>
-                                                <option value="add_new">Add New +</option>
-                                                {% for partner in partners %}
-                                                <option value="{{partner.id}}">
-                                                    {% if partner.is_company %}{{partner.company_name}}{% elif
-                                                    partner.is_individual %}{{partner.name}} -
-                                                    {{partner.parent.company_name}}{%
-                                                    endif %}</option>
-                                                {% endfor %}
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="kanban-item-text new-item-text">
-                                    <div class="form-group">
-                                        <label class="form-label" for="default-1-03">Opportunity</label>
-                                        <div class="form-control-wrap">
-                                            <input type="text" class="form-control form-control-sm"
-                                                placeholder="e.g Quote for 120 laptops">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="kanban-item-text new-item-text">
-                                    <div class="form-group">
-                                        <label class="form-label" for="default-1-03">Email</label>
-                                        <div class="form-control-wrap">
-                                            <input id="partner_email" type="email" class="form-control form-control-sm"
-                                                placeholder="Email">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="kanban-item-text new-item-text">
-                                    <div class="form-group">
-                                        <label class="form-label" for="default-1-03">Phone</label>
-                                        <div class="form-control-wrap">
-                                            <input id="partner_phone" type="phone" class="form-control form-control-sm"
-                                                placeholder="Phone">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="kanban-item-text new-item-text">
-                                    <div class="form-group">
-                                        <label class="form-label">Currency</label>
-                                        <div class="form-control-wrap">
-                                            <select class="form-select" data-search="on" data-ui="sm">
-                                                {% for currency in currencies %}
-                                                {% if currency != None %}
-                                                <option value="{{currency}}" {% if currency==user_currency %}selected{%
-                                                    endif %}>{{currency}}</option>
-                                                {% endif %}
-                                                {% endfor %}
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <ul class="kanban-item-tags new-item-text">
-                                    <li>
+                            <form method="POST">
+                                {{form3.hidden_tag()}}
+                                <div class="kanban-item new-item" id="newItem1">
+                                    <div class="kanban-item-text new-item-text">
                                         <div class="form-group">
-                                            <label class="form-label" for="default-1-03">Expected Revenue</label>
+                                            <label class="form-label">Organization/Contact</label>
                                             <div class="form-control-wrap">
-                                                <input id="expected_revenue" type="text" min="1" step="any"
-                                                    class="form-control form-control-sm" placeholder="e.g 1,000,000">
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-group">
-                                            <label class="form-label">Recurring Plan</label>
-                                            <div class="form-control-wrap">
-                                                <select class="form-select" data-search="on" data-ui="sm">
+                                                <select id="pipeline_select_org" name="pipeline_select_org"
+                                                    class="form-select" data-search="on" data-ui="sm">
                                                     <option value="default_option">Select or add new</option>
-                                                    <option value="default_option">Add New +</option>
-                                                    {% for plan in plans %}
-                                                    <option value="{{plan.id}}">{{plan.name}}</option>
+                                                    <option value="add_new">Add New +</option>
+                                                    {% for partner in partners %}
+                                                    <option value="{{partner.id}}">
+                                                        {% if partner.is_company %}{{partner.company_name}}{% elif
+                                                        partner.is_individual %}{{partner.name}} -
+                                                        {{partner.parent.company_name}}{%
+                                                        endif %}</option>
                                                     {% endfor %}
                                                 </select>
                                             </div>
                                         </div>
-                                    </li>
-                                </ul>
-                                <ul class="kanban-item-tags">
-                                    <li>
-                                        <label class="form-label">Priority</label>
-                                    </li>
-                                    <li>
-                                        <div class="asterisk">
-                                            <a id="selectPriority1" class="select-priority" href="#">
-                                                <em id="priority1" class="asterisk-off icon ni ni-star"></em>
-                                            </a>
-                                            <a id="selectPriority2" class="select-priority" href="#">
-                                                <em id="priority2" class="asterisk-off icon ni ni-star"></em>
-                                            </a>
-                                            <a id="selectPriority3" class="select-priority" href="#">
-                                                <em id="priority3" class="asterisk-off icon ni ni-star"></em>
-                                            </a>
+                                    </div>
+                                    <div class="kanban-item-text new-item-text">
+                                        <div class="form-group">
+                                            <label class="form-label" for="default-1-03">Opportunity</label>
+                                            <div class="form-control-wrap">
+                                                <input name="opportunity" type="text"
+                                                    class="form-control form-control-sm"
+                                                    placeholder="e.g Quote for 120 laptops">
+                                            </div>
                                         </div>
-                                    </li>
-                                </ul>
-                                <div class="kanban-item-meta">
-                                    <ul class="kanban-item-meta-list">
+                                    </div>
+                                    <div class="kanban-item-text new-item-text">
+                                        <div class="form-group">
+                                            <label class="form-label" for="default-1-03">Email</label>
+                                            <div class="form-control-wrap">
+                                                <input name="partner_email" id="partner_email" type="email"
+                                                    class="form-control form-control-sm" placeholder="Email">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="kanban-item-text new-item-text">
+                                        <div class="form-group">
+                                            <label class="form-label" for="default-1-03">Phone</label>
+                                            <div class="form-control-wrap">
+                                                <input name="partner_phone" id="partner_phone" type="phone"
+                                                    class="form-control form-control-sm" placeholder="Phone">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="kanban-item-text new-item-text">
+                                        <div class="form-group">
+                                            <label class="form-label">Currency</label>
+                                            <div class="form-control-wrap">
+                                                <select name="_partner_currency" class="form-select" data-search="on"
+                                                    data-ui="sm">
+                                                    {% for currency in currencies %}
+                                                    {% if currency != None %}
+                                                    <option value="{{currency}}" {% if currency==user_currency
+                                                        %}selected{% endif %}>{{currency}}</option>
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="kanban-item-tags new-item-text">
                                         <li>
-                                            <a href="#" class="btn btn-primary">Add</a>
+                                            <div class="form-group">
+                                                <label class="form-label" for="default-1-03">Expected Revenue</label>
+                                                <div class="form-control-wrap">
+                                                    <input name="expected_revenue" id="expected_revenue" type="text"
+                                                        min="1" step="any" class="form-control form-control-sm"
+                                                        placeholder="e.g 1,000,000">
+                                                </div>
+                                            </div>
                                         </li>
                                         <li>
-                                            <a id="discard_item1" href="#" class="link link-light">Discard</a>
+                                            <div class="form-group">
+                                                <label class="form-label">Recurring Plan</label>
+                                                <div class="form-control-wrap">
+                                                    <select name="recurring_plan" id="recurring_plan"
+                                                        class="form-select" data-search="on" data-ui="sm">
+                                                        <option value="default_option">Select or add new</option>
+                                                        <option value="new_plan">Add New +</option>
+                                                        <option value="n/a">Not Applicable</option>
+                                                        {% for plan in plans %}
+                                                        <option value="{{plan.id}}">{{plan.name}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </li>
                                     </ul>
+                                    <ul class="kanban-item-tags">
+                                        <li>
+                                            <label class="form-label">Priority</label>
+                                        </li>
+                                        <li>
+                                            <div class="asterisk">
+                                                <a data-toggle="tooltip" data-placement="top" title="Medium"
+                                                    id="selectPriority1" class="select-priority" href="#">
+                                                    <em id="priority1" class="asterisk-off icon ni ni-star"></em>
+                                                </a>
+                                                <a data-toggle="tooltip" data-placement="top" title="High"
+                                                    id="selectPriority2" class="select-priority" href="#">
+                                                    <em id="priority2" class="asterisk-off icon ni ni-star"></em>
+                                                </a>
+                                                <a data-toggle="tooltip" data-placement="top" title="Very High"
+                                                    id="selectPriority3" class="select-priority" href="#">
+                                                    <em id="priority3" class="asterisk-off icon ni ni-star"></em>
+                                                </a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="kanban-item-meta">
+                                        <ul class="kanban-item-meta-list">
+                                            <li>
+                                                {{form3.submit1(class="btn btn-primary")}}
+                                            </li>
+                                            <li>
+                                                <a id="discard_item1" href="#" class="link link-light">Discard</a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                             {% for record in pipeline %}
                             {% if record.stage == '0' %}
                             <div class="kanban-item">
@@ -215,24 +230,57 @@
                                     </div>
                                 </div>
                                 <div class="kanban-item-text">
-                                    <p>{{record.partner_currency}}&nbsp;{{record.expected_revenue|numberFormat}}</p>
+                                    <p>{{record.partner_currency}}&nbsp;{{record.expected_revenue}}</p>
                                 </div>
                                 <div class="kanban-item-text">
                                     <p>{{record.partner_name}}</p>
                                 </div>
-                                <div class="asterisk">
-                                    <a href="#">
-                                        <em id="" class="asterisk-off icon ni ni-star"></em>
-                                        <em id="" class="asterisk-on icon ni ni-star-fill"></em>
+                                <div class="kanban-item-text">
+                                    {% if record.priority == '0' %}
+                                    <a data-toggle="tooltip" data-placement="top" title="Medium" id="_selectPriority1"
+                                        name="{{record.id}}" class="select-priority-update">
+                                        <em id="_priority1" class="asterisk-off icon ni ni-star"></em>
                                     </a>
-                                    <a href="#">
-                                        <em id="" class="asterisk-off icon ni ni-star"></em>
-                                        <em id="" class="asterisk-on icon ni ni-star-fill"></em>
+                                    <a id="_selectPriority2" class="select-priority-update">
+                                        <em id="_priority2" class="asterisk-off icon ni ni-star"></em>
                                     </a>
-                                    <a href="#">
-                                        <em id="" class="asterisk-off icon ni ni-star"></em>
-                                        <em id="" class="asterisk-on icon ni ni-star-fill"></em>
+                                    <a id="_selectPriority3" class="select-priority-update">
+                                        <em id="_priority3" class="asterisk-off icon ni ni-star"></em>
                                     </a>
+                                    {% elif record.priority == '1' %}
+                                    <a id="_selectPriority1" class="select-priority-update" data-toggle="tooltip"
+                                        data-placement="top" title="Medium"><em id="_priority1"
+                                            class="icon ni ni-star-fill"></em></a>
+                                    <a id="_selectPriority2" class="select-priority-update" data-toggle="tooltip"
+                                        data-placement="top" title="High">
+                                        <em id="_priority2" class="asterisk-off icon ni ni-star"></em>
+                                    </a>
+                                    <a id="_selectPriority3" class="select-priority-update" data-toggle="tooltip"
+                                        data-placement="top" title="Very High">
+                                        <em id="_priority3" class="asterisk-off icon ni ni-star"></em>
+                                    </a>
+                                    {% elif record.priority == '2' %}
+                                    <a id="_selectPriority1" data-toggle="tooltip" data-placement="top" title="Medium">
+                                        <em id="_priority1" class="icon ni ni-star-fill"></em>
+                                    </a>
+                                    <a id="_selectPriority2" data-toggle="tooltip" data-placement="top" title="High">
+                                        <em id="_priority2" class="icon ni ni-star-fill"></em>
+                                    </a>
+                                    <a id="_selectPriority3" data-toggle="tooltip" data-placement="top" title="Very High"
+                                        class="select-priority-update">
+                                        <em id="_priority3" class="asterisk-off icon ni ni-star"></em>
+                                    </a>
+                                    {% elif record.priority == '3' %}
+                                    <span data-toggle="tooltip" data-placement="top" title="Medium">
+                                        <em id="" class="icon ni ni-star-fill"></em>
+                                    </span>
+                                    <span data-toggle="tooltip" data-placement="top" title="High">
+                                        <em id="" class="icon ni ni-star-fill"></em>
+                                    </span>
+                                    <span data-toggle="tooltip" data-placement="top" title="Very High">
+                                        <em id="" class="icon ni ni-star-fill"></em>
+                                    </span>
+                                    {% endif %}
                                 </div>
                                 <ul class="kanban-item-tags">
                                     <li><span class="badge badge-primary">Fitness Next</span></li>
@@ -316,7 +364,7 @@
                                     </div>
                                 </div>
                                 <div class="kanban-item-text">
-                                    <p>{{record.partner_currency}}&nbsp;{{record.expected_revenue|numberFormat}}</p>
+                                    <p>{{record.partner_currency}}&nbsp;{{record.expected_revenue}}</p>
                                 </div>
                                 <div class="kanban-item-text">
                                     <p>{{record.partner_name}}</p>
@@ -408,7 +456,7 @@
                                     </div>
                                 </div>
                                 <div class="kanban-item-text">
-                                    <p>{{record.partner_currency}}&nbsp;{{record.expected_revenue|numberFormat}}</p>
+                                    <p>{{record.partner_currency}}&nbsp;{{record.expected_revenue}}</p>
                                 </div>
                                 <div class="kanban-item-text">
                                     <p>{{record.partner_name}}</p>
@@ -500,7 +548,7 @@
                                     </div>
                                 </div>
                                 <div class="kanban-item-text">
-                                    <p>{{record.partner_currency}}&nbsp;{{record.expected_revenue|numberFormat}}</p>
+                                    <p>{{record.partner_currency}}&nbsp;{{record.expected_revenue}}</p>
                                 </div>
                                 <div class="kanban-item-text">
                                     <p>{{record.partner_name}}</p>
@@ -691,6 +739,29 @@
             </div><!-- .modal-body -->
         </div><!-- .modal-content -->
     </div><!-- .modal-dialog -->
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="modalNewPlan">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
+            <div class="modal-body modal-body-md">
+                <h4 class="title">New Recurring Plan</h4>
+                <div class="tab-content">
+                    <div class="form-control-wrap">
+                        <form id="new_recurring_plan" action="{{url_for('crm.new_recurring_plan')}}" method="POST">
+                            {{form4.hidden_tag()}}
+                            <div class="input-group">
+                                {{form4.name(class="form-control", placeholder="New plan")}}
+                                <div class="input-group-append">
+                                    {{form4.submit(class="btn btn-outline-primary btn-dim")}}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% if not pipeline %}
 <div class="modal fade show" tabindex="-1" id="modalAlert" style="display: block;">

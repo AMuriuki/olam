@@ -26,17 +26,18 @@ class Lead(db.Model):
     name = db.Column(db.String(120), index=True, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
+    plan_id = db.Column(db.Integer, db.ForeignKey('recurring_plan.id'))
     referred_by = db.Column(db.String(120))
     description = db.Column(db.Text())
     active = db.Column(db.Boolean, default=True)
     priority = db.Column(db.String(15), index=True)
     partner_id = db.Column(db.Integer, db.ForeignKey('partner.id'))
     stage = db.Column(db.String(15), index=True)
-    expected_revenue = db.Column(db.Numeric(10, 2))
+    expected_revenue = db.Column(db.String(60))
     date_open = db.Column(db.DateTime, default=datetime.now)
-    partner_name = db.Column(db.String(120), index=True)
     partner_email = db.Column(db.String(120), index=True)
-    partner_currency = db.Column(db.String(60), index=True)
+    partner_phone = db.Column(db.String(60), index=True)
+    partner_currency = db.Column(db.String(10), index=True)
 
     @staticmethod
     def insert_leads():

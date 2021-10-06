@@ -11,4 +11,9 @@ class BoardItemForm(FlaskForm):
     opportunity = StringField(_l('Opportunity'))
     email = StringField(_l('Email Address'))
     website = StringField(_l('Website'))
-    submit1 = SubmitField(_l('Save'))
+    submit1 = SubmitField(_l('Add'))
+
+
+class NewRecurringPlanForm(FlaskForm):
+    name = StringField(_l('New Plan'))
+    submit = SubmitField(_l('Save'))
