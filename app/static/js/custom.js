@@ -400,7 +400,7 @@ $('#pipeline_select_org').on('change', function () {
     $('#profile-edit').modal('show');
   }
   else {
-    console.log(this.value);
+    
     get_partner_details(this.value);
   }
 });
@@ -498,7 +498,8 @@ $('.select-priority-update').click(function (e) {
       el.removeClass('ni-star')
       el.addClass('ni-star-fill');
       value = 1;
-      update_item(item_id, value);
+      
+      update_priority(item_id, value);
     } else {
       el.removeClass('ni-star-fill')
       el.addClass('asterisk-off')
@@ -510,9 +511,11 @@ $('.select-priority-update').click(function (e) {
       el3.addClass('asterisk-off')
       el3.addClass('ni-star')
       value = 0;
-      update_item(item_id, value);
+      
+      update_priority(item_id, value);
     }
   } else if (this.id === "_selectPriority2") {
+    
     el = $('#_priority1')
     el2 = $('#_priority2')
     el3 = $('#_priority3')
@@ -524,7 +527,8 @@ $('.select-priority-update').click(function (e) {
       el2.removeClass('ni-star')
       el2.addClass('ni-star-fill');
       value = 2;
-      update_item(item_id, value);
+      
+      update_priority(item_id, value);
     } else {
       el2.removeClass('ni-star-fill')
       el2.addClass('asterisk-off')
@@ -533,7 +537,8 @@ $('.select-priority-update').click(function (e) {
       el3.addClass('asterisk-off')
       el3.addClass('ni-star')
       value = 1;
-      update_item(item_id, value);
+      
+      update_priority(item_id, value);
     }
   } else if (this.id === "_selectPriority3") {
     el = $('#_priority1')
@@ -550,16 +555,17 @@ $('.select-priority-update').click(function (e) {
       el3.removeClass('ni-star')
       el3.addClass('ni-star-fill');
       value = 3;
-      update_item(item_id, value);
+      
+      update_priority(item_id, value);
     } else {
       el3.removeClass('ni-star-fill')
       el3.addClass('asterisk-off')
       el3.addClass('ni-star')
       value = 2;
-      update_item(item_id, value);
+      
+      update_priority(item_id, value);
     }
   }
-  // select_priority(value);
 })
 
 

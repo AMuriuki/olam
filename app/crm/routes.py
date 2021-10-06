@@ -16,6 +16,15 @@ from app.main.models.country import Country
 
 
 @login_required
+@bp.route('/update_item', methods=['GET', 'POST'])
+def update_item():
+    opportunity = Lead.query.filter_by(id=request.form['item_id']).first()
+    opportunity.priority = request.form['priority']
+    db.session.commit()
+    return jsonify({"response": "success"})
+
+
+@login_required
 @bp.route('/get_partner_details', methods=['GET', 'POST'])
 def get_partner_details():
     partner = Partner.query.filter_by(id=request.form['partner_id']).first()

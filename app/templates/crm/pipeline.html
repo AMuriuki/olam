@@ -241,45 +241,50 @@
                                         name="{{record.id}}" class="select-priority-update">
                                         <em id="_priority1" class="asterisk-off icon ni ni-star"></em>
                                     </a>
-                                    <a id="_selectPriority2" class="select-priority-update">
+                                    <a id="_selectPriority2" class="select-priority-update" name="{{record.id}}">
                                         <em id="_priority2" class="asterisk-off icon ni ni-star"></em>
                                     </a>
-                                    <a id="_selectPriority3" class="select-priority-update">
+                                    <a id="_selectPriority3" class="select-priority-update" name="{{record.id}}">
                                         <em id="_priority3" class="asterisk-off icon ni ni-star"></em>
                                     </a>
                                     {% elif record.priority == '1' %}
                                     <a id="_selectPriority1" class="select-priority-update" data-toggle="tooltip"
-                                        data-placement="top" title="Medium"><em id="_priority1"
+                                        data-placement="top" title="Medium" name="{{record.id}}"><em id="_priority1"
                                             class="icon ni ni-star-fill"></em></a>
                                     <a id="_selectPriority2" class="select-priority-update" data-toggle="tooltip"
-                                        data-placement="top" title="High">
+                                        data-placement="top" title="High" name="{{record.id}}">
                                         <em id="_priority2" class="asterisk-off icon ni ni-star"></em>
                                     </a>
                                     <a id="_selectPriority3" class="select-priority-update" data-toggle="tooltip"
-                                        data-placement="top" title="Very High">
+                                        data-placement="top" title="Very High" name="{{record.id}}">
                                         <em id="_priority3" class="asterisk-off icon ni ni-star"></em>
                                     </a>
                                     {% elif record.priority == '2' %}
-                                    <a id="_selectPriority1" data-toggle="tooltip" data-placement="top" title="Medium">
+                                    <a id="_selectPriority1" name="{{record.id}}" data-toggle="tooltip"
+                                        data-placement="top" title="Medium" class="select-priority-update">
                                         <em id="_priority1" class="icon ni ni-star-fill"></em>
                                     </a>
-                                    <a id="_selectPriority2" data-toggle="tooltip" data-placement="top" title="High">
+                                    <a id="_selectPriority2" name="{{record.id}}" data-toggle="tooltip"
+                                        data-placement="top" title="High" class="select-priority-update">
                                         <em id="_priority2" class="icon ni ni-star-fill"></em>
                                     </a>
-                                    <a id="_selectPriority3" data-toggle="tooltip" data-placement="top" title="Very High"
-                                        class="select-priority-update">
+                                    <a id="_selectPriority3" name="{{record.id}}" data-toggle="tooltip"
+                                        data-placement="top" title="Very High" class="select-priority-update">
                                         <em id="_priority3" class="asterisk-off icon ni ni-star"></em>
                                     </a>
                                     {% elif record.priority == '3' %}
-                                    <span data-toggle="tooltip" data-placement="top" title="Medium">
-                                        <em id="" class="icon ni ni-star-fill"></em>
-                                    </span>
-                                    <span data-toggle="tooltip" data-placement="top" title="High">
-                                        <em id="" class="icon ni ni-star-fill"></em>
-                                    </span>
-                                    <span data-toggle="tooltip" data-placement="top" title="Very High">
-                                        <em id="" class="icon ni ni-star-fill"></em>
-                                    </span>
+                                    <a id="_selectPriority1" name="{{record.id}}" data-toggle="tooltip"
+                                        data-placement="top" title="Medium" class="select-priority-update">
+                                        <em id="_priority1" class="icon ni ni-star-fill"></em>
+                                    </a>
+                                    <a id="_selectPriority2" name="{{record.id}}" data-toggle="tooltip"
+                                        data-placement="top" title="High" class="select-priority-update">
+                                        <em id="_priority2" class="icon ni ni-star-fill"></em>
+                                    </a>
+                                    <a id="_selectPriority3" name="{{record.id}}" data-toggle="tooltip"
+                                        data-placement="top" title="Very High" class="select-priority-update">
+                                        <em id="_priority3" class="icon ni ni-star-fill"></em>
+                                    </a>
                                     {% endif %}
                                 </div>
                                 <ul class="kanban-item-tags">
