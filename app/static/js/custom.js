@@ -362,8 +362,8 @@ function get_partner_details(value) {
 
   }).fail(function () {
     $(destElem).text("{{ _('Error: Could not contact server.') }}");
-  });  
-  
+  });
+
 }
 
 $("#new_addItem1").click(function (e) {
@@ -380,13 +380,28 @@ $("#new_addItem_1").click(function (e) {
   pipeline_stage(stage)
 });
 
+$("#create_opportunity").click(function (e) {
+  e.preventDefault()
+  var stage = 1;
+  $('#newItem1').show();
+  pipeline_stage(stage)
+  $('#modalAlert').removeClass('show')
+  $('#modalAlert').hide();
+  $('.modal-backdrop').hide();
+});
+
+$('#discard_item1').click(function (e) {
+  e.preventDefault();
+  $('#newItem1').hide();
+})
+
 $('#pipeline_select_org').on('change', function () {
   if (this.value === "add_new") {
     $('#profile-edit').modal('show');
   }
   else {
     console.log(this.value);
-    get_partner_details(this.value);    
+    get_partner_details(this.value);
   }
 });
 
@@ -502,3 +517,42 @@ $('#new_individual_contact').submit(function (e) {
     }
   })
 })
+
+$('.close').click(function (e) {
+  e.preventDefault();
+  $('#modalAlert').removeClass('show')
+  $('#modalAlert').hide();
+  $('.modal-backdrop').hide();
+})
+
+window.onclick = function (event) {
+  if ($('#modalAlert').hasClass('show')) {
+    $('#modalAlert').removeClass('show')
+    $('#modalAlert').hide();
+    $('.modal-backdrop').hide();
+  }
+}
+
+function updateTextView(_obj){
+  var num = getNumber(_obj.val());
+  if(num==0){
+    _obj.val('');
+  }else{
+    _obj.val(num.toLocaleString());
+  }
+}
+function getNumber(_str){
+  var arr = _str.split('');
+  var out = new Array();
+  for(var cnt=0;cnt<arr.length;cnt++){
+    if(isNaN(arr[cnt])==false){
+      out.push(arr[cnt]);
+    }
+  }
+  return Number(out.join(''));
+}
+$(document).ready(function(){
+  $('#expected_revenue').on('keyup',function(){
+    updateTextView($(this));
+  });
+});

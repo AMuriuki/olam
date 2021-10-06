@@ -2,6 +2,7 @@ from flask_login import login_required, current_user
 from flask import json, render_template, session, jsonify, request
 from app.crm import bp
 from app.crm.models.crm_lead import Lead
+from app.crm.models.crm_recurring_plan import RecurringPlan
 from app.main.models.module import Module
 from flask_babel import _, get_locale
 from app import db
@@ -65,8 +66,13 @@ def pipeline():
     form1 = BasicCompanyInfoForm()
     form2 = BasicIndividualInfoForm()
     form3 = BoardItemForm()
-
+    user = User.query.filter_by(id=current_user.get_id()).first()
+    country_code = user.country_code
+    user_country = Country.query.filter_by(code=country_code).first()
+    user_currency = user_country.currency_alphabetic_code
+    print(country_code, user_country, user_currency)
     pipeline = Lead.query.all()
+    plans = RecurringPlan.query.all()
     titles = TITLES
     partners = db.session.query(Partner).filter(or_(
         Partner.is_company == True, Partner.is_individual == True)).all()
@@ -75,40 +81,34 @@ def pipeline():
         Country.currency_alphabetic_code.distinct().label("currency_alphabetic_code")).order_by(
         'currency_alphabetic_code')
     currencies = [row.currency_alphabetic_code for row in query.all()]
-    for currency in currencies:
-        print(currency)
     if form3.validate_on_submit():
         opportunity = Lead(name=form3.opportunity.data,
                            user_id=current_user.get_id(), partner_id=request.form['pipeline_select_org'], priority=session['selected_priority'], stage=session['pipeline_stage'])
         db.session.add(opportunity)
         db.session.commit()
 
-    return render_template('crm/pipeline.html', title=_('CRM Pipeline | Olam ERP'), pipeline=pipeline, partners=partners, form1=form1, form2=form2, companies=companies, titles=titles, currencies=currencies)
+    return render_template('crm/pipeline.html', title=_('CRM Pipeline | Olam ERP'), pipeline=pipeline, partners=partners, form1=form1, form2=form2, companies=companies, titles=titles, currencies=currencies, user_currency=user_currency, plans=plans)
 
 
 @bp.route('/pipeline', methods=['GET', 'POST'])
 @login_required
 def empty():
-
     return render_template('crm/pipeline.html', title=_('CRM Pipeline | Olam ERP'))
 
 
 @bp.route('/sales', methods=['GET', 'POST'])
 @login_required
 def sales():
-
     pass
 
 
 @bp.route('/reporting', methods=['GET', 'POST'])
 @login_required
 def reporting():
-
     pass
 
 
 @bp.route('/configuration', methods=['GET', 'POST'])
 @login_required
 def configuration():
-
     pass

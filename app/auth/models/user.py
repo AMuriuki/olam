@@ -40,6 +40,7 @@ class User(UserMixin, PaginatedAPIMixin, db.Model):
     registered_on = db.Column(db.DateTime, default=datetime.now)
     password_hash = db.Column(db.String(128))
     leads = db.relationship('Lead', backref='owner', lazy='dynamic')
+    country_code = db.Column(db.String(10), index=True)
 
     def __repr__(self):
         return '<User {}>'.format(self.id)

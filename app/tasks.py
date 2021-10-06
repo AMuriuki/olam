@@ -1,9 +1,10 @@
+from app.crm.models.crm_recurring_plan import RecurringPlan
 from app.main.models.country import City, Country
 from flask import current_app
 from app import db
 from app.models import Task
 from app.main.utils import get_calling_codes, get_countries, get_countries_cities
-
+from app.crm.utils import get_recurring_plans
 from rq import get_current_job
 from app.models import Task
 from app import create_app, db
@@ -101,6 +102,18 @@ def seed_database():
                 country.currency_alphabetic_code = calling_code['ISO4217_Currency_Alphabetic_Code']
                 country.currency_numeric_code = calling_code['ISO4217_Currency_Numeric_Code']
                 country.languages = calling_code['Languages']
+                db.session.commit()
+
+        # Recurring Plans
+        plans = get_recurring_plans()
+        for plan in plans:
+            exists = RecurringPlan.query.filter_by(name=plan['name']).first()
+            if exists:
+                pass
+            else:
+                recurring_plan = RecurringPlan(
+                    id=plan['id'], name=plan['name'])
+                db.session.add(recurring_plan)
                 db.session.commit()
 
     except Exception as e:

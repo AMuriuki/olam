@@ -18,6 +18,8 @@ import json
 from app.auth.models.user import User
 from werkzeug.security import generate_password_hash, check_password_hash
 
+from app.tasks import ManageTasks
+
 
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
@@ -29,16 +31,16 @@ def login():
             email=form.email.data).first()
         user = User.query.filter_by(partner_id=partner.id).first()
         if user is None or not user.check_password(form.password.data):
-            
+
             flash(_('Invalid email or password'))
             return redirect(url_for('auth.login'))
-        
+
         login_user(user)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('main.index')
         return redirect(next_page)
-    
+
     return render_template('auth/login.html', title=_('Sign In | Olam ERP'), form=form)
 
 
@@ -82,7 +84,8 @@ def set_password():
                           email=request.args.get('email'), phone_no=request.args.get('phone_no'), is_active=True, company_id=company.id, is_tenant=True)
         db.session.add(partner)
         db.session.commit()
-        user = User(partner_id=partner.id, company_id=company.id, is_active=True)
+        user = User(partner_id=partner.id, company_id=company.id,
+                    is_active=True, country_code=request.args.get('country_code'))
         db.session.add(user)
         db.session.commit()
     else:
@@ -108,8 +111,7 @@ def set_password():
             response_dict = json.loads(response.content)
 
             for i in range(len(response_dict['items'])):
-                module = Module(technical_name=response_dict['items'][i]['technical_name'],
-                                official_name=response_dict['items'][i]['official_name'], bp_name=response_dict['items'][i]['bp_name'], summary=response_dict['items'][i]['summary'])
+                module = Module(technical_name=response_dict['items'][i]['technical_name'], official_name=response_dict['items'][i]['official_name'], bp_name=response_dict['items'][i]['bp_name'], summary=response_dict['items'][i]['summary'])
                 db.session.add(module)
                 db.session.commit()
             return redirect(url_for('main.invite_colleagues'))
