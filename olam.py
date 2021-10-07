@@ -33,5 +33,5 @@ def numberFormat(value):
 
 @app.template_filter()
 def get_pipeline_count(value):
-    count = Lead.query.filter_by(stage=value).count()
+    count = Lead.query.filter_by(stage_id=value).count()
     return count

@@ -1,3 +1,211 @@
+// edit CRM board
+var stage_id;
+var stage_name;
+var item_id;
+$('.edit-stage').click(function (e) {
+  e.preventDefault();
+  stage_id = this.id
+  $('#modalEditStage').modal('show');
+})
+
+// handle edit stage submit event
+$('#submit_stage_edits').click(function (e) {
+  e.preventDefault();
+  stage_name = $('#stage_name').val();
+  $('#stage_title_' + stage_id).html(stage_name)
+  edit_stage();
+})
+
+// post board changes to server
+function edit_stage() {
+  $.post('/crm/edit_stage', {
+    stage_id: stage_id,
+    stage_name: stage_name
+  }).done(function (response) {
+    $('#modalEditStage').modal('hide');
+  }).fail(function () {
+
+  });
+}
+
+// add new board item
+$('.add-item').click(function (e) {
+  e.preventDefault();
+  stage_id = this.id
+  $('#new_item_' + stage_id).show();
+  pipeline_stage(stage_id)
+})
+
+// add new contact
+$('.select_contact').on('change', function () {
+  stage_id = getId(this.id)
+  if (this.value === "add_new") {
+    $('#profile-edit').modal('show');
+  }
+  else {
+    get_partner_details(this.value);
+  }
+});
+
+// get partner details
+function get_partner_details(value) {
+  $.post('/crm/get_partner_details', {
+    partner_id: value,
+  }).done(function (response) {
+    $('#partner_email_' + stage_id).val(response['partner_email'])
+    $('#partner_phone_' + stage_id).val(response['partner_phone'])
+
+  }).fail(function () {
+    alert("Get Partner Details Error");
+  });
+}
+
+// $("#new_addItem1").click(function (e) {
+//   e.preventDefault()
+//   var stage = 0;
+//   $('#newItem1').show();
+
+// });
+
+// $("#new_addItem_1").click(function (e) {
+//   e.preventDefault()
+//   var stage = 0;
+//   $('#newItem1').show();
+//   pipeline_stage(stage)
+// });
+
+$(".first-opportunity").click(function (e) {
+  stage_id = getId(this.id);
+  e.preventDefault()
+
+  $('#new_item_' + stage_id).show();
+  pipeline_stage(stage_id)
+  $('#modalAlert').removeClass('show')
+  $('#modalAlert').hide();
+  $('.modal-backdrop').hide();
+});
+
+// add new company contact
+$('#new_company_contact').submit(function (e) {
+  e.preventDefault();
+  var form = $(this)
+  var url = form.attr('action')
+
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: form.serialize(),
+    success: function (data) {
+
+      $('#profile-edit').modal('hide');
+      $('#newItem1').show();
+      $('#pipeline_select_org-' + stage_id).append($('<option>', { value: data["partner_id"], text: data["partner_name"] }))
+      $('#select_company').append($('<option>', { value: data["partner_id"], text: data["partner_name"] }))
+      $("#pipeline_select_org-" + stage_id).val(data["partner_id"]).change();
+    }
+  })
+})
+
+// add new individual contact
+$('#new_individual_contact').submit(function (e) {
+  e.preventDefault();
+  var form = $(this)
+  var url = form.attr('action')
+
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: form.serialize(),
+    success: function (data) {
+
+      $('#profile-edit').modal('hide');
+      $('#newItem1').show();
+      $('#pipeline_select_org-' + stage_id).append($('<option>', { value: data["partner_id"], text: data["partner_name"] }))
+      $("#pipeline_select_org-" + stage_id).val(data["partner_id"]).change();
+    }
+  })
+})
+
+// update item priority
+$('.select-priority-update').click(function (e) {
+  e.preventDefault()
+  var el, el2, el3;
+  var value;
+  item_id = this.name
+  if (this.id === "_selectPriority1-" + item_id) {
+    el = $('#_priority1')
+    el2 = $('#_priority2')
+    el3 = $('#_priority3')
+    if (el.hasClass('asterisk-off')) {
+      el.removeClass('asterisk-off')
+      el.removeClass('ni-star')
+      el.addClass('ni-star-fill');
+      value = 1;
+      update_priority(item_id, value);
+    } else {
+      el.removeClass('ni-star-fill')
+      el.addClass('asterisk-off')
+      el.addClass('ni-star')
+      el2.removeClass('ni-star-fill')
+      el2.addClass('asterisk-off')
+      el2.addClass('ni-star')
+      el3.removeClass('ni-star-fill')
+      el3.addClass('asterisk-off')
+      el3.addClass('ni-star')
+      value = 0;
+      update_priority(item_id, value);
+    }
+  } else if (this.id === "_selectPriority2-" + item_id) {
+
+    el = $('#_priority1')
+    el2 = $('#_priority2')
+    el3 = $('#_priority3')
+    if (el2.hasClass('asterisk-off')) {
+      el.removeClass('asterisk-off')
+      el.removeClass('ni-star')
+      el.addClass('ni-star-fill');
+      el2.removeClass('asterisk-off')
+      el2.removeClass('ni-star')
+      el2.addClass('ni-star-fill');
+      value = 2;
+      update_priority(item_id, value);
+    } else {
+      el2.removeClass('ni-star-fill')
+      el2.addClass('asterisk-off')
+      el2.addClass('ni-star')
+      el3.removeClass('ni-star-fill')
+      el3.addClass('asterisk-off')
+      el3.addClass('ni-star')
+      value = 1;
+      update_priority(item_id, value);
+    }
+  } else if (this.id === "_selectPriority3-" + item_id) {
+    el = $('#_priority1')
+    el2 = $('#_priority2')
+    el3 = $('#_priority3')
+    if (el3.hasClass('asterisk-off')) {
+      el.removeClass('asterisk-off')
+      el.removeClass('ni-star')
+      el.addClass('ni-star-fill');
+      el2.removeClass('asterisk-off')
+      el2.removeClass('ni-star')
+      el2.addClass('ni-star-fill');
+      el3.removeClass('asterisk-off')
+      el3.removeClass('ni-star')
+      el3.addClass('ni-star-fill');
+      value = 3;
+      update_priority(item_id, value);
+    } else {
+      el3.removeClass('ni-star-fill')
+      el3.addClass('asterisk-off')
+      el3.addClass('ni-star')
+      value = 2;
+      update_priority(item_id, value);
+    }
+  }
+})
+
+// utilities
 function getCookie(c_name) {
   if (document.cookie.length > 0) {
     c_start = document.cookie.indexOf(c_name + "=");
@@ -9,6 +217,10 @@ function getCookie(c_name) {
     }
   }
   return "";
+}
+
+function getId(str) {
+  return str.split('-')[1];
 }
 
 $(document).ready(function () {
@@ -353,57 +565,16 @@ async function get_city(country) {
   })
 }
 
-function get_partner_details(value) {
-  $.post('/crm/get_partner_details', {
-    partner_id: value,
-  }).done(function (response) {
-    $('#partner_email').val(response['partner_email'])
-    $('#partner_phone').val(response['partner_phone'])
 
-  }).fail(function () {
-    alert("Get Partner Details Error");
-  });
 
-}
 
-$("#new_addItem1").click(function (e) {
-  e.preventDefault()
-  var stage = 0;
-  $('#newItem1').show();
-  pipeline_stage(stage)
-});
-
-$("#new_addItem_1").click(function (e) {
-  e.preventDefault()
-  var stage = 0;
-  $('#newItem1').show();
-  pipeline_stage(stage)
-});
-
-$("#create_opportunity").click(function (e) {
-  e.preventDefault()
-  var stage = 0;
-  $('#newItem1').show();
-  pipeline_stage(stage)
-  $('#modalAlert').removeClass('show')
-  $('#modalAlert').hide();
-  $('.modal-backdrop').hide();
-});
 
 $('#discard_item1').click(function (e) {
   e.preventDefault();
   $('#newItem1').hide();
 })
 
-$('#pipeline_select_org').on('change', function () {
-  if (this.value === "add_new") {
-    $('#profile-edit').modal('show');
-  }
-  else {
-    
-    get_partner_details(this.value);
-  }
-});
+
 
 $('#recurring_plan').on('change', function () {
   if (this.value === "new_plan") {
@@ -482,130 +653,6 @@ $('.select-priority').click(function (e) {
     }
   }
   select_priority(value);
-})
-
-$('.select-priority-update').click(function (e) {
-  e.preventDefault()
-  var el, el2, el3;
-  var value;
-  var item_id = this.name
-  if (this.id === "_selectPriority1") {
-    el = $('#_priority1')
-    el2 = $('#_priority2')
-    el3 = $('#_priority3')
-    if (el.hasClass('asterisk-off')) {
-      el.removeClass('asterisk-off')
-      el.removeClass('ni-star')
-      el.addClass('ni-star-fill');
-      value = 1;
-      
-      update_priority(item_id, value);
-    } else {
-      el.removeClass('ni-star-fill')
-      el.addClass('asterisk-off')
-      el.addClass('ni-star')
-      el2.removeClass('ni-star-fill')
-      el2.addClass('asterisk-off')
-      el2.addClass('ni-star')
-      el3.removeClass('ni-star-fill')
-      el3.addClass('asterisk-off')
-      el3.addClass('ni-star')
-      value = 0;
-      
-      update_priority(item_id, value);
-    }
-  } else if (this.id === "_selectPriority2") {
-    
-    el = $('#_priority1')
-    el2 = $('#_priority2')
-    el3 = $('#_priority3')
-    if (el2.hasClass('asterisk-off')) {
-      el.removeClass('asterisk-off')
-      el.removeClass('ni-star')
-      el.addClass('ni-star-fill');
-      el2.removeClass('asterisk-off')
-      el2.removeClass('ni-star')
-      el2.addClass('ni-star-fill');
-      value = 2;
-      
-      update_priority(item_id, value);
-    } else {
-      el2.removeClass('ni-star-fill')
-      el2.addClass('asterisk-off')
-      el2.addClass('ni-star')
-      el3.removeClass('ni-star-fill')
-      el3.addClass('asterisk-off')
-      el3.addClass('ni-star')
-      value = 1;
-      
-      update_priority(item_id, value);
-    }
-  } else if (this.id === "_selectPriority3") {
-    el = $('#_priority1')
-    el2 = $('#_priority2')
-    el3 = $('#_priority3')
-    if (el3.hasClass('asterisk-off')) {
-      el.removeClass('asterisk-off')
-      el.removeClass('ni-star')
-      el.addClass('ni-star-fill');
-      el2.removeClass('asterisk-off')
-      el2.removeClass('ni-star')
-      el2.addClass('ni-star-fill');
-      el3.removeClass('asterisk-off')
-      el3.removeClass('ni-star')
-      el3.addClass('ni-star-fill');
-      value = 3;
-      
-      update_priority(item_id, value);
-    } else {
-      el3.removeClass('ni-star-fill')
-      el3.addClass('asterisk-off')
-      el3.addClass('ni-star')
-      value = 2;
-      
-      update_priority(item_id, value);
-    }
-  }
-})
-
-
-$('#new_company_contact').submit(function (e) {
-  e.preventDefault();
-  var form = $(this)
-  var url = form.attr('action')
-
-  $.ajax({
-    type: "POST",
-    url: url,
-    data: form.serialize(),
-    success: function (data) {
-
-      $('#profile-edit').modal('hide');
-      $('#newItem1').show();
-      $('#pipeline_select_org').append($('<option>', { value: data["partner_id"], text: data["partner_name"] }))
-      $('#select_company').append($('<option>', { value: data["partner_id"], text: data["partner_name"] }))
-      $("#pipeline_select_org").val(data["partner_id"]).change();
-    }
-  })
-})
-
-$('#new_individual_contact').submit(function (e) {
-  e.preventDefault();
-  var form = $(this)
-  var url = form.attr('action')
-
-  $.ajax({
-    type: "POST",
-    url: url,
-    data: form.serialize(),
-    success: function (data) {
-
-      $('#profile-edit').modal('hide');
-      $('#newItem1').show();
-      $('#pipeline_select_org').append($('<option>', { value: data["partner_id"], text: data["partner_name"] }))
-      $("#pipeline_select_org").val(data["partner_id"]).change();
-    }
-  })
 })
 
 $('#new_recurring_plan').submit(function (e) {

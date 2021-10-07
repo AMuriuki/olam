@@ -52,27 +52,41 @@
         <div class="nk-block">
             <div id="kanban" class="nk-kanban">
                 <div class="kanban-container" style="width: 1280px;">
-                    <div data-id="_new" data-order="1" class="kanban-board"
+                    {% for stage in stages %}
+                    <div data-id="_{{stage.name}}" data-order="{{stage.id}}" class="kanban-board"
                         style="width: 320px; margin-left: 0px; margin-right: 0px;">
                         <header class="kanban-board-header kanban-light">
                             <div class="kanban-title-board">
                                 <div class="kanban-title-content">
-                                    <h6 class="title">New</h6>
-                                    <span
-                                        class="badge badge-pill badge-outline-light text-dark">{{0|get_pipeline_count}}</span>
+                                    <h6 id="stage_title_{{stage.id}}" class="title">
+                                        {{stage.name}}
+                                    </h6>
+                                    <span class="badge badge-pill badge-outline-light text-dark">
+                                        {{stage.id|get_pipeline_count}}
+                                    </span>
                                 </div>
                                 <div class="kanban-title-content">
                                     <div class="drodown">
                                         <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mr-n1"
-                                            data-toggle="dropdown" aria-expanded="false"><em
-                                                class="icon ni ni-more-h"></em></a>
+                                            data-toggle="dropdown" aria-expanded="false">
+                                            <em class="icon ni ni-more-h"></em>
+                                        </a>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <ul class="link-list-opt no-bdr">
-                                                <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit
-                                                            Board</span></a></li>
-                                                <li><a id="new_addItem1" href="#"><em
-                                                            class="icon ni ni-plus-sm add-item"></em><span>Add
-                                                            Item</span></a></li>
+                                                <li>
+                                                    <a id="{{stage.id}}" href="#" class="edit-stage">
+                                                        <em class="icon ni ni-edit"></em>
+                                                        <span>Edit
+                                                            Stage</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a id="{{stage.id}}" href="#" class="add-item">
+                                                        <em class="icon ni ni-plus-sm add-item"></em>
+                                                        <span>Add
+                                                            Item</span>
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -80,23 +94,30 @@
                             </div>
                         </header>
                         <main class="kanban-drag">
-                            <form method="POST">
-                                {{form3.hidden_tag()}}
-                                <div class="kanban-item new-item" id="newItem1">
+                            <div class="kanban-item new-item" id="new_item_{{stage.id}}">
+                                <form method="POST">
+                                    {{form3.hidden_tag()}}
                                     <div class="kanban-item-text new-item-text">
                                         <div class="form-group">
-                                            <label class="form-label">Organization/Contact</label>
+                                            <label class="form-label">
+                                                Organization/Contact
+                                            </label>
                                             <div class="form-control-wrap">
-                                                <select id="pipeline_select_org" name="pipeline_select_org"
-                                                    class="form-select" data-search="on" data-ui="sm">
-                                                    <option value="default_option">Select or add new</option>
-                                                    <option value="add_new">Add New +</option>
+                                                <select id="pipeline_select_org-{{stage.id}}" name="pipeline_select_org"
+                                                    class="form-select select_contact" data-search="on" data-ui="sm">
+                                                    <option value="default_option">
+                                                        Select or add new
+                                                    </option>
+                                                    <option value="add_new">
+                                                        Add New +
+                                                    </option>
                                                     {% for partner in partners %}
                                                     <option value="{{partner.id}}">
                                                         {% if partner.is_company %}{{partner.company_name}}{% elif
                                                         partner.is_individual %}{{partner.name}} -
                                                         {{partner.parent.company_name}}{%
-                                                        endif %}</option>
+                                                        endif %}
+                                                    </option>
                                                     {% endfor %}
                                                 </select>
                                             </div>
@@ -116,7 +137,7 @@
                                         <div class="form-group">
                                             <label class="form-label" for="default-1-03">Email</label>
                                             <div class="form-control-wrap">
-                                                <input name="partner_email" id="partner_email" type="email"
+                                                <input name="partner_email" id="partner_email_{{stage.id}}" type="email"
                                                     class="form-control form-control-sm" placeholder="Email">
                                             </div>
                                         </div>
@@ -125,7 +146,7 @@
                                         <div class="form-group">
                                             <label class="form-label" for="default-1-03">Phone</label>
                                             <div class="form-control-wrap">
-                                                <input name="partner_phone" id="partner_phone" type="phone"
+                                                <input name="partner_phone" id="partner_phone_{{stage.id}}" type="phone"
                                                     class="form-control form-control-sm" placeholder="Phone">
                                             </div>
                                         </div>
@@ -161,7 +182,7 @@
                                             <div class="form-group">
                                                 <label class="form-label">Recurring Plan</label>
                                                 <div class="form-control-wrap">
-                                                    <select name="recurring_plan" id="recurring_plan"
+                                                    <select name="recurring_plan" id="recurring_plan-{{stage.id}}"
                                                         class="form-select" data-search="on" data-ui="sm">
                                                         <option value="default_option">Select or add new</option>
                                                         <option value="new_plan">Add New +</option>
@@ -205,10 +226,10 @@
                                             </li>
                                         </ul>
                                     </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                             {% for record in pipeline %}
-                            {% if record.stage == '0' %}
+                            {% if record.stage_id == stage.id %}
                             <div class="kanban-item">
                                 <div class="kanban-item-title">
                                     <h6 class="title">{{record.name}}</h6>
@@ -218,12 +239,11 @@
                                                 data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                             <div class="dropdown-menu dropdown-menu-right">
                                                 <ul class="link-list-opt no-bdr">
-                                                    <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit
-                                                                Board</span></a></li>
-                                                    <li><a href="#"><em class="icon ni ni-plus-sm"></em><span>Add
-                                                                Task</span></a></li>
-                                                    <li><a href="#"><em class="icon ni ni-plus-sm"></em><span>Add
-                                                                Option</span></a></li>
+                                                    <li><a href="#"><em
+                                                                class="icon ni ni-edit"></em><span>Edit</span></a></li>
+                                                    <li><a href="#"><em
+                                                                class="icon ni ni-delete"></em><span>Delete</span></a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -237,59 +257,89 @@
                                 </div>
                                 <div class="kanban-item-text">
                                     {% if record.priority == '0' %}
-                                    <a data-toggle="tooltip" data-placement="top" title="Medium" id="_selectPriority1"
-                                        name="{{record.id}}" class="select-priority-update">
+                                    <a data-toggle="tooltip" data-placement="top" title="Medium"
+                                        id="_selectPriority1-{{record.id}}" name="{{record.id}}"
+                                        class="select-priority-update">
                                         <em id="_priority1" class="asterisk-off icon ni ni-star"></em>
                                     </a>
-                                    <a id="_selectPriority2" class="select-priority-update" name="{{record.id}}">
+                                    <a id="_selectPriority2-{{record.id}}" class="select-priority-update"
+                                        name="{{record.id}}">
                                         <em id="_priority2" class="asterisk-off icon ni ni-star"></em>
                                     </a>
-                                    <a id="_selectPriority3" class="select-priority-update" name="{{record.id}}">
+                                    <a id="_selectPriority3-{{record.id}}" class="select-priority-update"
+                                        name="{{record.id}}">
                                         <em id="_priority3" class="asterisk-off icon ni ni-star"></em>
                                     </a>
                                     {% elif record.priority == '1' %}
-                                    <a id="_selectPriority1" class="select-priority-update" data-toggle="tooltip"
-                                        data-placement="top" title="Medium" name="{{record.id}}"><em id="_priority1"
-                                            class="icon ni ni-star-fill"></em></a>
-                                    <a id="_selectPriority2" class="select-priority-update" data-toggle="tooltip"
-                                        data-placement="top" title="High" name="{{record.id}}">
+                                    <a id="_selectPriority1-{{record.id}}" class="select-priority-update"
+                                        data-toggle="tooltip" data-placement="top" title="Medium"
+                                        name="{{record.id}}"><em id="_priority1" class="icon ni ni-star-fill"></em></a>
+                                    <a id="_selectPriority2-{{record.id}}" class="select-priority-update"
+                                        data-toggle="tooltip" data-placement="top" title="High" name="{{record.id}}">
                                         <em id="_priority2" class="asterisk-off icon ni ni-star"></em>
                                     </a>
-                                    <a id="_selectPriority3" class="select-priority-update" data-toggle="tooltip"
-                                        data-placement="top" title="Very High" name="{{record.id}}">
+                                    <a id="_selectPriority3-{{record.id}}" class="select-priority-update"
+                                        data-toggle="tooltip" data-placement="top" title="Very High"
+                                        name="{{record.id}}">
                                         <em id="_priority3" class="asterisk-off icon ni ni-star"></em>
                                     </a>
                                     {% elif record.priority == '2' %}
-                                    <a id="_selectPriority1" name="{{record.id}}" data-toggle="tooltip"
+                                    <a id="_selectPriority1-{{record.id}}" name="{{record.id}}" data-toggle="tooltip"
                                         data-placement="top" title="Medium" class="select-priority-update">
                                         <em id="_priority1" class="icon ni ni-star-fill"></em>
                                     </a>
-                                    <a id="_selectPriority2" name="{{record.id}}" data-toggle="tooltip"
+                                    <a id="_selectPriority2-{{record.id}}" name="{{record.id}}" data-toggle="tooltip"
                                         data-placement="top" title="High" class="select-priority-update">
                                         <em id="_priority2" class="icon ni ni-star-fill"></em>
                                     </a>
-                                    <a id="_selectPriority3" name="{{record.id}}" data-toggle="tooltip"
+                                    <a id="_selectPriority3-{{record.id}}" name="{{record.id}}" data-toggle="tooltip"
                                         data-placement="top" title="Very High" class="select-priority-update">
                                         <em id="_priority3" class="asterisk-off icon ni ni-star"></em>
                                     </a>
                                     {% elif record.priority == '3' %}
-                                    <a id="_selectPriority1" name="{{record.id}}" data-toggle="tooltip"
+                                    <a id="_selectPriority1-{{record.id}}" name="{{record.id}}" data-toggle="tooltip"
                                         data-placement="top" title="Medium" class="select-priority-update">
                                         <em id="_priority1" class="icon ni ni-star-fill"></em>
                                     </a>
-                                    <a id="_selectPriority2" name="{{record.id}}" data-toggle="tooltip"
+                                    <a id="_selectPriority2-{{record.id}}" name="{{record.id}}" data-toggle="tooltip"
                                         data-placement="top" title="High" class="select-priority-update">
                                         <em id="_priority2" class="icon ni ni-star-fill"></em>
                                     </a>
-                                    <a id="_selectPriority3" name="{{record.id}}" data-toggle="tooltip"
+                                    <a id="_selectPriority3-{{record.id}}" name="{{record.id}}" data-toggle="tooltip"
                                         data-placement="top" title="Very High" class="select-priority-update">
                                         <em id="_priority3" class="icon ni ni-star-fill"></em>
                                     </a>
                                     {% endif %}
                                 </div>
+                                <div class="kanban-item-text">
+                                    <div class="drodown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            <div class="icon-status icon-status-info">
+                                                <em style="font-size: 20px;" class="icon ni ni-list-thumb"></em>
+                                            </div>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-left">
+                                            <ul class="link-list-opt no-bdr">
+                                                <li>
+                                                    <a id="{{stage.id}}" href="#" class="edit-stage">
+                                                        <em class="icon ni ni-edit"></em>
+                                                        <span>Edit
+                                                            Stage</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a id="{{stage.id}}" href="#" class="edit-stage">
+                                                        <em class="icon ni ni-edit"></em>
+                                                        <span>Edit
+                                                            Stage</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                                 <ul class="kanban-item-tags">
-                                    <li><span class="badge badge-primary">Fitness Next</span></li>
-                                    <li><span class="badge badge-warning">UI Design</span></li>
+                                    <li><span class="badge badge-primary">{{current_user.partner.name}}</span></li>
                                 </ul>
                                 <div class="kanban-item-meta">
                                     <ul class="kanban-item-meta-list">
@@ -318,282 +368,7 @@
                             </button>
                         </footer>
                     </div>
-                    <div data-id="_qualified" data-order="2" class="kanban-board"
-                        style="width: 320px; margin-left: 0px; margin-right: 0px;">
-                        <header class="kanban-board-header kanban-primary">
-                            <div class="kanban-title-board">
-                                <div class="kanban-title-content">
-                                    <h6 class="title">Qualified</h6>
-                                    <span
-                                        class="badge badge-pill badge-outline-light text-dark">{{1|get_pipeline_count}}</span>
-                                </div>
-                                <div class="kanban-title-content">
-                                    <div class="drodown">
-                                        <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mr-n1"
-                                            data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <ul class="link-list-opt no-bdr">
-                                                <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit
-                                                            Board</span></a></li>
-                                                <li><a href="#"><em class="icon ni ni-plus-sm"></em><span>Add
-                                                            Task</span></a></li>
-                                                <li><a href="#"><em class="icon ni ni-plus-sm"></em><span>Add
-                                                            Option</span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </header>
-                        <main class="kanban-drag">
-                            {% for record in pipeline %}
-                            {% if record.stage == '1' %}
-                            <div class="kanban-item">
-                                <div class="kanban-item-title">
-                                    <h6 class="title">{{record.name}}</h6>
-                                    <div class="drodown">
-                                        <div class="drodown">
-                                            <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mr-n1"
-                                                data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <ul class="link-list-opt no-bdr">
-                                                    <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit
-                                                                Board</span></a></li>
-                                                    <li><a href="#"><em class="icon ni ni-plus-sm"></em><span>Add
-                                                                Task</span></a></li>
-                                                    <li><a href="#"><em class="icon ni ni-plus-sm"></em><span>Add
-                                                                Option</span></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="kanban-item-text">
-                                    <p>{{record.partner_currency}}&nbsp;{{record.expected_revenue}}</p>
-                                </div>
-                                <div class="kanban-item-text">
-                                    <p>{{record.partner_name}}</p>
-                                </div>
-                                <div class="asterisk">
-                                    <a href="#">
-                                        <em id="" class="asterisk-off icon ni ni-star"></em>
-                                        <em id="" class="asterisk-on icon ni ni-star-fill"></em>
-                                    </a>
-                                    <a href="#">
-                                        <em id="" class="asterisk-off icon ni ni-star"></em>
-                                        <em id="" class="asterisk-on icon ni ni-star-fill"></em>
-                                    </a>
-                                    <a href="#">
-                                        <em id="" class="asterisk-off icon ni ni-star"></em>
-                                        <em id="" class="asterisk-on icon ni ni-star-fill"></em>
-                                    </a>
-                                </div>
-                                <ul class="kanban-item-tags">
-                                    <li><span class="badge badge-primary">Fitness Next</span></li>
-                                    <li><span class="badge badge-warning">UI Design</span></li>
-                                </ul>
-                                <div class="kanban-item-meta">
-                                    <ul class="kanban-item-meta-list">
-                                        <li><em class="icon ni ni-calendar"></em><span>8d Due</span></li>
-                                        <li><em class="icon ni ni-notes"></em><span>Design</span></li>
-                                    </ul>
-                                    <ul class="kanban-item-meta-list">
-                                        <li><em class="icon ni ni-clip"></em><span>3</span></li>
-                                        <li><em class="icon ni ni-comments"></em><span>5</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            {% endif %}
-                            {% endfor %}
-                        </main>
-                        <footer><button class="kanban-add-task btn btn-block"><em
-                                    class="icon ni ni-plus-sm"></em><span>{% if record %}Add another item{% else %}Add
-                                    item{% endif %}</span></button></footer>
-                    </div>
-                    <div data-id="_proposition" data-order="3" class="kanban-board"
-                        style="width: 320px; margin-left: 0px; margin-right: 0px;">
-                        <header class="kanban-board-header kanban-warning">
-                            <div class="kanban-title-board">
-                                <div class="kanban-title-content">
-                                    <h6 class="title">Proposition</h6>
-                                    <span
-                                        class="badge badge-pill badge-outline-light text-dark">{{2|get_pipeline_count}}</span>
-                                </div>
-                                <div class="kanban-title-content">
-                                    <div class="drodown">
-                                        <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mr-n1"
-                                            data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <ul class="link-list-opt no-bdr">
-                                                <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit
-                                                            Board</span></a></li>
-                                                <li><a href="#"><em class="icon ni ni-plus-sm"></em><span>Add
-                                                            Task</span></a></li>
-                                                <li><a href="#"><em class="icon ni ni-plus-sm"></em><span>Add
-                                                            Option</span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </header>
-                        <main class="kanban-drag">
-                            {% for record in pipeline %}
-                            {% if record.stage == '2' %}
-                            <div class="kanban-item">
-                                <div class="kanban-item-title">
-                                    <h6 class="title">{{record.name}}</h6>
-                                    <div class="drodown">
-                                        <div class="drodown">
-                                            <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mr-n1"
-                                                data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <ul class="link-list-opt no-bdr">
-                                                    <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit
-                                                                Board</span></a></li>
-                                                    <li><a href="#"><em class="icon ni ni-plus-sm"></em><span>Add
-                                                                Task</span></a></li>
-                                                    <li><a href="#"><em class="icon ni ni-plus-sm"></em><span>Add
-                                                                Option</span></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="kanban-item-text">
-                                    <p>{{record.partner_currency}}&nbsp;{{record.expected_revenue}}</p>
-                                </div>
-                                <div class="kanban-item-text">
-                                    <p>{{record.partner_name}}</p>
-                                </div>
-                                <div class="asterisk">
-                                    <a href="#">
-                                        <em id="" class="asterisk-off icon ni ni-star"></em>
-                                        <em id="" class="asterisk-on icon ni ni-star-fill"></em>
-                                    </a>
-                                    <a href="#">
-                                        <em id="" class="asterisk-off icon ni ni-star"></em>
-                                        <em id="" class="asterisk-on icon ni ni-star-fill"></em>
-                                    </a>
-                                    <a href="#">
-                                        <em id="" class="asterisk-off icon ni ni-star"></em>
-                                        <em id="" class="asterisk-on icon ni ni-star-fill"></em>
-                                    </a>
-                                </div>
-                                <ul class="kanban-item-tags">
-                                    <li><span class="badge badge-primary">Fitness Next</span></li>
-                                    <li><span class="badge badge-warning">UI Design</span></li>
-                                </ul>
-                                <div class="kanban-item-meta">
-                                    <ul class="kanban-item-meta-list">
-                                        <li><em class="icon ni ni-calendar"></em><span>8d Due</span></li>
-                                        <li><em class="icon ni ni-notes"></em><span>Design</span></li>
-                                    </ul>
-                                    <ul class="kanban-item-meta-list">
-                                        <li><em class="icon ni ni-clip"></em><span>3</span></li>
-                                        <li><em class="icon ni ni-comments"></em><span>5</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            {% endif %}
-                            {% endfor %}
-                        </main>
-                        <footer><button class="kanban-add-task btn btn-block"><em
-                                    class="icon ni ni-plus-sm"></em><span>{% if record %}Add another item{% else %}Add
-                                    item{% endif %}</span></button></footer>
-                    </div>
-                    <div data-id="_won" data-order="4" class="kanban-board"
-                        style="width: 320px; margin-left: 0px; margin-right: 0px;">
-                        <header class="kanban-board-header kanban-success">
-                            <div class="kanban-title-board">
-                                <div class="kanban-title-content">
-                                    <h6 class="title">Won</h6>
-                                    <span
-                                        class="badge badge-pill badge-outline-light text-dark">{{3|get_pipeline_count}}</span>
-                                </div>
-                                <div class="kanban-title-content">
-                                    <div class="drodown">
-                                        <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mr-n1"
-                                            data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <ul class="link-list-opt no-bdr">
-                                                <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit
-                                                            Board</span></a></li>
-                                                <li><a href="#"><em class="icon ni ni-plus-sm"></em><span>Add
-                                                            Task</span></a></li>
-                                                <li><a href="#"><em class="icon ni ni-plus-sm"></em><span>Add
-                                                            Option</span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </header>
-                        <main class="kanban-drag">
-                            {% for record in pipeline %}
-                            {% if record.stage == '2' %}
-                            <div class="kanban-item">
-                                <div class="kanban-item-title">
-                                    <h6 class="title">{{record.name}}</h6>
-                                    <div class="drodown">
-                                        <div class="drodown">
-                                            <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mr-n1"
-                                                data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <ul class="link-list-opt no-bdr">
-                                                    <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit
-                                                                Board</span></a></li>
-                                                    <li><a href="#"><em class="icon ni ni-plus-sm"></em><span>Add
-                                                                Task</span></a></li>
-                                                    <li><a href="#"><em class="icon ni ni-plus-sm"></em><span>Add
-                                                                Option</span></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="kanban-item-text">
-                                    <p>{{record.partner_currency}}&nbsp;{{record.expected_revenue}}</p>
-                                </div>
-                                <div class="kanban-item-text">
-                                    <p>{{record.partner_name}}</p>
-                                </div>
-                                <div class="asterisk">
-                                    <a href="#">
-                                        <em id="" class="asterisk-off icon ni ni-star"></em>
-                                        <em id="" class="asterisk-on icon ni ni-star-fill"></em>
-                                    </a>
-                                    <a href="#">
-                                        <em id="" class="asterisk-off icon ni ni-star"></em>
-                                        <em id="" class="asterisk-on icon ni ni-star-fill"></em>
-                                    </a>
-                                    <a href="#">
-                                        <em id="" class="asterisk-off icon ni ni-star"></em>
-                                        <em id="" class="asterisk-on icon ni ni-star-fill"></em>
-                                    </a>
-                                </div>
-                                <ul class="kanban-item-tags">
-                                    <li><span class="badge badge-primary">Fitness Next</span></li>
-                                    <li><span class="badge badge-warning">UI Design</span></li>
-                                </ul>
-                                <div class="kanban-item-meta">
-                                    <ul class="kanban-item-meta-list">
-                                        <li><em class="icon ni ni-calendar"></em><span>8d Due</span></li>
-                                        <li><em class="icon ni ni-notes"></em><span>Design</span></li>
-                                    </ul>
-                                    <ul class="kanban-item-meta-list">
-                                        <li><em class="icon ni ni-clip"></em><span>3</span></li>
-                                        <li><em class="icon ni ni-comments"></em><span>5</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            {% endif %}
-                            {% endfor %}
-                        </main>
-                        <footer><button class="kanban-add-task btn btn-block"><em
-                                    class="icon ni ni-plus-sm"></em><span>{% if record %}Add another item{% else %}Add
-                                    item{% endif %}</span></button></footer>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -768,6 +543,29 @@
         </div>
     </div>
 </div>
+<div class="modal fade" tabindex="-1" role="dialog" id="modalEditStage">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
+            <div class="modal-body modal-body-md">
+                <h4 class="title">Edit Stage</h4>
+                <div class="tab-content">
+                    <div class="form-control-wrap">
+                        <form id="frm_editStage" action="{{url_for('crm.edit_stage')}}" method="POST">
+                            {{form5.hidden_tag()}}
+                            <div class="input-group">
+                                {{form5.stage_name(class="form-control", placeholder="Stage name")}}
+                                <div class="input-group-append">
+                                    {{form5.submit_stage_edits(class="btn btn-outline-primary btn-dim")}}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% if not pipeline %}
 <div class="modal fade show" tabindex="-1" id="modalAlert" style="display: block;">
     <div class="modal-dialog" role="document">
@@ -811,8 +609,8 @@
                     </svg>
                     <h4 class="nk-modal-title">Create an opportunity to start playing with your pipeline.</h4>
                     <div class="nk-modal-action">
-                        <a id="create_opportunity" href="#" class="btn btn-lg btn-mw btn-success"
-                            data-dismiss="modal">Create</a>
+                        <a id="create_opportunity-{{first_stage.id}}" href="#"
+                            class="btn btn-lg btn-mw btn-success first-opportunity" data-dismiss="modal">Create</a>
                     </div>
                 </div>
             </div><!-- .modal-body -->

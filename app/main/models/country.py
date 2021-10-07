@@ -11,11 +11,11 @@ class Country(db.Model):
     code = db.Column(db.String(60), index=True, unique=True)
     currency_id = db.Column(db.Integer, db.ForeignKey('currency.id'))
     cities = db.relationship('City', backref='country', lazy='dynamic')
-    calling_code = db.Column(db.Integer, index=True)
+    calling_code = db.Column(db.String(120), index=True)
     currency_name = db.Column(db.String(60), index=True)
     currency_alphabetic_code = db.Column(db.String(60), index=True)
     currency_numeric_code = db.Column(db.Integer, index=True)
-    languages = db.Column(db.String(60), index=True)
+    languages = db.Column(db.String(120), index=True)
     partners = db.relationship('Partner', backref='country', lazy='dynamic')
 
 

@@ -45,7 +45,7 @@
                             </div>
                             <div class="nk-header-menu">
                                 <ul class="nk-menu nk-menu-main">
-                                    {% if "/crm/" in url_for(request.endpoint) %}
+                                    {% if "crm." in request.url_rule.endpoint %}
                                     <li class="nk-menu-item">
                                         <a href="{{url_for('crm.sales')}}" class="nk-menu-link" data-original-title=""
                                             title="">

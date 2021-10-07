@@ -17,3 +17,8 @@ class BoardItemForm(FlaskForm):
 class NewRecurringPlanForm(FlaskForm):
     name = StringField(_l('New Plan'))
     submit = SubmitField(_l('Save'))
+
+
+class EditStageForm(FlaskForm):
+    stage_name = StringField(_l('Stage Name'))
+    submit_stage_edits = SubmitField(_l('Save'))

@@ -3,6 +3,7 @@ from flask import json, render_template, session, jsonify, request, redirect, ur
 from app.crm import bp
 from app.crm.models.crm_lead import Lead
 from app.crm.models.crm_recurring_plan import RecurringPlan
+from app.crm.models.crm_stage import Stage
 from app.main.models.module import Module
 from flask_babel import _, get_locale
 from app import db
@@ -11,8 +12,17 @@ from app.main.models.partner import Partner
 from app.main.models.company import Company
 from sqlalchemy import log, or_
 from app.contacts.forms import TITLES, BasicCompanyInfoForm, BasicIndividualInfoForm
-from app.crm.forms import BoardItemForm, NewRecurringPlanForm
+from app.crm.forms import BoardItemForm, NewRecurringPlanForm, EditStageForm
 from app.main.models.country import Country
+
+
+@login_required
+@bp.route('/edit_stage', methods=['GET', 'POST'])
+def edit_stage():
+    stage = Stage.query.filter_by(id=request.form['stage_id']).first()
+    stage.name = request.form['stage_name']
+    db.session.commit()
+    return jsonify({"response": "success"})
 
 
 @login_required
@@ -87,12 +97,19 @@ def pipeline():
     form2 = BasicIndividualInfoForm()
     form3 = BoardItemForm()
     form4 = NewRecurringPlanForm()
+    form5 = EditStageForm()
+
+    # opportunities = Lead.query.join(Stage).all()
+    # for opportunity in opportunities:
+    #     print(opportunity)
+
     user = User.query.filter_by(id=current_user.get_id()).first()
     country_code = user.country_code
     user_country = Country.query.filter_by(code=country_code).first()
     user_currency = user_country.currency_alphabetic_code
-
-    pipeline = Lead.query.all()
+    stages = Stage.query.all()
+    first_stage = Stage.query.first()
+    pipeline = Lead.query.order_by(Lead.priority.desc()).all()
 
     plans = RecurringPlan.query.all()
     titles = TITLES
@@ -104,14 +121,13 @@ def pipeline():
         'currency_alphabetic_code')
     currencies = [row.currency_alphabetic_code for row in query.all()]
     if form3.validate_on_submit():
-
         opportunity = Lead(name=request.form['opportunity'],
-                           user_id=current_user.get_id(), partner_id=request.form['pipeline_select_org'], priority=session['selected_priority'], stage=session['pipeline_stage'], expected_revenue=request.form['expected_revenue'], partner_email=request.form['partner_email'], partner_phone=request.form['partner_phone'], plan_id=request.form['recurring_plan'], partner_currency=request.form['_partner_currency'])
+                           user_id=current_user.get_id(), partner_id=request.form['pipeline_select_org'], priority=session['selected_priority'], stage_id=int(session['pipeline_stage']), expected_revenue=request.form['expected_revenue'], partner_email=request.form['partner_email'], partner_phone=request.form['partner_phone'], plan_id=request.form['recurring_plan'], partner_currency=request.form['_partner_currency'])
         db.session.add(opportunity)
         db.session.commit()
         return redirect(url_for('crm.pipeline'))
 
-    return render_template('crm/pipeline.html', title=_('CRM Pipeline | Olam ERP'), pipeline=pipeline, partners=partners, form1=form1, form2=form2, form3=form3, companies=companies, titles=titles, currencies=currencies, user_currency=user_currency, plans=plans, form4=form4)
+    return render_template('crm/pipeline.html', title=_('CRM Pipeline | Olam ERP'), pipeline=pipeline, partners=partners, form1=form1, form2=form2, form3=form3, form4=form4, form5=form5, companies=companies, titles=titles, currencies=currencies, user_currency=user_currency, plans=plans, stages=stages, first_stage=first_stage)
 
 
 @bp.route('/pipeline', methods=['GET', 'POST'])

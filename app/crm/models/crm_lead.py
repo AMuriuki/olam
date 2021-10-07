@@ -32,12 +32,13 @@ class Lead(db.Model):
     active = db.Column(db.Boolean, default=True)
     priority = db.Column(db.String(15), index=True)
     partner_id = db.Column(db.Integer, db.ForeignKey('partner.id'))
-    stage = db.Column(db.String(15), index=True)
+    stage_id = db.Column(db.Integer, db.ForeignKey('stage.id'))
     expected_revenue = db.Column(db.String(60))
     date_open = db.Column(db.DateTime, default=datetime.now)
     partner_email = db.Column(db.String(120), index=True)
     partner_phone = db.Column(db.String(60), index=True)
     partner_currency = db.Column(db.String(10), index=True)
+    is_deleted = db.Column(db.Boolean, default=False)
 
     @staticmethod
     def insert_leads():
