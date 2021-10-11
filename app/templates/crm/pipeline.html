@@ -41,17 +41,53 @@
                                 class="icon ni ni-menu-alt-r"></em></a>
                         <div class="toggle-expand-content" data-content="pageMenu">
                             <ul class="nk-block-tools g-3">
+                                <li>
+                                    <div class="drodown">
+                                        <a href="#" class="dropdown-toggle btn btn-white btn-dim btn-outline-light"
+                                            data-toggle="dropdown">
+                                            <em class="icon ni ni-filter-fill"></em>
+                                            <span>Filters</span><em class="dd-indc icon ni ni-chevron-right"></em></a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <ul class="link-list-opt no-bdr">
+                                                {% for filter in filters %}
+                                                <li>
+                                                    <a id="{{filter[0]}}"
+                                                        class="filter {% if filter[1]=='My Pipeline' %}selected{% endif %}"
+                                                        href="#">
+                                                        <em id="chk_{{filter[0]}}" {% if filter[1]=='My Pipeline' %}
+                                                            style="display: block;" {% else %} style="display: none;" {%
+                                                            endif %} class="icon ni ni-check-thick"></em>
+                                                        <span id="spn_filter-{{filter[0]}}">{{filter[1]}}</span>
+                                                    </a>
+                                                </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
                                 <li><a id="addBoard" href="#" class="btn btn-white btn-outline-light"><em
-                                            class="icon ni ni-plus"></em><span>Add Board</span></a></li>
+                                            class="icon ni ni-plus"></em><span>Add Stage</span></a></li>
+
                             </ul>
                         </div>
                     </div><!-- .toggle-wrap -->
                 </div><!-- .nk-block-head-content -->
             </div><!-- .nk-block-between -->
+            <div class="nk-search-box">
+                <div class="form-group">
+                    <div class="form-control-wrap">
+                        <input id="search_pipeline" type="text" class="form-control form-control-lg"
+                            placeholder="Search...">
+                        <button class="form-icon form-icon-right">
+                            <em class="icon ni ni-search"></em>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div><!-- .nk-block-head -->
         <div class="nk-block">
             <div id="kanban" class="nk-kanban">
-                <div class="kanban-container" style="width: 1280px;">
+                <div class="kanban-container" style="width: 100%;">
                     {% for stage in stages %}
                     <div data-id="_{{stage.name}}" data-order="{{stage.id}}" class="kanban-board"
                         style="width: 320px; margin-left: 0px; margin-right: 0px;">
@@ -81,7 +117,7 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a id="{{stage.id}}" href="#" class="add-item">
+                                                    <a id="btn_additem-{{stage.id}}" href="#" class="add-item">
                                                         <em class="icon ni ni-plus-sm add-item"></em>
                                                         <span>Add
                                                             Item</span>
@@ -173,7 +209,8 @@
                                                 <label class="form-label" for="default-1-03">Expected Revenue</label>
                                                 <div class="form-control-wrap">
                                                     <input name="expected_revenue" id="expected_revenue" type="text"
-                                                        min="1" step="any" class="form-control form-control-sm"
+                                                        min="1" step="any"
+                                                        class="expected_revenue form-control form-control-sm"
                                                         placeholder="e.g 1,000,000">
                                                 </div>
                                             </div>
@@ -183,10 +220,10 @@
                                                 <label class="form-label">Recurring Plan</label>
                                                 <div class="form-control-wrap">
                                                     <select name="recurring_plan" id="recurring_plan-{{stage.id}}"
-                                                        class="form-select" data-search="on" data-ui="sm">
+                                                        class="form-select recurring-plan" data-search="on"
+                                                        data-ui="sm">
                                                         <option value="default_option">Select or add new</option>
                                                         <option value="new_plan">Add New +</option>
-                                                        <option value="n/a">Not Applicable</option>
                                                         {% for plan in plans %}
                                                         <option value="{{plan.id}}">{{plan.name}}</option>
                                                         {% endfor %}
@@ -202,16 +239,22 @@
                                         <li>
                                             <div class="asterisk">
                                                 <a data-toggle="tooltip" data-placement="top" title="Medium"
-                                                    id="selectPriority1" class="select-priority" href="#">
-                                                    <em id="priority1" class="asterisk-off icon ni ni-star"></em>
+                                                    id="selectPriority1-{{stage.id}}" name="{{stage.id}}"
+                                                    class="select-priority" href="#">
+                                                    <em id="priority1-{{stage.id}}"
+                                                        class="asterisk-off icon ni ni-star"></em>
                                                 </a>
                                                 <a data-toggle="tooltip" data-placement="top" title="High"
-                                                    id="selectPriority2" class="select-priority" href="#">
-                                                    <em id="priority2" class="asterisk-off icon ni ni-star"></em>
+                                                    id="selectPriority2-{{stage.id}}" name="{{stage.id}}"
+                                                    class="select-priority" href="#">
+                                                    <em id="priority2-{{stage.id}}"
+                                                        class="asterisk-off icon ni ni-star"></em>
                                                 </a>
                                                 <a data-toggle="tooltip" data-placement="top" title="Very High"
-                                                    id="selectPriority3" class="select-priority" href="#">
-                                                    <em id="priority3" class="asterisk-off icon ni ni-star"></em>
+                                                    id="selectPriority3-{{stage.id}}" name="{{stage.id}}"
+                                                    class="select-priority" href="#">
+                                                    <em id="priority3-{{stage.id}}"
+                                                        class="asterisk-off icon ni ni-star"></em>
                                                 </a>
                                             </div>
                                         </li>
@@ -222,7 +265,8 @@
                                                 {{form3.submit1(class="btn btn-primary")}}
                                             </li>
                                             <li>
-                                                <a id="discard_item1" href="#" class="link link-light">Discard</a>
+                                                <a id="discard_item-{{stage.id}}" href="#"
+                                                    class="discard-item link link-light">Discard</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -250,64 +294,74 @@
                                     </div>
                                 </div>
                                 <div class="kanban-item-text">
-                                    <p>{{record.partner_currency}}&nbsp;{{record.expected_revenue}}</p>
+                                    <p>
+                                        {{record.partner_currency}}&nbsp;{{record.expected_revenue}}
+                                    </p>
                                 </div>
                                 <div class="kanban-item-text">
-                                    <p>{{record.partner_name}}</p>
+                                    <p>
+                                        {% if record.opportunity.is_company %}
+                                        {{record.opportunity.company_name}}
+                                        {% elif record.opportunity.is_individual %}
+                                        {{record.opportunity.name}}&nbsp;-&nbsp;{{record.opportunity.parent.company_name}}
+                                        {% endif %}
+                                    </p>
                                 </div>
+
                                 <div class="kanban-item-text">
                                     {% if record.priority == '0' %}
                                     <a data-toggle="tooltip" data-placement="top" title="Medium"
                                         id="_selectPriority1-{{record.id}}" name="{{record.id}}"
                                         class="select-priority-update">
-                                        <em id="_priority1" class="asterisk-off icon ni ni-star"></em>
+                                        <em id="_priority1-{{record.id}}" class="asterisk-off icon ni ni-star"></em>
                                     </a>
                                     <a id="_selectPriority2-{{record.id}}" class="select-priority-update"
                                         name="{{record.id}}">
-                                        <em id="_priority2" class="asterisk-off icon ni ni-star"></em>
+                                        <em id="_priority2-{{record.id}}" class="asterisk-off icon ni ni-star"></em>
                                     </a>
                                     <a id="_selectPriority3-{{record.id}}" class="select-priority-update"
                                         name="{{record.id}}">
-                                        <em id="_priority3" class="asterisk-off icon ni ni-star"></em>
+                                        <em id="_priority3-{{record.id}}" class="asterisk-off icon ni ni-star"></em>
                                     </a>
                                     {% elif record.priority == '1' %}
                                     <a id="_selectPriority1-{{record.id}}" class="select-priority-update"
                                         data-toggle="tooltip" data-placement="top" title="Medium"
-                                        name="{{record.id}}"><em id="_priority1" class="icon ni ni-star-fill"></em></a>
+                                        name="{{record.id}}"><em id="_priority1-{{record.id}}"
+                                            class="icon ni ni-star-fill"></em></a>
                                     <a id="_selectPriority2-{{record.id}}" class="select-priority-update"
                                         data-toggle="tooltip" data-placement="top" title="High" name="{{record.id}}">
-                                        <em id="_priority2" class="asterisk-off icon ni ni-star"></em>
+                                        <em id="_priority2-{{record.id}}" class="asterisk-off icon ni ni-star"></em>
                                     </a>
                                     <a id="_selectPriority3-{{record.id}}" class="select-priority-update"
                                         data-toggle="tooltip" data-placement="top" title="Very High"
                                         name="{{record.id}}">
-                                        <em id="_priority3" class="asterisk-off icon ni ni-star"></em>
+                                        <em id="_priority3-{{record.id}}" class="asterisk-off icon ni ni-star"></em>
                                     </a>
                                     {% elif record.priority == '2' %}
                                     <a id="_selectPriority1-{{record.id}}" name="{{record.id}}" data-toggle="tooltip"
                                         data-placement="top" title="Medium" class="select-priority-update">
-                                        <em id="_priority1" class="icon ni ni-star-fill"></em>
+                                        <em id="_priority1-{{record.id}}" class="icon ni ni-star-fill"></em>
                                     </a>
                                     <a id="_selectPriority2-{{record.id}}" name="{{record.id}}" data-toggle="tooltip"
                                         data-placement="top" title="High" class="select-priority-update">
-                                        <em id="_priority2" class="icon ni ni-star-fill"></em>
+                                        <em id="_priority2-{{record.id}}" class="icon ni ni-star-fill"></em>
                                     </a>
                                     <a id="_selectPriority3-{{record.id}}" name="{{record.id}}" data-toggle="tooltip"
                                         data-placement="top" title="Very High" class="select-priority-update">
-                                        <em id="_priority3" class="asterisk-off icon ni ni-star"></em>
+                                        <em id="_priority3-{{record.id}}" class="asterisk-off icon ni ni-star"></em>
                                     </a>
                                     {% elif record.priority == '3' %}
                                     <a id="_selectPriority1-{{record.id}}" name="{{record.id}}" data-toggle="tooltip"
                                         data-placement="top" title="Medium" class="select-priority-update">
-                                        <em id="_priority1" class="icon ni ni-star-fill"></em>
+                                        <em id="_priority1-{{record.id}}" class="icon ni ni-star-fill"></em>
                                     </a>
                                     <a id="_selectPriority2-{{record.id}}" name="{{record.id}}" data-toggle="tooltip"
                                         data-placement="top" title="High" class="select-priority-update">
-                                        <em id="_priority2" class="icon ni ni-star-fill"></em>
+                                        <em id="_priority2-{{record.id}}" class="icon ni ni-star-fill"></em>
                                     </a>
                                     <a id="_selectPriority3-{{record.id}}" name="{{record.id}}" data-toggle="tooltip"
                                         data-placement="top" title="Very High" class="select-priority-update">
-                                        <em id="_priority3" class="icon ni ni-star-fill"></em>
+                                        <em id="_priority3-{{record.id}}" class="icon ni ni-star-fill"></em>
                                     </a>
                                     {% endif %}
                                 </div>
@@ -319,14 +373,18 @@
                                             </div>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-left">
+                                            <div class="dropdown-head">
+                                                <span class="sub-title nk-dropdown-title">Activities</span>
+                                                <a href="#">33 Activities</a>
+                                            </div>
                                             <ul class="link-list-opt no-bdr">
                                                 <li>
                                                     <a id="{{stage.id}}" href="#" class="edit-stage">
                                                         <em class="icon ni ni-edit"></em>
-                                                        <span>Edit
-                                                            Stage</span>
+                                                        <span>Activities</span>
                                                     </a>
                                                 </li>
+                                                <hr>
                                                 <li>
                                                     <a id="{{stage.id}}" href="#" class="edit-stage">
                                                         <em class="icon ni ni-edit"></em>
@@ -341,22 +399,12 @@
                                 <ul class="kanban-item-tags">
                                     <li><span class="badge badge-primary">{{current_user.partner.name}}</span></li>
                                 </ul>
-                                <div class="kanban-item-meta">
-                                    <ul class="kanban-item-meta-list">
-                                        <li><em class="icon ni ni-calendar"></em><span>8d Due</span></li>
-                                        <li><em class="icon ni ni-notes"></em><span>Design</span></li>
-                                    </ul>
-                                    <ul class="kanban-item-meta-list">
-                                        <li><em class="icon ni ni-clip"></em><span>3</span></li>
-                                        <li><em class="icon ni ni-comments"></em><span>5</span></li>
-                                    </ul>
-                                </div>
                             </div>
                             {% endif %}
                             {% endfor %}
                         </main>
                         <footer>
-                            <button id="new_addItem_1" class="kanban-add-task btn btn-block add-item">
+                            <button id="btn_additem-{{stage.id}}" class="add-item kanban-add-task btn btn-block">
                                 <em class="icon ni ni-plus-sm"></em>
                                 <span>
                                     {% if record %}
@@ -548,7 +596,7 @@
         <div class="modal-content">
             <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
             <div class="modal-body modal-body-md">
-                <h4 class="title">Edit Stage</h4>
+                <h4 id="h_title" class="title">Edit Stage</h4>
                 <div class="tab-content">
                     <div class="form-control-wrap">
                         <form id="frm_editStage" action="{{url_for('crm.edit_stage')}}" method="POST">
@@ -557,6 +605,30 @@
                                 {{form5.stage_name(class="form-control", placeholder="Stage name")}}
                                 <div class="input-group-append">
                                     {{form5.submit_stage_edits(class="btn btn-outline-primary btn-dim")}}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="modalAddStage">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
+            <div class="modal-body modal-body-md">
+                <h4 id="addstage_title" class="title">Add Stage</h4>
+                <div class="tab-content">
+                    <div class="form-control-wrap">
+                        <form id="frm_addStage" action="{{url_for('crm.add_stage')}}" method="POST">
+                            {{form5.hidden_tag()}}
+                            <div class="input-group">
+                                <input class="form-control" id="new_stage_name" name="new_stage_name"
+                                    placeholder="Stage name" type="text" value="">
+                                <div class="input-group-append">
+                                    <a id="submit_new_stage" href="#" class="btn btn-outline-primary btn-dim">Add</a>
                                 </div>
                             </div>
                         </form>
@@ -609,7 +681,7 @@
                     </svg>
                     <h4 class="nk-modal-title">Create an opportunity to start playing with your pipeline.</h4>
                     <div class="nk-modal-action">
-                        <a id="create_opportunity-{{first_stage.id}}" href="#"
+                        <a id="create_opportunity-{{stages[0].id}}" href="#"
                             class="btn btn-lg btn-mw btn-success first-opportunity" data-dismiss="modal">Create</a>
                     </div>
                 </div>

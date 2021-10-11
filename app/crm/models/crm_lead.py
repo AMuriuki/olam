@@ -13,11 +13,12 @@ AVAILABLE_PRIORITIES = [
     ('3', 'Very High'),
 ]
 
-STAGES = [
-    ('0', 'New'),
-    ('1', 'Qualified'),
-    ('2', 'Proposition'),
-    ('3', 'Won'),
+FILTERS = [
+    ('0', 'My Pipeline'),
+    ('1', 'Unassigned'),
+    ('2', 'Open Opportunities'),
+    ('3', 'Lost Opportunities'),
+    ('4', 'Won Opportunities'),
 ]
 
 

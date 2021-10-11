@@ -1,7 +1,7 @@
 from flask_login import login_required, current_user
 from flask import json, render_template, session, jsonify, request, redirect, url_for
 from app.crm import bp
-from app.crm.models.crm_lead import Lead
+from app.crm.models.crm_lead import FILTERS, Lead
 from app.crm.models.crm_recurring_plan import RecurringPlan
 from app.crm.models.crm_stage import Stage
 from app.main.models.module import Module
@@ -21,6 +21,17 @@ from app.main.models.country import Country
 def edit_stage():
     stage = Stage.query.filter_by(id=request.form['stage_id']).first()
     stage.name = request.form['stage_name']
+    db.session.commit()
+    return jsonify({"response": "success"})
+
+
+@login_required
+@bp.route('/add_stage', methods=['GET', 'POST'])
+def add_stage():
+    print(request.form)
+    max_id = Stage.max_id()
+    stage = Stage(id=max_id+1, name=request.form['new_stage_name'])
+    db.session.add(stage)
     db.session.commit()
     return jsonify({"response": "success"})
 
@@ -84,10 +95,12 @@ def new_individual_contact():
 def new_recurring_plan():
     form4 = NewRecurringPlanForm()
     if form4.validate_on_submit():
-        new_plan = RecurringPlan(name=request.form['name'])
+        max_id = RecurringPlan.max_id()
+        new_plan = RecurringPlan(id=max_id+1, name=request.form['name'])
         db.session.add(new_plan)
         db.session.commit()
         return jsonify({"plan_id": new_plan.id, "plan_name": new_plan.name})
+    return jsonify({"response": "failed"})
 
 
 @bp.route('/', methods=['GET', 'POST'])
@@ -104,15 +117,15 @@ def pipeline():
     #     print(opportunity)
 
     user = User.query.filter_by(id=current_user.get_id()).first()
-    country_code = user.country_code
-    user_country = Country.query.filter_by(code=country_code).first()
-    user_currency = user_country.currency_alphabetic_code
-    stages = Stage.query.all()
-    first_stage = Stage.query.first()
-    pipeline = Lead.query.order_by(Lead.priority.desc()).all()
+    user_country = Country.query.filter_by(code=user.country_code).first()
+    stages = Stage.query.order_by('id').all()
+
+    pipeline = Lead.query.filter_by(
+        user_id=current_user.get_id()).order_by(Lead.priority.desc()).all()
 
     plans = RecurringPlan.query.all()
     titles = TITLES
+    filters = FILTERS
     partners = db.session.query(Partner).filter(or_(
         Partner.is_company == True, Partner.is_individual == True)).all()
     companies = Partner.query.filter_by(is_company=True).all()
@@ -127,7 +140,7 @@ def pipeline():
         db.session.commit()
         return redirect(url_for('crm.pipeline'))
 
-    return render_template('crm/pipeline.html', title=_('CRM Pipeline | Olam ERP'), pipeline=pipeline, partners=partners, form1=form1, form2=form2, form3=form3, form4=form4, form5=form5, companies=companies, titles=titles, currencies=currencies, user_currency=user_currency, plans=plans, stages=stages, first_stage=first_stage)
+    return render_template('crm/pipeline.html', title=_('CRM Pipeline | Olam ERP'), pipeline=pipeline, partners=partners, form1=form1, form2=form2, form3=form3, form4=form4, form5=form5, companies=companies, titles=titles, currencies=currencies, user_currency=user_country.currency_alphabetic_code, plans=plans, stages=stages, filters=filters)
 
 
 @bp.route('/pipeline', methods=['GET', 'POST'])

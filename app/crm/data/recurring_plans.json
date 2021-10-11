@@ -1,5 +1,9 @@
 [
     {
+        "id": 0,
+        "name": "Not Applicable"
+    },
+    {
         "id": 1,
         "name": "Daily"
     },

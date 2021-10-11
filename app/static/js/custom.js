@@ -31,7 +31,7 @@ function edit_stage() {
 // add new board item
 $('.add-item').click(function (e) {
   e.preventDefault();
-  stage_id = this.id
+  stage_id = getId(this.id)
   $('#new_item_' + stage_id).show();
   pipeline_stage(stage_id)
 })
@@ -59,20 +59,6 @@ function get_partner_details(value) {
     alert("Get Partner Details Error");
   });
 }
-
-// $("#new_addItem1").click(function (e) {
-//   e.preventDefault()
-//   var stage = 0;
-//   $('#newItem1').show();
-
-// });
-
-// $("#new_addItem_1").click(function (e) {
-//   e.preventDefault()
-//   var stage = 0;
-//   $('#newItem1').show();
-//   pipeline_stage(stage)
-// });
 
 $(".first-opportunity").click(function (e) {
   stage_id = getId(this.id);
@@ -126,16 +112,95 @@ $('#new_individual_contact').submit(function (e) {
   })
 })
 
+$('.select-priority').click(function (e) {
+  e.preventDefault()
+  var el, el2, el3;
+  var value;
+  item_id = this.name
+  el = $('#priority1-' + item_id)
+  el2 = $('#priority2-' + item_id)
+  el3 = $('#priority3-' + item_id)
+
+  if (this.id === "selectPriority1-" + item_id) {
+    if (el.hasClass('asterisk-off')) {
+      el.removeClass('asterisk-off')
+      el.removeClass('ni-star')
+      el.addClass('ni-star-fill');
+      value = 1;
+    } else {
+      el.removeClass('ni-star-fill')
+      el.addClass('asterisk-off')
+      el.addClass('ni-star')
+      el2.removeClass('ni-star-fill')
+      el2.addClass('asterisk-off')
+      el2.addClass('ni-star')
+      el3.removeClass('ni-star-fill')
+      el3.addClass('asterisk-off')
+      el3.addClass('ni-star')
+      value = 0;
+    }
+  } else if (this.id === "selectPriority2-" + item_id) {
+    if (el2.hasClass('asterisk-off')) {
+      el.removeClass('asterisk-off')
+      el.removeClass('ni-star')
+      el.addClass('ni-star-fill');
+      el2.removeClass('asterisk-off')
+      el2.removeClass('ni-star')
+      el2.addClass('ni-star-fill');
+      value = 2;
+    } else {
+      el2.removeClass('ni-star-fill')
+      el2.addClass('asterisk-off')
+      el2.addClass('ni-star')
+      el3.removeClass('ni-star-fill')
+      el3.addClass('asterisk-off')
+      el3.addClass('ni-star')
+      value = 1;
+    }
+  } else if (this.id === "selectPriority3-" + item_id) {
+    if (el3.hasClass('asterisk-off')) {
+      el.removeClass('asterisk-off')
+      el.removeClass('ni-star')
+      el.addClass('ni-star-fill');
+      el2.removeClass('asterisk-off')
+      el2.removeClass('ni-star')
+      el2.addClass('ni-star-fill');
+      el3.removeClass('asterisk-off')
+      el3.removeClass('ni-star')
+      el3.addClass('ni-star-fill');
+      value = 3;
+    } else {
+      el3.removeClass('ni-star-fill')
+      el3.addClass('asterisk-off')
+      el3.addClass('ni-star')
+      value = 2;
+    }
+  }
+  select_priority(value);
+})
+
+// post opportunity priority
+function select_priority(value) {
+
+  $.post('/crm/selected_priority', {
+    selected_priority: value
+  }).done(function (response) {
+
+  }).fail(function () {
+
+  });
+}
+
 // update item priority
 $('.select-priority-update').click(function (e) {
   e.preventDefault()
   var el, el2, el3;
   var value;
   item_id = this.name
+  el = $('#_priority1-' + item_id)
+  el2 = $('#_priority2-' + item_id)
+  el3 = $('#_priority3-' + item_id)
   if (this.id === "_selectPriority1-" + item_id) {
-    el = $('#_priority1')
-    el2 = $('#_priority2')
-    el3 = $('#_priority3')
     if (el.hasClass('asterisk-off')) {
       el.removeClass('asterisk-off')
       el.removeClass('ni-star')
@@ -156,10 +221,6 @@ $('.select-priority-update').click(function (e) {
       update_priority(item_id, value);
     }
   } else if (this.id === "_selectPriority2-" + item_id) {
-
-    el = $('#_priority1')
-    el2 = $('#_priority2')
-    el3 = $('#_priority3')
     if (el2.hasClass('asterisk-off')) {
       el.removeClass('asterisk-off')
       el.removeClass('ni-star')
@@ -180,9 +241,6 @@ $('.select-priority-update').click(function (e) {
       update_priority(item_id, value);
     }
   } else if (this.id === "_selectPriority3-" + item_id) {
-    el = $('#_priority1')
-    el2 = $('#_priority2')
-    el3 = $('#_priority3')
     if (el3.hasClass('asterisk-off')) {
       el.removeClass('asterisk-off')
       el.removeClass('ni-star')
@@ -204,6 +262,104 @@ $('.select-priority-update').click(function (e) {
     }
   }
 })
+
+// add new recurring plan modal
+$(".recurring-plan").on('change', function () {
+  stage_id = getId(this.id)
+  if (this.value === "new_plan") {
+    $('#modalNewPlan').modal('show');
+  }
+})
+
+// submit new plan
+$('#new_recurring_plan').submit(function (e) {
+  e.preventDefault();
+  var form = $(this)
+  var url = form.attr('action')
+
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: form.serialize(),
+    success: function (data) {
+
+      $('#modalNewPlan').modal('hide');
+      $('#newItem_' + stage_id).show();
+      $('#recurring_plan-' + stage_id).append($('<option>', { value: data["plan_id"], text: data["plan_name"] }))
+      $("#recurring_plan-" + stage_id).val(data["plan_id"]).change();
+    }
+  })
+})
+
+
+$('.discard-item').click(function (e) {
+  e.preventDefault();
+  stage_id = getId(this.id)
+  $('#new_item_' + stage_id).hide();
+})
+
+// add new stage
+$('#addBoard').click(function (e) {
+  e.preventDefault();
+  $('#modalAddStage').modal('show');
+})
+
+// handle edit stage submit event
+$('#submit_new_stage').click(function (e) {
+  e.preventDefault();
+  stage_name = $('#new_stage_name').val();
+  $('#stage_title_' + stage_id).html(stage_name)
+  add_stage();
+})
+
+// post new board to server
+function add_stage() {
+  $.post('/crm/add_stage', {
+    new_stage_name: stage_name
+  }).done(function (response) {
+    $('#modalAddStage').modal('hide');
+    location.href = "/crm/"
+  }).fail(function () {
+
+  });
+}
+
+var filter;
+$('.filter').click(function (e) {
+  e.preventDefault();
+  filter_id = this.id
+  filter = $('#spn_filter-' + filter_id).text()
+  var filters;
+  if ($(this).hasClass('selected')) {
+    $(this).removeClass('selected')
+    $('#chk_' + filter_id).hide()
+    if (($('#search_pipeline')).val()) {
+      filters = $('#search_pipeline').val();
+      var _filters = filters.replace(filter + ',', '');
+      $('#search_pipeline').val(_filters);
+      filter_pipeline(_filters);
+    }
+  }
+  else {
+    $(this).addClass('selected');
+    $('#chk_' + filter_id).show()
+    if (($('#search_pipeline')).val()) {
+      filters = $('#search_pipeline').val();
+      $('#search_pipeline').val();
+      $('#search_pipeline').val(filters + filter + ",");
+      filter_pipeline(filters + filter);
+    }
+    else {
+      $('#search_pipeline').val(filter + ",");
+      filter_pipeline(filter);
+    }
+  }
+})
+
+function filter_pipeline() {
+
+}
+
 
 // utilities
 function getCookie(c_name) {
@@ -229,6 +385,8 @@ $(document).ready(function () {
     $('.dv-module').removeAttr('href')
     $('.dv-module').css('cursor', 'pointer')
   }
+
+  $('#search_pipeline').val('My Pipeline,')
 })
 
 $('#btnUsers').on('click', function () {
@@ -435,16 +593,6 @@ $('.dv-module').on('click', function () {
 })
 
 
-function select_priority(value) {
-  $.post('/crm/selected_priority', {
-    selected_priority: value
-  }).done(function (response) {
-
-  }).fail(function () {
-
-  });
-}
-
 function pipeline_stage(value) {
   $.post('/crm/pipeline_stage', {
     pipeline_stage: value
@@ -565,115 +713,6 @@ async function get_city(country) {
   })
 }
 
-
-
-
-
-$('#discard_item1').click(function (e) {
-  e.preventDefault();
-  $('#newItem1').hide();
-})
-
-
-
-$('#recurring_plan').on('change', function () {
-  if (this.value === "new_plan") {
-    $('#modalNewPlan').modal('show');
-  }
-})
-
-
-$('.select-priority').click(function (e) {
-  e.preventDefault()
-  var el, el2, el3;
-  var value;
-
-  if (this.id === "selectPriority1") {
-    el = $('#priority1')
-    el2 = $('#priority2')
-    el3 = $('#priority3')
-    if (el.hasClass('asterisk-off')) {
-      el.removeClass('asterisk-off')
-      el.removeClass('ni-star')
-      el.addClass('ni-star-fill');
-      value = 1;
-    } else {
-      el.removeClass('ni-star-fill')
-      el.addClass('asterisk-off')
-      el.addClass('ni-star')
-      el2.removeClass('ni-star-fill')
-      el2.addClass('asterisk-off')
-      el2.addClass('ni-star')
-      el3.removeClass('ni-star-fill')
-      el3.addClass('asterisk-off')
-      el3.addClass('ni-star')
-      value = 0;
-    }
-  } else if (this.id === "selectPriority2") {
-    el = $('#priority1')
-    el2 = $('#priority2')
-    el3 = $('#priority3')
-    if (el2.hasClass('asterisk-off')) {
-      el.removeClass('asterisk-off')
-      el.removeClass('ni-star')
-      el.addClass('ni-star-fill');
-      el2.removeClass('asterisk-off')
-      el2.removeClass('ni-star')
-      el2.addClass('ni-star-fill');
-      value = 2;
-    } else {
-      el2.removeClass('ni-star-fill')
-      el2.addClass('asterisk-off')
-      el2.addClass('ni-star')
-      el3.removeClass('ni-star-fill')
-      el3.addClass('asterisk-off')
-      el3.addClass('ni-star')
-      value = 1;
-    }
-  } else if (this.id === "selectPriority3") {
-    el = $('#priority1')
-    el2 = $('#priority2')
-    el3 = $('#priority3')
-    if (el3.hasClass('asterisk-off')) {
-      el.removeClass('asterisk-off')
-      el.removeClass('ni-star')
-      el.addClass('ni-star-fill');
-      el2.removeClass('asterisk-off')
-      el2.removeClass('ni-star')
-      el2.addClass('ni-star-fill');
-      el3.removeClass('asterisk-off')
-      el3.removeClass('ni-star')
-      el3.addClass('ni-star-fill');
-      value = 3;
-    } else {
-      el3.removeClass('ni-star-fill')
-      el3.addClass('asterisk-off')
-      el3.addClass('ni-star')
-      value = 2;
-    }
-  }
-  select_priority(value);
-})
-
-$('#new_recurring_plan').submit(function (e) {
-  e.preventDefault();
-  var form = $(this)
-  var url = form.attr('action')
-
-  $.ajax({
-    type: "POST",
-    url: url,
-    data: form.serialize(),
-    success: function (data) {
-
-      $('#modalNewPlan').modal('hide');
-      $('#newItem1').show();
-      $('#recurring_plan').append($('<option>', { value: data["plan_id"], text: data["plan_name"] }))
-      $("#recurring_plan").val(data["plan_id"]).change();
-    }
-  })
-})
-
 $('.close').click(function (e) {
   e.preventDefault();
   $('#modalAlert').removeClass('show')
@@ -708,7 +747,7 @@ function getNumber(_str) {
   return Number(out.join(''));
 }
 $(document).ready(function () {
-  $('#expected_revenue').on('keyup', function () {
+  $('.expected_revenue').on('keyup', function () {
     updateTextView($(this));
   });
 });

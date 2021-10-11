@@ -88,6 +88,27 @@ def seed_database():
                 db.session.add(country)
                 db.session.commit()
 
+        # Calling Code
+        calling_codes = get_calling_codes()
+        for calling_code in calling_codes:
+
+            exists = Country.query.filter(((Country.calling_code == calling_code['Dial']) & (
+                Country.name == calling_code['Country_Name'])) | ((Country.calling_code == calling_code['Dial']) & (
+                    Country.code == calling_code['ISO3166_1_Alpha_2']))).first()
+            if exists:
+                pass
+            else:
+                country = Country.query.filter((
+                    Country.name == calling_code['Country_Name']) | (
+                    Country.code == calling_code['ISO3166_1_Alpha_2'])).first()
+                if country:
+                    country.calling_code = calling_code['Dial']
+                    country.currency_name = calling_code['ISO4217_Currency_Name']
+                    country.currency_alphabetic_code = calling_code['ISO4217_Currency_Alphabetic_Code']
+                    country.currency_numeric_code = calling_code['ISO4217_Currency_Numeric_Code']
+                    country.languages = calling_code['Languages']
+                    db.session.commit()
+
         # Cities
         cities = get_countries_cities()
         for city in cities:
@@ -104,26 +125,6 @@ def seed_database():
                 city = City(
                     name=city['name'], country_id=country.id, geonameid=city['geonameid'])
                 db.session.add(city)
-                db.session.commit()
-
-        # Calling Code
-        calling_codes = get_calling_codes()
-        for calling_code in calling_codes:
-
-            exists = Country.query.filter(((Country.calling_code == calling_code['Dial']) & (
-                Country.name == calling_code['Country_Name'])) | ((Country.calling_code == calling_code['Dial']) & (
-                    Country.code == calling_code['ISO3166_1_Alpha_2']))).first()
-            if exists:
-                pass
-            else:
-                country = Country.query.filter((
-                    Country.name == calling_code['Country_Name']) | (
-                    Country.code == calling_code['ISO3166_1_Alpha_2'])).first()
-                country.calling_code = calling_code['Dial']
-                country.currency_name = calling_code['ISO4217_Currency_Name']
-                country.currency_alphabetic_code = calling_code['ISO4217_Currency_Alphabetic_Code']
-                country.currency_numeric_code = calling_code['ISO4217_Currency_Numeric_Code']
-                country.languages = calling_code['Languages']
                 db.session.commit()
     except Exception as e:
         print(e)
