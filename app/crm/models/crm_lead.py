@@ -25,7 +25,7 @@ FILTERS = [
 class Lead(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), index=True, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
     plan_id = db.Column(db.Integer, db.ForeignKey('recurring_plan.id'))
     referred_by = db.Column(db.String(120))

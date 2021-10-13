@@ -26,13 +26,21 @@ from werkzeug.local import LocalProxy
 
 import enum
 import logging
+import hashlib
 
 
-class User(UserMixin, PaginatedAPIMixin, db.Model):
+user_rights = db.Table(
+    'UserAccess',
+    db.Column('user_id', db.Integer, db.ForeignKey(
+        'users.id'), primary_key=True),
+    db.Column('user_right_id', db.Integer, db.ForeignKey('user_right.id'), primary_key=True))
+
+
+class Users(UserMixin, PaginatedAPIMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     partner_id = db.Column(db.Integer, db.ForeignKey('partner.id'))
     company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
-    token = db.Column(db.String(32), index=True, unique=True)
+    token = db.Column(db.String(120), index=True, unique=True)
     token_expiration = db.Column(db.DateTime)
     is_active = db.Column(db.Boolean, default=False)
     is_staff = db.Column(db.Boolean, default=True)
@@ -40,13 +48,22 @@ class User(UserMixin, PaginatedAPIMixin, db.Model):
     registered_on = db.Column(db.DateTime, default=datetime.now)
     password_hash = db.Column(db.String(128))
     leads = db.relationship('Lead', backref='owner', lazy='dynamic')
+    # team_leaders = db.relationship('Lead', backref='leader', lazy='dynamic')
     country_code = db.Column(db.String(10), index=True)
+    team_id = db.Column(db.Integer, db.ForeignKey('team.id'))
+    rights = db.relationship('UserRight', secondary=user_rights, backref=db.backref(
+        'user', lazy='dynamic'), lazy='dynamic')
 
     def __repr__(self):
         return '<User {}>'.format(self.id)
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
+
+    def set_token(self, partner_id):
+        hash_object = hashlib.sha1((str.encode(str(partner_id))))
+        hex_dig = hash_object.hexdigest()
+        self.token = hex_dig
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
@@ -61,6 +78,11 @@ class User(UserMixin, PaginatedAPIMixin, db.Model):
             {'activate_database': self.id, 'exp': time() + expires_in},
             current_app.config['SECRET_KEY'], algorithm='HS256')
 
+    def get_activation_token(self):
+        return jwt.encode(
+            {'activate': self.id},
+            current_app.config['SECRET_KEY'], algorithm='HS256')
+
     @staticmethod
     def verify_reset_password_token(token):
         try:
@@ -68,7 +90,16 @@ class User(UserMixin, PaginatedAPIMixin, db.Model):
                             algorithms=['HS256'])['reset_password']
         except:
             return
-        return User.query.get(id)
+        return Users.query.get(id)
+
+    @staticmethod
+    def verify_token(token):
+        try:
+            id = jwt.decode(token, current_app.config['SECRET_KEY'],
+                            algorithms=['HS256'])['activate']
+        except:
+            return
+        return Users.query.get(id)
 
     @staticmethod
     def verify_database_activation_token(token):
@@ -77,7 +108,7 @@ class User(UserMixin, PaginatedAPIMixin, db.Model):
                             algorithms=['HS256'])['activate_database']
         except:
             return
-        return User.query.get(id)
+        return Users.query.get(id)
 
     def to_dict(self, include_email=False):
         data = {
@@ -119,7 +150,7 @@ class User(UserMixin, PaginatedAPIMixin, db.Model):
 
     @staticmethod
     def check_token(token):
-        user = User.query.filter_by(token=token).first()
+        user = Users.query.filter_by(token=token).first()
         if user is None or user.token_expiration < datetime.now:
             return None
         return user
@@ -127,4 +158,9 @@ class User(UserMixin, PaginatedAPIMixin, db.Model):
 
 @login_manager.user_loader
 def load_user(id):
-    return User.query.get(int(id))
+    return Users.query.get(int(id))
+
+
+class UserRight(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    access_right = db.Column(db.String(120), index=True, unique=True)

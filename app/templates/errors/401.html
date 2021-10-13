@@ -10,17 +10,21 @@
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="../static/images/favicon.png">
     <!-- Page Title  -->
-    <title>{% if title %} {{title}} {% else %} Welcome to Olam {% endif %}</title>
+    <title>Expired Token | Olam ERP</title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/dashlite.css') }}">
     <link id="skin-default" rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}">
-    <link id="skin-default" rel="stylesheet" href="{{ url_for('static', filename='css/style-email.css') }}">
     <link
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap"
         rel="stylesheet">
-    {{ JSGlue.include() }}
+    <style>
+        .nk-error-head{
+            font-size: 100px !important;
+        }
+    </style>
 </head>
-<body class="nk-body bg-white npc-default pg-auth">
+
+<body class="nk-body bg-white npc-default pg-error">
     <div class="nk-app-root">
         <!-- main @s -->
         <div class="nk-main ">
@@ -28,13 +32,13 @@
             <div class="nk-wrap nk-wrap-nosidebar">
                 <!-- content @s -->
                 <div class="nk-content ">
-                    <div class="nk-block nk-block-middle nk-auth-body  wide-xs">
-                        <div class="brand-logo pb-4 text-center">
-                            {% include "logo.html" %}
+                    <div class="nk-block nk-block-middle wide-xs mx-auto">
+                        <div class="nk-block-content nk-error-ld text-center">
+                            <h1 class="nk-error-head">Token Expired</h1>                            
+                            <p class="nk-error-text">Your token has expired. Kindly create your account again.</p>
+                            <a href="{{url_for('main.choose_apps')}}" class="btn btn-lg btn-primary mt-2">Start here</a>
                         </div>
-                        {% block auth %}{% endblock %}
-                    </div>
-                    {% include "footer.html" %}
+                    </div><!-- .nk-block -->
                 </div>
                 <!-- wrap @e -->
             </div>
@@ -42,7 +46,9 @@
         </div>
         <!-- main @e -->
     </div>
+    <!-- app-root @e -->
+    <!-- JavaScript -->
     <script src="{{ url_for('static', filename='js/bundle.js') }}"></script>
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
-</body>
+
 </html>

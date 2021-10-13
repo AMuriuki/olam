@@ -26,7 +26,7 @@ class Partner(db.Model):
     city_id = db.Column(db.Integer, db.ForeignKey('city.id'))
     country_id = db.Column(db.Integer, db.ForeignKey('country.id'))
     company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
-    users = db.relationship('User', backref='partner', lazy='dynamic')
+    users = db.relationship('Users', backref='partner', lazy='dynamic')
     is_tenant = db.Column(db.Boolean, default=False)
     tax_id = db.Column(db.Integer, index=True)
     partnerships = db.relationship(

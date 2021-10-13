@@ -8,6 +8,16 @@ $('.edit-stage').click(function (e) {
   $('#modalEditStage').modal('show');
 })
 
+$('.delete-stage').click(function (e) {
+  e.preventDefault();
+  stage_id = this.id
+  $('#confirmDelete').modal('show');
+})
+
+$('#deleteStage').click(function (e) {
+  delete_stage();
+})
+
 // handle edit stage submit event
 $('#submit_stage_edits').click(function (e) {
   e.preventDefault();
@@ -23,6 +33,16 @@ function edit_stage() {
     stage_name: stage_name
   }).done(function (response) {
     $('#modalEditStage').modal('hide');
+  }).fail(function () {
+
+  });
+}
+
+function delete_stage() {
+  $.post('/crm/delete_stage', {
+    stage_id: stage_id
+  }).done(function (response) {
+    location.href = "/crm/"
   }).fail(function () {
 
   });
@@ -359,6 +379,35 @@ $('.filter').click(function (e) {
 function filter_pipeline() {
 
 }
+
+// invite new user
+$('#frm_invite').submit(function (e) {
+  e.preventDefault();
+  // $('#modalLoading').modal('show');
+  $('#dv_notification').show();
+  $('#dv_notification').text("Sending email invitation...")
+  var form = $(this)
+  var url = form.attr('action')
+
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: form.serialize(),
+    success: function (data) {
+      // $('#modalLoading').modal('hide');
+      $('#dv_notification').hide();
+      if (data['response'] === "success") {
+        location.href = "/settings/general_settings"
+      }
+      else {
+        $('#modalInvite').modal('show');
+        $('#spn_invite_error').text(data['response']['email'])
+      }
+
+    }
+  })
+
+})
 
 
 // utilities

@@ -46,12 +46,29 @@
                             <div class="nk-header-menu">
                                 <ul class="nk-menu nk-menu-main">
                                     {% if "crm." in request.url_rule.endpoint %}
-                                    <li class="nk-menu-item">
-                                        <a href="{{url_for('crm.sales')}}" class="nk-menu-link" data-original-title=""
-                                            title="">
+                                    <li class="nk-menu-item has-sub">
+                                        <a href="#" class="nk-menu-link nk-menu-toggle" data-original-title="" title="">
                                             <span class="nk-menu-text">Sales</span>
                                         </a>
-                                    </li>
+                                        <ul class="nk-menu-sub">
+                                            <li class="nk-menu-item">
+                                                <a href="#" class="nk-menu-link" data-original-title="" title=""><span
+                                                        class="nk-menu-text">My Pipeline</span></a>
+                                            </li>
+                                            <li class="nk-menu-item">
+                                                <a href="#" class="nk-menu-link" data-original-title="" title=""><span
+                                                        class="nk-menu-text">My Activities</span></a>
+                                            </li>
+                                            <li class="nk-menu-item">
+                                                <a href="#" class="nk-menu-link" data-original-title="" title=""><span
+                                                        class="nk-menu-text">Teams</span></a>
+                                            </li>
+                                            <li class="nk-menu-item">
+                                                <a href="#" class="nk-menu-link" data-original-title="" title=""><span
+                                                        class="nk-menu-text">Customers</span></a>
+                                            </li>
+                                        </ul><!-- .nk-menu-sub -->
+                                    </li><!-- .nk-menu-item -->
                                     <li class="nk-menu-item">
                                         <a href="{{url_for('crm.reporting')}}" class="nk-menu-link"
                                             data-original-title="" title="">
@@ -70,7 +87,7 @@
                                                         class="nk-menu-text">Settings</span></a>
                                             </li>
                                             <li class="nk-menu-item">
-                                                <a href="html/apps-inbox.html" class="nk-menu-link"
+                                                <a href="{{url_for('crm.sales_team')}}" class="nk-menu-link"
                                                     data-original-title="" title=""><span class="nk-menu-text">Sales
                                                         Teams</span></a>
                                             </li>
@@ -193,7 +210,7 @@
                                                     <em class="icon ni ni-user-alt"></em>
                                                 </div>
                                                 <div class="user-name dropdown-indicator d-none d-sm-block">
-                                                    {{current_user.company.name|upper}}</div>
+                                                    {{current_user.partner.company.name|upper}}</div>
                                             </div>
                                         </a>
                                         <div

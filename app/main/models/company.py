@@ -24,7 +24,7 @@ class Company(db.Model):
     website = db.Column(db.String(120), index=True)
     category_id = db.Column(db.Integer, db.ForeignKey('company_category.id'))
     partners = db.relationship('Partner', backref='company', lazy='dynamic')
-    users = db.relationship('User', backref='company', lazy='dynamic')
+    users = db.relationship('Users', backref='company', lazy='dynamic')
     leads = db.relationship('Lead', backref='company_owning', lazy='dynamic')
 
 

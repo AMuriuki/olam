@@ -2,7 +2,7 @@ from app.main.models.partner import Partner
 from app.main.models.module import Module
 from app.main.models.database import Database
 from app.main.models.company import Company
-from flask import render_template, redirect, url_for, flash, request, session
+from flask import render_template, redirect, url_for, flash, request, session, abort
 from werkzeug.urls import url_parse
 from flask_login import login_user, logout_user, current_user
 from flask_babel import _
@@ -10,12 +10,11 @@ from app import db, current_app, get_api_token, get_installed_modules
 from app.auth import bp
 from app.auth.forms import LoginForm, RegistrationForm, \
     ResetPasswordRequestForm, ResetPasswordForm, SetPasswordForm
-from app.auth.models.user import User
+from app.auth.models.user import Users
 from app.auth.email import send_password_reset_email
 from sqlalchemy import or_
 import requests
 import json
-from app.auth.models.user import User
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from app.tasks import ManageTasks
@@ -29,18 +28,19 @@ def login():
     if form.validate_on_submit():
         partner = Partner.query.filter_by(
             email=form.email.data).first()
-        user = User.query.filter_by(partner_id=partner.id).first()
-        if user is None or not user.check_password(form.password.data):
-
-            flash(_('Invalid email or password'))
+        if partner:
+            user = Users.query.filter_by(partner_id=partner.id).first()
+            if user is None or not user.check_password(form.password.data):
+                flash(_('Invalid email or password'))
+                return redirect(url_for('auth.login'))
+            login_user(user)
+        else:
+            flash(_('User does not exist'))
             return redirect(url_for('auth.login'))
-
-        login_user(user)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('main.index')
         return redirect(next_page)
-
     return render_template('auth/login.html', title=_('Sign In | Olam ERP'), form=form)
 
 
@@ -52,17 +52,32 @@ def logout():
 
 @bp.route('/register', methods=['GET', 'POST'])
 def register():
-    if current_user.is_authenticated:
-        return redirect(url_for('main.home'))
     form = RegistrationForm()
+    if current_user.is_authenticated:
+        return redirect(url_for('main.index'))
+    if request.args.get('token'):
+        user = Users.verify_token(request.args.get('token'))
+        partner = Partner.query.filter_by(id=user.partner_id).first()
+        form.email.data = partner.email
+        if form.validate_on_submit():
+            partner.name = form.name.data
+            user.set_password(form.password.data)
+            db.session.commit()
+            login_user(user)
+            flash(_('Welcome to Olam ERP!'))
+            return redirect(url_for('main.index'))
     if form.validate_on_submit():
-        user = User(name=form.name.data, email=form.email.data, role_id=3)
+        partner = Partner(name=form.name.data, email=form.email.data)
+        db.session.add(partner)
+        db.session.commit()
+        user = Users(partner_id=partner.id)
         user.set_password(form.password.data)
+        user.set_token(partner.id)
         db.session.add(user)
         db.session.commit()
         login_user(user)
         flash(_('Welcome to Olam ERP!'))
-        return redirect(url_for('main.getting_started'))
+        return redirect(url_for('main.index'))
     return render_template('auth/register.html', title=_('Register | Olam ERP'),
                            form=form)
 
@@ -84,12 +99,13 @@ def set_password():
                           email=request.args.get('email'), phone_no=request.args.get('phone_no'), is_active=True, company_id=company.id, is_tenant=True)
         db.session.add(partner)
         db.session.commit()
-        user = User(partner_id=partner.id, company_id=company.id,
-                    is_active=True, country_code=request.args.get('country_code'))
+        user = Users(partner_id=partner.id, company_id=company.id,
+                     is_active=True, country_code=request.args.get('country_code'))
+        user.set_token(partner.id)
         db.session.add(user)
         db.session.commit()
     else:
-        user = User.query.filter_by(partner_id=partner.id).first()
+        user = Users.query.filter_by(partner_id=partner.id).first()
 
     response = requests.post(get_api_token, auth=(
         partner.email, 'api_user'))
@@ -97,24 +113,26 @@ def set_password():
     response_dict = json.loads(response.content)
 
     form = SetPasswordForm()
-    if user.password_hash:
-        return redirect(url_for('main.index'))
-    else:
-        if form.validate_on_submit():
-            user.password_hash = generate_password_hash(form.password.data)
-            db.session.commit()
-            login_user(user)
-            head = {'Authorization': 'Bearer ' + response_dict['token']}
-            company_id = request.args.get('companyid')
-            response = requests.get(
-                get_installed_modules + str(company_id) + '/modules', headers=head)
-            response_dict = json.loads(response.content)
-
-            for i in range(len(response_dict['items'])):
-                module = Module(technical_name=response_dict['items'][i]['technical_name'], official_name=response_dict['items'][i]['official_name'], bp_name=response_dict['items'][i]['bp_name'], summary=response_dict['items'][i]['summary'])
-                db.session.add(module)
+    if user:
+        if user.password_hash:
+            return redirect(url_for('main.index'))
+        else:
+            if form.validate_on_submit():
+                user.password_hash = generate_password_hash(form.password.data)
                 db.session.commit()
-            return redirect(url_for('main.invite_colleagues'))
+                login_user(user)
+                head = {'Authorization': 'Bearer ' + response_dict['token']}
+                company_id = request.args.get('companyid')
+                response = requests.get(
+                    get_installed_modules + str(company_id) + '/modules', headers=head)
+                response_dict = json.loads(response.content)
+
+                for i in range(len(response_dict['items'])):
+                    module = Module(technical_name=response_dict['items'][i]['technical_name'], official_name=response_dict['items']
+                                    [i]['official_name'], bp_name=response_dict['items'][i]['bp_name'], summary=response_dict['items'][i]['summary'])
+                    db.session.add(module)
+                    db.session.commit()
+                return redirect(url_for('main.invite_colleagues'))
     return render_template('auth/set_password.html', title=_('Set Password | Olam ERP'), form=form)
 
 
@@ -124,7 +142,7 @@ def reset_password_request():
         return redirect(url_for('main.home'))
     form = ResetPasswordRequestForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
+        user = Users.query.filter_by(email=form.email.data).first()
         if user:
             send_password_reset_email(user)
         flash(
@@ -138,7 +156,7 @@ def reset_password_request():
 def reset_password(token):
     if current_user.is_authenticated:
         return redirect(url_for('main.home'))
-    user = User.verify_reset_password_token(token)
+    user = Users.verify_reset_password_token(token)
     if not user:
         return redirect(url_for('main.home'))
     form = ResetPasswordForm()
@@ -148,3 +166,22 @@ def reset_password(token):
         flash(_('Your password has been reset.'))
         return redirect(url_for('auth.login'))
     return render_template('auth/reset_password.html', form=form)
+
+
+@bp.route('/activate/<token>', methods=['GET', 'POST'])
+def activate(token):
+    form = SetPasswordForm()
+    user = Users.verify_token(token)
+    partner = Partner.query.filter_by(id=user.partner_id).first()
+    if not partner.name:
+        return redirect(url_for('auth.register', token=token))
+    if not user:
+        abort(401)
+    else:
+        if form.validate_on_submit():
+            user.password_hash = generate_password_hash(form.password.data)
+            user.is_active = True
+            db.session.commit()
+            login_user(user)
+            return redirect(url_for('main.index'))
+    return render_template('auth/set_password.html', title=_('Set Password | Olam ERP'), form=form)

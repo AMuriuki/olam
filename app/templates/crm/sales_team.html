@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="nk-content-body">
+    <div class="nk-content-wrap">
+        <div class="nk-block-head">
+            <div class="nk-block-between">
+                <div class="nk-block-head-content">
+                    <h3 class="nk-block-title page-title">Sales Teams</h3>
+                    <div class="nk-block-des text-soft">
+                        <p>You have {{sales_teams|length}} sales teams.</p>
+                    </div>
+                </div><!-- .nk-block-head-content -->
+                <div class="nk-block-head-content">
+                    <div class="toggle-wrap nk-block-tools-toggle">
+                        <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em
+                                class="icon ni ni-menu-alt-r"></em></a>
+                        <div class="toggle-expand-content" data-content="pageMenu">
+                            <ul class="nk-block-tools g-3">
+                                <li><a href="#" class="btn btn-white btn-outline-light"><em
+                                            class="icon ni ni-download-cloud"></em><span>Export</span></a></li>
+                                <li class="nk-block-tools-opt">
+                                    <a href="{{url_for('crm.create_team')}}" class="btn btn-primary"><em
+                                        class="icon ni ni-plus"></em><span>Create</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div><!-- .toggle-wrap -->
+                </div><!-- .nk-block-head-content -->
+            </div><!-- .nk-block-between -->
+        </div><!-- .nk-block-head -->
+        <div class="nk-block nk-block-lg">
+            <div class="card card-preview">
+                <div class="card-inner">
+                    <table class="datatable-init nk-tb-list nk-tb-ulist" data-auto-responsive="false">
+                        <thead>
+                            <tr class="nk-tb-item nk-tb-head">
+                                <th class="nk-tb-col nk-tb-col-check">
+                                    <div class="custom-control custom-control-sm custom-checkbox notext">
+                                        <input type="checkbox" class="custom-control-input" id="uid">
+                                        <label class="custom-control-label" for="uid"></label>
+                                    </div>
+                                </th>
+                                <th class="nk-tb-col"><span class="sub-text">Sales Team</span></th>
+                                <th class="nk-tb-col tb-col-md"><span class="sub-text">Team Leader</span></th>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for sales_team in sales_teams %}
+                            <tr class="nk-tb-item">
+                                <td class="nk-tb-col nk-tb-col-check">
+                                    <div class="custom-control custom-control-sm custom-checkbox notext">
+                                        <input type="checkbox" class="custom-control-input" id="uid1">
+                                        <label class="custom-control-label" for="uid1"></label>
+                                    </div>
+                                </td>
+                                <td class="nk-tb-col">
+                                    <div class="user-card">
+                                        <div class="user-info">
+                                            <span class="tb-lead">{{sales_team.name}}<span
+                                                    class="dot dot-success d-md-none ml-1"></span></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="nk-tb-col tb-col-xl">
+                                    <span>{{sales_team.team_leader}}</span>
+                                </td>                                
+                            </tr><!-- .nk-tb-item  -->
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div><!-- .card-preview -->
+        </div> <!-- nk-block -->
+    </div>
+    <!-- footer @s -->
+    {% include "footer.html" %}
+    <!-- footer @e -->
+</div>
+{% endblock %}

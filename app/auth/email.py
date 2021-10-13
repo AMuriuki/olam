@@ -1,9 +1,10 @@
-from app.auth.models.user import User
+from app.auth.models.user import Users
 import os
 from flask import render_template, current_app
 from flask_babel import _
 from sendgrid.helpers.mail import Mail
 from sendgrid.sendgrid import SendGridAPIClient
+from app.main.models.partner import Partner
 from app.sendgrid_email import send_email
 
 
@@ -19,8 +20,18 @@ def send_password_reset_email(user):
 
 
 def send_database_activation_email(user, domain_name):
-    user = User.query.filter_by(id=user).first()
+    user = Users.query.filter_by(id=user).first()
     token = user.get_database_activation_token()
     message = Mail(from_email=current_app.config['ADMINS'][0], to_emails=[user.email], subject='Activate ' + domain_name +
                    '.olam-erp.com', html_content=render_template('email/activate_database.html', user=user, token=token, domain_name=domain_name))
+    send_email(message)
+
+
+def send_invite_email(partner, invited_by):
+    invited_by = Partner.query.filter_by(id=invited_by).first()
+    user = Users.query.filter_by(partner_id=partner).first()
+    token = user.get_activation_token()
+    partner = Partner.query.filter_by(id=partner).first()
+    message = Mail(from_email=current_app.config['ADMINS'][0], to_emails=[
+                   partner.email], subject=invited_by.name + ' from ' + invited_by.company.name + ' invites you to connect on Olam ERP', html_content=render_template('email/invite.html', token=token, name=partner.name, invited_by=invited_by.name, company=invited_by.company.name, email=partner.email, domain=invited_by.company.domain_name))
     send_email(message)

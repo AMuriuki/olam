@@ -2,7 +2,7 @@
 
 {% block content %}
 <style>
-    .nk-aside{
+    .nk-aside {
         display: none;
     }
 </style>
@@ -74,6 +74,22 @@
                     </div>
                 </div>
                 {% endfor %}
+                <div class="col-sm-6 col-xl-3" onclick="location.href='{{url_for('settings.general')}}';"
+                    style="cursor: pointer;">
+                    <div class="card card-bordered h-100">
+                        <div class="card-inner">
+                            <div class="project">
+                                <div class="project-head">
+                                    <a href="{{url_for('settings.general')}}" class="project-title">
+                                        <div class="project-info">
+                                            <h6 class="title">Settings</h6>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div><!-- .nk-block -->
     </div>

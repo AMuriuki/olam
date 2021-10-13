@@ -4,15 +4,16 @@ from app.crm import bp
 from app.crm.models.crm_lead import FILTERS, Lead
 from app.crm.models.crm_recurring_plan import RecurringPlan
 from app.crm.models.crm_stage import Stage
+from app.crm.models.crm_team import Team
 from app.main.models.module import Module
 from flask_babel import _, get_locale
 from app import db
-from app.auth.models.user import User
+from app.auth.models.user import Users
 from app.main.models.partner import Partner
 from app.main.models.company import Company
 from sqlalchemy import log, or_
 from app.contacts.forms import TITLES, BasicCompanyInfoForm, BasicIndividualInfoForm
-from app.crm.forms import BoardItemForm, NewRecurringPlanForm, EditStageForm
+from app.crm.forms import BoardItemForm, NewRecurringPlanForm, EditStageForm, CreateSalesTeamForm
 from app.main.models.country import Country
 
 
@@ -21,6 +22,15 @@ from app.main.models.country import Country
 def edit_stage():
     stage = Stage.query.filter_by(id=request.form['stage_id']).first()
     stage.name = request.form['stage_name']
+    db.session.commit()
+    return jsonify({"response": "success"})
+
+
+@login_required
+@bp.route('/delete_stage', methods=['GET', 'POST'])
+def delete_stage():
+    stage = Stage.query.filter_by(id=request.form['stage_id']).first()
+    stage.is_deleted = True
     db.session.commit()
     return jsonify({"response": "success"})
 
@@ -116,9 +126,9 @@ def pipeline():
     # for opportunity in opportunities:
     #     print(opportunity)
 
-    user = User.query.filter_by(id=current_user.get_id()).first()
+    user = Users.query.filter_by(id=current_user.get_id()).first()
     user_country = Country.query.filter_by(code=user.country_code).first()
-    stages = Stage.query.order_by('id').all()
+    stages = Stage.query.filter_by(is_deleted=False).order_by('id').all()
 
     pipeline = Lead.query.filter_by(
         user_id=current_user.get_id()).order_by(Lead.priority.desc()).all()
@@ -153,6 +163,25 @@ def empty():
 @login_required
 def sales():
     pass
+
+
+@bp.route('/sales_team', methods=['GET', 'POST'])
+@login_required
+def sales_team():
+    sales_teams = Team.query.all()
+    return render_template('crm/sales_team.html', title=_('CRM Sales Teams | Olam ERP'), sales_teams=sales_teams)
+
+
+@bp.route('/create_team', methods=['GET', 'POST'])
+@login_required
+def create_team():
+    form = CreateSalesTeamForm()
+    partners = Partner.query.filter_by(is_tenant=True).all()
+    if form.validate_on_submit():
+        sales_team = Team(name="", user_id="")
+        db.session.add(sales_team)
+        db.session.commit()
+    return render_template('crm/create_team.html', title=_('CRM Sales Teams | Olam ERP'), form=form, partners=partners)
 
 
 @bp.route('/reporting', methods=['GET', 'POST'])

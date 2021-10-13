@@ -2,10 +2,27 @@
     <div class="nk-sidebar-menu" data-simplebar>
         <ul class="nk-menu nk-menu-main">
             {% if "crm." in request.url_rule.endpoint %}
-            <li class="nk-menu-item">
-                <a href="{{url_for('crm.sales')}}" class="nk-menu-link">
+            <li class="nk-menu-item has-sub">
+                <a href="#" class="nk-menu-link nk-menu-toggle">
                     <span class="nk-menu-text">Sales</span>
                 </a>
+                <ul class="nk-menu-sub">
+                    <li class="nk-menu-item">
+                        <a href="#" class="nk-menu-link"><span class="nk-menu-text">My Pipeline</span></a>
+                    </li>
+                    <li class="nk-menu-item">
+                        <a href="@" class="nk-menu-link"><span class="nk-menu-text">My Activities</span></a>
+                    </li>
+                    <li class="nk-menu-item">
+                        <a href="#" class="nk-menu-link"><span class="nk-menu-text">Teams</span></a>
+                    </li>
+                    <li class="nk-menu-item">
+                        <a href="#" class="nk-menu-link"><span class="nk-menu-text">Teams</span></a>
+                    </li>
+                    <li class="nk-menu-item">
+                        <a href="#" class="nk-menu-link"><span class="nk-menu-text">Customers</span></a>
+                    </li>
+                </ul><!-- .nk-menu-sub -->
             </li><!-- .nk-menu-item -->
             <li class="nk-menu-item">
                 <a href="{{url_for('crm.reporting')}}" class="nk-menu-link">
@@ -13,7 +30,7 @@
                 </a>
             </li><!-- .nk-menu-item -->
             <li class="nk-menu-item has-sub">
-                <a href="{{url_for('crm.configuration')}}" class="nk-menu-link nk-menu-toggle">
+                <a href="#" class="nk-menu-link nk-menu-toggle">
                     <span class="nk-menu-text">Configuration</span>
                 </a>
                 <ul class="nk-menu-sub">
@@ -22,11 +39,12 @@
                                 class="nk-menu-text">Settings</span></a>
                     </li>
                     <li class="nk-menu-item">
-                        <a href="html/apps-inbox.html" class="nk-menu-link"><span class="nk-menu-text">Teams</span></a>
+                        <a href="{{url_for('crm.sales_team')}}" class="nk-menu-link"><span class="nk-menu-text">Sales
+                                Teams</span></a>
                     </li>
                     <li class="nk-menu-item">
-                        <a href="html/apps-file-manager.html" class="nk-menu-link"><span
-                                class="nk-menu-text">Types</span></a>
+                        <a href="html/apps-file-manager.html" class="nk-menu-link"><span class="nk-menu-text">Activity
+                                Types</span></a>
                     </li>
                     <li class="nk-menu-item">
                         <a href="html/apps-chats.html" class="nk-menu-link"><span
@@ -61,12 +79,25 @@
             <li class="nk-menu-heading">
                 <h6 class="overline-title text-primary-alt">Others</h6>
             </li><!-- .nk-menu-heading -->
-            <li class="nk-menu-item">
-                <a href="{{url_for('settings.index')}}" class="nk-menu-link">
+            <li class="nk-menu-item has-sub">
+                <a href="#" class="nk-menu-link nk-menu-toggle">
                     <span class="nk-menu-icon"><em class="icon ni ni-setting"></em></span>
                     <span class="nk-menu-text">Settings</span>
                 </a>
-            </li>
+                <ul class="nk-menu-sub">
+                    <li class="nk-menu-item">
+                        <a href="{{url_for('settings.general')}}" id="general_settings" class="nk-menu-link"><span
+                                class="nk-menu-text">General
+                                Settings</span></a>
+                    </li>
+                    {% for module in modules %}
+                    <li class="nk-menu-item">
+                        <a href="#" id="settings_{{module.id}}" class="nk-menu-link"><span
+                                class="nk-menu-text">{{module.official_name[4:]}}</span></a>
+                    </li>
+                    {% endfor %}
+                </ul><!-- .nk-menu-sub -->
+            </li><!-- .nk-menu-item -->
         </ul><!-- .nk-menu -->
     </div><!-- .nk-sidebar-menu -->
     <div class="nk-aside-close">
