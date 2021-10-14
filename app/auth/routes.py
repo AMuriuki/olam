@@ -59,25 +59,31 @@ def register():
         user = Users.verify_token(request.args.get('token'))
         partner = Partner.query.filter_by(id=user.partner_id).first()
         form.email.data = partner.email
+        form.email.render_kw = {'disabled': 'disabled'}
         if form.validate_on_submit():
             partner.name = form.name.data
+            partner.company_id = request.args.get('company')
+            partner.is_tenant = True
             user.set_password(form.password.data)
+            user.is_active = True
+            user.company_id = request.args.get('company')
             db.session.commit()
             login_user(user)
             flash(_('Welcome to Olam ERP!'))
             return redirect(url_for('main.index'))
-    if form.validate_on_submit():
-        partner = Partner(name=form.name.data, email=form.email.data)
-        db.session.add(partner)
-        db.session.commit()
-        user = Users(partner_id=partner.id)
-        user.set_password(form.password.data)
-        user.set_token(partner.id)
-        db.session.add(user)
-        db.session.commit()
-        login_user(user)
-        flash(_('Welcome to Olam ERP!'))
-        return redirect(url_for('main.index'))
+    else:
+        if form.validate_on_submit():
+            partner = Partner(name=form.name.data, email=form.email.data)
+            db.session.add(partner)
+            db.session.commit()
+            user = Users(partner_id=partner.id)
+            user.set_password(form.password.data)
+            user.set_token(partner.id)
+            db.session.add(user)
+            db.session.commit()
+            login_user(user)
+            flash(_('Welcome to Olam ERP!'))
+            return redirect(url_for('main.index'))
     return render_template('auth/register.html', title=_('Register | Olam ERP'),
                            form=form)
 
@@ -174,14 +180,15 @@ def activate(token):
     user = Users.verify_token(token)
     partner = Partner.query.filter_by(id=user.partner_id).first()
     if not partner.name:
-        return redirect(url_for('auth.register', token=token))
+        return redirect(url_for('auth.register', token=token, company=request.args.get('company')))
     if not user:
         abort(401)
     else:
         if form.validate_on_submit():
             user.password_hash = generate_password_hash(form.password.data)
             user.is_active = True
+            user.company_id = request.args.get('company')
             db.session.commit()
             login_user(user)
             return redirect(url_for('main.index'))
-    return render_template('auth/set_password.html', title=_('Set Password | Olam ERP'), form=form)
+    return render_template('auth/set_password.html', title=_('Set Password | Olam ERP'), form=form, var='Account')

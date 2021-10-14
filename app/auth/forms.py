@@ -3,6 +3,7 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 from flask_babel import _, lazy_gettext as _l
 from app.auth.models.user import Users
+from app.main.models.partner import Partner
 
 
 class LoginForm(FlaskForm):
@@ -21,26 +22,21 @@ class RegistrationForm(FlaskForm):
     password = PasswordField(_l('Password'), validators=[DataRequired()])
     password2 = PasswordField(
         _l('Confirm Password'), validators=[DataRequired(),
-                                           EqualTo('password')])
+                                            EqualTo('password')])
     submit = SubmitField(_l('Register'))
 
-    def validate_username(self, username):
-        user = Users.query.filter_by(username=username.data).first()
-        if user is not None:
-            raise ValidationError(_('Please use a different username.'))
-
-    def validate_email(self, email):
-        user = Users.query.filter_by(email=email.data).first()
-        if user is not None:
-            raise ValidationError(
-                _('There\'s an account with this email. Use a different one.'))
+    # def validate_email(self, email):
+    #     partner = Partner.query.filter_by(email=email.data).first()
+    #     if partner is not None:
+    #         raise ValidationError(
+    #             _('There\'s an account with this email. Use a different one.'))
 
 
 class SetPasswordForm(FlaskForm):
     password = PasswordField('Choose a password', validators=[DataRequired()])
     password2 = PasswordField(
         'Confirm your password', validators=[DataRequired(), EqualTo('password')])
-    submit = SubmitField('Activate Your Database')
+    submit = SubmitField('Activate')
 
 
 class ResetPasswordRequestForm(FlaskForm):

@@ -28,10 +28,7 @@
                 {{form.hidden_tag()}}
                 <div class="form-group">
                     <div class="form-label-group">
-                        {{ form.email.label(class="form-label") }}
-                        <a class="link link-primary link-sm" tabindex="-1" href="#">
-                            Need Help?
-                        </a>
+                        {{ form.email.label(class="form-label") }}                        
                     </div>
                     {% for error in form.email.errors %}
                     <span style="color: red;">[{{ error }}]</span>
@@ -78,10 +75,7 @@
                 </div>
                 <div class="form-note-s2">
                     <a href="{{url_for('auth.login')}}">I already have an account?</a>
-                </div>
-                <div class="form-note-s2 pt-3">
-                    <span>We will handle your personal data as described in our </span><a href="#">Privacy Policy</a>
-                </div>
+                </div>                
             </form>
         </div>
     </div>

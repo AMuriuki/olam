@@ -33,5 +33,5 @@ def send_invite_email(partner, invited_by):
     token = user.get_activation_token()
     partner = Partner.query.filter_by(id=partner).first()
     message = Mail(from_email=current_app.config['ADMINS'][0], to_emails=[
-                   partner.email], subject=invited_by.name + ' from ' + invited_by.company.name + ' invites you to connect on Olam ERP', html_content=render_template('email/invite.html', token=token, name=partner.name, invited_by=invited_by.name, company=invited_by.company.name, email=partner.email, domain=invited_by.company.domain_name))
+                   partner.email], subject=invited_by.name + ' from ' + invited_by.company.name + ' invites you to connect on Olam ERP', html_content=render_template('email/invite.html', token=token, name=partner.name, invited_by=invited_by.name, company=invited_by.company.name, company_id=invited_by.company.id, email=partner.email, domain=invited_by.company.domain_name))
     send_email(message)
