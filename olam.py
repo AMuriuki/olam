@@ -32,6 +32,13 @@ def numberFormat(value):
 
 
 @app.template_filter()
+def stringChars(value):
+    words = value.split()
+    letters = [word[0] for word in words]
+    return "".join(letters)
+
+
+@app.template_filter()
 def get_pipeline_count(value):
     count = Lead.query.filter_by(stage_id=value).count()
     return count

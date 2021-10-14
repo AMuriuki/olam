@@ -167,9 +167,18 @@ def sales():
 
 @bp.route('/sales_team', methods=['GET', 'POST'])
 @login_required
-def sales_team():
-    sales_teams = Team.query.all()
-    return render_template('crm/sales_team.html', title=_('CRM Sales Teams | Olam ERP'), sales_teams=sales_teams)
+def sales_teams():
+    sales_teams = Team.query.join(Partner).all()
+    for sales_team in sales_teams:
+        print(sales_team.lead.name)
+    return render_template('crm/sales_teams.html', title=_('CRM Sales Teams | Olam ERP'), sales_teams=sales_teams)
+
+
+@bp.route('/sales_team/<token>', methods=['GET', 'POST'])
+@login_required
+def sales_team(token):
+    sales_team = Team.query.filter_by(token=token).join(Partner).first()
+    return render_template('crm/sales_team.html', title=_(sales_team.name + ' | Olam ERP'), sales_team=sales_team)
 
 
 @bp.route('/create_team', methods=['GET', 'POST'])
@@ -179,9 +188,11 @@ def create_team():
     partners = Partner.query.filter_by(is_tenant=True).all()
     if form.validate_on_submit():
         sales_team = Team(name=form.name.data,
-                          partner=request.form['team_leader'])
+                          leader=request.form['team_leader'])
+        sales_team.set_token(form.name.data)
         db.session.add(sales_team)
         db.session.commit()
+        return redirect(url_for('crm.sales_teams'))
     return render_template('crm/create_team.html', title=_('CRM Sales Teams | Olam ERP'), form=form, partners=partners)
 
 

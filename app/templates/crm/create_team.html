@@ -8,7 +8,7 @@
                 <div class="nk-block-between g-3">
                     <div class="nk-block-head-content">
                         <h3 class="nk-block-title page-title">
-                            <a href="{{url_for('crm.sales_team')}}">
+                            <a href="{{url_for('crm.sales_teams')}}">
                                 Sales Teams
                             </a>
                             /
@@ -24,30 +24,22 @@
                         </h3>
                     </div>
                     <div class="nk-block-head-content">
-                        <a href="{{url_for('crm.sales_team')}}"
+                        <a href="{{url_for('crm.sales_teams')}}"
                             class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em
                                 class="icon ni ni-arrow-left"></em><span>Back</span></a>
-                        <a href="{{url_for('crm.sales_team')}}"
+                        <a href="{{url_for('crm.sales_teams')}}"
                             class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em
                                 class="icon ni ni-arrow-left"></em></a>
                     </div>
                 </div>
             </div><!-- .nk-block-head -->
             <div class="nk-block nk-block-lg">
-                <div class="nk-block-head">
-                    <div class="nk-block-head-content">
-                        <div class="nk-block-des">
-                            <a href="#" class="btn btn-primary">Save</a>
-                            <a href="#" class="btn btn-light">Discard</a>
-                        </div>
-                    </div>
-                </div>
                 <div class="card card-bordered">
                     <div class="card-inner">
                         <div class="card-head">
                             <h5 class="card-title">Sales Team Info</h5>
                         </div>
-                        <form action="#" method="post">
+                        <form method="post">
                             {{form.hidden_tag()}}
                             <div class="row g-4">
                                 <div class="col-lg-6">
@@ -65,7 +57,8 @@
                                     <div class="form-group">
                                         <label class="form-label" for="team_leader">Team Leader</label>
                                         <div class="form-control-wrap">
-                                            <select id="team_leader" name="team_leader" class="form-select" data-search="on">
+                                            <select id="team_leader" name="team_leader" class="form-select"
+                                                data-search="on">
                                                 <option value="default_option">Select Team Leader</option>
                                                 {% for partner in partners %}
                                                 <option value="{{partner.id}}">{{partner.name}}</option>
@@ -76,8 +69,18 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <a href="{{url_for('crm.create_team')}}" class="btn btn-success"><em
-                                                class="icon ni ni-plus"></em><span>Add Members</span></a>
+                                        <ul class="custom-control-group">
+                                            <li>
+                                                {{form.submit(class="btn btn-primary")}}
+                                            </li>
+                                            <li>
+                                                <a href="{{url_for('crm.create_team')}}" class="btn btn-success">Add
+                                                    Members</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="btn btn-light">Discard</a>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>

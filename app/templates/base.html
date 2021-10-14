@@ -87,7 +87,7 @@
                                                         class="nk-menu-text">Settings</span></a>
                                             </li>
                                             <li class="nk-menu-item">
-                                                <a href="{{url_for('crm.sales_team')}}" class="nk-menu-link"
+                                                <a href="{{url_for('crm.sales_teams')}}" class="nk-menu-link"
                                                     data-original-title="" title=""><span class="nk-menu-text">Sales
                                                         Teams</span></a>
                                             </li>
@@ -281,12 +281,18 @@
     <script src="{{url_for('static', filename='js/custom.js')}}"></script>
     <script src="{{url_for('static', filename='js/libs/fullcalendar.js')}}"></script>
     <script src="{{url_for('static', filename='js/apps/calendar.js')}}"></script>
-    {% else %}
+    {% elif title == 'CRM Pipeline | Olam ERP' %}
     <script src="{{url_for('static', filename='js/bundle.js')}}"></script>
     <script src="{{url_for('static', filename='js/scripts.js')}}"></script>
     <script src="{{url_for('static', filename='js/custom.js')}}"></script>
     <!-- <script src="{{url_for('static', filename='js/libs/jkanban.js')}}"></script> -->
     <script src="{{url_for('static', filename='js/apps/kanban.js')}}"></script>
+    {% else %}
+    <script src="{{url_for('static', filename='js/bundle.js')}}"></script>
+    <script src="{{url_for('static', filename='js/scripts.js')}}"></script>
+    <script src="{{url_for('static', filename='js/custom.js')}}"></script>
+    <script src="{{url_for('static', filename='js/apps/inbox.js')}}"></script>
+    <script src="{{url_for('static', filename='js/libs/tagify.js')}}"></script>
     {% endif %}
 </body>
 

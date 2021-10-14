@@ -31,6 +31,7 @@ class Partner(db.Model):
     tax_id = db.Column(db.Integer, index=True)
     partnerships = db.relationship(
         'Lead', backref='opportunity', lazy='dynamic')
+    teams = db.relationship('Team', backref='lead', lazy='dynamic')
 
     def __repr__(self):
         return self.company_name
