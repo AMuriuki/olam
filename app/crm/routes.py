@@ -178,7 +178,8 @@ def create_team():
     form = CreateSalesTeamForm()
     partners = Partner.query.filter_by(is_tenant=True).all()
     if form.validate_on_submit():
-        sales_team = Team(name="", user_id="")
+        sales_team = Team(name=form.name.data,
+                          partner=request.form['team_leader'])
         db.session.add(sales_team)
         db.session.commit()
     return render_template('crm/create_team.html', title=_('CRM Sales Teams | Olam ERP'), form=form, partners=partners)

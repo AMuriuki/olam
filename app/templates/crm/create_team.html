@@ -57,7 +57,7 @@
                                             {% for error in form.name.errors %}
                                             <span style="color: red;">[{{ error }}]</span>
                                             {% endfor %}
-                                            {{form.name(class="form-control", placeholder="e.g Website")}}
+                                            {{form.name(class="form-control", placeholder="Sales Team Name")}}
                                         </div>
                                     </div>
                                 </div>
@@ -65,7 +65,7 @@
                                     <div class="form-group">
                                         <label class="form-label" for="team_leader">Team Leader</label>
                                         <div class="form-control-wrap">
-                                            <select id="team_leader" class="form-select" data-search="on">
+                                            <select id="team_leader" name="team_leader" class="form-select" data-search="on">
                                                 <option value="default_option">Select Team Leader</option>
                                                 {% for partner in partners %}
                                                 <option value="{{partner.id}}">{{partner.name}}</option>

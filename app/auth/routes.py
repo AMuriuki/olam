@@ -30,6 +30,10 @@ def login():
             email=form.email.data).first()
         if partner:
             user = Users.query.filter_by(partner_id=partner.id).first()
+            if not user.password_hash:
+                flash(
+                    _('Your account is not active. Activate by setting a new password'))
+                return redirect(url_for('auth.set_password', email=partner.email))
             if user is None or not user.check_password(form.password.data):
                 flash(_('Invalid email or password'))
                 return redirect(url_for('auth.login'))
@@ -90,33 +94,39 @@ def register():
 
 @bp.route('/set_password', methods=['GET', 'POST'])
 def set_password():
-    partner = Partner.query.filter_by(email=request.args.get('email')).first()
-    company = Company.query.filter_by(
-        domain_name=request.args.get('domainname')).first()
+    if request.args.get('domainname'):
+        company = Company.query.filter_by(
+            domain_name=request.args.get('domainname')).first()
 
-    if company is None:
-        company = Company(name=request.args.get('companyname'),
-                          domain_name=request.args.get('domainname'))
-        db.session.add(company)
-        db.session.commit()
+        if company is None:
+            company = Company(name=request.args.get('companyname'),
+                              domain_name=request.args.get('domainname'))
+            db.session.add(company)
+            db.session.commit()
 
-    if partner is None:
-        partner = Partner(name=request.args.get('username'),
-                          email=request.args.get('email'), phone_no=request.args.get('phone_no'), is_active=True, company_id=company.id, is_tenant=True)
-        db.session.add(partner)
-        db.session.commit()
-        user = Users(partner_id=partner.id, company_id=company.id,
-                     is_active=True, country_code=request.args.get('country_code'))
-        user.set_token(partner.id)
-        db.session.add(user)
-        db.session.commit()
-    else:
-        user = Users.query.filter_by(partner_id=partner.id).first()
+    if request.args.get('email'):
+        partner = Partner.query.filter_by(
+            email=request.args.get('email')).first()
 
-    response = requests.post(get_api_token, auth=(
-        partner.email, 'api_user'))
+        if partner is None:
+            # first user registration
+            partner = Partner(name=request.args.get('username'),
+                              email=request.args.get('email'), phone_no=request.args.get('phone_no'), is_active=True, company_id=company.id, is_tenant=True)
+            db.session.add(partner)
+            db.session.commit()
+            user = Users(partner_id=partner.id, company_id=company.id,
+                         is_active=True, country_code=request.args.get('country_code'))
+            user.set_token(partner.id)
+            db.session.add(user)
+            db.session.commit()
 
-    response_dict = json.loads(response.content)
+            response = requests.post(get_api_token, auth=(
+                partner.email, 'api_user'))
+            response_dict = json.loads(response.content)
+        else:
+            # existing user
+            response_dict = None
+            user = Users.query.filter_by(partner_id=partner.id).first()
 
     form = SetPasswordForm()
     if user:
@@ -125,20 +135,27 @@ def set_password():
         else:
             if form.validate_on_submit():
                 user.password_hash = generate_password_hash(form.password.data)
+                user.is_active = True
                 db.session.commit()
                 login_user(user)
-                head = {'Authorization': 'Bearer ' + response_dict['token']}
-                company_id = request.args.get('companyid')
-                response = requests.get(
-                    get_installed_modules + str(company_id) + '/modules', headers=head)
-                response_dict = json.loads(response.content)
+                if response_dict:
+                    # first time modules/DB set up
+                    head = {'Authorization': 'Bearer ' +
+                            response_dict['token']}
+                    company_id = request.args.get('companyid')
+                    response = requests.get(
+                        get_installed_modules + str(company_id) + '/modules', headers=head)
+                    response_dict = json.loads(response.content)
 
-                for i in range(len(response_dict['items'])):
-                    module = Module(technical_name=response_dict['items'][i]['technical_name'], official_name=response_dict['items']
-                                    [i]['official_name'], bp_name=response_dict['items'][i]['bp_name'], summary=response_dict['items'][i]['summary'])
-                    db.session.add(module)
-                    db.session.commit()
-                return redirect(url_for('main.invite_colleagues'))
+                    for i in range(len(response_dict['items'])):
+                        module = Module(technical_name=response_dict['items'][i]['technical_name'], official_name=response_dict['items']
+                                        [i]['official_name'], bp_name=response_dict['items'][i]['bp_name'], summary=response_dict['items'][i]['summary'])
+                        db.session.add(module)
+                        db.session.commit()
+                    return redirect(url_for('main.invite_colleagues'))
+                else:
+                    # modules/DB already set-up
+                    return redirect(url_for('main.index'))
     return render_template('auth/set_password.html', title=_('Set Password | Olam ERP'), form=form)
 
 

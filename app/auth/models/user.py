@@ -48,9 +48,7 @@ class Users(UserMixin, PaginatedAPIMixin, db.Model):
     registered_on = db.Column(db.DateTime, default=datetime.now)
     password_hash = db.Column(db.String(128))
     leads = db.relationship('Lead', backref='owner', lazy='dynamic')
-    # team_leaders = db.relationship('Lead', backref='leader', lazy='dynamic')
     country_code = db.Column(db.String(10), index=True)
-    team_id = db.Column(db.Integer, db.ForeignKey('team.id'))
     rights = db.relationship('UserRight', secondary=user_rights, backref=db.backref(
         'user', lazy='dynamic'), lazy='dynamic')
 
