@@ -1,0 +1,39 @@
+<div class="nk-block-head">
+    <div class="nk-block-between g-3">
+        <div class="nk-block-head-content">
+            <h3 class="nk-block-title page-title">
+                <a href="{{url_for('crm.pipeline')}}">
+                    Pipeline
+                </a>
+                /
+                <strong class="text-primary small">
+                    {{lead.name|title}}
+                </strong>
+            </h3>
+            <div class="nk-block-des text-soft">
+                <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                    <li>
+                        <input class="btn btn-m btn-primary btn-block" id="submit1" name="submit1" type="submit"
+                            value="EDIT">
+                    </li>
+                    <li>
+                        <a href="#" data-dismiss="modal" class="link link-light">CREATE</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="nk-block-head-content">
+            <h3 class="nk-block-title page-title">
+
+
+            </h3>
+        </div>
+        <div class="nk-block-head-content">
+            <a href="{{url_for('crm.pipeline')}}" class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em
+                    class="icon ni ni-arrow-left"></em><span>Back</span></a>
+            <a href="{{url_for('crm.pipeline')}}"
+                class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em
+                    class="icon ni ni-arrow-left"></em></a>
+        </div>
+    </div>
+</div><!-- .nk-block-head -->

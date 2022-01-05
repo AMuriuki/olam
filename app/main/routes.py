@@ -24,6 +24,12 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from urllib.parse import urlparse
 
 
+@bp.route('/', methods=['GET', 'POST'])
+@login_required
+def home():
+    return redirect(url_for('main.index'))
+
+
 @bp.route('/home', methods=['GET', 'POST'])
 @login_required
 def index():

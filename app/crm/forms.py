@@ -23,3 +23,8 @@ class EditStageForm(FlaskForm):
 class CreateSalesTeamForm(FlaskForm):
     name = StringField(_l('Sales Team'))
     submit = SubmitField(_l('Save'))
+
+
+class AddStage(FlaskForm):
+    name = StringField(_l('Add Stage'))
+    submit6 = SubmitField(_l('Add'))

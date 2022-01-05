@@ -25,35 +25,23 @@ def index():
 def create():
     form1 = BasicCompanyInfoForm()
     form2 = BasicIndividualInfoForm()
-    form3 = AddressInfoForm()
-    form4 = TaxInfoForm()
+    
     titles = TITLES
     countries = Country.query.order_by('name').all()
     companies = Partner.query.filter_by(is_company=True).all()
+    
     if "submit1" in request.form and form1.validate_on_submit():
-        partner = Partner(company_name=form1.companyname.data,
-                          phone_no=form1.phonenumber.data, website=form1.website.data, is_company=True, is_active=True, email=form1.email.data)
+        partner = Partner(company_name=form1.companyname.data, phone_no=form1.phonenumber.data, website=form1.website.data, is_company=True, is_active=True, email=form1.email.data, country_id=request.form['select_country'], city_id=request.form['select_city'], postal_code=form1.postalcode.data, postal_address=form1.postaladdress.data, tax_id=form1.taxid.data)
         db.session.add(partner)
         db.session.commit()
         return redirect(url_for('contacts.view_contact', id=partner.id))
     if "submit2" in request.form and form2.validate_on_submit():
         partner = Partner(name=form2.name.data,
-                          phone_no=form2.phonenumber.data, title=request.form['select_title'], parent_id=request.form['select_company'], website=form2.website.data, is_individual=True, is_active=True, function=form2.jobposition.data, email=form2.email.data)
+                          phone_no=form2.phonenumber.data, title=request.form['select_title'], parent_id=request.form['individual_select_company'], website=form2.website.data, is_individual=True, is_active=True, function=form2.jobposition.data, email=form2.email.data)
         db.session.add(partner)
         db.session.commit()
         return redirect(url_for('contacts.view_contact', id=partner.id))
-    if "submit3" in request.form and form3.validate_on_submit():
-        partner = Partner(country_id=request.form['select_company'], city_id=request.form['select_city'],
-                          postal_code=form3.postalcode.data, postal_address=form3.postaladdress.data)
-        db.session.add(partner)
-        db.session.commit()
-        return redirect(url_for('contacts.view_contact', id=partner.id))
-    if "submit4" in request.form and form4.validate_on_submit():
-        partner = Partner(tax_id=form4.taxid.data)
-        db.session.add(partner)
-        db.session.commit()
-        return redirect(url_for('contacts.view_contact', id=partner.id))
-    return render_template('contacts/create.html', title=_('New Contact | Olam ERP'), form1=form1, form2=form2, form3=form3, form4=form4, companies=companies, titles=titles, countries=countries)
+    return render_template('contacts/create.html', title=_('New Contact | Olam ERP'), form1=form1, form2=form2, companies=companies, titles=titles, countries=countries)
 
 
 @bp.route('/view_contact/<int:id>', methods=['GET', 'POST'])

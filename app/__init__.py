@@ -39,8 +39,8 @@ babel = Babel()
 jsglue = JSGlue()
 cors = CORS()
 
-get_api_token = "http://127.0.0.1:8080/api/tokens"
-get_installed_modules = "http://127.0.0.1:8080/api/companies/"
+get_api_token = "http://127.0.0.1:5000/api/tokens"
+get_installed_modules = "http://127.0.0.1:5000/api/companies/"
 
 
 def create_app(config_class=Config):

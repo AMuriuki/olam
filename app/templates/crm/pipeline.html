@@ -34,6 +34,27 @@
             <div class="nk-block-between">
                 <div class="nk-block-head-content">
                     <h3 class="nk-block-title page-title">Pipeline</h3>
+                    <div class="nk-block-des text-soft">
+                        <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                            <li>
+                                <input id="btn_additem-1" class="btn btn-m btn-primary btn-block add-item" id="submit1" name="submit1" type="submit"
+                                    value="CREATE">
+                            </li>
+                            <li>
+                                <a href="#" data-dismiss="modal" class="link link-light">GENERATE LEADS</a>
+                            </li>
+                        </ul>
+                    </div>
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-success alert-icon alert-dismissible">
+                        <em class="icon ni ni-check-circle"></em> <strong>{{ message }}</strong>
+                        <button class="close" data-dismiss="alert"></button>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
                 </div><!-- .nk-block-head-content -->
                 <div class="nk-block-head-content">
                     <div class="toggle-wrap nk-block-tools-toggle">
@@ -281,130 +302,141 @@
                             {% for record in pipeline %}
                             {% if record.stage_id == stage.id %}
                             <div class="kanban-item">
-                                <div class="kanban-item-title">
-                                    <h6 class="title">{{record.name}}</h6>
-                                    <div class="drodown">
+                                <a href="{{url_for('crm.lead', slug=record.slug)}}">
+                                    <div class="kanban-item-title">
+                                        <h6 class="title">{{record.name}}</h6>
                                         <div class="drodown">
-                                            <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mr-n1"
-                                                data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                            <div class="dropdown-menu dropdown-menu-right">
+                                            <div class="drodown">
+                                                <a href="#"
+                                                    class="dropdown-toggle btn btn-sm btn-icon btn-trigger mr-n1"
+                                                    data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <ul class="link-list-opt no-bdr">
+                                                        <li><a href="#"><em
+                                                                    class="icon ni ni-edit"></em><span>Edit</span></a>
+                                                        </li>
+                                                        <li><a href="#"><em
+                                                                    class="icon ni ni-delete"></em><span>Delete</span></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="kanban-item-text">
+                                        <p>
+                                            {{record.partner_currency}}&nbsp;{{record.expected_revenue}}
+                                        </p>
+                                    </div>
+                                    <div class="kanban-item-text">
+                                        <p>
+                                            {% if record.opportunity.is_company %}
+                                            {{record.opportunity.company_name}}
+                                            {% elif record.opportunity.is_individual %}
+                                            {{record.opportunity.name}}&nbsp;-&nbsp;{{record.opportunity.parent.company_name}}
+                                            {% endif %}
+                                        </p>
+                                    </div>
+
+                                    <div class="kanban-item-text">
+                                        {% if record.priority == '0' %}
+                                        <a data-toggle="tooltip" data-placement="top" title="Medium"
+                                            id="_selectPriority1-{{record.id}}" name="{{record.id}}"
+                                            class="select-priority-update">
+                                            <em id="_priority1-{{record.id}}" class="asterisk-off icon ni ni-star"></em>
+                                        </a>
+                                        <a id="_selectPriority2-{{record.id}}" class="select-priority-update"
+                                            name="{{record.id}}">
+                                            <em id="_priority2-{{record.id}}" class="asterisk-off icon ni ni-star"></em>
+                                        </a>
+                                        <a id="_selectPriority3-{{record.id}}" class="select-priority-update"
+                                            name="{{record.id}}">
+                                            <em id="_priority3-{{record.id}}" class="asterisk-off icon ni ni-star"></em>
+                                        </a>
+                                        {% elif record.priority == '1' %}
+                                        <a id="_selectPriority1-{{record.id}}" class="select-priority-update"
+                                            data-toggle="tooltip" data-placement="top" title="Medium"
+                                            name="{{record.id}}"><em id="_priority1-{{record.id}}"
+                                                class="icon ni ni-star-fill"></em></a>
+                                        <a id="_selectPriority2-{{record.id}}" class="select-priority-update"
+                                            data-toggle="tooltip" data-placement="top" title="High"
+                                            name="{{record.id}}">
+                                            <em id="_priority2-{{record.id}}" class="asterisk-off icon ni ni-star"></em>
+                                        </a>
+                                        <a id="_selectPriority3-{{record.id}}" class="select-priority-update"
+                                            data-toggle="tooltip" data-placement="top" title="Very High"
+                                            name="{{record.id}}">
+                                            <em id="_priority3-{{record.id}}" class="asterisk-off icon ni ni-star"></em>
+                                        </a>
+                                        {% elif record.priority == '2' %}
+                                        <a id="_selectPriority1-{{record.id}}" name="{{record.id}}"
+                                            data-toggle="tooltip" data-placement="top" title="Medium"
+                                            class="select-priority-update">
+                                            <em id="_priority1-{{record.id}}" class="icon ni ni-star-fill"></em>
+                                        </a>
+                                        <a id="_selectPriority2-{{record.id}}" name="{{record.id}}"
+                                            data-toggle="tooltip" data-placement="top" title="High"
+                                            class="select-priority-update">
+                                            <em id="_priority2-{{record.id}}" class="icon ni ni-star-fill"></em>
+                                        </a>
+                                        <a id="_selectPriority3-{{record.id}}" name="{{record.id}}"
+                                            data-toggle="tooltip" data-placement="top" title="Very High"
+                                            class="select-priority-update">
+                                            <em id="_priority3-{{record.id}}" class="asterisk-off icon ni ni-star"></em>
+                                        </a>
+                                        {% elif record.priority == '3' %}
+                                        <a id="_selectPriority1-{{record.id}}" name="{{record.id}}"
+                                            data-toggle="tooltip" data-placement="top" title="Medium"
+                                            class="select-priority-update">
+                                            <em id="_priority1-{{record.id}}" class="icon ni ni-star-fill"></em>
+                                        </a>
+                                        <a id="_selectPriority2-{{record.id}}" name="{{record.id}}"
+                                            data-toggle="tooltip" data-placement="top" title="High"
+                                            class="select-priority-update">
+                                            <em id="_priority2-{{record.id}}" class="icon ni ni-star-fill"></em>
+                                        </a>
+                                        <a id="_selectPriority3-{{record.id}}" name="{{record.id}}"
+                                            data-toggle="tooltip" data-placement="top" title="Very High"
+                                            class="select-priority-update">
+                                            <em id="_priority3-{{record.id}}" class="icon ni ni-star-fill"></em>
+                                        </a>
+                                        {% endif %}
+                                    </div>
+                                    <div class="kanban-item-text">
+                                        <div class="drodown">
+                                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                <div class="icon-status icon-status-info">
+                                                    <em style="font-size: 20px;" class="icon ni ni-list-thumb"></em>
+                                                </div>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-left">
+                                                <div class="dropdown-head">
+                                                    <span class="sub-title nk-dropdown-title">Activities</span>
+                                                    <a href="#">33 Activities</a>
+                                                </div>
                                                 <ul class="link-list-opt no-bdr">
-                                                    <li><a href="#"><em
-                                                                class="icon ni ni-edit"></em><span>Edit</span></a></li>
-                                                    <li><a href="#"><em
-                                                                class="icon ni ni-delete"></em><span>Delete</span></a>
+                                                    <li>
+                                                        <a id="{{stage.id}}" href="#" class="edit-stage">
+                                                            <em class="icon ni ni-edit"></em>
+                                                            <span>Activities</span>
+                                                        </a>
+                                                    </li>
+                                                    <hr>
+                                                    <li>
+                                                        <a id="{{stage.id}}" href="#" class="edit-stage">
+                                                            <em class="icon ni ni-edit"></em>
+                                                            <span>Edit
+                                                                Stage</span>
+                                                        </a>
                                                     </li>
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="kanban-item-text">
-                                    <p>
-                                        {{record.partner_currency}}&nbsp;{{record.expected_revenue}}
-                                    </p>
-                                </div>
-                                <div class="kanban-item-text">
-                                    <p>
-                                        {% if record.opportunity.is_company %}
-                                        {{record.opportunity.company_name}}
-                                        {% elif record.opportunity.is_individual %}
-                                        {{record.opportunity.name}}&nbsp;-&nbsp;{{record.opportunity.parent.company_name}}
-                                        {% endif %}
-                                    </p>
-                                </div>
-
-                                <div class="kanban-item-text">
-                                    {% if record.priority == '0' %}
-                                    <a data-toggle="tooltip" data-placement="top" title="Medium"
-                                        id="_selectPriority1-{{record.id}}" name="{{record.id}}"
-                                        class="select-priority-update">
-                                        <em id="_priority1-{{record.id}}" class="asterisk-off icon ni ni-star"></em>
-                                    </a>
-                                    <a id="_selectPriority2-{{record.id}}" class="select-priority-update"
-                                        name="{{record.id}}">
-                                        <em id="_priority2-{{record.id}}" class="asterisk-off icon ni ni-star"></em>
-                                    </a>
-                                    <a id="_selectPriority3-{{record.id}}" class="select-priority-update"
-                                        name="{{record.id}}">
-                                        <em id="_priority3-{{record.id}}" class="asterisk-off icon ni ni-star"></em>
-                                    </a>
-                                    {% elif record.priority == '1' %}
-                                    <a id="_selectPriority1-{{record.id}}" class="select-priority-update"
-                                        data-toggle="tooltip" data-placement="top" title="Medium"
-                                        name="{{record.id}}"><em id="_priority1-{{record.id}}"
-                                            class="icon ni ni-star-fill"></em></a>
-                                    <a id="_selectPriority2-{{record.id}}" class="select-priority-update"
-                                        data-toggle="tooltip" data-placement="top" title="High" name="{{record.id}}">
-                                        <em id="_priority2-{{record.id}}" class="asterisk-off icon ni ni-star"></em>
-                                    </a>
-                                    <a id="_selectPriority3-{{record.id}}" class="select-priority-update"
-                                        data-toggle="tooltip" data-placement="top" title="Very High"
-                                        name="{{record.id}}">
-                                        <em id="_priority3-{{record.id}}" class="asterisk-off icon ni ni-star"></em>
-                                    </a>
-                                    {% elif record.priority == '2' %}
-                                    <a id="_selectPriority1-{{record.id}}" name="{{record.id}}" data-toggle="tooltip"
-                                        data-placement="top" title="Medium" class="select-priority-update">
-                                        <em id="_priority1-{{record.id}}" class="icon ni ni-star-fill"></em>
-                                    </a>
-                                    <a id="_selectPriority2-{{record.id}}" name="{{record.id}}" data-toggle="tooltip"
-                                        data-placement="top" title="High" class="select-priority-update">
-                                        <em id="_priority2-{{record.id}}" class="icon ni ni-star-fill"></em>
-                                    </a>
-                                    <a id="_selectPriority3-{{record.id}}" name="{{record.id}}" data-toggle="tooltip"
-                                        data-placement="top" title="Very High" class="select-priority-update">
-                                        <em id="_priority3-{{record.id}}" class="asterisk-off icon ni ni-star"></em>
-                                    </a>
-                                    {% elif record.priority == '3' %}
-                                    <a id="_selectPriority1-{{record.id}}" name="{{record.id}}" data-toggle="tooltip"
-                                        data-placement="top" title="Medium" class="select-priority-update">
-                                        <em id="_priority1-{{record.id}}" class="icon ni ni-star-fill"></em>
-                                    </a>
-                                    <a id="_selectPriority2-{{record.id}}" name="{{record.id}}" data-toggle="tooltip"
-                                        data-placement="top" title="High" class="select-priority-update">
-                                        <em id="_priority2-{{record.id}}" class="icon ni ni-star-fill"></em>
-                                    </a>
-                                    <a id="_selectPriority3-{{record.id}}" name="{{record.id}}" data-toggle="tooltip"
-                                        data-placement="top" title="Very High" class="select-priority-update">
-                                        <em id="_priority3-{{record.id}}" class="icon ni ni-star-fill"></em>
-                                    </a>
-                                    {% endif %}
-                                </div>
-                                <div class="kanban-item-text">
-                                    <div class="drodown">
-                                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                            <div class="icon-status icon-status-info">
-                                                <em style="font-size: 20px;" class="icon ni ni-list-thumb"></em>
-                                            </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-left">
-                                            <div class="dropdown-head">
-                                                <span class="sub-title nk-dropdown-title">Activities</span>
-                                                <a href="#">33 Activities</a>
-                                            </div>
-                                            <ul class="link-list-opt no-bdr">
-                                                <li>
-                                                    <a id="{{stage.id}}" href="#" class="edit-stage">
-                                                        <em class="icon ni ni-edit"></em>
-                                                        <span>Activities</span>
-                                                    </a>
-                                                </li>
-                                                <hr>
-                                                <li>
-                                                    <a id="{{stage.id}}" href="#" class="edit-stage">
-                                                        <em class="icon ni ni-edit"></em>
-                                                        <span>Edit
-                                                            Stage</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <ul class="kanban-item-tags">
-                                    <li><span class="badge badge-primary">{{current_user.partner.name}}</span></li>
-                                </ul>
+                                    <ul class="kanban-item-tags">
+                                        <li><span class="badge badge-primary">{{current_user.partner.name}}</span></li>
+                                    </ul>
+                                </a>
                             </div>
                             {% endif %}
                             {% endfor %}
@@ -479,7 +511,7 @@
                                 <div class="col-12">
                                     <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                                         <li>
-                                            {{form1.submit1(class="btn btn-lg btn-primary btn-block")}}
+                                            {{form1.submit1(class="btn btn-m btn-primary btn-block")}}
                                         </li>
                                         <li>
                                             <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
@@ -559,7 +591,7 @@
                                 <div class="col-12">
                                     <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                                         <li>
-                                            {{form2.submit2(class="btn btn-lg btn-primary btn-block")}}
+                                            {{form2.submit2(class="btn btn-m btn-primary btn-block")}}
                                         </li>
                                         <li>
                                             <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
@@ -628,13 +660,15 @@
                 <h4 id="addstage_title" class="title">Add Stage</h4>
                 <div class="tab-content">
                     <div class="form-control-wrap">
-                        <form id="frm_addStage" action="{{url_for('crm.add_stage')}}" method="POST">
-                            {{form5.hidden_tag()}}
+                        <form id="frm_addStage" action="{{url_for('crm.pipeline')}}" method="POST">
+                            {{form6.hidden_tag()}}
                             <div class="input-group">
-                                <input class="form-control" id="new_stage_name" name="new_stage_name"
-                                    placeholder="Stage name" type="text" value="">
+                                {{form6.name(class="form-control", placeholder="Add stage")}}
+                                <!-- <input class="form-control" id="new_stage_name" name="new_stage_name"
+                                    placeholder="Stage name" type="text" value=""> -->
                                 <div class="input-group-append">
-                                    <a id="submit_new_stage" href="#" class="btn btn-outline-primary btn-dim">Add</a>
+                                    {{form6.submit6(class="btn btn-primary")}}
+                                    <!-- <a id="submit_new_stage" href="#" class="btn btn-primary">Add</a> -->
                                 </div>
                             </div>
                         </form>
@@ -644,7 +678,7 @@
         </div>
     </div>
 </div>
-{% if not pipeline %}
+{% if not pipeline and not request.args.get('new_stage') %}
 <div class="modal fade show" tabindex="-1" id="modalAlert" style="display: block;">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -688,7 +722,7 @@
                     <h4 class="nk-modal-title">Create an opportunity to start playing with your pipeline.</h4>
                     <div class="nk-modal-action">
                         <a id="create_opportunity-{{stages[0].id}}" href="#"
-                            class="btn btn-lg btn-mw btn-success first-opportunity" data-dismiss="modal">Create</a>
+                            class="btn btn-m btn-mw btn-primary first-opportunity" data-dismiss="modal">Create</a>
                     </div>
                 </div>
             </div><!-- .modal-body -->
@@ -709,12 +743,12 @@
             <div class="modal-body">
                 <p>Are you sure you want to delete this stage. By clicking delete your stage will no longer appear on
                     your view.</p>
-                    <div class="nk-modal-action" style="margin-top: 0rem !important">
-                        <a id="deleteStage" href="#" class="btn btn-lg btn-mw btn-danger">Delete</a>
-                        <a href="#" class="btn btn-lg btn-mw btn-light" data-dismiss="modal">Cancel</a>
-                    </div>
+                <div class="nk-modal-action" style="margin-top: 0rem !important">
+                    <a id="deleteStage" href="#" class="btn btn-m btn-mw btn-danger">Delete</a>
+                    <a href="#" class="btn btn-m btn-mw btn-light" data-dismiss="modal">Cancel</a>
+                </div>
             </div>
-            
+
         </div>
     </div>
 </div>

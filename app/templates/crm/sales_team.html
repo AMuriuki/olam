@@ -27,12 +27,25 @@
                                 {{sales_team.name}}
                             </strong>
                         </h3>
-                        <a href="#" class="btn btn-success" data-toggle="modal">
-                            <em class="icon ni ni-edit"></em>
-                            <span>
-                                Edit
-                            </span>
-                        </a>
+                        <ul class="custom-control-group">
+                            <li>
+                                <a href="#" class="btn btn-primary" data-toggle="modal">
+                                    <em class="icon ni ni-edit"></em>
+                                    <span>
+                                        Edit
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn btn-secondary" data-toggle="modal">
+                                    <em class="icon ni ni-grid-add-c"></em>
+                                    <span>
+                                        Create
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        
                     </div>
                     <div class="nk-block-head-content">
                         <a href="{{url_for('crm.sales_teams')}}"
@@ -46,16 +59,12 @@
             </div><!-- .nk-block-head -->
             <div class="nk-ibx">
                 <div class="nk-ibx-aside" data-content="inbox-aside" data-toggle-overlay="true" data-toggle-screen="lg">
-                    <div class="nk-ibx-head">
-                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#compose-mail"><em
-                                class="icon ni ni-plus"></em> <span>Compose</span></a>
-                    </div>
                     <div class="nk-ibx-nav" data-simplebar>
                         <ul class="nk-ibx-menu">
                             <li class="active">
                                 <a class="nk-ibx-menu-item" href="#">
                                     <em class="icon ni ni-inbox"></em>
-                                    <span class="nk-ibx-menu-text">Inbox</span>
+                                    <span class="nk-ibx-menu-text">Messagges</span>
                                     <span class="badge badge-pill badge-primary">8</span>
                                 </a>
                             </li>
@@ -96,75 +105,6 @@
                                     <em class="icon ni ni-emails"></em>
                                     <span class="nk-ibx-menu-text">All Mails</span>
                                 </a>
-                            </li>
-                        </ul>
-                        <div class="nk-ibx-nav-head">
-                            <h6 class="title">Label</h6>
-                            <a class="link" href="#"><em class="icon ni ni-plus-c"></em></a>
-                        </div>
-                        <ul class="nk-ibx-label">
-                            <li>
-                                <a href="#"><span class="nk-ibx-label-dot dot dot-xl dot-label bg-primary"></span><span
-                                        class="nk-ibx-label-text">Business</span></a>
-                                <div class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><em
-                                            class="icon ni ni-more-v"></em></a>
-                                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                                        <ul class="link-list-opt no-bdr">
-                                            <li><a href="#"><span>Edit Label</span></a></li>
-                                            <li><a href="#"><span>Remove Label</span></a></li>
-                                            <li><a href="#"><span>Label Color</span></a></li>
-                                            <li class="divider"></li>
-                                        </ul>
-                                        <ul class="link-check">
-                                            <li><a href="#">Show if unread</a></li>
-                                            <li class="active"><a href="#">Show</a></li>
-                                            <li><a href="#">Hide</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="#"><span class="nk-ibx-label-dot dot dot-xl dot-label bg-danger"></span><span
-                                        class="nk-ibx-label-text">Personal</span></a>
-                                <div class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><em
-                                            class="icon ni ni-more-v"></em></a>
-                                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                                        <ul class="link-list-opt no-bdr">
-                                            <li><a href="#"><span>Edit Label</span></a></li>
-                                            <li><a href="#"><span>Remove Label</span></a></li>
-                                            <li><a href="#"><span>Label Color</span></a></li>
-                                            <li class="divider"></li>
-                                        </ul>
-                                        <ul class="link-check">
-                                            <li><a href="#">If unread</a></li>
-                                            <li class="active"><a href="#">Show</a></li>
-                                            <li><a href="#">Hide</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="#"><span class="nk-ibx-label-dot dot dot-xl dot-label bg-success"></span><span
-                                        class="nk-ibx-label-text">Social</span></a>
-                                <div class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><em
-                                            class="icon ni ni-more-v"></em></a>
-                                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                                        <ul class="link-list-opt no-bdr">
-                                            <li><a href="#"><span>Edit Label</span></a></li>
-                                            <li><a href="#"><span>Remove Label</span></a></li>
-                                            <li><a href="#"><span>Label Color</span></a></li>
-                                            <li class="divider"></li>
-                                        </ul>
-                                        <ul class="link-check">
-                                            <li><a href="#">Show if unread</a></li>
-                                            <li class="active"><a href="#">Show</a></li>
-                                            <li><a href="#">Hide</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
                             </li>
                         </ul>
                         <div class="nk-ibx-nav-head">

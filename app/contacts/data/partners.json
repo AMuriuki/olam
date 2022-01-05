@@ -1,0 +1,28 @@
+[
+  {
+    "id": 4,
+    "company_name": "Moringa School",
+    "email": "contact@moringaschool.com",
+    "is_company": true,
+    "is_active": true,
+    "phone_no": "+254712293878",
+    "website": "https://moringaschool.com",
+    "postal_code": "00100",
+    "postal_address": "28860",
+    "city_id": 12858,
+    "country_id": 116
+  },
+  {
+    "id": 5,
+    "company_name": "Institute of Software Technologies",
+    "email": "info@isteducation.com",
+    "is_company": true,
+    "is_active": true,
+    "phone_no": "+254739944882",
+    "website": "https://www.isteducation.com/",
+    "postal_code": "00100",
+    "postal_address": "28860",
+    "city_id": 12858,
+    "country_id": 116
+  }
+]

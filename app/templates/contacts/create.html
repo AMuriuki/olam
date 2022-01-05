@@ -54,98 +54,121 @@
                             <h4 class="nk-block-title">Company Information</h4>
                         </div>
                     </div><!-- .nk-block-head -->
-                    <div class="nk-block">
-                        <div class="nk-data data-list data-list-s2">
-                            <div class="data-head">
-                                <h6 class="overline-title">Basics</h6>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#basics">
-                                <div class="data-col">
-                                    <span class="data-label">Company Name</span>
-                                    <span class="data-value">Click to add</span>
+                    <div class="preview-block" style="padding-top: 1.5rem;">
+                        <form method="POST">
+                            {{form1.hidden_tag()}}
+                            <span class="preview-title-lg overline-title">BASIC INFO</span>
+                            <div class="row gy-4">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        {{ form1.companyname.label(class="form-label") }}
+                                        <div class="form-control-wrap">
+                                            {{ form1.companyname(class="form-control",
+                                            placeholder="Company Name") }}
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#basics">
-                                <div class="data-col">
-                                    <span class="data-label">Phone</span>
-                                    <span class="data-value">Click to add</span>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        {{ form1.phonenumber.label(class="form-label") }}
+                                        <div class="form-control-wrap">
+                                            {{ form1.phonenumber(class="form-control",
+                                            placeholder="Phone Number") }}
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#basics">
-                                <div class="data-col">
-                                    <span class="data-label">Email</span>
-                                    <span class="data-value">Click to add</span>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        {{ form1.email.label(class="form-label") }}
+                                        <div class="form-control-wrap">
+                                            {{ form1.email(class="form-control",
+                                            placeholder="Email Address") }}
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#basics">
-                                <div class="data-col">
-                                    <span class="data-label">Website Link</span>
-                                    <span class="data-value">Click to add</span>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        {{ form1.website.label(class="form-label") }}
+                                        <div class="form-control-wrap">
+                                            {{ form1.website(class="form-control",
+                                            placeholder="http://...") }}
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
                             </div>
-                            <!-- data-item -->
-                            <div class="data-head">
-                                <h6 class="overline-title">Address</h6>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#address">
-                                <div class="data-col">
-                                    <span class="data-label">Country</span>
-                                    <span class="data-value">Click to add</span>
+                            <hr class="preview-hr">
+                            <span class="preview-title-lg overline-title">ADDRESS INFO</span>
+                            <div class="row gy-4">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Country</label>
+                                        <div class="form-control-wrap">
+                                            <select id="select_country" name="select_country" class="form-select" data-search="on">
+                                                <option value="default_option">Select Country</option>
+                                                {% for country in countries %}
+                                                <option value="{{country.id}}">{{country.name}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#address">
-                                <div class="data-col">
-                                    <span class="data-label">City</span>
-                                    <span class="data-value">Click to add</span>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="form-label">City</label>
+                                        <div class="form-control-wrap">
+                                            <select id="select_city" name="select_city" class="form-select" data-search="on">
+                                                <option value="default_option">Select City</option>
+                                                <option value="#"><i>Choose a country to list cities</i></option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#address">
-                                <div class="data-col">
-                                    <span class="data-label">Postal/Zip Code</span>
-                                    <span class="data-value">Click to add</span>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        {{form1.postalcode.label(class="form-label")}}
+                                        {{ form1.postalcode(class="form-control",
+                                        placeholder="Postal/Zip Code") }}
+                                    </div>
                                 </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#address">
-                                <div class="data-col">
-                                    <span class="data-label">Postal Address</span>
-                                    <span class="data-value">Click to add</span>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        {{form1.postaladdress.label(class="form-label")}}
+                                        {{ form1.postaladdress(class="form-control",
+                                        placeholder="P.O Box") }}
+                                    </div>
                                 </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
                             </div>
-                            <!-- data-item -->
-                        </div><!-- data-list -->
-                        <div class="nk-data data-list data-list-s2">
-                            <div class="data-head">
-                                <h6 class="overline-title">Tax Info</h6>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#tax">
-                                <div class="data-col">
-                                    <span class="data-label">Tax ID</span>
-                                    <span class="data-value">Click to add</span>
+                            <hr class="preview-hr">
+                            <span class="preview-title-lg overline-title">TAX INFO</span>
+                            <div class="row gy-4 align-center">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        {{form1.taxid.label(class="form-label")}}
+                                        {{ form1.taxid(class="form-control",
+                                        placeholder="e.g. BE047727010") }}
+                                    </div>
                                 </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
                             </div>
-                            <!-- data-item -->
-                        </div><!-- data-list -->
-                    </div><!-- .nk-block -->
-                </div><!-- .card-inner -->
-            </div><!-- .card -->
+                            <hr class="preview-hr">
+                            <div class="row gy-4 align-center">
+                                <div class="col-lg-4">
+                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                                        <li>
+                                            {{form1.submit1(class="btn btn-m btn-primary btn-block")}}
+                                        </li>
+                                        <li>
+                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- .nk-block -->
+                </div>
+                <!-- .card-inner -->
+            </div>
+            <!-- .card -->
         </div>
         <div class="nk-block" id="individual-block" style="display: none;">
             <div class="card card-bordered">
@@ -173,300 +196,19 @@
                             <h4 class="nk-block-title">Contact Information</h4>
                         </div>
                     </div><!-- .nk-block-head -->
-                    <div class="nk-block">
-                        <div class="nk-data data-list data-list-s2">
-                            <div class="data-head">
-                                <h6 class="overline-title">Basics</h6>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#individualbasics">
-                                <div class="data-col">
-                                    <span class="data-label">Name</span>
-                                    <span class="data-value">Click to add</span>
-                                </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#individualbasics">
-                                <div class="data-col">
-                                    <span class="data-label">Company</span>
-                                    <span class="data-value">Click to add</span>
-                                </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#individualbasics">
-                                <div class="data-col">
-                                    <span class="data-label">Job Position</span>
-                                    <span class="data-value">Click to add</span>
-                                </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#individualbasics">
-                                <div class="data-col">
-                                    <span class="data-label">Phone</span>
-                                    <span class="data-value">Click to add</span>
-                                </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#individualbasics">
-                                <div class="data-col">
-                                    <span class="data-label">Email</span>
-                                    <span class="data-value">Click to add</span>
-                                </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#individualbasics">
-                                <div class="data-col">
-                                    <span class="data-label">Website Link</span>
-                                    <span class="data-value">Click to add</span>
-                                </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            <!-- data-item -->
-                            <div class="data-head">
-                                <h6 class="overline-title">Address</h6>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#address">
-                                <div class="data-col">
-                                    <span class="data-label">Country</span>
-                                    <span class="data-value">Click to add</span>
-                                </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#address">
-                                <div class="data-col">
-                                    <span class="data-label">City</span>
-                                    <span class="data-value">Click to add</span>
-                                </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#address">
-                                <div class="data-col">
-                                    <span class="data-label">Postal/Zip Code</span>
-                                    <span class="data-value">Click to add</span>
-                                </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#address">
-                                <div class="data-col">
-                                    <span class="data-label">Postal Address</span>
-                                    <span class="data-value">Click to add</span>
-                                </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            <!-- data-item -->
-                        </div><!-- data-list -->
-                        <div class="nk-data data-list data-list-s2">
-                            <div class="data-head">
-                                <h6 class="overline-title">Tax Info</h6>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#tax">
-                                <div class="data-col">
-                                    <span class="data-label">Tax ID</span>
-                                    <span class="data-value">Click to add</span>
-                                </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            <!-- data-item -->
-                        </div><!-- data-list -->
-                    </div><!-- .nk-block -->
-                </div><!-- .card-inner -->
-            </div><!-- .card -->
-        </div><!-- .nk-block -->
-        <!-- .nk-block -->
-    </div>
-    <!-- footer @s -->
-    {% include "footer.html" %}
-    <!-- footer @e -->
-</div>
-<div class="modal fade" role="dialog" id="tax">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
-            <div class="modal-body modal-body-lg">
-                <h5 class="title">Tax Info</h5>
-                <div class="tab-content">
-                    <div class="tab-pane active" id="personal">
-                        <form method="POST">
-                            {{form4.hidden_tag()}}
-                            <div class="row gy-4">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        {{form4.taxid.label(class="form-label")}}
-                                        {{ form4.taxid(class="form-control form-control-m",
-                                        placeholder="e.g. BE047727010") }}
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                        <li>
-                                            {{form4.submit4(class="btn btn-lg btn-primary btn-block")}}
-                                        </li>
-                                        <li>
-                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </form>
-                    </div><!-- .tab-pane -->
-                </div><!-- .tab-content -->
-            </div><!-- .modal-body -->
-        </div><!-- .modal-content -->
-    </div><!-- .modal-dialog -->
-</div><!-- .modal -->
-<div class="modal fade" role="dialog" id="address">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
-            <div class="modal-body modal-body-lg">
-                <h5 class="title">Address Info</h5>
-                <div class="tab-content">
-                    <div class="tab-pane active" id="c_address">
-                        <form method="POST">
-                            {{form3.hidden_tag()}}
-                            <div class="row gy-4">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">Country</label>
-                                        <div class="form-control-wrap">
-                                            <select id="select_country" class="form-select" data-search="on">
-                                                <option value="default_option">Select Country</option>
-                                                {% for country in countries %}
-                                                <option value="{{country.id}}">{{country.name}}</option>
-                                                {% endfor %}
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">City</label>
-                                        <div class="form-control-wrap">
-                                            <select id="select_city" class="form-select" data-search="on">
-                                                <option value="default_option">Select City</option>
-                                                <option value="#"><i>Choose a country to list cities</i></option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        {{form3.postalcode.label(class="form-label")}}
-                                        {{ form3.postalcode(class="form-control form-control-m",
-                                        placeholder="Postal/Zip Code") }}
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        {{form3.postaladdress.label(class="form-label")}}
-                                        {{ form3.postaladdress(class="form-control form-control-m",
-                                        placeholder="P.O Box") }}
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                        <li>
-                                            {{form3.submit3(class="btn btn-lg btn-primary btn-block")}}
-                                        </li>
-                                        <li>
-                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </form>
-                    </div><!-- .tab-pane -->
-                </div><!-- .tab-content -->
-            </div><!-- .modal-body -->
-        </div><!-- .modal-content -->
-    </div><!-- .modal-dialog -->
-</div><!-- .modal -->
-<div class="modal fade" role="dialog" id="basics">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
-            <div class="modal-body modal-body-lg">
-                <h5 class="title">Basic Info</h5>
-                <div class="tab-content">
-                    <div class="tab-pane active" id="personal">
-                        <form method="POST">
-                            {{form1.hidden_tag()}}
-                            <div class="row gy-4">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        {{ form1.companyname.label(class="form-label") }}
-                                        {{ form1.companyname(class="form-control form-control-m",
-                                        placeholder="Company Name") }}
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        {{ form1.phonenumber.label(class="form-label") }}
-                                        {{ form1.phonenumber(class="form-control form-control-m",
-                                        placeholder="Phone Number") }}
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        {{ form1.email.label(class="form-label") }}
-                                        {{ form1.email(class="form-control form-control-m",
-                                        placeholder="Email Address") }}
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        {{ form1.website.label(class="form-label") }}
-                                        {{ form1.website(class="form-control form-control-m",
-                                        placeholder="http://...") }}
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                        <li>
-                                            {{form1.submit1(class="btn btn-lg btn-primary btn-block")}}
-                                        </li>
-                                        <li>
-                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </form>
-                    </div><!-- .tab-pane -->
-                </div><!-- .tab-content -->
-            </div><!-- .modal-body -->
-        </div><!-- .modal-content -->
-    </div><!-- .modal-dialog -->
-</div><!-- .modal -->
-<div class="modal fade" role="dialog" id="individualbasics">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
-            <div class="modal-body modal-body-lg">
-                <h5 class="title">Basic Info</h5>
-                <div class="tab-content">
-                    <div class="tab-pane active" id="personal">
+                    <div class="preview-block" style="padding-top: 1.5rem;">
                         <form method="POST">
                             {{form2.hidden_tag()}}
+                            <span class="preview-title-lg overline-title">BASIC INFO</span>
                             <div class="row gy-4">
-                                <div class="col-md-6">
+                                <div class="col-sm-6">
                                     <div class="form-group">
                                         {{ form2.name.label(class="form-label") }}
-                                        {{ form2.name(class="form-control form-control-m",
+                                        {{ form2.name(class="form-control",
                                         placeholder="Name") }}
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="form-label">Title</label>
                                         <div class="form-control-wrap">
@@ -479,11 +221,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="form-label">Company</label>
                                         <div class="form-control-wrap">
-                                            <select name="select_company" class="form-select" data-search="on">
+                                            <select name="select_company" id="select_company" class="form-select" data-search="on">
                                                 <option value="default_option">Select company</option>
                                                 {% for company in companies %}
                                                 <option value="{{company.id}}">{{company.company_name}}</option>
@@ -492,38 +234,94 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-sm-6">
                                     <div class="form-group">
                                         {{ form2.jobposition.label(class="form-label") }}
-                                        {{ form2.jobposition(class="form-control form-control-m",
+                                        {{ form2.jobposition(class="form-control",
                                         placeholder="e.g Sales Director") }}
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         {{ form2.phonenumber.label(class="form-label") }}
-                                        {{ form2.phonenumber(class="form-control form-control-m",
+                                        {{ form2.phonenumber(class="form-control",
                                         placeholder="Phone Number") }}
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         {{ form2.email.label(class="form-label") }}
-                                        {{ form2.email(class="form-control form-control-m",
+                                        {{ form2.email(class="form-control",
                                         placeholder="Email Address") }}
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         {{ form2.website.label(class="form-label") }}
-                                        {{ form2.website(class="form-control form-control-m",
+                                        {{ form2.website(class="form-control",
                                         placeholder="http://...") }}
                                     </div>
                                 </div>
-                                <div class="col-12">
+                            </div>
+                            <hr class="preview-hr">
+                            <span class="preview-title-lg overline-title">ADDRESS INFO</span>
+                            <div class="row gy-4">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Country</label>
+                                        <div class="form-control-wrap">
+                                            <select id="individual_select_country" class="form-select" data-search="on">
+                                                <option value="default_option">Select Country</option>
+                                                {% for country in countries %}
+                                                <option value="{{country.id}}">{{country.name}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="form-label">City</label>
+                                        <div class="form-control-wrap">
+                                            <select id="individual_select_city" class="form-select" data-search="on">
+                                                <option value="default_option">Select City</option>
+                                                <option value=""><i>Choose a country to list cities</i></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        {{form2.postalcode.label(class="form-label")}}
+                                        {{ form2.postalcode(class="form-control",
+                                        placeholder="Postal/Zip Code") }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        {{form2.postaladdress.label(class="form-label")}}
+                                        {{ form2.postaladdress(class="form-control",
+                                        placeholder="P.O Box") }}
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="preview-hr">
+                            <span class="preview-title-lg overline-title">TAX INFO</span>
+                            <div class="row gy-4 align-center">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        {{form2.taxid.label(class="form-label")}}
+                                        {{ form2.taxid(class="form-control",
+                                        placeholder="e.g. BE047727010") }}
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="preview-hr">
+                            <div class="row gy-4 align-center">
+                                <div class="col-lg-4">
                                     <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                                         <li>
-                                            {{form2.submit2(class="btn btn-lg btn-primary btn-block")}}
+                                            {{form1.submit1(class="btn btn-m btn-primary btn-block")}}
                                         </li>
                                         <li>
                                             <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
@@ -532,11 +330,15 @@
                                 </div>
                             </div>
                         </form>
-                    </div><!-- .tab-pane -->
-                </div><!-- .tab-content -->
-            </div><!-- .modal-body -->
-        </div><!-- .modal-content -->
-    </div><!-- .modal-dialog -->
-</div><!-- .modal -->
+                    </div>
+                </div><!-- .card-inner -->
+            </div><!-- .card -->
+        </div><!-- .nk-block -->
+        <!-- .nk-block -->
+    </div>
+    <!-- footer @s -->
+    {% include "footer.html" %}
+    <!-- footer @e -->
+</div>
 
 {% endblock %}

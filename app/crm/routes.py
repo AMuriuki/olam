@@ -1,5 +1,5 @@
 from flask_login import login_required, current_user
-from flask import json, render_template, session, jsonify, request, redirect, url_for
+from flask import json, render_template, session, jsonify, request, redirect, url_for, flash
 from app.crm import bp
 from app.crm.models.crm_lead import FILTERS, Lead
 from app.crm.models.crm_recurring_plan import RecurringPlan
@@ -13,7 +13,7 @@ from app.main.models.partner import Partner
 from app.main.models.company import Company
 from sqlalchemy import log, or_
 from app.contacts.forms import TITLES, BasicCompanyInfoForm, BasicIndividualInfoForm
-from app.crm.forms import BoardItemForm, NewRecurringPlanForm, EditStageForm, CreateSalesTeamForm
+from app.crm.forms import AddStage, BoardItemForm, NewRecurringPlanForm, EditStageForm, CreateSalesTeamForm
 from app.main.models.country import Country
 
 
@@ -31,17 +31,6 @@ def edit_stage():
 def delete_stage():
     stage = Stage.query.filter_by(id=request.form['stage_id']).first()
     stage.is_deleted = True
-    db.session.commit()
-    return jsonify({"response": "success"})
-
-
-@login_required
-@bp.route('/add_stage', methods=['GET', 'POST'])
-def add_stage():
-    print(request.form)
-    max_id = Stage.max_id()
-    stage = Stage(id=max_id+1, name=request.form['new_stage_name'])
-    db.session.add(stage)
     db.session.commit()
     return jsonify({"response": "success"})
 
@@ -121,6 +110,7 @@ def pipeline():
     form3 = BoardItemForm()
     form4 = NewRecurringPlanForm()
     form5 = EditStageForm()
+    form6 = AddStage()
 
     # opportunities = Lead.query.join(Stage).all()
     # for opportunity in opportunities:
@@ -136,6 +126,8 @@ def pipeline():
     plans = RecurringPlan.query.all()
     titles = TITLES
     filters = FILTERS
+    new_stage = False
+
     partners = db.session.query(Partner).filter(or_(
         Partner.is_company == True, Partner.is_individual == True)).all()
     companies = Partner.query.filter_by(is_company=True).all()
@@ -143,14 +135,24 @@ def pipeline():
         Country.currency_alphabetic_code.distinct().label("currency_alphabetic_code")).order_by(
         'currency_alphabetic_code')
     currencies = [row.currency_alphabetic_code for row in query.all()]
-    if form3.validate_on_submit():
-        opportunity = Lead(name=request.form['opportunity'],
-                           user_id=current_user.get_id(), partner_id=request.form['pipeline_select_org'], priority=session['selected_priority'], stage_id=int(session['pipeline_stage']), expected_revenue=request.form['expected_revenue'], partner_email=request.form['partner_email'], partner_phone=request.form['partner_phone'], plan_id=request.form['recurring_plan'], partner_currency=request.form['_partner_currency'])
+    if form3.submit1.data and form3.validate_on_submit():
+        opportunity = Lead(name=request.form['opportunity'], user_id=current_user.get_id(), partner_id=request.form['pipeline_select_org'], priority=session['selected_priority'], stage_id=int(
+            session['pipeline_stage']), expected_revenue=request.form['expected_revenue'], partner_email=request.form['partner_email'], partner_phone=request.form['partner_phone'], plan_id=request.form['recurring_plan'], partner_currency=request.form['_partner_currency'])
+        opportunity.generate_slug()
         db.session.add(opportunity)
         db.session.commit()
         return redirect(url_for('crm.pipeline'))
 
-    return render_template('crm/pipeline.html', title=_('CRM Pipeline | Olam ERP'), pipeline=pipeline, partners=partners, form1=form1, form2=form2, form3=form3, form4=form4, form5=form5, companies=companies, titles=titles, currencies=currencies, user_currency=user_country.currency_alphabetic_code, plans=plans, stages=stages, filters=filters)
+    if form6.submit6.data and form6.validate_on_submit():
+        max_id = Stage.max_id()
+        stage = Stage(id=max_id+1, name=form6.name.data)
+        db.session.add(stage)
+        db.session.commit()
+        new_stage = True
+        flash(_("New stage added successfully"))
+        return redirect(url_for('crm.pipeline', new_stage=new_stage))
+
+    return render_template('crm/pipeline.html', title=_('CRM Pipeline | Olam ERP'), pipeline=pipeline, partners=partners, form1=form1, form2=form2, form3=form3, form4=form4, form5=form5, form6=form6, companies=companies, titles=titles, currencies=currencies, user_currency=user_country.currency_alphabetic_code, plans=plans, stages=stages, filters=filters, new_stage=new_stage)
 
 
 @bp.route('/pipeline', methods=['GET', 'POST'])
@@ -206,3 +208,9 @@ def reporting():
 @login_required
 def configuration():
     pass
+
+
+@bp.route('/lead/<slug>', methods=['GET', 'POST'])
+def lead(slug):
+    lead = Lead.query.filter_by(slug=slug).first()
+    return render_template("crm/opportunity.html", title=_(lead.name + ' | Olam ERP'), lead=lead)

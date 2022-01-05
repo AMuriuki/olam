@@ -67,6 +67,30 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <ul class="custom-control-group g-3 align-center">
+                                            <li>
+                                                <div class="custom-control custom-control-sm custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="com-quotation-1">
+                                                    <label class="custom-control-label" for="com-quotation-1">Quotations</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="custom-control custom-control-sm custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="com-pipeline-1">
+                                                    <label class="custom-control-label" for="com-pipeline-1">Pipeline</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="custom-control custom-control-sm custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="com-lead-1">
+                                                    <label class="custom-control-label" for="com-lead-1">Leads</label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                                 <div class="col-12">
                                     <div class="form-group">
                                         <ul class="custom-control-group">
@@ -74,11 +98,11 @@
                                                 {{form.submit(class="btn btn-primary")}}
                                             </li>
                                             <li>
-                                                <a href="{{url_for('crm.create_team')}}" class="btn btn-success">Add
+                                                <a href="{{url_for('crm.create_team')}}" class="btn btn-outline-secondary">Add
                                                     Members</a>
                                             </li>
                                             <li>
-                                                <a href="#" class="btn btn-light">Discard</a>
+                                                <a href="#" class="btn btn-outline-light">Discard</a>
                                             </li>
                                         </ul>
                                     </div>

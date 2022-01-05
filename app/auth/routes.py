@@ -119,13 +119,8 @@ def set_password():
             user.set_token(partner.id)
             db.session.add(user)
             db.session.commit()
-
-            response = requests.post(get_api_token, auth=(
-                partner.email, 'api_user'))
-            response_dict = json.loads(response.content)
         else:
             # existing user
-            response_dict = None
             user = Users.query.filter_by(partner_id=partner.id).first()
 
     form = SetPasswordForm()
@@ -138,13 +133,15 @@ def set_password():
                 user.is_active = True
                 db.session.commit()
                 login_user(user)
-                if response_dict:
+                exists = Module.query.first()
+                if exists:
+                    # modules/DB already set-up
+                    return redirect(url_for('main.index'))
+                else:
                     # first time modules/DB set up
-                    head = {'Authorization': 'Bearer ' +
-                            response_dict['token']}
                     company_id = request.args.get('companyid')
                     response = requests.get(
-                        get_installed_modules + str(company_id) + '/modules', headers=head)
+                        get_installed_modules + str(company_id) + '/modules')
                     response_dict = json.loads(response.content)
 
                     for i in range(len(response_dict['items'])):
@@ -153,9 +150,6 @@ def set_password():
                         db.session.add(module)
                         db.session.commit()
                     return redirect(url_for('main.invite_colleagues'))
-                else:
-                    # modules/DB already set-up
-                    return redirect(url_for('main.index'))
     return render_template('auth/set_password.html', title=_('Set Password | Olam ERP'), form=form)
 
 

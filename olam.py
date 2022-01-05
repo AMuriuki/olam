@@ -1,3 +1,4 @@
+from app.models import Task
 from app.tasks import ManageTasks
 from flask_migrate import upgrade
 from app import create_app, cli, db
@@ -22,8 +23,11 @@ def inject_modules():
 
 @app.before_first_request
 def seed_database():
-    ManageTasks.launch_task('seed_database', ('Seeding DB...'))
-    db.session.commit()
+    exists = Task.query.filter_by(name='seed_database').first() 
+    print(exists)
+    if not exists:
+        ManageTasks.launch_task('seed_database', ('Seeding DB...'))
+        db.session.commit()
 
 
 @app.template_filter()

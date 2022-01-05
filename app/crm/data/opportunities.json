@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "30 desktop pcs",
+    "user_id": 1,
+    "partner_id": 4,
+    "priority": "1",
+    "stage_id": 1,
+    "partner_email": "contact@moringaschool.com",
+    "partner_phone": "+254712293878",
+    "plan_id": 0,
+    "partner_currency": "KES",
+    "active": true,
+    "expected_revenue": "600,000"
+  }
+]

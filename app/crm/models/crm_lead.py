@@ -1,5 +1,6 @@
 from operator import index
 from app import db, current_app
+from app.utils import unique_slug_generator
 from config import basedir
 import os
 import csv
@@ -40,6 +41,11 @@ class Lead(db.Model):
     partner_phone = db.Column(db.String(60), index=True)
     partner_currency = db.Column(db.String(10), index=True)
     is_deleted = db.Column(db.Boolean, default=False)
+    slug = db.Column(db.Text())
+
+    def generate_slug(self):
+        _slug = unique_slug_generator(self)
+        self.slug = _slug
 
     @staticmethod
     def insert_leads():
@@ -56,7 +62,8 @@ class Lead(db.Model):
                 if exists:
                     pass
                 else:
+                    slug = unique_slug_generator(i['name'])
                     lead = Lead(
-                        id=i['lead_id'], name=i['name'], user_id=i['user_id'], company_id=i['company_id'], referred_by=i['referred_by'], description=i['description'], active=True if i['active'] == 1 else False, priority=i['priority'], partner_id=i['partner_id'], stage=i['stage'], expected_revenue=i['expected_revenue'], partner_name=i['partner_name'], partner_email=i['partner_email'], partner_currency=i['partner_currency'])
+                        id=i['lead_id'], name=i['name'], user_id=i['user_id'], company_id=i['company_id'], referred_by=i['referred_by'], description=i['description'], active=True if i['active'] == 1 else False, priority=i['priority'], partner_id=i['partner_id'], stage=i['stage'], expected_revenue=i['expected_revenue'], partner_name=i['partner_name'], partner_email=i['partner_email'], partner_currency=i['partner_currency'], slug=slug)
                     db.session.add(lead)
             db.session.commit()

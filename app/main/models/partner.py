@@ -28,7 +28,7 @@ class Partner(db.Model):
     company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
     users = db.relationship('Users', backref='partner', lazy='dynamic')
     is_tenant = db.Column(db.Boolean, default=False)
-    tax_id = db.Column(db.Integer, index=True)
+    tax_id = db.Column(db.String(60), index=True)
     partnerships = db.relationship(
         'Lead', backref='opportunity', lazy='dynamic')
     teams = db.relationship('Team', backref='lead', lazy='dynamic')
