@@ -1,8 +1,7 @@
-from app.crm.models.crm_lead import Lead
-from app.main.models.module import Module
 import os
 import click
 from flask_migrate import upgrade
+from app.tasks import dummy_data
 
 
 def register(app):
@@ -12,11 +11,9 @@ def register(app):
         pass
 
     @app.cli.command()
-    def deploy():
-        """Run deployment tasks."""
-        # migrate database to latest revision
-        upgrade()
-        Lead.insert_leads()
+    def dummy():
+        """Import dummy data"""
+        dummy_data()
 
     @translate.command()
     @click.argument('lang')

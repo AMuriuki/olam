@@ -1,3 +1,4 @@
+from enum import unique
 from operator import index
 from app import db, current_app
 from app.utils import unique_slug_generator
@@ -37,33 +38,21 @@ class Lead(db.Model):
     stage_id = db.Column(db.Integer, db.ForeignKey('stage.id'))
     expected_revenue = db.Column(db.String(60))
     date_open = db.Column(db.DateTime, default=datetime.now)
+    expected_closing = db.Column(db.DateTime, nullable=True)
     partner_email = db.Column(db.String(120), index=True)
     partner_phone = db.Column(db.String(60), index=True)
     partner_currency = db.Column(db.String(10), index=True)
     is_deleted = db.Column(db.Boolean, default=False)
-    slug = db.Column(db.Text())
+    slug = db.Column(db.Text(), unique=True)
+    notes = db.relationship('Note', backref='lead', lazy='dynamic')
 
     def generate_slug(self):
         _slug = unique_slug_generator(self)
         self.slug = _slug
 
-    @staticmethod
-    def insert_leads():
-        csv_file = os.path.join(
-            basedir, 'app/crm/data/leads.csv')
-        with open(csv_file, 'r') as fin:
-            dr = csv.DictReader(fin)
-            current_app.logger.setLevel(logging.INFO)
-            current_app.logger.info('seeding leads table')
-            for i in dr:
-                print(i)
-                exists = db.session.query(
-                    Lead.id).filter_by(id=i['lead_id']).first() is not None
-                if exists:
-                    pass
-                else:
-                    slug = unique_slug_generator(i['name'])
-                    lead = Lead(
-                        id=i['lead_id'], name=i['name'], user_id=i['user_id'], company_id=i['company_id'], referred_by=i['referred_by'], description=i['description'], active=True if i['active'] == 1 else False, priority=i['priority'], partner_id=i['partner_id'], stage=i['stage'], expected_revenue=i['expected_revenue'], partner_name=i['partner_name'], partner_email=i['partner_email'], partner_currency=i['partner_currency'], slug=slug)
-                    db.session.add(lead)
-            db.session.commit()
+
+class Note(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    note = db.Column(db.Text)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    lead_id = db.Column(db.Integer, db.ForeignKey('lead.id'))

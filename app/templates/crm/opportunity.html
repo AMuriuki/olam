@@ -1,9 +1,466 @@
 {% extends "base.html" %}
 
 {% block content %}
+<style>
+    .form-group {
+        padding-top: 0.5rem !important;
+    }
+
+    .form-control {
+        border: 0px solid #dbdfea !important;
+        border-bottom: 1px solid #000 !important;
+    }
+
+    .pt-1rem {
+        padding-top: 1rem
+    }
+
+    .xx-large {
+        font-size: xx-large !important;
+    }
+
+    .ni-star-fill {
+        font-size: xx-large !important;
+    }
+
+    .ni-star {
+        font-size: xx-large !important;
+    }
+</style>
 <div class="nk-content-body">
     <div class="nk-content-wrap">
         {% include "crm/crm_blockhead.html" %}
+        <div class="nk-block">
+            <div class="row">
+                <div class="col-xl-8">
+                    <div class="card card-bordered">
+                        {% if edit %}
+                        <div class="card-inner-group">
+                            <div class="card-inner">
+                                <div class="sp-plan-head">
+                                    <h6 class="title">Opportunity</h6>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-control-wrap">
+                                        <input type="text" class="form-control form-control-lg" id="site-name"
+                                            value="{{lead.name}}">
+                                    </div>
+                                </div>
+                                <ul class="pt-1rem row gx-1">
+                                    <li class="pt-1rem col-sm-6">
+                                        <h6 class="title">Expected Revenue</h6>
+                                        <div class="form-group">
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control form-control-lg" id="site-name"
+                                                    {% if lead.expected_revenue %}
+                                                    value="{{lead.partner_currency}}&nbsp;{{lead.expected_revenue}}" {%
+                                                    else %} placeholder="Enter expected revenue" {% endif %}>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="pt-1rem col-sm-6">
+                                        <h6 class="title">Probability</h6>
+                                        <div class="form-group">
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control form-control-lg" id="site-name"
+                                                    value="10.00%">
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul class="pt-1rem row gx-1">
+                                    <li class="pt-1rem col-sm-6">
+                                        <h6 class="title">Customer</h6>
+                                        <div class="form-group">
+                                            <div class="form-control-wrap">
+                                                <select id="#" class="form-select form-control-lg select_contact"
+                                                    data-search="on" data-ui="lg">
+                                                    <option value="default_option">
+                                                        Select customer
+                                                    </option>
+                                                    {% for partner in partners %}
+                                                    <option value="{{partner.id}}" {% if partner.id==lead.partner_id
+                                                        %}selected{% endif %}>
+                                                        {% if partner.is_company %}{{partner.company_name}}{% elif
+                                                        partner.is_individual %}{{partner.name}} -
+                                                        {{partner.parent.company_name}}{%
+                                                        endif %}
+                                                    </option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="pt-1rem col-sm-6">
+                                        <h6 class="title">Email</h6>
+                                        <div class="form-group">
+                                            <input name="" id="" type="email" class="form-control form-control-lg" {% if
+                                                lead.partner_email %}value="{{lead.partner_email}}" {% else %}
+                                                placeholder="Enter customer email" {% endif %}>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul class="pt-1rem row gx-1">
+                                    <li class="pt-1rem col-sm-6">
+                                        <h6 class="title">Phone</h6>
+                                        <div class="form-group">
+                                            <input name="" id="" type="tel" class="form-control form-control-lg" {% if
+                                                lead.partner_phone %}value="{{lead.partner_phone}}" {% else %}
+                                                placeholder="Enter customer phone number" {% endif %}>
+                                        </div>
+                                    </li>
+                                    <li class="pt-1rem col-sm-6">
+                                        <h6 class="title">Expected Closing</h6>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-control-lg date-picker"
+                                                id="closing-date" {% if lead.expected_closing %}
+                                                value="{{lead.expected_closing}}" {% else %}
+                                                placeholder="Expected closing date" {% endif %}>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul class="pt-1rem row gx-1">
+                                    <li class="pt-1rem col-sm-6">
+                                        <h6 class="title">Priority</h6>
+                                        <div class="asterisk">
+                                            {% if lead.priority == '0' %}
+                                            <a data-toggle="tooltip" data-placement="top" title="Medium"
+                                                id="_selectPriority1-{{lead.id}}" name="{{lead.id}}"
+                                                class="select-priority-update">
+                                                <em id="_priority1-{{lead.id}}"
+                                                    class="asterisk-off icon ni ni-star"></em>
+                                            </a>
+                                            <a id="_selectPriority2-{{lead.id}}" class="select-priority-update"
+                                                name="{{lead.id}}">
+                                                <em id="_priority2-{{lead.id}}"
+                                                    class="asterisk-off icon ni ni-star"></em>
+                                            </a>
+                                            <a id="_selectPriority3-{{lead.id}}" class="select-priority-update"
+                                                name="{{lead.id}}">
+                                                <em id="_priority3-{{lead.id}}"
+                                                    class="asterisk-off icon ni ni-star"></em>
+                                            </a>
+                                            {% elif lead.priority == '1' %}
+                                            <a id="_selectPriority1-{{lead.id}}" class="select-priority-update"
+                                                data-toggle="tooltip" data-placement="top" title="Medium"
+                                                name="{{lead.id}}"><em id="_priority1-{{lead.id}}"
+                                                    class="icon ni ni-star-fill"></em></a>
+                                            <a id="_selectPriority2-{{lead.id}}" class="select-priority-update"
+                                                data-toggle="tooltip" data-placement="top" title="High"
+                                                name="{{lead.id}}">
+                                                <em id="_priority2-{{lead.id}}"
+                                                    class="asterisk-off icon ni ni-star"></em>
+                                            </a>
+                                            <a id="_selectPriority3-{{lead.id}}" class="select-priority-update"
+                                                data-toggle="tooltip" data-placement="top" title="Very High"
+                                                name="{{lead.id}}">
+                                                <em id="_priority3-{{lead.id}}"
+                                                    class="asterisk-off icon ni ni-star"></em>
+                                            </a>
+                                            {% elif lead.priority == '2' %}
+                                            <a id="_selectPriority1-{{lead.id}}" name="{{lead.id}}"
+                                                data-toggle="tooltip" data-placement="top" title="Medium"
+                                                class="select-priority-update">
+                                                <em id="_priority1-{{lead.id}}" class="icon ni ni-star-fill"></em>
+                                            </a>
+                                            <a id="_selectPriority2-{{lead.id}}" name="{{lead.id}}"
+                                                data-toggle="tooltip" data-placement="top" title="High"
+                                                class="select-priority-update">
+                                                <em id="_priority2-{{lead.id}}" class="icon ni ni-star-fill"></em>
+                                            </a>
+                                            <a id="_selectPriority3-{{lead.id}}" name="{{lead.id}}"
+                                                data-toggle="tooltip" data-placement="top" title="Very High"
+                                                class="select-priority-update">
+                                                <em id="_priority3-{{lead.id}}"
+                                                    class="asterisk-off icon ni ni-star"></em>
+                                            </a>
+                                            {% elif lead.priority == '3' %}
+                                            <a id="_selectPriority1-{{lead.id}}" name="{{lead.id}}"
+                                                data-toggle="tooltip" data-placement="top" title="Medium"
+                                                class="select-priority-update">
+                                                <em id="_priority1-{{lead.id}}" class="icon ni ni-star-fill"></em>
+                                            </a>
+                                            <a id="_selectPriority2-{{lead.id}}" name="{{lead.id}}"
+                                                data-toggle="tooltip" data-placement="top" title="High"
+                                                class="select-priority-update">
+                                                <em id="_priority2-{{lead.id}}" class="icon ni ni-star-fill"></em>
+                                            </a>
+                                            <a id="_selectPriority3-{{lead.id}}" name="{{lead.id}}"
+                                                data-toggle="tooltip" data-placement="top" title="Very High"
+                                                class="select-priority-update">
+                                                <em id="_priority3-{{lead.id}}" class="icon ni ni-star-fill"></em>
+                                            </a>
+                                            {% endif %}
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul class="pt-1rem row gx-1">
+                                    <li class="pt-1rem col-sm-5">
+                                        <h6 class="title">Sales Person</h6>
+                                        <div class="form-group">
+                                            <select id="select_salesPerson"
+                                                class="form-select form-control-lg select_contact" data-search="on"
+                                                data-ui="lg">
+                                                <option value="default_option">
+                                                    Select Sales Person
+                                                </option>
+                                                {% for sales_person in sales_people %}
+                                                <option value="{{sales_person.id}}" {% if sales_person.id==lead.user_id
+                                                    %}selected{% endif %}>
+                                                    {{sales_person.name}}
+                                                </option>
+                                                {% endfor %}
+                                            </select>
+
+                                        </div>
+                                    </li>
+                                    <li class="pt-1rem col-sm-1">
+                                        <a href="#" class="btn btn-icon btn-sm btn-primary"><em
+                                                class="icon ni ni-external-alt"></em></a>
+                                    </li>
+                                    <li class="pt-1rem col-sm-6">
+                                        <h6 class="title">Sales Team</h6>
+                                        <div class="form-group">
+                                            <select id="select_salesTeam"
+                                                class="form-select form-control-lg select_contact" data-search="on"
+                                                data-ui="lg">
+                                                <option value="default_option">
+                                                    Select Sales Team
+                                                </option>
+                                                {% for sales_person in sales_people %}
+                                                <option value="{{sales_person.id}}" {% if sales_person.id==lead.user_id
+                                                    %}selected{% endif %}>
+                                                    {{sales_person.name}}
+                                                </option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div><!-- .card-inner -->
+                        </div><!-- .card-inner-group -->
+                        {% else %}
+                        <div class="card-inner-group">
+                            <div class="card-inner">
+                                <div class="sp-plan-head">
+                                    <h5 class="title">Opportunity</h5>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-control-wrap">
+                                        <h6>{{lead.name}}</h6>
+                                    </div>
+                                </div>
+                                <ul class="pt-1rem row gx-1">
+                                    <li class="pt-1rem col-sm-6">
+                                        <h6 class="title">Expected Revenue</h6>
+                                        <div class="form-group">
+                                            <p>{{lead.partner_currency}}&nbsp;{{lead.expected_revenue}}</p>
+                                        </div>
+                                    </li>
+                                    <li class="pt-1rem col-sm-6">
+                                        <h6 class="title">Probability</h6>
+                                        <div class="form-group">
+                                            <p>10.00%</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul class="pt-1rem row gx-1">
+                                    <li class="pt-1rem col-sm-6">
+                                        <h6 class="title">Customer</h6>
+                                        <div class="form-group">
+                                            <p>{{lead.partner_id|partner_name}}</p>
+                                        </div>
+                                    </li>
+                                    <li class="pt-1rem col-sm-6">
+                                        <h6 class="title">Email</h6>
+                                        <div class="form-group">
+                                            <p>{{lead.partner_email}}</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul class="pt-1rem row gx-1">
+                                    <li class="pt-1rem col-sm-6">
+                                        <h6 class="title">Phone</h6>
+                                        <div class="form-group">
+                                            <p>{{lead.partner_phone}}</p>
+                                        </div>
+                                    </li>
+                                    <li class="pt-1rem col-sm-6">
+                                        <h6 class="title">Expected Closing</h6>
+                                        <div class="form-group">
+                                            <p>{{lead.expected_closing}}</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul class="pt-1rem row gx-1">
+                                    <li class="pt-1rem col-sm-6">
+                                        <h6 class="title">Priority</h6>
+                                        <div class="asterisk">
+                                            {% if lead.priority == '0' %}
+                                            <a data-toggle="tooltip" data-placement="top" title="Medium"
+                                                id="_selectPriority1-{{lead.id}}" name="{{lead.id}}"
+                                                class="select-priority-update">
+                                                <em id="_priority1-{{lead.id}}"
+                                                    class="asterisk-off icon ni ni-star"></em>
+                                            </a>
+                                            <a id="_selectPriority2-{{lead.id}}" class="select-priority-update"
+                                                name="{{lead.id}}">
+                                                <em id="_priority2-{{lead.id}}"
+                                                    class="asterisk-off icon ni ni-star"></em>
+                                            </a>
+                                            <a id="_selectPriority3-{{lead.id}}" class="select-priority-update"
+                                                name="{{lead.id}}">
+                                                <em id="_priority3-{{lead.id}}"
+                                                    class="asterisk-off icon ni ni-star"></em>
+                                            </a>
+                                            {% elif lead.priority == '1' %}
+                                            <a id="_selectPriority1-{{lead.id}}" class="select-priority-update"
+                                                data-toggle="tooltip" data-placement="top" title="Medium"
+                                                name="{{lead.id}}"><em id="_priority1-{{lead.id}}"
+                                                    class="icon ni ni-star-fill"></em></a>
+                                            <a id="_selectPriority2-{{lead.id}}" class="select-priority-update"
+                                                data-toggle="tooltip" data-placement="top" title="High"
+                                                name="{{lead.id}}">
+                                                <em id="_priority2-{{lead.id}}"
+                                                    class="asterisk-off icon ni ni-star"></em>
+                                            </a>
+                                            <a id="_selectPriority3-{{lead.id}}" class="select-priority-update"
+                                                data-toggle="tooltip" data-placement="top" title="Very High"
+                                                name="{{lead.id}}">
+                                                <em id="_priority3-{{lead.id}}"
+                                                    class="asterisk-off icon ni ni-star"></em>
+                                            </a>
+                                            {% elif lead.priority == '2' %}
+                                            <a id="_selectPriority1-{{lead.id}}" name="{{lead.id}}"
+                                                data-toggle="tooltip" data-placement="top" title="Medium"
+                                                class="select-priority-update">
+                                                <em id="_priority1-{{lead.id}}" class="icon ni ni-star-fill"></em>
+                                            </a>
+                                            <a id="_selectPriority2-{{lead.id}}" name="{{lead.id}}"
+                                                data-toggle="tooltip" data-placement="top" title="High"
+                                                class="select-priority-update">
+                                                <em id="_priority2-{{lead.id}}" class="icon ni ni-star-fill"></em>
+                                            </a>
+                                            <a id="_selectPriority3-{{lead.id}}" name="{{lead.id}}"
+                                                data-toggle="tooltip" data-placement="top" title="Very High"
+                                                class="select-priority-update">
+                                                <em id="_priority3-{{lead.id}}"
+                                                    class="asterisk-off icon ni ni-star"></em>
+                                            </a>
+                                            {% elif lead.priority == '3' %}
+                                            <a id="_selectPriority1-{{lead.id}}" name="{{lead.id}}"
+                                                data-toggle="tooltip" data-placement="top" title="Medium"
+                                                class="select-priority-update">
+                                                <em id="_priority1-{{lead.id}}" class="icon ni ni-star-fill"></em>
+                                            </a>
+                                            <a id="_selectPriority2-{{lead.id}}" name="{{lead.id}}"
+                                                data-toggle="tooltip" data-placement="top" title="High"
+                                                class="select-priority-update">
+                                                <em id="_priority2-{{lead.id}}" class="icon ni ni-star-fill"></em>
+                                            </a>
+                                            <a id="_selectPriority3-{{lead.id}}" name="{{lead.id}}"
+                                                data-toggle="tooltip" data-placement="top" title="Very High"
+                                                class="select-priority-update">
+                                                <em id="_priority3-{{lead.id}}" class="icon ni ni-star-fill"></em>
+                                            </a>
+                                            {% endif %}
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul class="pt-1rem row gx-1">
+                                    <li class="pt-1rem col-sm-6">
+                                        <h6 class="title">Sales Person</h6>
+                                        <div class="form-group">
+                                            <p>{{lead.user_id|get_user_name}}</p>
+                                        </div>
+                                    </li>
+                                    <li class="pt-1rem col-sm-6">
+                                        <h6 class="title">Sales Team</h6>
+                                        <div class="form-group">
+                                            <p>{{lead.sales_team}}</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div><!-- .card-inner -->
+                        </div><!-- .card-inner-group -->
+                        {% endif %}
+                    </div><!-- .card -->
+                </div><!-- .col -->
+                <div class="col-xl-4">
+                    <div class="card card-bordered">
+                        <div class="card-inner-group">
+                            <div class="card-inner">
+                                <div class="sp-plan-desc sp-plan-desc-mb">
+                                    <ul class="row gx-1">
+                                        <li class="col-sm-4">
+                                            <a href="">
+                                                <p>0&nbsp;<span class="text-soft">Meetings</span></p><em
+                                                    class="xx-large icon ni ni-calendar-booking"></em>
+                                            </a>
+                                        </li>
+                                        <li class="col-sm-4">
+                                            <a href="">
+                                                <p>0&nbsp;<span class="text-soft">Quotations</span></p><em
+                                                    class="xx-large icon ni ni-pen2"></em>
+                                            </a>
+                                        </li>
+                                        <li class="col-sm-4">
+                                            <a href="">
+                                                <p>1&nbsp;<span class="text-soft">Similar Lead</span></p><em
+                                                    class="xx-large icon ni ni-star-fill"></em>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><!-- .card-inner -->
+                        </div><!-- .card-inner-group -->
+                    </div>
+                    <div class="card card-bordered">
+                        <div class="card-inner-group">
+                            <div class="card-inner">
+                                <div class="sp-plan-desc sp-plan-desc-mb">
+                                    <ul class="row gx-1">
+                                        <li class="col-sm-4">
+                                            <a href="#" data-toggle="modal" data-target="#modalAlert">
+                                                <p>0&nbsp;<span class="text-soft">Internal Notes</span></p><em
+                                                    class="xx-large icon ni ni-notes"></em>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><!-- .card-inner -->
+                        </div><!-- .card-inner-group -->
+                    </div>
+                </div><!-- .col -->
+            </div>
+        </div><!-- .nk-block -->
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" id="modalAlert">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross"></em></a>
+            <div class="modal-body modal-body-lg text-center">
+                <div class="nk-modal">
+                    <em class="nk-modal-icon icon icon-circle icon-circle-xxl ni ni-check bg-success"></em>
+                    <h4 class="nk-modal-title">Congratulations!</h4>
+                    <div class="nk-modal-text">
+                        <div class="caption-text">You’ve successfully bought <strong>0.5968</strong> BTC for
+                            <strong>200.00</strong> USD</div>
+                        <span class="sub-text-sm">Learn when you reciveve bitcoin in your wallet. <a href="#"> Click
+                                here</a></span>
+                    </div>
+                    <div class="nk-modal-action">
+                        <a href="#" class="btn btn-lg btn-mw btn-primary" data-dismiss="modal">OK</a>
+                    </div>
+                </div>
+            </div><!-- .modal-body -->
+            <div class="modal-footer bg-lighter">
+                <div class="text-center w-100">
+                    <p>Earn upto $25 for each friend your refer! <a href="#">Invite friends</a></p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

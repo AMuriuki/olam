@@ -1,7 +1,9 @@
 from datetime import datetime
+from enum import unique
 
 from sqlalchemy.orm import backref
 from app import db
+from app.utils import unique_slug_generator
 
 
 class Partner(db.Model):
@@ -23,7 +25,7 @@ class Partner(db.Model):
     website = db.Column(db.String(120), index=True)
     postal_code = db.Column(db.String(120), index=True)
     postal_address = db.Column(db.String(120), index=True)
-    city_id = db.Column(db.Integer, db.ForeignKey('city.id'))
+    city_id = db.Column(db.Integer, db.ForeignKey('city.id'), nullable=True)
     country_id = db.Column(db.Integer, db.ForeignKey('country.id'))
     company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
     users = db.relationship('Users', backref='partner', lazy='dynamic')
@@ -32,9 +34,14 @@ class Partner(db.Model):
     partnerships = db.relationship(
         'Lead', backref='opportunity', lazy='dynamic')
     teams = db.relationship('Team', backref='lead', lazy='dynamic')
+    slug = db.Column(db.Text(), unique=True)
+
+    def generate_slug(self):
+        _slug = unique_slug_generator(self)
+        self.slug = _slug
 
     def __repr__(self):
-        return self.company_name
+        return self.id
 
 
 class PartnerTitle(db.Model):

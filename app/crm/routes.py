@@ -36,6 +36,42 @@ def delete_stage():
 
 
 @login_required
+@bp.route('/move_stage_forward', methods=['GET', 'POST'])
+def move_stage_forward():
+    current_stage = Stage.query.filter_by(id=request.form['stage_id']).first()
+    last_position = Stage.max_postion()
+    current_position = current_stage.position
+    next_position = current_position + 1
+    next_stage = Stage.query.filter_by(
+        position=next_position).filter_by(is_deleted=False).first()
+    next_stage.position = last_position + 1
+    db.session.commit()
+    current_stage.position = next_position
+    db.session.commit()
+    next_stage.position = current_position
+    db.session.commit()
+    return jsonify({"response": "success"})
+
+
+@login_required
+@bp.route('/move_stage_behind', methods=['GET', 'POST'])
+def move_stage_behind():
+    current_stage = Stage.query.filter_by(id=request.form['stage_id']).first()
+    first_position = Stage.first_position()
+    current_position = current_stage.position
+    previous_position = current_position - 1
+    previous_stage = Stage.query.filter_by(
+        position=previous_position).filter_by(is_deleted=False).first()
+    previous_stage.position = first_position - 1
+    db.session.commit()
+    current_stage.position = previous_position
+    db.session.commit()
+    previous_stage.position = current_position
+    db.session.commit()
+    return jsonify({"response": "success"})
+
+
+@login_required
 @bp.route('/update_item', methods=['GET', 'POST'])
 def update_item():
     opportunity = Lead.query.filter_by(id=request.form['item_id']).first()
@@ -72,6 +108,7 @@ def new_company_contact():
     if form1.validate_on_submit():
         partner = Partner(company_name=form1.companyname.data,
                           phone_no=form1.phonenumber.data, website=form1.website.data, is_company=True, is_active=True, email=form1.email.data)
+        partner.generate_slug()
         db.session.add(partner)
         db.session.commit()
         return jsonify({"response": "success", "partner_name": partner.company_name, "partner_id": partner.id})
@@ -84,6 +121,7 @@ def new_individual_contact():
     if form2.validate_on_submit():
         partner = Partner(name=form2.name.data,
                           phone_no=form2.phonenumber.data, title=request.form['select_title'], parent_id=request.form['select_company'], website=form2.website.data, is_individual=True, is_active=True, function=form2.jobposition.data, email=form2.email.data)
+        partner.generate_slug()
         db.session.add(partner)
         db.session.commit()
         return jsonify({"response": "success", "partner_name": partner.name, "partner_id": partner.id})
@@ -112,13 +150,7 @@ def pipeline():
     form5 = EditStageForm()
     form6 = AddStage()
 
-    # opportunities = Lead.query.join(Stage).all()
-    # for opportunity in opportunities:
-    #     print(opportunity)
-
-    user = Users.query.filter_by(id=current_user.get_id()).first()
-    user_country = Country.query.filter_by(code=user.country_code).first()
-    stages = Stage.query.filter_by(is_deleted=False).order_by('id').all()
+    
 
     pipeline = Lead.query.filter_by(
         user_id=current_user.get_id()).order_by(Lead.priority.desc()).all()
@@ -128,8 +160,6 @@ def pipeline():
     filters = FILTERS
     new_stage = False
 
-    partners = db.session.query(Partner).filter(or_(
-        Partner.is_company == True, Partner.is_individual == True)).all()
     companies = Partner.query.filter_by(is_company=True).all()
     query = db.session.query(
         Country.currency_alphabetic_code.distinct().label("currency_alphabetic_code")).order_by(
@@ -145,14 +175,16 @@ def pipeline():
 
     if form6.submit6.data and form6.validate_on_submit():
         max_id = Stage.max_id()
-        stage = Stage(id=max_id+1, name=form6.name.data)
+        max_position = Stage.max_postion()
+        stage = Stage(id=max_id+1, name=form6.name.data,
+                      position=max_position+1)
         db.session.add(stage)
         db.session.commit()
         new_stage = True
         flash(_("New stage added successfully"))
         return redirect(url_for('crm.pipeline', new_stage=new_stage))
 
-    return render_template('crm/pipeline.html', title=_('CRM Pipeline | Olam ERP'), pipeline=pipeline, partners=partners, form1=form1, form2=form2, form3=form3, form4=form4, form5=form5, form6=form6, companies=companies, titles=titles, currencies=currencies, user_currency=user_country.currency_alphabetic_code, plans=plans, stages=stages, filters=filters, new_stage=new_stage)
+    return render_template('crm/pipeline.html', title=_('CRM Pipeline | Olam ERP'), pipeline=pipeline, form1=form1, form2=form2, form3=form3, form4=form4, form5=form5, form6=form6, companies=companies, titles=titles, currencies=currencies, plans=plans, filters=filters, new_stage=new_stage)
 
 
 @bp.route('/pipeline', methods=['GET', 'POST'])
@@ -212,5 +244,21 @@ def configuration():
 
 @bp.route('/lead/<slug>', methods=['GET', 'POST'])
 def lead(slug):
+    edit = False
     lead = Lead.query.filter_by(slug=slug).first()
-    return render_template("crm/opportunity.html", title=_(lead.name + ' | Olam ERP'), lead=lead)
+    return render_template("crm/opportunity.html", title=_(lead.name + ' | Olam ERP'), lead=lead, slug=slug, edit=edit)
+
+
+@bp.route('/edit/lead/<slug>', methods=['GET', 'POST'])
+def edit_lead(slug):
+    edit = True
+    lead = Lead.query.filter_by(slug=slug).first()
+    return render_template("crm/opportunity.html", title=_(lead.name + ' | Olam ERP'), lead=lead, edit=edit, slug=slug)
+
+
+@bp.route('/move_stage/<slug>/<stage_id>', methods=['GET', 'POST'])
+def move_stage(slug, stage_id):
+    lead = Lead.query.filter_by(slug=slug).first()
+    lead.stage_id = stage_id
+    db.session.commit()
+    return redirect(url_for('crm.pipeline'))

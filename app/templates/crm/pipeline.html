@@ -34,14 +34,14 @@
             <div class="nk-block-between">
                 <div class="nk-block-head-content">
                     <h3 class="nk-block-title page-title">Pipeline</h3>
-                    <div class="nk-block-des text-soft">
+                    <div class="nk-block-des text-soft" style="padding-bottom: 20px !important;">
                         <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                             <li>
-                                <input id="btn_additem-1" class="btn btn-m btn-primary btn-block add-item" id="submit1" name="submit1" type="submit"
-                                    value="CREATE">
+                                <input id="btn_additem-1" class="btn btn-m btn-primary btn-block add-item" id="submit1"
+                                    name="submit1" type="submit" value="CREATE">
                             </li>
                             <li>
-                                <a href="#" data-dismiss="modal" class="link link-light">GENERATE LEADS</a>
+                                <a href="#" data-dismiss="modal" class="btn btn-outline-light">GENERATE LEADS</a>
                             </li>
                         </ul>
                     </div>
@@ -137,9 +137,25 @@
                                                             Stage</span>
                                                     </a>
                                                 </li>
+                                                {% if stage.position != max_stage_position %}
+                                                <li>
+                                                    <a id="{{stage.id}}" href="#" class="move-stage-forward">
+                                                        <em class="icon ni ni-forward-alt"></em>
+                                                        <span>Move Stage Forward</span>
+                                                    </a>
+                                                </li>
+                                                {% endif %}
+                                                {% if stage.position != first_stage_position %}
+                                                <li>
+                                                    <a id="{{stage.id}}" href="#" class="move-stage-behind">
+                                                        <em class="icon ni ni-back-alt"></em>
+                                                        <span>Move Stage Behind</span>
+                                                    </a>
+                                                </li>
+                                                {% endif %}
                                                 <li>
                                                     <a id="{{stage.id}}" href="#" class="delete-stage">
-                                                        <em class="icon ni ni-delete"></em>
+                                                        <em class="icon ni ni-trash"></em>
                                                         <span>Delete Stage</span>
                                                     </a>
                                                 </li>
@@ -293,7 +309,7 @@
                                             </li>
                                             <li>
                                                 <a id="discard_item-{{stage.id}}" href="#"
-                                                    class="discard-item link link-light">Discard</a>
+                                                    class="discard-item btn btn-outline-light">Discard</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -312,12 +328,20 @@
                                                     data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     <ul class="link-list-opt no-bdr">
-                                                        <li><a href="#"><em
+                                                        <li><a href="{{url_for('crm.edit_lead', slug=record.slug)}}"><em
                                                                     class="icon ni ni-edit"></em><span>Edit</span></a>
                                                         </li>
                                                         <li><a href="#"><em
                                                                     class="icon ni ni-delete"></em><span>Delete</span></a>
                                                         </li>
+                                                        <hr>
+                                                        {% for stage in stages %}
+                                                        <li><a href="{{url_for('crm.move_stage', slug=record.slug, stage_id=stage.id)}}"
+                                                                {% if stage.id==record.stage_id %}style="display: none;"
+                                                                {% endif %}><em
+                                                                    class="icon ni ni-bullet"></em><span>{{stage.name}}</span></a>
+                                                        </li>
+                                                        {% endfor %}
                                                     </ul>
                                                 </div>
                                             </div>
@@ -514,7 +538,7 @@
                                             {{form1.submit1(class="btn btn-m btn-primary btn-block")}}
                                         </li>
                                         <li>
-                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
+                                            <a href="#" data-dismiss="modal" class="btn btn-outline-light">Cancel</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -594,7 +618,7 @@
                                             {{form2.submit2(class="btn btn-m btn-primary btn-block")}}
                                         </li>
                                         <li>
-                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
+                                            <a href="#" data-dismiss="modal" class="btn btn-outline-light">Cancel</a>
                                         </li>
                                     </ul>
                                 </div>

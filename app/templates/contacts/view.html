@@ -51,7 +51,7 @@
                                     <span class="data-label">Name</span>
                                     <span class="data-value">
                                         {% if partner.name %}
-                                        {{partner.title}} {{partner.name}}
+                                        {% if partner.title %}{{partner.title}}{% else %}<span><strong>[title]&nbsp;</strong></span>{% endif %}{{partner.name}}
                                         {% else %}
                                         Click to add
                                         {% endif %}
@@ -250,7 +250,7 @@
                                             {{form4.submit4(class="btn btn-m btn-primary btn-block")}}
                                         </li>
                                         <li>
-                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
+                                            <a href="#" data-dismiss="modal" class="btn btn-outline-light">Cancel</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -340,7 +340,7 @@
                                             {{form3.submit3(class="btn btn-m btn-primary btn-block")}}
                                         </li>
                                         <li>
-                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
+                                            <a href="#" data-dismiss="modal" class="btn btn-outline-light">Cancel</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -515,7 +515,7 @@
                                             {% endif %}
                                         </li>
                                         <li>
-                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
+                                            <a href="#" data-dismiss="modal" class="btn btn-outline-light">Cancel</a>
                                         </li>
                                     </ul>
                                 </div>

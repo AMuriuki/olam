@@ -2,6 +2,7 @@
 var stage_id;
 var stage_name;
 var item_id;
+var current_href;
 $(".edit-stage").click(function (e) {
   e.preventDefault();
   stage_id = this.id;
@@ -16,6 +17,18 @@ $(".delete-stage").click(function (e) {
 
 $("#deleteStage").click(function (e) {
   delete_stage();
+});
+
+$(".move-stage-forward").click(function (e) {
+  e.preventDefault();
+  stage_id = this.id;
+  move_stage_forward();
+});
+
+$(".move-stage-behind").click(function (e) {
+  e.preventDefault();
+  stage_id = this.id;
+  move_stage_behind();
 });
 
 // handle edit stage submit event
@@ -46,6 +59,22 @@ function delete_stage() {
       location.href = "/crm/";
     })
     .fail(function () {});
+}
+
+function move_stage_forward() {
+  $.post("/crm/move_stage_forward", {
+    stage_id: stage_id,
+  }).done(function (response) {
+    location.href = "/crm/";
+  });
+}
+
+function move_stage_behind() {
+  $.post("/crm/move_stage_behind", {
+    stage_id: stage_id,
+  }).done(function (response) {
+    location.href = "/crm/";
+  });
 }
 
 // add new board item
@@ -726,6 +755,17 @@ $("#select_country").change(function () {
   country = $(this).val();
   get_city(country);
 });
+
+current_href = $(location).attr("href");
+
+if (current_href.toLowerCase().indexOf("contacts/view_contact") >= 0) {
+  if ($("#select_country").val() !== "default_option" && $("#select_city").val() !== "default_option") {
+    console.log($("#select_country").val());
+    console.log($("#select_city").val());
+    country = $("#select_country").val();
+    get_city(country);
+  }
+}
 
 async function get_city(country) {
   const rawResponse = await fetch("/contacts/get_cities", {

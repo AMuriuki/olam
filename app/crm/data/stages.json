@@ -1,18 +1,22 @@
 [
     {
         "id": 1,
-        "name": "New"
+        "name": "New",
+        "position": 1
     },
     {
         "id": 2,
-        "name": "Qualified"
+        "name": "Qualified",
+        "position": 2
     },
     {
         "id": 3,
-        "name": "Proposition"
+        "name": "Proposition",
+        "position": 3
     },
     {
         "id": 4,
-        "name": "Won"
+        "name": "Won",
+        "position": 4
     }
 ]

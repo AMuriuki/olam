@@ -2489,7 +2489,7 @@ a.btn.disabled, .dual-listbox a.disabled.dual-listbox__button, fieldset:disabled
 }
 
 .btn-primary {
-  color: #fff;
+  color: #fff !important;
   background-color: #6576ff;
   border-color: #6576ff;
 }
@@ -27313,7 +27313,7 @@ body.nav-shown {
 }
 
 .logo-img {
-  max-height: 36px;
+  max-height: 67px;
 }
 
 .logo-img-lg {
@@ -28609,7 +28609,7 @@ span[data-toggle=tooltip]:focus {
 
 .gx-4>li, .gx-4>div {
   padding-left: 0.75rem !important;
-  padding-right: 0.75rem !important;
+  padding-right: 0.1rem !important;
 }
 
 .gy-4 {

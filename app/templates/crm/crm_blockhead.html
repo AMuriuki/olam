@@ -10,17 +10,51 @@
                     {{lead.name|title}}
                 </strong>
             </h3>
+            {% if edit %}
             <div class="nk-block-des text-soft">
                 <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                     <li>
-                        <input class="btn btn-m btn-primary btn-block" id="submit1" name="submit1" type="submit"
-                            value="EDIT">
+                        <a href="{{url_for('crm.edit_lead', slug=slug)}}"
+                            class="btn btn-m btn-primary btn-block">SAVE</a>
                     </li>
                     <li>
-                        <a href="#" data-dismiss="modal" class="link link-light">CREATE</a>
+                        <a href="#" class="btn btn-outline-light">DISCARD</a>
+                    </li>
+                </ul>
+                <hr>
+                <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                    <li>
+                        <a href="{{url_for('crm.edit_lead', slug=slug)}}" class="btn btn-m btn-primary btn-block">NEW
+                            QUOTATION</a>
+                    </li>
+                    <li>
+                        <a href="{{url_for('crm.edit_lead', slug=slug)}}" class="btn btn-m btn-primary btn-block">NEW
+                            RENTAL</a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn btn-outline-light">WON</a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn btn-outline-light">LOST</a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn btn-outline-light">ENRICH</a>
                     </li>
                 </ul>
             </div>
+            {% else %}
+            <div class="nk-block-des text-soft">
+                <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                    <li>
+                        <a href="{{url_for('crm.edit_lead', slug=slug)}}"
+                            class="btn btn-m btn-primary btn-block">EDIT</a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn btn-outline-light">CREATE</a>
+                    </li>
+                </ul>
+            </div>
+            {% endif %}
         </div>
         <div class="nk-block-head-content">
             <h3 class="nk-block-title page-title">
@@ -29,11 +63,44 @@
             </h3>
         </div>
         <div class="nk-block-head-content">
-            <a href="{{url_for('crm.pipeline')}}" class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em
-                    class="icon ni ni-arrow-left"></em><span>Back</span></a>
-            <a href="{{url_for('crm.pipeline')}}"
-                class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em
-                    class="icon ni ni-arrow-left"></em></a>
+            <div class="toggle-wrap nk-block-tools-toggle">
+                <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em
+                        class="icon ni ni-menu-alt-r"></em></a>
+                <div class="toggle-expand-content" data-content="pageMenu">
+                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                        <li>
+                            <a href="{{url_for('crm.pipeline')}}"
+                                class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em
+                                    class="icon ni ni-arrow-left"></em><span>Back</span></a>
+                            <a href="{{url_for('crm.pipeline')}}"
+                                class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em
+                                    class="icon ni ni-arrow-left"></em></a>
+                        </li>
+                        <li style="margin-left: auto !important;">
+                            1/10
+                        </li>
+                        <li>
+                            <a href="#" class="btn btn-icon btn-m btn-primary d-none d-sm-inline-flex"><em
+                                    class="icon ni ni-caret-left"></em></a>
+                            <a href="#" class="btn btn-icon btn-m btn-primary d-inline-flex d-sm-none"><em
+                                    class="icon ni ni-caret-left"></em></a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn btn-icon btn-m btn-primary d-none d-sm-inline-flex"><em
+                                    class="icon ni ni-caret-right"></em></em></a>
+                            <a href="#" class="btn btn-icon btn-m btn-primary d-inline-flex d-sm-none"><em
+                                    class="icon ni ni-caret-right"></em></a>
+                        </li>
+                    </ul>
+                    <hr>
+                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                        {% for stage in stages %}
+                        <li><a href="#" {% if stage.id==lead.stage_id %}class="btn btn-primary" {% else %}
+                                class="btn btn-light" {% endif %}>{{stage.name|upper}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div><!-- .nk-block-head -->

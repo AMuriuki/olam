@@ -27,6 +27,7 @@ def invite():
     invited_by = Partner.query.filter_by(id=user.partner_id).first()
     if form.validate_on_submit():
         partner = Partner(email=form.email.data)
+        partner.generate_slug()
         db.session.add(partner)
         db.session.commit()
         user = Users(partner_id=partner.id)

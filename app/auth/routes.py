@@ -78,6 +78,7 @@ def register():
     else:
         if form.validate_on_submit():
             partner = Partner(name=form.name.data, email=form.email.data)
+            partner.generate_slug()
             db.session.add(partner)
             db.session.commit()
             user = Users(partner_id=partner.id)
@@ -112,6 +113,7 @@ def set_password():
             # first user registration
             partner = Partner(name=request.args.get('username'),
                               email=request.args.get('email'), phone_no=request.args.get('phone_no'), is_active=True, company_id=company.id, is_tenant=True)
+            partner.generate_slug()
             db.session.add(partner)
             db.session.commit()
             user = Users(partner_id=partner.id, company_id=company.id,
