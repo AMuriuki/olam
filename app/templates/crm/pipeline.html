@@ -745,8 +745,13 @@
                     </svg>
                     <h4 class="nk-modal-title">Create an opportunity to start playing with your pipeline.</h4>
                     <div class="nk-modal-action">
+                        {% if stages %}
                         <a id="create_opportunity-{{stages[0].id}}" href="#"
                             class="btn btn-m btn-mw btn-primary first-opportunity" data-dismiss="modal">Create</a>
+                        {% else %}
+                        <a id="create_opportunity-#" href="#"
+                            class="btn btn-m btn-mw btn-primary first-opportunity" data-dismiss="modal">Create</a>
+                        {% endif %}
                     </div>
                 </div>
             </div><!-- .modal-body -->

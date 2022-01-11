@@ -26,7 +26,7 @@ def inject_modules():
     if modules:
         return dict(modules=modules)
     else:
-        return dict(modules=None)
+        return dict(modules="")
 
 
 @app.context_processor
@@ -36,7 +36,7 @@ def partners():
     if partners:
         return dict(partners=partners)
     else:
-        return dict(partners=None)
+        return dict(partners="")
 
 
 @app.context_processor
@@ -45,7 +45,7 @@ def stages():
     if stages:
         return dict(stages=stages)
     else:
-        return dict(stages=None)
+        return dict(stages="")
 
 
 @app.context_processor
@@ -55,7 +55,7 @@ def max_stage_position():
     if query:
         return dict(max_stage_position=query.position)
     else:
-        return dict(max_stage_position=None)
+        return dict(max_stage_position="")
 
 
 @app.context_processor
@@ -65,18 +65,26 @@ def first_stage_position():
     if query:
         return dict(first_stage_position=query.position)
     else:
-        return dict(first_stage_position=None)
+        return dict(first_stage_position="")
 
 
 @app.context_processor
 def user():
     if current_user.is_authenticated:
         user = Users.query.filter_by(id=current_user.get_id()).first()
-        user_country = Country.query.filter_by(code=user.country_code).first()
-        user_currency = user_country.currency_alphabetic_code
+        if user:
+            user_country = Country.query.filter_by(
+                code=user.country_code).first()
+            if user_country:
+                user_currency = user_country.currency_alphabetic_code
+            else:
+                user_currency = ""
+        else:
+            user_country = ""
+
         return dict(user=user, user_country=user_country, user_currency=user_currency)
     else:
-        return dict(user=None, user_country=None, user_currency=None)
+        return dict(user="", user_country="", user_currency="")
 
 
 @app.context_processor
@@ -85,7 +93,7 @@ def sales_people():
     if sales_people:
         return dict(sales_people=sales_people)
     else:
-        return dict(sales_people=None)
+        return dict(sales_people="")
 
 
 @app.before_first_request

@@ -30,6 +30,7 @@ def login():
             email=form.email.data).first()
         if partner:
             user = Users.query.filter_by(partner_id=partner.id).first()
+            
             if not user.password_hash:
                 flash(
                     _('Your account is not active. Activate by setting a new password'))
