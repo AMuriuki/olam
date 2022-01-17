@@ -8,7 +8,7 @@ from flask_login import login_required, current_user
 from flask import render_template, redirect, url_for
 from app.settings.forms import InviteForm
 from flask_babel import _, lazy_gettext as _l
-from app.auth.models.user import Users
+from app.auth.models.user import Users, Group
 
 
 @bp.route('/general_settings', methods=['GET', 'POST'])
@@ -45,3 +45,14 @@ def invite():
 @login_required
 def user(token):
     pass
+
+
+@bp.route('/groups', methods=['GET', 'POST'])
+def manage_groups():
+    groups = Group.query.all()
+    return render_template("settings/groups.html", title=_('Groups | Olam ERP'), groups=groups)
+
+
+@bp.route('/new_group', methods=['GET', 'POST'])
+def new_group():
+    return render_template("settings/new_group.html", title=_('New Group | Olam ERP'))

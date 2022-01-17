@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .card-bordered {
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+</style>
+<div class="nk-content-body">
+    <div class="nk-content-wrap">
+        {% include "settings/contacts_blockhead.html" %}
+        <div class="nk-block">
+            <div class="card card-preview">
+                <div class="card-inner">
+                    <div class="row gy-4">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-label">Application</label>
+                                <div class="form-control-wrap">
+                                    <select class="form-select">
+                                        <option value="default_option">Select App</option>
+                                        {% for module in modules %}
+                                        <option value="{{module.id}}">
+                                            {% if module.bp_name == "crm" %}
+                                            {{module.bp_name|upper}}
+                                            {% else %}
+                                            {{module.bp_name|title}}
+                                            {% endif %}
+                                        </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-label">Name</label>
+                                <div class="form-control-wrap">
+                                    <input type="text" class="form-control" id="name" placeholder="Name of the group">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-bordered">
+                    <ul class="nav nav-tabs nav-tabs-mb-icon nav-tabs-card">
+                        <li class="nav-item active current-page">
+                            <a class="nav-link active" href="html/user-profile-regular.html"><em
+                                    class="icon ni ni-users-fill"></em><span>Users</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="html/user-profile-notification.html"><em
+                                    class="icon ni ni-bell-fill"></em><span>Notifications</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="html/user-profile-activity.html"><em
+                                    class="icon ni ni-activity-round-fill"></em><span>Account Activity</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="html/user-profile-setting.html"><em
+                                    class="icon ni ni-lock-alt-fill"></em><span>Security Settings</span></a>
+                        </li>
+                    </ul><!-- .nav-tabs -->
+                    <div class="card-inner card-inner-lg">
+                        <div class="nk-block nk-block-lg">
+                            <div class="gx-4 gy-2">
+                                <a href="{{url_for('settings.manage_groups')}}" class="btn btn-m btn-primary btn-block">
+                                    <em class="icon ni ni-plus"></em><span>Add User</span>
+                                </a>
+                            </div>
+                            <!-- <div class="card card-preview">
+                                <div class="card-inner">
+                                    <table class="table">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Last Seen</th>                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>Mark</td>                                                
+                                            </tr>                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div> -->
+                            <!-- .card-preview -->
+                        </div><!-- .nk-block -->
+                    </div><!-- .card-inner -->
+                </div>
+            </div><!-- .card-preview -->
+        </div>
+    </div>
+    <!-- footer @s -->
+    {% include "footer.html" %}
+    <!-- footer @e -->
+</div>
+
+{% endblock %}

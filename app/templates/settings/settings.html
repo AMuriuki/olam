@@ -61,8 +61,9 @@
                                 users.</a></div>
                         <div class="support-topic-info"><em class="icon ni ni-chevron-right"></em><a href="#">Manage
                                 users.</a></div>
-                        <div class="support-topic-info"><em class="icon ni ni-chevron-right"></em><a href="#">Manage
-                                rights.</a></div>
+                        <div class="support-topic-info"><em class="icon ni ni-chevron-right"></em><a
+                                href="{{url_for('settings.manage_groups')}}">Manage
+                                groups.</a></div>
                         <br>
                         {% if pending_invitations %}
                         <h6 class="support-topic-title title">Pending Invitations</h6>
@@ -132,7 +133,7 @@
                         <div class="support-topic-info">
                             <em class="icon ni ni-chevron-right"></em>
                             <a href="#">Update Info.</a>
-                        </div>                        
+                        </div>
                     </div>
                 </div>
             </div><!-- .support-topic-item -->

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="nk-content-body">
+    <div class="nk-content-wrap">
+        {% include "settings/contacts_blockhead.html" %}
+        <div class="nk-block">
+            <div class="card card-preview">
+                <div class="card-inner">
+                    <table class="datatable-init nk-tb-list nk-tb-ulist" data-auto-responsive="false">
+                        <thead>
+                            <tr class="nk-tb-item nk-tb-head">
+                                <th class="nk-tb-col nk-tb-col-check">
+                                    <div class="custom-control custom-control-sm custom-checkbox notext">
+                                        <input type="checkbox" class="custom-control-input" id="uid">
+                                        <label class="custom-control-label" for="uid"></label>
+                                    </div>
+                                </th>
+                                <th class="nk-tb-col"><span class="sub-text">Group Name</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for group in groups %}
+                            <tr class="nk-tb-item">
+                                <td class="nk-tb-col nk-tb-col-check">
+                                    <div class="custom-control custom-control-sm custom-checkbox notext">
+                                        <input type="checkbox" class="custom-control-input" id="uid1">
+                                        <label class="custom-control-label" for="uid1"></label>
+                                    </div>
+                                </td>
+                                <td class="nk-tb-col">
+                                    <div class="user-card">
+                                        <div class="user-info">
+                                            <span class="tb-lead">{{group.name}} <span
+                                                    class="dot dot-success d-md-none ml-1"></span></span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- .nk-tb-item  -->
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div><!-- .card-preview -->
+        </div>
+    </div>
+    <!-- footer @s -->
+    {% include "footer.html" %}
+    <!-- footer @e -->
+</div>
+{% endblock %}

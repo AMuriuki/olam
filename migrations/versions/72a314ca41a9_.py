@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: f7d4c5d6c62d
+Revision ID: 72a314ca41a9
 Revises: 
-Create Date: 2022-01-07 16:15:08.888437
+Create Date: 2022-01-17 12:41:46.797188
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'f7d4c5d6c62d'
+revision = '72a314ca41a9'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -45,6 +45,14 @@ def upgrade():
     )
     with op.batch_alter_table('database', schema=None) as batch_op:
         batch_op.create_index(batch_op.f('ix_database_name'), ['name'], unique=False)
+
+    op.create_table('group',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(length=128), nullable=True),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_group'))
+    )
+    with op.batch_alter_table('group', schema=None) as batch_op:
+        batch_op.create_index(batch_op.f('ix_group_name'), ['name'], unique=False)
 
     op.create_table('module',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -249,6 +257,13 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_right_id'], ['user_right.id'], name=op.f('fk_UserAccess_user_right_id_user_right')),
     sa.PrimaryKeyConstraint('user_id', 'user_right_id', name=op.f('pk_UserAccess'))
     )
+    op.create_table('UserGroup',
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('group_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['group_id'], ['group.id'], name=op.f('fk_UserGroup_group_id_group')),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], name=op.f('fk_UserGroup_user_id_users')),
+    sa.PrimaryKeyConstraint('user_id', 'group_id', name=op.f('pk_UserGroup'))
+    )
     op.create_table('lead',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=120), nullable=False),
@@ -332,6 +347,7 @@ def downgrade():
         batch_op.drop_index(batch_op.f('ix_lead_name'))
 
     op.drop_table('lead')
+    op.drop_table('UserGroup')
     op.drop_table('UserAccess')
     with op.batch_alter_table('users', schema=None) as batch_op:
         batch_op.drop_index(batch_op.f('ix_users_token'))
@@ -398,6 +414,10 @@ def downgrade():
         batch_op.drop_index(batch_op.f('ix_module_bp_name'))
 
     op.drop_table('module')
+    with op.batch_alter_table('group', schema=None) as batch_op:
+        batch_op.drop_index(batch_op.f('ix_group_name'))
+
+    op.drop_table('group')
     with op.batch_alter_table('database', schema=None) as batch_op:
         batch_op.drop_index(batch_op.f('ix_database_name'))
 

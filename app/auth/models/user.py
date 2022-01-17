@@ -35,6 +35,12 @@ user_rights = db.Table(
         'users.id'), primary_key=True),
     db.Column('user_right_id', db.Integer, db.ForeignKey('user_right.id'), primary_key=True))
 
+user_group = db.Table(
+    'UserGroup',
+    db.Column('user_id', db.Integer, db.ForeignKey(
+        'users.id'), primary_key=True),
+    db.Column('group_id', db.Integer, db.ForeignKey('group.id'), primary_key=True))
+
 
 class Users(UserMixin, PaginatedAPIMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -51,6 +57,8 @@ class Users(UserMixin, PaginatedAPIMixin, db.Model):
     country_code = db.Column(db.String(10), index=True)
     rights = db.relationship('UserRight', secondary=user_rights, backref=db.backref(
         'user', lazy='dynamic'), lazy='dynamic')
+    # groups = db.relationship(
+    #     'UserGroup', secondary=user_group, backref='users')
 
     def __repr__(self):
         return '<User {}>'.format(self.id)
@@ -162,3 +170,9 @@ def load_user(id):
 class UserRight(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     access_right = db.Column(db.String(120), index=True, unique=True)
+
+
+class Group(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(128), index=True)
+    # users = db.relationship('UserGroup', secondary=user_group, backref='group')
