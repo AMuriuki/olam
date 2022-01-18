@@ -96,6 +96,15 @@ def sales_people():
         return dict(sales_people="")
 
 
+@app.context_processor
+def users():
+    users = Partner.query.filter_by(is_tenant=True).order_by('id').all()
+    if users:
+        return dict(users=users)
+    else:
+        return dict(sales_people="")
+
+
 @app.before_first_request
 def seed_database():
     exists = Task.query.filter_by(name='seed_database').first()

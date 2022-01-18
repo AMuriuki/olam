@@ -17,6 +17,7 @@ from app import db, login_manager
 from app.search import add_to_index, remove_from_index, query_index
 from app.models import SearchableMixin, PaginatedAPIMixin, Task
 from flask_login import UserMixin, current_user
+from app.utils import unique_slug_generator
 from config import basedir
 
 from sqlalchemy import create_engine
@@ -57,8 +58,8 @@ class Users(UserMixin, PaginatedAPIMixin, db.Model):
     country_code = db.Column(db.String(10), index=True)
     rights = db.relationship('UserRight', secondary=user_rights, backref=db.backref(
         'user', lazy='dynamic'), lazy='dynamic')
-    # groups = db.relationship(
-    #     'UserGroup', secondary=user_group, backref='users')
+    groups = db.relationship(
+        'Group', secondary=user_group, back_populates="users")
 
     def __repr__(self):
         return '<User {}>'.format(self.id)
@@ -175,4 +176,10 @@ class UserRight(db.Model):
 class Group(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), index=True)
-    # users = db.relationship('UserGroup', secondary=user_group, backref='group')
+    users = db.relationship(
+        'Users', secondary=user_group, back_populates="groups")
+    slug = db.Column(db.Text(), unique=True)
+
+    def generate_slug(self):
+        _slug = unique_slug_generator(self)
+        self.slug = _slug

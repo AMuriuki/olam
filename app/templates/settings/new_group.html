@@ -7,6 +7,14 @@
         margin-right: 1.5rem;
         margin-bottom: 1.5rem;
     }
+
+    .modal-header {
+        border-bottom: 0px solid #dbdfea;
+    }
+
+    .modal-footer {
+        border-top: 0px solid #dbdfea;
+    }
 </style>
 <div class="nk-content-body">
     <div class="nk-content-wrap">
@@ -51,43 +59,57 @@
                                     class="icon ni ni-users-fill"></em><span>Users</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="html/user-profile-notification.html"><em
-                                    class="icon ni ni-bell-fill"></em><span>Notifications</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="html/user-profile-activity.html"><em
-                                    class="icon ni ni-activity-round-fill"></em><span>Account Activity</span></a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="html/user-profile-setting.html"><em
-                                    class="icon ni ni-lock-alt-fill"></em><span>Security Settings</span></a>
+                                    class="icon ni ni-lock-alt-fill"></em><span>Access Rights</span></a>
                         </li>
                     </ul><!-- .nav-tabs -->
                     <div class="card-inner card-inner-lg">
                         <div class="nk-block nk-block-lg">
-                            <div class="gx-4 gy-2">
-                                <a href="{{url_for('settings.manage_groups')}}" class="btn btn-m btn-primary btn-block">
-                                    <em class="icon ni ni-plus"></em><span>Add User</span>
-                                </a>
-                            </div>
-                            <!-- <div class="card card-preview">
+                            {% if group %}
+                            <div class="card card-preview">
                                 <div class="card-inner">
                                     <table class="table">
                                         <thead class="thead-light">
                                             <tr>
                                                 <th scope="col">Name</th>
-                                                <th scope="col">Last Seen</th>                                                
+                                                <th scope="col">Last Seen</th>
+                                                <th scope="col"></th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            {% for user in selected_users %}
                                             <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>                                                
-                                            </tr>                                            
+                                                <th scope="row">{{user.id|partner_name}}</th>
+                                                <td>{{ moment(user.last_seen).format('LLL')}}</td>
+                                                <td>
+                                                    <a href="{{url_for('settings.remove_user', slug=slug, id=user.id)}}"
+                                                        class="btn btn-icon btn-sm btn-primary" data-toggle="tooltip"
+                                                        data-placement="right" title="Remove user">
+                                                        <em class="icon ni ni-cross-sm"></em>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
                                         </tbody>
                                     </table>
+                                    <div class="preview-btn-item  col-sm-6 col-lg-3">
+                                        <a href="{{url_for('settings.manage_groups')}}"
+                                            class="btn btn-m btn-primary btn-block" data-toggle="modal"
+                                            data-target="#modalTabs" style="padding: 0.4375rem 4.125rem;">
+                                            <em class="icon ni ni-plus"></em><span>Add User</span>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div> -->
+                            </div>
+
+                            {% else %}
+                            <div class="preview-btn-item  col-sm-6 col-lg-3">
+                                <a href="{{url_for('settings.manage_groups')}}" class="btn btn-m btn-primary btn-block"
+                                    data-toggle="modal" data-target="#modalTabs">
+                                    <em class="icon ni ni-plus"></em><span>Add User</span>
+                                </a>
+                            </div>
+                            {% endif %}
                             <!-- .card-preview -->
                         </div><!-- .nk-block -->
                     </div><!-- .card-inner -->
@@ -99,5 +121,78 @@
     {% include "footer.html" %}
     <!-- footer @e -->
 </div>
+<div class="modal fade" tabindex="-1" role="dialog" id="modalTabs">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Users</h5>
+                <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                    <em class="icon ni ni-cross"></em>
+                </a>
+            </div>
+            <div class="modal-body modal-body-md">
+                <div class="col-7 col-sm-4alert alert-success alert-icon selected"
+                    style="display: none; max-width: 35% !important; margin-bottom: 2% !important;"></div>
+                <div class="card card-preview">
+                    <div class="card-inner">
+                        <table class="datatable-init nk-tb-list nk-tb-ulist" data-auto-responsive="false">
+                            <thead>
+                                <tr class="nk-tb-item nk-tb-head">
+                                    <th class="nk-tb-col nk-tb-col-check">
+                                    </th>
+                                    <th class="nk-tb-col"><span class="sub-text">Name</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for user in users %}
+                                {% if user.id != current_user.id %}
+                                {% if user.id not in selected_users|map(attribute="id") %}
+                                <tr class="nk-tb-item">
+                                    <td class="nk-tb-col nk-tb-col-check">
+                                        <div class="custom-control custom-control-sm custom-checkbox notext">
+                                            <input type="checkbox" class="custom-control-input chk-user"
+                                                id="{{user.id}}">
+                                            <label class="custom-control-label" for="{{user.id}}"></label>
+                                        </div>
+                                    </td>
+                                    <td class="nk-tb-col">
+                                        <div class="user-card">
+                                            <div class="user-info">
+                                                <span class="tb-lead">{{user.name}}</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- .nk-tb-item  -->
+                                {% endif %}
+                                {% endif %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div><!-- .card-preview -->
+            </div>
+            <div class="modal-footer">
+                <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                    <li>
+                        {% if slug %}
+                        <a id="{{slug}}" href="#" class="btn btn-m btn-secondary btn-block add-users">SELECT</a>
+                        {% else %}
+                        <a href="javascript:select_users()"
+                            class="btn btn-m btn-secondary btn-block select-user">SELECT</a>
+                        {% endif %}
+                    </li>
+                    <li>
+                        <a href="{{url_for('settings.new_group')}}" class="btn btn-m btn-primary btn-block">CREATE</a>
+                    </li>
+                    <li>
+                        <a href="{{url_for('settings.manage_groups')}}" class="btn btn-outline-light"
+                            data-dismiss="modal" aria-label="Close">CANCEL</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div> <!-- .modal -->
 
 {% endblock %}

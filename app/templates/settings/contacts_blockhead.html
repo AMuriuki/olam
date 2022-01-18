@@ -68,7 +68,11 @@
                     <a href="{{url_for('settings.new_group')}}" class="btn btn-m btn-primary btn-block">SAVE</a>
                 </li>
                 <li>
-                    <a href="#" class="btn btn-outline-light">DISCARD</a>
+                    {% if slug %}
+                    <a href="{{url_for('settings.discard_group', slug=slug)}}" class="btn btn-outline-light">DISCARD</a>
+                    {% else %}
+                    <a href="{{url_for('settings.manage_groups', slug=slug)}}" class="btn btn-outline-light">DISCARD</a>
+                    {% endif %}
                 </li>
             </ul>
         </div><!-- .nk-block-head-content -->

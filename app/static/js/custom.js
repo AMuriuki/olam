@@ -3,6 +3,9 @@ var stage_id;
 var stage_name;
 var item_id;
 var current_href;
+var selected = 0;
+var selectedUsers = [];
+var slug;
 $(".edit-stage").click(function (e) {
   e.preventDefault();
   stage_id = this.id;
@@ -759,7 +762,10 @@ $("#select_country").change(function () {
 current_href = $(location).attr("href");
 
 if (current_href.toLowerCase().indexOf("contacts/view_contact") >= 0) {
-  if ($("#select_country").val() !== "default_option" && $("#select_city").val() !== "default_option") {
+  if (
+    $("#select_country").val() !== "default_option" &&
+    $("#select_city").val() !== "default_option"
+  ) {
     console.log($("#select_country").val());
     console.log($("#select_city").val());
     country = $("#select_country").val();
@@ -835,3 +841,59 @@ function update_priority(item_id, priority) {
     .done(function (response) {})
     .fail(function () {});
 }
+
+$(".chk-user").change(function () {
+  var user_id = $(this).attr("id");
+  if (this.checked) {
+    $(".select-user").addClass("btn-primary").removeClass("btn-secondary");
+    $(".add-users").addClass("btn-primary").removeClass("btn-secondary");
+    selected = selected + 1;
+    $(".selected").css("display", "block");
+    $(".selected").text(selected + " selected");
+    selectedUsers.push(user_id);
+    console.log(selectedUsers);
+  } else {
+    const index = selectedUsers.indexOf(user_id);
+    selectedUsers.splice(index);
+    console.log(selectedUsers);
+    if (selected != 0) {
+      selected = selected - 1;
+      $(".selected").text(selected + " selected");
+    } else {
+      $(".selected").css("display", "none");
+    }
+    if ($(".chk-user").is(":checked")) {
+    } else {
+      $(".select-user").addClass("btn-secondary").removeClass("btn-primary");
+      $(".add-users").addClass("btn-secondary").removeClass("btn-primary");
+    }
+  }
+});
+
+function select_users() {
+  if (selectUsers.length == 0) {
+    alert("Select atleast 1 user");
+  } else {
+    $.post("/settings/select_users", {
+      selected_users: selectedUsers,
+    }).done(function (response) {
+      location.href = "/settings/new_group/" + response["slug"];
+    });
+  }
+}
+
+
+$(".add-users").click(function (e) {
+  e.preventDefault();
+  slug = $(this).attr("id");
+  if (selectedUsers.length == 0) {
+    alert("Select atleast 1 user");
+  } else {
+    $.post("/settings/select_users", {
+      slug: slug,
+      selected_user: selectedUsers,
+    }).done(function (response) {
+      location.href = "/settings/new_group/" + slug;
+    });
+  }
+});

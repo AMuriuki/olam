@@ -40204,7 +40204,7 @@ var NioApp = (function (e, t) {
         aaSorting: [[0, "asc"]],
         aaSortingFixed: [],
         ajax: null,
-        aLengthMenu: [10, 25, 50, 100],
+        aLengthMenu: [5, 10, 25, 50, 100],
         aoColumns: null,
         aoColumnDefs: null,
         aoSearchCols: [],
