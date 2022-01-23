@@ -17,3 +17,4 @@ class Module(db.Model):
     icon = db.Column(db.String(60))  # icon url
     enable = db.Column(db.Boolean, default=True)
     summary = db.Column(db.String(350))
+    usergroups = db.relationship('Group', backref='module', lazy='dynamic')

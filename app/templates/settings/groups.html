@@ -7,7 +7,7 @@
         <div class="nk-block">
             <div class="card card-preview">
                 <div class="card-inner">
-                    <table class="datatable-init nk-tb-list nk-tb-ulist" data-auto-responsive="false">
+                    <table id="tbl_groups" class="datatable-init nk-tb-list nk-tb-ulist" data-auto-responsive="false">
                         <thead>
                             <tr class="nk-tb-item nk-tb-head">
                                 <th class="nk-tb-col nk-tb-col-check">
@@ -24,15 +24,18 @@
                             <tr class="nk-tb-item">
                                 <td class="nk-tb-col nk-tb-col-check">
                                     <div class="custom-control custom-control-sm custom-checkbox notext">
-                                        <input type="checkbox" class="custom-control-input" id="uid1">
-                                        <label class="custom-control-label" for="uid1"></label>
+                                        <input type="checkbox" class="custom-control-input group-check"
+                                            id="{{group.id}}">
+                                        <label class="custom-control-label" for="{{group.id}}"></label>
                                     </div>
                                 </td>
-                                <td class="nk-tb-col">
+                                <td id="{{group.slug}}" class="nk-tb-col select-group"
+                                    style="cursor: pointer !important;">
                                     <div class="user-card">
                                         <div class="user-info">
-                                            <span class="tb-lead">{{group.name}} <span
-                                                    class="dot dot-success d-md-none ml-1"></span></span>
+                                            <span
+                                                class="tb-lead">{{group.module.bp_name|upper}}&nbsp;/&nbsp;{{group.name}}
+                                            </span>
                                         </div>
                                     </div>
                                 </td>

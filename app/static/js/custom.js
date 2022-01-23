@@ -5,6 +5,7 @@ var item_id;
 var current_href;
 var selected = 0;
 var selectedUsers = [];
+var selectedGroups = [];
 var slug;
 $(".edit-stage").click(function (e) {
   e.preventDefault();
@@ -847,15 +848,15 @@ $(".chk-user").change(function () {
   if (this.checked) {
     $(".select-user").addClass("btn-primary").removeClass("btn-secondary");
     $(".add-users").addClass("btn-primary").removeClass("btn-secondary");
+    $(".new-users").addClass("btn-primary").removeClass("btn-secondary");
     selected = selected + 1;
     $(".selected").css("display", "block");
     $(".selected").text(selected + " selected");
     selectedUsers.push(user_id);
-    console.log(selectedUsers);
   } else {
     const index = selectedUsers.indexOf(user_id);
     selectedUsers.splice(index);
-    console.log(selectedUsers);
+
     if (selected != 0) {
       selected = selected - 1;
       $(".selected").text(selected + " selected");
@@ -866,12 +867,41 @@ $(".chk-user").change(function () {
     } else {
       $(".select-user").addClass("btn-secondary").removeClass("btn-primary");
       $(".add-users").addClass("btn-secondary").removeClass("btn-primary");
+      $(".new-users").addClass("btn-secondary").removeClass("btn-primary");
     }
   }
 });
 
 function select_users() {
-  if (selectUsers.length == 0) {
+  if (selectedUsers.length == 0) {
+    alert("Select atleast 1 user");
+  } else {
+    $.post("/settings/select_users", {
+      selected_users: selectedUsers,
+    }).done(function (response) {
+      window.location.reload();
+    });
+  }
+}
+
+$(".add-users").click(function (e) {
+  e.preventDefault();
+  slug = $(".span-new-group").attr("id");
+  if (selectedUsers.length == 0) {
+    alert("Select atleast 1 user");
+  } else {
+    $.post("/settings/select_users", {
+      slug: slug,
+      selected_users: selectedUsers,
+    }).done(function (response) {
+      window.location.reload();
+    });
+  }
+});
+
+$(".new-users").click(function (e) {
+  e.preventDefault();
+  if (selectedUsers.length == 0) {
     alert("Select atleast 1 user");
   } else {
     $.post("/settings/select_users", {
@@ -880,20 +910,91 @@ function select_users() {
       location.href = "/settings/new_group/" + response["slug"];
     });
   }
-}
+});
 
-
-$(".add-users").click(function (e) {
+$(".save-group").click(function (e) {
   e.preventDefault();
-  slug = $(this).attr("id");
-  if (selectedUsers.length == 0) {
-    alert("Select atleast 1 user");
+  if ($("#select_app").val() == "default_option") {
+    alert("Select an App");
+  } else if ($("#group_name").val() == "") {
+    alert("Provide a name for this group");
   } else {
-    $.post("/settings/select_users", {
-      slug: slug,
-      selected_user: selectedUsers,
-    }).done(function (response) {
-      location.href = "/settings/new_group/" + slug;
+    var form = $("#group_details");
+    var url = form.attr("action");
+    slug = $(".span-new-group").attr("id");
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: form.serialize(),
+      success: function (data) {
+        if (data["response"] == "group name exists!") {
+          window.location.reload();
+        } else {
+          location.href = "/settings/group/" + slug;
+        }
+      },
     });
+  }
+});
+
+$(".save-new-group").click(function (e) {
+  e.preventDefault();
+  if ($("#select_app").val() == "default_option") {
+    alert("Select an App");
+  } else if ($("#group_name").val() == "") {
+    alert("Provide a name for this group");
+  } else {
+    var form = $("#group_details");
+    var url = form.attr("action");
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: form.serialize(),
+      success: function (data) {
+        if (data["response"] == "group name exists!") {
+          window.location.reload();
+        } else if (data["response"] == "success") {
+          location.href = "/settings/group/" + data["slug"];
+        }
+      },
+    });
+  }
+});
+
+$(".select-group").click(function (e) {
+  slug = $(this).attr("id");
+  location.href = "/settings/group/" + slug;
+});
+
+$(".remove-user").click(function (e) {
+  e.preventDefault();
+  slug = this.id.split(".")[0];
+  user_id = this.id.split(".")[1];
+  $.post("/settings/remove_user", {
+    slug: slug,
+    user_id: user_id,
+  })
+    .done(function (response) {
+      window.location.reload();
+    })
+    .fail(function () {});
+});
+
+$(".group-check").change(function (e) {
+  if (this.checked) {
+    selected = selected + 1;
+    $(".export").hide();
+    $(".selected-groups").show();
+    $(".li-actions").show();
+    $(".selected-groups").text(selected + " selected");
+  } else {
+    selected = selected - 1;
+    if (selected == 0) {
+      $(".export").show();
+      $(".selected-groups").hide();
+      $(".li-actions").hide();
+    } else {
+      $(".selected-groups").text(selected + " selected");
+    }
   }
 });

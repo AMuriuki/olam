@@ -16,3 +16,7 @@ class InviteForm(FlaskForm):
         if partner is not None:
             raise ValidationError(
                 _('You can not have two users with the same email address!.'))
+
+
+class NewGroup(FlaskForm):
+    pass

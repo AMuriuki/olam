@@ -17,8 +17,6 @@ import requests
 import json
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from app.tasks import ManageTasks
-
 
 @bp.route('/login', methods=['GET', 'POST'])
 def login():

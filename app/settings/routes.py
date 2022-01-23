@@ -1,12 +1,13 @@
 from flask.json import jsonify
+from itsdangerous import json
 from sqlalchemy import log
 from app import db
 from app.auth.email import send_invite_email
 from app.main.models.partner import Partner
 from app.settings import bp
 from flask_login import login_required, current_user
-from flask import render_template, redirect, url_for, request, session
-from app.settings.forms import InviteForm
+from flask import render_template, redirect, url_for, request, session, flash
+from app.settings.forms import InviteForm, NewGroup
 from flask_babel import _, lazy_gettext as _l
 from app.auth.models.user import Users, Group
 
@@ -57,16 +58,52 @@ def manage_groups():
 @bp.route('/new_group', methods=['GET', 'POST'])
 @login_required
 def new_group():
+    form = NewGroup()
     group = None
-    return render_template("settings/new_group.html", title=_('New Group | Olam ERP'), group=group)
+    if form.validate_on_submit():
+        exists = Group.query.filter_by(name=request.form['group_name']).first()
+        if exists:
+            flash(
+                _('A group with this name exists. Provide a unique name for the group.'))
+            return jsonify({"response": "group name exists!"})
+        else:
+            group = Group(
+                name=request.form['group_name'], module_id=request.form['select_app'])
+            group.generate_slug()
+            db.session.add(group)
+            db.session.commit()
+            return jsonify({"response": "success", "slug": group.slug})
+    return render_template("settings/new_group.html", title=_('New Group | Olam ERP'), group=group, form=form)
 
 
 @bp.route('/new_group/<slug>', methods=['GET', 'POST'])
 @login_required
 def newgroup(slug):
-    group = Group.query.filter_by(slug=slug).join(Group.users).all()
-    selected_users = Users.query.join(Users.groups).filter_by(slug=slug)
-    return render_template("settings/new_group.html", group=group, title=_('New Group | Olam ERP'), selected_users=selected_users, slug=slug)
+    form = NewGroup()
+    # group = Group.query.filter_by(slug=slug).join(Group.users).all()
+    group = Group.query.filter_by(slug=slug).first()
+    group_members = Users.query.join(Users.groups).filter_by(slug=slug)
+    if form.validate_on_submit():
+        exists = Group.query.filter_by(name=request.form['group_name']).first()
+        if exists:
+            flash(
+                _('A group with this name exists. Provide a unique name for the group.'))
+            return jsonify({"response": "group name exists!"})
+        else:
+            group.name = request.form['group_name']
+            group.module_id = request.form['select_app']
+            db.session.commit()
+            return jsonify({"response": "success"})
+    return render_template("settings/new_group.html", group=group, title=_('New Group | Olam ERP'), group_members=group_members, slug=slug, form=form)
+
+
+@bp.route('/group/<slug>', methods=['GET', 'POST'])
+def group(slug):
+    group = Group.query.filter_by(slug=slug).first()
+    group_members = Users.query.join(Users.groups).filter_by(slug=slug)
+    if not group:
+        return redirect(url_for('settings.new_group'))
+    return render_template("settings/group.html", group=group, title=_(str(group.name) + ' | Olam ERP'), group_members=group_members, slug=group.slug)
 
 
 @bp.route('/select_users', methods=['GET', 'POST'])
@@ -80,7 +117,8 @@ def select_users():
             group.generate_slug()
             db.session.add(group)
             db.session.commit()
-        session['selected_users'] = request.form['selected_user[]']
+        session['selected_users'] = request.form.getlist(
+            'selected_users[]')
         for select_user in session['selected_users']:
             user = Users.query.filter_by(id=int(select_user)).first()
             group.users.append(user)
@@ -97,11 +135,33 @@ def discard_group(slug):
     return redirect(url_for('settings.manage_groups'))
 
 
-@bp.route('/remove_user/<slug>/<id>', methods=['GET', 'POST'])
+@bp.route('/delete-group', methods=['GET', 'POST'])
+def delete_group():
+    selected = request.form.getlist(
+        'selected_grops[]')
+    for group in selected:
+        group = Group.query.filter_by(id=group).first()
+        group.is_deleted = True
+        db.session.commit()
+        return jsonify({"response": "success"})
+
+
+@bp.route('/remove_user', methods=['GET', 'POST'])
 @login_required
-def remove_user(slug, id):
+def remove_user():
+    if request.method == "POST":
+        group = Group.query.filter_by(slug=request.form['slug']).first()
+        user = Users.query.filter_by(id=request.form['user_id']).first()
+        group.users.remove(user)
+        db.session.commit()
+        return jsonify({'response': 'success'})
+
+
+@bp.route('/edit_group/<slug>', methods=['GET', 'POST'])
+@login_required
+def edit_group(slug):
+    edit = True
+    form = NewGroup()
     group = Group.query.filter_by(slug=slug).first()
-    user = Users.query.filter_by(id=id).first()
-    group.users.remove(user)
-    db.session.commit()
-    return redirect(url_for('settings.newgroup', slug=slug))
+    group_members = Users.query.join(Users.groups).filter_by(slug=slug)
+    return render_template("settings/edit_group.html", group=group, title=_("Edit " + str(group.name) + " | Olam ERP"), form=form, group_members=group_members, slug=group.slug, edit=edit)

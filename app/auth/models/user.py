@@ -179,6 +179,7 @@ class Group(db.Model):
     users = db.relationship(
         'Users', secondary=user_group, back_populates="groups")
     slug = db.Column(db.Text(), unique=True)
+    module_id = db.Column(db.Integer, db.ForeignKey('module.id'))
 
     def generate_slug(self):
         _slug = unique_slug_generator(self)
