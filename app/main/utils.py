@@ -35,6 +35,13 @@ def get_countries_cities():
     return data
 
 
+def get_models():
+    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+    json_url = os.path.join(SITE_ROOT, "data", "models.json")
+    data = json.load(open(json_url))
+    return data
+
+
 def get_calling_codes():
     SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
     json_url = os.path.join(SITE_ROOT, "data", "calling_codes.json")

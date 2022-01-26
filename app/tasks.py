@@ -6,8 +6,8 @@ from app.main.models.partner import Partner
 from app.main.models.country import City, Country
 from flask import current_app
 from app import db
-from app.models import Task
-from app.main.utils import get_calling_codes, get_countries, get_countries_cities
+from app.models import Model, Task
+from app.main.utils import get_calling_codes, get_countries, get_countries_cities, get_models
 from app.crm.utils import get_opportunities, get_recurring_plans, get_stages
 from rq import get_current_job
 from app.models import Task
@@ -162,6 +162,19 @@ def dummy_data():
                             partner_phone=opportunity['partner_phone'], plan_id=opportunity['plan_id'], partner_currency=opportunity['partner_currency'], active=opportunity['active'], expected_revenue=opportunity['expected_revenue'])
                 lead.generate_slug()
                 db.session.add(lead)
+                db.session.commit()
+
+        # models
+        models = get_models()
+        for model in models:
+            exists = Model.query.filter_by(id=model['id']).first()
+            if exists:
+                pass
+            else:
+                model = Model(id=model['id'], name=model['name'],
+                              description=model['description'])
+                model.generate_slug()
+                db.session.add(model)
                 db.session.commit()
 
     except Exception as e:

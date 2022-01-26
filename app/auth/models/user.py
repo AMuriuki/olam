@@ -30,11 +30,11 @@ import logging
 import hashlib
 
 
-user_rights = db.Table(
-    'UserAccess',
-    db.Column('user_id', db.Integer, db.ForeignKey(
-        'users.id'), primary_key=True),
-    db.Column('user_right_id', db.Integer, db.ForeignKey('user_right.id'), primary_key=True))
+access_rights = db.Table(
+    'AccessRights',
+    db.Column('group_id', db.Integer, db.ForeignKey(
+        'group.id'), primary_key=True),
+    db.Column('access_id', db.Integer, db.ForeignKey('access.id'), primary_key=True))
 
 user_group = db.Table(
     'UserGroup',
@@ -56,8 +56,6 @@ class Users(UserMixin, PaginatedAPIMixin, db.Model):
     password_hash = db.Column(db.String(128))
     leads = db.relationship('Lead', backref='owner', lazy='dynamic')
     country_code = db.Column(db.String(10), index=True)
-    rights = db.relationship('UserRight', secondary=user_rights, backref=db.backref(
-        'user', lazy='dynamic'), lazy='dynamic')
     groups = db.relationship(
         'Group', secondary=user_group, back_populates="users")
 
@@ -168,9 +166,21 @@ def load_user(id):
     return Users.query.get(int(id))
 
 
-class UserRight(db.Model):
+class Access(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    access_right = db.Column(db.String(120), index=True, unique=True)
+    name = db.Column(db.String(120), index=True, unique=True)
+    model_id = db.Column(db.Integer, db.ForeignKey('model.id'))
+    groups = db.relationship(
+        'Group', secondary=access_rights, back_populates="rights")
+    slug = db.Column(db.Text(), unique=True)
+    read = db.Column(db.Boolean, default=False)
+    write = db.Column(db.Boolean, default=False)
+    create = db.Column(db.Boolean, default=False)
+    delete = db.Column(db.Boolean, default=False)
+
+    def generate_slug(self):
+        _slug = unique_slug_generator(self)
+        self.slug = _slug
 
 
 class Group(db.Model):
@@ -180,6 +190,9 @@ class Group(db.Model):
         'Users', secondary=user_group, back_populates="groups")
     slug = db.Column(db.Text(), unique=True)
     module_id = db.Column(db.Integer, db.ForeignKey('module.id'))
+    is_active = db.Column(db.Boolean, default=True)
+    rights = db.relationship(
+        'Access', secondary=access_rights, back_populates="groups")
 
     def generate_slug(self):
         _slug = unique_slug_generator(self)

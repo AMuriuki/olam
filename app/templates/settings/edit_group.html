@@ -20,10 +20,20 @@
     <div class="nk-content-wrap">
         {% include "settings/contacts_blockhead.html" %}
         <div class="nk-block">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-fill alert-danger alert-dismissible alert-icon">
+                <em class="icon ni ni-cross-circle"></em>
+                {{ message }}
+                <button class="close" data-dismiss="alert"></button>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
             <div class="card card-preview">
                 <div class="card-inner">
-                    <form id="group_details" {% if slug %} action="{{url_for('settings.newgroup', slug=slug)}}" {% else
-                        %} action="{{url_for('settings.new_group')}}" method="post" {% endif %}>
+                    <form id="group_details" action="{{url_for('settings.update_group', slug=slug)}}" method="post">
                         {{form.hidden_tag()}}
                         <div class="row gy-4">
                             <div class="col-sm-6">
@@ -123,8 +133,8 @@
                                             <td>{{ moment(member.last_seen).format('LLL')}}</td>
                                             <td>
                                                 <a id="{{group.slug}}.{{member.id}}" href="remove-user"
-                                                    class="btn btn-icon btn-sm btn-primary remove-user" data-toggle="tooltip"
-                                                    data-placement="right" title="Remove user">
+                                                    class="btn btn-icon btn-sm btn-primary remove-user"
+                                                    data-toggle="tooltip" data-placement="right" title="Remove user">
                                                     <em class="icon ni ni-cross-sm"></em>
                                                 </a>
                                             </td>

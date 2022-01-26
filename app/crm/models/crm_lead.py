@@ -49,10 +49,3 @@ class Lead(db.Model):
     def generate_slug(self):
         _slug = unique_slug_generator(self)
         self.slug = _slug
-
-
-class Note(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    note = db.Column(db.Text)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    lead_id = db.Column(db.Integer, db.ForeignKey('lead.id'))

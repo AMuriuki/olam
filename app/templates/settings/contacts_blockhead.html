@@ -50,7 +50,7 @@
                         <div class="dropdown-menu dropdown-menu-right">
                             <ul class="link-list-opt no-bdr">
                                 <li><a href="#"><span>Export</span></a></li>
-                                <li><a href="#"><span>Delete</span></a></li>
+                                <li><a href="delete-group" class="confirm-delete-group"><span>Delete</span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                                         By</span><em class="dd-indc icon ni ni-chevron-right"></em></a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <ul class="link-list-opt no-bdr">
-                                        <li><a href="#"><span>Internal Groups</span></a></li>                                        
+                                        <li><a href="#"><span>Internal Groups</span></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -117,7 +117,7 @@
                 </a>
                 /
                 <strong class="text-primary small">
-                    <span id="{{slug}}" class="span-new-group">New</span>
+                    <span id="{{slug}}" class="span-new-group">{{group.module.bp_name|upper}}&nbsp;-&nbsp;{{group.name}}</span>
                 </strong>
             </h3>
             <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">

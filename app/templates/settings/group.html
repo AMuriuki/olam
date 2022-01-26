@@ -15,6 +15,10 @@
     .modal-footer {
         border-top: 0px solid #dbdfea;
     }
+
+    .tab-pane {
+        overflow: auto;
+    }
 </style>
 <div class="nk-content-body">
     <div class="nk-content-wrap">
@@ -47,24 +51,25 @@
                 </div>
                 <div class="card card-bordered">
                     <ul class="nav nav-tabs nav-tabs-card">
-                        <li class="nav-item active current-page">
-                            <a class="nav-link active" href="#users" data-toggle="tab"><em
+                        <li {% if page=='group_members' %}class="nav-item active current-page" {% else %}
+                            class="nav-item" {% endif %}>
+                            <a class="nav-link" href="{{url_for('settings.group_members', slug=slug)}}"><em
                                     class="icon ni ni-users-fill"></em><span>Users</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#access_rights" data-toggle="tab"><em
+                            <a class="nav-link" href="{{url_for('settings.group_rights', slug=slug)}}"><em
                                     class="icon ni ni-lock-alt-fill"></em><span>Access Rights</span></a>
                         </li>
                     </ul><!-- .nav-tabs -->
-                    {% if group %}
                     <div class="tab-content">
+                        {% if page == 'group_members' %}
                         <div class="tab-pane active" id="users">
                             <div class="card-inner">
                                 <table class="table">
                                     <thead class="thead-light">
                                         <tr>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Last Seen</th>
+                                            <th scope="col" style="padding-right: 100px;">Name</th>
+                                            <th scope="col" style="padding-right: 100px;">Last Seen</th>
                                             <th scope="col"></th>
                                         </tr>
                                     </thead>
@@ -87,31 +92,89 @@
                                 <div class="preview-btn-item  col-sm-6 col-lg-3">
                                     <a href="{{url_for('settings.manage_groups')}}"
                                         class="btn btn-m btn-primary btn-block" data-toggle="modal"
-                                        data-target="#modalTabs" style="padding: 0.4375rem 4.125rem;">
+                                        data-target="#modalUsers" style="padding: 0.4375rem 4.125rem;">
                                         <em class="icon ni ni-plus"></em><span>Add User</span>
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane" id="access_rights">
+                        {% elif page == 'group_rights' %}
+                        <div class="tab-pane active" id="access_rights">
                             <div class="card-inner">
                                 <table class="table">
                                     <thead class="thead-light">
                                         <tr>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Last Seen</th>
+                                            <th scope="col" style="padding-right: 100px;">Name</th>
+                                            <th scope="col" style="padding-right: 100px;">Model</th>
+                                            <th scope="col">Read Access</th>
+                                            <th scope="col">Write Access</th>
+                                            <th scope="col">Create Access</th>
+                                            <th scope="col">Delete Access</th>
                                             <th scope="col"></th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        {% for member in group_members %}
-                                        <tr>
-                                            <th scope="row">{{member.id|partner_name}}</th>
-                                            <td>{{ moment(member.last_seen).format('LLL')}}</td>
+                                    <tbody id="tbody_access_rights">
+                                        {% for access_right in access_rights %}
+                                        <tr id="{{access_right.id}}">
+                                            <th class="td_update_name_of_access_right" scope="row">
+                                                <span class="sp_name_of_access_right">{{access_right.name}}</span>
+                                                <input type="text" style="display: none;"
+                                                    class="form-control update_access_right_name"
+                                                    placeholder="Name of access right" value="{{access_right.name}}">
+                                            </th>
+                                            <td class="update_model">
+                                                <span class="sp_access_model">{{access_right.model.name}}</span>
+                                                <div class="form-control-wrap dv_select_model"
+                                                    style="display: none !important;">
+                                                    <select class="form-select select_model" data-search="on">
+                                                        <option value="default_option">Select model</option>
+                                                        {% for model in models %}
+                                                        <option value="{{model.id}}">{{model.name}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </td>
                                             <td>
-                                                <a id="{{group.slug}}.{{member.id}}" href="remove-user"
-                                                    class="btn btn-icon btn-sm btn-primary remove-user" data-toggle="tooltip"
-                                                    data-placement="right" title="Remove user">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input read_access"
+                                                        id="read_access.{{access_right.id}}" {% if access_right.read %}
+                                                        checked {% endif %}>
+                                                    <label class="custom-control-label"
+                                                        for="read_access.{{access_right.id}}"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input write_access"
+                                                        id="write_access.{{access_right.id}}" {% if access_right.write
+                                                        %} checked {% endif %}>
+                                                    <label class="custom-control-label"
+                                                        for="write_access.{{access_right.id}}"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input create_access"
+                                                        id="create_access.{{access_right.id}}" {% if access_right.create
+                                                        %} checked {% endif %}>
+                                                    <label class="custom-control-label"
+                                                        for="create_access.{{access_right.id}}"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input delete_access"
+                                                        id="delete_access.{{access_right.id}}" {% if access_right.delete
+                                                        %} checked {% endif %}>
+                                                    <label class="custom-control-label"
+                                                        for="delete_access.{{access_right.id}}"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <a id="{{access_right.id}}" href="remove-access-right"
+                                                    class="btn btn-icon btn-sm btn-primary remove-access-right"
+                                                    data-toggle="tooltip" data-placement="right"
+                                                    title="Remove access right">
                                                     <em class="icon ni ni-cross-sm"></em>
                                                 </a>
                                             </td>
@@ -120,17 +183,15 @@
                                     </tbody>
                                 </table>
                                 <div class="preview-btn-item  col-sm-6 col-lg-3">
-                                    <a href="{{url_for('settings.manage_groups')}}"
-                                        class="btn btn-m btn-primary btn-block" data-toggle="modal"
-                                        data-target="#modalTabs" style="padding: 0.4375rem 4.125rem;">
-                                        <em class="icon ni ni-plus"></em><span>Add User</span>
+                                    <a href="#" class="btn btn-m btn-primary btn-block" data-toggle="modal"
+                                        data-target="#modalAccessRights" style="padding: 0.4375rem 4.125rem;">
+                                        <em class="icon ni ni-plus"></em><span>Add Record</span>
                                     </a>
                                 </div>
                             </div>
                         </div>
+                        {% endif %}
                     </div>
-                    {% endif %}
-
                 </div>
             </div><!-- .card-preview -->
         </div>
@@ -139,7 +200,7 @@
     {% include "footer.html" %}
     <!-- footer @e -->
 </div>
-<div class="modal fade" tabindex="-1" role="dialog" id="modalTabs">
+<div class="modal fade" tabindex="-1" role="dialog" id="modalUsers">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -212,5 +273,93 @@
         </div>
     </div>
 </div> <!-- .modal -->
-
+<div class="modal fade" tabindex="-1" role="dialog" id="modalAccessRights">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Access Right</h5>
+                <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                    <em class="icon ni ni-cross"></em>
+                </a>
+            </div>
+            <div class="modal-body modal-body-md">
+                <div class="col-7 col-sm-4alert alert-success alert-icon selected"
+                    style="display: none; max-width: 35% !important; margin-bottom: 2% !important;"></div>
+                <div class="card card-preview" style="overflow: auto;">
+                    <div class="card-inner">
+                        <table class="table">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col" style="padding-right: 100px;">Name</th>
+                                    <th scope="col" style="padding-right: 100px;">Model</th>
+                                    <th scope="col">Read Access</th>
+                                    <th scope="col">Write Access</th>
+                                    <th scope="col">Create Access</th>
+                                    <th scope="col">Delete Access</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody_access_rights">
+                                <tr class="tr-add-access-right">
+                                    <td class="td_name">
+                                        <input type="text" id="add_access_name" class="form-control add_access_name"
+                                            placeholder="Name of access right">
+                                    </td>
+                                    <td class="td_model">
+                                        <select id="select_model" class="form-select select_model" data-search="on">
+                                            <option value="default_option">Select model</option>
+                                            {% for model in models %}
+                                            <option value="{{model.id}}">{{model.name}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <div class="custom-control custom-checkbox">
+                                            <input id="read_access" type="checkbox" class="custom-control-input">
+                                            <label class="custom-control-label" for="read_access"></label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="custom-control custom-checkbox">
+                                            <input id="write_access" type="checkbox" class="custom-control-input">
+                                            <label class="custom-control-label" for="write_access"></label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="custom-control custom-checkbox">
+                                            <input id="create_access" type="checkbox" class="custom-control-input">
+                                            <label class="custom-control-label" for="create_access"></label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="custom-control custom-checkbox">
+                                            <input id="delete_access" type="checkbox" class="custom-control-input">
+                                            <label class="custom-control-label" for="delete_access"></label>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div><!-- .card-preview -->
+            </div>
+            <div class="modal-footer">
+                <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                    <li>
+                        {% if slug %}
+                        <a href="#" class="btn btn-m btn-secondary btn-block submit-access-right">SUBMIT</a>
+                        {% else %}
+                        <a href="javascript:select_users()"
+                            class="btn btn-m btn-secondary btn-block select-user">SELECT</a>
+                        {% endif %}
+                    </li>
+                    <li>
+                        <a href="{{url_for('settings.manage_groups')}}" class="btn btn-outline-light"
+                            data-dismiss="modal" aria-label="Close">CANCEL</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div> <!-- .modal -->
 {% endblock %}
