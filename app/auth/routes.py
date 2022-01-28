@@ -1,3 +1,4 @@
+from datetime import datetime
 from app.main.models.partner import Partner
 from app.main.models.module import Module
 from app.main.models.database import Database
@@ -37,6 +38,8 @@ def login():
                 flash(_('Invalid email or password'))
                 return redirect(url_for('auth.login'))
             login_user(user)
+            user.last_seen = datetime.utcnow()
+            db.session.commit()
         else:
             flash(_('User does not exist'))
             return redirect(url_for('auth.login'))
@@ -83,6 +86,7 @@ def register():
             user = Users(partner_id=partner.id)
             user.set_password(form.password.data)
             user.set_token(partner.id)
+            user.generate_slug()
             db.session.add(user)
             db.session.commit()
             login_user(user)
@@ -118,6 +122,7 @@ def set_password():
             user = Users(partner_id=partner.id, company_id=company.id,
                          is_active=True, country_code=request.args.get('country_code'))
             user.set_token(partner.id)
+            user.generate_slug()
             db.session.add(user)
             db.session.commit()
         else:

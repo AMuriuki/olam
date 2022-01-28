@@ -22,8 +22,19 @@
 </style>
 <div class="nk-content-body">
     <div class="nk-content-wrap">
-        {% include "settings/contacts_blockhead.html" %}
+        {% include "settings/groups_blockhead.html" %}
         <div class="nk-block">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-fill alert-success alert-icon">
+                <em class="icon ni ni-check-circle"></em>
+                {{ message }}
+                <button class="close" data-dismiss="alert"></button>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
             <div class="card card-preview">
                 <div class="card-inner">
                     <div class="row gy-4">
@@ -225,7 +236,6 @@
                             </thead>
                             <tbody>
                                 {% for user in users %}
-                                {% if user.id != current_user.id %}
                                 {% if user.id not in group_members|map(attribute="id") %}
                                 <tr class="nk-tb-item">
                                     <td class="nk-tb-col nk-tb-col-check">
@@ -244,7 +254,6 @@
                                     </td>
                                 </tr>
                                 <!-- .nk-tb-item  -->
-                                {% endif %}
                                 {% endif %}
                                 {% endfor %}
                             </tbody>

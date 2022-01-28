@@ -938,10 +938,11 @@ $(".save-group").click(function (e) {
       url: url,
       data: form.serialize(),
       success: function (data) {
+        console.log(data);
         if (data["response"] == "group name exists!") {
           location.href = "/settings/edit_group/" + slug;
         } else if (data["response"] == "success") {
-          if (current_href.toLowerCase().indexOf("settings/edit_group") >= 0) {
+          if ((current_href.toLowerCase().indexOf("settings/edit_group") >= 0) || (current_href.toLowerCase().indexOf("settings/new_group/") >= 0)){
             location.href = "/settings/group/" + slug;
           }
         }
@@ -979,6 +980,11 @@ $(".select-group").click(function (e) {
   location.href = "/settings/group/" + slug;
 });
 
+$(".select-user").click(function (e) {
+  slug = $(this).closest("tr").attr("id");
+  location.href = "/settings/user/" + slug;
+});
+
 $(".remove-user").click(function (e) {
   e.preventDefault();
   slug = this.id.split(".")[0];
@@ -993,7 +999,7 @@ $(".remove-user").click(function (e) {
     .fail(function () {});
 });
 
-$(".group-check").change(function (e) {
+$(".record-check").change(function (e) {
   if (this.checked) {
     selected = selected + 1;
     selectedGroups.push(this.id);
@@ -1017,17 +1023,33 @@ $(".group-check").change(function (e) {
 
 $(".confirm-delete-group").click(function (e) {
   e.preventDefault();
-  console.log(selectedGroups);
   $("#confirm-delete-group").modal("show");
 });
 
 $(".delete-group").click(function (e) {
   e.preventDefault();
-  $.post("/settings/delete-group", {
-    selected_groups: selectedGroups,
-  }).done(function (response) {
-    window.location.reload();
-  });
+  var _deletegroup = sessionStorage.getItem("_delete-group");
+  if (_deletegroup) {
+    sessionStorage.removeItem("_delete-group");
+    $.post("/settings/delete-group", {
+      selected_groups: selectedGroups,
+    }).done(function (response) {
+      window.location.reload();
+    });
+  } else {
+    $.post("/settings/delete-group", {
+      selected_groups: selectedGroups,
+    }).done(function (response) {
+      window.location.reload();
+    });
+  }
+});
+
+$("._delete-group").click(function (e) {
+  e.preventDefault();
+  selectedGroups.push($(this).attr("id"));
+  sessionStorage.setItem("_delete-group", "true");
+  $("#confirm-delete-group").modal("show");
 });
 
 async function get_models() {

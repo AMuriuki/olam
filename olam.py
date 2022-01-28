@@ -142,3 +142,11 @@ def get_user_name(value):
 def partner_name(value):
     partner = Partner.query.filter_by(id=value).first()
     return partner.name if partner.name else partner.company_name
+
+
+@app.template_filter()
+def remove_hyphens(string):
+    if string:
+        return string.replace('-', ' ')
+    else:
+        return None

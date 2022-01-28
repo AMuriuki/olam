@@ -1,6 +1,3 @@
-from ast import Mod
-from genericpath import exists
-from pyexpat import model
 from flask.json import jsonify
 from itsdangerous import json
 from sqlalchemy import log
@@ -44,6 +41,7 @@ def invite():
         db.session.commit()
         user = Users(partner_id=partner.id)
         user.set_token(partner.id)
+        user.generate_slug()
         db.session.add(user)
         db.session.commit()
         send_invite_email(partner.id, invited_by.id)
@@ -51,12 +49,6 @@ def invite():
     if form.errors:
         print(form.errors)
         return jsonify({'response': form.errors})
-
-
-@bp.route('/user/<token>')
-@login_required
-def user(token):
-    pass
 
 
 @bp.route('/groups', methods=['GET', 'POST'])
@@ -85,6 +77,8 @@ def new_group():
             group.generate_slug()
             db.session.add(group)
             db.session.commit()
+            flash(
+                _('Your group has been created successfully.'))
             return jsonify({"response": "success", "slug": group.slug})
     return render_template("settings/new_group.html", title=_('New Group | Olam ERP'), group=group, form=form, models=models)
 
@@ -99,17 +93,17 @@ def newgroup(slug):
     models = Model.query.order_by('name').all()
     if form.validate_on_submit():
         exists = Group.query.filter_by(
-            name=request.form['group_name']).filter_by(is_active=True).first()
+            name=request.form['group_name']).filter_by(is_active=True).filter(Group.id != group.id).first()
         if exists:
             flash(
                 _('A group with this name exists. Provide a unique name for the group.'))
             return jsonify({"response": "group name exists!"})
         else:
-            group = Group(
-                name=request.form['group_name'], module_id=request.form['select_app'])
-            group.generate_slug()
-            db.session.add(group)
+            group.name = request.form['group_name']
+            group.module_id = request.form['select_app']
             db.session.commit()
+            flash(
+                _('This group has been saved successfully.'))
             return jsonify({"response": "success", "slug": group.slug})
     return render_template("settings/new_group.html", group=group, title=_('New Group | Olam ERP'), group_members=group_members, slug=slug, form=form, models=models, access_rights=access_rights)
 
@@ -315,3 +309,32 @@ def group_rights(slug):
     access_rights = Access.query.join(Access.groups).filter_by(slug=slug)
     models = Model.query.order_by('name').all()
     return render_template("settings/group.html", group=group, title=_(str(group.name) + ' | Olam ERP'), access_rights=access_rights, slug=group.slug, page="group_rights", models=models)
+
+
+@bp.route("/users", methods=['GET', 'POST'])
+def manage_users():
+    users = Users.query.join(Partner).all()
+    return render_template("settings/users.html", title=_("Users | Olam ERP"), users=users)
+
+
+@bp.route("/user/<slug>", methods=['GET', 'POST'])
+def user(slug):
+    user = Users.query.filter_by(slug=slug).first()
+    users = Users.query.filter_by(is_archived=False).all()
+    for idx, _user in enumerate(users):
+        if user.id == _user.id:
+            current_index = idx
+            prev_index = current_index - 1
+            next_index = current_index + 1
+    partner = Partner.query.filter_by(id=user.partner_id).first()
+    return render_template("settings/user.html", title=_(partner.name + " | Olam ERP"), user=user, partner=partner, users=users, current_index=current_index+1, prev_index=prev_index, next_index=next_index, page="groups")
+
+
+@bp.route("/edit/user/<slug>", methods=['GET', 'POST'])
+def edit_user(slug):
+    pass
+
+
+@bp.route("/new/user", methods=['GET', 'POST'])
+def create_user():
+    pass

@@ -22,9 +22,17 @@
     <div class="nk-block-between">
         {% if title == "Groups | Olam ERP" %}
         <div class="nk-block-head-content">
-            <h3 class="nk-block-title page-title">User Groups</h3>
+            <h3 class="nk-block-title page-title"><a href="{{url_for('settings.general')}}">
+                    Settings
+                </a>
+                /
+                <strong class="text-primary small">
+                    <span id="#">User Groups</span>
+                </strong>
+            </h3>
+            
             <div class="nk-block-des text-soft">
-                <p>You have {{groups|length}} user groups.</p>
+                <p>You have {{groups|length}} user group(s).</p>
             </div>
             <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                 <li>
@@ -117,7 +125,8 @@
                 </a>
                 /
                 <strong class="text-primary small">
-                    <span id="{{slug}}" class="span-new-group">{{group.module.bp_name|upper}}&nbsp;-&nbsp;{{group.name}}</span>
+                    <span id="{{slug}}"
+                        class="span-new-group">{{group.module.bp_name|upper}}&nbsp;-&nbsp;{{group.name}}</span>
                 </strong>
             </h3>
             <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">

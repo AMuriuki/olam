@@ -1,0 +1,173 @@
+<style>
+    .nk-block-des {
+        margin-bottom: 0.5rem;
+    }
+
+    .selected-groups {
+        color: #0c5460;
+        background-color: #d1ecf1;
+        border-color: #bee5eb;
+        display: none;
+    }
+
+    .actions {
+        color: #0c5460;
+    }
+</style>
+<div class="nk-block-head nk-block-head-sm">
+    <div class="nk-block-between">
+        {% if title == "Users | Olam ERP" %}
+        <div class="nk-block-head-content">
+            <h3 class="nk-block-title page-title"><a href="{{url_for('settings.general')}}">
+                    Settings
+                </a>
+                /
+                <strong class="text-primary small">
+                    <span id="#">Users</span>
+                </strong>
+            </h3>
+
+            <div class="nk-block-des text-soft">
+                <p>You have {{users|length}} users.</p>
+            </div>
+            <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                <li>
+                    <a href="{{url_for('settings.new_group')}}" class="btn btn-m btn-primary btn-block">CREATE</a>
+                </li>
+                <li>
+                    <a href="#" data-dismiss="modal" class="btn btn-outline-light export" data-toggle="tooltip"
+                        data-placement="right" title="Export">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-save" viewBox="0 0 16 16">
+                            <path
+                                d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z" />
+                        </svg></a>
+                    <span class="btn selected-groups"></span>
+                </li>
+                <li class="li-actions">
+                    <div class="drodown">
+                        <a href="#" class="dropdown-toggle btn btn-outline-light actions" data-toggle="dropdown">
+                            <em class="icon ni ni-setting"></em>
+                            <span>Actions</span>
+                            <em class="dd-indc icon ni ni-chevron-right"></em>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <ul class="link-list-opt no-bdr">
+                                <li><a href="#"><span>Export</span></a></li>
+                                <li><a href="#"><span>Archive</span></a></li>
+                                <li><a href="#"><span>Unarchive</span></a></li>
+                                <li><a href="#"><span>Delete</span></a></li>
+                                <li><a href="#"><span>Change Password</span></a></li>
+                                <li><a href="#"><span>Disbale 2FA</span></a></li>
+                                <li><a href="#"><span>Send Password Reset Instructions</span></a></li>
+                                <li><a href="#"><span>Invite to use 2FA</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div><!-- .nk-block-head-content -->
+        <div class="nk-block-head-content">
+            <div class="toggle-wrap nk-block-tools-toggle">
+                <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em
+                        class="icon ni ni-menu-alt-r"></em></a>
+                <div class="toggle-expand-content" data-content="pageMenu">
+                    <ul class="nk-block-tools g-3">
+                        <li>
+                            <div class="drodown">
+                                <a href="#" class="dropdown-toggle btn btn-white btn-dim btn-outline-light"
+                                    data-toggle="dropdown"><em
+                                        class="d-none d-sm-inline icon ni ni-filter-alt"></em><span>Filter
+                                        By</span><em class="dd-indc icon ni ni-chevron-right"></em></a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <ul class="link-list-opt no-bdr">
+                                        <li><a href="#"><span>Internal User</span></a></li>
+                                        <li><a href="#"><span>Inactive Users</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div><!-- .toggle-wrap -->
+        </div><!-- .nk-block-head-content -->
+        {% elif user %}
+        <div class="nk-block-head-content">
+            <h3 class="nk-block-title page-title"><a href="{{url_for('settings.general')}}">
+                    Settings
+                </a>
+                /
+                <strong class="text-primary small">
+                    <span id="#">Users</span>
+                </strong>
+                /
+                <strong class="text-primary small">
+                    <span id="#">{{partner.name}}</span>
+                </strong>
+            </h3>
+
+            <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                <li>
+                    <a href="{{url_for('settings.edit_user', slug=user.slug)}}"
+                        class="btn btn-m btn-primary btn-block">EDIT</a>
+                </li>
+                <li>
+                    <a href="{{url_for('settings.create_user')}}" data-dismiss="modal" class="btn btn-outline-light">
+                        CREATE
+                    </a>
+                    <span class="btn selected-groups"></span>
+                </li>
+                <li class="li-actions">
+                    <div class="drodown">
+                        <a href="#" class="dropdown-toggle btn btn-outline-light actions" data-toggle="dropdown">
+                            <em class="icon ni ni-setting"></em>
+                            <span>Actions</span>
+                            <em class="dd-indc icon ni ni-chevron-right"></em>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <ul class="link-list-opt no-bdr">
+                                <li><a href="#"><span>Archive</span></a></li>
+                                <li><a href="#"><span>Duplicate</span></a></li>
+                                <li><a href="#"><span>Delete</span></a></li>
+                                <li><a href="#"><span>Change Password</span></a></li>
+                                <li><a href="#"><span>Assigned Tasks</span></a></li>
+                                <li><a href="#"><span>Send Password Reset Instructions</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div><!-- .nk-block-head-content -->
+        <div class="nk-block-head-content">
+            <div class="toggle-wrap nk-block-tools-toggle">
+                <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em
+                        class="icon ni ni-menu-alt-r"></em></a>
+                <div class="toggle-expand-content" data-content="pageMenu">
+                    <ul class="nk-block-tools g-3">
+                        <li style="margin-left: auto !important;">
+                            <span>{{current_index}}</span>/<span>{{users|length}}</span>
+                        </li>
+                        {% if current_index != 1 %}
+                        <li>
+                            
+                            <a href="{{url_for('settings.user', slug=users[prev_index].slug)}}" class="btn btn-icon btn-m btn-primary d-none d-sm-inline-flex"><em
+                                    class="icon ni ni-caret-left"></em></a>
+                            <a href="{{url_for('settings.user', slug=users[prev_index].slug)}}" class="btn btn-icon btn-m btn-primary d-inline-flex d-sm-none"><em
+                                    class="icon ni ni-caret-left"></em></a>
+                        </li>
+                        {% endif %}
+                        {% if next_index != users|length %}
+                        <li>
+                            <a href="{{url_for('settings.user', slug=users[next_index].slug)}}" class="btn btn-icon btn-m btn-primary d-none d-sm-inline-flex"><em
+                                    class="icon ni ni-caret-right"></em></em></a>
+                            <a href="{{url_for('settings.user', slug=users[next_index].slug)}}" class="btn btn-icon btn-m btn-primary d-inline-flex d-sm-none"><em
+                                    class="icon ni ni-caret-right"></em></a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div><!-- .toggle-wrap -->
+        </div><!-- .nk-block-head-content -->
+        {% endif %}
+    </div><!-- .nk-block-between -->
+</div><!-- .nk-block-head -->

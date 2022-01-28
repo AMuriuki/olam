@@ -3,7 +3,7 @@
 {% block content %}
 <div class="nk-content-body">
     <div class="nk-content-wrap">
-        {% include "settings/groups_blockhead.html" %}
+        {% include "settings/users_blockhead.html" %}
         <div class="nk-block">
             <div class="card card-preview">
                 <div class="card-inner">
@@ -16,29 +16,37 @@
                                         <label class="custom-control-label" for="uid"></label>
                                     </div>
                                 </th>
-                                <th class="nk-tb-col"><span class="sub-text">Group Name</span></th>
+                                <th class="nk-tb-col"><span class="sub-text">Name</span></th>
+                                <th class="nk-tb-col tb-col-md"><span class="sub-text">Latest Authentication</span></th>
+                                <th class="nk-tb-col tb-col-xl"><span class="sub-text">Company</span></th>
                                 <th class="nk-tb-col nk-tb-col-tools text-right"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for group in groups %}
-                            <tr class="nk-tb-item">
+                            {% for user in users %}
+                            <tr id="{{user.slug}}" class="nk-tb-item">
                                 <td class="nk-tb-col nk-tb-col-check">
                                     <div class="custom-control custom-control-sm custom-checkbox notext">
                                         <input type="checkbox" class="custom-control-input record-check"
-                                            id="{{group.id}}">
-                                        <label class="custom-control-label" for="{{group.id}}"></label>
+                                            id="{{user.id}}">
+                                        <label class="custom-control-label" for="{{user.id}}"></label>
                                     </div>
                                 </td>
-                                <td id="{{group.slug}}" class="nk-tb-col select-group"
+                                <td class="nk-tb-col select-user"
                                     style="cursor: pointer !important;">
                                     <div class="user-card">
                                         <div class="user-info">
-                                            <span
-                                                class="tb-lead">{{group.module.bp_name|upper}}&nbsp;/&nbsp;{{group.name}}
-                                            </span>
+                                            <span class="tb-lead">{{user.id|get_user_name}}</span>
                                         </div>
                                     </div>
+                                </td>
+                                <td class="nk-tb-col tb-col-md select-user"
+                                style="cursor: pointer !important;">
+                                    <span>{{ moment(user.last_seen).format('LLL')}}</span>
+                                </td>
+                                <td class="nk-tb-col tb-col-md select-user"
+                                style="cursor: pointer !important;">
+                                    <span>{{ user.company.name|remove_hyphens|title }}</span>
                                 </td>
                                 <td class="nk-tb-col nk-tb-col-tools">
                                     <ul class="nk-tb-actions gx-1">
@@ -48,13 +56,32 @@
                                                     data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     <ul class="link-list-opt no-bdr">
+                                                        <li><a href="#"><em class="icon ni ni-focus"></em><span>Quick
+                                                                    View</span></a></li>
                                                         <li><a href="#"><em
                                                                     class="icon ni ni-download"></em><span>Export</span></a>
                                                         </li>
-                                                        <li><a id="{{group.id}}" href="delete-group"
-                                                                class="_delete-group"><em
+                                                        <li><a href="#"><em
+                                                                    class="icon ni ni-archive"></em><span>Archive</span></a>
+                                                        </li>
+                                                        <li><a href="#"><em
+                                                                    class="icon ni ni-unarchive"></em><span>Unarchive</span></a>
+                                                        </li>
+                                                        <li class="divider"></li>
+                                                        <li><a href="#"><em
                                                                     class="icon ni ni-delete"></em><span>Delete</span></a>
                                                         </li>
+                                                        <li><a href="#"><em
+                                                                    class="icon ni ni-exchange"></em><span>Change
+                                                                    Password</span></a></li>
+                                                        <li><a href="#"><em
+                                                                    class="icon ni ni-shield-off"></em><span>Disable
+                                                                    2FA</span></a></li>
+                                                        <li><a href="#"><em
+                                                                    class="icon ni ni-exchange-v"></em><span>Password
+                                                                    Reset Instructions</span></a></li>
+                                                        <li><a href="#"><em class="icon ni ni-shield"></em><span>Invite
+                                                                    to use 2FA</span></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
