@@ -37,6 +37,12 @@ user_group = db.Table(
 USERTYPES = ["Internal User", "Public User", "Portal"]
 
 
+class UserType(enum.Enum):
+    IU = "Internal User"
+    PU = "Public User"
+    P = "Portal"
+
+
 class Users(UserMixin, PaginatedAPIMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     partner_id = db.Column(db.Integer, db.ForeignKey('partner.id'))
@@ -47,7 +53,7 @@ class Users(UserMixin, PaginatedAPIMixin, db.Model):
     is_archived = db.Column(db.Boolean, default=False)
     is_staff = db.Column(db.Boolean, default=True)
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
-    registered_on = db.Column(db.DateTime, default=datetime.now)
+    registered_on = db.Column(db.DateTime, default=datetime.utcnow)
     password_hash = db.Column(db.String(128))
     leads = db.relationship('Lead', backref='owner', lazy='dynamic')
     country_code = db.Column(db.String(10), index=True)
@@ -178,7 +184,7 @@ class Access(db.Model):
     write = db.Column(db.Boolean, default=False)
     create = db.Column(db.Boolean, default=False)
     delete = db.Column(db.Boolean, default=False)
-    created_on = db.Column(db.DateTime, default=datetime.now)
+    created_on = db.Column(db.DateTime, default=datetime.utcnow)
 
     def generate_slug(self):
         _slug = unique_slug_generator(self)
@@ -195,7 +201,7 @@ class Group(db.Model):
     is_active = db.Column(db.Boolean, default=True)
     rights = db.relationship(
         'Access', secondary=access_rights, back_populates="groups")
-    created_on = db.Column(db.DateTime, default=datetime.now)
+    created_on = db.Column(db.DateTime, default=datetime.utcnow)
 
     def generate_slug(self):
         _slug = unique_slug_generator(self)

@@ -32,7 +32,7 @@
             </div>
             <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                 <li>
-                    <a href="{{url_for('settings.new_group')}}" class="btn btn-m btn-primary btn-block">CREATE</a>
+                    <a href="{{url_for('settings.create_user')}}" class="btn btn-m btn-primary btn-block">CREATE</a>
                 </li>
                 <li>
                     <a href="#" data-dismiss="modal" class="btn btn-outline-light export" data-toggle="tooltip"
@@ -98,7 +98,7 @@
                 </a>
                 /
                 <strong class="text-primary small">
-                    <span id="#">Users</span>
+                    <a href="{{url_for('settings.manage_users')}}">Users</span>
                 </strong>
                 /
                 <strong class="text-primary small">
@@ -165,6 +165,43 @@
                         </li>
                         {% endif %}
                     </ul>
+                </div>
+            </div><!-- .toggle-wrap -->
+        </div><!-- .nk-block-head-content -->
+        {% elif new_user %}
+        <div class="nk-block-head-content">
+            <h3 class="nk-block-title page-title"><a href="{{url_for('settings.general')}}">
+                    Settings
+                </a>
+                /
+                <strong class="text-primary small">
+                    <a href="{{url_for('settings.manage_users')}}">Users</a>
+                </strong>
+                /
+                <strong class="text-primary small">
+                    <span id="#">New</span>
+                </strong>
+            </h3>
+
+            <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                <li>
+                    <a href="#"
+                        class="btn btn-m btn-primary btn-block">SAVE</a>
+                </li>
+                <li>
+                    <a href="#" data-dismiss="modal" class="btn btn-outline-light">
+                        DISCARD
+                    </a>
+                    <span class="btn selected-groups"></span>
+                </li>                
+            </ul>
+        </div><!-- .nk-block-head-content -->
+        <div class="nk-block-head-content">
+            <div class="toggle-wrap nk-block-tools-toggle">
+                <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em
+                        class="icon ni ni-menu-alt-r"></em></a>
+                <div class="toggle-expand-content" data-content="pageMenu">
+                    
                 </div>
             </div><!-- .toggle-wrap -->
         </div><!-- .nk-block-head-content -->

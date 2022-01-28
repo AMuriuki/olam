@@ -8,9 +8,9 @@ from app.models import Model
 from app.settings import bp
 from flask_login import login_required, current_user
 from flask import render_template, redirect, url_for, request, session, flash
-from app.settings.forms import InviteForm, NewGroup
+from app.settings.forms import InviteForm, NewGroup, NewUserForm
 from flask_babel import _, lazy_gettext as _l
-from app.auth.models.user import Access, Users, Group
+from app.auth.models.user import USERTYPES, Access, UserType, Users, Group
 
 
 @bp.route("/get_models", methods=['GET', 'POST'])
@@ -337,4 +337,8 @@ def edit_user(slug):
 
 @bp.route("/new/user", methods=['GET', 'POST'])
 def create_user():
-    pass
+    user = False
+    new_user = True
+    user_types = UserType
+    form = NewUserForm()
+    return render_template("settings/new_user.html", title=_("New | Olam ERP"), new_user=new_user, user=user, form=form, user_types=user_types)

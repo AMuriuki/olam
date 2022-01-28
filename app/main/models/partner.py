@@ -13,7 +13,7 @@ class Partner(db.Model):
     company_name = db.Column(db.String(120), index=True)
     email = db.Column(db.String(120), index=True)
     function = db.Column(db.String(60), index=True)
-    date_added = db.Column(db.DateTime, default=datetime.now)
+    date_added = db.Column(db.DateTime, default=datetime.utcnow)
     is_individual = db.Column(db.Boolean, default=False)
     is_company = db.Column(db.Boolean, default=False)
     is_active = db.Column(db.Boolean, default=False)

@@ -20,3 +20,7 @@ class InviteForm(FlaskForm):
 
 class NewGroup(FlaskForm):
     pass
+
+
+class NewUserForm(FlaskForm):
+    pass

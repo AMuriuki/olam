@@ -37,7 +37,7 @@ class Lead(db.Model):
     partner_id = db.Column(db.Integer, db.ForeignKey('partner.id'))
     stage_id = db.Column(db.Integer, db.ForeignKey('stage.id'))
     expected_revenue = db.Column(db.String(60))
-    date_open = db.Column(db.DateTime, default=datetime.now)
+    date_open = db.Column(db.DateTime, default=datetime.utcnow)
     expected_closing = db.Column(db.DateTime, nullable=True)
     partner_email = db.Column(db.String(120), index=True)
     partner_phone = db.Column(db.String(60), index=True)

@@ -10,7 +10,7 @@ class Company(db.Model):
     report_header = db.Column(db.Text())
     report_footer = db.Column(db.Text())
     logo = db.Column(db.String(200))
-    registered_on = db.Column(db.DateTime, default=datetime.now)
+    registered_on = db.Column(db.DateTime, default=datetime.utcnow)
     database_id = db.Column(db.Integer, db.ForeignKey('database.id'))
     street = db.Column(db.String(100))
     street2 = db.Column(db.String(100))
