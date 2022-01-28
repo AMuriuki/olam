@@ -1188,10 +1188,30 @@ $(".submit-access-right").click(function (e) {
       create: create,
       delete: _delete,
     }).done(function (response) {
-      window.location.reload();
+      if (response["response"] == "access name exists") {
+        alert("An access right with this name exists.");
+      } else {
+        sessionStorage.setItem("reloading", "true");
+        window.location.reload();
+      }
     });
   }
 });
+
+window.onload = function () {
+  var reloading = sessionStorage.getItem("reloading");
+  if (reloading) {
+    sessionStorage.removeItem("reloading");
+    displayAccess();
+  }
+};
+
+function displayAccess() {
+  $("#access_rights").addClass("active");
+  $("#lnk_access_rights").addClass("active");
+  $("#lnk_users").removeClass("active");
+  $("#users").removeClass("active");
+}
 
 $(".td_update_name_of_access_right").click(function () {
   id_of_access_right = $(this).closest("tr").prop("id");
@@ -1237,6 +1257,7 @@ $(".remove-access-right").click(function (e) {
     group: slug,
     access: id_of_access_right,
   }).done(function (response) {
+    sessionStorage.setItem("reloading", "true");
     window.location.reload();
   });
 });
@@ -1246,3 +1267,16 @@ $(".edit-stage").click(function (e) {
   stage_id = this.id;
   $("#modalEditStage").modal("show");
 });
+
+function get_item() {
+  $.ajaxSetup({
+    headers: { "X-CSRFToken": getCookie("csrftoken") },
+  });
+
+  var item_id = document.getElementById("item").value;
+  $.post("/dashboarditem_selling_price", {
+    item_id: item_id,
+  }).done(function (response) {
+    document.getElementById("unit_price").value = response["unit_price"];
+  });
+}

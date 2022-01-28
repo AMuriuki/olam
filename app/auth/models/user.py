@@ -177,6 +177,7 @@ class Access(db.Model):
     write = db.Column(db.Boolean, default=False)
     create = db.Column(db.Boolean, default=False)
     delete = db.Column(db.Boolean, default=False)
+    created_on = db.Column(db.DateTime, default=datetime.now)
 
     def generate_slug(self):
         _slug = unique_slug_generator(self)
@@ -193,6 +194,7 @@ class Group(db.Model):
     is_active = db.Column(db.Boolean, default=True)
     rights = db.relationship(
         'Access', secondary=access_rights, back_populates="groups")
+    created_on = db.Column(db.DateTime, default=datetime.now)
 
     def generate_slug(self):
         _slug = unique_slug_generator(self)

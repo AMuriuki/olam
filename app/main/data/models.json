@@ -31,6 +31,7 @@
   },
   {
     "id": 7,
-    "name": "Stores information about an individual person, or an organization."
+    "name": "Contact",
+    "description": "Stores information about an individual person, or an organization."
   }
 ]
