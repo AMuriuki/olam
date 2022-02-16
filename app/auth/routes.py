@@ -1,13 +1,15 @@
 from datetime import datetime
+import uuid
 from app.main.models.partner import Partner
-from app.main.models.module import Module
+from app.main.models.module import Model, Module, ModuleCategory
 from app.main.models.database import Database
 from app.main.models.company import Company
+from app.auth.models.user import Access, Group
 from flask import render_template, redirect, url_for, flash, request, session, abort
 from werkzeug.urls import url_parse
 from flask_login import login_user, logout_user, current_user
 from flask_babel import _
-from app import db, current_app, get_api_token, get_installed_modules
+from app import db, current_app, get_api_token, get_installed_modules_api, api_base
 from app.auth import bp
 from app.auth.forms import LoginForm, RegistrationForm, \
     ResetPasswordRequestForm, ResetPasswordForm, SetPasswordForm
@@ -29,7 +31,7 @@ def login():
             email=form.email.data).first()
         if partner:
             user = Users.query.filter_by(partner_id=partner.id).first()
-            
+
             if not user.password_hash:
                 flash(
                     _('Your account is not active. Activate by setting a new password'))
@@ -146,17 +148,86 @@ def set_password():
                 else:
                     # first time modules/DB set up
                     company_id = request.args.get('companyid')
-                    response = requests.get(
-                        get_installed_modules + str(company_id) + '/modules')
-                    response_dict = json.loads(response.content)
-
-                    for i in range(len(response_dict['items'])):
-                        module = Module(technical_name=response_dict['items'][i]['technical_name'], official_name=response_dict['items']
-                                        [i]['official_name'], bp_name=response_dict['items'][i]['bp_name'], summary=response_dict['items'][i]['summary'])
-                        db.session.add(module)
-                        db.session.commit()
+                    link = get_installed_modules_api + \
+                        str(company_id) + '/modules'
+                    get_installed_modules(link)
+                    get_access_groups()
+                    get_access_rights()
+                    set_admin_groups()
                     return redirect(url_for('main.invite_colleagues'))
     return render_template('auth/set_password.html', title=_('Set Password | Olam ERP'), form=form)
+
+
+def set_admin_groups():
+    groups = Group.query.filter_by(permission=3).all()
+    for group in groups:
+        group.users.append(current_user)
+        db.session.commit()
+
+
+def get_installed_modules(link):
+    response = requests.get(link)
+    response_dict = json.loads(response.content)
+    for i in range(len(response_dict['items'])):
+        module_category = ModuleCategory.query.filter_by(
+            id=response_dict['items'][i]['category_id']).first()
+        if not module_category:
+            module_category = ModuleCategory(
+                id=response_dict['items'][i]['category_id'], name=response_dict['items'][i]['category_name'])
+            db.session.add(module_category)
+            db.session.commit()
+        module = Module(id=response_dict['items'][i]['id'], technical_name=response_dict['items'][i]['technical_name'], official_name=response_dict['items']
+                        [i]['official_name'], bp_name=response_dict['items'][i]['bp_name'], summary=response_dict['items'][i]['summary'], category_id=response_dict['items'][i]['category_id'], user_groups_api=response_dict['items'][i]['links']['access_groups'], models_api=response_dict['items'][i]['links']['models'])
+        db.session.add(module)
+        db.session.commit()
+
+
+def get_access_groups():
+    modules = Module.query.all()
+    for module in modules:
+        response = requests.get(api_base+module.user_groups_api)
+        response_dict = json.loads(response.content)
+        for i in range(len(response_dict['items'])):
+            exists = Group.query.filter_by(
+                id=response_dict['items'][i]['id']).first()
+            if not exists:
+                group = Group(id=response_dict['items'][i]['id'], name=response_dict['items'][i]['name'],
+                              module_id=response_dict['items'][i]['module_id'], permission=response_dict['items'][i]['permission'], access_rights_url=response_dict['items'][i]['links']['access_rights'])
+                group.generate_slug()
+                db.session.add(group)
+                db.session.commit()
+
+
+def get_models():
+    modules = Module.query.all()
+    for module in modules:
+        response = requests.get(api_base+module.models_api)
+        response_dict = json.loads(response.content)
+        for i in range(len(response_dict['items'])):
+            exists = Model.query.filter_by(id=model['id']).first()
+        if not exists:
+            model = Model(id=model['id'], name=model['name'],
+                          description=model['description'])
+            model.generate_slug()
+            db.session.add(model)
+            db.session.commit()
+
+
+def get_access_rights():
+    groups = Group.query.all()
+    for group in groups:
+        response = requests.get(api_base + group.access_rights_url)
+        response_dict = json.loads(response.content)
+        for i in range(len(response_dict['items'])):
+            exists = Access.query.filter_by(
+                id=response_dict['items'][i]['id']).first()
+            if not exists:
+                access = Access(id=response_dict['items'][i]['id'], name=response_dict['items'][i]['name'], model_id=response_dict['items'][i]['model_id'], read=response_dict['items']
+                                [i]['read'], write=response_dict['items'][i]['write'], create=response_dict['items'][i]['create'], delete=response_dict['items'][i]['delete'])
+                db.session.add(access)
+                db.session.commit()
+                group.rights.append(access)
+            db.session.commit()
 
 
 @bp.route('/reset_password_request', methods=['GET', 'POST'])
@@ -207,5 +278,7 @@ def activate(token):
             user.company_id = request.args.get('company')
             db.session.commit()
             login_user(user)
+            user.last_seen = datetime.utcnow()
+            db.session.commit()
             return redirect(url_for('main.index'))
     return render_template('auth/set_password.html', title=_('Set Password | Olam ERP'), form=form, var='Account')

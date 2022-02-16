@@ -61,59 +61,60 @@
                     </div>
                 </div>
                 <div class="card card-bordered">
-                    <ul class="nav nav-tabs nav-tabs-card">
-                        <li {% if page=='groups' %}class="nav-item active current-page" {% else %}
-                            class="nav-item" {% endif %}>
-                            <a {% if page=='groups' %}class="nav-link active" {% else %} class="nav-link" {%
-                                endif %} href="{{url_for('settings.group_members', slug=slug)}}"><em
-                                    class="icon ni ni-users-fill"></em><span>Groups </span></a>
+                    <ul class="nav nav-tabs nav-tabs-mb-icon nav-tabs-card">
+                        <li class="nav-item active current-page">
+                            <a id="lnk_users" class="nav-link active" href="#access" data-toggle="tab"><em
+                                    class="icon ni ni-lock-alt-fill"></em><span>Access Rights</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url_for('settings.group_rights', slug=slug)}}"><em
-                                    class="icon ni ni-lock-alt-fill"></em><span>Access Rights</span></a>
+                            <a id="lnk_access_rights" class="nav-link" href="#preferences" data-toggle="tab"><em
+                                    class="icon ni ni-account-setting-fill"></em><span>Preferences</span></a>
                         </li>
                     </ul><!-- .nav-tabs -->
                     <div class="tab-content">
-                        {% if page == 'groups' %}
-                        <div class="tab-pane active" id="users">
+                        <div class="tab-pane active" id="access">
                             <div class="card-inner">
-                                <table class="table">
-                                    <thead class="thead-light">
-                                        <tr>
-                                            <th scope="col" style="padding-right: 100px;">Name</th>
-                                            <th scope="col" style="padding-right: 100px;">Creation Date</th>
-                                            <th scope="col"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {% for group in user.groups %}
-                                        {% if group.is_active %}
-                                        <tr>
-                                            <th scope="row">{{group.name}}</th>
-                                            <td>{{ moment(group.created_on).format('LLL')}}</td>
-                                            <td>
-                                                <a id="{{group.slug}}.{{user.id}}" href="remove-user"
-                                                    class="btn btn-icon btn-sm btn-primary remove-user"
-                                                    data-toggle="tooltip" data-placement="left" title="Remove user">
-                                                    <em class="icon ni ni-cross-sm"></em>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        {% endif %}
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                                <div class="preview-btn-item  col-sm-6 col-lg-3">
-                                    <a href="{{url_for('settings.manage_groups')}}"
-                                        class="btn btn-m btn-primary btn-block" data-toggle="modal"
-                                        data-target="#modalUsers" style="padding: 0.4375rem 4.125rem;">
-                                        <em class="icon ni ni-plus"></em><span>Add User</span>
-                                    </a>
+                                <div class="row g-3 align-center">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <h6 class="title">
+                                                <span class="mr-2">User Type:</span>
+                                                <span class="mr-2">
+                                                    {% if user.user_type == 'UserType.IU' %}
+                                                    Internal User
+                                                    {% elif user.user_type == 'UserType.PU' %}
+                                                    Public User
+                                                    {% elif user.user_type == 'UserType.P' %}
+                                                    Portal User
+                                                    {% endif %}
+                                                </span>
+                                                <hr>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    {% for module in modules %}
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <h6 class="title">
+                                                <span class="mr-2">{{module.bp_name|upper}}:</span>
+                                                <span class="mr-2">
+                                                    <strong>
+                                                        {% for user_group in user_groups %} 
+                                                        {% if user_group.module.id == module.id %} 
+                                                        {{user_group.name|upper}}
+                                                        {% endif %}
+                                                        {% endfor %}
+                                                    </strong>
+                                                </span>
+                                                <hr>
+                                            </h6>                                            
+                                        </div>
+                                    </div>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
-                        {% elif page == 'group_rights' %}
-                        <div class="tab-pane active" id="access_rights">
+                        <div class="tab-pane" id="preferences">
                             <div class="card-inner">
                                 <table class="table">
                                     <thead class="thead-light">
@@ -204,7 +205,6 @@
                                 </div>
                             </div>
                         </div>
-                        {% endif %}
                     </div>
                 </div>
             </div><!-- .card-preview -->

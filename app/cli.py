@@ -1,6 +1,7 @@
 import os
 import click
 from flask_migrate import upgrade
+from app.fetch import get_access_groups, set_admin_groups
 from app.tasks import dummy_data
 
 
@@ -14,6 +15,13 @@ def register(app):
     def dummy():
         """Import dummy data"""
         dummy_data()
+    
+    @app.cli.command()
+    def fetch():
+        """Fetch from Olam API"""
+        get_access_groups()
+        set_admin_groups()
+
 
     @translate.command()
     @click.argument('lang')

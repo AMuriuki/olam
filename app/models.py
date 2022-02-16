@@ -78,27 +78,6 @@ class Task(db.Model):
         return job.meta.get('progress', 0) if job is not None else 100
 
 
-class Model(PaginatedAPIMixin, db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(128), index=True)
-    description = db.Column(db.String(128))
-    accessrights = db.relationship('Access', backref='model', lazy='dynamic')
-    slug = db.Column(db.Text(), unique=True)
-
-    def generate_slug(self):
-        _slug = unique_slug_generator(self)
-        self.slug = _slug
-
-    def to_dict(self):
-        data = {
-            'id': self.id,
-            'name': self.name,
-            'description': self.description,
-            'slug': self.slug
-        }
-        return data
-
-
 class Note(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     note = db.Column(db.Text)

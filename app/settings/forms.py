@@ -23,4 +23,7 @@ class NewGroup(FlaskForm):
 
 
 class NewUserForm(FlaskForm):
-    pass
+    name = StringField(_l('Name'),
+                       validators=[DataRequired()])
+    email = StringField(_l('Email Address'),
+                        validators=[DataRequired(), Email()])

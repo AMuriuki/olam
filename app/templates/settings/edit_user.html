@@ -31,7 +31,7 @@
             {% endfor %}
             {% endif %}
             {% endwith %}
-            <form id="new_user" action="{{url_for('settings.create_user')}}" method="post">
+            <form id="edit_user" action="{{url_for('settings.edit_user', slug=slug)}}" method="post">
                 <div class="card card-preview">
                     <div class="card-inner">
                         {{form.hidden_tag()}}
@@ -41,7 +41,7 @@
                                     <label class="form-label">Name</label>
                                     <div class="form-control-wrap">
                                         <input type="text" class="form-control" name="name" id="name"
-                                            placeholder="First and Last name" required>
+                                            placeholder="First and Last name" value="{{partner.name}}" required>
                                     </div>
                                 </div>
                             </div>
@@ -50,7 +50,7 @@
                                     <label class="form-label">Email Address</label>
                                     <div class="form-control-wrap">
                                         <input type="email" class="form-control" name="email" id="email"
-                                            placeholder="Email address" required>
+                                            placeholder="Email address" value="{{partner.email}}" required>
                                     </div>
                                 </div>
                             </div>
@@ -80,8 +80,9 @@
                                                     <li>
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
-                                                                name="user-type" id="{{user_type}}" value="{{user_type}}" {% if
-                                                                user_type==user_type.IU %}checked {% endif %}>
+                                                                name="user-type" id="{{user_type}}"
+                                                                value="{{user_type}}" {% if user_type==user_type.IU
+                                                                %}checked {% endif %}>
                                                             <label class="custom-control-label"
                                                                 for="{{user_type}}">{{user_type.value}}</label>
                                                         </div>
@@ -95,11 +96,13 @@
                                             <div class="form-group">
                                                 <label class="form-label">{{module.bp_name|upper}}</label>
                                                 <div class="form-control-wrap">
-                                                    <select id="{{module.id}}" class="form-select set-access" data-search="on">
+                                                    <select id="{{module.id}}" class="form-select set-access"
+                                                        data-search="on">
                                                         <option value="#">Select Access</option>
                                                         {% for group in groups %}
                                                         {% if group.module_id == module.id %}
-                                                        <option value="{{group.id}}">{{group.name}}</option>
+                                                        <option value="{{group.id}}" {% if user.id|has(group.id)
+                                                            %}selected{% endif %}>{{group.name}}</option>
                                                         {% endif %}
                                                         {% endfor %}
                                                     </select>

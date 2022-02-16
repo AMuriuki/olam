@@ -38,7 +38,7 @@
             <div class="card card-preview">
                 <div class="card-inner">
                     <div class="row gy-4">
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <div class="card-title-group">
                                 <div class="card-title">
                                     <h6 class="title">
@@ -48,7 +48,17 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
+                            <div class="card-title-group">
+                                <div class="card-title">
+                                    <h6 class="title">
+                                        <span class="mr-2"><strong>Permission Level:</strong></span>
+                                        <span class="mr-2">{{group.permission|permission}}</span>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
                             <div class="card-title-group">
                                 <div class="card-title">
                                     <h6 class="title">
@@ -128,17 +138,21 @@
                                     <tbody id="tbody_access_rights">
                                         {% for access_right in access_rights %}
                                         <tr id="{{access_right.id}}">
-                                            <th class="td_update_name_of_access_right" scope="row">
-                                                <span class="sp_name_of_access_right">{{access_right.name}}</span>
-                                                <input type="text" style="display: none;"
+                                            <th class="th_accessName" scope="row">
+                                                <span
+                                                    class="sp_access_right.{{access_right.id}}">{{access_right.name}}</span>
+                                                <input id="input.{{access_right.id}}" type="text" style="display: none;"
                                                     class="form-control update_access_right_name"
                                                     placeholder="Name of access right" value="{{access_right.name}}">
                                             </th>
                                             <td class="update_model">
-                                                <span class="sp_access_model">{{access_right.model.name}}</span>
-                                                <div class="form-control-wrap dv_select_model"
+                                                <span id="sp_access_model.{{access_right.id}}"
+                                                    class="sp_access_model.{{access_right.id}}">{{access_right.model.name}}</span>
+                                                <div id="model_div.{{access_right.id}}"
+                                                    class="form-control-wrap dv_select_model"
                                                     style="display: none !important;">
-                                                    <select class="form-select select_model" data-search="on">
+                                                    <select id="select.{{access_right.id}}"
+                                                        class="form-select select_model" data-search="on">
                                                         <option value="default_option">Select model</option>
                                                         {% for model in models %}
                                                         <option value="{{model.id}}">{{model.name}}</option>

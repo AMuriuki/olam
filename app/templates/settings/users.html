@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
+<style>
+    .btn-trigger+.dropdown-menu-right, .btn-trigger+.dropdown-menu-left{
+        margin: 5rem 0 !important;
+    }
+</style>
 <div class="nk-content-body">
     <div class="nk-content-wrap">
         {% include "settings/users_blockhead.html" %}

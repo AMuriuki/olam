@@ -13,7 +13,7 @@
                 <div class="nk-block-head-content">
                     <h3 class="nk-block-title page-title">Your Apps</h3>
                     <div class="nk-block-des text-soft">
-                        <p>You have installed {{modules|length }} app(s).</p>
+                        <p>You have {{modules|length-1}} app(s) installed.</p>
                     </div>
                 </div><!-- .nk-block-head-content -->
                 <div class="nk-block-head-content">
@@ -27,6 +27,7 @@
         <div class="nk-block">
             <div class="row g-gs">
                 {% for module in modules %}
+                {% if module.id|can_view %}
                 <div class="col-sm-6 col-xl-3" onclick="location.href='/{{module.bp_name}}/';" style="cursor: pointer;">
                     <div class="card card-bordered h-100">
                         <div class="card-inner">
@@ -45,26 +46,8 @@
                         </div>
                     </div>
                 </div>
+                {% endif %}
                 {% endfor %}
-                <div class="col-sm-6 col-xl-3" onclick="location.href='{{url_for('settings.general')}}';"
-                    style="cursor: pointer;">
-                    <div class="card card-bordered h-100">
-                        <div class="card-inner">
-                            <div class="project">
-                                <div class="project-head">
-                                    <a href="{{url_for('settings.general')}}" class="project-title">
-                                        <div class="project-info">
-                                            <h6 class="title">Settings</h6>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="project-details">
-                                    <p>Manage the configuration for your instance.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div><!-- .nk-block -->
     </div>

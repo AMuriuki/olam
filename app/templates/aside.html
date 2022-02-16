@@ -60,12 +60,14 @@
                 <h6 class="overline-title text-primary-alt">App Menu</h6>
             </li><!-- .nk-menu-heading -->
             {% for module in modules %}
+            {% if module.id|can_view %}
             <li class="nk-menu-item">
                 <a href="/{{module.bp_name}}/" class="nk-menu-link">
                     <span class="nk-menu-icon"></em></span>
                     <span class="nk-menu-text">{{module.official_name}}</span>
                 </a>
             </li><!-- .nk-menu-item -->
+            {% endif %}
             {% endfor %}
             <li class="nk-menu-item">
                 <a href="{{url_for('main.index')}}" class="nk-menu-link">
@@ -74,7 +76,7 @@
                 </a>
             </li>
             <li class="nk-menu-item">
-                <a href="html/email-templates.html" class="nk-menu-link">
+                <a href="{{url_for('settings.get_apps')}}" class="nk-menu-link">
                     <span class="nk-menu-icon"><em class="icon ni ni-layers"></em></span>
                     <span class="nk-menu-text">Apps</span>
                 </a>
@@ -89,7 +91,7 @@
                 </a>
                 <ul class="nk-menu-sub">
                     <li class="nk-menu-item">
-                        <a href="{{url_for('settings.general')}}" id="general_settings" class="nk-menu-link"><span
+                        <a href="{{url_for('settings.settings')}}" id="general_settings" class="nk-menu-link"><span
                                 class="nk-menu-text">General
                                 Settings</span></a>
                     </li>

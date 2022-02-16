@@ -13,12 +13,17 @@
     .actions {
         color: #0c5460;
     }
+
+    .li-actions {
+        display: none;
+    }
 </style>
 <div class="nk-block-head nk-block-head-sm">
     <div class="nk-block-between">
         {% if title == "Users | Olam ERP" %}
         <div class="nk-block-head-content">
-            <h3 class="nk-block-title page-title"><a href="{{url_for('settings.general')}}">
+            <h3 class="nk-block-title page-title">
+                <a href="{{url_for('settings.settings')}}">
                     Settings
                 </a>
                 /
@@ -91,9 +96,45 @@
                 </div>
             </div><!-- .toggle-wrap -->
         </div><!-- .nk-block-head-content -->
+        {% elif title == "New | Olam ERP" %}
+        <div class="nk-block-head-content">
+            <h3 class="nk-block-title page-title"><a href="{{url_for('settings.settings')}}">
+                    Settings
+                </a>
+                /
+                <strong class="text-primary small">
+                    <a href="{{url_for('settings.manage_users')}}">Users</a>
+                </strong>
+                /
+                <strong class="text-primary small">
+                    <span id="#">New</span>
+                </strong>
+            </h3>
+
+            <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                <li>
+                    <a href="#" class="btn btn-m btn-primary btn-block create-user">SAVE</a>
+                </li>
+                <li>
+                    <a href="{{url_for('settings.manage_users')}}" class="btn btn-outline-light">
+                        DISCARD
+                    </a>
+                    <span class="btn selected-groups"></span>
+                </li>
+            </ul>
+        </div><!-- .nk-block-head-content -->
+        <div class="nk-block-head-content">
+            <div class="toggle-wrap nk-block-tools-toggle">
+                <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em
+                        class="icon ni ni-menu-alt-r"></em></a>
+                <div class="toggle-expand-content" data-content="pageMenu">
+
+                </div>
+            </div><!-- .toggle-wrap -->
+        </div><!-- .nk-block-head-content -->
         {% elif user %}
         <div class="nk-block-head-content">
-            <h3 class="nk-block-title page-title"><a href="{{url_for('settings.general')}}">
+            <h3 class="nk-block-title page-title"><a href="{{url_for('settings.settings')}}">
                     Settings
                 </a>
                 /
@@ -102,11 +143,22 @@
                 </strong>
                 /
                 <strong class="text-primary small">
-                    <span id="#">{{partner.name}}</span>
+                    <a href="{{url_for('settings.user', slug=slug)}}">{{partner.name}}</a>
                 </strong>
             </h3>
 
             <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                {% if edit %}
+                <li>
+                    <a href="#" class="btn btn-m btn-primary btn-block edit-user">SAVE</a>
+                </li>
+                <li>
+                    <a href="{{url_for('settings.user', slug=slug)}}" class="btn btn-outline-light">
+                        DISCARD
+                    </a>
+                    <span class="btn selected-groups"></span>
+                </li>
+                {% else %}
                 <li>
                     <a href="{{url_for('settings.edit_user', slug=user.slug)}}"
                         class="btn btn-m btn-primary btn-block">EDIT</a>
@@ -117,6 +169,7 @@
                     </a>
                     <span class="btn selected-groups"></span>
                 </li>
+                {% endif %}
                 <li class="li-actions">
                     <div class="drodown">
                         <a href="#" class="dropdown-toggle btn btn-outline-light actions" data-toggle="dropdown">
@@ -149,59 +202,43 @@
                         </li>
                         {% if current_index != 1 %}
                         <li>
-                            
-                            <a href="{{url_for('settings.user', slug=users[prev_index].slug)}}" class="btn btn-icon btn-m btn-primary d-none d-sm-inline-flex"><em
+                            {% if edit %}
+                            <a href="{{url_for('settings.edit_user', slug=users[prev_index].slug)}}"
+                                class="btn btn-icon btn-m btn-primary d-none d-sm-inline-flex"><em
                                     class="icon ni ni-caret-left"></em></a>
-                            <a href="{{url_for('settings.user', slug=users[prev_index].slug)}}" class="btn btn-icon btn-m btn-primary d-inline-flex d-sm-none"><em
+                            <a href="{{url_for('settings.edit_user', slug=users[prev_index].slug)}}"
+                                class="btn btn-icon btn-m btn-primary d-inline-flex d-sm-none"><em
                                     class="icon ni ni-caret-left"></em></a>
+                            {% else %}
+                            <a href="{{url_for('settings.user', slug=users[prev_index].slug)}}"
+                                class="btn btn-icon btn-m btn-primary d-none d-sm-inline-flex"><em
+                                    class="icon ni ni-caret-left"></em></a>
+                            <a href="{{url_for('settings.user', slug=users[prev_index].slug)}}"
+                                class="btn btn-icon btn-m btn-primary d-inline-flex d-sm-none"><em
+                                    class="icon ni ni-caret-left"></em></a>
+                            {% endif %}
                         </li>
                         {% endif %}
                         {% if next_index != users|length %}
                         <li>
-                            <a href="{{url_for('settings.user', slug=users[next_index].slug)}}" class="btn btn-icon btn-m btn-primary d-none d-sm-inline-flex"><em
+                            {% if edit %}
+                            <a href="{{url_for('settings.edit_user', slug=users[next_index].slug)}}"
+                                class="btn btn-icon btn-m btn-primary d-none d-sm-inline-flex"><em
                                     class="icon ni ni-caret-right"></em></em></a>
-                            <a href="{{url_for('settings.user', slug=users[next_index].slug)}}" class="btn btn-icon btn-m btn-primary d-inline-flex d-sm-none"><em
+                            <a href="{{url_for('settings.edit_user', slug=users[next_index].slug)}}"
+                                class="btn btn-icon btn-m btn-primary d-inline-flex d-sm-none"><em
                                     class="icon ni ni-caret-right"></em></a>
+                            {% else %}
+                            <a href="{{url_for('settings.user', slug=users[next_index].slug)}}"
+                                class="btn btn-icon btn-m btn-primary d-none d-sm-inline-flex"><em
+                                    class="icon ni ni-caret-right"></em></em></a>
+                            <a href="{{url_for('settings.user', slug=users[next_index].slug)}}"
+                                class="btn btn-icon btn-m btn-primary d-inline-flex d-sm-none"><em
+                                    class="icon ni ni-caret-right"></em></a>
+                            {% endif %}
                         </li>
                         {% endif %}
                     </ul>
-                </div>
-            </div><!-- .toggle-wrap -->
-        </div><!-- .nk-block-head-content -->
-        {% elif new_user %}
-        <div class="nk-block-head-content">
-            <h3 class="nk-block-title page-title"><a href="{{url_for('settings.general')}}">
-                    Settings
-                </a>
-                /
-                <strong class="text-primary small">
-                    <a href="{{url_for('settings.manage_users')}}">Users</a>
-                </strong>
-                /
-                <strong class="text-primary small">
-                    <span id="#">New</span>
-                </strong>
-            </h3>
-
-            <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                <li>
-                    <a href="#"
-                        class="btn btn-m btn-primary btn-block">SAVE</a>
-                </li>
-                <li>
-                    <a href="#" data-dismiss="modal" class="btn btn-outline-light">
-                        DISCARD
-                    </a>
-                    <span class="btn selected-groups"></span>
-                </li>                
-            </ul>
-        </div><!-- .nk-block-head-content -->
-        <div class="nk-block-head-content">
-            <div class="toggle-wrap nk-block-tools-toggle">
-                <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em
-                        class="icon ni ni-menu-alt-r"></em></a>
-                <div class="toggle-expand-content" data-content="pageMenu">
-                    
                 </div>
             </div><!-- .toggle-wrap -->
         </div><!-- .nk-block-head-content -->

@@ -45,7 +45,7 @@
                         %} action="{{url_for('settings.new_group')}}" method="post" {% endif %}>
                         {{form.hidden_tag()}}
                         <div class="row gy-4">
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <div class="form-group">
                                     <label class="form-label">Application</label>
                                     <div class="form-control-wrap">
@@ -64,7 +64,22 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="form-label">Permission Level</label>
+                                    <div class="form-control-wrap">
+                                        <select class="form-select" id="select_permission" name="select_permission" required>
+                                            <option value="default_option">Select Permission Level</option>
+                                            {% for permission in permissions %}
+                                            <option value="{{permission.value}}">
+                                                {{permission.name|title}}
+                                            </option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
                                 <div class="form-group">
                                     <label class="form-label">Name</label>
                                     <div class="form-control-wrap">

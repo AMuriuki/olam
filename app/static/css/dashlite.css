@@ -27792,11 +27792,11 @@ body.nav-shown {
 }
 
 .nk-menu-link:hover, .active>.nk-menu-link {
-  color: #7f8dff;
+  color: #017e84;
 }
 
 .nk-menu-link:hover .count, .active>.nk-menu-link .count {
-  color: #7f8dff;
+  color: #017e84;
 }
 
 .nk-menu-sub .nk-menu-link {
@@ -27831,7 +27831,7 @@ body.nav-shown {
 }
 
 .is-light .nk-menu-link:hover, .is-light .active>.nk-menu-link {
-  color: #7f8dff;
+  color: #017e84;
 }
 
 .is-theme .nk-menu-link:hover, .is-theme .active>.nk-menu-link {
@@ -27869,7 +27869,7 @@ body.nav-shown {
 }
 
 .nk-menu-link:hover .nk-menu-icon, .nk-menu-item.active>.nk-menu-link .nk-menu-icon, .nk-menu-item.current-menu>.nk-menu-link .nk-menu-icon {
-  color: #7f8dff;
+  color: #017e84;
 }
 
 .is-theme .nk-menu-link:hover .nk-menu-icon, .is-theme .nk-menu-item.active>.nk-menu-link .nk-menu-icon, .is-theme .nk-menu-item.current-menu>.nk-menu-link .nk-menu-icon {
@@ -28066,7 +28066,7 @@ body.nav-shown {
 }
 
 .nk-menu-sm .nk-menu-link:hover {
-  color: #7f8dff;
+  color: #017e84;
 }
 
 .nk-menu-sm .nk-menu-icon {
@@ -28098,7 +28098,7 @@ body.nav-shown {
 }
 
 .nk-menu-md .nk-menu-link:hover {
-  color: #7f8dff;
+  color: #017e84;
 }
 
 .nk-menu-md .nk-menu-icon {
@@ -28138,7 +28138,7 @@ body.nav-shown {
 }
 
 .nk-menu-footer .nk-menu-link:hover {
-  color: #7f8dff;
+  color: #017e84;
 }
 
 .is-theme .nk-menu-footer .nk-menu-link {
@@ -28189,7 +28189,7 @@ body.nav-shown {
 }
 
 .nk-menu-main .nk-menu-link:hover, .nk-menu-main .nk-menu-link:focus, .nk-menu-main .nk-menu-item.active>.nk-menu-link, .nk-menu-main .nk-menu-item.current-menu>.nk-menu-link, .nk-menu-main .nk-menu-item:hover>.nk-menu-link {
-  color: #7f8dff;
+  color: #017e84;
 }
 
 .nk-menu-main .nk-menu-heading {
@@ -28242,7 +28242,7 @@ body.nav-shown {
     left: 0;
     right: 0;
     height: 3px;
-    background: #7f8dff;
+    background: #017e84;
     border-radius: 3px 3px 0 0;
     opacity: 0;
   }
@@ -32379,7 +32379,7 @@ body.toggle-shown {
 }
 
 .is-theme .nk-news-icon .icon {
-  color: #7f8dff;
+  color: #017e84;
 }
 
 .nk-news-icon img {

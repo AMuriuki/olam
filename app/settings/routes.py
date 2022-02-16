@@ -1,28 +1,34 @@
+from crypt import methods
+import uuid
+import requests
 from flask.json import jsonify
 from itsdangerous import json
 from sqlalchemy import log
-from app import db
+from app import db, api_base
 from app.auth.email import send_invite_email
+from app.main.models.module import Model
 from app.main.models.partner import Partner
-from app.models import Model
 from app.settings import bp
 from flask_login import login_required, current_user
 from flask import render_template, redirect, url_for, request, session, flash
 from app.settings.forms import InviteForm, NewGroup, NewUserForm
 from flask_babel import _, lazy_gettext as _l
-from app.auth.models.user import USERTYPES, Access, UserType, Users, Group
+from app.auth.models.user import USERTYPES, Access, Permission, UserType, Users, Group
+
+selected_groups = {}
 
 
 @bp.route("/get_models", methods=['GET', 'POST'])
+@ login_required
 def get_models():
     if request.method == "POST":
         models = Model.to_collection_dict(Model.query.order_by('name'))
         return jsonify(models)
 
 
-@bp.route('/general_settings', methods=['GET', 'POST'])
+@bp.route('/', methods=['GET', 'POST'])
 @login_required
-def general():
+def settings():
     form = InviteForm()
     pending_invitations = Users.query.filter_by(is_active=False).all()
     return render_template('settings/settings.html', title=_('General Settings | Olam ERP'), form=form, pending_invitations=pending_invitations)
@@ -64,23 +70,25 @@ def new_group():
     form = NewGroup()
     group = None
     models = Model.query.order_by('name').all()
+    permissions = Permission
+
     if form.validate_on_submit():
         exists = Group.query.filter_by(
-            name=request.form['group_name']).filter_by(is_active=True).first()
+            name=request.form['group_name']).filter_by(module_id=request.form['select_app']).filter_by(is_active=True).first()
         if exists:
             flash(
-                _('A group with this name exists. Provide a unique name for the group.'))
+                _('A group with this details exists.'))
             return jsonify({"response": "group name exists!"})
         else:
-            group = Group(
-                name=request.form['group_name'], module_id=request.form['select_app'])
+            group = Group(id=uuid.uuid4(
+            ), name=request.form['group_name'], module_id=request.form['select_app'], permisssion=request.form['select_permission'])
             group.generate_slug()
             db.session.add(group)
             db.session.commit()
             flash(
                 _('Your group has been created successfully.'))
             return jsonify({"response": "success", "slug": group.slug})
-    return render_template("settings/new_group.html", title=_('New Group | Olam ERP'), group=group, form=form, models=models)
+    return render_template("settings/new_group.html", title=_('New Group | Olam ERP'), group=group, form=form, models=models, permissions=permissions)
 
 
 @ bp.route('/new_group/<slug>', methods=['GET', 'POST'])
@@ -93,14 +101,15 @@ def newgroup(slug):
     models = Model.query.order_by('name').all()
     if form.validate_on_submit():
         exists = Group.query.filter_by(
-            name=request.form['group_name']).filter_by(is_active=True).filter(Group.id != group.id).first()
+            name=request.form['group_name']).filter_by(is_active=True).filter_by(module_id=request.form['select_app']).filter(Group.id != group.id).first()
         if exists:
             flash(
-                _('A group with this name exists. Provide a unique name for the group.'))
+                _('A group with this details exists.'))
             return jsonify({"response": "group name exists!"})
         else:
             group.name = request.form['group_name']
             group.module_id = request.form['select_app']
+            group.permission = request.form['select_permission']
             db.session.commit()
             flash(
                 _('This group has been saved successfully.'))
@@ -109,15 +118,16 @@ def newgroup(slug):
 
 
 @ bp.route("/settings/update/<slug>", methods=['GET', 'POST'])
+@ login_required
 def update_group(slug):
     form = NewGroup()
     group = Group.query.filter_by(slug=slug).first()
     if form.validate_on_submit():
         exists = Group.query.filter_by(
-            name=request.form['group_name']).filter_by(is_active=True).filter(Group.id != group.id).first()
+            name=request.form['group_name']).filter_by(module_id=request.form['select_app']).filter_by(is_active=True).filter(Group.id != group.id).first()
         if exists:
             flash(
-                _('A group with this name exists. Provide a unique name for the group.'))
+                _('A group with this details exists.'))
             return jsonify({"response": "group name exists!", "slug": slug})
         else:
             group.name = request.form['group_name']
@@ -128,6 +138,7 @@ def update_group(slug):
 
 
 @ bp.route('/group/<slug>', methods=['GET', 'POST'])
+@ login_required
 def group(slug):
     group = Group.query.filter_by(slug=slug).first()
     group_members = Users.query.join(Users.groups).filter_by(slug=slug)
@@ -145,7 +156,7 @@ def select_users():
         if "slug" in request.form:
             group = Group.query.filter_by(slug=request.form['slug']).first()
         else:
-            group = Group()
+            group = Group(id=uuid.uuid4())
             group.generate_slug()
             db.session.add(group)
             db.session.commit()
@@ -200,14 +211,16 @@ def edit_group(slug):
     group_members = Users.query.join(Users.groups).filter_by(slug=slug)
     access_rights = Access.query.join(Access.groups).filter_by(slug=slug)
     models = Model.query.order_by('name').all()
-    return render_template("settings/edit_group.html", group=group, title=_("Edit " + str(group.name) + " | Olam ERP"), form=form, group_members=group_members, slug=group.slug, edit=edit, access_rights=access_rights, models=models)
+    permissions = Permission
+    return render_template("settings/edit_group.html", group=group, title=_("Edit " + str(group.name) + " | Olam ERP"), form=form, group_members=group_members, slug=group.slug, edit=edit, access_rights=access_rights, models=models, permissions=permissions)
 
 
 @ bp.route('/access-right', methods=['GET', 'POST'])
+@ login_required
 def new_access_right():
     if request.method == "POST":
         if "access" in request.form:
-            print(request.form)
+            model_name = None
             access = Access.query.filter_by(id=request.form['access']).first()
             if "name" in request.form:
                 access.name = request.form['name']
@@ -241,7 +254,7 @@ def new_access_right():
                     access.delete = False
                 db.session.commit()
 
-            return jsonify({"response": "success", "model_name": model_name if model_name else None})
+            return jsonify({"response": "success", "model_name": model_name, "access": access.id})
         else:
             exists = Access.query.filter_by(
                 name=request.form['access_name']).first()
@@ -274,8 +287,7 @@ def new_access_right():
                     db.session.commit()
                 group = Group.query.filter_by(
                     slug=request.form['group']).first()
-                access = Access(
-                    name=request.form['access_name'], model_id=request.form['model'], read=read, write=write, create=create, delete=delete)
+                access = Access(id=uuid.uuid4(), name=request.form['access_name'], model_id=request.form['model'], read=read, write=write, create=create, delete=delete)
                 access.generate_slug()
                 db.session.add(access)
                 group.rights.append(access)
@@ -297,6 +309,7 @@ def remove_access_right():
 
 
 @ bp.route('/group/members/<slug>', methods=['GET', 'POST'])
+@ login_required
 def group_members(slug):
     group = Group.query.filter_by(slug=slug).first()
     group_members = Users.query.join(Users.groups).filter_by(slug=slug)
@@ -304,6 +317,7 @@ def group_members(slug):
 
 
 @ bp.route('/group/rights/<slug>', methods=['GET', 'POST'])
+@ login_required
 def group_rights(slug):
     group = Group.query.filter_by(slug=slug).first()
     access_rights = Access.query.join(Access.groups).filter_by(slug=slug)
@@ -312,33 +326,120 @@ def group_rights(slug):
 
 
 @bp.route("/users", methods=['GET', 'POST'])
+@ login_required
 def manage_users():
     users = Users.query.join(Partner).all()
     return render_template("settings/users.html", title=_("Users | Olam ERP"), users=users)
 
 
 @bp.route("/user/<slug>", methods=['GET', 'POST'])
+@ login_required
 def user(slug):
     user = Users.query.filter_by(slug=slug).first()
+    user_groups = user.groups
     users = Users.query.filter_by(is_archived=False).all()
+    user_types = UserType
     for idx, _user in enumerate(users):
         if user.id == _user.id:
             current_index = idx
             prev_index = current_index - 1
             next_index = current_index + 1
     partner = Partner.query.filter_by(id=user.partner_id).first()
-    return render_template("settings/user.html", title=_(partner.name + " | Olam ERP"), user=user, partner=partner, users=users, current_index=current_index+1, prev_index=prev_index, next_index=next_index, page="groups")
+    return render_template("settings/user.html", title=_(partner.name + " | Olam ERP"), user=user, partner=partner, users=users, current_index=current_index+1, prev_index=prev_index, next_index=next_index, page="groups", user_types=user_types, user_groups=user_groups, slug=slug)
 
 
 @bp.route("/edit/user/<slug>", methods=['GET', 'POST'])
+@ login_required
 def edit_user(slug):
-    pass
+    edit = True
+    user = Users.query.filter_by(slug=slug).first()
+    partner = Partner.query.filter_by(id=user.partner_id).first()
+    users = Users.query.filter_by(is_archived=False).all()
+    user_types = UserType
+    groups = Group.query.filter_by(is_active=True).all()
+    form = NewUserForm()
+    for idx, _user in enumerate(users):
+        if user.id == _user.id:
+            current_index = idx
+            prev_index = current_index - 1
+            next_index = current_index + 1
+
+    if form.validate_on_submit():
+        exists = Partner.query.filter(Partner.id != partner.id).filter_by(
+            email=request.form['email']).first()
+        if exists:
+            return jsonify({"response": "there is a user with this email address!"})
+        else:
+            partner.name = request.form['name']
+            partner.email = request.form['email']
+            partner.company_id = current_user.company_id
+            partner.is_tenant = True
+            db.session.commit()
+            group_ids = list(selected_groups.values())
+            for group_id in group_ids:
+                group = Group.query.filter_by(id=group_id).first()
+                group.users.append(user)
+                db.session.commit()
+            return jsonify({"response": "success", "slug": slug})
+
+    return render_template("settings/edit_user.html", title=_("Edit " + partner.name + " | Olam ERP"), user=user, partner=partner, users=users, current_index=current_index+1, prev_index=prev_index, next_index=next_index, page="groups", user_types=user_types, form=form, edit=edit, groups=groups, slug=slug)
+
+
+@bp.route("/set-access", methods=['GET', 'POST'])
+@login_required
+def set_acess():
+    if request.method == "POST":
+        module_id = request.form['module']
+        group_id = request.form['group']
+        if group_id.isnumeric():
+            selected_groups[module_id] = group_id
+        print(selected_groups)
+        return jsonify({"response": "success"})
 
 
 @bp.route("/new/user", methods=['GET', 'POST'])
+@ login_required
 def create_user():
-    user = False
     new_user = True
     user_types = UserType
     form = NewUserForm()
-    return render_template("settings/new_user.html", title=_("New | Olam ERP"), new_user=new_user, user=user, form=form, user_types=user_types)
+    user = Users.query.filter_by(id=current_user.get_id()).first()
+    groups = Group.query.filter_by(is_active=True).all()
+    invited_by = Partner.query.filter_by(id=user.partner_id).first()
+
+    if form.validate_on_submit():
+        exists = Partner.query.filter_by(email=request.form['email']).first()
+        if exists:
+            return jsonify({"response": "user email exists!"})
+        else:
+            partner = Partner(name=request.form['name'], email=request.form['email'],
+                              company_id=current_user.company_id, is_tenant=True)
+            partner.generate_slug()
+            db.session.add(partner)
+            db.session.commit()
+            user = Users(partner_id=partner.id,
+                         company_id=current_user.company_id, user_type=request.form['user-type'])
+            user.set_token(partner.id)
+            user.generate_slug()
+            db.session.add(user)
+            db.session.commit()
+            send_invite_email(partner.id, invited_by.id)
+            group_ids = list(selected_groups.values())
+            for group_id in group_ids:
+                group = Group.query.filter_by(id=group_id).first()
+                group.users.append(user)
+                db.session.commit()
+            return jsonify({"response": "success"})
+    return render_template("settings/new_user.html", title=_("New | Olam ERP"), new_user=new_user, form=form, user_types=user_types, groups=groups)
+
+
+@bp.route("/apps", methods=['GET', 'POST'])
+@ login_required
+def get_apps():
+    response = requests.get(
+        api_base + '/api/module_categories')
+    response_dict = json.loads(response.content)
+    _response = requests.get(
+        api_base + '/api/apps')
+    _response_dict = json.loads(_response.content)
+    return render_template("settings/apps.html", title=_("Apps | Olam ERP"), categories=response_dict['items'], apps=_response_dict['items'])

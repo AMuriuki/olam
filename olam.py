@@ -1,5 +1,5 @@
 from sqlalchemy.sql.elements import or_
-from app.auth.models.user import Users
+from app.auth.models.user import Group, Permission, Users
 from app.crm.models.crm_stage import Stage
 from app.main.models.country import Country
 from app.main.models.partner import Partner
@@ -10,6 +10,7 @@ from app import create_app, cli, db
 from app.main.models.module import Module
 from app.crm.models.crm_lead import Lead
 from flask_login import current_user
+
 
 app = create_app()
 cli.register(app)
@@ -139,6 +140,12 @@ def get_user_name(value):
 
 
 @app.template_filter()
+def installed(value):
+    module = Module.query.filter_by(id=value).first()
+    return module
+
+
+@app.template_filter()
 def partner_name(value):
     partner = Partner.query.filter_by(id=value).first()
     return partner.name if partner.name else partner.company_name
@@ -150,3 +157,33 @@ def remove_hyphens(string):
         return string.replace('-', ' ')
     else:
         return None
+
+
+def has_access(a):
+    return len(a) > 0
+
+
+@app.template_filter()
+def can_view(module_id):
+    access_groups = [g.id for g in Group.query.filter_by(module_id=module_id)]
+    user_groups = [g.id for g in current_user.groups]
+    L1 = set(access_groups)
+    L2 = set(user_groups)
+    result = L1.intersection(L2)
+    return has_access(result)
+
+
+@app.template_filter()
+def has(user_id, group_id):
+    user = Users.query.filter_by(id=user_id).first()
+    user_groups = [g.id for g in user.groups]
+    if group_id in user_groups:
+        return True
+    else:
+        return False
+
+
+@app.template_filter()
+def permission(value):
+    permission = Permission
+    return permission(value).name

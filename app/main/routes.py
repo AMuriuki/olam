@@ -6,7 +6,7 @@ import time
 from os import fsync
 from app.main.models.database import Database
 from app.main.models.company import Company
-from app.auth.models.user import Users
+from app.auth.models.user import Group, Users, user_group
 from app.main.utils import search_dict, updating
 from app.main.models.module import Module
 from datetime import datetime

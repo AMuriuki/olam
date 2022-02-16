@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .bordered-focus {
+        border-color: #6576ff;
+        box-shadow: 0 0 0 3px rgb(101 118 255 / 10%);
+    }
+
+    #dv_start_now {
+        display: none;
+    }
+
+    #dv_loading {
+        display: none;
+    }
+
+    .start-now {
+        width: 100%;
+    }
+
+    .form-text-hint {
+        display: none;
+        padding-top: 5px;
+    }
+
+    #dv_domain {
+        display: none;
+    }
+</style>
+<div class="nk-content-body">
+    <div class="nk-content-wrap">
+        <div class="nk-block-head nk-block-head-sm">
+            <div class="nk-block-between">
+                <div class="nk-block-head-content">
+                    <h2 class="nk-block-title fw-normal">Install an App</h2>
+                </div>
+            </div>
+        </div>
+        {% for category in categories %}
+        {% if category.id != 1 %}
+        <div class="nk-block nk-block-lg">
+            <h5 class="title nk-block-title">{{category.name}}</h5>
+            <div class="row g-gs">
+                {% for module in apps %}
+                {% if module.category_id == category.id %}
+                <div class="col-lg-4">
+                    <div id="dv-{{module.id}}" href="#" class="card card-bordered text-soft dv-module">
+                        <div class="card-inner">
+                            <div class="align-center justify-between">
+                                <div class="g">
+                                    <h6 id="title-{{module.id}}" class="title">{% if module.technical_name == 'crm'
+                                        %}{{module.technical_name|upper}}{% else %}{{module.technical_name|title}}{%
+                                        endif %}</h6>
+                                    <p>{{module.summary}}</p>
+                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                                        <li>
+                                            {% if module.id|installed %}
+                                            <span>Installed</span>
+                                            {% else %}
+                                            <a href="#" class="btn btn-secondary">Install</a>
+                                            {% endif %}
+                                        </li>
+                                        <li>
+                                            <a href="#" class="btn btn-outline-light">Learn More</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

@@ -2,11 +2,12 @@ from app.contacts.utils import get_partners
 from app.crm.models.crm_recurring_plan import RecurringPlan
 from app.crm.models.crm_stage import Stage
 from app.crm.models.crm_lead import Lead
+from app.main.models.module import Model
 from app.main.models.partner import Partner
 from app.main.models.country import City, Country
 from flask import current_app
 from app import db
-from app.models import Model, Task
+from app.models import Task
 from app.main.utils import get_calling_codes, get_countries, get_countries_cities, get_models
 from app.crm.utils import get_opportunities, get_recurring_plans, get_stages
 from rq import get_current_job
@@ -163,19 +164,5 @@ def dummy_data():
                 lead.generate_slug()
                 db.session.add(lead)
                 db.session.commit()
-
-        # models
-        models = get_models()
-        for model in models:
-            exists = Model.query.filter_by(id=model['id']).first()
-            if exists:
-                pass
-            else:
-                model = Model(id=model['id'], name=model['name'],
-                              description=model['description'])
-                model.generate_slug()
-                db.session.add(model)
-                db.session.commit()
-
     except Exception as e:
         print(e)

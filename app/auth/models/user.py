@@ -23,15 +23,15 @@ import enum
 
 access_rights = db.Table(
     'AccessRights',
-    db.Column('group_id', db.Integer, db.ForeignKey(
+    db.Column('group_id', db.String(128), db.ForeignKey(
         'group.id'), primary_key=True),
-    db.Column('access_id', db.Integer, db.ForeignKey('access.id'), primary_key=True))
+    db.Column('access_id', db.String(128), db.ForeignKey('access.id'), primary_key=True))
 
 user_group = db.Table(
     'UserGroup',
     db.Column('user_id', db.Integer, db.ForeignKey(
         'users.id'), primary_key=True),
-    db.Column('group_id', db.Integer, db.ForeignKey('group.id'), primary_key=True))
+    db.Column('group_id', db.String(128), db.ForeignKey('group.id'), primary_key=True))
 
 
 USERTYPES = ["Internal User", "Public User", "Portal"]
@@ -41,6 +41,12 @@ class UserType(enum.Enum):
     IU = "Internal User"
     PU = "Public User"
     P = "Portal"
+
+
+class Permission(enum.Enum):
+    USER = 1
+    MANAGER = 2
+    ADMINISTRATOR = 3
 
 
 class Users(UserMixin, PaginatedAPIMixin, db.Model):
@@ -60,10 +66,16 @@ class Users(UserMixin, PaginatedAPIMixin, db.Model):
     groups = db.relationship(
         'Group', secondary=user_group, back_populates="users")
     slug = db.Column(db.Text(), unique=True)
-    user_type = db.Column(db.String(120))
+    user_type = db.Column(db.String(120), default="Internal User")
 
     def __repr__(self):
         return '<User {}>'.format(self.id)
+
+    def has_access(self, perm):
+        return self.groups is not None and self.role.has_permission(perm)
+
+    def is_administrator(self):
+        return self.can(Permission.ADMIN)
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -174,7 +186,7 @@ def load_user(id):
 
 
 class Access(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.String(128), primary_key=True)
     name = db.Column(db.String(120), index=True, unique=True)
     model_id = db.Column(db.Integer, db.ForeignKey('model.id'))
     groups = db.relationship(
@@ -192,7 +204,7 @@ class Access(db.Model):
 
 
 class Group(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.String(128), primary_key=True)
     name = db.Column(db.String(128), index=True)
     users = db.relationship(
         'Users', secondary=user_group, back_populates="groups")
@@ -202,6 +214,8 @@ class Group(db.Model):
     rights = db.relationship(
         'Access', secondary=access_rights, back_populates="groups")
     created_on = db.Column(db.DateTime, default=datetime.utcnow)
+    permission = db.Column(db.Integer)
+    access_rights_url = db.Column(db.Text())
 
     def generate_slug(self):
         _slug = unique_slug_generator(self)

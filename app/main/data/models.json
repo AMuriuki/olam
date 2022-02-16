@@ -33,5 +33,15 @@
     "id": 7,
     "name": "Contact",
     "description": "Stores information about an individual person, or an organization."
+  },
+  {
+    "id": 8,
+    "name": "Group",
+    "description": "Stores information of the access groups."
+  },
+  {
+    "id": 9,
+    "name": "Module",
+    "description": "Store information of tenant's installed apps."
   }
 ]

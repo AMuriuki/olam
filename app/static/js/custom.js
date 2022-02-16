@@ -18,6 +18,7 @@ var read = false;
 var write = false;
 var create = false;
 var _delete = false;
+
 $(".edit-stage").click(function (e) {
   e.preventDefault();
   stage_id = this.id;
@@ -923,6 +924,44 @@ $(".new-users").click(function (e) {
   }
 });
 
+$(".create-user").click(function (e) {
+  e.preventDefault();
+  var form = $("#new_user");
+  var url = form.attr("action");
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: form.serialize(),
+    success: function (data) {
+      if (data["response"] == "success") {
+        window.location = "/settings/users";
+      } else if (data["response"] == "user email exists!") {
+        alert("A user with this email already exists");
+      }
+    },
+  });
+});
+
+$(".edit-user").click(function (e) {
+  e.preventDefault();
+  var form = $("#edit_user");
+  var url = form.attr("action");
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: form.serialize(),
+    success: function (data) {
+      if (data["response"] == "success") {
+        window.location = "/settings/user/" + data["slug"];
+      } else if (
+        data["response"] == "there is a user with this email address!"
+      ) {
+        alert("There is a user with this email address!");
+      }
+    },
+  });
+});
+
 $(".save-group").click(function (e) {
   e.preventDefault();
   if ($("#select_app").val() == "default_option") {
@@ -938,11 +977,13 @@ $(".save-group").click(function (e) {
       url: url,
       data: form.serialize(),
       success: function (data) {
-        console.log(data);
         if (data["response"] == "group name exists!") {
           location.href = "/settings/edit_group/" + slug;
         } else if (data["response"] == "success") {
-          if ((current_href.toLowerCase().indexOf("settings/edit_group") >= 0) || (current_href.toLowerCase().indexOf("settings/new_group/") >= 0)){
+          if (
+            current_href.toLowerCase().indexOf("settings/edit_group") >= 0 ||
+            current_href.toLowerCase().indexOf("settings/new_group/") >= 0
+          ) {
             location.href = "/settings/group/" + slug;
           }
         }
@@ -978,6 +1019,16 @@ $(".save-new-group").click(function (e) {
 $(".select-group").click(function (e) {
   slug = $(this).attr("id");
   location.href = "/settings/group/" + slug;
+});
+
+$(".set-access").change(function (e) {
+  var group_id = $(this).val();
+  var module_id = $(this).attr("id");
+  console.log(group_id, module_id);
+  $.post("/settings/set-access", {
+    group: group_id,
+    module: module_id,
+  }).done(function (response) {});
 });
 
 $(".select-user").click(function (e) {
@@ -1235,39 +1286,62 @@ function displayAccess() {
   $("#users").removeClass("active");
 }
 
-$(".td_update_name_of_access_right").click(function () {
+var span_access_class;
+$(".th_accessName").click(function () {
   id_of_access_right = $(this).closest("tr").prop("id");
+  span_access_class = $(this).children("span").attr("class");
+  $(this).children("span").hide();
+  $(this).children("input").show();
+});
+
+var span_model_class;
+$(".update_model").click(function () {
+  id_of_access_right = $(this).closest("tr").prop("id");
+  span_model_class = $(this).children("span").attr("class");
   $(this).children("span").hide();
   $(this).children("input").show();
 });
 
 $(".update_model").click(function () {
   id_of_access_right = $(this).closest("tr").prop("id");
-  $(".sp_access_model").hide();
-  $(".dv_select_model").show();
+  $(this).children("span").hide();
+  $(this).children("div").show();
 });
+
+function insertAfter(referenceNode, newNode) {
+  referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
 
 $(".update_access_right_name").change(function () {
   name_of_access_right = $(this).val();
+  var input_id = $(this).attr("id");
+  var el = document.getElementById(input_id);
+
   $.post("/settings/access-right", {
     name: name_of_access_right,
     access: id_of_access_right,
   }).done(function (response) {
+    var span = document.createElement("span");
+    span.innerHTML = name_of_access_right;
+    span.className = span_access_class;
+    insertAfter(el, span);
     $(".update_access_right_name").hide();
-    $(".sp_name_of_access_right").show();
-    $(".sp_name_of_access_right").text(name_of_access_right);
   });
 });
 
 $(".select_model").change(function () {
   selected_model = $(this).val();
+  var div_id = $(this).closest("div").attr("id");
+  var el = document.getElementById(div_id);
   $.post("/settings/access-right", {
     access: id_of_access_right,
     model_id: selected_model,
   }).done(function (response) {
-    $(".dv_select_model").hide();
-    $(".sp_access_model").show();
-    $(".sp_access_model").text(response["model_name"]);
+    var span = document.createElement("span");
+    span.innerHTML = response["model_name"];
+    span.className = span_model_class;
+    insertAfter(el, span);
+    document.getElementById(div_id).style.display = "none";
   });
 });
 

@@ -1,63 +1,63 @@
 [
   {
     "id": 1,
-    "name": "Migrate SMS Gateway service to the AWS Cloud",
+    "name": "Office Design Project",
     "user_id": 1,
     "partner_id": 5,
-    "priority": "1",
+    "priority": "2",
     "stage_id": 1,
     "partner_email": "contact@intelli-messaging.com",
     "partner_phone": "+254712293878",
     "plan_id": 0,
     "partner_currency": "KES",
     "active": true,
-    "expected_revenue": "300,000"
+    "expected_revenue": "1,000,000"
   },
   {
     "id": 2,
-    "name": "A platform for real-time asset trading",
+    "name": "Quote for 150 office carpets",
     "user_id": 2,
     "partner_id": 6,
-    "priority": "2",
+    "priority": "1",
     "stage_id": 1,
     "partner_email": "info@akka.com",
     "partner_phone": "+254739944882",
     "plan_id": 0,
     "partner_currency": "KES",
     "active": true,
-    "expected_revenue": "1,200,000"
+    "expected_revenue": "400,000"
   },
   {
     "id": 3,
-    "name": "An enterprise collections software",
+    "name": "Quote for 12 office tables",
     "user_id": 3,
     "partner_id": 7,
-    "priority": "3",
+    "priority": "2",
     "stage_id": 1,
     "partner_email": "info@alexys.com",
     "partner_phone": "+254722624354",
     "plan_id": 0,
     "partner_currency": "KES",
     "active": true,
-    "expected_revenue": "2,100,000"
+    "expected_revenue": "700,000"
   },
   {
     "id": 4,
-    "name": "High-performance SMS broker",
+    "name": "Furniture for Intelli SMS",
     "user_id": 3,
     "partner_id": 8,
-    "priority": "2",
+    "priority": "3",
     "stage_id": 1,
     "partner_email": "info@intellisms.com",
     "partner_phone": "+254722624354",
     "plan_id": 0,
     "partner_currency": "KES",
     "active": true,
-    "expected_revenue": "1,000,000"
+    "expected_revenue": "3,000,000"
   },
   {
     "id": 5,
-    "name": "Online wallet for cryptocurrencies",
+    "name": "Scala-Fin: Quote for 600 office chairs",
     "user_id": 3,
     "partner_id": 9,
     "priority": "3",
@@ -67,11 +67,11 @@
     "plan_id": 0,
     "partner_currency": "KES",
     "active": true,
-    "expected_revenue": "2,000,000"
+    "expected_revenue": "2,500,000"
   },
   {
     "id": 6,
-    "name": "Re-design & Re-development of Tipser's website",
+    "name": "Tipper: 10 computer desks",
     "user_id": 3,
     "partner_id": 10,
     "priority": "1",
@@ -81,11 +81,11 @@
     "plan_id": 0,
     "partner_currency": "KES",
     "active": true,
-    "expected_revenue": "700,000"
+    "expected_revenue": "200,000"
   },
   {
     "id": 7,
-    "name": "Big data analytics system",
+    "name": "Spark: Office Redesign",
     "user_id": 3,
     "partner_id": 11,
     "priority": "3",
