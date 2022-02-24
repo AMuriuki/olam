@@ -39,9 +39,9 @@ babel = Babel()
 jsglue = JSGlue()
 cors = CORS()
 
-api_base = "http://127.0.0.1:5000"
-get_api_token = "http://127.0.0.1:5000/api/tokens"
-get_installed_modules_api = "http://127.0.0.1:5000/api/companies/"
+api_base = "https://olam-erp.com"
+get_api_token = "https://olam-erp.com/api/tokens"
+get_installed_modules_api = "https://olam-erp.com/api/companies/"
 
 
 def create_app(config_class=Config):
