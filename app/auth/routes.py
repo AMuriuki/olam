@@ -207,8 +207,8 @@ def get_models():
         for i in range(len(response_dict['items'])):
             exists = Model.query.filter_by(id=model['id']).first()
         if not exists:
-            model = Model(id=model['id'], name=model['name'],
-                          description=model['description'])
+            model = Model(id=response_dict['items'][i]['id'], name=response_dict['items'][i]['name'],
+                          description=response_dict['items'][i]['description'])
             model.generate_slug()
             db.session.add(model)
             db.session.commit()
