@@ -152,8 +152,9 @@ def set_password():
                         str(company_id) + '/modules'
                     get_installed_modules(link)
                     get_access_groups()
-                    get_access_rights()
                     set_admin_groups()
+                    get_models()
+                    get_access_rights()
                     return redirect(url_for('main.invite_colleagues'))
     return render_template('auth/set_password.html', title=_('Set Password | Olam ERP'), form=form)
 
