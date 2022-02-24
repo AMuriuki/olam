@@ -205,7 +205,7 @@ def get_models():
         response = requests.get(api_base+module.models_api)
         response_dict = json.loads(response.content)
         for i in range(len(response_dict['items'])):
-            exists = Model.query.filter_by(id=model['id']).first()
+            exists = Model.query.filter_by(id=response_dict['items'][i]['id']).first()
         if not exists:
             model = Model(id=response_dict['items'][i]['id'], name=response_dict['items'][i]['name'],
                           description=response_dict['items'][i]['description'])
