@@ -204,14 +204,16 @@ def get_models():
     for module in modules:
         response = requests.get(api_base+module.models_api)
         response_dict = json.loads(response.content)
+        print("!!!!")
+        print(response_dict['items'])
         for i in range(len(response_dict['items'])):
             exists = Model.query.filter_by(id=response_dict['items'][i]['id']).first()
-        if not exists:
-            model = Model(id=response_dict['items'][i]['id'], name=response_dict['items'][i]['name'],
-                          description=response_dict['items'][i]['description'])
-            model.generate_slug()
-            db.session.add(model)
-            db.session.commit()
+            if not exists:
+                model = Model(id=response_dict['items'][i]['id'], name=response_dict['items'][i]['name'],
+                            description=response_dict['items'][i]['description'])
+                model.generate_slug()
+                db.session.add(model)
+                db.session.commit()
 
 
 def get_access_rights():

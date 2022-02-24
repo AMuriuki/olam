@@ -48,12 +48,12 @@ def get_models():
         response_dict = json.loads(response.content)
         for i in range(len(response_dict['items'])):
             exists = Model.query.filter_by(id=response_dict['items'][i]['id']).first()
-        if not exists:
-            model = Model(id=response_dict['items'][i]['id'], name=response_dict['items'][i]['name'],
-                          description=response_dict['items'][i]['description'], module_id=response_dict['items'][i]['module_id'])
-            model.generate_slug()
-            db.session.add(model)
-            db.session.commit()
+            if not exists:
+                model = Model(id=response_dict['items'][i]['id'], name=response_dict['items'][i]['name'],
+                            description=response_dict['items'][i]['description'], module_id=response_dict['items'][i]['module_id'])
+                model.generate_slug()
+                db.session.add(model)
+                db.session.commit()
 
 
 def set_admin_groups():
