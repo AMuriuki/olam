@@ -15,7 +15,7 @@ from app import db, login_manager
 from app.search import add_to_index, remove_from_index, query_index
 from app.models import SearchableMixin, PaginatedAPIMixin, Task
 from flask_login import UserMixin, current_user
-from app.utils import unique_slug_generator
+from app.utils import has_access, unique_slug_generator
 from config import basedir
 import hashlib
 import enum
@@ -32,6 +32,12 @@ user_group = db.Table(
     db.Column('user_id', db.Integer, db.ForeignKey(
         'users.id'), primary_key=True),
     db.Column('group_id', db.String(128), db.ForeignKey('group.id'), primary_key=True))
+
+user_access = db.Table(
+    'UserAccess',
+    db.Column('user_id', db.Integer, db.ForeignKey(
+        'users.id'), primary_key=True),
+    db.Column('access_id', db.String(128), db.ForeignKey('access.id'), primary_key=True))
 
 
 USERTYPES = ["Internal User", "Public User", "Portal"]
@@ -65,17 +71,16 @@ class Users(UserMixin, PaginatedAPIMixin, db.Model):
     country_code = db.Column(db.String(10), index=True)
     groups = db.relationship(
         'Group', secondary=user_group, back_populates="users")
+    access = db.relationship(
+        'Access', secondary=user_access, back_populates="users")
     slug = db.Column(db.Text(), unique=True)
     user_type = db.Column(db.String(120), default="Internal User")
 
     def __repr__(self):
         return '<User {}>'.format(self.id)
 
-    def has_access(self, perm):
-        return self.groups is not None and self.role.has_permission(perm)
-
     def is_administrator(self):
-        return self.can(Permission.ADMIN)
+        return self.can(Permission.ADMINISTRATOR)
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -103,7 +108,41 @@ class Users(UserMixin, PaginatedAPIMixin, db.Model):
             {'activate': self.id},
             current_app.config['SECRET_KEY'], algorithm='HS256')
 
-    @staticmethod
+    def has_permission(self, perm):
+        group_permissions = [g.permission for g in self.groups]
+        if perm.value in group_permissions:
+            return True
+        else:
+            return False
+
+    def module_access(self, module_id):
+        access_groups = [
+            g.id for g in Group.query.filter_by(module_id=module_id)]
+        user_groups = [g.id for g in self.groups]
+        L1 = set(access_groups)
+        L2 = set(user_groups)
+        result = L1.intersection(L2)
+        return has_access(result)
+
+    def model_access(self, model_id):
+        access_groups = [g.id for g in Group.query.join(
+            Access, Group.rights).filter_by(model_id=model_id)]
+        user_groups = [g.id for g in self.groups]
+        L1 = set(access_groups)
+        L2 = set(user_groups)
+        result = L1.intersection(L2)
+        return has_access(result)
+
+    def create_access(self, model_id):
+        access_groups = [g.id for g in Group.query.join(
+            Access, Group.rights).filter_by(model_id=model_id).filter_by(create=True)]
+        user_groups = [g.id for g in self.groups]
+        L1 = set(access_groups)
+        L2 = set(user_groups)
+        result = L1.intersection(L2)
+        return has_access(result)
+
+    @ staticmethod
     def verify_reset_password_token(token):
         try:
             id = jwt.decode(token, current_app.config['SECRET_KEY'],
@@ -112,7 +151,7 @@ class Users(UserMixin, PaginatedAPIMixin, db.Model):
             return
         return Users.query.get(id)
 
-    @staticmethod
+    @ staticmethod
     def verify_token(token):
         try:
             id = jwt.decode(token, current_app.config['SECRET_KEY'],
@@ -121,7 +160,7 @@ class Users(UserMixin, PaginatedAPIMixin, db.Model):
             return
         return Users.query.get(id)
 
-    @staticmethod
+    @ staticmethod
     def verify_database_activation_token(token):
         try:
             id = jwt.decode(token, current_app.config['SECRET_KEY'],
@@ -168,7 +207,7 @@ class Users(UserMixin, PaginatedAPIMixin, db.Model):
     def revoke_token(self):
         self.token_expiration = datetime.now - timedelta(seconds=1)
 
-    @staticmethod
+    @ staticmethod
     def check_token(token):
         user = Users.query.filter_by(token=token).first()
         if user is None or user.token_expiration < datetime.now:
@@ -180,7 +219,7 @@ class Users(UserMixin, PaginatedAPIMixin, db.Model):
         self.slug = _slug
 
 
-@login_manager.user_loader
+@ login_manager.user_loader
 def load_user(id):
     return Users.query.get(int(id))
 
@@ -197,6 +236,8 @@ class Access(db.Model):
     create = db.Column(db.Boolean, default=False)
     delete = db.Column(db.Boolean, default=False)
     created_on = db.Column(db.DateTime, default=datetime.utcnow)
+    users = db.relationship(
+        'Users', secondary=user_access, back_populates="access")
 
     def generate_slug(self):
         _slug = unique_slug_generator(self)

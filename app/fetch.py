@@ -34,6 +34,7 @@ def get_access_rights():
             if not exists:
                 access = Access(id=response_dict['items'][i]['id'], name=response_dict['items'][i]['name'], model_id=response_dict['items'][i]['model_id'], read=response_dict['items']
                                 [i]['read'], write=response_dict['items'][i]['write'], create=response_dict['items'][i]['create'], delete=response_dict['items'][i]['delete'])
+                access.generate_slug()
                 db.session.add(access)
                 db.session.commit()
                 group.rights.append(access)
@@ -46,10 +47,10 @@ def get_models():
         response = requests.get(api_base+module.models_api)
         response_dict = json.loads(response.content)
         for i in range(len(response_dict['items'])):
-            exists = Model.query.filter_by(id=model['id']).first()
+            exists = Model.query.filter_by(id=response_dict['items'][i]['id']).first()
         if not exists:
-            model = Model(id=model['id'], name=model['name'],
-                          description=model['description'])
+            model = Model(id=response_dict['items'][i]['id'], name=response_dict['items'][i]['name'],
+                          description=response_dict['items'][i]['description'], module_id=response_dict['items'][i]['module_id'])
             model.generate_slug()
             db.session.add(model)
             db.session.commit()

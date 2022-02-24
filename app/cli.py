@@ -1,7 +1,7 @@
 import os
 import click
 from flask_migrate import upgrade
-from app.fetch import get_access_groups, set_admin_groups
+from app.fetch import get_access_groups, get_access_rights, get_models, set_admin_groups
 from app.tasks import dummy_data
 
 
@@ -21,6 +21,8 @@ def register(app):
         """Fetch from Olam API"""
         get_access_groups()
         set_admin_groups()
+        get_models()
+        get_access_rights()
 
 
     @translate.command()

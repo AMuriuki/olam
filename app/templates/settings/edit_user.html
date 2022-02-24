@@ -275,9 +275,11 @@
                         <a href="select-new-users" class="btn btn-m btn-secondary btn-block new-users">SELECT</a>
                         {% endif %}
                     </li>
+                    {% if current_user|can_create(1) %}
                     <li>
-                        <a href="{{url_for('settings.new_group')}}" class="btn btn-m btn-primary btn-block">CREATE</a>
+                        <a href="{{url_for('settings.create_user')}}" class="btn btn-m btn-primary btn-block">CREATE</a>
                     </li>
+                    {% endif %}
                     <li>
                         <a href="{{url_for('settings.manage_groups')}}" class="btn btn-outline-light"
                             data-dismiss="modal" aria-label="Close">CANCEL</a>

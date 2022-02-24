@@ -1,5 +1,6 @@
+from unittest import result
 from sqlalchemy.sql.elements import or_
-from app.auth.models.user import Group, Permission, Users
+from app.auth.models.user import Access, Group, Permission, Users
 from app.crm.models.crm_stage import Stage
 from app.main.models.country import Country
 from app.main.models.partner import Partner
@@ -10,6 +11,8 @@ from app import create_app, cli, db
 from app.main.models.module import Module
 from app.crm.models.crm_lead import Lead
 from flask_login import current_user
+
+from app.utils import has_access
 
 
 app = create_app()
@@ -159,12 +162,8 @@ def remove_hyphens(string):
         return None
 
 
-def has_access(a):
-    return len(a) > 0
-
-
 @app.template_filter()
-def can_view(module_id):
+def can_view_module(module_id):
     access_groups = [g.id for g in Group.query.filter_by(module_id=module_id)]
     user_groups = [g.id for g in current_user.groups]
     L1 = set(access_groups)
@@ -184,6 +183,33 @@ def has(user_id, group_id):
 
 
 @app.template_filter()
+def can_view_model(user, model_id):
+    access_groups = [g.id for g in Group.query.join(
+        Access, Group.rights).filter_by(model_id=model_id)]
+    user_groups = [g.id for g in user.groups]
+    L1 = set(access_groups)
+    L2 = set(user_groups)
+    result = L1.intersection(L2)
+    return has_access(result)
+
+
+@app.template_filter()
+def can_create(user, model_id):
+    access_groups = [g.id for g in Group.query.join(
+        Access, Group.rights).filter_by(model_id=model_id).filter_by(create=True)]
+    user_groups = [g.id for g in user.groups]
+    L1 = set(access_groups)
+    L2 = set(user_groups)
+    result = L1.intersection(L2)
+    return has_access(result)
+
+
+@app.template_filter()
 def permission(value):
     permission = Permission
     return permission(value).name
+
+
+@app.template_filter()
+def view_access(value):
+    pass

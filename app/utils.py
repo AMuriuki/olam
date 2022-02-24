@@ -52,3 +52,7 @@ def unique_slug_generator(instance, new_slug=None):
         new_slug = get_random_string(length=25)
         return unique_slug_generator(instance, new_slug=new_slug)
     return slug
+
+
+def has_access(a):
+    return len(a) > 0

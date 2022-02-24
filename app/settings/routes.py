@@ -6,11 +6,12 @@ from itsdangerous import json
 from sqlalchemy import log
 from app import db, api_base
 from app.auth.email import send_invite_email
+from app.decorators import can_create_access_required, module_access_required, model_access_required, permission_required
 from app.main.models.module import Model
 from app.main.models.partner import Partner
 from app.settings import bp
 from flask_login import login_required, current_user
-from flask import render_template, redirect, url_for, request, session, flash
+from flask import current_app, render_template, redirect, url_for, request, session, flash
 from app.settings.forms import InviteForm, NewGroup, NewUserForm
 from flask_babel import _, lazy_gettext as _l
 from app.auth.models.user import USERTYPES, Access, Permission, UserType, Users, Group
@@ -19,7 +20,8 @@ selected_groups = {}
 
 
 @bp.route("/get_models", methods=['GET', 'POST'])
-@ login_required
+@login_required
+@module_access_required(1)
 def get_models():
     if request.method == "POST":
         models = Model.to_collection_dict(Model.query.order_by('name'))
@@ -28,6 +30,7 @@ def get_models():
 
 @bp.route('/', methods=['GET', 'POST'])
 @login_required
+@module_access_required(1)
 def settings():
     form = InviteForm()
     pending_invitations = Users.query.filter_by(is_active=False).all()
@@ -36,6 +39,7 @@ def settings():
 
 @bp.route('/invite', methods=['GET', 'POST'])
 @login_required
+@module_access_required(1)
 def invite():
     form = InviteForm()
     user = Users.query.filter_by(id=current_user.get_id()).first()
@@ -59,6 +63,7 @@ def invite():
 
 @bp.route('/groups', methods=['GET', 'POST'])
 @login_required
+@module_access_required(1)
 def manage_groups():
     groups = Group.query.filter_by(is_active=True).all()
     return render_template("settings/groups.html", title=_('Groups | Olam ERP'), groups=groups)
@@ -66,6 +71,7 @@ def manage_groups():
 
 @bp.route('/new_group', methods=['GET', 'POST'])
 @login_required
+@module_access_required(1)
 def new_group():
     form = NewGroup()
     group = None
@@ -91,8 +97,9 @@ def new_group():
     return render_template("settings/new_group.html", title=_('New Group | Olam ERP'), group=group, form=form, models=models, permissions=permissions)
 
 
-@ bp.route('/new_group/<slug>', methods=['GET', 'POST'])
-@ login_required
+@bp.route('/new_group/<slug>', methods=['GET', 'POST'])
+@login_required
+@module_access_required(1)
 def newgroup(slug):
     form = NewGroup()
     group = Group.query.filter_by(slug=slug).first()
@@ -117,8 +124,9 @@ def newgroup(slug):
     return render_template("settings/new_group.html", group=group, title=_('New Group | Olam ERP'), group_members=group_members, slug=slug, form=form, models=models, access_rights=access_rights)
 
 
-@ bp.route("/settings/update/<slug>", methods=['GET', 'POST'])
-@ login_required
+@bp.route("/settings/update/<slug>", methods=['GET', 'POST'])
+@login_required
+@module_access_required(1)
 def update_group(slug):
     form = NewGroup()
     group = Group.query.filter_by(slug=slug).first()
@@ -137,8 +145,9 @@ def update_group(slug):
     return redirect(url_for('settings.group', slug=slug))
 
 
-@ bp.route('/group/<slug>', methods=['GET', 'POST'])
-@ login_required
+@bp.route('/group/<slug>', methods=['GET', 'POST'])
+@login_required
+@module_access_required(1)
 def group(slug):
     group = Group.query.filter_by(slug=slug).first()
     group_members = Users.query.join(Users.groups).filter_by(slug=slug)
@@ -149,8 +158,9 @@ def group(slug):
     return render_template("settings/group.html", group=group, title=_(str(group.name) + ' | Olam ERP'), group_members=group_members, slug=group.slug, access_rights=access_rights, models=models, page="group_members")
 
 
-@ bp.route('/select_users', methods=['GET', 'POST'])
-@ login_required
+@bp.route('/select_users', methods=['GET', 'POST'])
+@login_required
+@module_access_required(1)
 def select_users():
     if request.method == "POST":
         if "slug" in request.form:
@@ -169,8 +179,9 @@ def select_users():
     return jsonify({"response": "success", "slug": group.slug})
 
 
-@ bp.route('/discard/<slug>', methods=['GET', 'POST'])
-@ login_required
+@bp.route('/discard/<slug>', methods=['GET', 'POST'])
+@login_required
+@module_access_required(1)
 def discard_group(slug):
     group = Group.query.filter_by(slug=slug).first()
     db.session.delete(group)
@@ -178,8 +189,9 @@ def discard_group(slug):
     return redirect(url_for('settings.manage_groups'))
 
 
-@ bp.route('/delete-group', methods=['GET', 'POST'])
-@ login_required
+@bp.route('/delete-group', methods=['GET', 'POST'])
+@login_required
+@module_access_required(1)
 def delete_group():
     if request.method == "POST":
         selected = request.form.getlist(
@@ -191,8 +203,9 @@ def delete_group():
         return jsonify({"response": "success"})
 
 
-@ bp.route('/remove_user', methods=['GET', 'POST'])
-@ login_required
+@bp.route('/remove_user', methods=['GET', 'POST'])
+@login_required
+@module_access_required(1)
 def remove_user():
     if request.method == "POST":
         group = Group.query.filter_by(slug=request.form['slug']).first()
@@ -202,8 +215,9 @@ def remove_user():
         return jsonify({'response': 'success'})
 
 
-@ bp.route('/edit_group/<slug>', methods=['GET', 'POST'])
-@ login_required
+@bp.route('/edit_group/<slug>', methods=['GET', 'POST'])
+@login_required
+@module_access_required(1)
 def edit_group(slug):
     edit = True
     form = NewGroup()
@@ -215,8 +229,9 @@ def edit_group(slug):
     return render_template("settings/edit_group.html", group=group, title=_("Edit " + str(group.name) + " | Olam ERP"), form=form, group_members=group_members, slug=group.slug, edit=edit, access_rights=access_rights, models=models, permissions=permissions)
 
 
-@ bp.route('/access-right', methods=['GET', 'POST'])
-@ login_required
+@bp.route('/access-right', methods=['GET', 'POST'])
+@login_required
+@module_access_required(1)
 def new_access_right():
     if request.method == "POST":
         if "access" in request.form:
@@ -287,7 +302,8 @@ def new_access_right():
                     db.session.commit()
                 group = Group.query.filter_by(
                     slug=request.form['group']).first()
-                access = Access(id=uuid.uuid4(), name=request.form['access_name'], model_id=request.form['model'], read=read, write=write, create=create, delete=delete)
+                access = Access(id=uuid.uuid4(
+                ), name=request.form['access_name'], model_id=request.form['model'], read=read, write=write, create=create, delete=delete)
                 access.generate_slug()
                 db.session.add(access)
                 group.rights.append(access)
@@ -295,8 +311,9 @@ def new_access_right():
                 return jsonify({"response": "success", "access": access.id})
 
 
-@ bp.route('/remove_access_right', methods=['GET', 'POST'])
-@ login_required
+@bp.route('/remove_access_right', methods=['GET', 'POST'])
+@login_required
+@module_access_required(1)
 def remove_access_right():
     if request.method == "POST":
         group = Group.query.filter_by(slug=request.form['group']).first()
@@ -308,16 +325,18 @@ def remove_access_right():
         return jsonify({'response': 'success'})
 
 
-@ bp.route('/group/members/<slug>', methods=['GET', 'POST'])
-@ login_required
+@bp.route('/group/members/<slug>', methods=['GET', 'POST'])
+@login_required
+@module_access_required(1)
 def group_members(slug):
     group = Group.query.filter_by(slug=slug).first()
     group_members = Users.query.join(Users.groups).filter_by(slug=slug)
     return render_template("settings/group.html", group=group, title=_(str(group.name) + ' | Olam ERP'), group_members=group_members, slug=group.slug, page="group_members")
 
 
-@ bp.route('/group/rights/<slug>', methods=['GET', 'POST'])
-@ login_required
+@bp.route('/group/rights/<slug>', methods=['GET', 'POST'])
+@login_required
+@module_access_required(1)
 def group_rights(slug):
     group = Group.query.filter_by(slug=slug).first()
     access_rights = Access.query.join(Access.groups).filter_by(slug=slug)
@@ -326,19 +345,23 @@ def group_rights(slug):
 
 
 @bp.route("/users", methods=['GET', 'POST'])
-@ login_required
+@login_required
+@module_access_required(1)
+@model_access_required(1)
 def manage_users():
     users = Users.query.join(Partner).all()
     return render_template("settings/users.html", title=_("Users | Olam ERP"), users=users)
 
 
 @bp.route("/user/<slug>", methods=['GET', 'POST'])
-@ login_required
+@login_required
+@module_access_required(1)
 def user(slug):
     user = Users.query.filter_by(slug=slug).first()
     user_groups = user.groups
     users = Users.query.filter_by(is_archived=False).all()
     user_types = UserType
+
     for idx, _user in enumerate(users):
         if user.id == _user.id:
             current_index = idx
@@ -349,7 +372,8 @@ def user(slug):
 
 
 @bp.route("/edit/user/<slug>", methods=['GET', 'POST'])
-@ login_required
+@login_required
+@module_access_required(1)
 def edit_user(slug):
     edit = True
     user = Users.query.filter_by(slug=slug).first()
@@ -387,18 +411,20 @@ def edit_user(slug):
 
 @bp.route("/set-access", methods=['GET', 'POST'])
 @login_required
+@module_access_required(1)
 def set_acess():
     if request.method == "POST":
         module_id = request.form['module']
         group_id = request.form['group']
-        if group_id.isnumeric():
+        if group_id != '#':
             selected_groups[module_id] = group_id
-        print(selected_groups)
         return jsonify({"response": "success"})
 
 
 @bp.route("/new/user", methods=['GET', 'POST'])
-@ login_required
+@login_required
+@module_access_required(1)
+@can_create_access_required(1)
 def create_user():
     new_user = True
     user_types = UserType
@@ -434,7 +460,7 @@ def create_user():
 
 
 @bp.route("/apps", methods=['GET', 'POST'])
-@ login_required
+@login_required
 def get_apps():
     response = requests.get(
         api_base + '/api/module_categories')
@@ -443,3 +469,15 @@ def get_apps():
         api_base + '/api/apps')
     _response_dict = json.loads(_response.content)
     return render_template("settings/apps.html", title=_("Apps | Olam ERP"), categories=response_dict['items'], apps=_response_dict['items'])
+
+
+@bp.route("/re-send-invitation/<slug>", methods=['GET', 'POST'])
+@login_required
+@module_access_required(1)
+def resend_invitation(slug):
+    invited_by = Partner.query.filter_by(id=current_user.partner_id).first()
+    user = Users.query.filter_by(slug=slug).first()
+    partner = Partner.query.filter_by(id=user.partner_id).first()
+    send_invite_email(partner.id, invited_by.id)
+    flash(_("Invitation email sent"))
+    return redirect(url_for("settings.user", slug=slug))

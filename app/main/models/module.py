@@ -30,6 +30,9 @@ class Module(db.Model):
     usergroups = db.relationship('Group', backref='module', lazy='dynamic')
     user_groups_api = db.Column(db.Text)
     models_api = db.Column(db.Text)
+    url = db.Column(db.String(120))
+    models = db.relationship(
+        'Model', backref='module', lazy='dynamic')
 
 
 class ModuleCategory(db.Model):
@@ -44,6 +47,7 @@ class Model(PaginatedAPIMixin, db.Model):
     description = db.Column(db.String(128))
     accessrights = db.relationship('Access', backref='model', lazy='dynamic')
     slug = db.Column(db.Text(), unique=True)
+    module_id = db.Column(db.Integer, db.ForeignKey('module.id'))
 
     def generate_slug(self):
         _slug = unique_slug_generator(self)
