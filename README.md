@@ -24,7 +24,8 @@ $ python3 --version
 $ pip3 --version
 ```
 
-3. Dependencies 
+3. Dependencies
+
 Project dependencies are listed in the `requirements.txt` file located at the root of the `olamerp-tenant` directory
 > It is preferable to not to mix python modules packages within your system. You can use [virtualenv](https://pypi.python.org/pypi/virtualenv) to create isolated Python environments
 
@@ -37,17 +38,24 @@ $ pip install -r requirements.txt
 ```
 
 4. Redis
+
 Install the latest stable version of Redis from the `redislabs/redis` package repository. Add the repository to the apt index, update it and install:
 ```
 $ sudo add-apt-repository ppa:redislabs/redis
 $ sudo apt-get update
 $ sudo apt-get install redis
 ```
-Run the Redis Server with:
+Start the Redis Server with:
 ```
 $ redis-server
 ```
-
+Run an RQ Worker on seperate terminal window
+```
+$ cd /olamerp-tenant
+$ python3 -m venv venv
+$ . venv/bin/activate
+(venv) $ rq worker olam-tenant
+```
 
 5. Initialize Database
 
