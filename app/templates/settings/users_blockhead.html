@@ -61,13 +61,15 @@
                         <div class="dropdown-menu dropdown-menu-right">
                             <ul class="link-list-opt no-bdr">
                                 <li><a href="#"><span>Export</span></a></li>
-                                <li><a href="#"><span>Archive</span></a></li>
+                                {% if current_user|can_write(1) %}
+                                <li><a href="#" class="confirm-archive-users"><span>Archive</span></a></li>
                                 <li><a href="#"><span>Unarchive</span></a></li>
-                                <li><a href="#"><span>Delete</span></a></li>
+                                <li><a href="#" class="confirm-delete-users"><span>Delete</span></a></li>
                                 <li><a href="#"><span>Change Password</span></a></li>
                                 <li><a href="#"><span>Disbale 2FA</span></a></li>
                                 <li><a href="#"><span>Send Password Reset Instructions</span></a></li>
                                 <li><a href="#"><span>Invite to use 2FA</span></a></li>
+                                {% endif %}
                             </ul>
                         </div>
                     </div>
@@ -88,8 +90,16 @@
                                         By</span><em class="dd-indc icon ni ni-chevron-right"></em></a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <ul class="link-list-opt no-bdr">
-                                        <li><a href="#"><span>Internal User</span></a></li>
-                                        <li><a href="#"><span>Inactive Users</span></a></li>
+                                        {% for filter in filters %}
+                                        <li>
+                                            <a id="{{filter[0]}}" class="filter-users" href="#">
+                                                {% if filter_id == filter[0] %}
+                                                <em class="icon ni ni-check-thick"></em>
+                                                {% endif %}
+                                                <span>{{filter[1]}}</span>
+                                            </a>
+                                        </li>
+                                        {% endfor %}
                                     </ul>
                                 </div>
                             </div>

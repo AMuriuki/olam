@@ -8,9 +8,7 @@ from app.crm.models.crm_team import Team
 from app.main.models.module import Module
 from flask_babel import _, get_locale
 from app import db
-from app.auth.models.user import Users
 from app.main.models.partner import Partner
-from app.main.models.company import Company
 from sqlalchemy import log, or_
 from app.contacts.forms import TITLES, BasicCompanyInfoForm, BasicIndividualInfoForm
 from app.crm.forms import AddStage, BoardItemForm, NewRecurringPlanForm, EditStageForm, CreateSalesTeamForm

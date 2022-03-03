@@ -49,6 +49,27 @@ def get_calling_codes():
     return data
 
 
+def get_company():
+    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+    json_url = os.path.join(SITE_ROOT, "data", "company.json")
+    data = json.load(open(json_url))
+    return data
+
+
+def get_moduleCategories():
+    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+    json_url = os.path.join(SITE_ROOT, "data", "module_categories.json")
+    data = json.load(open(json_url))
+    return data
+
+
+def get_modules():
+    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+    json_url = os.path.join(SITE_ROOT, "data", "modules.json")
+    data = json.load(open(json_url))
+    return data
+
+
 def traverse_geoipdata(data):
     if 'ip' in data:
         ip_address = data['ip']

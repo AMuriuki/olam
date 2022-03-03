@@ -1,0 +1,46 @@
+[
+  {
+    "create": true,
+    "delete": true,
+    "id": "b2731b2a-baa5-428f-ad88-7789477028fb",
+    "links": {},
+    "model_id": 1,
+    "name": "Manage users",
+    "read": true,
+    "write": true,
+    "group_id": "e8e96379-887b-4d7b-b558-adde472c2f93"
+  },
+  {
+    "create": true,
+    "delete": true,
+    "id": "bcfae81c-0a01-4352-8225-2b7719733e96",
+    "links": {},
+    "model_id": 2,
+    "name": "Manage groups",
+    "read": true,
+    "write": true,
+    "group_id": "e8e96379-887b-4d7b-b558-adde472c2f93"
+  },
+  {
+    "create": false,
+    "delete": false,
+    "id": "2b42be7a-9570-4c73-a097-16dda1da1873",
+    "links": {},
+    "model_id": 1,
+    "name": "View users",
+    "read": true,
+    "write": false,
+    "group_id": "3b13fec1-8a40-4c34-b29b-36a6da1e9be1"
+  },
+  {
+    "create": false,
+    "delete": false,
+    "id": "6fd6baec-a689-4000-bdde-f923301ff8fe",
+    "links": {},
+    "model_id": 2,
+    "name": "View groups",
+    "read": true,
+    "write": false,
+    "group_id": "3b13fec1-8a40-4c34-b29b-36a6da1e9be1"
+  }
+]

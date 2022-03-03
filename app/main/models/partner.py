@@ -35,6 +35,7 @@ class Partner(db.Model):
         'Lead', backref='opportunity', lazy='dynamic')
     teams = db.relationship('Team', backref='lead', lazy='dynamic')
     slug = db.Column(db.Text(), unique=True)
+    is_archived = db.Column(db.Boolean, default=False)
 
     def generate_slug(self):
         _slug = unique_slug_generator(self)

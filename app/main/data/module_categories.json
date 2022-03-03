@@ -1,0 +1,10 @@
+[
+  {
+    "category_id": 1,
+    "category_name": "Administration"
+  },
+  {
+    "category_id": 2,
+    "category_name": "Sales"
+  }
+]

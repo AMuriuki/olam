@@ -21,6 +21,13 @@ import json
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
+def set_admin_groups():
+    groups = Group.query.filter_by(permission=3).all()
+    for group in groups:
+        group.users.append(current_user)
+        db.session.commit()
+
+
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -159,13 +166,6 @@ def set_password():
     return render_template('auth/set_password.html', title=_('Set Password | Olam ERP'), form=form)
 
 
-def set_admin_groups():
-    groups = Group.query.filter_by(permission=3).all()
-    for group in groups:
-        group.users.append(current_user)
-        db.session.commit()
-
-
 def get_installed_modules(link):
     response = requests.get(link)
     response_dict = json.loads(response.content)
@@ -177,8 +177,7 @@ def get_installed_modules(link):
                 id=response_dict['items'][i]['category_id'], name=response_dict['items'][i]['category_name'])
             db.session.add(module_category)
             db.session.commit()
-        module = Module(id=response_dict['items'][i]['id'], technical_name=response_dict['items'][i]['technical_name'], official_name=response_dict['items']
-                        [i]['official_name'], bp_name=response_dict['items'][i]['bp_name'], summary=response_dict['items'][i]['summary'], category_id=response_dict['items'][i]['category_id'], user_groups_api=response_dict['items'][i]['links']['access_groups'], models_api=response_dict['items'][i]['links']['models'])
+        module = Module(id=response_dict['items'][i]['id'], technical_name=response_dict['items'][i]['technical_name'], official_name=response_dict['items'][i]['official_name'], bp_name=response_dict['items'][i]['bp_name'], summary=response_dict['items'][i]['summary'], category_id=response_dict['items'][i]['category_id'], user_groups_api=response_dict['items'][i]['links']['access_groups'], models_api=response_dict['items'][i]['links']['models'], url=response_dict['items'][i]['url'])
         db.session.add(module)
         db.session.commit()
 
@@ -204,13 +203,12 @@ def get_models():
     for module in modules:
         response = requests.get(api_base+module.models_api)
         response_dict = json.loads(response.content)
-        print("!!!!")
-        print(response_dict['items'])
         for i in range(len(response_dict['items'])):
-            exists = Model.query.filter_by(id=response_dict['items'][i]['id']).first()
+            exists = Model.query.filter_by(
+                id=response_dict['items'][i]['id']).first()
             if not exists:
                 model = Model(id=response_dict['items'][i]['id'], name=response_dict['items'][i]['name'],
-                            description=response_dict['items'][i]['description'])
+                              description=response_dict['items'][i]['description'])
                 model.generate_slug()
                 db.session.add(model)
                 db.session.commit()

@@ -10,6 +10,8 @@ from app.main.models.module import Model, Module
 def get_access_groups():
     modules = Module.query.all()
     for module in modules:
+        print(module.user_groups_api)
+        print(api_base+module.user_groups_api)
         response = requests.get(api_base+module.user_groups_api)
         response_dict = json.loads(response.content)
         for i in range(len(response_dict['items'])):

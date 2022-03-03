@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "partner_id": 1,
+        "company_id": 1,
+        "is_active": true,
+        "password": "demo"
+    },
+    {
+        "id": 2,
+        "partner_id": 2,
+        "company_id": 1,
+        "is_active": true,
+        "password": "demo"
+    },
+    {
+        "id": 3,
+        "partner_id": 3,
+        "company_id": 1,
+        "is_active": true,
+        "password": "demo"
+    },
+    {
+        "id": 4,
+        "partner_id": 4,
+        "company_id": 1,
+        "is_active": true,
+        "password": "demo"
+    }
+]

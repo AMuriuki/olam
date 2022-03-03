@@ -205,6 +205,17 @@ def can_create(user, model_id):
 
 
 @app.template_filter()
+def can_write(user, model_id):
+    access_groups = [g.id for g in Group.query.join(
+        Access, Group.rights).filter_by(model_id=model_id).filter_by(write=True)]
+    user_groups = [g.id for g in user.groups]
+    L1 = set(access_groups)
+    L2 = set(user_groups)
+    result = L1.intersection(L2)
+    return has_access(result)
+
+
+@app.template_filter()
 def permission(value):
     permission = Permission
     return permission(value).name

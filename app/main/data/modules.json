@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "technical_name": "settings",
+    "official_name": "Olam ERP Settings",
+    "bp_name": "settings",
+    "summary": "Manage your Olam ERP settings",
+    "category_id": 1,
+    "user_groups_api": "/api/modules/1/access_groups",
+    "models_api": "/api/models?id=1",
+    "url": ""
+  },
+  {
+    "id": 2,
+    "technical_name": "crm",
+    "official_name": "Olam CRM",
+    "bp_name": "crm",
+    "summary": "Track leads and close opportunities",
+    "category_id": 2,
+    "user_groups_api": "/api/modules/2/access_groups",
+    "models_api": "/api/models?id=2",
+    "url": "https://www.olam-erp.com/app/crm"
+  },
+  {
+    "id": 3,
+    "technical_name": "contacts",
+    "official_name": "Olam Contacts",
+    "bp_name": "contacts",
+    "summary": "Successfully manage all your contacts",
+    "category_id": 1,
+    "user_groups_api": "/api/modules/3/access_groups",
+    "models_api": "/api/models?id=3",
+    "url": "https://www.olam-erp.com/app/contacts"
+  }
+]

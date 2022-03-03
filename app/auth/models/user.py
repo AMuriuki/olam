@@ -42,6 +42,11 @@ user_access = db.Table(
 
 USERTYPES = ["Internal User", "Public User", "Portal"]
 
+FILTERS = [
+    ('0', 'Internal Users'),
+    ('1', 'Inactive Users'),
+]
+
 
 class UserType(enum.Enum):
     IU = "Internal User"
@@ -136,6 +141,15 @@ class Users(UserMixin, PaginatedAPIMixin, db.Model):
     def create_access(self, model_id):
         access_groups = [g.id for g in Group.query.join(
             Access, Group.rights).filter_by(model_id=model_id).filter_by(create=True)]
+        user_groups = [g.id for g in self.groups]
+        L1 = set(access_groups)
+        L2 = set(user_groups)
+        result = L1.intersection(L2)
+        return has_access(result)
+
+    def write_access(self, model_id):
+        access_groups = [g.id for g in Group.query.join(
+            Access, Group.rights).filter_by(model_id=model_id).filter_by(write=True)]
         user_groups = [g.id for g in self.groups]
         L1 = set(access_groups)
         L2 = set(user_groups)

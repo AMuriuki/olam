@@ -6,7 +6,8 @@ from itsdangerous import json
 from sqlalchemy import log
 from app import db, api_base
 from app.auth.email import send_invite_email
-from app.decorators import can_create_access_required, module_access_required, model_access_required, permission_required
+from app.decorators import can_create_access_required, can_write_access_required, module_access_required, model_access_required, permission_required
+from app.helper_functions import set_default_user_groups
 from app.main.models.module import Model
 from app.main.models.partner import Partner
 from app.settings import bp
@@ -14,7 +15,7 @@ from flask_login import login_required, current_user
 from flask import current_app, render_template, redirect, url_for, request, session, flash
 from app.settings.forms import InviteForm, NewGroup, NewUserForm
 from flask_babel import _, lazy_gettext as _l
-from app.auth.models.user import USERTYPES, Access, Permission, UserType, Users, Group
+from app.auth.models.user import USERTYPES, Access, Permission, UserType, Users, Group, FILTERS
 
 selected_groups = {}
 
@@ -65,7 +66,8 @@ def invite():
 @login_required
 @module_access_required(1)
 def manage_groups():
-    groups = Group.query.filter_by(is_active=True).all()
+    groups = Group.query.filter_by(
+        is_active=True).order_by(Group.module_id).all()
     return render_template("settings/groups.html", title=_('Groups | Olam ERP'), groups=groups)
 
 
@@ -349,8 +351,94 @@ def group_rights(slug):
 @module_access_required(1)
 @model_access_required(1)
 def manage_users():
-    users = Users.query.join(Partner).all()
-    return render_template("settings/users.html", title=_("Users | Olam ERP"), users=users)
+    filters = FILTERS
+    filter_id = request.args.get('filter')
+    if filter_id:
+        if filter_id == "0":
+            users = Users.query.filter_by(is_active=True).filter_by(
+                is_archived=True).join(Partner).all()
+        elif filter_id == "1":
+            users = Users.query.filter_by(is_active=True).filter_by(
+                user_type="Internal User").join(Partner).all()
+    else:
+        users = Users.query.filter_by(is_active=True).join(Partner).all()
+    return render_template("settings/users.html", title=_("Users | Olam ERP"), users=users, filters=filters, filter_id=filter_id)
+
+
+@bp.route("/delete_users", methods=['GET', 'POST'])
+@login_required
+@module_access_required(1)
+@model_access_required(1)
+@can_write_access_required(1)
+def delete_users():
+    if request.method == "POST":
+        selected_users = request.form.getlist('selected_users[]')
+        for selected_user in selected_users:
+            user = Users.query.filter_by(id=int(selected_user)).first()
+            if user == current_user:
+                return jsonify({"response": "current user"})
+            else:
+                db.session.delete(user)
+                Partner.query.filter_by(id=user.partner_id).delete()
+                db.session.commit()
+                return jsonify({"response": "success"})
+
+
+@bp.route("/delete_user", methods=['GET', 'POST'])
+@login_required
+@module_access_required(1)
+@model_access_required(1)
+@can_write_access_required(1)
+def delete_user():
+    if request.method == "POST":
+        selected_user = request.form['selected_user']
+        user = Users.query.filter_by(slug=selected_user).first()
+        if user == current_user:
+            return jsonify({"response": "current user"})
+        else:
+            db.session.delete(user)
+            Partner.query.filter_by(id=user.partner_id).delete()
+            db.session.commit()
+            return jsonify({"response": "success"})
+
+
+@bp.route("/archive-users", methods=['GET', 'POST'])
+@login_required
+@module_access_required(1)
+@model_access_required(1)
+@can_write_access_required(1)
+def archive_users():
+    if request.method == "POST":
+        selected_users = request.form.getlist('selected_users[]')
+        for selected_user in selected_users:
+            user = Users.query.filter_by(id=int(selected_user)).first()
+            if user == current_user:
+                return jsonify({"response": "current user"})
+            else:
+                user.is_active = False
+                partner = Partner.query.filter_by(id=user.partner_id).first()
+                partner.is_active = False
+                db.session.commit()
+                return jsonify({"response": "success"})
+
+
+@bp.route("/archive_user", methods=['GET', 'POST'])
+@login_required
+@module_access_required(1)
+@model_access_required(1)
+@can_write_access_required(1)
+def archive_user():
+    if request.method == "POST":
+        selected_user = request.form['selected_user']
+        user = Users.query.filter_by(slug=selected_user).first()
+        if user == current_user:
+            return jsonify({"response": "current user"})
+        else:
+            user.is_active = False
+            partner = Partner.query.filter_by(id=user.partner_id).first()
+            partner.is_active = False
+            db.session.commit()
+            return jsonify({"response": "success"})
 
 
 @bp.route("/user/<slug>", methods=['GET', 'POST'])

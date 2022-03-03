@@ -1,47 +1,14 @@
 [
   {
+    "description": "Store authentication details for each user",
     "id": 1,
-    "name": "User",
-    "description": "Store authentication details for each user"
+    "module_id": 1,
+    "name": "User"
   },
   {
+    "description": "Stores user access groups.",
     "id": 2,
-    "name": "Lead/Opportunity",
-    "description": "Information about a sales prospect."
-  },
-  {
-    "id": 3,
-    "name": "Recurring Plan",
-    "description": "Stores information about a purchase plan"
-  },
-  {
-    "id": 4,
-    "name": "Sales Stage",
-    "description": "Configuration records that mark a prospects level of engagement with your sales team."
-  },
-  {
-    "id": 5,
-    "name": "Sales Team",
-    "description": "Records information about the department responsible for meeting the sales goals of your organization."
-  },
-  {
-    "id": 6,
-    "name": "Company",
-    "description": "Profiles your organizations."
-  },
-  {
-    "id": 7,
-    "name": "Contact",
-    "description": "Stores information about an individual person, or an organization."
-  },
-  {
-    "id": 8,
-    "name": "Group",
-    "description": "Stores information of the access groups."
-  },
-  {
-    "id": 9,
-    "name": "Module",
-    "description": "Store information of tenant's installed apps."
+    "module_id": 1,
+    "name": "Group"
   }
 ]

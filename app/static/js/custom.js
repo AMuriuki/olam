@@ -18,6 +18,7 @@ var read = false;
 var write = false;
 var create = false;
 var _delete = false;
+var filter;
 
 $(".edit-stage").click(function (e) {
   e.preventDefault();
@@ -384,7 +385,6 @@ $("#submit_new_stage").click(function (e) {
   add_stage();
 });
 
-var filter;
 $(".filter").click(function (e) {
   e.preventDefault();
   filter_id = this.id;
@@ -415,6 +415,12 @@ $(".filter").click(function (e) {
 });
 
 function filter_pipeline() {}
+
+$(".filter-users").click(function (e) {
+  e.preventDefault();
+  filter_id = $(this).attr("id");
+  window.location = "/settings/users?filter=" + filter_id;
+});
 
 // invite new user
 $("#frm_invite").submit(function (e) {
@@ -855,31 +861,56 @@ function update_priority(item_id, priority) {
     .fail(function () {});
 }
 
-$(".chk-user").change(function () {
+// $(".chk-user").change(function () {
+//   var user_id = $(this).attr("id");
+//   if (this.checked) {
+//     $(".select-user").addClass("btn-primary").removeClass("btn-secondary");
+//     $(".add-users").addClass("btn-primary").removeClass("btn-secondary");
+//     $(".new-users").addClass("btn-primary").removeClass("btn-secondary");
+//     selected = selected + 1;
+//     $(".selected").css("display", "block");
+//     $(".selected").text(selected + " selected");
+//     selectedUsers.push(user_id);
+//     console.log(selectedUsers)
+//   } else {
+//     const index = selectedUsers.indexOf(user_id);
+//     selectedUsers.splice(index);
+
+//     if (selected != 0) {
+//       selected = selected - 1;
+//       $(".selected").text(selected + " selected");
+//     } else {
+//       $(".selected").css("display", "none");
+//     }
+//     if ($(".chk-user").is(":checked")) {
+//     } else {
+//       $(".select-user").addClass("btn-secondary").removeClass("btn-primary");
+//       $(".add-users").addClass("btn-secondary").removeClass("btn-primary");
+//       $(".new-users").addClass("btn-secondary").removeClass("btn-primary");
+//     }
+//   }
+// });
+
+$(".chk_user").change(function (e) {
   var user_id = $(this).attr("id");
   if (this.checked) {
-    $(".select-user").addClass("btn-primary").removeClass("btn-secondary");
-    $(".add-users").addClass("btn-primary").removeClass("btn-secondary");
-    $(".new-users").addClass("btn-primary").removeClass("btn-secondary");
-    selected = selected + 1;
-    $(".selected").css("display", "block");
-    $(".selected").text(selected + " selected");
     selectedUsers.push(user_id);
+    selected = selected + 1;
+    $(".export").hide();
+    $(".selected-groups").show();
+    $(".li-actions").show();
+    $(".selected-groups").text(selected + " selected");
+    console.log(selectedUsers);
   } else {
     const index = selectedUsers.indexOf(user_id);
     selectedUsers.splice(index);
-
-    if (selected != 0) {
-      selected = selected - 1;
-      $(".selected").text(selected + " selected");
+    selected = selected - 1;
+    if (selected == 0) {
+      $(".export").show();
+      $(".selected-groups").hide();
+      $(".li-actions").hide();
     } else {
-      $(".selected").css("display", "none");
-    }
-    if ($(".chk-user").is(":checked")) {
-    } else {
-      $(".select-user").addClass("btn-secondary").removeClass("btn-primary");
-      $(".add-users").addClass("btn-secondary").removeClass("btn-primary");
-      $(".new-users").addClass("btn-secondary").removeClass("btn-primary");
+      $(".selected-groups").text(selected + " selected");
     }
   }
 });
@@ -895,6 +926,80 @@ function select_users() {
     });
   }
 }
+
+$(".confirm-delete-users").click(function (e) {
+  e.preventDefault();
+  $("#confirm-delete-users").modal("show");
+});
+
+$(".confirm-delete-user").click(function (e) {
+  slug = $(this).attr("id");
+  e.preventDefault();
+  $("#confirm-delete-user").modal("show");
+});
+
+$(".confirm-archive-users").click(function (e) {
+  e.preventDefault();
+  $("#confirm-archive-users").modal("show");
+});
+
+$(".confirm-archive-user").click(function (e) {
+  slug = $(this).attr("id");
+  e.preventDefault();
+  $("#confirm-archive-user").modal("show");
+});
+
+$(".delete-users").click(function (e) {
+  e.preventDefault();
+  $.post("/settings/delete_users", {
+    selected_users: selectedUsers,
+  }).done(function (response) {
+    if (response["response"] == "current user") {
+      alert("You cannot delete the user you're currently logged in as.");
+    } else if (response["response"] == "success") {
+      window.location.reload();
+    }
+  });
+});
+
+$(".delete-user").click(function (e) {
+  e.preventDefault();
+  $.post("/settings/delete_user", {
+    selected_user: slug,
+  }).done(function (response) {
+    if (response["response"] == "current user") {
+      alert("You cannot delete the user you're currently logged in as.");
+    } else if (response["response"] == "success") {
+      window.location.reload();
+    }
+  });
+});
+
+$(".archive-users").click(function (e) {
+  e.preventDefault();
+  $.post("/settings/archive-users", {
+    selected_users: selectedUsers,
+  }).done(function (response) {
+    if (response["response"] == "current user") {
+      alert("You cannot deactivate the user you're currently logged in as.");
+    } else if (response["response"] == "success") {
+      window.location.reload();
+    }
+  });
+});
+
+$(".archive-user").click(function (e) {
+  e.preventDefault();
+  $.post("/settings/archive_user", {
+    selected_user: slug,
+  }).done(function (response) {
+    if (response["response"] == "current user") {
+      alert("You cannot deactivate the user you're currently logged in as.");
+    } else if (response["response"] == "success") {
+      window.location.reload();
+    }
+  });
+});
 
 $(".add-users").click(function (e) {
   e.preventDefault();

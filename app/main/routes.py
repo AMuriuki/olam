@@ -1,3 +1,4 @@
+from app.helper_functions import set_default_user_groups
 from app.main.models.partner import Partner
 import os
 from app.auth.email import send_database_activation_email, send_invite_email
@@ -66,6 +67,7 @@ def invite_colleagues():
             user.generate_slug()
             db.session.add(user)
             db.session.commit()
+            set_default_user_groups(user)
             send_invite_email(partner.id, invited_by.id)
         if form.data['user2name'] and form.data['user2email']:
             partner = Partner(name=form.data['user2name'],
@@ -78,6 +80,7 @@ def invite_colleagues():
             user.generate_slug()
             db.session.add(user)
             db.session.commit()
+            set_default_user_groups(user)
             send_invite_email(partner.id, invited_by.id)
         if form.data['user3name'] and form.data['user3email']:
             partner = Partner(name=form.data['user3name'],
@@ -90,6 +93,7 @@ def invite_colleagues():
             user.generate_slug()
             db.session.add(user)
             db.session.commit()
+            set_default_user_groups(user)
             send_invite_email(partner.id, invited_by.id)
         return redirect(url_for('main.index'))
     return render_template('main/invite_colleagues.html', title=_('Invite Colleagues | Olam ERP'), form=form)

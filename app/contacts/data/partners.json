@@ -1,5 +1,41 @@
 [
   {
+    "id": 1,
+    "name": "Arnold Ndirangu",
+    "email": "arnold@tsh.com",
+    "phone_no": "+254708486068",
+    "is_active": true,
+    "company_id": 1,
+    "is_tenant": true
+  },
+  {
+    "id": 2,
+    "name": "Isabel Atieno",
+    "email": "isabel@tsh.com",
+    "phone_no": "+254708486069",
+    "is_active": true,
+    "company_id": 1,
+    "is_tenant": true
+  },
+  {
+    "id": 3,
+    "name": "Michael Mbagathi",
+    "email": "michael@tsh.com",
+    "phone_no": "+254708486010",
+    "is_active": true,
+    "company_id": 1,
+    "is_tenant": true
+  },
+  {
+    "id": 4,
+    "name": "Isaac Jambo",
+    "email": "isaac@tsh.com",
+    "phone_no": "+254708486010",
+    "is_active": true,
+    "company_id": 1,
+    "is_tenant": true
+  },
+  {
     "id": 5,
     "company_name": "Intelli Messaging",
     "email": "contact@intelli-messaging.com",

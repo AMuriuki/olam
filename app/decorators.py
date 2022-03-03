@@ -49,3 +49,14 @@ def can_create_access_required(model):
             return f(*args, **kwargs)
         return decorated_function
     return decorator
+
+
+def can_write_access_required(model):
+    def decorator(f):
+        @wraps(f)
+        def decorated_function(*args, **kwargs):
+            if current_user.write_access(model) == False:
+                abort(403)
+            return f(*args, **kwargs)
+        return decorated_function
+    return decorator
