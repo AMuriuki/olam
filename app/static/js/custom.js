@@ -19,6 +19,28 @@ var write = false;
 var create = false;
 var _delete = false;
 var filter;
+var selectedFilters = [];
+
+current_href = $(location).attr("href");
+
+if (current_href.toLowerCase().indexOf("contacts/view_contact") >= 0) {
+  if (
+    $("#select_country").val() !== "default_option" &&
+    $("#select_city").val() !== "default_option"
+  ) {
+    get_city(country);
+  }
+}
+
+if (current_href.toLowerCase().indexOf("settings/users") >= 0) {
+  var filters = document.getElementsByClassName("filter-users");
+  for (var i = 0, n = filters.length; i < n; i++) {
+    child = filters[i].children[0];
+    if ($(child).hasClass("ni-check-thick") == true) {
+      selectedFilters.push(filters[i].id);
+    }
+  }
+}
 
 $(".edit-stage").click(function (e) {
   e.preventDefault();
@@ -416,11 +438,43 @@ $(".filter").click(function (e) {
 
 function filter_pipeline() {}
 
+function hasClass(element, cls) {
+  return (" " + element.attr("class") + " ").indexOf(" " + cls + " ") > -1;
+}
+
 $(".filter-users").click(function (e) {
   e.preventDefault();
   filter_id = $(this).attr("id");
-  window.location = "/settings/users?filter=" + filter_id;
+  var filter_name = $(this).children("span").text();
+  if (hasClass($(this).children("em"), "ni-check-thick")) {
+    const index = selectedFilters.indexOf(filter_id);
+    selectedFilters.splice(index, 1);
+    $(this).children("em").removeClass("ni-check-thick");
+    var current_value = $("#search_users").val();
+    new_value = current_value.replace(filter_name + ",", "");
+    $("#search_users").val(new_value);
+    location.href = "/settings/users?filter=" + new_value;
+  } else {
+    selectedFilters.push(filter_id);
+    $(this).children("em").addClass("ni-check-thick");
+    var current_value = $("#search_users").val();
+    new_value = current_value + filter_name + ", ";
+    $("#search_users").val(new_value);
+    location.href = "/settings/users?filter=" + new_value;
+  }
 });
+
+function renderUsers(users) {
+  if (users.length > 10) {
+    slicedList = user.slice(0, 20);
+    for (var i = 0; i < slicedList.length; i++) {}
+  } else {
+    console.log(users, users["items"].length);
+    for (var i = 0; i < users["items"].length; i++) {
+      console.log(element);
+    }
+  }
+}
 
 // invite new user
 $("#frm_invite").submit(function (e) {
@@ -778,20 +832,6 @@ $("#select_country").change(function () {
   get_city(country);
 });
 
-current_href = $(location).attr("href");
-
-if (current_href.toLowerCase().indexOf("contacts/view_contact") >= 0) {
-  if (
-    $("#select_country").val() !== "default_option" &&
-    $("#select_city").val() !== "default_option"
-  ) {
-    console.log($("#select_country").val());
-    console.log($("#select_city").val());
-    country = $("#select_country").val();
-    get_city(country);
-  }
-}
-
 async function get_city(country) {
   const rawResponse = await fetch("/contacts/get_cities", {
     method: "POST",
@@ -860,36 +900,6 @@ function update_priority(item_id, priority) {
     .done(function (response) {})
     .fail(function () {});
 }
-
-// $(".chk-user").change(function () {
-//   var user_id = $(this).attr("id");
-//   if (this.checked) {
-//     $(".select-user").addClass("btn-primary").removeClass("btn-secondary");
-//     $(".add-users").addClass("btn-primary").removeClass("btn-secondary");
-//     $(".new-users").addClass("btn-primary").removeClass("btn-secondary");
-//     selected = selected + 1;
-//     $(".selected").css("display", "block");
-//     $(".selected").text(selected + " selected");
-//     selectedUsers.push(user_id);
-//     console.log(selectedUsers)
-//   } else {
-//     const index = selectedUsers.indexOf(user_id);
-//     selectedUsers.splice(index);
-
-//     if (selected != 0) {
-//       selected = selected - 1;
-//       $(".selected").text(selected + " selected");
-//     } else {
-//       $(".selected").css("display", "none");
-//     }
-//     if ($(".chk-user").is(":checked")) {
-//     } else {
-//       $(".select-user").addClass("btn-secondary").removeClass("btn-primary");
-//       $(".add-users").addClass("btn-secondary").removeClass("btn-primary");
-//       $(".new-users").addClass("btn-secondary").removeClass("btn-primary");
-//     }
-//   }
-// });
 
 $(".chk_user").change(function (e) {
   var user_id = $(this).attr("id");

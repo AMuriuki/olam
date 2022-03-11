@@ -1,4 +1,3 @@
-from crypt import methods
 import uuid
 import requests
 from flask.json import jsonify
@@ -6,7 +5,7 @@ from itsdangerous import json
 from sqlalchemy import log
 from app import db, api_base
 from app.auth.email import send_invite_email
-from app.decorators import can_create_access_required, can_write_access_required, module_access_required, model_access_required, permission_required
+from app.decorators import active_user_required, can_create_access_required, can_write_access_required, module_access_required, model_access_required
 from app.helper_functions import set_default_user_groups
 from app.main.models.module import Model
 from app.main.models.partner import Partner
@@ -22,6 +21,7 @@ selected_groups = {}
 
 @bp.route("/get_models", methods=['GET', 'POST'])
 @login_required
+@active_user_required
 @module_access_required(1)
 def get_models():
     if request.method == "POST":
@@ -31,6 +31,7 @@ def get_models():
 
 @bp.route('/', methods=['GET', 'POST'])
 @login_required
+@active_user_required
 @module_access_required(1)
 def settings():
     form = InviteForm()
@@ -40,6 +41,7 @@ def settings():
 
 @bp.route('/invite', methods=['GET', 'POST'])
 @login_required
+@active_user_required
 @module_access_required(1)
 def invite():
     form = InviteForm()
@@ -64,6 +66,7 @@ def invite():
 
 @bp.route('/groups', methods=['GET', 'POST'])
 @login_required
+@active_user_required
 @module_access_required(1)
 def manage_groups():
     groups = Group.query.filter_by(
@@ -73,6 +76,7 @@ def manage_groups():
 
 @bp.route('/new_group', methods=['GET', 'POST'])
 @login_required
+@active_user_required
 @module_access_required(1)
 def new_group():
     form = NewGroup()
@@ -101,6 +105,7 @@ def new_group():
 
 @bp.route('/new_group/<slug>', methods=['GET', 'POST'])
 @login_required
+@active_user_required
 @module_access_required(1)
 def newgroup(slug):
     form = NewGroup()
@@ -128,6 +133,7 @@ def newgroup(slug):
 
 @bp.route("/settings/update/<slug>", methods=['GET', 'POST'])
 @login_required
+@active_user_required
 @module_access_required(1)
 def update_group(slug):
     form = NewGroup()
@@ -149,6 +155,7 @@ def update_group(slug):
 
 @bp.route('/group/<slug>', methods=['GET', 'POST'])
 @login_required
+@active_user_required
 @module_access_required(1)
 def group(slug):
     group = Group.query.filter_by(slug=slug).first()
@@ -162,6 +169,7 @@ def group(slug):
 
 @bp.route('/select_users', methods=['GET', 'POST'])
 @login_required
+@active_user_required
 @module_access_required(1)
 def select_users():
     if request.method == "POST":
@@ -183,6 +191,7 @@ def select_users():
 
 @bp.route('/discard/<slug>', methods=['GET', 'POST'])
 @login_required
+@active_user_required
 @module_access_required(1)
 def discard_group(slug):
     group = Group.query.filter_by(slug=slug).first()
@@ -193,6 +202,7 @@ def discard_group(slug):
 
 @bp.route('/delete-group', methods=['GET', 'POST'])
 @login_required
+@active_user_required
 @module_access_required(1)
 def delete_group():
     if request.method == "POST":
@@ -207,6 +217,7 @@ def delete_group():
 
 @bp.route('/remove_user', methods=['GET', 'POST'])
 @login_required
+@active_user_required
 @module_access_required(1)
 def remove_user():
     if request.method == "POST":
@@ -219,6 +230,7 @@ def remove_user():
 
 @bp.route('/edit_group/<slug>', methods=['GET', 'POST'])
 @login_required
+@active_user_required
 @module_access_required(1)
 def edit_group(slug):
     edit = True
@@ -233,6 +245,7 @@ def edit_group(slug):
 
 @bp.route('/access-right', methods=['GET', 'POST'])
 @login_required
+@active_user_required
 @module_access_required(1)
 def new_access_right():
     if request.method == "POST":
@@ -315,6 +328,7 @@ def new_access_right():
 
 @bp.route('/remove_access_right', methods=['GET', 'POST'])
 @login_required
+@active_user_required
 @module_access_required(1)
 def remove_access_right():
     if request.method == "POST":
@@ -329,6 +343,7 @@ def remove_access_right():
 
 @bp.route('/group/members/<slug>', methods=['GET', 'POST'])
 @login_required
+@active_user_required
 @module_access_required(1)
 def group_members(slug):
     group = Group.query.filter_by(slug=slug).first()
@@ -338,6 +353,7 @@ def group_members(slug):
 
 @bp.route('/group/rights/<slug>', methods=['GET', 'POST'])
 @login_required
+@active_user_required
 @module_access_required(1)
 def group_rights(slug):
     group = Group.query.filter_by(slug=slug).first()
@@ -348,21 +364,26 @@ def group_rights(slug):
 
 @bp.route("/users", methods=['GET', 'POST'])
 @login_required
+@active_user_required
 @module_access_required(1)
 @model_access_required(1)
 def manage_users():
     filters = FILTERS
-    filter_id = request.args.get('filter')
-    if filter_id:
-        if filter_id == "0":
-            users = Users.query.filter_by(is_active=True).filter_by(
-                is_archived=True).join(Partner).all()
-        elif filter_id == "1":
-            users = Users.query.filter_by(is_active=True).filter_by(
-                user_type="Internal User").join(Partner).all()
+    qs = Users.query.filter_by(is_active=True)
+    selectedFilters = request.args.get('filter')
+    print(selectedFilters)
+    if selectedFilters:
+        if "Internal Users" in selectedFilters:
+            qs = qs.filter_by(user_type="Internal Users")
+        else:
+            qs = qs.filter(Users.user_type != "Internal Users")
+        if "Inactive Users":
+            qs = qs.filter_by(is_archived=True)   
     else:
-        users = Users.query.filter_by(is_active=True).join(Partner).all()
-    return render_template("settings/users.html", title=_("Users | Olam ERP"), users=users, filters=filters, filter_id=filter_id)
+        qs = qs.filter_by(user_type="Internal Users").filter_by(is_archived=False)
+        selectedFilters = "Internal Users,"  
+    users = qs.join(Partner).all()
+    return render_template("settings/users.html", title=_("Users | Olam ERP"), users=users, filters=filters, selectedFilters=selectedFilters)
 
 
 @bp.route("/delete_users", methods=['GET', 'POST'])
@@ -370,6 +391,7 @@ def manage_users():
 @module_access_required(1)
 @model_access_required(1)
 @can_write_access_required(1)
+@active_user_required
 def delete_users():
     if request.method == "POST":
         selected_users = request.form.getlist('selected_users[]')
@@ -389,6 +411,7 @@ def delete_users():
 @module_access_required(1)
 @model_access_required(1)
 @can_write_access_required(1)
+@active_user_required
 def delete_user():
     if request.method == "POST":
         selected_user = request.form['selected_user']
@@ -407,6 +430,7 @@ def delete_user():
 @module_access_required(1)
 @model_access_required(1)
 @can_write_access_required(1)
+@active_user_required
 def archive_users():
     if request.method == "POST":
         selected_users = request.form.getlist('selected_users[]')
@@ -415,9 +439,9 @@ def archive_users():
             if user == current_user:
                 return jsonify({"response": "current user"})
             else:
-                user.is_active = False
+                user.is_archived = True
                 partner = Partner.query.filter_by(id=user.partner_id).first()
-                partner.is_active = False
+                partner.is_archived = True
                 db.session.commit()
                 return jsonify({"response": "success"})
 
@@ -427,6 +451,7 @@ def archive_users():
 @module_access_required(1)
 @model_access_required(1)
 @can_write_access_required(1)
+@active_user_required
 def archive_user():
     if request.method == "POST":
         selected_user = request.form['selected_user']
@@ -434,9 +459,9 @@ def archive_user():
         if user == current_user:
             return jsonify({"response": "current user"})
         else:
-            user.is_active = False
+            user.is_archived = True
             partner = Partner.query.filter_by(id=user.partner_id).first()
-            partner.is_active = False
+            partner.is_archived = True
             db.session.commit()
             return jsonify({"response": "success"})
 
@@ -444,6 +469,7 @@ def archive_user():
 @bp.route("/user/<slug>", methods=['GET', 'POST'])
 @login_required
 @module_access_required(1)
+@active_user_required
 def user(slug):
     user = Users.query.filter_by(slug=slug).first()
     user_groups = user.groups
@@ -462,6 +488,7 @@ def user(slug):
 @bp.route("/edit/user/<slug>", methods=['GET', 'POST'])
 @login_required
 @module_access_required(1)
+@active_user_required
 def edit_user(slug):
     edit = True
     user = Users.query.filter_by(slug=slug).first()
@@ -500,6 +527,7 @@ def edit_user(slug):
 @bp.route("/set-access", methods=['GET', 'POST'])
 @login_required
 @module_access_required(1)
+@active_user_required
 def set_acess():
     if request.method == "POST":
         module_id = request.form['module']
@@ -513,6 +541,7 @@ def set_acess():
 @login_required
 @module_access_required(1)
 @can_create_access_required(1)
+@active_user_required
 def create_user():
     new_user = True
     user_types = UserType
@@ -549,6 +578,7 @@ def create_user():
 
 @bp.route("/apps", methods=['GET', 'POST'])
 @login_required
+@active_user_required
 def get_apps():
     response = requests.get(
         api_base + '/api/module_categories')
@@ -562,6 +592,7 @@ def get_apps():
 @bp.route("/re-send-invitation/<slug>", methods=['GET', 'POST'])
 @login_required
 @module_access_required(1)
+@active_user_required
 def resend_invitation(slug):
     invited_by = Partner.query.filter_by(id=current_user.partner_id).first()
     user = Users.query.filter_by(slug=slug).first()

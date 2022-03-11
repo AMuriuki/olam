@@ -93,7 +93,7 @@
                                         {% for filter in filters %}
                                         <li>
                                             <a id="{{filter[0]}}" class="filter-users" href="#">
-                                                {% if filter_id == filter[0] %}
+                                                {% if filter[1]|contains(selectedFilters) %}
                                                 <em class="icon ni ni-check-thick"></em>
                                                 {% endif %}
                                                 <span>{{filter[1]}}</span>

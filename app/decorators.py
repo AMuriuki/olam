@@ -1,10 +1,6 @@
 from functools import wraps
-from flask import abort, request
-from flask_login import current_user
-from app.auth.models.user import Permission
-from app import create_app, current_app
-
-app = create_app()
+from flask import abort
+from flask_login import current_user, logout_user
 
 
 def permission_required(permission):
@@ -60,3 +56,13 @@ def can_write_access_required(model):
             return f(*args, **kwargs)
         return decorated_function
     return decorator
+
+
+def active_user_required(func):
+    @wraps(func)
+    def decorated_function(*args, **kwargs):
+        if current_user.is_archived == True:
+            logout_user()
+            abort(403)
+        return func(*args, **kwargs)
+    return decorated_function

@@ -5,10 +5,26 @@
     .btn-trigger+.dropdown-menu-right, .btn-trigger+.dropdown-menu-left{
         margin: 5rem 0 !important;
     }
+
+    .nk-search-box{
+        margin-top: 0rem !important;
+        margin-bottom: 1.25rem !important;
+    }
 </style>
 <div class="nk-content-body">
     <div class="nk-content-wrap">
         {% include "settings/users_blockhead.html" %}
+        <div class="nk-search-box">
+            <div class="form-group">
+                <div class="form-control-wrap">
+                    <input id="search_users" type="text" class="form-control form-control-lg"
+                        placeholder="Search..." value="{{selectedFilters}}">
+                    <button class="form-icon form-icon-right">
+                        <em class="icon ni ni-search"></em>
+                    </button>
+                </div>
+            </div>
+        </div>
         <div class="nk-block">
             <div class="card card-preview">
                 <div class="card-inner">
@@ -27,7 +43,7 @@
                                 <th class="nk-tb-col nk-tb-col-tools text-right"></th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="tbody_usersList">
                             {% for user in users %}
                             <tr id="{{user.slug}}" class="nk-tb-item">
                                 <td class="nk-tb-col nk-tb-col-check">

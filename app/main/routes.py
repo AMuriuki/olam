@@ -23,34 +23,40 @@ from config import basedir
 from flask_login import login_user, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from urllib.parse import urlparse
+from app.decorators import active_user_required
 
 
 @bp.route('/', methods=['GET', 'POST'])
 @login_required
+@active_user_required
 def home():
     return redirect(url_for('main.index'))
 
 
 @bp.route('/home', methods=['GET', 'POST'])
 @login_required
+@active_user_required
 def index():
     return render_template('main/index.html', title=_('My Apps | Olam ERP'))
 
 
-@ bp.route('/dashboard')
-@ login_required
+@bp.route('/dashboard')
+@login_required
+@active_user_required
 def dashboard():
     return render_template('main/dashboard.html', title=_('Dashboard | Olam ERP'))
 
 
-@ bp.route('/all-apps', methods=['GET', 'POST'])
-@ login_required
+@bp.route('/all-apps', methods=['GET', 'POST'])
+@login_required
+@active_user_required
 def all_apps():
     return render_template('main/apps.html', title=_('All Apps | Olam ERP'))
 
 
-@ bp.route('/invite_colleagues', methods=['GET', 'POST'])
+@bp.route('/invite_colleagues', methods=['GET', 'POST'])
 @login_required
+@active_user_required
 def invite_colleagues():
     form = InviteForm()
     user = Users.query.filter_by(id=current_user.get_id()).first()

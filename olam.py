@@ -216,6 +216,12 @@ def can_write(user, model_id):
 
 
 @app.template_filter()
+def contains(filter, selected):
+    if filter in selected:
+        return True
+
+
+@app.template_filter()
 def permission(value):
     permission = Permission
     return permission(value).name

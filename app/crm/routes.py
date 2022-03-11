@@ -5,6 +5,7 @@ from app.crm.models.crm_lead import FILTERS, Lead
 from app.crm.models.crm_recurring_plan import RecurringPlan
 from app.crm.models.crm_stage import Stage
 from app.crm.models.crm_team import Team
+from app.decorators import active_user_required
 from app.main.models.module import Module
 from flask_babel import _, get_locale
 from app import db
@@ -15,8 +16,9 @@ from app.crm.forms import AddStage, BoardItemForm, NewRecurringPlanForm, EditSta
 from app.main.models.country import Country
 
 
-@login_required
 @bp.route('/edit_stage', methods=['GET', 'POST'])
+@login_required
+@active_user_required
 def edit_stage():
     stage = Stage.query.filter_by(id=request.form['stage_id']).first()
     stage.name = request.form['stage_name']
@@ -25,6 +27,7 @@ def edit_stage():
 
 
 @login_required
+@active_user_required
 @bp.route('/delete_stage', methods=['GET', 'POST'])
 def delete_stage():
     stage = Stage.query.filter_by(id=request.form['stage_id']).first()
@@ -34,6 +37,7 @@ def delete_stage():
 
 
 @login_required
+@active_user_required
 @bp.route('/move_stage_forward', methods=['GET', 'POST'])
 def move_stage_forward():
     current_stage = Stage.query.filter_by(id=request.form['stage_id']).first()
@@ -52,6 +56,7 @@ def move_stage_forward():
 
 
 @login_required
+@active_user_required
 @bp.route('/move_stage_behind', methods=['GET', 'POST'])
 def move_stage_behind():
     current_stage = Stage.query.filter_by(id=request.form['stage_id']).first()
@@ -70,6 +75,7 @@ def move_stage_behind():
 
 
 @login_required
+@active_user_required
 @bp.route('/update_item', methods=['GET', 'POST'])
 def update_item():
     opportunity = Lead.query.filter_by(id=request.form['item_id']).first()
@@ -79,6 +85,7 @@ def update_item():
 
 
 @login_required
+@active_user_required
 @bp.route('/get_partner_details', methods=['GET', 'POST'])
 def get_partner_details():
     partner = Partner.query.filter_by(id=request.form['partner_id']).first()
@@ -86,6 +93,7 @@ def get_partner_details():
 
 
 @login_required
+@active_user_required
 @bp.route('/selected_priority', methods=['GET', 'POST'])
 def select_priority():
     session['selected_priority'] = request.form['selected_priority']
@@ -93,6 +101,7 @@ def select_priority():
 
 
 @login_required
+@active_user_required
 @bp.route('/pipeline_stage', methods=['GET', 'POST'])
 def pipeline_stage():
     session['pipeline_stage'] = request.form['pipeline_stage']
@@ -100,6 +109,7 @@ def pipeline_stage():
 
 
 @login_required
+@active_user_required
 @bp.route('/new_company_contact', methods=['GET', 'POST'])
 def new_company_contact():
     form1 = BasicCompanyInfoForm()
@@ -113,6 +123,7 @@ def new_company_contact():
 
 
 @login_required
+@active_user_required
 @bp.route('/new_individual_contact', methods=['GET', 'POST'])
 def new_individual_contact():
     form2 = BasicIndividualInfoForm()
@@ -126,6 +137,7 @@ def new_individual_contact():
 
 
 @login_required
+@active_user_required
 @bp.route('/new_recurring_plan', methods=['GET', 'POST'])
 def new_recurring_plan():
     form4 = NewRecurringPlanForm()
@@ -140,6 +152,7 @@ def new_recurring_plan():
 
 @bp.route('/', methods=['GET', 'POST'])
 @login_required
+@active_user_required
 def pipeline():
     form1 = BasicCompanyInfoForm()
     form2 = BasicIndividualInfoForm()
@@ -147,8 +160,6 @@ def pipeline():
     form4 = NewRecurringPlanForm()
     form5 = EditStageForm()
     form6 = AddStage()
-
-    
 
     pipeline = Lead.query.filter_by(
         user_id=current_user.get_id()).order_by(Lead.priority.desc()).all()
@@ -187,18 +198,21 @@ def pipeline():
 
 @bp.route('/pipeline', methods=['GET', 'POST'])
 @login_required
+@active_user_required
 def empty():
     return render_template('crm/pipeline.html', title=_('CRM Pipeline | Olam ERP'))
 
 
 @bp.route('/sales', methods=['GET', 'POST'])
 @login_required
+@active_user_required
 def sales():
     pass
 
 
 @bp.route('/sales_team', methods=['GET', 'POST'])
 @login_required
+@active_user_required
 def sales_teams():
     sales_teams = Team.query.join(Partner).all()
     for sales_team in sales_teams:
@@ -208,6 +222,7 @@ def sales_teams():
 
 @bp.route('/sales_team/<token>', methods=['GET', 'POST'])
 @login_required
+@active_user_required
 def sales_team(token):
     sales_team = Team.query.filter_by(token=token).join(Partner).first()
     return render_template('crm/sales_team.html', title=_(sales_team.name + ' | Olam ERP'), sales_team=sales_team)
@@ -215,6 +230,7 @@ def sales_team(token):
 
 @bp.route('/create_team', methods=['GET', 'POST'])
 @login_required
+@active_user_required
 def create_team():
     form = CreateSalesTeamForm()
     partners = Partner.query.filter_by(is_tenant=True).all()
@@ -230,16 +246,20 @@ def create_team():
 
 @bp.route('/reporting', methods=['GET', 'POST'])
 @login_required
+@active_user_required
 def reporting():
     pass
 
 
 @bp.route('/configuration', methods=['GET', 'POST'])
 @login_required
+@active_user_required
 def configuration():
     pass
 
 
+@login_required
+@active_user_required
 @bp.route('/lead/<slug>', methods=['GET', 'POST'])
 def lead(slug):
     edit = False
@@ -247,6 +267,8 @@ def lead(slug):
     return render_template("crm/opportunity.html", title=_(lead.name + ' | Olam ERP'), lead=lead, slug=slug, edit=edit)
 
 
+@login_required
+@active_user_required
 @bp.route('/edit/lead/<slug>', methods=['GET', 'POST'])
 def edit_lead(slug):
     edit = True
@@ -254,6 +276,8 @@ def edit_lead(slug):
     return render_template("crm/opportunity.html", title=_(lead.name + ' | Olam ERP'), lead=lead, edit=edit, slug=slug)
 
 
+@login_required
+@active_user_required
 @bp.route('/move_stage/<slug>/<stage_id>', methods=['GET', 'POST'])
 def move_stage(slug, stage_id):
     lead = Lead.query.filter_by(slug=slug).first()

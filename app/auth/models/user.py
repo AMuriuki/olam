@@ -79,7 +79,7 @@ class Users(UserMixin, PaginatedAPIMixin, db.Model):
     access = db.relationship(
         'Access', secondary=user_access, back_populates="users")
     slug = db.Column(db.Text(), unique=True)
-    user_type = db.Column(db.String(120), default="Internal User")
+    user_type = db.Column(db.String(120), default="Internal Users")
 
     def __repr__(self):
         return '<User {}>'.format(self.id)
@@ -184,19 +184,20 @@ class Users(UserMixin, PaginatedAPIMixin, db.Model):
         return Users.query.get(id)
 
     def to_dict(self, include_email=False):
+        partner = Partner.query.filter_by(id=self.partner_id).first()
         data = {
             'id': self.id,
-            'token': self.name,
+            'token': self.token,
             'token_expiration': self.token_expiration,
             'company_id': self.company_id,
             'is_active': self.is_active,
-            'name': self.name,
+            'is_archived': self.is_archived,
             'last_seen': self.last_seen.isoformat() + 'Z',
             'registered_on': self.registered_on.isoformat() + 'Z',
             'is_staff': self.is_staff,
-            '_links': {
-                'self': url_for('api.get_user', id=self.id)
-            }
+            'partner_name': partner.name,
+            'company': self.company.name,
+            'slug': self.slug
         }
         if include_email:
             data['email'] = self.email
