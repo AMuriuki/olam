@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "name": "Kenya", 
+        "leader": 2,
+        "module_id": 2
+    },
+    {
+        "id": 2,
+        "name": "Uganda", 
+        "leader": 3,
+        "module_id": 2
+    },
+    {
+        "id": 3,
+        "name": "Tanzania", 
+        "leader": 4,
+        "module_id": 2
+    }
+]

@@ -108,7 +108,7 @@
                                     <tbody>
                                         {% for user in group_members %}
                                         <tr>
-                                            <th scope="row">{{user.id|partner_name}}</th>
+                                            <th scope="row">{{user.id|get_user_name}}</th>
                                             <td>{{ moment(user.last_seen).format('LLL')}}</td>
                                             <td>
                                                 <a id="{{group.slug}}.{{user.id}}" href="remove-user"
@@ -258,7 +258,7 @@
                                 <tr class="nk-tb-item">
                                     <td class="nk-tb-col nk-tb-col-check">
                                         <div class="custom-control custom-control-sm custom-checkbox notext">
-                                            <input type="checkbox" class="custom-control-input chk-user"
+                                            <input type="checkbox" class="custom-control-input chk_user"
                                                 id="{{user.id}}">
                                             <label class="custom-control-label" for="{{user.id}}"></label>
                                         </div>

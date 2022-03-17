@@ -1,3 +1,4 @@
+from calendar import c
 from unittest import result
 from sqlalchemy.sql.elements import or_
 from app.auth.models.user import Access, Group, Permission, Users
@@ -31,6 +32,27 @@ def inject_modules():
         return dict(modules=modules)
     else:
         return dict(modules="")
+
+
+@app.context_processor
+def inject_companies():
+    companies = Partner.query.filter_by(is_company=True).all()
+    if companies:
+        return dict(companies=companies)
+    else:
+        return dict(companies="")
+
+
+@app.context_processor
+def inject_currencies():
+    query = db.session.query(
+        Country.currency_alphabetic_code.distinct().label("currency_alphabetic_code")).order_by(
+        'currency_alphabetic_code')
+    currencies = [row.currency_alphabetic_code for row in query.all()]
+    if currencies:
+        return dict(currencies=currencies)
+    else:
+        return dict(currencies="")
 
 
 @app.context_processor
@@ -208,6 +230,17 @@ def can_create(user, model_id):
 def can_write(user, model_id):
     access_groups = [g.id for g in Group.query.join(
         Access, Group.rights).filter_by(model_id=model_id).filter_by(write=True)]
+    user_groups = [g.id for g in user.groups]
+    L1 = set(access_groups)
+    L2 = set(user_groups)
+    result = L1.intersection(L2)
+    return has_access(result)
+
+
+@app.template_filter()
+def can_delete(user, model_id):
+    access_groups = [g.id for g in Group.query.join(
+        Access, Group.rights).filter_by(model_id=model_id).filter_by(delete=True)]
     user_groups = [g.id for g in user.groups]
     L1 = set(access_groups)
     L2 = set(user_groups)

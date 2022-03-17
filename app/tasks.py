@@ -20,7 +20,8 @@ from app.models import Task
 from app import create_app, db
 from werkzeug.security import generate_password_hash
 
-from app.settings.utils import get_accessGroups, get_accessRights
+from app.settings.utils import get_accessGroups, get_accessGroupsRights, get_accessRights
+
 
 app = create_app()
 app.app_context().push()
@@ -266,6 +267,7 @@ def dummy_data():
 
         # access rights
         access_rights = get_accessRights()
+        assosciations = get_accessGroupsRights()
         for access_right in access_rights:
             exists = Access.query.filter_by(id=access_right['id']).first()
             if not exists:
@@ -273,10 +275,12 @@ def dummy_data():
                                 read=access_right['read'], write=access_right['write'], create=access_right['create'], delete=access_right['delete'])
                 db.session.add(access)
                 db.session.commit()
+                item = next(
+                    item for item in assosciations if item['access_id'] == access.id)
                 group = Group.query.filter_by(
-                    id=access_right['group_id']).first()
+                    id=item['group_id']).first()
                 group.rights.append(access)
-            db.session.commit()
+                db.session.commit()
 
         # opportunities
         opportunities = get_opportunities()

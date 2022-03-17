@@ -7,7 +7,8 @@ from app import db, api_base
 from app.auth.email import send_invite_email
 from app.decorators import active_user_required, can_create_access_required, can_write_access_required, module_access_required, model_access_required
 from app.helper_functions import set_default_user_groups
-from app.main.models.module import Model
+from app.main.models.country import Country
+from app.main.models.module import Model, Module
 from app.main.models.partner import Partner
 from app.settings import bp
 from flask_login import login_required, current_user
@@ -17,6 +18,11 @@ from flask_babel import _, lazy_gettext as _l
 from app.auth.models.user import USERTYPES, Access, Permission, UserType, Users, Group, FILTERS
 
 selected_groups = {}
+
+def removekey(d, key):
+    r = dict(d)
+    del r[key]
+    return r
 
 
 @bp.route("/get_models", methods=['GET', 'POST'])
@@ -78,6 +84,7 @@ def manage_groups():
 @login_required
 @active_user_required
 @module_access_required(1)
+@can_create_access_required(2)
 def new_group():
     form = NewGroup()
     group = None
@@ -135,6 +142,7 @@ def newgroup(slug):
 @login_required
 @active_user_required
 @module_access_required(1)
+@can_write_access_required(2)
 def update_group(slug):
     form = NewGroup()
     group = Group.query.filter_by(slug=slug).first()
@@ -171,6 +179,7 @@ def group(slug):
 @login_required
 @active_user_required
 @module_access_required(1)
+@can_write_access_required(1)
 def select_users():
     if request.method == "POST":
         if "slug" in request.form:
@@ -232,6 +241,7 @@ def remove_user():
 @login_required
 @active_user_required
 @module_access_required(1)
+@can_write_access_required(2)
 def edit_group(slug):
     edit = True
     form = NewGroup()
@@ -247,6 +257,7 @@ def edit_group(slug):
 @login_required
 @active_user_required
 @module_access_required(1)
+@can_write_access_required(4)
 def new_access_right():
     if request.method == "POST":
         if "access" in request.form:
@@ -371,17 +382,22 @@ def manage_users():
     filters = FILTERS
     qs = Users.query.filter_by(is_active=True)
     selectedFilters = request.args.get('filter')
-    print(selectedFilters)
     if selectedFilters:
-        if "Internal Users" in selectedFilters:
-            qs = qs.filter_by(user_type="Internal Users")
+        if "All Users" in selectedFilters:
+            qs = qs
         else:
-            qs = qs.filter(Users.user_type != "Internal Users")
-        if "Inactive Users":
-            qs = qs.filter_by(is_archived=True)   
+            if "Internal Users" in selectedFilters:
+                qs = qs.filter_by(user_type="Internal Users")
+            else:
+                qs = qs.filter(Users.user_type != "Internal Users")
+            if "Inactive Users" in selectedFilters:
+                qs = qs.filter_by(is_archived=True)
+            else:
+                qs = qs.filter_by(is_archived=False)
     else:
-        qs = qs.filter_by(user_type="Internal Users").filter_by(is_archived=False)
-        selectedFilters = "Internal Users,"  
+        qs = qs.filter_by(user_type="Internal Users").filter_by(
+            is_archived=False)
+        selectedFilters = "Internal Users,"
     users = qs.join(Partner).all()
     return render_template("settings/users.html", title=_("Users | Olam ERP"), users=users, filters=filters, selectedFilters=selectedFilters)
 
@@ -443,7 +459,7 @@ def archive_users():
                 partner = Partner.query.filter_by(id=user.partner_id).first()
                 partner.is_archived = True
                 db.session.commit()
-                return jsonify({"response": "success"})
+        return jsonify({"response": "success"})
 
 
 @bp.route("/archive_user", methods=['GET', 'POST'])
@@ -464,6 +480,41 @@ def archive_user():
             partner.is_archived = True
             db.session.commit()
             return jsonify({"response": "success"})
+
+
+@bp.route("/unarchive-users", methods=['GET', 'POST'])
+@login_required
+@module_access_required(1)
+@model_access_required(1)
+@can_write_access_required(1)
+@active_user_required
+def unarchive_users():
+    if request.method == "POST":
+        selected_users = request.form.getlist('selected_users[]')
+        for selected_user in selected_users:
+            user = Users.query.filter_by(id=int(selected_user)).first()
+            user.is_archived = False
+            partner = Partner.query.filter_by(id=user.partner_id).first()
+            partner.is_archived = False
+            db.session.commit()
+        return jsonify({"response": "success"})
+
+
+@bp.route("/unarchive_user", methods=['GET', 'POST'])
+@login_required
+@module_access_required(1)
+@model_access_required(1)
+@can_write_access_required(1)
+@active_user_required
+def unarchive_user():
+    if request.method == "POST":
+        selected_user = request.form['selected_user']
+        user = Users.query.filter_by(slug=selected_user).first()
+        user.is_archived = False
+        partner = Partner.query.filter_by(id=user.partner_id).first()
+        partner.is_archived = False
+        db.session.commit()
+        return jsonify({"response": "success"})
 
 
 @bp.route("/user/<slug>", methods=['GET', 'POST'])
@@ -497,6 +548,12 @@ def edit_user(slug):
     user_types = UserType
     groups = Group.query.filter_by(is_active=True).all()
     form = NewUserForm()
+    modules = Module.query.all()
+    
+    user_groups = [g.id for g in current_user.groups]
+    for module, group in zip(modules, user_groups):
+        selected_groups[module.id] = group
+        print(selected_groups)
     for idx, _user in enumerate(users):
         if user.id == _user.id:
             current_index = idx
@@ -514,6 +571,8 @@ def edit_user(slug):
             partner.company_id = current_user.company_id
             partner.is_tenant = True
             db.session.commit()
+            print("!!!!!")
+            print(selected_groups)
             group_ids = list(selected_groups.values())
             for group_id in group_ids:
                 group = Group.query.filter_by(id=group_id).first()
@@ -534,6 +593,9 @@ def set_acess():
         group_id = request.form['group']
         if group_id != '#':
             selected_groups[module_id] = group_id
+        else:
+            if module_id in selected_groups:
+                removekey(selected_groups, module_id)
         return jsonify({"response": "success"})
 
 
@@ -542,6 +604,7 @@ def set_acess():
 @module_access_required(1)
 @can_create_access_required(1)
 @active_user_required
+@model_access_required(1)
 def create_user():
     new_user = True
     user_types = UserType
@@ -600,3 +663,30 @@ def resend_invitation(slug):
     send_invite_email(partner.id, invited_by.id)
     flash(_("Invitation email sent"))
     return redirect(url_for("settings.user", slug=slug))
+
+
+@bp.route('/user/profile', methods=['GET', 'POST'])
+@login_required
+@module_access_required(1)
+@active_user_required
+def user_profile():
+    user = current_user
+    partner = Partner.query.filter_by(id=user.partner_id).first()
+    countries = Country.query.order_by('name').all()
+    return render_template("settings/profile.html", title=_("Profile | Olam ERP"), user=user, partner=partner, countries=countries)
+
+
+@bp.route('/user/security', methods=['GET', 'POST'])
+@login_required
+@module_access_required(1)
+@active_user_required
+def user_security():
+    return render_template("settings/user_security.html", title=_("Security | Olam ERP"))
+
+
+@bp.route('/user/notifications', methods=['GET', 'POST'])
+@login_required
+@module_access_required(1)
+@active_user_required
+def user_notifications():
+    return render_template("settings/user_notification.html", title=_("Security | Olam ERP"))

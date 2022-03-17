@@ -407,31 +407,40 @@ $("#submit_new_stage").click(function (e) {
   add_stage();
 });
 
-$(".filter").click(function (e) {
+$(".filter-pipeline").click(function (e) {
   e.preventDefault();
-  filter_id = this.id;
-  filter = $("#spn_filter-" + filter_id).text();
-  var filters;
-  if ($(this).hasClass("selected")) {
-    $(this).removeClass("selected");
-    $("#chk_" + filter_id).hide();
-    if ($("#search_pipeline").val()) {
-      filters = $("#search_pipeline").val();
-      var _filters = filters.replace(filter + ",", "");
-      $("#search_pipeline").val(_filters);
-      filter_pipeline(_filters);
+  filter_id = $(this).attr("id");
+  var filter_name = $(this).children("span").text();
+  if (hasClass($(this).children("em"), "ni-check-thick")) {
+    const index = selectedFilters.indexOf(filter_id);
+    selectedFilters.splice(index, 1);
+    $(this).children("em").removeClass("ni-check-thick");
+    var current_value = $("#search_pipeline").val();
+    if (current_value == "All") {
+      new_value = current_value.replace("All" + ",", "");
+    } else {
+      new_value = current_value.replace(filter_name + ",", "");
+    }
+    $("#search_pipeline").val(new_value);
+    if (new_value) {
+      location.href = "/crm?filter=" + new_value;
+    } else {
+      location.href = "/crm?filter=" + "All";
     }
   } else {
-    $(this).addClass("selected");
-    $("#chk_" + filter_id).show();
-    if ($("#search_pipeline").val()) {
-      filters = $("#search_pipeline").val();
-      $("#search_pipeline").val();
-      $("#search_pipeline").val(filters + filter + ",");
-      filter_pipeline(filters + filter);
+    selectedFilters.push(filter_id);
+    $(this).children("em").addClass("ni-check-thick");
+    var current_value = $("#search_pipeline").val();
+    if (current_value == "All") {
+      new_value = current_value.replace("All", filter_name + ", ");
     } else {
-      $("#search_pipeline").val(filter + ",");
-      filter_pipeline(filter);
+      new_value = current_value + filter_name + ", ";
+    }
+    $("#search_pipeline").val(new_value);
+    if (new_value) {
+      location.href = "/crm?filter=" + new_value;
+    } else {
+      location.href = "/crm?filter=" + "All";
     }
   }
 });
@@ -446,21 +455,39 @@ $(".filter-users").click(function (e) {
   e.preventDefault();
   filter_id = $(this).attr("id");
   var filter_name = $(this).children("span").text();
+
   if (hasClass($(this).children("em"), "ni-check-thick")) {
     const index = selectedFilters.indexOf(filter_id);
     selectedFilters.splice(index, 1);
     $(this).children("em").removeClass("ni-check-thick");
     var current_value = $("#search_users").val();
-    new_value = current_value.replace(filter_name + ",", "");
+    if (current_value == "All Users") {
+      new_value = current_value.replace("All Users" + ",", "");
+    } else {
+      new_value = current_value.replace(filter_name + ",", "");
+    }
     $("#search_users").val(new_value);
-    location.href = "/settings/users?filter=" + new_value;
+    if (new_value) {
+      location.href = "/settings/users?filter=" + new_value;
+    } else {
+      location.href = "/settings/users?filter=" + "All Users";
+    }
   } else {
     selectedFilters.push(filter_id);
     $(this).children("em").addClass("ni-check-thick");
     var current_value = $("#search_users").val();
-    new_value = current_value + filter_name + ", ";
+    if (current_value == "All Users") {
+      new_value = current_value.replace("All Users", filter_name + ", ");
+    } else {
+      new_value = current_value + filter_name + ", ";
+    }
+
     $("#search_users").val(new_value);
-    location.href = "/settings/users?filter=" + new_value;
+    if (new_value) {
+      location.href = "/settings/users?filter=" + new_value;
+    } else {
+      location.href = "/settings/users?filter=" + "All Users";
+    }
   }
 });
 
@@ -526,8 +553,6 @@ $(document).ready(function () {
     $(".dv-module").removeAttr("href");
     $(".dv-module").css("cursor", "pointer");
   }
-
-  $("#search_pipeline").val("My Pipeline,");
 });
 
 $("#btnUsers").on("click", function () {
@@ -1006,6 +1031,29 @@ $(".archive-user").click(function (e) {
     if (response["response"] == "current user") {
       alert("You cannot deactivate the user you're currently logged in as.");
     } else if (response["response"] == "success") {
+      window.location.reload();
+    }
+  });
+});
+
+$(".unarchive-users").click(function (e) {
+  e.preventDefault();
+  $.post("/settings/unarchive-users", {
+    selected_users: selectedUsers,
+  }).done(function (response) {
+    if (response["response"] == "success") {
+      window.location.reload();
+    }
+  });
+});
+
+$(".unarchive-user").click(function (e) {
+  e.preventDefault();
+  slug = $(this).attr("id").split("unarchive.")[1];
+  $.post("/settings/unarchive_user", {
+    selected_user: slug,
+  }).done(function (response) {
+    if (response["response"] == "success") {
       window.location.reload();
     }
   });

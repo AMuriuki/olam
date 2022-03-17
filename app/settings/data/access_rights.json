@@ -1,46 +1,83 @@
 [
   {
-    "create": true,
-    "delete": true,
     "id": "b2731b2a-baa5-428f-ad88-7789477028fb",
-    "links": {},
-    "model_id": 1,
     "name": "Manage users",
-    "read": true,
-    "write": true,
-    "group_id": "e8e96379-887b-4d7b-b558-adde472c2f93"
-  },
-  {
-    "create": true,
-    "delete": true,
-    "id": "bcfae81c-0a01-4352-8225-2b7719733e96",
-    "links": {},
-    "model_id": 2,
-    "name": "Manage groups",
-    "read": true,
-    "write": true,
-    "group_id": "e8e96379-887b-4d7b-b558-adde472c2f93"
-  },
-  {
-    "create": false,
-    "delete": false,
-    "id": "2b42be7a-9570-4c73-a097-16dda1da1873",
-    "links": {},
     "model_id": 1,
-    "name": "View users",
     "read": true,
-    "write": false,
-    "group_id": "3b13fec1-8a40-4c34-b29b-36a6da1e9be1"
+    "write": true,
+    "create": true,
+    "delete": true
   },
   {
-    "create": false,
-    "delete": false,
-    "id": "6fd6baec-a689-4000-bdde-f923301ff8fe",
-    "links": {},
-    "model_id": 2,
-    "name": "View groups",
+    "id": "2b42be7a-9570-4c73-a097-16dda1da1873",
+    "name": "View users",
+    "model_id": 1,
     "read": true,
     "write": false,
-    "group_id": "3b13fec1-8a40-4c34-b29b-36a6da1e9be1"
+    "create": false,
+    "delete": false
+  },
+  {
+    "id": "bcfae81c-0a01-4352-8225-2b7719733e96",
+    "name": "Manage groups",
+    "model_id": 2,
+    "read": true,
+    "write": true,
+    "create": true,
+    "delete": true
+  },
+  {
+    "id": "92015e49-73cf-42f5-a49a-92b20b529547",
+    "name": "Manage access records",
+    "model_id": 4,
+    "read": true,
+    "write": true,
+    "create": true,
+    "delete": true
+  },
+  {
+    "id": "6fd6baec-a689-4000-bdde-f923301ff8fe",
+    "name": "View groups",
+    "model_id": 2,
+    "read": true,
+    "write": false,
+    "create": false,
+    "delete": false
+  },
+  {
+    "id": "9926182d-f006-4a41-8e36-daa95e6b6fb6",
+    "name": "Manage Contacts",
+    "model_id": 3,
+    "read": true,
+    "write": true,
+    "create": true,
+    "delete": true
+  },
+  {
+    "id": "62183702-bce3-4bf0-a670-4defa492623e",
+    "name": "View Contacts",
+    "model_id": 3,
+    "read": true,
+    "write": false,
+    "create": false,
+    "delete": false
+  },
+  {
+    "id": "87ab0d9e-6eeb-4408-9b73-daf96feb9526",
+    "name": "Manage Leads",
+    "model_id": 5,
+    "read": true,
+    "write": true,
+    "create": true,
+    "delete": true
+  },
+  {
+    "id": "d096daba-59e4-4f5d-81f8-b7bd1d27fbfd",
+    "name": "Manage Pipeline",
+    "model_id": 5,
+    "read": true,
+    "write": true,
+    "create": true,
+    "delete": false
   }
 ]

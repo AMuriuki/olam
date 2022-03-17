@@ -1,3 +1,4 @@
+from email.policy import default
 from enum import unique
 from operator import index
 from app import db, current_app
@@ -16,18 +17,15 @@ AVAILABLE_PRIORITIES = [
 ]
 
 FILTERS = [
-    ('0', 'My Pipeline'),
-    ('1', 'Unassigned'),
-    ('2', 'Open Opportunities'),
-    ('3', 'Lost Opportunities'),
-    ('4', 'Won Opportunities'),
+    ('M', 'My Pipeline'),
+    ('U', 'Unassigned')
 ]
 
 
 class Lead(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), index=True, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), default=None)
     company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
     plan_id = db.Column(db.Integer, db.ForeignKey('recurring_plan.id'))
     referred_by = db.Column(db.String(120))

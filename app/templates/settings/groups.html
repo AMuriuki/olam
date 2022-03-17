@@ -51,10 +51,12 @@
                                                         <li><a href="#"><em
                                                                     class="icon ni ni-download"></em><span>Export</span></a>
                                                         </li>
+                                                        {% if current_user|can_delete(2) %}
                                                         <li><a id="{{group.id}}" href="delete-group"
                                                                 class="_delete-group"><em
                                                                     class="icon ni ni-delete"></em><span>Delete</span></a>
                                                         </li>
+                                                        {% endif %}
                                                     </ul>
                                                 </div>
                                             </div>

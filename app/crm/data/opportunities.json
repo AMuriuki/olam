@@ -96,5 +96,19 @@
     "partner_currency": "KES",
     "active": true,
     "expected_revenue": "2,500,000"
+  },
+  {
+    "id": 8,
+    "name": "Access Freight: Furniture for their office",
+    "user_id": 4,
+    "partner_id": 13,
+    "priority": "3",
+    "stage_id": 2,
+    "partner_email": "info@spark.com",
+    "partner_phone": "+254725349549",
+    "plan_id": 0,
+    "partner_currency": "KES",
+    "active": true,
+    "expected_revenue": "3,500,000"
   }
 ]

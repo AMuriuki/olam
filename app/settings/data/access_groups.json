@@ -1,65 +1,65 @@
 [
   {
     "id": "e8e96379-887b-4d7b-b558-adde472c2f93",
+    "name": "Administrator",
     "access_rights_url": "/api/access_groups/e8e96379-887b-4d7b-b558-adde472c2f93/access_rights",
     "module_id": 1,
+    "permission": 3
+  },
+  {
+    "id": "306aef03-7f21-43c8-8431-f00181135d05",
     "name": "Administrator",
+    "access_rights_url": "/api/access_groups/306aef03-7f21-43c8-8431-f00181135d05/access_rights",
+    "module_id": 2,
+    "permission": 3
+  },
+  {
+    "id": "8a10dcf6-954d-485e-959a-93eb3c63a2b2",
+    "access_rights_url": "/api/access_groups/8a10dcf6-954d-485e-959a-93eb3c63a2b2/access_rights",
+    "name": "Administrator",
+    "module_id": 3,
     "permission": 3
   },
   {
     "id": "3b13fec1-8a40-4c34-b29b-36a6da1e9be1",
     "access_rights_url": "/api/access_groups/3b13fec1-8a40-4c34-b29b-36a6da1e9be1/access_rights",
-    "module_id": 1,
     "name": "Manager",
+    "module_id": 1,
     "permission": 2
   },
   {
     "id": "001277dc-8768-42fc-884c-b6a9567f0bf1",
     "access_rights_url": "/api/access_groups/001277dc-8768-42fc-884c-b6a9567f0bf1/access_rights",
-    "module_id": 1,
     "name": "User",
+    "module_id": 1,
     "permission": 1
-  },
-  {
-    "id": "306aef03-7f21-43c8-8431-f00181135d05",
-    "access_rights_url": "/api/access_groups/306aef03-7f21-43c8-8431-f00181135d05/access_rights",
-    "module_id": 2,
-    "name": "Administrator",
-    "permission": 3
   },
   {
     "id": "950f2df6-64bf-4a99-8659-6abba655e8d5",
     "access_rights_url": "/api/access_groups/950f2df6-64bf-4a99-8659-6abba655e8d5/access_rights",
-    "module_id": 2,
     "name": "Manager",
+    "module_id": 2,
     "permission": 2
   },
   {
-    "id": "8090c8ad-c8c3-457c-bb1e-0a03f853072e",
-    "access_rights_url": "/api/access_groups/8090c8ad-c8c3-457c-bb1e-0a03f853072e/access_rights",
-    "module_id": 2,
+    "id": "885d0c81-f058-426e-bf43-e661386976ea",
+    "access_rights_url": "/api/access_groups/885d0c81-f058-426e-bf43-e661386976ea/access_rights",
+    "name": "Manager",
+    "module_id": 3,
+    "permission": 2
+  },
+  {
+    "id": "d8e22748-0eb3-4352-a0b0-164a3627df27",
+    "access_rights_url": "/api/access_groups/d8e22748-0eb3-4352-a0b0-164a3627df27/access_rights",
     "name": "User",
+    "module_id": 2,
     "permission": 1
   },
   {
-    "id": "8a10dcf6-954d-485e-959a-93eb3c63a2b2",
-    "access_rights_url": "/api/access_groups/8a10dcf6-954d-485e-959a-93eb3c63a2b2/access_rights",
-    "module_id": 3,
-    "name": "Administrator",
-    "permission": 3
-  },
-  {
-    "id": "4a6f473f-0435-45b0-86aa-d7266a5021ed",
-    "access_rights_url": "/api/access_groups/4a6f473f-0435-45b0-86aa-d7266a5021ed/access_rights",
-    "module_id": 3,
-    "name": "Manager",
-    "permission": 2
-  },
-  {
-    "id": "8a5c9d1d-ddd7-4da6-9d57-724c23c16599",
-    "access_rights_url": "/api/access_groups/8a5c9d1d-ddd7-4da6-9d57-724c23c16599/access_rights",
-    "module_id": 3,
+    "id": "457fae5d-eecd-4b4f-98c5-519fb3317ee1",
+    "access_rights_url": "/api/access_groups/457fae5d-eecd-4b4f-98c5-519fb3317ee1/access_rights",
     "name": "User",
+    "module_id": 3,
     "permission": 1
   }
 ]

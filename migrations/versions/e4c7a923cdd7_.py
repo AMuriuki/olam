@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 0517a276cfc3
+Revision ID: e4c7a923cdd7
 Revises: 
-Create Date: 2022-02-16 11:56:15.464642
+Create Date: 2022-03-15 13:42:21.991459
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '0517a276cfc3'
+revision = 'e4c7a923cdd7'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -46,29 +46,18 @@ def upgrade():
     with op.batch_alter_table('database', schema=None) as batch_op:
         batch_op.create_index(batch_op.f('ix_database_name'), ['name'], unique=False)
 
-    op.create_table('model',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(length=128), nullable=True),
-    sa.Column('description', sa.String(length=128), nullable=True),
-    sa.Column('slug', sa.Text(), nullable=True),
-    sa.PrimaryKeyConstraint('id', name=op.f('pk_model')),
-    sa.UniqueConstraint('slug', name=op.f('uq_model_slug'))
-    )
-    with op.batch_alter_table('model', schema=None) as batch_op:
-        batch_op.create_index(batch_op.f('ix_model_name'), ['name'], unique=False)
-
     op.create_table('module_category',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=128), nullable=True),
     sa.PrimaryKeyConstraint('id', name=op.f('pk_module_category'))
     )
-    op.create_table('partner_title',
+    op.create_table('partner_role',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=120), nullable=True),
-    sa.PrimaryKeyConstraint('id', name=op.f('pk_partner_title'))
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_partner_role'))
     )
-    with op.batch_alter_table('partner_title', schema=None) as batch_op:
-        batch_op.create_index(batch_op.f('ix_partner_title_name'), ['name'], unique=False)
+    with op.batch_alter_table('partner_role', schema=None) as batch_op:
+        batch_op.create_index(batch_op.f('ix_partner_role_name'), ['name'], unique=False)
 
     op.create_table('recurring_plan',
     sa.Column('id', sa.Integer(), autoincrement=False, nullable=False),
@@ -85,23 +74,6 @@ def upgrade():
     )
     with op.batch_alter_table('stage', schema=None) as batch_op:
         batch_op.create_index(batch_op.f('ix_stage_name'), ['name'], unique=True)
-
-    op.create_table('access',
-    sa.Column('id', sa.String(length=128), nullable=False),
-    sa.Column('name', sa.String(length=120), nullable=True),
-    sa.Column('model_id', sa.Integer(), nullable=True),
-    sa.Column('slug', sa.Text(), nullable=True),
-    sa.Column('read', sa.Boolean(), nullable=True),
-    sa.Column('write', sa.Boolean(), nullable=True),
-    sa.Column('create', sa.Boolean(), nullable=True),
-    sa.Column('delete', sa.Boolean(), nullable=True),
-    sa.Column('created_on', sa.DateTime(), nullable=True),
-    sa.ForeignKeyConstraint(['model_id'], ['model.id'], name=op.f('fk_access_model_id_model')),
-    sa.PrimaryKeyConstraint('id', name=op.f('pk_access')),
-    sa.UniqueConstraint('slug', name=op.f('uq_access_slug'))
-    )
-    with op.batch_alter_table('access', schema=None) as batch_op:
-        batch_op.create_index(batch_op.f('ix_access_name'), ['name'], unique=True)
 
     op.create_table('company',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -169,6 +141,8 @@ def upgrade():
     sa.Column('summary', sa.String(length=350), nullable=True),
     sa.Column('category_id', sa.Integer(), nullable=True),
     sa.Column('user_groups_api', sa.Text(), nullable=True),
+    sa.Column('models_api', sa.Text(), nullable=True),
+    sa.Column('url', sa.String(length=120), nullable=True),
     sa.ForeignKeyConstraint(['category_id'], ['module_category.id'], name=op.f('fk_module_category_id_module_category')),
     sa.PrimaryKeyConstraint('id', name=op.f('pk_module'))
     )
@@ -177,13 +151,6 @@ def upgrade():
         batch_op.create_index(batch_op.f('ix_module_official_name'), ['official_name'], unique=False)
         batch_op.create_index(batch_op.f('ix_module_technical_name'), ['technical_name'], unique=False)
 
-    op.create_table('ModuleModels',
-    sa.Column('module_id', sa.Integer(), nullable=False),
-    sa.Column('model_id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['model_id'], ['model.id'], name=op.f('fk_ModuleModels_model_id_model')),
-    sa.ForeignKeyConstraint(['module_id'], ['module.id'], name=op.f('fk_ModuleModels_module_id_module')),
-    sa.PrimaryKeyConstraint('module_id', 'model_id', name=op.f('pk_ModuleModels'))
-    )
     op.create_table('city',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=60), nullable=True),
@@ -212,13 +179,43 @@ def upgrade():
     with op.batch_alter_table('group', schema=None) as batch_op:
         batch_op.create_index(batch_op.f('ix_group_name'), ['name'], unique=False)
 
-    op.create_table('AccessRights',
-    sa.Column('group_id', sa.String(length=128), nullable=False),
-    sa.Column('access_id', sa.String(length=128), nullable=False),
-    sa.ForeignKeyConstraint(['access_id'], ['access.id'], name=op.f('fk_AccessRights_access_id_access')),
-    sa.ForeignKeyConstraint(['group_id'], ['group.id'], name=op.f('fk_AccessRights_group_id_group')),
-    sa.PrimaryKeyConstraint('group_id', 'access_id', name=op.f('pk_AccessRights'))
+    op.create_table('model',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(length=128), nullable=True),
+    sa.Column('description', sa.String(length=128), nullable=True),
+    sa.Column('slug', sa.Text(), nullable=True),
+    sa.Column('module_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['module_id'], ['module.id'], name=op.f('fk_model_module_id_module')),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_model')),
+    sa.UniqueConstraint('slug', name=op.f('uq_model_slug'))
     )
+    with op.batch_alter_table('model', schema=None) as batch_op:
+        batch_op.create_index(batch_op.f('ix_model_name'), ['name'], unique=False)
+
+    op.create_table('ModuleModels',
+    sa.Column('module_id', sa.Integer(), nullable=False),
+    sa.Column('model_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['model_id'], ['model.id'], name=op.f('fk_ModuleModels_model_id_model')),
+    sa.ForeignKeyConstraint(['module_id'], ['module.id'], name=op.f('fk_ModuleModels_module_id_module')),
+    sa.PrimaryKeyConstraint('module_id', 'model_id', name=op.f('pk_ModuleModels'))
+    )
+    op.create_table('access',
+    sa.Column('id', sa.String(length=128), nullable=False),
+    sa.Column('name', sa.String(length=120), nullable=True),
+    sa.Column('model_id', sa.Integer(), nullable=True),
+    sa.Column('slug', sa.Text(), nullable=True),
+    sa.Column('read', sa.Boolean(), nullable=True),
+    sa.Column('write', sa.Boolean(), nullable=True),
+    sa.Column('create', sa.Boolean(), nullable=True),
+    sa.Column('delete', sa.Boolean(), nullable=True),
+    sa.Column('created_on', sa.DateTime(), nullable=True),
+    sa.ForeignKeyConstraint(['model_id'], ['model.id'], name=op.f('fk_access_model_id_model')),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_access')),
+    sa.UniqueConstraint('slug', name=op.f('uq_access_slug'))
+    )
+    with op.batch_alter_table('access', schema=None) as batch_op:
+        batch_op.create_index(batch_op.f('ix_access_name'), ['name'], unique=True)
+
     op.create_table('partner',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=120), nullable=True),
@@ -227,11 +224,11 @@ def upgrade():
     sa.Column('email', sa.String(length=120), nullable=True),
     sa.Column('function', sa.String(length=60), nullable=True),
     sa.Column('date_added', sa.DateTime(), nullable=True),
+    sa.Column('dob', sa.Date(), nullable=True),
     sa.Column('is_individual', sa.Boolean(), nullable=True),
     sa.Column('is_company', sa.Boolean(), nullable=True),
     sa.Column('is_active', sa.Boolean(), nullable=True),
     sa.Column('is_deleted', sa.Boolean(), nullable=True),
-    sa.Column('title_id', sa.Integer(), nullable=True),
     sa.Column('phone_no', sa.String(length=120), nullable=True),
     sa.Column('parent_id', sa.Integer(), nullable=True),
     sa.Column('website', sa.String(length=120), nullable=True),
@@ -243,11 +240,11 @@ def upgrade():
     sa.Column('is_tenant', sa.Boolean(), nullable=True),
     sa.Column('tax_id', sa.String(length=60), nullable=True),
     sa.Column('slug', sa.Text(), nullable=True),
+    sa.Column('is_archived', sa.Boolean(), nullable=True),
     sa.ForeignKeyConstraint(['city_id'], ['city.id'], name=op.f('fk_partner_city_id_city')),
     sa.ForeignKeyConstraint(['company_id'], ['company.id'], name=op.f('fk_partner_company_id_company')),
     sa.ForeignKeyConstraint(['country_id'], ['country.id'], name=op.f('fk_partner_country_id_country')),
     sa.ForeignKeyConstraint(['parent_id'], ['partner.id'], name=op.f('fk_partner_parent_id_partner')),
-    sa.ForeignKeyConstraint(['title_id'], ['partner_title.id'], name=op.f('fk_partner_title_id_partner_title')),
     sa.PrimaryKeyConstraint('id', name=op.f('pk_partner')),
     sa.UniqueConstraint('slug', name=op.f('uq_partner_slug'))
     )
@@ -263,27 +260,51 @@ def upgrade():
         batch_op.create_index(batch_op.f('ix_partner_title'), ['title'], unique=False)
         batch_op.create_index(batch_op.f('ix_partner_website'), ['website'], unique=False)
 
+    op.create_table('AccessRights',
+    sa.Column('group_id', sa.String(length=128), nullable=False),
+    sa.Column('access_id', sa.String(length=128), nullable=False),
+    sa.ForeignKeyConstraint(['access_id'], ['access.id'], name=op.f('fk_AccessRights_access_id_access')),
+    sa.ForeignKeyConstraint(['group_id'], ['group.id'], name=op.f('fk_AccessRights_group_id_group')),
+    sa.PrimaryKeyConstraint('group_id', 'access_id', name=op.f('pk_AccessRights'))
+    )
+    op.create_table('PartnerRoles',
+    sa.Column('partner_id', sa.Integer(), nullable=False),
+    sa.Column('role_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['partner_id'], ['partner.id'], name=op.f('fk_PartnerRoles_partner_id_partner')),
+    sa.ForeignKeyConstraint(['role_id'], ['partner_role.id'], name=op.f('fk_PartnerRoles_role_id_partner_role')),
+    sa.PrimaryKeyConstraint('partner_id', 'role_id', name=op.f('pk_PartnerRoles'))
+    )
     op.create_table('organization',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['id'], ['partner.id'], name=op.f('fk_organization_id_partner')),
     sa.PrimaryKeyConstraint('id', name=op.f('pk_organization'))
     )
-    op.create_table('team',
+    op.create_table('partner_team',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=120), nullable=True),
     sa.Column('leader', sa.Integer(), nullable=True),
     sa.Column('token', sa.String(length=120), nullable=True),
-    sa.ForeignKeyConstraint(['leader'], ['partner.id'], name=op.f('fk_team_leader_partner')),
-    sa.PrimaryKeyConstraint('id', name=op.f('pk_team'))
+    sa.Column('module_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['leader'], ['partner.id'], name=op.f('fk_partner_team_leader_partner')),
+    sa.ForeignKeyConstraint(['module_id'], ['module.id'], name=op.f('fk_partner_team_module_id_module')),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_partner_team'))
     )
-    with op.batch_alter_table('team', schema=None) as batch_op:
-        batch_op.create_index(batch_op.f('ix_team_name'), ['name'], unique=True)
-        batch_op.create_index(batch_op.f('ix_team_token'), ['token'], unique=True)
+    with op.batch_alter_table('partner_team', schema=None) as batch_op:
+        batch_op.create_index(batch_op.f('ix_partner_team_name'), ['name'], unique=True)
+        batch_op.create_index(batch_op.f('ix_partner_team_token'), ['token'], unique=True)
 
+    op.create_table('PartnerTeams',
+    sa.Column('partner_id', sa.Integer(), nullable=False),
+    sa.Column('team_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['partner_id'], ['partner.id'], name=op.f('fk_PartnerTeams_partner_id_partner')),
+    sa.ForeignKeyConstraint(['team_id'], ['partner_team.id'], name=op.f('fk_PartnerTeams_team_id_partner_team')),
+    sa.PrimaryKeyConstraint('partner_id', 'team_id', name=op.f('pk_PartnerTeams'))
+    )
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('partner_id', sa.Integer(), nullable=True),
     sa.Column('company_id', sa.Integer(), nullable=True),
+    sa.Column('team_id', sa.Integer(), nullable=True),
     sa.Column('token', sa.String(length=120), nullable=True),
     sa.Column('token_expiration', sa.DateTime(), nullable=True),
     sa.Column('is_active', sa.Boolean(), nullable=True),
@@ -297,6 +318,7 @@ def upgrade():
     sa.Column('user_type', sa.String(length=120), nullable=True),
     sa.ForeignKeyConstraint(['company_id'], ['company.id'], name=op.f('fk_users_company_id_company')),
     sa.ForeignKeyConstraint(['partner_id'], ['partner.id'], name=op.f('fk_users_partner_id_partner')),
+    sa.ForeignKeyConstraint(['team_id'], ['partner_team.id'], name=op.f('fk_users_team_id_partner_team')),
     sa.PrimaryKeyConstraint('id', name=op.f('pk_users')),
     sa.UniqueConstraint('slug', name=op.f('uq_users_slug'))
     )
@@ -304,6 +326,13 @@ def upgrade():
         batch_op.create_index(batch_op.f('ix_users_country_code'), ['country_code'], unique=False)
         batch_op.create_index(batch_op.f('ix_users_token'), ['token'], unique=True)
 
+    op.create_table('UserAccess',
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('access_id', sa.String(length=128), nullable=False),
+    sa.ForeignKeyConstraint(['access_id'], ['access.id'], name=op.f('fk_UserAccess_access_id_access')),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], name=op.f('fk_UserAccess_user_id_users')),
+    sa.PrimaryKeyConstraint('user_id', 'access_id', name=op.f('pk_UserAccess'))
+    )
     op.create_table('UserGroup',
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('group_id', sa.String(length=128), nullable=False),
@@ -358,14 +387,6 @@ def upgrade():
     with op.batch_alter_table('task', schema=None) as batch_op:
         batch_op.create_index(batch_op.f('ix_task_name'), ['name'], unique=False)
 
-    op.create_table('team_member',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('member', sa.Integer(), nullable=True),
-    sa.Column('team', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['member'], ['partner.id'], name=op.f('fk_team_member_member_partner')),
-    sa.ForeignKeyConstraint(['team'], ['team.id'], name=op.f('fk_team_member_team_team')),
-    sa.PrimaryKeyConstraint('id', name=op.f('pk_team_member'))
-    )
     op.create_table('note',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('note', sa.Text(), nullable=True),
@@ -381,7 +402,6 @@ def upgrade():
 def downgrade():
     # ### commands auto generated by Alembic - please adjust! ###
     op.drop_table('note')
-    op.drop_table('team_member')
     with op.batch_alter_table('task', schema=None) as batch_op:
         batch_op.drop_index(batch_op.f('ix_task_name'))
 
@@ -395,17 +415,21 @@ def downgrade():
 
     op.drop_table('lead')
     op.drop_table('UserGroup')
+    op.drop_table('UserAccess')
     with op.batch_alter_table('users', schema=None) as batch_op:
         batch_op.drop_index(batch_op.f('ix_users_token'))
         batch_op.drop_index(batch_op.f('ix_users_country_code'))
 
     op.drop_table('users')
-    with op.batch_alter_table('team', schema=None) as batch_op:
-        batch_op.drop_index(batch_op.f('ix_team_token'))
-        batch_op.drop_index(batch_op.f('ix_team_name'))
+    op.drop_table('PartnerTeams')
+    with op.batch_alter_table('partner_team', schema=None) as batch_op:
+        batch_op.drop_index(batch_op.f('ix_partner_team_token'))
+        batch_op.drop_index(batch_op.f('ix_partner_team_name'))
 
-    op.drop_table('team')
+    op.drop_table('partner_team')
     op.drop_table('organization')
+    op.drop_table('PartnerRoles')
+    op.drop_table('AccessRights')
     with op.batch_alter_table('partner', schema=None) as batch_op:
         batch_op.drop_index(batch_op.f('ix_partner_website'))
         batch_op.drop_index(batch_op.f('ix_partner_title'))
@@ -419,7 +443,15 @@ def downgrade():
         batch_op.drop_index(batch_op.f('ix_partner_company_name'))
 
     op.drop_table('partner')
-    op.drop_table('AccessRights')
+    with op.batch_alter_table('access', schema=None) as batch_op:
+        batch_op.drop_index(batch_op.f('ix_access_name'))
+
+    op.drop_table('access')
+    op.drop_table('ModuleModels')
+    with op.batch_alter_table('model', schema=None) as batch_op:
+        batch_op.drop_index(batch_op.f('ix_model_name'))
+
+    op.drop_table('model')
     with op.batch_alter_table('group', schema=None) as batch_op:
         batch_op.drop_index(batch_op.f('ix_group_name'))
 
@@ -428,7 +460,6 @@ def downgrade():
         batch_op.drop_index(batch_op.f('ix_city_name'))
 
     op.drop_table('city')
-    op.drop_table('ModuleModels')
     with op.batch_alter_table('module', schema=None) as batch_op:
         batch_op.drop_index(batch_op.f('ix_module_technical_name'))
         batch_op.drop_index(batch_op.f('ix_module_official_name'))
@@ -453,24 +484,16 @@ def downgrade():
         batch_op.drop_index(batch_op.f('ix_company_domain_name'))
 
     op.drop_table('company')
-    with op.batch_alter_table('access', schema=None) as batch_op:
-        batch_op.drop_index(batch_op.f('ix_access_name'))
-
-    op.drop_table('access')
     with op.batch_alter_table('stage', schema=None) as batch_op:
         batch_op.drop_index(batch_op.f('ix_stage_name'))
 
     op.drop_table('stage')
     op.drop_table('recurring_plan')
-    with op.batch_alter_table('partner_title', schema=None) as batch_op:
-        batch_op.drop_index(batch_op.f('ix_partner_title_name'))
+    with op.batch_alter_table('partner_role', schema=None) as batch_op:
+        batch_op.drop_index(batch_op.f('ix_partner_role_name'))
 
-    op.drop_table('partner_title')
+    op.drop_table('partner_role')
     op.drop_table('module_category')
-    with op.batch_alter_table('model', schema=None) as batch_op:
-        batch_op.drop_index(batch_op.f('ix_model_name'))
-
-    op.drop_table('model')
     with op.batch_alter_table('database', schema=None) as batch_op:
         batch_op.drop_index(batch_op.f('ix_database_name'))
 

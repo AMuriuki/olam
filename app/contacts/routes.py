@@ -1,4 +1,4 @@
-from app.decorators import active_user_required
+from app.decorators import active_user_required, can_create_access_required, model_access_required, module_access_required
 from app.main.models.country import City, Country
 from app.main.utils import get_countries, get_countries_cities
 from flask import url_for, request, jsonify
@@ -25,6 +25,9 @@ def index():
 @bp.route('/new', methods=['GET', 'POST'])
 @login_required
 @active_user_required
+@module_access_required(3)
+@model_access_required(3)
+@can_create_access_required(3)
 def create():
     form1 = BasicCompanyInfoForm()
     form2 = BasicIndividualInfoForm()
@@ -53,6 +56,8 @@ def create():
 @bp.route('/view_contact/<slug>', methods=['GET', 'POST'])
 @login_required
 @active_user_required
+@module_access_required(3)
+@model_access_required(3)
 def view_contact(slug):
     form1 = BasicCompanyInfoForm()
     form2 = BasicIndividualInfoForm()
@@ -98,6 +103,8 @@ def view_contact(slug):
 @bp.route('/get_cities', methods=['GET', 'POST'])
 @login_required
 @active_user_required
+@module_access_required(3)
+@model_access_required(3)
 def get_city():
     if request.method == "POST":
         cities = City.to_collection_dict(
@@ -108,6 +115,8 @@ def get_city():
 @bp.route('/address/<slug>', methods=['GET', 'POST'])
 @login_required
 @active_user_required
+@module_access_required(3)
+@model_access_required(3)
 def addresses(slug):
     partner = Partner.query.filter_by(slug=slug).first()
     children = Partner.query.filter_by(parent_id=partner.id).all()
@@ -117,6 +126,8 @@ def addresses(slug):
 @bp.route('/meetings/<slug>', methods=['GET', 'POST'])
 @login_required
 @active_user_required
+@module_access_required(3)
+@model_access_required(3)
 def meetings(slug):
     partner = Partner.query.filter_by(slug=slug).first()
     return render_template('contacts/meetings.html', title=_('Meetings | Olam ERP'), partner=partner)

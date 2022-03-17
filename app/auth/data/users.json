@@ -26,5 +26,12 @@
         "company_id": 1,
         "is_active": true,
         "password": "demo"
+    },
+    {
+        "id": 5,
+        "partner_id": 12,
+        "company_id": 1,
+        "is_active": true,
+        "password": "demo"
     }
 ]

@@ -64,6 +64,7 @@ class Users(UserMixin, PaginatedAPIMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     partner_id = db.Column(db.Integer, db.ForeignKey('partner.id'))
     company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
+    team_id = db.Column(db.Integer, db.ForeignKey('partner_team.id'))
     token = db.Column(db.String(120), index=True, unique=True)
     token_expiration = db.Column(db.DateTime)
     is_active = db.Column(db.Boolean, default=False)
@@ -138,6 +139,15 @@ class Users(UserMixin, PaginatedAPIMixin, db.Model):
         result = L1.intersection(L2)
         return has_access(result)
 
+    def view_access(self, model_id):
+        access_groups = [g.id for g in Group.query.join(
+            Access, Group.rights).filter_by(model_id=model_id).filter_by(read=True)]
+        user_groups = [g.id for g in self.groups]
+        L1 = set(access_groups)
+        L2 = set(user_groups)
+        result = L1.intersection(L2)
+        return has_access(result)
+
     def create_access(self, model_id):
         access_groups = [g.id for g in Group.query.join(
             Access, Group.rights).filter_by(model_id=model_id).filter_by(create=True)]
@@ -150,6 +160,15 @@ class Users(UserMixin, PaginatedAPIMixin, db.Model):
     def write_access(self, model_id):
         access_groups = [g.id for g in Group.query.join(
             Access, Group.rights).filter_by(model_id=model_id).filter_by(write=True)]
+        user_groups = [g.id for g in self.groups]
+        L1 = set(access_groups)
+        L2 = set(user_groups)
+        result = L1.intersection(L2)
+        return has_access(result)
+
+    def delete_access(self, model_id):
+        access_groups = [g.id for g in Group.query.join(
+            Access, Group.rights).filter_by(model_id=model_id).filter_by(delete=True)]
         user_groups = [g.id for g in self.groups]
         L1 = set(access_groups)
         L2 = set(user_groups)
@@ -241,7 +260,7 @@ def load_user(id):
 
 class Access(db.Model):
     id = db.Column(db.String(128), primary_key=True)
-    name = db.Column(db.String(120), index=True, unique=True)
+    name = db.Column(db.String(120), index=True)
     model_id = db.Column(db.Integer, db.ForeignKey('model.id'))
     groups = db.relationship(
         'Group', secondary=access_rights, back_populates="rights")

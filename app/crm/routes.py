@@ -1,10 +1,11 @@
+from genericpath import exists
+from select import select
 from flask_login import login_required, current_user
 from flask import json, render_template, session, jsonify, request, redirect, url_for, flash
 from app.crm import bp
 from app.crm.models.crm_lead import FILTERS, Lead
 from app.crm.models.crm_recurring_plan import RecurringPlan
 from app.crm.models.crm_stage import Stage
-from app.crm.models.crm_team import Team
 from app.decorators import active_user_required
 from app.main.models.module import Module
 from flask_babel import _, get_locale
@@ -161,19 +162,42 @@ def pipeline():
     form5 = EditStageForm()
     form6 = AddStage()
 
-    pipeline = Lead.query.filter_by(
-        user_id=current_user.get_id()).order_by(Lead.priority.desc()).all()
-
     plans = RecurringPlan.query.all()
     titles = TITLES
+    
     filters = FILTERS
     new_stage = False
+    message = None
+    exists = []
 
-    companies = Partner.query.filter_by(is_company=True).all()
-    query = db.session.query(
-        Country.currency_alphabetic_code.distinct().label("currency_alphabetic_code")).order_by(
-        'currency_alphabetic_code')
-    currencies = [row.currency_alphabetic_code for row in query.all()]
+    selectedFilters = request.args.get('filter')
+    _selectedFilters = selectedFilters.split(',')
+    qs = Lead.query.order_by(Lead.priority.desc())
+
+    if selectedFilters:
+        if "All" in selectedFilters:
+            qs = qs
+        else:
+            if "My Pipeline" in selectedFilters:
+                qs = qs.filter_by(user_id=current_user.get_id())
+            if "Unassigned" in selectedFilters:
+                qs = qs.filter_by(user_id=None)
+                if qs.count() == 0:
+                    message = "There are no unassigned opportunities"
+                    flash(_("No unassigned opportunities"))
+            for _filter in _selectedFilters:
+                stage = Stage.query.filter_by(name=_filter).first()
+                if stage:
+                    exists.append(stage.id)
+            if exists:
+                print(exists)
+                qs = qs.filter(Lead.stage_id.in_(exists))                    
+        pipeline = qs.all()
+    else:
+        pipeline = Lead.query.filter_by(
+            user_id=current_user.get_id()).order_by(Lead.priority.desc()).all()
+        selectedFilters = "My Pipeline,"
+
     if form3.submit1.data and form3.validate_on_submit():
         opportunity = Lead(name=request.form['opportunity'], user_id=current_user.get_id(), partner_id=request.form['pipeline_select_org'], priority=session['selected_priority'], stage_id=int(
             session['pipeline_stage']), expected_revenue=request.form['expected_revenue'], partner_email=request.form['partner_email'], partner_phone=request.form['partner_phone'], plan_id=request.form['recurring_plan'], partner_currency=request.form['_partner_currency'])
@@ -193,7 +217,7 @@ def pipeline():
         flash(_("New stage added successfully"))
         return redirect(url_for('crm.pipeline', new_stage=new_stage))
 
-    return render_template('crm/pipeline.html', title=_('CRM Pipeline | Olam ERP'), pipeline=pipeline, form1=form1, form2=form2, form3=form3, form4=form4, form5=form5, form6=form6, companies=companies, titles=titles, currencies=currencies, plans=plans, filters=filters, new_stage=new_stage)
+    return render_template('crm/pipeline.html', title=_('CRM Pipeline | Olam ERP'), pipeline=pipeline, form1=form1, form2=form2, form3=form3, form4=form4, form5=form5, form6=form6, titles=titles, plans=plans, filters=filters, new_stage=new_stage, selectedFilters=selectedFilters, message=message)
 
 
 @bp.route('/pipeline', methods=['GET', 'POST'])

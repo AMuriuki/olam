@@ -125,6 +125,27 @@
     "postal_address": "635832",
     "city_id": 12858,
     "country_id": 116
+  },
+  {
+    "id": 12,
+    "name": "Israel Jamal",
+    "email": "israel@tsh.com",
+    "phone_no": "+254708306010",
+    "is_active": true,
+    "company_id": 1,
+    "is_tenant": true
+  },
+  {
+    "id": 13,
+    "company_name": "Access Freight",
+    "email": "jackson@accessfreight.com",
+    "is_company": true,
+    "is_active": true,
+    "phone_no": "+254 715 340949 | +254 733 934900",
+    "website": "https://accessfreight.com/",
+    "postal_code": "00100",
+    "postal_address": "3030322",
+    "city_id": 12858,
+    "country_id": 116
   }
-
 ]

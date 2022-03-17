@@ -95,18 +95,21 @@
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-label">{{module.bp_name|upper}}</label>
-                                                <div class="form-control-wrap">
-                                                    <select id="{{module.id}}" class="form-select set-access"
-                                                        data-search="on">
-                                                        <option value="#">Select Access</option>
-                                                        {% for group in groups %}
-                                                        {% if group.module_id == module.id %}
-                                                        <option value="{{group.id}}" {% if user.id|has(group.id)
-                                                            %}selected{% endif %}>{{group.name}}</option>
-                                                        {% endif %}
-                                                        {% endfor %}
-                                                    </select>
+                                                <br>
+                                                {% for group in groups %}
+                                                {% if group.module_id == module.id %}
+                                                <div class="col-md-3 col-sm-6" style="padding-bottom: 5px;">
+                                                    <div class="preview-block">
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input"
+                                                                id="{{group.id}}">
+                                                            <label class="custom-control-label"
+                                                                for="{{group.id}}">{{group.name}}</label>
+                                                        </div>
+                                                    </div>
                                                 </div>
+                                                {% endif %}
+                                                {% endfor %}
                                             </div>
                                         </div>
                                         {% endfor %}

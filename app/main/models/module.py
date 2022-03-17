@@ -33,6 +33,7 @@ class Module(db.Model):
     url = db.Column(db.String(120))
     models = db.relationship(
         'Model', backref='module', lazy='dynamic')
+    teams = db.relationship('PartnerTeam', backref='app', lazy='dynamic')
 
 
 class ModuleCategory(db.Model):

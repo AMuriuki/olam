@@ -35,9 +35,11 @@
                 <p>You have {{groups|length}} user group(s).</p>
             </div>
             <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                {% if current_user|can_create(3) %}
                 <li>
                     <a href="{{url_for('settings.new_group')}}" class="btn btn-m btn-primary btn-block">CREATE</a>
                 </li>
+                {% endif %}
                 <li>
                     <a href="#" data-dismiss="modal" class="btn btn-outline-light export" data-toggle="tooltip"
                         data-placement="right" title="Export">
@@ -58,7 +60,9 @@
                         <div class="dropdown-menu dropdown-menu-right">
                             <ul class="link-list-opt no-bdr">
                                 <li><a href="#"><span>Export</span></a></li>
+                                {% if current_user|can_delete(2) %}
                                 <li><a href="delete-group" class="confirm-delete-group"><span>Delete</span></a></li>
+                                {% endif %}
                             </ul>
                         </div>
                     </div>
@@ -135,15 +139,18 @@
                     <a href="save-group" class="btn btn-m btn-primary btn-block save-group">SAVE</a>
                 </li>
                 {% else %}
+                {% if current_user|can_write(2) %}
                 <li>
                     <a href="{{url_for('settings.edit_group', slug=slug)}}"
                         class="btn btn-m btn-primary btn-block">EDIT</a>
                 </li>
                 {% endif %}
+                {% endif %}
+                {% if current_user|can_create(2) %}
                 <li>
                     <a href="{{url_for('settings.new_group')}}" class="btn btn-outline-light">CREATE</a>
-
                 </li>
+                {% endif %}
             </ul>
         </div>
         {% endif %}

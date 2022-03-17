@@ -116,7 +116,7 @@
                                     <tbody>
                                         {% for user in group_members %}
                                         <tr>
-                                            <th scope="row">{{user.id|partner_name}}</th>
+                                            <th scope="row">{{user.id|get_user_name}}</th>
                                             <td>{{ moment(user.last_seen).format('LLL')}}</td>
                                             <td>
                                                 <a id="{{group.slug}}.{{user.id}}" href="remove-user"

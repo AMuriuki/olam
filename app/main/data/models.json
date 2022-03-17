@@ -1,14 +1,32 @@
 [
   {
-    "description": "Store authentication details for each user",
     "id": 1,
-    "module_id": 1,
-    "name": "User"
+    "name": "User",
+    "description": "Stores authentication details for each user.",
+    "module_id": 1
   },
   {
-    "description": "Stores user access groups.",
     "id": 2,
-    "module_id": 1,
-    "name": "Group"
+    "name": "Group",
+    "description": "Stores user access groups.",
+    "module_id": 1
+  },
+  {
+    "id": 3,
+    "name": "Partner",
+    "description": "Stores personal info for each user or contact.",
+    "module_id": 1
+  },
+  {
+    "id": 4,
+    "name": "Access",
+    "description": "Describes access right for a model.",
+    "module_id": 1
+  },
+  {
+    "id": 5,
+    "name": "Lead/Opportunity",
+    "description": "Information about a sales prospect.",
+    "module_id": 1
   }
 ]

@@ -98,19 +98,22 @@
                                     <tbody>
                                         {% for member in group_members %}
                                         <tr>
-                                            <th scope="row">{{member.id|partner_name}}</th>
+                                            <th scope="row">{{member.id|get_user_name}}</th>
                                             <td>{{ moment(member.last_seen).format('LLL')}}</td>
                                             <td>
+                                                {% if current_user|can_delete(2) %}
                                                 <a id="{{group.slug}}.{{member.id}}" href="remove-user"
                                                     class="btn btn-icon btn-sm btn-primary remove-user"
                                                     data-toggle="tooltip" data-placement="left" title="Remove user">
                                                     <em class="icon ni ni-cross-sm"></em>
                                                 </a>
+                                                {% endif %}
                                             </td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
                                 </table>
+                                {% if current_user|can_write(2) %}
                                 <div class="preview-btn-item  col-sm-6 col-lg-3">
                                     <a href="{{url_for('settings.manage_groups')}}"
                                         class="btn btn-m btn-primary btn-block" data-toggle="modal"
@@ -118,6 +121,7 @@
                                         <em class="icon ni ni-plus"></em><span>Add User</span>
                                     </a>
                                 </div>
+                                {% endif %}
                             </div>
                         </div>
                         {% elif page == 'group_rights' %}
@@ -164,7 +168,7 @@
                                                 <div class="custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input read_access"
                                                         id="read_access.{{access_right.id}}" {% if access_right.read %}
-                                                        checked {% endif %}>
+                                                        checked {% endif %} {% if not current_user|can_write(4) %} disabled {% endif %}>
                                                     <label class="custom-control-label"
                                                         for="read_access.{{access_right.id}}"></label>
                                                 </div>
@@ -173,7 +177,7 @@
                                                 <div class="custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input write_access"
                                                         id="write_access.{{access_right.id}}" {% if access_right.write
-                                                        %} checked {% endif %}>
+                                                        %} checked {% endif %}{% if not current_user|can_write(4) %} disabled {% endif %}>
                                                     <label class="custom-control-label"
                                                         for="write_access.{{access_right.id}}"></label>
                                                 </div>
@@ -182,7 +186,7 @@
                                                 <div class="custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input create_access"
                                                         id="create_access.{{access_right.id}}" {% if access_right.create
-                                                        %} checked {% endif %}>
+                                                        %} checked {% endif %} {% if not current_user|can_write(4) %} disabled {% endif %}>
                                                     <label class="custom-control-label"
                                                         for="create_access.{{access_right.id}}"></label>
                                                 </div>
@@ -191,28 +195,32 @@
                                                 <div class="custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input delete_access"
                                                         id="delete_access.{{access_right.id}}" {% if access_right.delete
-                                                        %} checked {% endif %}>
+                                                        %} checked {% endif %} {% if not current_user|can_write(4) %} disabled {% endif %}>
                                                     <label class="custom-control-label"
                                                         for="delete_access.{{access_right.id}}"></label>
                                                 </div>
                                             </td>
                                             <td>
+                                                {% if current_user|can_delete(4) %}
                                                 <a id="{{access_right.id}}" href="remove-access-right"
                                                     class="btn btn-icon btn-sm btn-primary remove-access-right"
                                                     data-toggle="tooltip" data-placement="right"
                                                     title="Remove access right">
                                                     <em class="icon ni ni-cross-sm"></em>
                                                 </a>
+                                                {% endif %}
                                             </td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
                                 </table>
                                 <div class="preview-btn-item  col-sm-6 col-lg-3">
+                                    {% if current_user|can_write(4) %}
                                     <a href="#" class="btn btn-m btn-primary btn-block" data-toggle="modal"
                                         data-target="#modalAccessRights" style="padding: 0.4375rem 4.125rem;">
                                         <em class="icon ni ni-plus"></em><span>Add Record</span>
                                     </a>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -254,7 +262,7 @@
                                 <tr class="nk-tb-item">
                                     <td class="nk-tb-col nk-tb-col-check">
                                         <div class="custom-control custom-control-sm custom-checkbox notext">
-                                            <input type="checkbox" class="custom-control-input chk-user"
+                                            <input type="checkbox" class="custom-control-input chk_user"
                                                 id="{{user.id}}">
                                             <label class="custom-control-label" for="{{user.id}}"></label>
                                         </div>

@@ -31,9 +31,11 @@
                                         </div>
                                     </div>
                                 </li>
+                                {% if current_user|can_create(3) %}
                                 <li class="nk-block-tools-opt"><a href="{{url_for('contacts.create')}}"
                                         class="btn btn-primary"><em class="icon ni ni-plus"></em><span>Create</span></a>
                                 </li>
+                                {% endif %}
                             </ul>
                         </div>
                     </div><!-- .toggle-wrap -->

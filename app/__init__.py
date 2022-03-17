@@ -1,3 +1,4 @@
+import imp
 import logging
 import os
 import rq
@@ -120,9 +121,6 @@ def create_app(config_class=Config):
 
     return app
 
-from app.auth.models import user
-from app.crm.models import crm_lead, crm_team, organization, crm_stage, crm_recurring_plan
-from app.main.models import company, country, database, module, partner
 
 @babel.localeselector
 def get_locale():

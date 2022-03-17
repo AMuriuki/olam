@@ -36,10 +36,12 @@
                     <h3 class="nk-block-title page-title">Pipeline</h3>
                     <div class="nk-block-des text-soft" style="padding-bottom: 20px !important;">
                         <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                            {% if current_user|can_create(5) %}
                             <li>
                                 <input id="btn_additem-1" class="btn btn-m btn-primary btn-block add-item" id="submit1"
                                     name="submit1" type="submit" value="CREATE">
                             </li>
+                            {% endif %}
                             <li>
                                 <a href="#" data-dismiss="modal" class="btn btn-outline-light">GENERATE LEADS</a>
                             </li>
@@ -72,13 +74,21 @@
                                             <ul class="link-list-opt no-bdr">
                                                 {% for filter in filters %}
                                                 <li>
-                                                    <a id="{{filter[0]}}"
-                                                        class="filter {% if filter[1]=='My Pipeline' %}selected{% endif %}"
-                                                        href="#">
-                                                        <em id="chk_{{filter[0]}}" {% if filter[1]=='My Pipeline' %}
-                                                            style="display: block;" {% else %} style="display: none;" {%
-                                                            endif %} class="icon ni ni-check-thick"></em>
-                                                        <span id="spn_filter-{{filter[0]}}">{{filter[1]}}</span>
+                                                    <a id="{{filter[0]}}" class="filter-pipeline" href="#">
+                                                        {% if filter[1]|contains(selectedFilters) %}
+                                                        <em class="icon ni ni-check-thick"></em>
+                                                        {% endif %}
+                                                        <span>{{filter[1]}}</span>
+                                                    </a>
+                                                </li>
+                                                {% endfor %}
+                                                {% for stage in stages %}
+                                                <li>
+                                                    <a id="{{stage.id}}" class="filter-pipeline" href="#">
+                                                        {% if stage.name|contains(selectedFilters) %}
+                                                        <em class="icon ni ni-check-thick"></em>
+                                                        {% endif %}
+                                                        <span>{{stage.name}}</span>
                                                     </a>
                                                 </li>
                                                 {% endfor %}
@@ -86,8 +96,14 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li><a id="addBoard" href="#" class="btn btn-white btn-outline-light"><em
-                                            class="icon ni ni-plus"></em><span>Add Stage</span></a></li>
+                                {% if current_user|can_create(6) %}
+                                <li>
+                                    <a id="addBoard" href="#" class="btn btn-white btn-outline-light">
+                                        <em class="icon ni ni-plus"></em>
+                                        <span>Add Stage</span>
+                                    </a>
+                                </li>
+                                {% endif %}
 
                             </ul>
                         </div>
@@ -98,7 +114,7 @@
                 <div class="form-group">
                     <div class="form-control-wrap">
                         <input id="search_pipeline" type="text" class="form-control form-control-lg"
-                            placeholder="Search...">
+                            placeholder="Search..." value="{{selectedFilters}}">
                         <button class="form-icon form-icon-right">
                             <em class="icon ni ni-search"></em>
                         </button>
@@ -130,6 +146,7 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <ul class="link-list-opt no-bdr">
+                                                {% if current_user|can_write(6) %}
                                                 <li>
                                                     <a id="{{stage.id}}" href="#" class="edit-stage">
                                                         <em class="icon ni ni-edit"></em>
@@ -153,12 +170,15 @@
                                                     </a>
                                                 </li>
                                                 {% endif %}
+                                                {% endif %}
+                                                {% if current_user|can_delete(6) %}
                                                 <li>
                                                     <a id="{{stage.id}}" href="#" class="delete-stage">
                                                         <em class="icon ni ni-trash"></em>
                                                         <span>Delete Stage</span>
                                                     </a>
                                                 </li>
+                                                {% endif %}
                                                 <li>
                                                     <a id="btn_additem-{{stage.id}}" href="#" class="add-item">
                                                         <em class="icon ni ni-plus-sm add-item"></em>
@@ -458,13 +478,14 @@
                                         </div>
                                     </div>
                                     <ul class="kanban-item-tags">
-                                        <li><span class="badge badge-primary">{{current_user.partner.name}}</span></li>
+                                        <li><span {% if record.user_id == current_user.id %} class="badge badge-primary" {% else %} class="badge badge-secondary" {% endif %}>{{record.user_id|get_user_name}}</span></li>
                                     </ul>
                                 </a>
                             </div>
                             {% endif %}
                             {% endfor %}
                         </main>
+                        {% if current_user|can_write(6) %}
                         <footer>
                             <button id="btn_additem-{{stage.id}}" class="add-item kanban-add-task btn btn-block">
                                 <em class="icon ni ni-plus-sm"></em>
@@ -477,6 +498,7 @@
                                 </span>
                             </button>
                         </footer>
+                        {% endif %}
                     </div>
                     {% endfor %}
                 </div>
@@ -743,7 +765,11 @@
                             d="M100.66,12.81l-1.35,1.47c-1.9,2.06-3.88,4.21-5.77,6.3a1.29,1.29,0,0,1-1,.42h0a1.27,1.27,0,0,1-1-.42c-1.09-1.2-2.19-2.39-3.28-3.56a1.29,1.29,0,0,1,1.88-1.76c.78.84,1.57,1.68,2.35,2.54,1.6-1.76,3.25-3.55,4.83-5.27l1.35-1.46a1.29,1.29,0,0,1,1.9,1.74Z"
                             transform="translate(-4 -2.1)" fill="#fff" />
                     </svg>
+                    {% if message %}
+                    <h4 class="nk-modal-title">{{message}}</h4>
+                    {% else %}
                     <h4 class="nk-modal-title">Create an opportunity to start playing with your pipeline.</h4>
+                    {% endif %}
                     <div class="nk-modal-action">
                         {% if stages %}
                         <a id="create_opportunity-{{stages[0].id}}" href="#"
