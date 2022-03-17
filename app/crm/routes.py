@@ -164,7 +164,7 @@ def pipeline():
 
     plans = RecurringPlan.query.all()
     titles = TITLES
-    
+
     filters = FILTERS
     new_stage = False
     message = None
@@ -191,7 +191,7 @@ def pipeline():
                     exists.append(stage.id)
             if exists:
                 print(exists)
-                qs = qs.filter(Lead.stage_id.in_(exists))                    
+                qs = qs.filter(Lead.stage_id.in_(exists))
         pipeline = qs.all()
     else:
         pipeline = Lead.query.filter_by(
@@ -308,3 +308,10 @@ def move_stage(slug, stage_id):
     lead.stage_id = stage_id
     db.session.commit()
     return redirect(url_for('crm.pipeline'))
+
+
+@bp.route('/activities', methods=['GET', 'POST'])
+@login_required
+@active_user_required
+def activities():
+    return render_template("crm/activities.html", title=_("Activities | Olam ERP"))

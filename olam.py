@@ -3,6 +3,7 @@ from unittest import result
 from sqlalchemy.sql.elements import or_
 from app.auth.models.user import Access, Group, Permission, Users
 from app.crm.models.crm_stage import Stage
+from app.main.models.activities import Activity
 from app.main.models.country import Country
 from app.main.models.partner import Partner
 from app.models import Task
@@ -23,6 +24,16 @@ cli.register(app)
 @app.shell_context_processor
 def make_shell_context():
     return {'db': db}
+
+
+@app.context_processor
+def inject_activities():
+    activities = Activity.query.distinct(
+        Activity.model_id).group_by(Activity.id).all()
+    if activities:
+        return dict(activities=activities)
+    else:
+        return dict(activities="")
 
 
 @app.context_processor
@@ -263,3 +274,9 @@ def permission(value):
 @app.template_filter()
 def view_access(value):
     pass
+
+
+@app.template_filter()
+def no_activities(value):
+    count = Activity.query.filter_by(model_id=value).count()
+    return count

@@ -1,11 +1,6 @@
-import enum
-import os
-import csv
 from app.models import PaginatedAPIMixin
 from app.utils import unique_slug_generator
-from config import basedir
-from app import db, current_app
-import logging
+from app import db
 
 
 module_models = db.Table(
@@ -34,6 +29,7 @@ class Module(db.Model):
     models = db.relationship(
         'Model', backref='module', lazy='dynamic')
     teams = db.relationship('PartnerTeam', backref='app', lazy='dynamic')
+    activities = db.relationship('Activity', backref='module', lazy='dynamic')
 
 
 class ModuleCategory(db.Model):
@@ -47,6 +43,7 @@ class Model(PaginatedAPIMixin, db.Model):
     name = db.Column(db.String(128), index=True)
     description = db.Column(db.String(128))
     accessrights = db.relationship('Access', backref='model', lazy='dynamic')
+    activities = db.relationship('Activity', backref='model', lazy='dynamic')
     slug = db.Column(db.Text(), unique=True)
     module_id = db.Column(db.Integer, db.ForeignKey('module.id'))
 

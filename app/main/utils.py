@@ -70,6 +70,13 @@ def get_modules():
     return data
 
 
+def get_activities():
+    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+    json_url = os.path.join(SITE_ROOT, "data", "activities.json")
+    data = json.load(open(json_url))
+    return data
+
+
 def traverse_geoipdata(data):
     if 'ip' in data:
         ip_address = data['ip']

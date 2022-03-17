@@ -1,3 +1,4 @@
+from crypt import methods
 from app.helper_functions import set_default_user_groups
 from app.main.models.partner import Partner
 import os
@@ -103,3 +104,5 @@ def invite_colleagues():
             send_invite_email(partner.id, invited_by.id)
         return redirect(url_for('main.index'))
     return render_template('main/invite_colleagues.html', title=_('Invite Colleagues | Olam ERP'), form=form)
+
+

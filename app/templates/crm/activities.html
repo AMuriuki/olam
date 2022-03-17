@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="nk-content-body">
+    <div class="nk-content-wrap">
+        {% include "crm/activities_blockhead.html" %}
+        <div class="nk-search-box">
+            <div class="form-group">
+                <div class="form-control-wrap">
+                    <input id="search_users" type="text" class="form-control form-control-lg"
+                        placeholder="Search..." value="{{selectedFilters}}">
+                    <button class="form-icon form-icon-right">
+                        <em class="icon ni ni-search"></em>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="nk-block">
+            <div class="card card-preview">
+                <div class="card-inner">
+                    <table id="tbl_groups" class="datatable-init nk-tb-list nk-tb-ulist" data-auto-responsive="false">
+                        <thead>
+                            <tr class="nk-tb-item nk-tb-head">
+                                <th class="nk-tb-col nk-tb-col-check">
+                                    <div class="custom-control custom-control-sm custom-checkbox notext">
+                                        <input type="checkbox" class="custom-control-input" id="uid">
+                                        <label class="custom-control-label" for="uid"></label>
+                                    </div>
+                                </th>
+                                <th class="nk-tb-col"><span class="sub-text">Name</span></th>
+                                <th class="nk-tb-col tb-col-md"><span class="sub-text">Latest Authentication</span></th>
+                                <th class="nk-tb-col tb-col-xl"><span class="sub-text">Company</span></th>
+                                <th class="nk-tb-col nk-tb-col-tools text-right"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody_usersList">
+                            {% for user in users %}
+                            <tr id="{{user.slug}}" class="nk-tb-item">
+                                <td class="nk-tb-col nk-tb-col-check">
+                                    <div class="custom-control custom-control-sm custom-checkbox notext">
+                                        <input type="checkbox" class="custom-control-input chk_user"
+                                            id="{{user.id}}">
+                                        <label class="custom-control-label" for="{{user.id}}"></label>
+                                    </div>
+                                </td>
+                                <td class="nk-tb-col select-user"
+                                    style="cursor: pointer !important;">
+                                    <div class="user-card">
+                                        <div class="user-info">
+                                            <span class="tb-lead"></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="nk-tb-col tb-col-md select-user"
+                                style="cursor: pointer !important;">
+                                    <span></span>
+                                </td>
+                                <td class="nk-tb-col tb-col-md select-user"
+                                style="cursor: pointer !important;">
+                                    <span>{{ user.company.name|remove_hyphens|title }}</span>
+                                </td>
+                                <td class="nk-tb-col nk-tb-col-tools">
+                                    <ul class="nk-tb-actions gx-1">
+                                        <li>
+                                            <div class="drodown">
+                                                <a href="#" class="dropdown-toggle btn btn-icon btn-trigger"
+                                                    data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <ul class="link-list-opt no-bdr">
+                                                        <li><a href="#"><em class="icon ni ni-focus"></em><span>Quick
+                                                                    View</span></a></li>
+                                                        <li><a href="#"><em
+                                                                    class="icon ni ni-download"></em><span>Export</span></a>
+                                                        </li>
+                                                        {% if current_user|can_write(1) %}
+                                                        <li><a id="{{user.slug}}" href="#" class="confirm-archive-user"><em
+                                                                    class="icon ni ni-archive"></em><span>Archive</span></a>
+                                                        </li>
+                                                        <li><a id="unarchive.{{user.slug}}" href="#" class="unarchive-user"><em
+                                                                    class="icon ni ni-unarchive"></em><span>Unarchive</span></a>
+                                                        </li>
+                                                        <li class="divider"></li>
+                                                        <li><a id="{{user.slug}}" href="#" class="confirm-delete-user"><em
+                                                                    class="icon ni ni-delete"></em><span>Delete</span></a>
+                                                        </li>
+                                                        <li><a href="#"><em
+                                                                    class="icon ni ni-exchange"></em><span>Change
+                                                                    Password</span></a></li>
+                                                        <li><a href="#"><em
+                                                                    class="icon ni ni-shield-off"></em><span>Disable
+                                                                    2FA</span></a></li>
+                                                        <li><a href="#"><em
+                                                                    class="icon ni ni-exchange-v"></em><span>Password
+                                                                    Reset Instructions</span></a></li>
+                                                        <li><a href="#"><em class="icon ni ni-shield"></em><span>Invite
+                                                                    to use 2FA</span></a></li>
+                                                        {% endif %}
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <!-- .nk-tb-item  -->
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div><!-- .card-preview -->
+        </div>
+    </div>
+    <!-- footer @s -->
+    {% include "footer.html" %}
+    <!-- footer @e -->
+</div>
+{% endblock %}

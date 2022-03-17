@@ -1,0 +1,65 @@
+<div class="nk-block-head nk-block-head-sm">
+    <div class="nk-block-between">
+        <div class="nk-block-head-content">
+            <h3 class="nk-block-title page-title">
+                <strong class="text-primary small">
+                    <span>Activities</span>
+                </strong>
+            </h3>
+
+            <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                {% if current_user|can_create(5) %}
+                <li>
+                    <input id="btn_additem-1" class="btn btn-m btn-primary btn-block add-item" id="submit1"
+                        name="submit1" type="submit" value="CREATE">
+                </li>
+                {% endif %}
+                <li>
+                    <a href="#" data-dismiss="modal" class="btn btn-outline-light">GENERATE LEADS</a>
+                </li>
+                <li>
+                    <a href="#" data-dismiss="modal" class="btn btn-outline-light export" data-toggle="tooltip"
+                        data-placement="right" title="Export">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-save" viewBox="0 0 16 16">
+                            <path
+                                d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z" />
+                        </svg></a>
+                    <span class="btn selected-groups"></span>
+                </li>
+            </ul>
+        </div><!-- .nk-block-head-content -->
+        <div class="nk-block-head-content">
+            <div class="toggle-wrap nk-block-tools-toggle">
+                <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em
+                        class="icon ni ni-menu-alt-r"></em></a>
+                <div class="toggle-expand-content" data-content="pageMenu">
+                    <ul class="nk-block-tools g-3">
+                        <li>
+                            <div class="drodown">
+                                <a href="#" class="dropdown-toggle btn btn-white btn-dim btn-outline-light"
+                                    data-toggle="dropdown"><em
+                                        class="d-none d-sm-inline icon ni ni-filter-alt"></em><span>Filter
+                                        By</span><em class="dd-indc icon ni ni-chevron-right"></em></a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <ul class="link-list-opt no-bdr">
+                                        {% for filter in filters %}
+                                        <li>
+                                            <a id="{{filter[0]}}" class="filter-users" href="#">
+                                                {% if filter[1]|contains(selectedFilters) %}
+                                                <em class="icon ni ni-check-thick"></em>
+                                                {% endif %}
+                                                <span>{{filter[1]}}</span>
+                                            </a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div><!-- .toggle-wrap -->
+        </div><!-- .nk-block-head-content -->
+    </div>
+</div>
