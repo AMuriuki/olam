@@ -485,7 +485,7 @@
                             {% endif %}
                             {% endfor %}
                         </main>
-                        {% if current_user|can_write(6) %}
+                        {% if current_user|can_create(5) %}
                         <footer>
                             <button id="btn_additem-{{stage.id}}" class="add-item kanban-add-task btn btn-block">
                                 <em class="icon ni ni-plus-sm"></em>
