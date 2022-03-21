@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "2a02f572-4062-426a-953b-bc393cd37d90",
     "name": "Arnold Ndirangu",
     "email": "arnold@tsh.com",
     "phone_no": "+254708486068",
@@ -9,7 +9,7 @@
     "is_tenant": true
   },
   {
-    "id": 2,
+    "id": "d5fdf6c7-43aa-4e34-8c9b-e44c12e5984a",
     "name": "Isabel Atieno",
     "email": "isabel@tsh.com",
     "phone_no": "+254708486069",
@@ -18,7 +18,7 @@
     "is_tenant": true
   },
   {
-    "id": 3,
+    "id": "bf491cb3-fece-4aff-985b-87cdb9421b9c",
     "name": "Michael Mbagathi",
     "email": "michael@tsh.com",
     "phone_no": "+254708486010",
@@ -27,7 +27,7 @@
     "is_tenant": true
   },
   {
-    "id": 4,
+    "id": "552db79c-be31-440f-96a8-36d813f1e353",
     "name": "Isaac Jambo",
     "email": "isaac@tsh.com",
     "phone_no": "+254708486010",
@@ -36,7 +36,7 @@
     "is_tenant": true
   },
   {
-    "id": 5,
+    "id": "61e6adc0-aa71-4007-937d-35d65f47d2e8",
     "company_name": "Intelli Messaging",
     "email": "contact@intelli-messaging.com",
     "is_company": true,
@@ -49,7 +49,7 @@
     "country_id": 116
   },
   {
-    "id": 6,
+    "id": "cd7cd9b7-1f19-4593-b5a5-28ca4110c1bc",
     "company_name": "Akka Asset Management",
     "email": "info@akka.com",
     "is_company": true,
@@ -62,7 +62,7 @@
     "country_id": 116
   },
   {
-    "id": 7,
+    "id": "7c4229ed-9eef-4f94-878a-553e0852e2a3",
     "company_name": "Alexys",
     "email": "info@alexys.com",
     "is_company": true,
@@ -75,7 +75,7 @@
     "country_id": 116
   },
   {
-    "id": 8,
+    "id": "99225eed-fe6f-43ef-9b8f-c200355881d8",
     "company_name": "Intelli SMS",
     "email": "info@intellisms.com",
     "is_company": true,
@@ -88,7 +88,7 @@
     "country_id": 116
   },
   {
-    "id": 9,
+    "id": "814fa17f-0b55-4cb4-94c4-33833da43e0e",
     "company_name": "Scala Finance",
     "email": "info@scala-fin.co.ke",
     "is_company": true,
@@ -101,7 +101,7 @@
     "country_id": 116
   },
   {
-    "id": 10,
+    "id": "d39441a0-69c1-4294-9152-c59b22d50cc7",
     "company_name": "Tipper",
     "email": "info@tipper.com",
     "is_company": true,
@@ -114,7 +114,7 @@
     "country_id": 116
   },
   {
-    "id": 11,
+    "id": "d6ce8106-ed45-4e7d-be2b-de0eaeccc001",
     "company_name": "Spark Energies",
     "email": "info@spark.com",
     "is_company": true,
@@ -127,7 +127,7 @@
     "country_id": 116
   },
   {
-    "id": 12,
+    "id": "1fe10e8c-394c-45f5-9830-1e5a8adc4f4a",
     "name": "Israel Jamal",
     "email": "israel@tsh.com",
     "phone_no": "+254708306010",
@@ -136,7 +136,7 @@
     "is_tenant": true
   },
   {
-    "id": 13,
+    "id": "04784395-56f6-411e-8977-d6d68a4742a0",
     "company_name": "Access Freight",
     "email": "jackson@accessfreight.com",
     "is_company": true,
@@ -147,5 +147,17 @@
     "postal_address": "3030322",
     "city_id": 12858,
     "country_id": 116
+  },
+  {
+    "id": "79939368-d950-47e7-8247-206434a7b530",
+    "name": "James Ashbel",
+    "title": "Mr.",
+    "function": "C.E.O",
+    "email": "ashbel@intelli-messaging.com",
+    "is_active": true,
+    "parent_id": "61e6adc0-aa71-4007-937d-35d65f47d2e8",
+    "is_individual": true,
+    "phone_no": "0712394832",
+    "website": "https://intelli-messaging.com"
   }
 ]

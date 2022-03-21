@@ -1,4 +1,4 @@
-from app.decorators import active_user_required, can_create_access_required, model_access_required, module_access_required
+from app.decorators import active_user_required, can_create_access_required, can_write_access_required, model_access_required, module_access_required
 from app.main.models.country import City, Country
 from app.main.utils import get_countries, get_countries_cities
 from flask import url_for, request, jsonify
@@ -45,7 +45,7 @@ def create():
         return redirect(url_for('contacts.view_contact', slug=partner.slug))
     if "submit2" in request.form and form2.validate_on_submit():
         partner = Partner(name=form2.name.data,
-                          phone_no=form2.phonenumber.data, title=request.form['select_title'], parent_id=request.form['individual_select_company'], website=form2.website.data, is_individual=True, is_active=True, function=form2.jobposition.data, email=form2.email.data)
+                          phone_no=form2.phonenumber.data, title=request.form['select_title'], parent_id=request.form['select_company'], website=form2.website.data, is_individual=True, is_active=True, function=form2.jobposition.data, email=form2.email.data)
         partner.generate_slug()
         db.session.add(partner)
         db.session.commit()
@@ -66,7 +66,15 @@ def view_contact(slug):
     partner = Partner.query.filter_by(slug=slug).first()
     titles = TITLES
     companies = Partner.query.filter_by(is_company=True).all()
+    partners = Partner.query.all()
     countries = Country.query.order_by('name').all()
+
+    for idx, _partner in enumerate(partners):
+        if _partner.id == partner.id:
+            current_index = idx
+            prev_index = current_index - 1
+            next_index = current_index + 1
+        
 
     if "submit1" in request.form and form1.validate_on_submit():
         if partner.is_company:
@@ -88,7 +96,8 @@ def view_contact(slug):
             return redirect(url_for('contacts.view_contact', slug=partner.slug))
     if "submit3" in request.form and form3.validate_on_submit():
         partner.country_id = request.form['select_country']
-        partner.city_id = request.form['select_city'] if request.form['select_city'].isdigit() else None
+        partner.city_id = request.form['select_city'] if request.form['select_city'].isdigit(
+        ) else None
         partner.postal_code = form3.postalcode.data
         partner.postal_address = form3.postaladdress.data
         db.session.commit()
@@ -97,7 +106,7 @@ def view_contact(slug):
         partner.tax_id = form4.taxid.data
         db.session.commit()
         return redirect(url_for('contacts.view_contact', slug=partner.slug))
-    return render_template('contacts/view.html', title=_('Contact Details | Olam ERP'), partner=partner, form1=form1, form2=form2, form3=form3, form4=form4, titles=titles, companies=companies, countries=countries)
+    return render_template('contacts/view.html', title=_('Contact Details | Olam ERP'), partner=partner, form1=form1, form2=form2, form3=form3, form4=form4, titles=titles, companies=companies, countries=countries, current_index=current_index+1, prev_index=prev_index, next_index=next_index, partners=partners)
 
 
 @bp.route('/get_cities', methods=['GET', 'POST'])
@@ -131,3 +140,13 @@ def addresses(slug):
 def meetings(slug):
     partner = Partner.query.filter_by(slug=slug).first()
     return render_template('contacts/meetings.html', title=_('Meetings | Olam ERP'), partner=partner)
+
+
+@bp.route('/<slug>/edit', methods=['GET', 'POST'])
+@login_required
+@active_user_required
+@module_access_required(3)
+@model_access_required(3)
+@can_write_access_required(3)
+def edit():
+    pass

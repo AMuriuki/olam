@@ -1,20 +1,36 @@
 {% extends "base.html" %}
 
 {% block content %}
+<style>
+    .fc .fc-toolbar.fc-header-toolbar .fc-toolbar-chunk .btn.active,
+    .fc .fc-toolbar.fc-header-toolbar .fc-toolbar-chunk .dual-listbox .active.dual-listbox__button,
+    .dual-listbox .fc .fc-toolbar.fc-header-toolbar .fc-toolbar-chunk .active.dual-listbox__button {
+        color: #364a63 !important;
+    }
+
+    .fc .fc-toolbar.fc-header-toolbar .fc-toolbar-chunk .btn,
+    .fc .fc-toolbar.fc-header-toolbar .fc-toolbar-chunk .dual-listbox .dual-listbox__button,
+    .dual-listbox .fc .fc-toolbar.fc-header-toolbar .fc-toolbar-chunk .dual-listbox__button {
+        color: #364a63 !important;
+    }
+</style>
 <div class="nk-content-body">
     <div class="nk-content-wrap">
+        {% include "contacts/contacts_blockhead.html" %}
         <div class="nk-block-head nk-block-head-md">
             <div class="nk-block-between">
                 <div class="nk-block-head-content">
                     <h3 class="nk-block-title page-title">Calendar</h3>
                 </div><!-- .nk-block-head-content -->
                 <div class="nk-block-head-content">
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addEventPopup"><em class="icon ni ni-plus"></em><span>Add Event</span></a>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addEventPopup"><em
+                            class="icon ni ni-plus"></em><span>Add Event</span></a>
                 </div><!-- .nk-block-head-content -->
             </div><!-- .nk-block-between -->
         </div><!-- .nk-block-head -->
         <div class="nk-block">
             <div class="card card-bordered">
+                {% include "contacts/contacts_tab.html" %}
                 <div class="card-inner">
                     <div id="calendar" class="nk-calendar"></div>
                 </div>
@@ -54,7 +70,8 @@
                                             <div class="form-icon form-icon-left">
                                                 <em class="icon ni ni-calendar"></em>
                                             </div>
-                                            <input type="text" id="event-start-date" class="form-control date-picker" data-date-format="yyyy-mm-dd" required>
+                                            <input type="text" id="event-start-date" class="form-control date-picker"
+                                                data-date-format="yyyy-mm-dd" required>
                                         </div>
                                     </div>
                                     <div class="w-45">
@@ -62,7 +79,8 @@
                                             <div class="form-icon form-icon-left">
                                                 <em class="icon ni ni-clock"></em>
                                             </div>
-                                            <input type="text" id="event-start-time" data-time-format="HH:mm:ss" class="form-control time-picker">
+                                            <input type="text" id="event-start-time" data-time-format="HH:mm:ss"
+                                                class="form-control time-picker">
                                         </div>
                                     </div>
                                 </div>
@@ -77,7 +95,8 @@
                                             <div class="form-icon form-icon-left">
                                                 <em class="icon ni ni-calendar"></em>
                                             </div>
-                                            <input type="text" id="event-end-date" class="form-control date-picker" data-date-format="yyyy-mm-dd">
+                                            <input type="text" id="event-end-date" class="form-control date-picker"
+                                                data-date-format="yyyy-mm-dd">
                                         </div>
                                     </div>
                                     <div class="w-45">
@@ -85,7 +104,8 @@
                                             <div class="form-icon form-icon-left">
                                                 <em class="icon ni ni-clock"></em>
                                             </div>
-                                            <input type="text" id="event-end-time" data-time-format="HH:mm:ss" class="form-control time-picker">
+                                            <input type="text" id="event-end-time" data-time-format="HH:mm:ss"
+                                                class="form-control time-picker">
                                         </div>
                                     </div>
                                 </div>
@@ -103,7 +123,8 @@
                             <div class="form-group">
                                 <label class="form-label">Event Category</label>
                                 <div class="form-control-wrap">
-                                    <select id="event-theme" class="select-calendar-theme form-control" data-search="on">
+                                    <select id="event-theme" class="select-calendar-theme form-control"
+                                        data-search="on">
                                         <option value="event-primary">Company</option>
                                         <option value="event-success">Seminars </option>
                                         <option value="event-info">Conferences</option>
@@ -126,7 +147,8 @@
                                     <button id="addEvent" type="submit" class="btn btn-primary">Add Event</button>
                                 </li>
                                 <li>
-                                    <button id="resetEvent" data-dismiss="modal" class="btn btn-danger btn-dim">Discard</button>
+                                    <button id="resetEvent" data-dismiss="modal"
+                                        class="btn btn-danger btn-dim">Discard</button>
                                 </li>
                             </ul>
                         </div>
@@ -165,7 +187,8 @@
                                             <div class="form-icon form-icon-left">
                                                 <em class="icon ni ni-calendar"></em>
                                             </div>
-                                            <input type="text" id="edit-event-start-date" class="form-control date-picker" data-date-format="yyyy-mm-dd" required>
+                                            <input type="text" id="edit-event-start-date"
+                                                class="form-control date-picker" data-date-format="yyyy-mm-dd" required>
                                         </div>
                                     </div>
                                     <div class="w-45">
@@ -173,7 +196,8 @@
                                             <div class="form-icon form-icon-left">
                                                 <em class="icon ni ni-clock"></em>
                                             </div>
-                                            <input type="text" id="edit-event-start-time" data-time-format="HH:mm:ss" class="form-control time-picker">
+                                            <input type="text" id="edit-event-start-time" data-time-format="HH:mm:ss"
+                                                class="form-control time-picker">
                                         </div>
                                     </div>
                                 </div>
@@ -188,7 +212,8 @@
                                             <div class="form-icon form-icon-left">
                                                 <em class="icon ni ni-calendar"></em>
                                             </div>
-                                            <input type="text" id="edit-event-end-date" class="form-control date-picker" data-date-format="yyyy-mm-dd">
+                                            <input type="text" id="edit-event-end-date" class="form-control date-picker"
+                                                data-date-format="yyyy-mm-dd">
                                         </div>
                                     </div>
                                     <div class="w-45">
@@ -196,7 +221,8 @@
                                             <div class="form-icon form-icon-left">
                                                 <em class="icon ni ni-clock"></em>
                                             </div>
-                                            <input type="text" id="edit-event-end-time" data-time-format="HH:mm:ss" class="form-control time-picker">
+                                            <input type="text" id="edit-event-end-time" data-time-format="HH:mm:ss"
+                                                class="form-control time-picker">
                                         </div>
                                     </div>
                                 </div>
@@ -214,7 +240,8 @@
                             <div class="form-group">
                                 <label class="form-label">Event Category</label>
                                 <div class="form-control-wrap">
-                                    <select id="edit-event-theme" class="select-calendar-theme form-control" data-search="on">
+                                    <select id="edit-event-theme" class="select-calendar-theme form-control"
+                                        data-search="on">
                                         <option value="event-primary">Company</option>
                                         <option value="event-success">Seminars </option>
                                         <option value="event-info">Conferences</option>
@@ -237,7 +264,8 @@
                                     <button id="updateEvent" type="submit" class="btn btn-primary">Update Event</button>
                                 </li>
                                 <li>
-                                    <button data-dismiss="modal" data-toggle="modal" data-target="#deleteEventPopup" class="btn btn-danger btn-dim">Delete</button>
+                                    <button data-dismiss="modal" data-toggle="modal" data-target="#deleteEventPopup"
+                                        class="btn btn-danger btn-dim">Delete</button>
                                 </li>
                             </ul>
                         </div>
@@ -273,10 +301,12 @@
                 </div>
                 <ul class="d-flex justify-content-between gx-4 mt-3">
                     <li>
-                        <button data-dismiss="modal" data-toggle="modal" data-target="#editEventPopup" class="btn btn-primary">Edit Event</button>
+                        <button data-dismiss="modal" data-toggle="modal" data-target="#editEventPopup"
+                            class="btn btn-primary">Edit Event</button>
                     </li>
                     <li>
-                        <button data-dismiss="modal" data-toggle="modal" data-target="#deleteEventPopup" class="btn btn-danger btn-dim">Delete</button>
+                        <button data-dismiss="modal" data-toggle="modal" data-target="#deleteEventPopup"
+                            class="btn btn-danger btn-dim">Delete</button>
                     </li>
                 </ul>
             </div>
@@ -295,10 +325,12 @@
                     </div>
                     <ul class="d-flex justify-content-center gx-4 mt-4">
                         <li>
-                            <button data-dismiss="modal" id="deleteEvent" class="btn btn-success">Yes, Delete it</button>
+                            <button data-dismiss="modal" id="deleteEvent" class="btn btn-success">Yes, Delete
+                                it</button>
                         </li>
                         <li>
-                            <button data-dismiss="modal" data-toggle="modal" data-target="#editEventPopup" class="btn btn-danger btn-dim">Cancel</button>
+                            <button data-dismiss="modal" data-toggle="modal" data-target="#editEventPopup"
+                                class="btn btn-danger btn-dim">Cancel</button>
                         </li>
                     </ul>
                 </div>

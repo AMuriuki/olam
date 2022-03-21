@@ -7,31 +7,50 @@
         <div class="nk-block">
             <div class="card card-bordered">
                 {% include "contacts/contacts_tab.html" %}
-                <div class="card-inner card-inner-lg">
-                    <div class="nk-block card card-bordered">
-                        <table class="table table-ulogs">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th class="tb-col-os"><span class="overline-title">Name <span class="d-sm-none">/
-                                                Job Position</span></span></th>
-                                    <th class="tb-col-ip"><span class="overline-title">Job Position</span></th>
-                                    <th class="tb-col-time"><span class="overline-title">Email</span></th>
-                                    <th class="tb-col-time"><span class="overline-title">Phone</span></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for child in children %}
-                                <tr>
-                                    <td class="tb-col-os">{{child.name}}</td>
-                                    <td class="tb-col-ip"><span class="sub-text">{{child.function}}</span></td>
-                                    <td class="tb-col-time"><span class="sub-text">{{child.email}}</span></td>
-                                    <td class="tb-col-action">{{child.phone_no}}</td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div><!-- .nk-block-head -->
-                </div><!-- .card-inner -->
+
+                <div class="card-inner">
+                    <table class="datatable-init nk-tb-list nk-tb-ulist" data-auto-responsive="false">
+                        <thead>
+                            <tr class="nk-tb-item nk-tb-head">
+                                <th class="nk-tb-col nk-tb-col-check">
+                                    <div class="custom-control custom-control-sm custom-checkbox notext">
+                                        <input type="checkbox" class="custom-control-input" id="uid">
+                                        <label class="custom-control-label" for="uid"></label>
+                                    </div>
+                                </th>
+                                <th class="nk-tb-col"><span class="sub-text">Name</span></th>
+                                <th class="nk-tb-col tb-col-md"><span class="sub-text">Job Position</span>
+                                </th>
+                                <th class="nk-tb-col tb-col-xl"><span class="sub-text">Email</span></th>
+                                <th class="nk-tb-col tb-col-xl"><span class="sub-text">Phone</span></th>
+                                <th class="nk-tb-col tb-col-xl"><span class="sub-text">Contact Person</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for child in children %}
+                            <tr class="nk-tb-item">
+                                <td class="nk-tb-col nk-tb-col-check">
+                                    <div class="custom-control custom-control-sm custom-checkbox notext">
+                                        <input type="checkbox" class="custom-control-input" id="{{child.id}}">
+                                        <label class="custom-control-label" for="{{child.id}}"></label>
+                                    </div>
+                                </td>
+                                <td class="nk-tb-col">{{child.name}}</td>
+                                <td class="nk-tb-col tb-col-md">{{child.function}}</td>
+                                <td class="nk-tb-col tb-col-md">{{child.email}}</td>
+                                <td class="nk-tb-col tb-col-md">{{child.phone_no}}</td>
+                                <td class="nk-tb-col nk-tb-col-check">
+                                    <div class="custom-control custom-control-sm custom-checkbox notext">
+                                        <input type="checkbox" class="custom-control-input" {% if child.contact_person %}checked{% endif %}>
+                                        <label class="custom-control-label"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div><!-- .nk-block-head -->
+
             </div><!-- .card -->
         </div><!-- .nk-block -->
     </div>

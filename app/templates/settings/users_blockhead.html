@@ -158,7 +158,6 @@
                     <a href="{{url_for('settings.user', slug=slug)}}">{{partner.name}}</a>
                 </strong>
             </h3>
-
             <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                 {% if edit %}
                 <li>
@@ -171,13 +170,15 @@
                     <span class="btn selected-groups"></span>
                 </li>
                 {% else %}
+                {% if current_user|can_write(1) %}
                 <li>
                     <a href="{{url_for('settings.edit_user', slug=user.slug)}}"
                         class="btn btn-m btn-primary btn-block">EDIT</a>
                 </li>
+                {% endif %}
                 {% if current_user|can_create(1) %}
                 <li>
-                    <a href="{{url_for('settings.create_user')}}" data-dismiss="modal" class="btn btn-outline-light">
+                    <a href="{{url_for('settings.create_user')}}" class="btn btn-outline-light">
                         CREATE
                     </a>
                 </li>
@@ -199,12 +200,22 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <ul class="link-list-opt no-bdr">
+                                {% if current_user|can_write(1) %}
                                 <li><a href="#"><span>Archive</span></a></li>
+                                {% endif %}
+                                {% if current_user|can_create(1) %}
                                 <li><a href="#"><span>Duplicate</span></a></li>
+                                {% endif %}
+                                {% if current_user|can_delete(1) %}
                                 <li><a href="#"><span>Delete</span></a></li>
-                                <li><a href="#"><span>Change Password</span></a></li>
+                                {% endif %}
+                                {% if current_user|can_read(1) %}
                                 <li><a href="#"><span>Assigned Tasks</span></a></li>
+                                {% endif %}
+                                {% if current_user|can_write(1) %}
+                                <li><a href="#"><span>Change Password</span></a></li>
                                 <li><a href="#"><span>Send Password Reset Instructions</span></a></li>
+                                {% endif %}
                             </ul>
                         </div>
                     </div>

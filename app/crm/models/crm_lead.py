@@ -8,6 +8,7 @@ import os
 import csv
 import logging
 from datetime import datetime, timedelta
+from sqlalchemy.dialects.postgresql import UUID
 
 AVAILABLE_PRIORITIES = [
     ('0', 'Low'),
@@ -32,7 +33,7 @@ class Lead(db.Model):
     description = db.Column(db.Text())
     active = db.Column(db.Boolean, default=True)
     priority = db.Column(db.String(15), index=True)
-    partner_id = db.Column(db.Integer, db.ForeignKey('partner.id'))
+    partner_id = db.Column(UUID(as_uuid=True), db.ForeignKey('partner.id'))
     stage_id = db.Column(db.Integer, db.ForeignKey('stage.id'))
     expected_revenue = db.Column(db.String(60))
     date_open = db.Column(db.DateTime, default=datetime.utcnow)
@@ -43,6 +44,7 @@ class Lead(db.Model):
     is_deleted = db.Column(db.Boolean, default=False)
     slug = db.Column(db.Text(), unique=True)
     notes = db.relationship('Note', backref='lead', lazy='dynamic')
+    activities = db.relationship('Activity', backref='lead', lazy='dynamic')
 
     def generate_slug(self):
         _slug = unique_slug_generator(self)

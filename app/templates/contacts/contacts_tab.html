@@ -22,9 +22,39 @@
                 <a class="nav-link" href="{{url_for('contacts.meetings', slug=partner.slug)}}"><em
                                 class="icon ni ni-calendar-booking"></em><span>Meetings</span></a>
                 {% endif %}
+                {% if partner.is_individual and not partner.is_tenant %}
+                <a class="nav-link" href="#">
+                        <em class="icon ni ni-star-fill"></em>
+                        <span>Opportunities</span>
+                </a>
+                {% endif %}
         </li>
         <li class="nav-item">
-                <a class="nav-link" href="html/user-profile-setting.html"><em
-                                class="icon ni ni-lock-alt-fill"></em><span>Security Settings</span></a>
+                {% if partner.is_company %}
+                <a class="nav-link" href="#">
+                        <em class="icon ni ni-sign-dollar"></em>
+                        <span>Sales</span>
+                </a>
+                {% endif %}
+                {% if partner.is_individual and not partner.is_tenant %}
+                <a class="nav-link" href="#">
+                        <em class="icon ni ni-sign-dollar"></em>
+                        <span>Sales</span>
+                </a>
+                {% endif %}
+        </li>
+        <li class="nav-item">
+                {% if partner.is_company %}
+                <a class="nav-link" href="#">
+                        <em class="icon ni ni-edit"></em>
+                        <span>Invoiced</span>
+                </a>
+                {% endif %}
+                {% if partner.is_individual and not partner.is_tenant %}
+                <a class="nav-link" href="#">
+                        <em class="icon ni ni-edit"></em>
+                        <span>Invoiced</span>
+                </a>
+                {% endif %}
         </li>
 </ul><!-- .nav-tabs -->

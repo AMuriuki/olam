@@ -6,6 +6,10 @@
         border-bottom: 20px solid #dbdfea !important;
         margin-top: 30px !important
     }
+
+    .pt-1rem {
+        padding-top: 1rem
+    }
 </style>
 <div class="nk-content-body">
     <div class="nk-content-wrap">
@@ -13,211 +17,204 @@
         <div class="nk-block">
             <div class="card card-bordered">
                 {% include "contacts/contacts_tab.html" %}
-                <div class="card-inner card-inner-lg">
-                    <div class="nk-block-head" style="padding-bottom: 0px !important">
-                        <div class="nk-block-head-content">
-                            <h4 class="nk-block-title">
-                                {% if partner.is_company %}
-                                Company Information
-                                {% elif partner.is_individual or partner.is_tenant %}
-                                Contact Information
+                <div class="card-inner-group">
+                    <div class="card-inner card-inner-lg">
+                        {% if partner.is_company %}
+                        <div class="sp-plan-head">
+                            <h5 class="title">
+                                {% if partner.company_name %}
+                                {{partner.company_name}}
                                 {% endif %}
-                            </h4>
+                            </h5>
                         </div>
-                    </div><!-- .nk-block-head -->
-                    <div class="nk-block">
-                        <div class="nk-data data-list data-list-s2">
-                            <div class="data-head">
-                                <h6 class="overline-title">Basics</h6>
-                            </div>
-                            {% if partner.is_company %}
-                            <div class="data-item" data-toggle="modal" data-target="#basics">
-                                <div class="data-col">
-                                    <span class="data-label">Company Name</span>
-                                    <span class="data-value">
-                                        {% if partner.company_name %}
-                                        {{partner.company_name}}
-                                        {% else %}
-                                        Click to add
-                                        {% endif %}
-                                    </span>
+                        <ul class="pt-1rem row gx-1">
+                            <li class="pt-1rem col-sm-4">
+                                <h6 class="title">Phone</h6>
+                                <div class="form-group">
+                                    {% if partner.phone_no %}
+                                    <p>{{partner.phone_no}}</p>
+                                    {% else %}
+                                    <p>Not yet added</p>
+                                    {% endif %}
                                 </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            {% elif partner.is_individual or partner.is_tenant %}
-                            <div class="data-item" data-toggle="modal" data-target="#basics">
-                                <div class="data-col">
-                                    <span class="data-label">Name</span>
-                                    <span class="data-value">
-                                        {% if partner.name %}
-                                        {% if partner.title %}{{partner.title}}{% else %}<span><strong>[title]&nbsp;</strong></span>{% endif %}{{partner.name}}
-                                        {% else %}
-                                        Click to add
-                                        {% endif %}
-                                    </span>
+                            </li>
+                            <li class="pt-1rem col-sm-4">
+                                <h6 class="title">Email</h6>
+                                <div class="form-group">
+                                    {% if partner.email %}
+                                    <p>{{partner.email}}</p>
+                                    {% else %}
+                                    <p>Not yet added</p>
+                                    {% endif %}
                                 </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            {% if partner.is_individual %}
-                            <div class="data-item" data-toggle="modal" data-target="#basics">
-                                <div class="data-col">
-                                    <span class="data-label">Company</span>
-                                    <span class="data-value">
-                                        {% if partner.parent.company_name %}
-                                        {{partner.parent.company_name}}
-                                        {% else %}
-                                        Click to add
-                                        {% endif %}
-                                    </span>
+                            </li>
+                            <li class="pt-1rem col-sm-4">
+                                <h6 class="title">Website</h6>
+                                <div class="form-group">
+                                    {% if partner.website %}
+                                    <a href="{{partner.website}}" target="_blank">{{partner.website}}</a>
+                                    {% else %}
+                                    <p>Not yet added</p>
+                                    {% endif %}
                                 </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            {% endif %}
-                            {% if partner.is_tenant %}
-                            <div class="data-item" data-toggle="modal" data-target="#basics">
-                                <div class="data-col">
-                                    <span class="data-label">Company</span>
-                                    <span class="data-value">
-                                        {% if partner.company.name %}
-                                        {{partner.company.name|upper}}
-                                        {% else %}
-                                        Click to add
-                                        {% endif %}
-                                    </span>
+                            </li>
+                        </ul>
+                        <ul class="pt-1rem row gx-1">
+                            <li class="pt-1rem col-sm-4">
+                                <h6 class="title">Country</h6>
+                                <div class="form-group">
+                                    {% if partner.country_id %}
+                                    <p>{{partner.country.name}}</p>
+                                    {% else %}
+                                    <p>Not yet added</p>
+                                    {% endif %}
                                 </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            {% endif %}
-                            <div class="data-item" data-toggle="modal" data-target="#basics">
-                                <div class="data-col">
-                                    <span class="data-label">Job Position</span>
-                                    <span class="data-value">
-                                        {% if partner.function %}
-                                        {{partner.function}}
-                                        {% else %}
-                                        Click to add
-                                        {% endif %}
-                                    </span>
+                            </li>
+                            <li class="pt-1rem col-sm-4">
+                                <h6 class="title">City</h6>
+                                <div class="form-group">
+                                    {% if partner.city_id %}
+                                    <p>{{partner.city.name}}</p>
+                                    {% else %}
+                                    <p>Not yet added</p>
+                                    {% endif %}
                                 </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            {% endif %}
-                            <div class="data-item" data-toggle="modal" data-target="#basics">
-                                <div class="data-col">
-                                    <span class="data-label">Phone</span>
-                                    <span class="data-value">{% if partner.phone_no %}{{partner.phone_no}}{% else
-                                        %}Click to add{% endif %}</span>
-                                </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#basics">
-                                <div class="data-col">
-                                    <span class="data-label">Email</span>
-                                    <span class="data-value">{% if partner.email %}{{partner.email}}{% else %}Click to
-                                        add{% endif %}</span>
-                                </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#basics">
-                                <div class="data-col">
-                                    <span class="data-label">Website Link</span>
-                                    <span class="data-value">{% if partner.website %}{{partner.website}}{% else %}Click
-                                        to add{% endif %}</span>
-                                </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            <!-- data-item -->
-                            <div class="data-head">
-                                <h6 class="overline-title">Address</h6>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#address">
-                                <div class="data-col">
-                                    <span class="data-label">Country</span>
-                                    <span class="data-value">
-                                        {% if partner.country_id %}
-                                        {{partner.country.name}}
-                                        {% else %}
-                                        Click to add
-                                        {% endif %}
-                                    </span>
-                                </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#address">
-                                <div class="data-col">
-                                    <span class="data-label">City</span>
-                                    <span class="data-value">
-                                        {% if partner.city_id %}
-                                        {{partner.city.name}}
-                                        {% else %}
-                                        Click to add
-                                        {% endif %}
-                                    </span>
-                                </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#address">
-                                <div class="data-col">
-                                    <span class="data-label">Postal/Zip Code</span>
-                                    <span class="data-value">
+                            </li>
+                            <li class="pt-1rem col-sm-4">
+                                <h6 class="title">Postal Address</h6>
+                                <div class="form-group">
+                                    <p>
                                         {% if partner.postal_code %}
-                                        {{partner.postal_code}}
+                                        <span>{{partner.postal_code}}&nbsp;-</span>
                                         {% else %}
-                                        Click to add
+                                        <span>code&nbsp;-</span>
                                         {% endif %}
-                                    </span>
-                                </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#address">
-                                <div class="data-col">
-                                    <span class="data-label">Postal Address</span>
-                                    <span class="data-value">
                                         {% if partner.postal_address %}
-                                        {{partner.postal_address}}
+                                        <span>{{partner.postal_address}}</span>
                                         {% else %}
-                                        Click to add
+                                        <span>address</span>
                                         {% endif %}
-                                    </span>
+                                    </p>
                                 </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            <!-- data-item -->
-                        </div><!-- data-list -->
-                        <div class="nk-data data-list data-list-s2">
-                            <div class="data-head">
-                                <h6 class="overline-title">Tax Info</h6>
-                            </div>
-                            <div class="data-item" data-toggle="modal" data-target="#tax">
-                                <div class="data-col">
-                                    <span class="data-label">Tax ID</span>
-                                    <span class="data-value">
-                                        {% if partner.tax_id %}
-                                        {{partner.tax_id}}
+                            </li>
+                            <li class="pt-1rem col-sm-4">
+                                <h6 class="title">Tax Info</h6>
+                                <div class="form-group">
+                                    {% if partner.tax_id %}
+                                    <p>{{partner.tax_id}}</p>
+                                    {% else %}
+                                    <span>Not yet added</span>
+                                    {% endif %}
+                                </div>
+                            </li>
+                        </ul>
+                        {% else %}
+                        <div class="sp-plan-head">
+                            <h5 class="title">
+                                {% if partner.title %}
+                                {{partner.title}}
+                                {% endif %}
+                                {% if partner.name %}
+                                {{partner.name}}
+                                {% endif %}
+                            </h5>
+                        </div>
+                        <div class="sp-plan-head">
+                            <h6 class="title">
+                                {% if partner.function %}
+                                {{partner.function}}
+                                {% endif %}
+                                {% if partner.parent.company_name %}
+                                -&nbsp;{{partner.parent.company_name}}
+                                {% endif %}
+                            </h6>
+                        </div>
+                        <ul class="pt-1rem row gx-1">
+                            <li class="pt-1rem col-sm-4">
+                                <h6 class="title">Phone</h6>
+                                <div class="form-group">
+                                    {% if partner.phone_no %}
+                                    <p>{{partner.phone_no}}</p>
+                                    {% else %}
+                                    <p>Not yet added</p>
+                                    {% endif %}
+                                </div>
+                            </li>
+                            <li class="pt-1rem col-sm-4">
+                                <h6 class="title">Email</h6>
+                                <div class="form-group">
+                                    {% if partner.email %}
+                                    <p>{{partner.email}}</p>
+                                    {% else %}
+                                    <p>Not yet added</p>
+                                    {% endif %}
+                                </div>
+                            </li>
+                            <li class="pt-1rem col-sm-4">
+                                <h6 class="title">Website</h6>
+                                <div class="form-group">
+                                    {% if partner.website %}
+                                    <a href="{{partner.website}}" target="_blank">{{partner.website}}</a>
+                                    {% else %}
+                                    <p>Not yet added</p>
+                                    {% endif %}
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="pt-1rem row gx-1">
+                            <li class="pt-1rem col-sm-4">
+                                <h6 class="title">Country</h6>
+                                <div class="form-group">
+                                    {% if partner.country_id %}
+                                    <p>{{partner.country.name}}</p>
+                                    {% else %}
+                                    <p>Not yet added</p>
+                                    {% endif %}
+                                </div>
+                            </li>
+                            <li class="pt-1rem col-sm-4">
+                                <h6 class="title">City</h6>
+                                <div class="form-group">
+                                    {% if partner.city_id %}
+                                    <p>{{partner.city.name}}</p>
+                                    {% else %}
+                                    <p>Not yet added</p>
+                                    {% endif %}
+                                </div>
+                            </li>
+                            <li class="pt-1rem col-sm-4">
+                                <h6 class="title">Postal Address</h6>
+                                <div class="form-group">
+                                    <p>
+                                        {% if partner.postal_code %}
+                                        <span>{{partner.postal_code}}&nbsp;-</span>
                                         {% else %}
-                                        Click to add
+                                        <span>code&nbsp;-</span>
                                         {% endif %}
-                                    </span>
+                                        {% if partner.postal_address %}
+                                        <span>{{partner.postal_address}}</span>
+                                        {% else %}
+                                        <span>address</span>
+                                        {% endif %}
+                                    </p>
                                 </div>
-                                <div class="data-col data-col-end"><span class="data-more"><em
-                                            class="icon ni ni-forward-ios"></em></span></div>
-                            </div>
-                            <!-- data-item -->
-                        </div><!-- data-list -->
-                    </div><!-- .nk-block -->
-                </div><!-- .card-inner -->
+                            </li>
+                        </ul>
+                        <ul class="pt-1rem row gx-1">
+                            <li class="pt-1rem col-sm-4">
+                                <h6 class="title">Tax Info</h6>
+                                <div class="form-group">
+                                    {% if partner.tax_id %}
+                                    <p>{{partner.tax_id}}</p>
+                                    {% else %}
+                                    <span>Not yet added</span>
+                                    {% endif %}
+                                </div>
+                            </li>
+                        </ul>
+                        {% endif %}
+                    </div>
+                </div>
             </div><!-- .card -->
         </div><!-- .nk-block -->
     </div>
@@ -225,307 +222,5 @@
     {% include "footer.html" %}
     <!-- footer @e -->
 </div>
-<div class="modal fade" role="dialog" id="tax">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
-            <div class="modal-body modal-body-lg">
-                <h5 class="title">Tax Info</h5>
-                <div class="tab-content">
-                    <div class="tab-pane active" id="personal">
-                        <form method="POST">
-                            {{form4.hidden_tag()}}
-                            <div class="row gy-4">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        {{form4.taxid.label(class="form-label")}}
-                                        {{ form4.taxid(class="form-control form-control-m", placeholder="e.g.
-                                        BE047727010",
-                                        value=partner.tax_id) }}
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                        <li>
-                                            {{form4.submit4(class="btn btn-m btn-primary btn-block")}}
-                                        </li>
-                                        <li>
-                                            <a href="#" data-dismiss="modal" class="btn btn-outline-light">Cancel</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </form>
-                    </div><!-- .tab-pane -->
-                </div><!-- .tab-content -->
-            </div><!-- .modal-body -->
-        </div><!-- .modal-content -->
-    </div><!-- .modal-dialog -->
-</div><!-- .modal -->
-<div class="modal fade" role="dialog" id="address">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
-            <div class="modal-body modal-body-lg">
-                <h5 class="title">Address Info</h5>
-                <div class="tab-content">
-                    <div class="tab-pane active" id="c_address">
-                        <form method="POST">
-                            {{form3.hidden_tag()}}
-                            <div class="row gy-4">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">Country</label>
-                                        <div class="form-control-wrap">
-                                            <select name="select_country" id="select_country" class="form-select"
-                                                data-search="on">
-                                                {% if partner.country_id %}
-                                                <option value="{{partner.country_id}}">{{partner.country.name}}</option>
-                                                {% for country in countries %}
-                                                <option value="{{country.id}}">{{country.name}}</option>
-                                                {% endfor %}
-                                                {% else %}
-                                                <option value="default_option">Select Country</option>
-                                                {% for country in countries %}
-                                                <option value="{{country.id}}">{{country.name}}</option>
-                                                {% endfor %}
-                                                {% endif %}
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">City</label>
-                                        <div class="form-control-wrap">
-                                            <select name="select_city" id="select_city" class="form-select"
-                                                data-search="on">
-                                                {% if partner.city_id %}
-                                                <option value="{{partner.city_id}}">{{partner.city.name}}</option>
-                                                {% else %}
-                                                <option value="default_option">Select City</option>
-                                                <option value="#"><i>Choose a country to list cities</i></option>
-                                                {% endif %}
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        {{form3.postalcode.label(class="form-label")}}
-                                        {% if partner.postal_code %}
-                                        {{ form3.postalcode(class="form-control form-control-m",
-                                        value=partner.postal_code) }}
-                                        {% else %}
-                                        {{ form3.postalcode(class="form-control form-control-m",
-                                        placeholder="Postal/Zip Code") }}
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        {{form3.postaladdress.label(class="form-label")}}
-                                        {% if partner.postal_address %}
-                                        {{ form3.postaladdress(class="form-control form-control-m",
-                                        value=partner.postal_address) }}
-                                        {% else %}
-                                        {{ form3.postaladdress(class="form-control form-control-m",
-                                        placeholder="P.O Box") }}
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                        <li>
-                                            {{form3.submit3(class="btn btn-m btn-primary btn-block")}}
-                                        </li>
-                                        <li>
-                                            <a href="#" data-dismiss="modal" class="btn btn-outline-light">Cancel</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </form>
-                    </div><!-- .tab-pane -->
-                </div><!-- .tab-content -->
-            </div><!-- .modal-body -->
-        </div><!-- .modal-content -->
-    </div><!-- .modal-dialog -->
-</div><!-- .modal -->
-<div class="modal fade" role="dialog" id="basics">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
-            <div class="modal-body modal-body-lg">
-                <h5 class="title">Basic Info</h5>
-                <div class="tab-content">
-                    <div class="tab-pane active" id="personal">
-                        <form method="POST">
-                            {% if partner.is_company %}
-                            {{form1.hidden_tag()}}
-                            {% elif partner.is_individual or partner.is_tenant %}
-                            {{form2.hidden_tag()}}
-                            {% endif %}
-                            <div class="row gy-4">
-                                {% if partner.is_company %}
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        {{ form1.companyname.label(class="form-label") }}
-                                        {{ form1.companyname(class="form-control form-control-m",
-                                        placeholder="Company Name", value=partner.company_name) }}
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        {{ form1.phonenumber.label(class="form-label") }}
-                                        {{ form1.phonenumber(class="form-control form-control-m",
-                                        placeholder="Phone Number", value=partner.phone_no) }}
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        {{ form1.email.label(class="form-label") }}
-                                        {{ form1.email(class="form-control form-control-m",
-                                        placeholder="Email Address", value=partner.email) }}
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        {{ form1.website.label(class="form-label") }}
-                                        {{ form1.website(class="form-control form-control-m",
-                                        placeholder="http://...", value=partner.website) }}
-                                    </div>
-                                </div>
-                                {% elif partner.is_individual or partner.is_tenant %}
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">Title</label>
-                                        <div class="form-control-wrap">
-                                            <select name="select_title" class="form-select" data-search="on">
-                                                {% if (partner.is_individual and partner.title) or (partner.is_tenant
-                                                and partner.title) %}
-                                                <option value="{{partner.title}}">{{partner.title}}</option>
-                                                {% for title in titles %}
-                                                <option value="{{title}}">{{title}}</option>
-                                                {% endfor %}
-                                                {% elif partner.is_individual or partner.is_tenant %}
-                                                <option value="default_option">Select title</option>
-                                                {% for title in titles %}
-                                                <option value="{{title}}">{{title}}</option>
-                                                {% endfor %}
-                                                {% endif %}
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        {{ form2.name.label(class="form-label") }}
-                                        {% if (partner.is_individual and partner.name) or (partner.is_tenant
-                                        and partner.name) %}
-                                        {{ form2.name(class="form-control form-control-m", value=partner.name,
-                                        placeholder="Name") }}
-                                        {% elif partner.is_individual or partner.is_tenant %}
-                                        {{ form2.name(class="form-control form-control-m", placeholder="Name") }}
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">Company</label>
-                                        <div class="form-control-wrap">
-                                            <select name="select_company" class="form-select" data-search="on" disabled>
-                                                {% if partner.is_individual and partner.parent.company_name %}
-                                                <option value="default_option">{{partner.parent.company_name}}</option>
-                                                {% elif partner.is_individual %}
-                                                <option value="default_option">Select company</option>
-                                                {% for company in companies %}
-                                                <option value="{{company.id}}">{{company.company_name}}</option>
-                                                {% endfor %}
-                                                {% endif %}
-                                                {% if partner.is_tenant %}
-                                                <option value="default_option">{{partner.company.name|upper}}</option>
-                                                {% endif %}
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        {{ form2.jobposition.label(class="form-label") }}
-                                        {% if (partner.is_individual and partner.function) or (partner.is_tenant
-                                        and partner.function) %}
-                                        {{ form2.jobposition(class="form-control form-control-m",
-                                        value=partner.function,
-                                        placeholder="e.g Sales Director") }}
-                                        {% elif partner.is_individual or partner.is_tenant %}
-                                        {{ form2.jobposition(class="form-control form-control-m",
-                                        placeholder="e.g Sales Director") }}
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        {{ form2.phonenumber.label(class="form-label") }}
-                                        {% if (partner.is_individual and partner.phone_no) or (partner.is_tenant
-                                        and partner.phone_no) %}
-                                        {{ form2.phonenumber(class="form-control form-control-m",
-                                        placeholder="Phone Number", value=partner.phone_no) }}
-                                        {% elif partner.is_individual or partner.is_tenant %}
-                                        {{ form2.phonenumber(class="form-control form-control-m",
-                                        placeholder="Phone Number") }}
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        {{ form2.email.label(class="form-label") }}
-                                        {% if (partner.is_individual and partner.email) or (partner.is_tenant
-                                        and partner.email) %}
-                                        {{ form2.email(class="form-control form-control-m",
-                                        placeholder="Email Address", value=partner.email) }}
-                                        {% elif partner.is_individual or partner.is_tenant %}
-                                        {{ form2.email(class="form-control form-control-m",
-                                        placeholder="Email Address") }}
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        {{ form2.website.label(class="form-label") }}
-                                        {% if (partner.is_individual and partner.website) or (partner.is_tenant
-                                        and partner.website) %}
-                                        {{ form2.website(class="form-control form-control-m",
-                                        placeholder="http://...", value=partner.website) }}
-                                        {% elif partner.is_individual or partner.is_tenant %}
-                                        {{ form2.website(class="form-control form-control-m",
-                                        placeholder="http://...") }}
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                {% endif %}
-
-                                <div class="col-12">
-                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                        <li>
-                                            {% if partner.is_company %}
-                                            {{form1.submit1(class="btn btn-m btn-primary btn-block")}}
-                                            {% elif partner.is_individual or partner.is_tenant %}
-                                            {{form2.submit2(class="btn btn-m btn-primary btn-block")}}
-                                            {% endif %}
-                                        </li>
-                                        <li>
-                                            <a href="#" data-dismiss="modal" class="btn btn-outline-light">Cancel</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </form>
-                    </div><!-- .tab-pane -->
-                </div><!-- .tab-content -->
-            </div><!-- .modal-body -->
-        </div><!-- .modal-content -->
-    </div><!-- .modal-dialog -->
-</div><!-- .modal -->
 
 {% endblock %}

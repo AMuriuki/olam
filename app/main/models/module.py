@@ -40,7 +40,7 @@ class ModuleCategory(db.Model):
 
 class Model(PaginatedAPIMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(128), index=True)
+    name = db.Column(db.String(128), index=True, unique=True)
     description = db.Column(db.String(128))
     accessrights = db.relationship('Access', backref='model', lazy='dynamic')
     activities = db.relationship('Activity', backref='model', lazy='dynamic')

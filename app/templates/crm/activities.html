@@ -7,8 +7,8 @@
         <div class="nk-search-box">
             <div class="form-group">
                 <div class="form-control-wrap">
-                    <input id="search_users" type="text" class="form-control form-control-lg"
-                        placeholder="Search..." value="{{selectedFilters}}">
+                    <input id="search_users" type="text" class="form-control form-control-lg" placeholder="Search..."
+                        value="{{selectedFilters}}">
                     <button class="form-icon form-icon-right">
                         <em class="icon ni ni-search"></em>
                     </button>
@@ -27,37 +27,77 @@
                                         <label class="custom-control-label" for="uid"></label>
                                     </div>
                                 </th>
-                                <th class="nk-tb-col"><span class="sub-text">Name</span></th>
-                                <th class="nk-tb-col tb-col-md"><span class="sub-text">Latest Authentication</span></th>
-                                <th class="nk-tb-col tb-col-xl"><span class="sub-text">Company</span></th>
+                                <th class="nk-tb-col"><span class="sub-text">Opportunity</span></th>
+                                <th class="nk-tb-col tb-col-md"><span class="sub-text">Contact Name</span></th>
+                                <th class="nk-tb-col tb-col-xl"><span class="sub-text">Email</span></th>
+                                <th class="nk-tb-col tb-col-xl"><span class="sub-text">Phone</span></th>
+                                <th class="nk-tb-col tb-col-xl"><span class="sub-text">Next Activity</span></th>
+                                <th class="nk-tb-col tb-col-xl"><span class="sub-text">Due Date</span></th>
+                                <th class="nk-tb-col tb-col-xl"><span class="sub-text">Expected Revenue</span></th>
+                                <th class="nk-tb-col tb-col-xl"><span class="sub-text">Stage</span></th>
                                 <th class="nk-tb-col nk-tb-col-tools text-right"></th>
                             </tr>
                         </thead>
                         <tbody id="tbody_usersList">
-                            {% for user in users %}
-                            <tr id="{{user.slug}}" class="nk-tb-item">
+                            {% for activity in activities %}
+                            <tr id="{{activity.id}}" class="nk-tb-item">
                                 <td class="nk-tb-col nk-tb-col-check">
                                     <div class="custom-control custom-control-sm custom-checkbox notext">
-                                        <input type="checkbox" class="custom-control-input chk_user"
-                                            id="{{user.id}}">
-                                        <label class="custom-control-label" for="{{user.id}}"></label>
+                                        <input type="checkbox" class="custom-control-input chk_activity"
+                                            id="{{activity.id}}">
+                                        <label class="custom-control-label" for="{{activity.id}}"></label>
                                     </div>
                                 </td>
-                                <td class="nk-tb-col select-user"
-                                    style="cursor: pointer !important;">
+                                <td class="nk-tb-col select-activity" style="cursor: pointer !important;">
                                     <div class="user-card">
                                         <div class="user-info">
-                                            <span class="tb-lead"></span>
+                                            <span class="tb-lead">{{activity.lead.name}}</span>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="nk-tb-col tb-col-md select-user"
-                                style="cursor: pointer !important;">
-                                    <span></span>
+                                <td class="nk-tb-col tb-col-md select-activity" style="cursor: pointer !important;">
+                                    {% if activity.lead.opportunity.is_company %}
+                                    <span>{{activity.lead.opportunity|contact_name}}&nbsp;-&nbsp;{{activity.lead.opportunity|contact_position}},&nbsp;{{activity.lead.opportunity.company_name}}</span>
+                                    {% elif activity.lead.opportunity.is_individual %}
+                                    <span>{{activity.lead.opportunity.name}}&nbsp;-&nbsp;{{activity.lead.opportunity.parent.company_name}}</span>
+                                    {% endif %}
                                 </td>
-                                <td class="nk-tb-col tb-col-md select-user"
-                                style="cursor: pointer !important;">
-                                    <span>{{ user.company.name|remove_hyphens|title }}</span>
+                                <td class="nk-tb-col tb-col-md select-activity" style="cursor: pointer !important;">
+                                    {% if activity.lead.opportunity.is_company %}
+                                    <span>{{activity.lead.opportunity|contact_email}}</span>
+                                    {% elif activity.lead.opportunity.is_individual %}
+                                    <span>{{activity.lead.opportunity.email}}</span>
+                                    {% endif %}
+                                </td>
+                                <td class="nk-tb-col tb-col-md select-activity" style="cursor: pointer !important;">
+                                    {% if activity.lead.opportunity.is_company %}
+                                    <span>{{activity.lead.opportunity|contact_phone}}</span>
+                                    {% elif activity.lead.opportunity.is_individual %}
+                                    <span>{{activity.lead.opportunity.phone_no}}</span>
+                                    {% endif %}
+                                </td>
+                                <td class="nk-tb-col select-activity" style="cursor: pointer !important;">
+                                    <div class="user-card">
+                                        <div class="user-info">
+                                            <span class="tb-lead">
+                                                {% if activity.type.name == "Call" %}
+                                                <em class="icon ni ni-call"></em>
+                                                {% elif activity.type.name == "Email" %}
+                                                <em class="icon ni ni-mail"></em>
+                                                {% endif %}
+                                                {{activity.summary}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="nk-tb-col tb-col-md select-activity" style="cursor: pointer !important;">
+                                    <span>{{activity.due_date}}</span>
+                                </td>
+                                <td class="nk-tb-col tb-col-md select-activity" style="cursor: pointer !important;">
+                                    <span>{{activity.lead.expected_revenue}}</span>
+                                </td>
+                                <td class="nk-tb-col tb-col-md select-activity" style="cursor: pointer !important;">
+                                    <span>{{activity.lead.stage.name}}</span>
                                 </td>
                                 <td class="nk-tb-col nk-tb-col-tools">
                                     <ul class="nk-tb-actions gx-1">
@@ -73,14 +113,17 @@
                                                                     class="icon ni ni-download"></em><span>Export</span></a>
                                                         </li>
                                                         {% if current_user|can_write(1) %}
-                                                        <li><a id="{{user.slug}}" href="#" class="confirm-archive-user"><em
+                                                        <li><a id="{{user.slug}}" href="#"
+                                                                class="confirm-archive-user"><em
                                                                     class="icon ni ni-archive"></em><span>Archive</span></a>
                                                         </li>
-                                                        <li><a id="unarchive.{{user.slug}}" href="#" class="unarchive-user"><em
+                                                        <li><a id="unarchive.{{user.slug}}" href="#"
+                                                                class="unarchive-user"><em
                                                                     class="icon ni ni-unarchive"></em><span>Unarchive</span></a>
                                                         </li>
                                                         <li class="divider"></li>
-                                                        <li><a id="{{user.slug}}" href="#" class="confirm-delete-user"><em
+                                                        <li><a id="{{user.slug}}" href="#"
+                                                                class="confirm-delete-user"><em
                                                                     class="icon ni ni-delete"></em><span>Delete</span></a>
                                                         </li>
                                                         <li><a href="#"><em

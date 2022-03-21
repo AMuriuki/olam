@@ -3,7 +3,7 @@ from unittest import result
 from sqlalchemy.sql.elements import or_
 from app.auth.models.user import Access, Group, Permission, Users
 from app.crm.models.crm_stage import Stage
-from app.main.models.activities import Activity
+from app.main.models.activities import Activity, ActivityType
 from app.main.models.country import Country
 from app.main.models.partner import Partner
 from app.models import Task
@@ -30,6 +30,8 @@ def make_shell_context():
 def inject_activities():
     activities = Activity.query.distinct(
         Activity.model_id).group_by(Activity.id).all()
+    for activity in activities:
+        print(activity)
     if activities:
         return dict(activities=activities)
     else:
@@ -43,6 +45,15 @@ def inject_modules():
         return dict(modules=modules)
     else:
         return dict(modules="")
+
+
+@app.context_processor
+def inject_activity_types():
+    activity_types = ActivityType.query.all()
+    if activity_types:
+        return dict(activity_types=activity_types)
+    else:
+        return dict(activity_types="")
 
 
 @app.context_processor
@@ -272,11 +283,45 @@ def permission(value):
 
 
 @app.template_filter()
-def view_access(value):
-    pass
+def can_read(user, model_id):
+    access_groups = [g.id for g in Group.query.join(
+        Access, Group.rights).filter_by(model_id=model_id).filter_by(read=True)]
+    user_groups = [g.id for g in user.groups]
+    L1 = set(access_groups)
+    L2 = set(user_groups)
+    result = L1.intersection(L2)
+    return has_access(result)
 
 
 @app.template_filter()
 def no_activities(value):
     count = Activity.query.filter_by(model_id=value).count()
     return count
+
+
+@app.template_filter()
+def contact_name(value):
+    parent = Partner.query.filter_by(id=str(value)).first()
+    child = Partner.query.filter_by(parent_id=parent.id).first()
+    return child.name
+
+
+@app.template_filter()
+def contact_email(value):
+    parent = Partner.query.filter_by(id=str(value)).first()
+    child = Partner.query.filter_by(parent_id=parent.id).first()
+    return child.email
+
+
+@app.template_filter()
+def contact_phone(value):
+    parent = Partner.query.filter_by(id=str(value)).first()
+    child = Partner.query.filter_by(parent_id=parent.id).first()
+    return child.phone_no
+
+
+@app.template_filter()
+def contact_position(value):
+    parent = Partner.query.filter_by(id=str(value)).first()
+    child = Partner.query.filter_by(parent_id=parent.id).first()
+    return child.function

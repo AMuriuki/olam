@@ -6,7 +6,7 @@ from app.crm.models.crm_recurring_plan import RecurringPlan
 from app.crm.models.crm_stage import Stage
 from app.crm.models.crm_lead import Lead
 from app.helper_functions import set_default_user_groups
-from app.main.models.activities import Activity
+from app.main.models.activities import Activity, ActivityType
 from app.main.models.company import Company
 from app.main.models.module import Model, Module, ModuleCategory
 from app.main.models.partner import Partner
@@ -14,7 +14,7 @@ from app.main.models.country import City, Country
 from flask import current_app
 from app import db
 from app.models import Task
-from app.main.utils import get_activities, get_calling_codes, get_company, get_countries, get_countries_cities, get_models, get_moduleCategories, get_modules
+from app.main.utils import get_activities, get_activity_types, get_calling_codes, get_company, get_countries, get_countries_cities, get_models, get_moduleCategories, get_modules
 from app.crm.utils import get_opportunities, get_recurring_plans, get_stages
 from rq import get_current_job
 from app.models import Task
@@ -199,6 +199,12 @@ def dummy_data():
                         record.generate_slug()
                         db.session.add(record)
                         db.session.commit()
+                if 'parent_id' in partner:
+                    record = Partner(id=partner['id'], name=partner['name'], title=partner['title'], function=partner['function'], email=partner['email'], phone_no=partner['phone_no'],
+                                     is_active=partner['is_active'], parent_id=partner['parent_id'], is_individual=partner['is_individual'], website=partner['website'])
+                    record.generate_slug()
+                    db.session.add(record)
+                    db.session.commit()
 
         # users
         users = get_users()
@@ -296,13 +302,25 @@ def dummy_data():
                 db.session.add(lead)
                 db.session.commit()
 
+        # activity types
+        activity_types = get_activity_types()
+        for activity_type in activity_types:
+            exists = ActivityType.query.filter_by(
+                id=activity_type['id']).first()
+            if not exists:
+                activity_type = ActivityType(id=activity_type['id'], name=activity_type['name'],
+                                             model_id=activity_type['model_id'])
+                db.session.add(activity_type)
+                db.session.commit()
+                print("Activity type " + str(activity_type.id) + " created")
+
         # activities
         activities = get_activities()
         for activity in activities:
             exists = Activity.query.filter_by(id=activity['id']).first()
             if not exists:
-                activity = Activity(id=activity['id'], name=activity['name'],
-                                    module_id=activity['module_id'], model_id=activity['model_id'])
+                activity = Activity(id=activity['id'], summary=activity['summary'],
+                                    module_id=activity['module_id'], model_id=activity['model_id'], lead_id=activity['lead_id'], activity_type=activity['activity_type'])
                 db.session.add(activity)
                 db.session.commit()
                 print("Activity " + str(activity.id) + " created")

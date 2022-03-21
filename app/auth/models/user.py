@@ -19,6 +19,7 @@ from app.utils import has_access, unique_slug_generator
 from config import basedir
 import hashlib
 import enum
+from sqlalchemy.dialects.postgresql import UUID
 
 
 access_rights = db.Table(
@@ -62,7 +63,7 @@ class Permission(enum.Enum):
 
 class Users(UserMixin, PaginatedAPIMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    partner_id = db.Column(db.Integer, db.ForeignKey('partner.id'))
+    partner_id = db.Column(UUID(as_uuid=True), db.ForeignKey('partner.id'))
     company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
     team_id = db.Column(db.Integer, db.ForeignKey('partner_team.id'))
     token = db.Column(db.String(120), index=True, unique=True)

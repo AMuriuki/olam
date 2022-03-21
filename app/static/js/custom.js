@@ -25,8 +25,8 @@ current_href = $(location).attr("href");
 
 if (current_href.toLowerCase().indexOf("contacts/view_contact") >= 0) {
   if (
-    $("#select_country").val() !== "default_option" &&
-    $("#select_city").val() !== "default_option"
+    $(".select_country").val() !== "default_option" &&
+    $(".select_city").val() !== "default_option"
   ) {
     get_city(country);
   }
@@ -41,6 +41,14 @@ if (current_href.toLowerCase().indexOf("settings/users") >= 0) {
     }
   }
 }
+
+$(".schedule").click(function (e) {
+  record_id = this.id;
+  $.post("/crm/get_opportunityID", {
+    opportunity_id: record_id,
+  }).done(function (response) {});
+  $(".record_id").attr("id", record_id);
+});
 
 $(".edit-stage").click(function (e) {
   e.preventDefault();
@@ -852,7 +860,7 @@ $("#company").change(function () {
   }
 });
 
-$("#select_country").change(function () {
+$(".select_country").change(function () {
   country = $(this).val();
   get_city(country);
 });
@@ -869,10 +877,10 @@ async function get_city(country) {
   });
   const content = await rawResponse.json();
 
-  $("#select_city").find("option").remove();
-  $("#select_city").append($("<option>", { value: "#", text: "Select City" }));
+  $(".select_city").find("option").remove();
+  $(".select_city").append($("<option>", { value: "#", text: "Select City" }));
   $.map(content["cities"]["items"], function (value, key) {
-    $("#select_city").append(
+    $(".select_city").append(
       $("<option>", { value: value["id"], text: value["name"] })
     );
   });

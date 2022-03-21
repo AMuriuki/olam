@@ -103,7 +103,7 @@
                                     <div class="form-group">
                                         <label class="form-label">Country</label>
                                         <div class="form-control-wrap">
-                                            <select id="select_country" name="select_country" class="form-select" data-search="on">
+                                            <select id="select_country" name="select_country" class="form-select select_country" data-search="on">
                                                 <option value="default_option">Select Country</option>
                                                 {% for country in countries %}
                                                 <option value="{{country.id}}">{{country.name}}</option>
@@ -116,7 +116,7 @@
                                     <div class="form-group">
                                         <label class="form-label">City</label>
                                         <div class="form-control-wrap">
-                                            <select id="select_city" name="select_city" class="form-select" data-search="on">
+                                            <select id="select_city" name="select_city" class="form-select select_city" data-search="on">
                                                 <option value="default_option">Select City</option>
                                                 <option value="#"><i>Choose a country to list cities</i></option>
                                             </select>
@@ -270,7 +270,7 @@
                                     <div class="form-group">
                                         <label class="form-label">Country</label>
                                         <div class="form-control-wrap">
-                                            <select id="individual_select_country" class="form-select" data-search="on">
+                                            <select id="individual_select_country" class="form-select select_country" name="select_country" data-search="on">
                                                 <option value="default_option">Select Country</option>
                                                 {% for country in countries %}
                                                 <option value="{{country.id}}">{{country.name}}</option>
@@ -283,7 +283,7 @@
                                     <div class="form-group">
                                         <label class="form-label">City</label>
                                         <div class="form-control-wrap">
-                                            <select id="individual_select_city" class="form-select" data-search="on">
+                                            <select id="individual_select_city" class="form-select select_city" name="select_city" data-search="on">
                                                 <option value="default_option">Select City</option>
                                                 <option value=""><i>Choose a country to list cities</i></option>
                                             </select>
@@ -321,7 +321,7 @@
                                 <div class="col-lg-4">
                                     <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                                         <li>
-                                            {{form1.submit1(class="btn btn-m btn-primary btn-block")}}
+                                            {{form2.submit2(class="btn btn-m btn-primary btn-block")}}
                                         </li>
                                         <li>
                                             <a href="#" data-dismiss="modal" class="btn btn-outline-light">Cancel</a>

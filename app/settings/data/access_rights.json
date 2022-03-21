@@ -72,9 +72,36 @@
     "delete": true
   },
   {
+    "id": "0140b3e4-e204-473f-bba6-05113efa82d0",
+    "name": "Manage Sales Stages",
+    "model_id": 6,
+    "read": true,
+    "write": true,
+    "create": true,
+    "delete": true
+  },
+  {
     "id": "d096daba-59e4-4f5d-81f8-b7bd1d27fbfd",
     "name": "Manage Pipeline",
     "model_id": 5,
+    "read": true,
+    "write": true,
+    "create": true,
+    "delete": false
+  },
+  {
+    "id": "b1ad71ab-f6db-4ff6-a6e3-a72aa563f964",
+    "name": "Manage Pipeline",
+    "model_id": 5,
+    "read": true,
+    "write": true,
+    "create": true,
+    "delete": false
+  },
+  {
+    "id": "c44a28a1-1061-4fb8-9051-38566eb6cb38",
+    "name": "Manage Sales Stages",
+    "model_id": 6,
     "read": true,
     "write": true,
     "create": true,

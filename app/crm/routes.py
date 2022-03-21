@@ -6,20 +6,24 @@ from app.crm import bp
 from app.crm.models.crm_lead import FILTERS, Lead
 from app.crm.models.crm_recurring_plan import RecurringPlan
 from app.crm.models.crm_stage import Stage
-from app.decorators import active_user_required
-from app.main.models.module import Module
+from app.decorators import active_user_required, module_access_required
+from app.main.models.activities import Activity
+from app.main.models.module import Model, Module
 from flask_babel import _, get_locale
-from app import db
-from app.main.models.partner import Partner
+from app import create_app, db
+from app.main.models.partner import Partner, PartnerTeam
 from sqlalchemy import log, or_
 from app.contacts.forms import TITLES, BasicCompanyInfoForm, BasicIndividualInfoForm
 from app.crm.forms import AddStage, BoardItemForm, NewRecurringPlanForm, EditStageForm, CreateSalesTeamForm
-from app.main.models.country import Country
+from flask_wtf.csrf import CSRFProtect
+
+app = create_app()
 
 
 @bp.route('/edit_stage', methods=['GET', 'POST'])
 @login_required
 @active_user_required
+@module_access_required(2)
 def edit_stage():
     stage = Stage.query.filter_by(id=request.form['stage_id']).first()
     stage.name = request.form['stage_name']
@@ -151,9 +155,36 @@ def new_recurring_plan():
     return jsonify({"response": "failed"})
 
 
+@bp.route('/get_opportunityID', methods=['POST', 'GET'])
+def get_opportunityID():
+    if request.method == "POST":
+        session['opportunity_id'] = request.form['opportunity_id']
+        return jsonify({"response": "success"})
+
+
+@bp.route('/update-activity/<int:id>', methods=['POST', 'GET'])
+def update_activity(activity_id):
+    activity = Activity.query.filter_by(id=activity_id).first()
+    module = Module.query.filter_by(bp_name='crm').first()
+    model = Model.query.filter_by(name='Lead/Opportunity').first()
+    if request.method == "POST":
+        activity.summary = request.form['summary']
+        activity.module_id = module.id
+        activity.model_id = model.id
+        activity.lead_id = session['opportunity_id']
+        activity.activity_type = request.form['activity_type']
+        activity.due_date = request.form['due_date']
+        activity.assigned_to = request.form['assignee']
+        activity.notes = request.form['notes']
+        db.session.commit()
+        flash(_("New activity added"))
+        return redirect(url_for('crm.pipeline'))
+
+
 @bp.route('/', methods=['GET', 'POST'])
 @login_required
 @active_user_required
+@module_access_required(2)
 def pipeline():
     form1 = BasicCompanyInfoForm()
     form2 = BasicIndividualInfoForm()
@@ -161,7 +192,7 @@ def pipeline():
     form4 = NewRecurringPlanForm()
     form5 = EditStageForm()
     form6 = AddStage()
-
+    csrf_token = CSRFProtect(app)
     plans = RecurringPlan.query.all()
     titles = TITLES
 
@@ -171,10 +202,11 @@ def pipeline():
     exists = []
 
     selectedFilters = request.args.get('filter')
-    _selectedFilters = selectedFilters.split(',')
+
     qs = Lead.query.order_by(Lead.priority.desc())
 
     if selectedFilters:
+        _selectedFilters = selectedFilters.split(',')
         if "All" in selectedFilters:
             qs = qs
         else:
@@ -198,6 +230,9 @@ def pipeline():
             user_id=current_user.get_id()).order_by(Lead.priority.desc()).all()
         selectedFilters = "My Pipeline,"
 
+    _activities = Activity.query.join(Lead).all()
+    assignees = Partner.query.filter_by(is_tenant=True).all()
+
     if form3.submit1.data and form3.validate_on_submit():
         opportunity = Lead(name=request.form['opportunity'], user_id=current_user.get_id(), partner_id=request.form['pipeline_select_org'], priority=session['selected_priority'], stage_id=int(
             session['pipeline_stage']), expected_revenue=request.form['expected_revenue'], partner_email=request.form['partner_email'], partner_phone=request.form['partner_phone'], plan_id=request.form['recurring_plan'], partner_currency=request.form['_partner_currency'])
@@ -217,7 +252,17 @@ def pipeline():
         flash(_("New stage added successfully"))
         return redirect(url_for('crm.pipeline', new_stage=new_stage))
 
-    return render_template('crm/pipeline.html', title=_('CRM Pipeline | Olam ERP'), pipeline=pipeline, form1=form1, form2=form2, form3=form3, form4=form4, form5=form5, form6=form6, titles=titles, plans=plans, filters=filters, new_stage=new_stage, selectedFilters=selectedFilters, message=message)
+    if request.method == "POST":
+        module = Module.query.filter_by(bp_name='crm').first()
+        model = Model.query.filter_by(name='Lead/Opportunity').first()
+        activity = Activity(summary=request.form['summary'], module_id=module.id, model_id=model.id, lead_id=session['opportunity_id'],
+                            activity_type=request.form['activity_type'], due_date=request.form['due_date'], assigned_to=request.form['assignee'], notes=request.form['notes'])
+        db.session.add(activity)
+        db.session.commit()
+        flash(_("New activity added"))
+        return redirect(url_for('crm.pipeline'))
+
+    return render_template('crm/pipeline.html', title=_('CRM Pipeline | Olam ERP'), pipeline=pipeline, form1=form1, form2=form2, form3=form3, form4=form4, form5=form5, form6=form6, titles=titles, plans=plans, filters=filters, new_stage=new_stage, selectedFilters=selectedFilters, message=message, _activities=_activities, assignees=assignees, csrf_token=csrf_token)
 
 
 @bp.route('/pipeline', methods=['GET', 'POST'])
@@ -238,7 +283,7 @@ def sales():
 @login_required
 @active_user_required
 def sales_teams():
-    sales_teams = Team.query.join(Partner).all()
+    sales_teams = PartnerTeam.query.join(Partner).all()
     for sales_team in sales_teams:
         print(sales_team.lead.name)
     return render_template('crm/sales_teams.html', title=_('CRM Sales Teams | Olam ERP'), sales_teams=sales_teams)
@@ -248,7 +293,7 @@ def sales_teams():
 @login_required
 @active_user_required
 def sales_team(token):
-    sales_team = Team.query.filter_by(token=token).join(Partner).first()
+    sales_team = PartnerTeam.query.filter_by(token=token).join(Partner).first()
     return render_template('crm/sales_team.html', title=_(sales_team.name + ' | Olam ERP'), sales_team=sales_team)
 
 
@@ -259,8 +304,8 @@ def create_team():
     form = CreateSalesTeamForm()
     partners = Partner.query.filter_by(is_tenant=True).all()
     if form.validate_on_submit():
-        sales_team = Team(name=form.name.data,
-                          leader=request.form['team_leader'])
+        sales_team = PartnerTeam(name=form.name.data,
+                                 leader=request.form['team_leader'])
         sales_team.set_token(form.name.data)
         db.session.add(sales_team)
         db.session.commit()
@@ -314,4 +359,7 @@ def move_stage(slug, stage_id):
 @login_required
 @active_user_required
 def activities():
-    return render_template("crm/activities.html", title=_("Activities | Olam ERP"))
+    model_name = request.args.get('model')
+    model = Model.query.filter_by(name=model_name).first()
+    activities = Activity.query.filter_by(model_id=model.id).all()
+    return render_template("crm/activities.html", title=_("Activities | Olam ERP"), activities=activities)

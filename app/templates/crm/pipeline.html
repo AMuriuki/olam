@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
     .nk-aside {
         display: none;
@@ -26,6 +27,13 @@
 
     .kanban-item {
         cursor: pointer !important;
+    }
+
+
+    @media (min-width: 576px) {
+        .mx-w-80 {
+            max-width: 80% !important;
+        }
     }
 </style>
 <div class="nk-content-body">
@@ -456,21 +464,29 @@
                                             <div class="dropdown-menu dropdown-menu-left">
                                                 <div class="dropdown-head">
                                                     <span class="sub-title nk-dropdown-title">Activities</span>
-                                                    <a href="#">33 Activities</a>
                                                 </div>
                                                 <ul class="link-list-opt no-bdr">
+                                                    {% for activity in _activities %}
+                                                    {% if activity.lead_id == record.id %}
                                                     <li>
-                                                        <a id="{{stage.id}}" href="#" class="edit-stage">
-                                                            <em class="icon ni ni-edit"></em>
-                                                            <span>Activities</span>
+                                                        <a href="#" data-toggle="modal"
+                                                            data-target="#ActivityModal{{activity.id}}">
+                                                            {% if activity.type.name == "Call" %}
+                                                            <em class="icon ni ni-call"></em>
+                                                            {% elif activity.type.name == "Email" %}
+                                                            <em class="icon ni ni-mail"></em>
+                                                            {% endif %}
+                                                            <span>{{activity.summary}}</span>
                                                         </a>
                                                     </li>
                                                     <hr>
+                                                    {% endif %}
+                                                    {% endfor %}
                                                     <li>
-                                                        <a id="{{stage.id}}" href="#" class="edit-stage">
-                                                            <em class="icon ni ni-edit"></em>
-                                                            <span>Edit
-                                                                Stage</span>
+                                                        <a id="{{record.id}}" class="schedule" href="#"
+                                                            data-toggle="modal" data-target="#modalActivity">
+                                                            <em class="icon ni ni-plus-sm"></em>
+                                                            <span>Schedule an Activity</span>
                                                         </a>
                                                     </li>
                                                 </ul>
@@ -478,7 +494,9 @@
                                         </div>
                                     </div>
                                     <ul class="kanban-item-tags">
-                                        <li><span {% if record.user_id == current_user.id %} class="badge badge-primary" {% else %} class="badge badge-secondary" {% endif %}>{{record.user_id|get_user_name}}</span></li>
+                                        <li><span {% if record.user_id==current_user.id %} class="badge badge-primary"
+                                                {% else %} class="badge badge-secondary" {% endif
+                                                %}>{{record.user_id|get_user_name}}</span></li>
                                     </ul>
                                 </a>
                             </div>
@@ -807,4 +825,161 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="modalActivity">
+    <div class="modal-dialog mx-w-80" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Schedule Activity</h5>
+                <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                    <em class="icon ni ni-cross"></em>
+                </a>
+            </div>
+            <form action="{{url_for('crm.pipeline')}}" class="form-validate is-alter" method="post">
+                <input type="hidden" name="record_id" class="record_id" />
+                <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
+                <div class="modal-body">
+                    <div class="row gy-4">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-label" for="activity_type">Activity Type</label>
+                                <div class="form-control-wrap">
+                                    <select class="form-select" name="activity_type">
+                                        <option value="#">Select Activity Type</option>
+                                        {% for activity_type in activity_types %}
+                                        <option value="{{activity_type.id}}">{{activity_type.name|title}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-label" for="due_date">Due Date</label>
+                                <div class="form-control-wrap">
+                                    <input type="date" class="form-control" id="due_date" name="due_date">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-label" for="summary">Summary</label>
+                                <div class="form-control-wrap">
+                                    <input type="text" class="form-control" id="summary" name="summary"
+                                        placeholder="E.g Discuss proposal">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-label" for="default-04">Assigned To</label>
+                                <div class="form-control-wrap">
+                                    <select class="form-select" name="assignee">
+                                        <option value="#">Select Assignee</option>
+                                        {% for assignee in assignees %}
+                                        <option value="{{assignee.id}}">{{assignee.name|title}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <textarea class="summernote" name="notes"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer bg-light">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-lg btn-primary">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% for activity in _activities %}
+<div class="modal fade" id="ActivityModal{{activity.id}}">
+    <div class="modal-dialog mx-w-80" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Schedule Activity</h5>
+                <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                    <em class="icon ni ni-cross"></em>
+                </a>
+            </div>
+            <form action="{{url_for('crm.pipeline')}}" class="form-validate is-alter" method="post">
+                <input type="hidden" name="record_id" class="record_id" />
+                <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
+                <div class="modal-body">
+                    <div class="row gy-4">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-label" for="activity_type">Activity Type</label>
+                                <div class="form-control-wrap">
+                                    <select class="form-select" name="activity_type">
+                                        <option value="#">Select Activity Type</option>
+                                        {% for activity_type in activity_types %}
+                                        <option value="{{activity_type.id}}" {% if
+                                            activity_type.id==activity.activity_type %}selected{% endif %}>
+                                            {{activity_type.name|title}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-label" for="due_date">Due Date</label>
+                                <div class="form-control-wrap">
+                                    <input type="date" class="form-control" id="due_date" name="due_date"
+                                        value="{{activity.due_date}}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-label" for="summary">Summary</label>
+                                <div class="form-control-wrap">
+                                    <input type="text" class="form-control" id="summary" name="summary"
+                                        placeholder="E.g Discuss proposal" value="{{activity.summary}}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-label" for="default-04">Assigned To</label>
+                                <div class="form-control-wrap">
+                                    <select class="form-select" name="assignee">
+                                        <option value="#">Select Assignee</option>
+                                        {% for assignee in assignees %}
+                                        <option value="{{assignee.id}}" {% if assignee.id==activity.assigned_to
+                                            %}selected{% endif %}>{{assignee.name|title}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <textarea class="summernote" name="notes">{{activity.notes}}</textarea>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer bg-light">
+                    <div class="form-group">
+                        <a href="{{url_for('crm.update_activity', id=activity.id)}}" type="submit" class="btn btn-lg btn-primary">Save</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endfor %}
+<script>
+    $('.summernote').summernote({
+        placeholder: 'Hello Bootstrap 5',
+        tabsize: 2,
+        height: 100
+    });
+</script>
 {% endblock %}

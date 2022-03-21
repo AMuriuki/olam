@@ -1,0 +1,42 @@
+[
+    {
+        "id": "37454879-351a-4928-bc3d-8be3adb6772a",
+        "name": "Call",
+        "model_id": 5
+    },
+    {
+        "id": "254ac0de-945a-4669-b380-494dc4113dfc",
+        "name": "Call for Demo",
+        "model_id": 5
+    },
+    {
+        "id": "ddd1e301-aff1-4a28-87d3-c2428d631e97",
+        "name": "Email",
+        "model_id": 5
+    },
+    {
+        "id": "9b5e9ef6-f2a4-4443-a36b-0d01856e4118",
+        "name": "Follow-Up Quote",
+        "model_id": 5
+    },
+    {
+        "id": "73b677e2-8ce3-4a47-8a9e-ef333ff3017d",
+        "name": "Make Quote",
+        "model_id": 5
+    },
+    {
+        "id": "426a2905-ada9-4ac4-a3ed-3beaae5615b3",
+        "name": "Meeting",
+        "model_id": 5
+    },
+    {
+        "id": "875ad9bc-1809-4e44-869b-0d0d5ab01e47",
+        "name": "To Do",
+        "model_id": 5
+    },
+    {
+        "id": "e8c5a180-2f72-4dc8-9890-ee7b3caa94c5",
+        "name": "Upload Document",
+        "model_id": 5
+    }
+]

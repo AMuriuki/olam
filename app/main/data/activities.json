@@ -1,8 +1,11 @@
 [
     {
         "id": "8b7ca32d-675b-47ee-8149-7c9cb96436bf",
-        "name": "Office Design Project",
+        "summary": "Meeting to go over pricing info.",
         "module_id": 2,
-        "model_id": 5
+        "model_id": 5,
+        "lead_id": 1,
+        "activity_type": "37454879-351a-4928-bc3d-8be3adb6772a",
+        "due_date": null
     }
 ]

@@ -1,35 +1,35 @@
 [
     {
         "id": 1,
-        "partner_id": 1,
+        "partner_id": "2a02f572-4062-426a-953b-bc393cd37d90",
         "company_id": 1,
         "is_active": true,
         "password": "demo"
     },
     {
         "id": 2,
-        "partner_id": 2,
+        "partner_id": "d5fdf6c7-43aa-4e34-8c9b-e44c12e5984a",
         "company_id": 1,
         "is_active": true,
         "password": "demo"
     },
     {
         "id": 3,
-        "partner_id": 3,
+        "partner_id": "bf491cb3-fece-4aff-985b-87cdb9421b9c",
         "company_id": 1,
         "is_active": true,
         "password": "demo"
     },
     {
         "id": 4,
-        "partner_id": 4,
+        "partner_id": "552db79c-be31-440f-96a8-36d813f1e353",
         "company_id": 1,
         "is_active": true,
         "password": "demo"
     },
     {
         "id": 5,
-        "partner_id": 12,
+        "partner_id": "1fe10e8c-394c-45f5-9830-1e5a8adc4f4a",
         "company_id": 1,
         "is_active": true,
         "password": "demo"

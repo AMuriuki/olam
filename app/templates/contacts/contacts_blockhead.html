@@ -16,24 +16,101 @@
                     {% endif %}
                 </strong>
             </h3>
-            <div class="nk-block-des text-soft">
-                <ul class="list-inline">
-                    <li>Last Login: <span class="text-base">15 Feb, 2019 01:02 PM</span></li>
-                </ul>
-            </div>
+            <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                {% if current_user|can_write(3) %}
+                <li>
+                    <a href="{{url_for('contacts.edit', slug=partner.slug)}}" class="btn btn-primary">
+                        EDIT
+                    </a>
+                </li>
+                {% endif %}
+                {% if current_user|can_create(3) %}
+                <li>
+                    <a href="{{url_for('contacts.create')}}" class="btn btn-outline-light">
+                        CREATE
+                    </a>
+                </li>
+                {% endif %}
+                <li class="li-actions">
+                    <div class="drodown">
+                        <a href="#" class="dropdown-toggle btn btn-outline-light actions" data-toggle="dropdown">
+                            <em class="icon ni ni-setting"></em>
+                            <span>Actions</span>
+                            <em class="dd-indc icon ni ni-chevron-right"></em>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <ul class="link-list-opt no-bdr">
+                                {% if current_user|can_write(3) %}
+                                <li><a href="#"><span>Archive</span></a></li>
+                                {% endif %}
+                                {% if current_user|can_create(3) %}
+                                <li><a href="#"><span>Duplicate</span></a></li>
+                                {% endif %}
+                                {% if current_user|can_delete(3) %}
+                                <li><a href="#"><span>Delete</span></a></li>
+                                {% endif %}
+                                {% if current_user|can_write(3) %}
+                                <li><a href="#"><span>Grant Portal Access</span></a></li>
+                                <li><a href="#"><span>Send SMS Text Message</span></a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
         <div class="nk-block-head-content">
-            <h3 class="nk-block-title page-title">
-
-
-            </h3>
-        </div>
-        <div class="nk-block-head-content">
-            <a href="{{url_for('contacts.index')}}" class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em
-                    class="icon ni ni-arrow-left"></em><span>Back</span></a>
-            <a href="{{url_for('contacts.index')}}"
-                class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em
-                    class="icon ni ni-arrow-left"></em></a>
+            <div class="toggle-wrap nk-block-tools-toggle">
+                <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em
+                        class="icon ni ni-menu-alt-r"></em></a>
+                <div class="toggle-expand-content" data-content="pageMenu">
+                    <ul class="nk-block-tools g-3">
+                        {% if title == 'Contact Details | Olam ERP' %}
+                        <li style="margin-left: auto !important;">
+                            <span>{{current_index}}</span>/<span>{{partners|length}}</span>
+                        </li>
+                        {% if current_index != 1 %}
+                        <li>
+                            {% if edit %}
+                            <a href="{{url_for('contacts.edit', slug=partners[prev_index].slug)}}"
+                                class="btn btn-icon btn-m btn-primary d-none d-sm-inline-flex"><em
+                                    class="icon ni ni-caret-left"></em></a>
+                            <a href="{{url_for('contacts.edit', slug=partners[prev_index].slug)}}"
+                                class="btn btn-icon btn-m btn-primary d-inline-flex d-sm-none"><em
+                                    class="icon ni ni-caret-left"></em></a>
+                            {% else %}
+                            <a href="{{url_for('contacts.view_contact', slug=partners[prev_index].slug)}}"
+                                class="btn btn-icon btn-m btn-primary d-none d-sm-inline-flex"><em
+                                    class="icon ni ni-caret-left"></em></a>
+                            <a href="{{url_for('contacts.view_contact', slug=partners[prev_index].slug)}}"
+                                class="btn btn-icon btn-m btn-primary d-inline-flex d-sm-none"><em
+                                    class="icon ni ni-caret-left"></em></a>
+                            {% endif %}
+                        </li>
+                        {% endif %}
+                        {% if next_index != partners|length %}
+                        <li>
+                            {% if edit %}
+                            <a href="{{url_for('contacts.edit', slug=partners[next_index].slug)}}"
+                                class="btn btn-icon btn-m btn-primary d-none d-sm-inline-flex"><em
+                                    class="icon ni ni-caret-right"></em></em></a>
+                            <a href="{{url_for('contacts.edit', slug=partners[next_index].slug)}}"
+                                class="btn btn-icon btn-m btn-primary d-inline-flex d-sm-none"><em
+                                    class="icon ni ni-caret-right"></em></a>
+                            {% else %}
+                            <a href="{{url_for('contacts.view_contact', slug=partners[next_index].slug)}}"
+                                class="btn btn-icon btn-m btn-primary d-none d-sm-inline-flex"><em
+                                    class="icon ni ni-caret-right"></em></em></a>
+                            <a href="{{url_for('contacts.view_contact', slug=partners[next_index].slug)}}"
+                                class="btn btn-icon btn-m btn-primary d-inline-flex d-sm-none"><em
+                                    class="icon ni ni-caret-right"></em></a>
+                            {% endif %}
+                        </li>
+                        {% endif %}
+                        {% endif %}
+                    </ul>
+                </div>
+            </div><!-- .toggle-wrap -->
         </div>
     </div>
 </div><!-- .nk-block-head -->

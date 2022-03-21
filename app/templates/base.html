@@ -16,6 +16,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap"
         rel="stylesheet">
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="../static/summernote/summernote-bs4.css" rel="stylesheet">
+    <script src="../static/summernote/summernote-bs4.js"></script>
     {{ moment.include_moment() }}
     <style>
         .nk-content-wrap {
@@ -230,6 +233,11 @@
     <script src="{{url_for('static', filename='js/apps/inbox.js')}}"></script>
     <script src="{{url_for('static', filename='js/libs/tagify.js')}}"></script>
     {% endif %}
+    <script>
+        $(document).ready(function () {
+            $('#summernote').summernote();
+        });
+    </script>
 </body>
 
 

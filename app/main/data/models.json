@@ -28,5 +28,11 @@
     "name": "Lead/Opportunity",
     "description": "Information about a sales prospect.",
     "module_id": 1
+  },
+  {
+    "id": 6,
+    "name": "Sales Stage",
+    "description": "Records the various sales stages of a sales team.",
+    "module_id": 1
   }
 ]
