@@ -59,10 +59,10 @@ $ . venv/bin/activate
 
 5. Initialize Database
 
-For demo, initialize and seed the DB with data:
+For demo, initialize and seed the DB with dummy data:
 ```
 $ flask db upgrade
-$ flask deploy
+$ flask dummy
 ```
 
 ## Running Olam
@@ -77,5 +77,5 @@ Navigate to http://127.0.0.1:5000/ on your local browser
 ## Credentials
 To log in:
 
-> **Email**:demo@demo.com<br>
+> **Email**:arnold@tsh.com<br>
 > **Password**: demo
