@@ -106,5 +106,32 @@
     "write": true,
     "create": true,
     "delete": false
+  },
+  {
+    "id": "d4a175a7-ef01-48c9-af32-59c666949225",
+    "name": "Manage Activities",
+    "model_id": 7,
+    "read": true,
+    "write": true,
+    "create": true,
+    "delete": true
+  },
+  {
+    "id": "21d884e7-caeb-4b02-bc96-a75afca1c7c5",
+    "name": "Manage Activities",
+    "model_id": 7,
+    "read": true,
+    "write": true,
+    "create": true,
+    "delete": false
+  },
+  {
+    "id": "acecafba-57b2-4f9d-9022-973ff101ac0a",
+    "name": "Manage Activities",
+    "model_id": 7,
+    "read": true,
+    "write": true,
+    "create": true,
+    "delete": false
   }
 ]

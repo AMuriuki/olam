@@ -1,17 +1,40 @@
 <div class="nk-block-head nk-block-head-sm">
     <div class="nk-block-between">
         <div class="nk-block-head-content">
+            {% if title == 'New Activity | Olam ERP' %}
             <h3 class="nk-block-title page-title">
+                <a href="{{url_for('crm.activities')}}">
+                    Activities
+                </a>
+                /
                 <strong class="text-primary small">
-                    <span>Activities</span>
+                    New Activity
                 </strong>
             </h3>
-
             <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                {% if current_user|can_create(5) %}
+                {% if current_user|can_create(7) %}
                 <li>
-                    <input id="btn_additem-1" class="btn btn-m btn-primary btn-block add-item" id="submit1"
-                        name="submit1" type="submit" value="CREATE">
+                    <button type="submit" class="btn btn-m btn-primary">SAVE</button>
+                </li>
+                {% endif %}
+                <li>
+                    <a href="{{url_for('crm.activities')}}" class="btn btn-m btn-outline-light">DISCARD</a>
+                </li>
+            </ul>
+            {% else %}
+            <h3 class="nk-block-title page-title">
+                <a href="{{url_for('crm.pipeline')}}">
+                    CRM
+                </a>
+                /
+                <strong class="text-primary small">
+                    Activities
+                </strong>
+            </h3>
+            <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                {% if current_user|can_create(7) %}
+                <li>
+                    <a href="{{url_for('crm.create_activity')}}" class="btn btn-m btn-primary">CREATE</a>
                 </li>
                 {% endif %}
                 <li>
@@ -28,6 +51,7 @@
                     <span class="btn selected-groups"></span>
                 </li>
             </ul>
+            {% endif %}
         </div><!-- .nk-block-head-content -->
         <div class="nk-block-head-content">
             <div class="toggle-wrap nk-block-tools-toggle">

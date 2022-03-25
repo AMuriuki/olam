@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
     .nk-aside {
         display: none;
@@ -34,6 +33,10 @@
         .mx-w-80 {
             max-width: 80% !important;
         }
+    }
+
+    .quill-editor {
+        height: auto;
     }
 </style>
 <div class="nk-content-body">
@@ -466,15 +469,27 @@
                                                     <span class="sub-title nk-dropdown-title">Activities</span>
                                                 </div>
                                                 <ul class="link-list-opt no-bdr">
-                                                    {% for activity in _activities %}
+                                                    {% for activity in activities %}
                                                     {% if activity.lead_id == record.id %}
                                                     <li>
                                                         <a href="#" data-toggle="modal"
                                                             data-target="#ActivityModal{{activity.id}}">
-                                                            {% if activity.type.name == "Call" %}
+                                                            {% if activity.type.name == "Call" or activity.type.name ==
+                                                            "Call for Demo" %}
                                                             <em class="icon ni ni-call"></em>
                                                             {% elif activity.type.name == "Email" %}
                                                             <em class="icon ni ni-mail"></em>
+                                                            {% elif activity.type.name == "Meeting" %}
+                                                            <em class="icon ni ni-calendar"></em>
+                                                            {% elif activity.type.name == "Upload Document" %}
+                                                            <em class="icon ni ni-upload"></em>
+                                                            {% elif activity.type.name == "To Do" %}
+                                                            <em class="icon ni ni-todo"></em>
+                                                            {% elif activity.type.name == "Make Quote" or
+                                                            activity.type.name == "Follow-Up Quote" %}
+                                                            <em class="icon ni ni-sign-dollar"></em>
+                                                            {% else %}
+                                                            <em class="icon ni ni-property-blank"></em>
                                                             {% endif %}
                                                             <span>{{activity.summary}}</span>
                                                         </a>
@@ -883,21 +898,27 @@
                             </div>
                         </div>
                         <div class="col">
-                            <textarea class="summernote" name="notes"></textarea>
+                            <div class="quill-editor">
+                                <p>....</p>
+                                <textarea name="text" style="display:none" class="hiddenArea"></textarea>
+                            </div>
                         </div>
                     </div>
 
                 </div>
                 <div class="modal-footer bg-light">
                     <div class="form-group">
-                        <button type="submit" class="btn btn-lg btn-primary">Save</button>
+                        <button type="submit" class="btn btn-lg btn-primary">Schedule</button>
+                        <button class="btn btn-lg btn-secondary">Mark as Done</button>
+                        <button class="btn btn-lg btn-secondary">Done & Schedule Next</button>
+                        <button class="btn btn-lg btn-secondary" data-dismiss="modal">Discard</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
-{% for activity in _activities %}
+{% for activity in activities %}
 <div class="modal fade" id="ActivityModal{{activity.id}}">
     <div class="modal-dialog mx-w-80" role="document">
         <div class="modal-content">
@@ -967,7 +988,8 @@
                 </div>
                 <div class="modal-footer bg-light">
                     <div class="form-group">
-                        <a href="{{url_for('crm.update_activity', id=activity.id)}}" type="submit" class="btn btn-lg btn-primary">Save</a>
+                        <a href="{{url_for('crm.update_activity', id=activity.id)}}" type="submit"
+                            class="btn btn-lg btn-primary">Save</a>
                     </div>
                 </div>
             </form>
@@ -975,11 +997,4 @@
     </div>
 </div>
 {% endfor %}
-<script>
-    $('.summernote').summernote({
-        placeholder: 'Hello Bootstrap 5',
-        tabsize: 2,
-        height: 100
-    });
-</script>
 {% endblock %}

@@ -1,20 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
+<style>
+    .datatable-wrap {
+        overflow-x: scroll !important
+    }
+
+    @media (min-width: 576px) {
+        .mx-w-80 {
+            max-width: 80% !important;
+        }
+    }
+
+    .quill-editor {
+        height: auto;
+    }
+</style>
 <div class="nk-content-body">
     <div class="nk-content-wrap">
         {% include "crm/activities_blockhead.html" %}
-        <div class="nk-search-box">
-            <div class="form-group">
-                <div class="form-control-wrap">
-                    <input id="search_users" type="text" class="form-control form-control-lg" placeholder="Search..."
-                        value="{{selectedFilters}}">
-                    <button class="form-icon form-icon-right">
-                        <em class="icon ni ni-search"></em>
-                    </button>
-                </div>
-            </div>
-        </div>
         <div class="nk-block">
             <div class="card card-preview">
                 <div class="card-inner">
@@ -28,14 +32,14 @@
                                     </div>
                                 </th>
                                 <th class="nk-tb-col"><span class="sub-text">Opportunity</span></th>
-                                <th class="nk-tb-col tb-col-md"><span class="sub-text">Contact Name</span></th>
-                                <th class="nk-tb-col tb-col-xl"><span class="sub-text">Email</span></th>
-                                <th class="nk-tb-col tb-col-xl"><span class="sub-text">Phone</span></th>
-                                <th class="nk-tb-col tb-col-xl"><span class="sub-text">Next Activity</span></th>
-                                <th class="nk-tb-col tb-col-xl"><span class="sub-text">Due Date</span></th>
-                                <th class="nk-tb-col tb-col-xl"><span class="sub-text">Expected Revenue</span></th>
-                                <th class="nk-tb-col tb-col-xl"><span class="sub-text">Stage</span></th>
-                                <th class="nk-tb-col nk-tb-col-tools text-right"></th>
+                                <th class="nk-tb-col"><span class="sub-text">Contact Name</span></th>
+                                <th class="nk-tb-col"><span class="sub-text">Email</span></th>
+                                <th class="nk-tb-col"><span class="sub-text">Phone</span></th>
+                                <th class="nk-tb-col"><span class="sub-text">Next Activity</span></th>
+                                <th class="nk-tb-col"><span class="sub-text">Due Date</span></th>
+                                <th class="nk-tb-col"><span class="sub-text">Expected Revenue</span></th>
+                                <th class="nk-tb-col"><span class="sub-text">Stage</span></th>
+                                <th class="nk-tb-col"></th>
                             </tr>
                         </thead>
                         <tbody id="tbody_usersList">
@@ -55,21 +59,21 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="nk-tb-col tb-col-md select-activity" style="cursor: pointer !important;">
+                                <td class="nk-tb-col select-activity" style="cursor: pointer !important;">
                                     {% if activity.lead.opportunity.is_company %}
                                     <span>{{activity.lead.opportunity|contact_name}}&nbsp;-&nbsp;{{activity.lead.opportunity|contact_position}},&nbsp;{{activity.lead.opportunity.company_name}}</span>
                                     {% elif activity.lead.opportunity.is_individual %}
                                     <span>{{activity.lead.opportunity.name}}&nbsp;-&nbsp;{{activity.lead.opportunity.parent.company_name}}</span>
                                     {% endif %}
                                 </td>
-                                <td class="nk-tb-col tb-col-md select-activity" style="cursor: pointer !important;">
+                                <td class="nk-tb-col select-activity" style="cursor: pointer !important;">
                                     {% if activity.lead.opportunity.is_company %}
                                     <span>{{activity.lead.opportunity|contact_email}}</span>
                                     {% elif activity.lead.opportunity.is_individual %}
                                     <span>{{activity.lead.opportunity.email}}</span>
                                     {% endif %}
                                 </td>
-                                <td class="nk-tb-col tb-col-md select-activity" style="cursor: pointer !important;">
+                                <td class="nk-tb-col select-activity" style="cursor: pointer !important;">
                                     {% if activity.lead.opportunity.is_company %}
                                     <span>{{activity.lead.opportunity|contact_phone}}</span>
                                     {% elif activity.lead.opportunity.is_individual %}
@@ -80,69 +84,42 @@
                                     <div class="user-card">
                                         <div class="user-info">
                                             <span class="tb-lead">
-                                                {% if activity.type.name == "Call" %}
+                                                {% if activity.type.name == "Call" or activity.type.name ==
+                                                "Call for Demo" %}
                                                 <em class="icon ni ni-call"></em>
                                                 {% elif activity.type.name == "Email" %}
                                                 <em class="icon ni ni-mail"></em>
+                                                {% elif activity.type.name == "Meeting" %}
+                                                <em class="icon ni ni-calendar"></em>
+                                                {% elif activity.type.name == "Upload Document" %}
+                                                <em class="icon ni ni-upload"></em>
+                                                {% elif activity.type.name == "To Do" %}
+                                                <em class="icon ni ni-todo"></em>
+                                                {% elif activity.type.name == "Make Quote" or
+                                                activity.type.name == "Follow-Up Quote" %}
+                                                <em class="icon ni ni-sign-dollar"></em>
+                                                {% else %}
+                                                <em class="icon ni ni-property-blank"></em>
                                                 {% endif %}
                                                 {{activity.summary}}
                                             </span>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="nk-tb-col tb-col-md select-activity" style="cursor: pointer !important;">
+                                <td class="nk-tb-col select-activity" style="cursor: pointer !important;">
                                     <span>{{activity.due_date}}</span>
                                 </td>
-                                <td class="nk-tb-col tb-col-md select-activity" style="cursor: pointer !important;">
+                                <td class="nk-tb-col select-activity" style="cursor: pointer !important;">
                                     <span>{{activity.lead.expected_revenue}}</span>
                                 </td>
-                                <td class="nk-tb-col tb-col-md select-activity" style="cursor: pointer !important;">
+                                <td class="nk-tb-col select-activity" style="cursor: pointer !important;">
                                     <span>{{activity.lead.stage.name}}</span>
                                 </td>
-                                <td class="nk-tb-col nk-tb-col-tools">
-                                    <ul class="nk-tb-actions gx-1">
-                                        <li>
-                                            <div class="drodown">
-                                                <a href="#" class="dropdown-toggle btn btn-icon btn-trigger"
-                                                    data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <ul class="link-list-opt no-bdr">
-                                                        <li><a href="#"><em class="icon ni ni-focus"></em><span>Quick
-                                                                    View</span></a></li>
-                                                        <li><a href="#"><em
-                                                                    class="icon ni ni-download"></em><span>Export</span></a>
-                                                        </li>
-                                                        {% if current_user|can_write(1) %}
-                                                        <li><a id="{{user.slug}}" href="#"
-                                                                class="confirm-archive-user"><em
-                                                                    class="icon ni ni-archive"></em><span>Archive</span></a>
-                                                        </li>
-                                                        <li><a id="unarchive.{{user.slug}}" href="#"
-                                                                class="unarchive-user"><em
-                                                                    class="icon ni ni-unarchive"></em><span>Unarchive</span></a>
-                                                        </li>
-                                                        <li class="divider"></li>
-                                                        <li><a id="{{user.slug}}" href="#"
-                                                                class="confirm-delete-user"><em
-                                                                    class="icon ni ni-delete"></em><span>Delete</span></a>
-                                                        </li>
-                                                        <li><a href="#"><em
-                                                                    class="icon ni ni-exchange"></em><span>Change
-                                                                    Password</span></a></li>
-                                                        <li><a href="#"><em
-                                                                    class="icon ni ni-shield-off"></em><span>Disable
-                                                                    2FA</span></a></li>
-                                                        <li><a href="#"><em
-                                                                    class="icon ni ni-exchange-v"></em><span>Password
-                                                                    Reset Instructions</span></a></li>
-                                                        <li><a href="#"><em class="icon ni ni-shield"></em><span>Invite
-                                                                    to use 2FA</span></a></li>
-                                                        {% endif %}
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                <td class="nk-tb-col select-activity" style="cursor: pointer !important;">
+                                    <a href="#" data-toggle="modal" data-target="#modalEmail{{activity.id}}"><em
+                                            class="icon ni ni-mail"></em>&nbsp;<span>Email</span></a>
+                                    <a href="#" data-toggle="modal" data-target="#modalSMS{{activity.id}}"><em
+                                            class="icon ni ni-msg-circle"></em>&nbsp;<span>SMS</span></a>
                                 </td>
                             </tr>
                             <!-- .nk-tb-item  -->
@@ -157,4 +134,159 @@
     {% include "footer.html" %}
     <!-- footer @e -->
 </div>
+{% for activity in activities %}
+<div class="modal fade" role="dialog" id="modalEmail{{activity.id}}">
+    <div class="modal-dialog mx-w-80" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">Compose Message</h6>
+                <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
+            </div>
+            <div class="modal-body p-0">
+                <div class="nk-reply-form-header">
+                    <div class="nk-reply-form-group">
+                        <div class="nk-reply-form-input-group">
+                            <div class="nk-reply-form-input nk-reply-form-input-to">
+                                <label class="label">To</label>
+                                <input type="text" class="input-mail tagify" placeholder="Recipient" {% if
+                                    activity.lead.opportunity.is_company %}
+                                    value="{{activity.lead.opportunity|contact_email}}" {% elif
+                                    activity.lead.opportunity.is_individual %} {{activity.lead.opportunity.email}} {%
+                                    endif %}>
+                            </div>
+                            <div class="nk-reply-form-input nk-reply-form-input-cc" data-content="mail-cc">
+                                <label class="label">Cc</label>
+                                <input type="text" class="input-mail tagify">
+                                <a href="#" class="toggle-opt" data-target="mail-cc"><em
+                                        class="icon ni ni-cross"></em></a>
+                            </div>
+                            <div class="nk-reply-form-input nk-reply-form-input-bcc" data-content="mail-bcc">
+                                <label class="label">Bcc</label>
+                                <input type="text" class="input-mail tagify">
+                                <a href="#" class="toggle-opt" data-target="mail-bcc"><em
+                                        class="icon ni ni-cross"></em></a>
+                            </div>
+                        </div>
+                        <ul class="nk-reply-form-nav">
+                            <li><a tabindex="-1" class="toggle-opt" data-target="mail-cc" href="#">CC</a></li>
+                            <li><a tabindex="-1" class="toggle-opt" data-target="mail-bcc" href="#">BCC</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="nk-reply-form-editor">
+                    <div class="nk-reply-form-field">
+                        <input type="text" class="form-control form-control-simple" placeholder="Subject"
+                            value="{{activity.summary}}">
+                    </div>
+                    <div class="nk-reply-form-field">
+                        <div class="quill-editor">
+                            <p>....</p>
+                            <textarea name="text" style="display:none" class="hiddenArea"></textarea>
+                        </div>
+                    </div>
+                </div><!-- .nk-reply-form-editor -->
+                <div class="nk-reply-form-tools">
+                    <ul class="nk-reply-form-actions g-1">
+                        <li class="mr-2"><button class="btn btn-primary" type="submit">Send</button></li>
+                        <li>
+                            <div class="dropdown">
+                                <a class="btn btn-icon btn-sm btn-tooltip" data-toggle="dropdown" title="Templates"
+                                    href="#"><em class="icon ni ni-hash"></em></a>
+                                <div class="dropdown-menu">
+                                    <ul class="link-list-opt no-bdr link-list-template">
+                                        <li class="opt-head"><span>Quick Insert</span></li>
+                                        <li><a href="#"><span>Thank you message</span></a></li>
+                                        <li><a href="#"><span>Your issues solved</span></a></li>
+                                        <li><a href="#"><span>Thank you message</span></a></li>
+                                        <li class="divider">
+                                        <li><a href="#"><em class="icon ni ni-file-plus"></em><span>Save as
+                                                    Template</span></a></li>
+                                        <li><a href="#"><em class="icon ni ni-notes-alt"></em><span>Manage
+                                                    Template</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="btn btn-icon btn-sm" data-toggle="tooltip" data-placement="top"
+                                title="Upload Attachment" href="#"><em class="icon ni ni-clip-v"></em></a>
+                        </li>
+                        <li class="d-none d-sm-block">
+                            <a class="btn btn-icon btn-sm" data-toggle="tooltip" data-placement="top"
+                                title="Insert Emoji" href="#"><em class="icon ni ni-happy"></em></a>
+                        </li>
+                        <li class="d-none d-sm-block">
+                            <a class="btn btn-icon btn-sm" data-toggle="tooltip" data-placement="top"
+                                title="Upload Images" href="#"><em class="icon ni ni-img"></em></a>
+                        </li>
+                    </ul>
+                    <ul class="nk-reply-form-actions g-1">
+                        <li>
+                            <div class="dropdown">
+                                <a href="#" class="dropdown-toggle btn-trigger btn btn-icon" data-toggle="dropdown"><em
+                                        class="icon ni ni-more-v"></em></a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <ul class="link-list-opt no-bdr">
+                                        <li><a href="#"><span>Another Option</span></a></li>
+                                        <li><a href="#"><span>More Option</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#" class="btn-trigger btn btn-icon mr-n2"><em class="icon ni ni-trash"></em></a>
+                        </li>
+                    </ul>
+                </div><!-- .nk-reply-form-tools -->
+            </div><!-- .modal-body -->
+        </div><!-- .modal-content -->
+    </div>
+</div>
+
+<div class="modal fade" role="dialog" id="modalSMS{{activity.id}}">
+    <div class="modal-dialog mx-w-80" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">Send SMS Text Message</h6>
+                <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
+            </div>
+            <div class="modal-body p-0">
+                <div class="nk-reply-form-header">
+                    <div class="nk-reply-form-group">
+                        <div class="nk-reply-form-input-group">
+                            <div class="nk-reply-form-input nk-reply-form-input-to">
+                                <label class="label">To</label>
+                                <input type="text" class="input-mail tagify" placeholder="Recipient" {% if
+                                    activity.lead.opportunity.is_company %}
+                                    value="{{activity.lead.opportunity|contact_phone}}" {% elif
+                                    activity.lead.opportunity.is_individual %} {{activity.lead.opportunity.phone_no}} {%
+                                    endif %}>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nk-reply-form-editor">
+                    <div class="nk-reply-form-field">
+                        <textarea class="form-control form-control-simple no-resize ex-large"
+                            placeholder="Message"></textarea>
+                    </div>
+                </div><!-- .nk-reply-form-editor -->
+                <div class="nk-reply-form-tools">
+                    <ul class="nk-reply-form-actions g-1">
+                        <li class="mr-2"><button class="btn btn-primary" type="submit">Send</button></li>
+                    </ul>
+
+                </div><!-- .nk-reply-form-tools -->
+            </div><!-- .modal-body -->
+        </div><!-- .modal-content -->
+    </div>
+</div>
+{% endfor %}
+<script>
+    $('.summernote').summernote({
+        placeholder: '...',
+        tabsize: 2,
+        height: 100
+    });
+</script>
 {% endblock %}

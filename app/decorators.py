@@ -2,6 +2,8 @@ from functools import wraps
 from flask import abort
 from flask_login import current_user, logout_user
 
+from app.api.errors import bad_request
+
 
 def permission_required(permission):
     def decorator(f):

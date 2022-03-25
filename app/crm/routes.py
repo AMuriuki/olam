@@ -6,7 +6,7 @@ from app.crm import bp
 from app.crm.models.crm_lead import FILTERS, Lead
 from app.crm.models.crm_recurring_plan import RecurringPlan
 from app.crm.models.crm_stage import Stage
-from app.decorators import active_user_required, module_access_required
+from app.decorators import active_user_required, can_create_access_required, model_access_required, module_access_required
 from app.main.models.activities import Activity
 from app.main.models.module import Model, Module
 from flask_babel import _, get_locale
@@ -230,7 +230,7 @@ def pipeline():
             user_id=current_user.get_id()).order_by(Lead.priority.desc()).all()
         selectedFilters = "My Pipeline,"
 
-    _activities = Activity.query.join(Lead).all()
+    activities = Activity.query.join(Lead).all()
     assignees = Partner.query.filter_by(is_tenant=True).all()
 
     if form3.submit1.data and form3.validate_on_submit():
@@ -262,7 +262,7 @@ def pipeline():
         flash(_("New activity added"))
         return redirect(url_for('crm.pipeline'))
 
-    return render_template('crm/pipeline.html', title=_('CRM Pipeline | Olam ERP'), pipeline=pipeline, form1=form1, form2=form2, form3=form3, form4=form4, form5=form5, form6=form6, titles=titles, plans=plans, filters=filters, new_stage=new_stage, selectedFilters=selectedFilters, message=message, _activities=_activities, assignees=assignees, csrf_token=csrf_token)
+    return render_template('crm/pipeline.html', title=_('CRM Pipeline | Olam ERP'), pipeline=pipeline, form1=form1, form2=form2, form3=form3, form4=form4, form5=form5, form6=form6, titles=titles, plans=plans, filters=filters, new_stage=new_stage, selectedFilters=selectedFilters, message=message, activities=activities, assignees=assignees, csrf_token=csrf_token)
 
 
 @bp.route('/pipeline', methods=['GET', 'POST'])
@@ -357,9 +357,30 @@ def move_stage(slug, stage_id):
 
 @bp.route('/activities', methods=['GET', 'POST'])
 @login_required
+@module_access_required(2)
+@model_access_required(7)
 @active_user_required
 def activities():
+    csrf_token = CSRFProtect(app)
     model_name = request.args.get('model')
-    model = Model.query.filter_by(name=model_name).first()
-    activities = Activity.query.filter_by(model_id=model.id).all()
-    return render_template("crm/activities.html", title=_("Activities | Olam ERP"), activities=activities)
+    if model_name:
+        model = Model.query.filter_by(name=model_name).first()
+        activities = Activity.query.filter_by(model_id=model.id).all()
+    else:
+        activities = ""
+    return render_template("crm/activities.html", title=_("Activities | Olam ERP"), activities=activities, csrf_token=csrf_token)
+
+
+@bp.route('/create-activity', methods=['GET', 'POST'])
+@login_required
+@module_access_required(2)
+@can_create_access_required(7)
+@active_user_required
+def create_activity():
+    customers = db.session.query(Partner).filter(
+        Partner.is_tenant == False).all()
+    sales_people = Partner.query.filter_by(is_tenant=True).all()
+    sales_teams = PartnerTeam.query.filter_by().all()
+    if request.method == "POST":
+        print(request.form['notes'])
+    return render_template("crm/create_activity.html", title=_("New Activity | Olam ERP"), customers=customers, sales_people=sales_people, sales_teams=sales_teams)
