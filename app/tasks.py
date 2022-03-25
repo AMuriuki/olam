@@ -213,7 +213,6 @@ def dummy_data():
             if not exists:
                 record = Users(id=user['id'], partner_id=user['partner_id'],
                                company_id=user['company_id'], is_active=user['is_active'])
-                record.set_token(user['partner_id'])
                 record.generate_slug()
                 record.password_hash = generate_password_hash(user['password'])
                 db.session.add(record)

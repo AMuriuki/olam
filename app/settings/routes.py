@@ -59,7 +59,6 @@ def invite():
         db.session.add(partner)
         db.session.commit()
         user = Users(partner_id=partner.id)
-        user.set_token(partner.id)
         user.generate_slug()
         db.session.add(user)
         db.session.commit()
@@ -625,7 +624,6 @@ def create_user():
             db.session.commit()
             user = Users(partner_id=partner.id,
                          company_id=current_user.company_id, user_type=request.form['user-type'])
-            user.set_token(partner.id)
             user.generate_slug()
             db.session.add(user)
             db.session.commit()

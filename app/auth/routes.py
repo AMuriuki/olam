@@ -94,7 +94,6 @@ def register():
             db.session.commit()
             user = Users(partner_id=partner.id)
             user.set_password(form.password.data)
-            user.set_token(partner.id)
             user.generate_slug()
             db.session.add(user)
             db.session.commit()
@@ -130,7 +129,6 @@ def set_password():
             db.session.commit()
             user = Users(partner_id=partner.id, company_id=company.id,
                          is_active=True, country_code=request.args.get('country_code'))
-            user.set_token(partner.id)
             user.generate_slug()
             db.session.add(user)
             db.session.commit()
