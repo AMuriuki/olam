@@ -34,5 +34,11 @@
     "name": "Sales Stage",
     "description": "Records the various sales stages of a sales team.",
     "module_id": 1
+  },
+  {
+    "id": 7,
+    "name": "Activity",
+    "description": "Information about an activity.",
+    "module_id": 1
   }
 ]
