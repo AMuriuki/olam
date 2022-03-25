@@ -30,12 +30,10 @@ def make_shell_context():
 def inject_activities():
     activities = Activity.query.distinct(
         Activity.model_id).group_by(Activity.id).all()
-    for activity in activities:
-        print(activity)
     if activities:
-        return dict(activities=activities)
+        return dict(_activities=activities)
     else:
-        return dict(activities="")
+        return dict(_activities="")
 
 
 @app.context_processor

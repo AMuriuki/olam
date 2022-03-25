@@ -66,6 +66,12 @@ class Partner(db.Model):
     def __repr__(self):
         return str(self.id)
 
+    def get_name(self):
+        if self.is_company == True:
+            return self.company_name
+        else:
+            return self.name
+
 
 class PartnerRole(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -81,6 +87,7 @@ class PartnerTeam(db.Model):
         'partner.id'))  # team leader
     token = db.Column(db.String(120), index=True, unique=True)
     module_id = db.Column(db.Integer, db.ForeignKey('module.id'))
+    model_id = db.Column(db.Integer, db.ForeignKey('model.id'))
     members = db.relationship(
         'Partner', secondary=partner_teams, back_populates="teams")
 

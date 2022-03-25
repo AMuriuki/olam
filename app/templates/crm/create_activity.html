@@ -1,0 +1,232 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .quill-editor {
+        height: auto;
+    }
+</style>
+<div class="nk-content-body">
+    <div class="nk-content-wrap">
+        <form action="{{url_for('crm.create_activity')}}" method="post">
+            {% include "crm/activities_blockhead.html" %}
+            <div class="components-preview wide-md mx-auto">
+                <div class="nk-block nk-block-lg">
+                    <div class="card card-preview">
+                        <div class="card-inner">
+
+                            <div class="preview-block">
+                                <span class="preview-title-lg overline-title">New Opportunity</span>
+                                <div class="row gy-4">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label class="form-label" for="opportunity">Opportunity</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control" id="opportunity"
+                                                    placeholder="E.g Product Pricing">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row gy-4">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="expected_revenue">Expected Revenue</label>
+                                            <div class="form-control-wrap">
+                                                <div class="form-text-hint">
+                                                    <span class="overline-title">KES</span>
+                                                </div>
+                                                <input type="text" class="form-control" id="expected_revenue"
+                                                    placeholder="0.00">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="customer">Customer</label>
+                                            <div class="form-control-wrap">
+                                                <select name="customer" class="form-select" data-search="on">
+                                                    <option value="default_option">Select Customer</option>
+                                                    {% for customer in customers %}
+                                                    <option value="{{customer.id}}">{{customer.get_name()}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="email">Email</label>
+                                            <div class="form-control-wrap">
+                                                <input type="email" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="default-06">Expected Closing Date</label>
+                                            <div class="form-control-wrap">
+                                                <input type="date" class="form-control" id="closing_date">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="phone_no">Phone</label>
+                                            <div class="form-control-wrap">
+                                                <input type="number" class="form-control" id="phone_no">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="phone_no"></label>
+                                            <ul class="kanban-item-tags">
+                                                <li>
+                                                    <label class="form-label">Priority</label>
+                                                </li>
+                                                <li>
+                                                    <div class="asterisk">
+                                                        <a data-toggle="tooltip" data-placement="top" title="Medium"
+                                                            id="selectPriority1" name="priority" class="select-priority"
+                                                            href="#">
+                                                            <em id="priority1"
+                                                                class="asterisk-off icon ni ni-star"></em>
+                                                        </a>
+                                                        <a data-toggle="tooltip" data-placement="top" title="High"
+                                                            id="selectPriority2" name="priority" class="select-priority"
+                                                            href="#">
+                                                            <em id="priority2"
+                                                                class="asterisk-off icon ni ni-star"></em>
+                                                        </a>
+                                                        <a data-toggle="tooltip" data-placement="top" title="Very High"
+                                                            id="selectPriority3" name="priority" class="select-priority"
+                                                            href="#">
+                                                            <em id="priority3"
+                                                                class="asterisk-off icon ni ni-star"></em>
+                                                        </a>
+                                                    </div>
+
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="customer">Sales Stage</label>
+                                            <div class="form-control-wrap">
+                                                <select name="customer" class="form-select" data-search="on">
+                                                    <option value="default_option">Select Stage</option>
+                                                    {% for stage in stages %}
+                                                    <option value="{{stage.id}}">{{stage.name}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="customer">Sales Person</label>
+                                            <div class="form-control-wrap">
+                                                <select name="customer" class="form-select" data-search="on">
+                                                    <option value="default_option">Select Sales Person</option>
+                                                    {% for sales_person in sales_people %}
+                                                    <option value="{{sales_person.id}}">{{sales_person.get_name()}}
+                                                    </option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="customer">Sales Team</label>
+                                            <div class="form-control-wrap">
+                                                <select name="customer" class="form-select" data-search="on">
+                                                    <option value="default_option">Select Sales Team</option>
+                                                    {% for sales_team in sales_team %}
+                                                    <option value="{{sales_team.id}}">{{sales_team}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="preview-hr">
+                                <span class="preview-title-lg overline-title">New Activity</span>
+                                <div class="row gy-4">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="activity_type">Activity Type</label>
+                                            <div class="form-control-wrap">
+                                                <select class="form-select" name="activity_type">
+                                                    <option value="#">Select Activity Type</option>
+                                                    {% for activity_type in activity_types %}
+                                                    <option value="{{activity_type.id}}">{{activity_type.name|title}}
+                                                    </option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="due_date">Due Date</label>
+                                            <div class="form-control-wrap">
+                                                <input type="date" class="form-control" id="due_date">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="summary">Summary</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control" id="summary" name="summary"
+                                                    placeholder="E.g Discuss proposal">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="default-04">Assigned To</label>
+                                            <div class="form-control-wrap">
+                                                <select class="form-select" name="assignee">
+                                                    <option value="#">Select Assignee</option>
+                                                    {% for assignee in assignees %}
+                                                    <option value="{{assignee.id}}">{{assignee.name|title}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="quill-editor">
+                                            <p>....</p>
+                                            <textarea name="notes" style="display:none" class="hiddenArea"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                                {% if current_user|can_create(7) %}
+                                <li>
+                                    <button type="submit" class="btn btn-m btn-primary">SAVE</button>
+                                </li>
+                                {% endif %}
+                                <li>
+                                    <a href="{{url_for('crm.activities')}}"
+                                        class="btn btn-m btn-outline-light">DISCARD</a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div><!-- .card-preview -->
+                </div><!-- .nk-block -->
+            </div><!-- .components-preview -->
+        </form>
+    </div>
+    <!-- footer @s -->
+    {% include "footer.html" %}
+    <!-- footer @e -->
+</div>
+{% endblock %}

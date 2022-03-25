@@ -17,8 +17,7 @@
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap"
         rel="stylesheet">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link href="../static/summernote/summernote-bs4.css" rel="stylesheet">
-    <script src="../static/summernote/summernote-bs4.js"></script>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     {{ moment.include_moment() }}
     <style>
         .nk-content-wrap {
@@ -127,11 +126,11 @@
                                             class="dropdown-menu dropdown-menu-xl dropdown-menu-right dropdown-menu-s1">
                                             <div class="dropdown-head">
                                                 <span class="sub-title nk-dropdown-title">Activities</span>
-                                                <a href="#">{{activities|length}}</a>
+                                                <a href="#">{{_activities|length}}</a>
                                             </div>
                                             <div class="dropdown-body">
                                                 <div class="nk-notification">
-                                                    {% for activity in activities %}
+                                                    {% for activity in _activities %}
                                                     <a
                                                         href="{{activity.module.bp_name}}/activities?model={{activity.model.name}}">
                                                         <div class="nk-notification-item dropdown-inner">
@@ -233,10 +232,19 @@
     <script src="{{url_for('static', filename='js/apps/inbox.js')}}"></script>
     <script src="{{url_for('static', filename='js/libs/tagify.js')}}"></script>
     {% endif %}
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script>
-        $(document).ready(function () {
-            $('#summernote').summernote();
+        var quill = new Quill('.quill-editor', {
+            theme: 'snow'
         });
+
+        var quill_editor = document.querySelector(".quill-editor");
+        quill_editor.oninput = handleInput
+
+        function handleInput(e) {
+            var html = quill_editor.children[0].innerHTML
+            console.log(html)
+        }
     </script>
 </body>
 

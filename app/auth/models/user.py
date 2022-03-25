@@ -231,7 +231,7 @@ class Users(UserMixin, PaginatedAPIMixin, db.Model):
             self.set_password(data['password'])
 
     def get_token(self, expires_in=3600):
-        now = datetime.now
+        now = datetime.utcnow()
         if self.token and self.token_expiration > now + timedelta(seconds=60):
             return self.token
         self.token = base64.b64encode(os.urandom(24)).decode('utf-8')
@@ -240,12 +240,12 @@ class Users(UserMixin, PaginatedAPIMixin, db.Model):
         return self.token
 
     def revoke_token(self):
-        self.token_expiration = datetime.now - timedelta(seconds=1)
+        self.token_expiration = datetime.utcnow() - timedelta(seconds=1)
 
-    @ staticmethod
+    @staticmethod
     def check_token(token):
         user = Users.query.filter_by(token=token).first()
-        if user is None or user.token_expiration < datetime.now:
+        if user is None or user.token_expiration < datetime.utcnow():
             return None
         return user
 

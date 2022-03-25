@@ -15,6 +15,14 @@ class PaginatedAPIMixin(object):
         }
         return data
 
+    @staticmethod
+    def _to_collection_dict(query, page, per_page, endpoint, **kwargs):
+        resources = query
+        data = {
+            'items': [item.to_dict() for item in resources]
+        }
+        return data
+
 
 class SearchableMixin(object):
     @classmethod
