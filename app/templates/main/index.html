@@ -27,6 +27,7 @@
         <div class="nk-block">
             <div class="row g-gs">
                 {% for module in modules %}
+                {% if module.id != 1 %}
                 {% if module.id|can_view_module %}
                 <div class="col-sm-6 col-xl-3" onclick="location.href='/{{module.bp_name}}/';" style="cursor: pointer;">
                     <div class="card card-bordered h-100">
@@ -46,6 +47,7 @@
                         </div>
                     </div>
                 </div>
+                {% endif %}
                 {% endif %}
                 {% endfor %}
             </div>
