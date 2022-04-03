@@ -1,13 +1,7 @@
-from email.policy import default
-from enum import unique
-from operator import index
-from app import db, current_app
+from app import db
+from app.main.models.activities import Activity
 from app.utils import unique_slug_generator
-from config import basedir
-import os
-import csv
-import logging
-from datetime import datetime, timedelta
+from datetime import datetime
 from sqlalchemy.dialects.postgresql import UUID
 
 AVAILABLE_PRIORITIES = [
@@ -44,8 +38,16 @@ class Lead(db.Model):
     is_deleted = db.Column(db.Boolean, default=False)
     slug = db.Column(db.Text(), unique=True)
     notes = db.relationship('Note', backref='lead', lazy='dynamic')
-    activities = db.relationship('Activity', backref='lead', lazy='dynamic')
+    activities = db.relationship('LeadActivity', backref='lead', lazy='dynamic')
 
     def generate_slug(self):
         _slug = unique_slug_generator(self)
         self.slug = _slug
+
+
+class LeadActivity(Activity):
+    __table_args__ = {'extend_existing': True}
+    id = db.Column(UUID(as_uuid=True), db.ForeignKey(
+        'activity.id'), primary_key=True)
+    lead_id = db.Column(
+        db.Integer, db.ForeignKey('lead.id'), nullable=True)

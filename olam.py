@@ -31,8 +31,11 @@ def inject_activities():
     activities = Activity.query.distinct(
         Activity.model_id).group_by(Activity.id).all()
     if activities:
+        print("xxxxxxx")
+        print(activities)
         return dict(_activities=activities)
     else:
+        print("!!!!!!!!")
         return dict(_activities="")
 
 

@@ -20,6 +20,8 @@ from rq import get_current_job
 from app.models import Task
 from app import create_app, db
 from werkzeug.security import generate_password_hash
+from app.purchase.models.purchase import Purchase, PurchaseStatus
+from app.purchase.utils import get_purchase_status, get_purchases
 
 from app.settings.utils import get_accessGroups, get_accessGroupsRights, get_accessRights
 
@@ -323,5 +325,26 @@ def dummy_data():
                 db.session.add(activity)
                 db.session.commit()
                 print("Activity " + str(activity.id) + " created")
+
+        # purchase statuses
+        purchase_status = get_purchase_status()
+        for status in purchase_status:
+            exists = PurchaseStatus.query.filter_by(id=status['id']).first()
+            if not exists:
+                status = PurchaseStatus(id=status['id'], name=status['name'])
+                db.session.add(status)
+                db.session.commit()
+                print("Purchase status " + status['name'] + " created")
+
+        # purchase records
+        purchases = get_purchases()
+        for purchase in purchases:
+            exists = Purchase.query.filter_by(id=purchase['id']).first()
+            if not exists:
+                purchase = Purchase(id=status['id'], reference=purchase['reference'], vendor=purchase['vendor'],
+                                    representative=purchase['representative'], total=purchase['total'], status=purchase['status'])
+                db.session.add(purchase)
+                db.session.commit()
+                print("Purchase record " + purchase['vendor'] + " created")
     except Exception as e:
         print(e)

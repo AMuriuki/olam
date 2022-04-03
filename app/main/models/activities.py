@@ -9,7 +9,6 @@ class Activity(db.Model):
     summary = db.Column(db.String(300), index=True)
     module_id = db.Column(db.Integer, db.ForeignKey('module.id'))
     model_id = db.Column(db.Integer, db.ForeignKey('model.id'))
-    lead_id = db.Column(db.Integer, db.ForeignKey('lead.id'), nullable=True)
     activity_type = db.Column(
         UUID(as_uuid=True), db.ForeignKey('activity_type.id'))
     due_date = db.Column(db.Date)
