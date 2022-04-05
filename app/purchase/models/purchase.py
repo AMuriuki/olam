@@ -39,8 +39,8 @@ class Purchase(db.Model):
     due_date = db.Column(db.Date)
     total = db.Column(db.String(120), index=True)
     status = db.Column(UUID(as_uuid=True), db.ForeignKey('purchase_status.id'))
-    activities = db.relationship(
-        'PurchaseActivity', backref='lead', lazy='dynamic')
+    activity = db.relationship(
+        'PurchaseActivity', backref='purchase', lazy=True, uselist=False)
 
 
 class PurchaseActivity(Activity):

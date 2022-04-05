@@ -38,7 +38,7 @@ class Lead(db.Model):
     is_deleted = db.Column(db.Boolean, default=False)
     slug = db.Column(db.Text(), unique=True)
     notes = db.relationship('Note', backref='lead', lazy='dynamic')
-    activities = db.relationship('LeadActivity', backref='lead', lazy='dynamic')
+    activities = db.relationship('LeadActivity', backref='lead', lazy=True, uselist=False)
 
     def generate_slug(self):
         _slug = unique_slug_generator(self)
