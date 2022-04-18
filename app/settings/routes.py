@@ -634,7 +634,7 @@ def create_user():
                 group.users.append(user)
                 db.session.commit()
             return jsonify({"response": "success"})
-    return render_template("settings/new_user.html", title=_("New | Olam ERP"), new_user=new_user, form=form, user_types=user_types, groups=groups)
+    return render_template("settings/new_user.html", title=_("New User | Olam ERP"), new_user=new_user, form=form, user_types=user_types, groups=groups)
 
 
 @bp.route("/apps", methods=['GET', 'POST'])

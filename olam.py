@@ -4,6 +4,7 @@ from sqlalchemy.sql.elements import or_
 from app.auth.models.user import Access, Group, Permission, Users
 from app.crm.models.crm_stage import Stage
 from app.main.models.activities import Activity, ActivityType
+from app.main.models.company import Company
 from app.main.models.country import Country
 from app.main.models.partner import Partner
 from app.models import Task
@@ -31,11 +32,8 @@ def inject_activities():
     activities = Activity.query.distinct(
         Activity.model_id).group_by(Activity.id).all()
     if activities:
-        print("xxxxxxx")
-        print(activities)
         return dict(_activities=activities)
     else:
-        print("!!!!!!!!")
         return dict(_activities="")
 
 
@@ -86,6 +84,15 @@ def partners():
         return dict(partners=partners)
     else:
         return dict(partners="")
+
+
+@app.context_processor
+def company():
+    company = db.session.query(Company).first()
+    if company:
+        return dict(company=company)
+    else:
+        return dict(company="")
 
 
 @app.context_processor
@@ -182,9 +189,12 @@ def get_pipeline_count(value):
 
 @app.template_filter()
 def get_user_name(value):
-    user = Users.query.filter_by(id=value).first()
-    user_details = Partner.query.filter_by(id=user.partner_id).first()
-    return user_details.name
+    if value:
+        user = Users.query.filter_by(id=value).first()
+        user_details = Partner.query.filter_by(id=user.partner_id).first()
+        return user_details.name
+    else:
+        return None
 
 
 @app.template_filter()

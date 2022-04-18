@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 4b0204c7d5e6
+Revision ID: 57d55714e1e9
 Revises: 
-Create Date: 2022-03-18 21:27:28.456635
+Create Date: 2022-04-17 00:14:28.162296
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.
-revision = '4b0204c7d5e6'
+revision = '57d55714e1e9'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -59,6 +59,34 @@ def upgrade():
     with op.batch_alter_table('partner_role', schema=None) as batch_op:
         batch_op.create_index(batch_op.f('ix_partner_role_name'), ['name'], unique=False)
 
+    op.create_table('product_manufacturer',
+    sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('name', sa.String(length=255), nullable=False),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_product_manufacturer'))
+    )
+    op.create_table('product_model',
+    sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('name', sa.String(length=255), nullable=False),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_product_model'))
+    )
+    op.create_table('purchase_filters',
+    sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('index', sa.Integer(), nullable=True),
+    sa.Column('name', sa.String(length=120), nullable=True),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_purchase_filters'))
+    )
+    with op.batch_alter_table('purchase_filters', schema=None) as batch_op:
+        batch_op.create_index(batch_op.f('ix_purchase_filters_index'), ['index'], unique=True)
+        batch_op.create_index(batch_op.f('ix_purchase_filters_name'), ['name'], unique=True)
+
+    op.create_table('purchase_status',
+    sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('name', sa.String(length=120), nullable=True),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_purchase_status'))
+    )
+    with op.batch_alter_table('purchase_status', schema=None) as batch_op:
+        batch_op.create_index(batch_op.f('ix_purchase_status_name'), ['name'], unique=True)
+
     op.create_table('recurring_plan',
     sa.Column('id', sa.Integer(), autoincrement=False, nullable=False),
     sa.Column('name', sa.String(length=120), nullable=False),
@@ -95,6 +123,7 @@ def upgrade():
     sa.Column('mobile_no', sa.String(length=120), nullable=True),
     sa.Column('website', sa.String(length=120), nullable=True),
     sa.Column('category_id', sa.Integer(), nullable=True),
+    sa.Column('currency', sa.String(length=30), nullable=True),
     sa.ForeignKeyConstraint(['category_id'], ['company_category.id'], name=op.f('fk_company_category_id_company_category')),
     sa.ForeignKeyConstraint(['database_id'], ['database.id'], name=op.f('fk_company_database_id_database')),
     sa.PrimaryKeyConstraint('id', name=op.f('pk_company'))
@@ -216,6 +245,16 @@ def upgrade():
     with op.batch_alter_table('access', schema=None) as batch_op:
         batch_op.create_index(batch_op.f('ix_access_name'), ['name'], unique=False)
 
+    op.create_table('activity_type',
+    sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('name', sa.String(length=100), nullable=True),
+    sa.Column('model_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['model_id'], ['model.id'], name=op.f('fk_activity_type_model_id_model')),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_activity_type'))
+    )
+    with op.batch_alter_table('activity_type', schema=None) as batch_op:
+        batch_op.create_index(batch_op.f('ix_activity_type_name'), ['name'], unique=False)
+
     op.create_table('partner',
     sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('name', sa.String(length=120), nullable=True),
@@ -241,6 +280,7 @@ def upgrade():
     sa.Column('tax_id', sa.String(length=60), nullable=True),
     sa.Column('slug', sa.Text(), nullable=True),
     sa.Column('is_archived', sa.Boolean(), nullable=True),
+    sa.Column('contact_person', sa.Boolean(), nullable=True),
     sa.ForeignKeyConstraint(['city_id'], ['city.id'], name=op.f('fk_partner_city_id_city')),
     sa.ForeignKeyConstraint(['company_id'], ['company.id'], name=op.f('fk_partner_company_id_company')),
     sa.ForeignKeyConstraint(['country_id'], ['country.id'], name=op.f('fk_partner_country_id_country')),
@@ -274,6 +314,24 @@ def upgrade():
     sa.ForeignKeyConstraint(['role_id'], ['partner_role.id'], name=op.f('fk_PartnerRoles_role_id_partner_role')),
     sa.PrimaryKeyConstraint('partner_id', 'role_id', name=op.f('pk_PartnerRoles'))
     )
+    op.create_table('activity',
+    sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('summary', sa.String(length=300), nullable=True),
+    sa.Column('module_id', sa.Integer(), nullable=True),
+    sa.Column('model_id', sa.Integer(), nullable=True),
+    sa.Column('activity_type', postgresql.UUID(as_uuid=True), nullable=True),
+    sa.Column('due_date', sa.Date(), nullable=True),
+    sa.Column('assigned_to', postgresql.UUID(as_uuid=True), nullable=True),
+    sa.Column('notes', sa.Text(), nullable=True),
+    sa.ForeignKeyConstraint(['activity_type'], ['activity_type.id'], name=op.f('fk_activity_activity_type_activity_type')),
+    sa.ForeignKeyConstraint(['assigned_to'], ['partner.id'], name=op.f('fk_activity_assigned_to_partner')),
+    sa.ForeignKeyConstraint(['model_id'], ['model.id'], name=op.f('fk_activity_model_id_model')),
+    sa.ForeignKeyConstraint(['module_id'], ['module.id'], name=op.f('fk_activity_module_id_module')),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_activity'))
+    )
+    with op.batch_alter_table('activity', schema=None) as batch_op:
+        batch_op.create_index(batch_op.f('ix_activity_summary'), ['summary'], unique=False)
+
     op.create_table('organization',
     sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.ForeignKeyConstraint(['id'], ['partner.id'], name=op.f('fk_organization_id_partner')),
@@ -285,7 +343,9 @@ def upgrade():
     sa.Column('leader', postgresql.UUID(as_uuid=True), nullable=True),
     sa.Column('token', sa.String(length=120), nullable=True),
     sa.Column('module_id', sa.Integer(), nullable=True),
+    sa.Column('model_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['leader'], ['partner.id'], name=op.f('fk_partner_team_leader_partner')),
+    sa.ForeignKeyConstraint(['model_id'], ['model.id'], name=op.f('fk_partner_team_model_id_model')),
     sa.ForeignKeyConstraint(['module_id'], ['module.id'], name=op.f('fk_partner_team_module_id_module')),
     sa.PrimaryKeyConstraint('id', name=op.f('pk_partner_team'))
     )
@@ -375,6 +435,48 @@ def upgrade():
         batch_op.create_index(batch_op.f('ix_lead_partner_phone'), ['partner_phone'], unique=False)
         batch_op.create_index(batch_op.f('ix_lead_priority'), ['priority'], unique=False)
 
+    op.create_table('product_category',
+    sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('name', sa.String(length=120), nullable=True),
+    sa.Column('description', sa.Text(), nullable=True),
+    sa.Column('created_by', sa.Integer(), nullable=True),
+    sa.Column('created_on', sa.DateTime(), nullable=True),
+    sa.Column('updated_by', sa.Integer(), nullable=True),
+    sa.Column('updated_on', sa.DateTime(), nullable=True),
+    sa.Column('deleted_by', sa.Integer(), nullable=True),
+    sa.Column('deleted_on', sa.DateTime(), nullable=True),
+    sa.Column('deleted', sa.Boolean(), nullable=True),
+    sa.ForeignKeyConstraint(['created_by'], ['users.id'], name=op.f('fk_product_category_created_by_users')),
+    sa.ForeignKeyConstraint(['deleted_by'], ['users.id'], name=op.f('fk_product_category_deleted_by_users')),
+    sa.ForeignKeyConstraint(['updated_by'], ['users.id'], name=op.f('fk_product_category_updated_by_users')),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_product_category'))
+    )
+    with op.batch_alter_table('product_category', schema=None) as batch_op:
+        batch_op.create_index(batch_op.f('ix_product_category_name'), ['name'], unique=False)
+
+    op.create_table('purchase',
+    sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('reference', sa.String(length=120), nullable=True),
+    sa.Column('vendor', postgresql.UUID(as_uuid=True), nullable=True),
+    sa.Column('representative', sa.Integer(), nullable=True),
+    sa.Column('due_date', sa.Date(), nullable=True),
+    sa.Column('time', sa.String(length=10), nullable=True),
+    sa.Column('total', sa.String(length=120), nullable=True),
+    sa.Column('status', postgresql.UUID(as_uuid=True), nullable=True),
+    sa.Column('description', sa.Text(), nullable=True),
+    sa.Column('unit_price', sa.Float(), nullable=True),
+    sa.Column('quantity', sa.Integer(), nullable=True),
+    sa.Column('created_on', sa.DateTime(), nullable=True),
+    sa.Column('updated_on', sa.DateTime(), nullable=True),
+    sa.ForeignKeyConstraint(['representative'], ['users.id'], name=op.f('fk_purchase_representative_users')),
+    sa.ForeignKeyConstraint(['status'], ['purchase_status.id'], name=op.f('fk_purchase_status_purchase_status')),
+    sa.ForeignKeyConstraint(['vendor'], ['partner.id'], name=op.f('fk_purchase_vendor_partner')),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_purchase'))
+    )
+    with op.batch_alter_table('purchase', schema=None) as batch_op:
+        batch_op.create_index(batch_op.f('ix_purchase_reference'), ['reference'], unique=True)
+        batch_op.create_index(batch_op.f('ix_purchase_total'), ['total'], unique=False)
+
     op.create_table('task',
     sa.Column('id', sa.String(length=36), nullable=False),
     sa.Column('name', sa.String(length=128), nullable=True),
@@ -387,20 +489,13 @@ def upgrade():
     with op.batch_alter_table('task', schema=None) as batch_op:
         batch_op.create_index(batch_op.f('ix_task_name'), ['name'], unique=False)
 
-    op.create_table('activity',
+    op.create_table('lead_activity',
     sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
-    sa.Column('summary', sa.String(length=300), nullable=True),
-    sa.Column('module_id', sa.Integer(), nullable=True),
-    sa.Column('model_id', sa.Integer(), nullable=True),
     sa.Column('lead_id', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['lead_id'], ['lead.id'], name=op.f('fk_activity_lead_id_lead')),
-    sa.ForeignKeyConstraint(['model_id'], ['model.id'], name=op.f('fk_activity_model_id_model')),
-    sa.ForeignKeyConstraint(['module_id'], ['module.id'], name=op.f('fk_activity_module_id_module')),
-    sa.PrimaryKeyConstraint('id', name=op.f('pk_activity'))
+    sa.ForeignKeyConstraint(['id'], ['activity.id'], name=op.f('fk_lead_activity_id_activity')),
+    sa.ForeignKeyConstraint(['lead_id'], ['lead.id'], name=op.f('fk_lead_activity_lead_id_lead')),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_lead_activity'))
     )
-    with op.batch_alter_table('activity', schema=None) as batch_op:
-        batch_op.create_index(batch_op.f('ix_activity_summary'), ['summary'], unique=False)
-
     op.create_table('note',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('note', sa.Text(), nullable=True),
@@ -410,20 +505,104 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], name=op.f('fk_note_user_id_users')),
     sa.PrimaryKeyConstraint('id', name=op.f('pk_note'))
     )
+    op.create_table('product',
+    sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('manufacturer_id', postgresql.UUID(as_uuid=True), nullable=True),
+    sa.Column('model_id', postgresql.UUID(as_uuid=True), nullable=True),
+    sa.Column('price', sa.Float(), nullable=True),
+    sa.Column('category_id', postgresql.UUID(as_uuid=True), nullable=True),
+    sa.Column('screen_size', sa.String(length=10), nullable=True),
+    sa.Column('screen', sa.String(length=50), nullable=True),
+    sa.Column('cpu', sa.String(length=50), nullable=True),
+    sa.Column('ram', sa.String(length=10), nullable=True),
+    sa.Column('storage', sa.String(length=50), nullable=True),
+    sa.Column('gpu', sa.String(length=50), nullable=True),
+    sa.Column('os', sa.String(length=50), nullable=True),
+    sa.Column('os_version', sa.String(length=50), nullable=True),
+    sa.Column('weight', sa.String(length=50), nullable=True),
+    sa.Column('created_by', sa.Integer(), nullable=True),
+    sa.Column('approved_for_sale_by', sa.Integer(), nullable=True),
+    sa.Column('created_on', sa.DateTime(), nullable=True),
+    sa.Column('updated_by', sa.Integer(), nullable=True),
+    sa.Column('updated_on', sa.DateTime(), nullable=True),
+    sa.Column('deleted_by', sa.Integer(), nullable=True),
+    sa.Column('deleted_on', sa.DateTime(), nullable=True),
+    sa.Column('deleted', sa.Boolean(), nullable=True),
+    sa.Column('approved_for_sale', sa.Boolean(), nullable=True),
+    sa.Column('in_stock', sa.Boolean(), nullable=True),
+    sa.Column('sku', sa.String(length=120), nullable=True),
+    sa.ForeignKeyConstraint(['approved_for_sale_by'], ['users.id'], name=op.f('fk_product_approved_for_sale_by_users')),
+    sa.ForeignKeyConstraint(['category_id'], ['product_category.id'], name=op.f('fk_product_category_id_product_category')),
+    sa.ForeignKeyConstraint(['created_by'], ['users.id'], name=op.f('fk_product_created_by_users')),
+    sa.ForeignKeyConstraint(['deleted_by'], ['users.id'], name=op.f('fk_product_deleted_by_users')),
+    sa.ForeignKeyConstraint(['manufacturer_id'], ['product_manufacturer.id'], name=op.f('fk_product_manufacturer_id_product_manufacturer')),
+    sa.ForeignKeyConstraint(['model_id'], ['product_model.id'], name=op.f('fk_product_model_id_product_model')),
+    sa.ForeignKeyConstraint(['updated_by'], ['users.id'], name=op.f('fk_product_updated_by_users')),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_product'))
+    )
+    with op.batch_alter_table('product', schema=None) as batch_op:
+        batch_op.create_index(batch_op.f('ix_product_cpu'), ['cpu'], unique=False)
+        batch_op.create_index(batch_op.f('ix_product_gpu'), ['gpu'], unique=False)
+        batch_op.create_index(batch_op.f('ix_product_os'), ['os'], unique=False)
+        batch_op.create_index(batch_op.f('ix_product_os_version'), ['os_version'], unique=False)
+        batch_op.create_index(batch_op.f('ix_product_ram'), ['ram'], unique=False)
+        batch_op.create_index(batch_op.f('ix_product_screen'), ['screen'], unique=False)
+        batch_op.create_index(batch_op.f('ix_product_screen_size'), ['screen_size'], unique=False)
+        batch_op.create_index(batch_op.f('ix_product_sku'), ['sku'], unique=True)
+        batch_op.create_index(batch_op.f('ix_product_storage'), ['storage'], unique=False)
+        batch_op.create_index(batch_op.f('ix_product_weight'), ['weight'], unique=False)
+
+    op.create_table('purchase_activity',
+    sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('purchase_id', postgresql.UUID(as_uuid=True), nullable=True),
+    sa.ForeignKeyConstraint(['id'], ['activity.id'], name=op.f('fk_purchase_activity_id_activity')),
+    sa.ForeignKeyConstraint(['purchase_id'], ['purchase.id'], name=op.f('fk_purchase_activity_purchase_id_purchase')),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_purchase_activity'))
+    )
+    op.create_table('product_purchase',
+    sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('vendor_id', postgresql.UUID(as_uuid=True), nullable=True),
+    sa.Column('purchase_order_id', postgresql.UUID(as_uuid=True), nullable=True),
+    sa.ForeignKeyConstraint(['id'], ['product.id'], name=op.f('fk_product_purchase_id_product')),
+    sa.ForeignKeyConstraint(['purchase_order_id'], ['purchase.id'], name=op.f('fk_product_purchase_purchase_order_id_purchase')),
+    sa.ForeignKeyConstraint(['vendor_id'], ['partner.id'], name=op.f('fk_product_purchase_vendor_id_partner')),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_product_purchase'))
+    )
     # ### end Alembic commands ###
 
 
 def downgrade():
     # ### commands auto generated by Alembic - please adjust! ###
-    op.drop_table('note')
-    with op.batch_alter_table('activity', schema=None) as batch_op:
-        batch_op.drop_index(batch_op.f('ix_activity_summary'))
+    op.drop_table('product_purchase')
+    op.drop_table('purchase_activity')
+    with op.batch_alter_table('product', schema=None) as batch_op:
+        batch_op.drop_index(batch_op.f('ix_product_weight'))
+        batch_op.drop_index(batch_op.f('ix_product_storage'))
+        batch_op.drop_index(batch_op.f('ix_product_sku'))
+        batch_op.drop_index(batch_op.f('ix_product_screen_size'))
+        batch_op.drop_index(batch_op.f('ix_product_screen'))
+        batch_op.drop_index(batch_op.f('ix_product_ram'))
+        batch_op.drop_index(batch_op.f('ix_product_os_version'))
+        batch_op.drop_index(batch_op.f('ix_product_os'))
+        batch_op.drop_index(batch_op.f('ix_product_gpu'))
+        batch_op.drop_index(batch_op.f('ix_product_cpu'))
 
-    op.drop_table('activity')
+    op.drop_table('product')
+    op.drop_table('note')
+    op.drop_table('lead_activity')
     with op.batch_alter_table('task', schema=None) as batch_op:
         batch_op.drop_index(batch_op.f('ix_task_name'))
 
     op.drop_table('task')
+    with op.batch_alter_table('purchase', schema=None) as batch_op:
+        batch_op.drop_index(batch_op.f('ix_purchase_total'))
+        batch_op.drop_index(batch_op.f('ix_purchase_reference'))
+
+    op.drop_table('purchase')
+    with op.batch_alter_table('product_category', schema=None) as batch_op:
+        batch_op.drop_index(batch_op.f('ix_product_category_name'))
+
+    op.drop_table('product_category')
     with op.batch_alter_table('lead', schema=None) as batch_op:
         batch_op.drop_index(batch_op.f('ix_lead_priority'))
         batch_op.drop_index(batch_op.f('ix_lead_partner_phone'))
@@ -446,6 +625,10 @@ def downgrade():
 
     op.drop_table('partner_team')
     op.drop_table('organization')
+    with op.batch_alter_table('activity', schema=None) as batch_op:
+        batch_op.drop_index(batch_op.f('ix_activity_summary'))
+
+    op.drop_table('activity')
     op.drop_table('PartnerRoles')
     op.drop_table('AccessRights')
     with op.batch_alter_table('partner', schema=None) as batch_op:
@@ -461,6 +644,10 @@ def downgrade():
         batch_op.drop_index(batch_op.f('ix_partner_company_name'))
 
     op.drop_table('partner')
+    with op.batch_alter_table('activity_type', schema=None) as batch_op:
+        batch_op.drop_index(batch_op.f('ix_activity_type_name'))
+
+    op.drop_table('activity_type')
     with op.batch_alter_table('access', schema=None) as batch_op:
         batch_op.drop_index(batch_op.f('ix_access_name'))
 
@@ -507,6 +694,17 @@ def downgrade():
 
     op.drop_table('stage')
     op.drop_table('recurring_plan')
+    with op.batch_alter_table('purchase_status', schema=None) as batch_op:
+        batch_op.drop_index(batch_op.f('ix_purchase_status_name'))
+
+    op.drop_table('purchase_status')
+    with op.batch_alter_table('purchase_filters', schema=None) as batch_op:
+        batch_op.drop_index(batch_op.f('ix_purchase_filters_name'))
+        batch_op.drop_index(batch_op.f('ix_purchase_filters_index'))
+
+    op.drop_table('purchase_filters')
+    op.drop_table('product_model')
+    op.drop_table('product_manufacturer')
     with op.batch_alter_table('partner_role', schema=None) as batch_op:
         batch_op.drop_index(batch_op.f('ix_partner_role_name'))
 

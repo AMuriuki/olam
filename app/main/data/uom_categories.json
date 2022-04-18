@@ -1,0 +1,34 @@
+[
+  {
+    "id": "5dcf48e5-3441-4cd4-a79b-fc4990b8db26",
+    "name": "Unit"
+  },
+  {
+    "id": "45fbde4f-85b4-47d1-a186-f353b0def701",
+    "name": "Weight"
+  },
+  {
+    "id": "d5be2862-68ec-464b-963e-03b94641e382",
+    "name": "Working Time"
+  },
+  {
+    "id": "12e279ba-a69b-4067-9a29-127ccb33103d",
+    "name": "Length / Distance"
+  },
+  {
+    "id": "c9d16b90-d80a-4b1f-815c-c5efafc30089",
+    "name": "Surface"
+  },
+  {
+    "id": "23c7d040-086b-4376-b16b-4dfded8492df",
+    "name": "Volume"
+  },
+  {
+    "id": "ac5808d2-152c-481d-bc39-8cecf6e7c848",
+    "name": "Time"
+  },
+  {
+    "id": "bce44599-0f3d-441a-aab2-ad8e9439b074",
+    "name": "Unsorted"
+  }
+]

@@ -3,7 +3,7 @@ from select import select
 from flask_login import login_required, current_user
 from flask import json, render_template, session, jsonify, request, redirect, url_for, flash
 from app.crm import bp
-from app.crm.models.crm_lead import FILTERS, Lead
+from app.crm.models.crm_lead import FILTERS, Lead, LeadActivity
 from app.crm.models.crm_recurring_plan import RecurringPlan
 from app.crm.models.crm_stage import Stage
 from app.decorators import active_user_required, can_create_access_required, model_access_required, module_access_required
@@ -230,7 +230,7 @@ def pipeline():
             user_id=current_user.get_id()).order_by(Lead.priority.desc()).all()
         selectedFilters = "My Pipeline,"
 
-    activities = Activity.query.join(Lead).all()
+    activities = LeadActivity.query.all()
     assignees = Partner.query.filter_by(is_tenant=True).all()
 
     if form3.submit1.data and form3.validate_on_submit():

@@ -31,7 +31,8 @@
             <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                 {% if current_user|can_create(1) %}
                 <li>
-                    <a href="" class="btn btn-m btn-primary btn-block">CREATE</a>
+                    <a href="{{url_for('purchase.new_request_for_quotation')}}"
+                        class="btn btn-m btn-primary btn-block">CREATE</a>
                 </li>
                 {% endif %}
                 <li>
@@ -106,15 +107,11 @@
                 </div>
             </div><!-- .toggle-wrap -->
         </div><!-- .nk-block-head-content -->
-        {% elif title == "New | Olam ERP" %}
+        {% elif title == "New Request for Quotation | Olam ERP" %}
         <div class="nk-block-head-content">
-            <h3 class="nk-block-title page-title"><a href="{{url_for('settings.settings')}}">
-                    Settings
+            <h3 class="nk-block-title page-title"><a href="{{url_for('purchase.index')}}">
+                    Request for Quotation
                 </a>
-                /
-                <strong class="text-primary small">
-                    <a href="{{url_for('settings.manage_users')}}">Users</a>
-                </strong>
                 /
                 <strong class="text-primary small">
                     <span id="#">New</span>
@@ -123,100 +120,32 @@
 
             <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                 <li>
-                    <a href="#" class="btn btn-m btn-primary btn-block create-user">SAVE</a>
+                    <a href="#" class="btn btn-m btn-primary btn-block create-rfq">SAVE</a>
                 </li>
                 <li>
-                    <a href="{{url_for('settings.manage_users')}}" class="btn btn-outline-light">
+                    <a href="{{url_for('purchase.index')}}" class="btn btn-outline-light">
                         DISCARD
                     </a>
                     <span class="btn selected-groups"></span>
                 </li>
             </ul>
-        </div><!-- .nk-block-head-content -->
-        <div class="nk-block-head-content">
-            <div class="toggle-wrap nk-block-tools-toggle">
-                <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em
-                        class="icon ni ni-menu-alt-r"></em></a>
-                <div class="toggle-expand-content" data-content="pageMenu">
-
-                </div>
-            </div><!-- .toggle-wrap -->
-        </div><!-- .nk-block-head-content -->
-        {% elif user %}
-        <div class="nk-block-head-content">
-            <h3 class="nk-block-title page-title"><a href="{{url_for('settings.settings')}}">
-                    Settings
-                </a>
-                /
-                <strong class="text-primary small">
-                    <a href="{{url_for('settings.manage_users')}}">Users</span>
-                </strong>
-                /
-                <strong class="text-primary small">
-                    <a href="{{url_for('settings.user', slug=slug)}}">{{partner.name}}</a>
-                </strong>
-            </h3>
+            <hr>
             <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                {% if edit %}
                 <li>
-                    <a href="#" class="btn btn-m btn-primary btn-block edit-user">SAVE</a>
+                    <a href="#" class="btn btn-m btn-primary btn-block">SEND BY EMAIL</a>
                 </li>
                 <li>
-                    <a href="{{url_for('settings.user', slug=slug)}}" class="btn btn-outline-light">
-                        DISCARD
-                    </a>
-                    <span class="btn selected-groups"></span>
+                    <a href="#" class="btn btn-m btn-primary btn-block">PRINT RFQ</a>
                 </li>
-                {% else %}
-                {% if current_user|can_write(1) %}
                 <li>
-                    <a href="{{url_for('settings.edit_user', slug=user.slug)}}"
-                        class="btn btn-m btn-primary btn-block">EDIT</a>
-                </li>
-                {% endif %}
-                {% if current_user|can_create(1) %}
-                <li>
-                    <a href="{{url_for('settings.create_user')}}" class="btn btn-outline-light">
-                        CREATE
+                    <a href="#" class="btn btn-outline-light">
+                        CONFIRM ORDER
                     </a>
                 </li>
-                {% endif %}
                 <li>
-                    <span class="btn selected-groups"></span>
-                </li>
-                <li>
-                    <a href="{{url_for('settings.resend_invitation', slug=user.slug)}}"
-                        class="btn btn-outline-light">RE-SEND INVITATION</a>
-                </li>
-                {% endif %}
-                <li class="li-actions">
-                    <div class="drodown">
-                        <a href="#" class="dropdown-toggle btn btn-outline-light actions" data-toggle="dropdown">
-                            <em class="icon ni ni-setting"></em>
-                            <span>Actions</span>
-                            <em class="dd-indc icon ni ni-chevron-right"></em>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <ul class="link-list-opt no-bdr">
-                                {% if current_user|can_write(1) %}
-                                <li><a href="#"><span>Archive</span></a></li>
-                                {% endif %}
-                                {% if current_user|can_create(1) %}
-                                <li><a href="#"><span>Duplicate</span></a></li>
-                                {% endif %}
-                                {% if current_user|can_delete(1) %}
-                                <li><a href="#"><span>Delete</span></a></li>
-                                {% endif %}
-                                {% if current_user|can_read(1) %}
-                                <li><a href="#"><span>Assigned Tasks</span></a></li>
-                                {% endif %}
-                                {% if current_user|can_write(1) %}
-                                <li><a href="#"><span>Change Password</span></a></li>
-                                <li><a href="#"><span>Send Password Reset Instructions</span></a></li>
-                                {% endif %}
-                            </ul>
-                        </div>
-                    </div>
+                    <a href="#" class="btn btn-outline-light">
+                        CANCEL
+                    </a>
                 </li>
             </ul>
         </div><!-- .nk-block-head-content -->
@@ -225,49 +154,18 @@
                 <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em
                         class="icon ni ni-menu-alt-r"></em></a>
                 <div class="toggle-expand-content" data-content="pageMenu">
-                    <ul class="nk-block-tools g-3">
-                        <li style="margin-left: auto !important;">
-                            <span>{{current_index}}</span>/<span>{{users|length}}</span>
-                        </li>
-                        {% if current_index != 1 %}
+                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                        {% for status in statuses %}
                         <li>
-                            {% if edit %}
-                            <a href="{{url_for('settings.edit_user', slug=users[prev_index].slug)}}"
-                                class="btn btn-icon btn-m btn-primary d-none d-sm-inline-flex"><em
-                                    class="icon ni ni-caret-left"></em></a>
-                            <a href="{{url_for('settings.edit_user', slug=users[prev_index].slug)}}"
-                                class="btn btn-icon btn-m btn-primary d-inline-flex d-sm-none"><em
-                                    class="icon ni ni-caret-left"></em></a>
+                            {% if new and status.name == 'RFQ' %}
+                            <a href="#" class="btn btn-primary">{{status.name|upper}}</a>
                             {% else %}
-                            <a href="{{url_for('settings.user', slug=users[prev_index].slug)}}"
-                                class="btn btn-icon btn-m btn-primary d-none d-sm-inline-flex"><em
-                                    class="icon ni ni-caret-left"></em></a>
-                            <a href="{{url_for('settings.user', slug=users[prev_index].slug)}}"
-                                class="btn btn-icon btn-m btn-primary d-inline-flex d-sm-none"><em
-                                    class="icon ni ni-caret-left"></em></a>
+                            <a href="#" class="btn btn-light">{{status.name|upper}}</a>
                             {% endif %}
                         </li>
-                        {% endif %}
-                        {% if next_index != users|length %}
-                        <li>
-                            {% if edit %}
-                            <a href="{{url_for('settings.edit_user', slug=users[next_index].slug)}}"
-                                class="btn btn-icon btn-m btn-primary d-none d-sm-inline-flex"><em
-                                    class="icon ni ni-caret-right"></em></em></a>
-                            <a href="{{url_for('settings.edit_user', slug=users[next_index].slug)}}"
-                                class="btn btn-icon btn-m btn-primary d-inline-flex d-sm-none"><em
-                                    class="icon ni ni-caret-right"></em></a>
-                            {% else %}
-                            <a href="{{url_for('settings.user', slug=users[next_index].slug)}}"
-                                class="btn btn-icon btn-m btn-primary d-none d-sm-inline-flex"><em
-                                    class="icon ni ni-caret-right"></em></em></a>
-                            <a href="{{url_for('settings.user', slug=users[next_index].slug)}}"
-                                class="btn btn-icon btn-m btn-primary d-inline-flex d-sm-none"><em
-                                    class="icon ni ni-caret-right"></em></a>
-                            {% endif %}
-                        </li>
-                        {% endif %}
+                        {% endfor %}
                     </ul>
+                    <hr>
                 </div>
             </div><!-- .toggle-wrap -->
         </div><!-- .nk-block-head-content -->

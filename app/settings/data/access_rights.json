@@ -133,5 +133,32 @@
     "write": true,
     "create": true,
     "delete": false
+  },
+  {
+    "id": "bcd1fce2-7514-42b4-b7e8-fabfe67b7084",
+    "name": "Manage Purchase Orders",
+    "model_id": 8,
+    "read": true,
+    "write": true,
+    "create": true,
+    "delete": true
+  },
+  {
+    "id": "9893de5a-91f1-4e61-a807-214c32819d9c",
+    "name": "Manage Products",
+    "model_id": 9,
+    "read": true,
+    "write": true,
+    "create": true,
+    "delete": true
+  },
+  {
+    "id": "2289ebc8-4aca-495b-94a1-c52931a8e1b2",
+    "name": "Manage UoMs",
+    "model_id": 10,
+    "read": true,
+    "write": true,
+    "create": true,
+    "delete": true
   }
 ]

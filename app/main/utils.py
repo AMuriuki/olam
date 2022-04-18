@@ -84,6 +84,48 @@ def get_activity_types():
     return data
 
 
+def get_products():
+    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+    json_url = os.path.join(SITE_ROOT, "data", "products.json")
+    data = json.load(open(json_url))
+    return data
+
+
+def get_product_categories():
+    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+    json_url = os.path.join(SITE_ROOT, "data", "product_categories.json")
+    data = json.load(open(json_url))
+    return data
+
+
+def get_product_manufacturers():
+    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+    json_url = os.path.join(SITE_ROOT, "data", "product_manufacturers.json")
+    data = json.load(open(json_url))
+    return data
+
+
+def get_product_models():
+    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+    json_url = os.path.join(SITE_ROOT, "data", "product_models.json")
+    data = json.load(open(json_url))
+    return data
+
+
+def get_uom_categories():
+    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+    json_url = os.path.join(SITE_ROOT, "data", "uom_categories.json")
+    data = json.load(open(json_url))
+    return data
+
+
+def get_uoms():
+    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+    json_url = os.path.join(SITE_ROOT, "data", "uom.json")
+    data = json.load(open(json_url))
+    return data
+
+
 def traverse_geoipdata(data):
     if 'ip' in data:
         ip_address = data['ip']

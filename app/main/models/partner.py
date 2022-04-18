@@ -58,6 +58,9 @@ class Partner(db.Model):
     contact_person = db.Column(db.Boolean, default=False)
     assigned_activities = db.relationship(
         'Activity', backref='assignee', lazy='dynamic')
+    rfqs = db.relationship('Purchase', backref='partner', lazy='dynamic')
+    products = db.relationship('ProductPurchase', backref='vendor', lazy='dynamic')
+    
 
     def generate_slug(self):
         _slug = unique_slug_generator(self)

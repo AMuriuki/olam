@@ -40,5 +40,23 @@
     "name": "Activity",
     "description": "Information about an activity.",
     "module_id": 1
+  },
+  {
+    "id": 8,
+    "name": "Purchase",
+    "description": "Information about RFQs and POs.",
+    "module_id": 4
+  },
+  {
+    "id": 9,
+    "name": "Product",
+    "description": "Information about company's products.",
+    "module_id": 5
+  },
+  {
+    "id": 10,
+    "name": "UOM",
+    "description": "Records for units of measurement.",
+    "module_id": 5
   }
 ]

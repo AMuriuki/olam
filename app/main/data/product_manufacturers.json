@@ -1,0 +1,78 @@
+[
+  {
+    "id": "f5798d9e-0553-4a92-be59-2bdc298c919e",
+    "name": "Apple"
+  },
+  {
+    "id": "34ff674b-ec67-44e3-84ca-bc7fc1f6a8db",
+    "name": "HP"
+  },
+  {
+    "id": "649ec15f-e483-49e3-ab8d-d885cdaab71f",
+    "name": "Acer"
+  },
+  {
+    "id": "b024658e-fab4-4ecd-b5c4-771c15cca2d1",
+    "name": "Asus"
+  },
+  {
+    "id": "68977d26-8f97-4497-98ab-53df0a110877",
+    "name": "Dell"
+  },
+  {
+    "id": "69a1ce9c-cfb8-4f13-ae2b-03d3ee9e7c99",
+    "name": "Lenovo"
+  },
+  {
+    "id": "dde40824-e3e0-48ab-a666-259a28614e20",
+    "name": "Chuwi"
+  },
+  {
+    "id": "d56fcad6-d556-4d48-bdb5-4b60588fc575",
+    "name": "MSI"
+  },
+  {
+    "id": "317f9fd0-ad08-4e4a-9ae7-3e22da300d0c",
+    "name": "Microsoft"
+  },
+  {
+    "id": "6c889b6f-399f-4c94-82c9-d95c81a6e72b",
+    "name": "Toshiba"
+  },
+  {
+    "id": "e530e9ee-6068-4aac-8375-92b257b58cd0",
+    "name": "Huawei"
+  },
+  {
+    "id": "6d4fd233-1bcb-4d75-b242-bcc4c7057506",
+    "name": "Xiaomi"
+  },
+  {
+    "id": "35b821ae-00c8-42e5-bdb9-4db996abd4e3",
+    "name": "Vero"
+  },
+  {
+    "id": "44e16488-d343-4630-9c81-09afe860e3c5",
+    "name": "Razer"
+  },
+  {
+    "id": "8ff709e4-04aa-4204-ac39-ad80848b5fcc",
+    "name": "Mediacom"
+  },
+  {
+    "id": "bf70934e-e957-48b0-9707-09532c8e72fc",
+    "name": "Samsung"
+  },
+  {
+    "id": "4fc206cc-ba2e-4f2d-8b8f-cccc35d0ed65",
+    "name": "Google"
+  },
+  {
+    "id": "014f9e49-ffe6-4e91-a49f-1e33eed0d030",
+    "name": "Fujitsu"
+  },
+  {
+    "id": "78cc9db6-5777-4c7c-8d17-71a7897d1495",
+    "name": "LG"
+  }
+]

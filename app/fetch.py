@@ -10,8 +10,6 @@ from app.main.models.module import Model, Module
 def get_access_groups():
     modules = Module.query.all()
     for module in modules:
-        print(module.user_groups_api)
-        print(api_base+module.user_groups_api)
         response = requests.get(api_base+module.user_groups_api)
         response_dict = json.loads(response.content)
         for i in range(len(response_dict['items'])):
@@ -23,6 +21,7 @@ def get_access_groups():
                 group.generate_slug()
                 db.session.add(group)
                 db.session.commit()
+                print("Group: "+group.name+" added")
 
 
 def get_access_rights():
@@ -40,7 +39,8 @@ def get_access_rights():
                 db.session.add(access)
                 db.session.commit()
                 group.rights.append(access)
-            db.session.commit()
+                db.session.commit()
+                print("Access: "+access.name+" added")
 
 
 def get_models():
@@ -56,6 +56,7 @@ def get_models():
                 model.generate_slug()
                 db.session.add(model)
                 db.session.commit()
+                print("Model: "+model.name+" added")
 
 
 def set_admin_groups():

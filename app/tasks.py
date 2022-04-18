@@ -1,3 +1,5 @@
+from locale import currency
+from math import prod
 from app.auth.models.user import Access, Group, Users
 from app.auth.routes import get_access_groups
 from app.auth.utils import get_users
@@ -13,16 +15,18 @@ from app.main.models.partner import Partner
 from app.main.models.country import City, Country
 from flask import current_app
 from app import db
+from app.main.models.product import Product, ProductCategory, ProductManufacturer, ProductModel
+from app.main.models.uom import Uom, UomCategory
 from app.models import Task
-from app.main.utils import get_activities, get_activity_types, get_calling_codes, get_company, get_countries, get_countries_cities, get_models, get_moduleCategories, get_modules
+from app.main.utils import get_activities, get_activity_types, get_calling_codes, get_company, get_countries, get_countries_cities, get_models, get_moduleCategories, get_modules, get_product_categories, get_product_manufacturers, get_product_models, get_products, get_uom_categories, get_uoms
 from app.crm.utils import get_opportunities, get_recurring_plans, get_stages
 from rq import get_current_job
 from app.models import Task
 from app import create_app, db
 from werkzeug.security import generate_password_hash
-from app.purchase.models.purchase import Purchase, PurchaseStatus
+from app.purchase.models.purchase import Purchase, PurchaseActivity, PurchaseStatus
 from app.purchase.utils import get_purchase_status, get_purchases
-
+import traceback
 from app.settings.utils import get_accessGroups, get_accessGroupsRights, get_accessRights
 
 
@@ -178,7 +182,7 @@ def dummy_data():
             exists = Company.query.filter_by(name=company['name']).first()
             if not exists:
                 record = Company(
-                    name=company['name'], domain_name=company['domain_name'])
+                    name=company['name'], domain_name=company['domain_name'], currency=company['currency'])
                 db.session.add(record)
                 db.session.commit()
 
@@ -272,6 +276,7 @@ def dummy_data():
                 record.generate_slug()
                 db.session.add(record)
                 db.session.commit()
+                print("Model: " + model['name'] + " added")
 
         # access rights
         access_rights = get_accessRights()
@@ -289,6 +294,7 @@ def dummy_data():
                     id=item['group_id']).first()
                 group.rights.append(access)
                 db.session.commit()
+                print("Access: " + access.name + " added")
 
         # opportunities
         opportunities = get_opportunities()
@@ -302,6 +308,7 @@ def dummy_data():
                 lead.generate_slug()
                 db.session.add(lead)
                 db.session.commit()
+                print("Opportunity: " + lead.name + " added")
 
         # activity types
         activity_types = get_activity_types()
@@ -309,42 +316,106 @@ def dummy_data():
             exists = ActivityType.query.filter_by(
                 id=activity_type['id']).first()
             if not exists:
-                activity_type = ActivityType(id=activity_type['id'], name=activity_type['name'],
-                                             model_id=activity_type['model_id'])
-                db.session.add(activity_type)
+                activitytype = ActivityType(
+                    id=activity_type['id'], name=activity_type['name'], model_id=activity_type['model_id'])
+                db.session.add(activitytype)
                 db.session.commit()
-                print("Activity type " + str(activity_type.id) + " created")
-
-        # activities
-        activities = get_activities()
-        for activity in activities:
-            exists = Activity.query.filter_by(id=activity['id']).first()
-            if not exists:
-                activity = Activity(id=activity['id'], summary=activity['summary'],
-                                    module_id=activity['module_id'], model_id=activity['model_id'], lead_id=activity['lead_id'], activity_type=activity['activity_type'])
-                db.session.add(activity)
-                db.session.commit()
-                print("Activity " + str(activity.id) + " created")
+                print("Activity type " + str(activitytype.id) + " created")
 
         # purchase statuses
-        purchase_status = get_purchase_status()
-        for status in purchase_status:
-            exists = PurchaseStatus.query.filter_by(id=status['id']).first()
+        purchase_statuses = get_purchase_status()
+        for purchase_status in purchase_statuses:
+            exists = PurchaseStatus.query.filter_by(
+                id=purchase_status['id']).first()
             if not exists:
-                status = PurchaseStatus(id=status['id'], name=status['name'])
-                db.session.add(status)
+                purchasestatus = PurchaseStatus(
+                    id=purchase_status['id'], name=purchase_status['name'])
+                db.session.add(purchasestatus)
                 db.session.commit()
-                print("Purchase status " + status['name'] + " created")
+                print("Purchase status " +
+                      purchase_status['name'] + " created")
+
+        # uom categories
+        uom_categories = get_uom_categories()
+        for uom_category in uom_categories:
+            exists = UomCategory.query.filter_by(id=uom_category['id']).first()
+            if not exists:
+                category = UomCategory(
+                    id=uom_category['id'], name=uom_category['name'])
+                db.session.add(category)
+                db.session.commit()
+                print("UOM Category " + str(category.name) + " created")
+
+        # uoms
+        uoms = get_uoms()
+        for uom in uoms:
+            exists = Uom.query.filter_by(id=uom['id']).first()
+            if not exists:
+                u_o_m = Uom(id=uom['id'], name=uom['name'],
+                            category_id=uom['category_id'])
+                db.session.add(u_o_m)
+                db.session.commit()
+                print("UOM " + str(u_o_m.name) + " created")
 
         # purchase records
         purchases = get_purchases()
         for purchase in purchases:
             exists = Purchase.query.filter_by(id=purchase['id']).first()
             if not exists:
-                purchase = Purchase(id=status['id'], reference=purchase['reference'], vendor=purchase['vendor'],
-                                    representative=purchase['representative'], total=purchase['total'], status=purchase['status'])
-                db.session.add(purchase)
+                _purchase = Purchase(id=purchase['id'], reference=purchase['reference'], vendor=purchase['vendor'],
+                                     representative=purchase['representative'], total=purchase['total'], status=purchase['status'])
+                db.session.add(_purchase)
                 db.session.commit()
                 print("Purchase record " + purchase['vendor'] + " created")
+
+        # manufacturers
+        manufacturers = get_product_manufacturers()
+        for manufacturer in manufacturers:
+            exists = ProductManufacturer.query.filter_by(
+                id=manufacturer['id']).first()
+            if not exists:
+                product_manufacturer = ProductManufacturer(
+                    id=manufacturer['id'], name=manufacturer['name'])
+                db.session.add(product_manufacturer)
+                db.session.commit()
+                print("Manufacturer " +
+                      manufacturer['name'] + " created")
+
+        # product models
+        models = get_product_models()
+        for model in models:
+            exists = ProductModel.query.filter_by(
+                id=model['id']).first()
+            if not exists:
+                product_model = ProductModel(
+                    id=model['id'], name=model['name'])
+                db.session.add(product_model)
+                db.session.commit()
+                print("Model " + model['name'] + " created")
+
+        # product categories
+        categories = get_product_categories()
+        for category in categories:
+            exists = ProductCategory.query.filter_by(
+                id=category['id']).first()
+            if not exists:
+                product_category = ProductCategory(
+                    id=category['id'], name=category['name'])
+                db.session.add(product_category)
+                db.session.commit()
+                print("Product category " + category['name'] + " created")
+
+        # products
+        products = get_products()
+        for product in products:
+            exists = Product.query.filter_by(id=product['id']).first()
+            if not exists:
+                _product = Product(id=product['id'], manufacturer_id=product['manufacturer_id'], model_id=product['model_id'], category_id=product['category_id'], price=float(product['price']), screen_size=product['screen_size'], cpu=product[
+                    'cpu'], ram=product['ram'], storage=product['storage'], gpu=product['gpu'], os=product['os'], os_version=product['os_version'], weight=product['weight'])
+                _product.generate_sku()
+                db.session.add(_product)
+                db.session.commit()
+                print("Product record " + str(_product.id) + " created")
     except Exception as e:
         print(e)
+        print(traceback.format_exc())

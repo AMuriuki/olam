@@ -61,5 +61,68 @@
     "name": "User",
     "module_id": 3,
     "permission": 1
+  },
+  {
+    "id": "34755e2d-2293-43a2-8925-5c61ecd061a6",
+    "access_rights_url": "/api/access_groups/34755e2d-2293-43a2-8925-5c61ecd061a6/access_rights",
+    "name": "Administrator",
+    "module_id": 4,
+    "permission": 3
+  },
+  {
+    "id": "ab86dc1f-99ae-4a24-ac3d-8863a76635ef",
+    "access_rights_url": "/api/access_groups/ab86dc1f-99ae-4a24-ac3d-8863a76635ef/access_rights",
+    "name": "Manager",
+    "module_id": 4,
+    "permission": 2
+  },
+  {
+    "id": "39fa6ffb-b562-45f4-8aed-5cd351d4ef76",
+    "access_rights_url": "/api/access_groups/39fa6ffb-b562-45f4-8aed-5cd351d4ef76/access_rights",
+    "name": "User",
+    "module_id": 4,
+    "permission": 1
+  },
+  {
+    "id": "8538f394-1e8e-474b-8a83-28f75d79fc11",
+    "access_rights_url": "/api/access_groups/8538f394-1e8e-474b-8a83-28f75d79fc11/access_rights",
+    "name": "Administrator",
+    "module_id": 5,
+    "permission": 3
+  },
+  {
+    "id": "629b33c4-d07b-4da9-81b0-aea9e4230b76",
+    "access_rights_url": "/api/access_groups/629b33c4-d07b-4da9-81b0-aea9e4230b76/access_rights",
+    "name": "Manager",
+    "module_id": 5,
+    "permission": 2
+  },
+  {
+    "id": "786c83c7-24d2-43ce-b046-4d1908335e34",
+    "access_rights_url": "/api/access_groups/786c83c7-24d2-43ce-b046-4d1908335e34/access_rights",
+    "name": "User",
+    "module_id": 5,
+    "permission": 1
+  },
+  {
+    "id": "788a9529-a58c-4c9e-946c-e3856aea2f67",
+    "access_rights_url": "/api/access_groups/788a9529-a58c-4c9e-946c-e3856aea2f67/access_rights",
+    "name": "Administrator",
+    "module_id": 1,
+    "permission": 3
+  },
+  {
+    "id": "a563682b-8dc7-45c0-ac8e-c9775b9f4cc9",
+    "access_rights_url": "/api/access_groups/a563682b-8dc7-45c0-ac8e-c9775b9f4cc9/access_rights",
+    "name": "Manager",
+    "module_id": 1,
+    "permission": 2
+  },
+  {
+    "id": "84eb5a45-e137-41e3-9915-58877c98d841",
+    "access_rights_url": "/api/access_groups/84eb5a45-e137-41e3-9915-58877c98d841/access_rights",
+    "name": "User",
+    "module_id": 1,
+    "permission": 1
   }
 ]

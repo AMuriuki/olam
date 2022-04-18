@@ -51,3 +51,5 @@ class LeadActivity(Activity):
         'activity.id'), primary_key=True)
     lead_id = db.Column(
         db.Integer, db.ForeignKey('lead.id'), nullable=True)
+
+

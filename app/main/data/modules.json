@@ -31,5 +31,27 @@
     "user_groups_api": "/api/modules/3/access_groups",
     "models_api": "/api/models?id=3",
     "url": "https://www.olam-erp.com/app/contacts"
+  },
+  {
+    "id": 4,
+    "technical_name": "purchase",
+    "bp_name": "purchase",
+    "official_name": "Olam Purchase",
+    "category_id": 3,
+    "summary": "Manage suppliers & purchase orders",
+    "user_groups_api": "/api/modules/4/access_groups",
+    "models_api": "/api/models?id=4",
+    "url": "https://www.olam-erp.com/app/purchase"
+  },
+  {
+    "id": 5,
+    "technical_name": "inventory",
+    "bp_name": "inventory",
+    "official_name": "Olam Inventory",
+    "category_id": 3,
+    "url": "https://www.olam-erp.com/app/inventory",
+    "summary": "Modern online stock management software",
+    "user_groups_api": "/api/modules/5/access_groups",
+    "models_api": "/api/models?id=5"
   }
 ]

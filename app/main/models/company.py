@@ -1,3 +1,4 @@
+from locale import currency
 from sqlalchemy.orm import backref
 from app import db
 from datetime import datetime
@@ -26,6 +27,7 @@ class Company(db.Model):
     partners = db.relationship('Partner', backref='company', lazy='dynamic')
     users = db.relationship('Users', backref='company', lazy='dynamic')
     leads = db.relationship('Lead', backref='company_owning', lazy='dynamic')
+    currency = db.Column(db.String(30))
 
 
 class CompanyCategory(db.Model):

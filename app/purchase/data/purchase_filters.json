@@ -1,0 +1,42 @@
+[
+  {
+    "id": "c01196e7-850e-42b8-bc1a-76a9bd3e0623",
+    "index": "0",
+    "name": "My Purchases"
+  },
+  {
+    "id": "9818f2ae-c2ec-47e0-9ece-450038398ba5",
+    "index": "1",
+    "name": "Starred"
+  },
+  {
+    "id": "2db71794-622d-4d7d-b291-09428b2f47b6",
+    "index": "2",
+    "name": "RFQs"
+  },
+  {
+    "id": "d1136832-6a28-424f-8d70-4d16931210ac",
+    "index": "3",
+    "name": "Purchase Orders"
+  },
+  {
+    "id": "50526a56-9b25-427a-ab72-9e78bd3650f3",
+    "index": "4",
+    "name": "To Approve"
+  },
+  {
+    "id": "82ff3d1c-3e30-4dc2-9c4f-ab476c33b792",
+    "index": "5",
+    "name": "Order Date"
+  },
+  {
+    "id": "30436ffc-fd32-4b28-a6f0-0d75dbbf4603",
+    "index": "6",
+    "name": "Draft RFQs"
+  },
+  {
+    "id": "a6758a9e-d337-47f1-9fc1-95fc32e3b05f",
+    "index": "7",
+    "name": "Waiting RFQs"
+  }
+]

@@ -1,8 +1,9 @@
 import hashlib
 import time
 import random
-
+import string
 from flask import current_app
+import re
 
 try:
     random = random.SystemRandom()
@@ -52,6 +53,50 @@ def unique_slug_generator(instance, new_slug=None):
         new_slug = get_random_string(length=25)
         return unique_slug_generator(instance, new_slug=new_slug)
     return slug
+
+
+def generate_sku():
+    return "".join([random.choice(string.digits) for i in range(3)])+"-"+"".join([random.choice(
+        string.ascii_uppercase) for i in range(3)])+"-"+"".join([random.choice(string.digits) for i in range(3)])
+
+
+def extract_int(str):
+    return int(re.search(r'\d+', str).group())
+
+
+def generate_reference(reference):
+    if(reference):
+        last_digit = extract_int(reference)
+        new_digit = last_digit + 1
+    else:
+        new_digit = 0
+    return "P"+str(new_digit).zfill(6)
+
+
+def sku_generator(instance, new_sku=None):
+
+    if new_sku is not None:
+        sku = new_sku
+    else:
+        sku = generate_sku()
+
+    Klass = instance.__class__
+    qs_exists = Klass.query.filter_by(sku=sku).first()
+    while qs_exists:
+        sku = generate_sku()
+        qs_exists = Klass.query.filter_by(sku=sku).first()
+    return sku
+
+
+def purchase_reference_generator(instance, new_reference=None):
+    Klass = instance.__class__
+    last_rec = Klass.query.order_by(Klass.created_on.desc()).first()
+    if new_reference is not None:
+        reference = new_reference
+    else:
+        reference = generate_reference(
+            last_rec.reference if last_rec else None)
+    return reference
 
 
 def has_access(a):

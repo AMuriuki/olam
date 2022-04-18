@@ -20,6 +20,10 @@ var create = false;
 var _delete = false;
 var filter;
 var selectedFilters = [];
+var product_desc;
+var data;
+var purchase_id
+var product_no
 
 current_href = $(location).attr("href");
 
@@ -42,11 +46,12 @@ if (current_href.toLowerCase().indexOf("settings/users") >= 0) {
   }
 }
 
+
 $(".schedule").click(function (e) {
   record_id = this.id;
   $.post("/crm/get_opportunityID", {
     opportunity_id: record_id,
-  }).done(function (response) {});
+  }).done(function (response) { });
   $(".record_id").attr("id", record_id);
 });
 
@@ -95,7 +100,7 @@ function edit_stage() {
     .done(function (response) {
       $("#modalEditStage").modal("hide");
     })
-    .fail(function () {});
+    .fail(function () { });
 }
 
 function delete_stage() {
@@ -105,7 +110,7 @@ function delete_stage() {
     .done(function (response) {
       location.href = "/crm/";
     })
-    .fail(function () {});
+    .fail(function () { });
 }
 
 function move_stage_forward() {
@@ -123,6 +128,22 @@ function move_stage_behind() {
     location.href = "/crm/";
   });
 }
+
+function post_product_purchase(product_id) {
+  if (sessionStorage.getItem('purchase_id')) {
+    purchase_id = sessionStorage.getItem('purchase_id');
+  } else {
+    purchase_id = null;
+  }
+  $.post("/purchase/new/request-for-quotation", {
+    purchase_id: purchase_id,
+    product_id: product_id
+  }).done(function (response) {
+
+  })
+}
+
+
 
 // add new board item
 $(".add-item").click(function (e) {
@@ -142,6 +163,56 @@ $(".select_contact").on("change", function () {
   }
 });
 
+$(".select-vendor").on("change", function () {
+  vendor = this.value
+  if (sessionStorage.getItem('purchase_id')) {
+    purchase_id = sessionStorage.getItem('purchase_id');
+  } else {
+    purchase_id = null;
+  }
+  $.post("/purchase/new/request-for-quotation", {
+    vendor: vendor,
+    purchase_id: purchase_id
+  }).done(function (response) {
+    sessionStorage.setItem('purchase_id', response['purchase_id']);
+  })
+})
+
+$(".set-due-date").on("change", function () {
+  var due_date = $(this).val();
+  var purchase_id = sessionStorage.getItem('purchase_id');
+  $.post("/purchase/new/request-for-quotation", {
+    purchase_id: purchase_id,
+    due_date: due_date
+  }).done(function (response) {
+    sessionStorage.setItem('purchase_id', response['purchase_id']);
+  })
+})
+
+$(".inp_quantity").on("change", function () {
+  var quantity = $(this).val();
+  var purchase_id = sessionStorage.getItem('purchase_id');
+  $.post("/purchase/new/request-for-quotation", {
+    purchase_id: purchase_id,
+    quantity: quantity
+  }).done(function (response) {
+    sessionStorage.setItem('purchase_id', response['purchase_id']);
+  })
+})
+
+$(".set-time").on("change", function () {
+  var time = $(this).val();
+  var purchase_id = sessionStorage.getItem('purchase_id');
+  $.post("/purchase/new/request-for-quotation", {
+    purchase_id: purchase_id,
+    time: time
+  }).done(function (response) {
+    sessionStorage.setItem('purchase_id', response['purchase_id']);
+  })
+})
+
+
+
 // get partner details
 function get_partner_details(value) {
   $.post("/crm/get_partner_details", {
@@ -154,6 +225,39 @@ function get_partner_details(value) {
     .fail(function () {
       alert("Get Partner Details Error");
     });
+}
+
+// get product description
+function get_product_purchase_details(product) {
+  $.post("/get_product_purchase_details", {
+    product: product,
+  }).done(function (response) {
+    if (current_href.toLowerCase().indexOf("purchase/new/request-for-quotation") >= 0) {
+      count_tr = $("#purchase_body").find("tr").length;
+      current_index = parseInt(count_tr) - 1
+      document.getElementsByClassName("inp_products")[current_index].id = "product-" + response["id"]
+      $("#product-" + response["id"]).css("display", "none");
+      $(".clone-product-tr").attr("id", response["id"] + "-product-tr");
+      var product_span = document.createElement("span");
+      product_span.innerHTML = response['name']
+      $(product_span).attr("id", "product-span-" + response['id']);
+      document.getElementsByClassName("inp_quantity")[current_index].id = "quantity-for-" + response["id"]
+      document.getElementsByClassName("inp_product_desc")[current_index].id = "inp-desc-for-" + response["id"]
+      document.getElementsByClassName("product_description")[current_index].id = "desc-for-" + response["id"]
+      $("#inp-desc-for-" + response["id"]).css("display", "none");
+      $("#quantity-for-" + response["id"]).val("1.00");
+      $("#desc-for-" + response["id"]).text(response['description']);
+      td_product = document.getElementsByClassName("td_product")[current_index];
+      $(product_span).appendTo($(td_product))
+      $(td_product).removeClass("w-25");
+      $.get("/get_UOM", function (data) {
+        autocomplete(document.getElementsByClassName("inp_uom")[current_index], data)
+        return data;
+      });
+    }
+  }).fail(function () {
+
+  });
 }
 
 $(".first-opportunity").click(function (e) {
@@ -288,8 +392,8 @@ function select_priority(value) {
   $.post("/crm/selected_priority", {
     selected_priority: value,
   })
-    .done(function (response) {})
-    .fail(function () {});
+    .done(function (response) { })
+    .fail(function () { });
 }
 
 // update item priority
@@ -453,7 +557,7 @@ $(".filter-pipeline").click(function (e) {
   }
 });
 
-function filter_pipeline() {}
+function filter_pipeline() { }
 
 function hasClass(element, cls) {
   return (" " + element.attr("class") + " ").indexOf(" " + cls + " ") > -1;
@@ -502,7 +606,7 @@ $(".filter-users").click(function (e) {
 function renderUsers(users) {
   if (users.length > 10) {
     slicedList = user.slice(0, 20);
-    for (var i = 0; i < slicedList.length; i++) {}
+    for (var i = 0; i < slicedList.length; i++) { }
   } else {
     console.log(users, users["items"].length);
     for (var i = 0; i < users["items"].length; i++) {
@@ -765,12 +869,54 @@ $(".dv-module").on("click", function () {
   }
 });
 
+$(".add-a-product").on("click", function (e) {
+  e.preventDefault();
+  if ($(".clone-product-tr").length) {
+    count_tr = $("#purchase_body").find("tr").length;
+    current_index = parseInt(count_tr) - 1
+    count_tr = $("#purchase_body").find("tr").length;
+    current_index = parseInt(count_tr) - 1
+    var inp_quantity_id = $(".inp_quantity:last").attr("id")
+    if (inp_quantity_id) {
+      var quantity = document.getElementById(inp_quantity_id)
+      var quantity_span = document.createElement("span");
+      quantity_span.innerHTML = quantity.value;
+      td_quantity = document.getElementsByClassName("td_quantity")[current_index];
+      $(quantity_span).appendTo($(td_quantity))
+      $(quantity).css("display", "none")
+    }
+    if ($(".clone-product-tr:last").attr("id")) {
+      var clone = $(".og-product-tr").clone();
+      $(clone).addClass("clone-product-tr");
+      $(clone).removeClass("og-product-tr");
+      $(clone).appendTo("#purchase_body");
+      count_tr = $("#purchase_body").find("tr").length;
+      current_index = parseInt(count_tr) - 1
+      $.get("/get_products", function (data) {
+        autocomplete(document.getElementsByClassName("inp_products")[current_index], data)
+        return data;
+      });
+    }
+  } else {
+    var clone = $(".og-product-tr").clone();
+    $(clone).addClass("clone-product-tr");
+    $(clone).removeClass("og-product-tr");
+    $(clone).appendTo("#purchase_body");
+    count_tr = $("#purchase_body").find("tr").length;
+    current_index = parseInt(count_tr) - 1
+    $.get("/get_products", function (data) {
+      autocomplete(document.getElementsByClassName("inp_products")[current_index], data)
+      return data;
+    });
+  }
+})
+
 function pipeline_stage(value) {
   $.post("/crm/pipeline_stage", {
     pipeline_stage: value,
   })
-    .done(function (response) {})
-    .fail(function () {});
+    .done(function (response) { })
+    .fail(function () { });
 }
 
 function edit_domain() {
@@ -930,8 +1076,8 @@ function update_priority(item_id, priority) {
     item_id: item_id,
     priority: priority,
   })
-    .done(function (response) {})
-    .fail(function () {});
+    .done(function (response) { })
+    .fail(function () { });
 }
 
 $(".chk_user").change(function (e) {
@@ -1199,7 +1345,7 @@ $(".set-access").change(function (e) {
   $.post("/settings/set-access", {
     group: group_id,
     module: module_id,
-  }).done(function (response) {});
+  }).done(function (response) { });
 });
 
 $(".select-user").click(function (e) {
@@ -1218,7 +1364,7 @@ $(".remove-user").click(function (e) {
     .done(function (response) {
       window.location.reload();
     })
-    .fail(function () {});
+    .fail(function () { });
 });
 
 $(".record-check").change(function (e) {
@@ -1545,5 +1691,166 @@ function get_item() {
     item_id: item_id,
   }).done(function (response) {
     document.getElementById("unit_price").value = response["unit_price"];
+  });
+}
+
+
+
+
+
+document.addEventListener('click', function (event) {
+  var isClickInside = null
+  var el;
+  if (current_href.toLowerCase().indexOf("purchase/new/request-for-quotation") >= 0) {
+
+    el = $(event.target).closest('tr')
+    if (el.hasClass('is-click-inside') || $(event.target).hasClass("is-click-inside") || $(event.target).hasClass("add-a-product") || $(event.target).hasClass('select2-selection__rendered') || $(event.target).hasClass('select2-selection__arrow')) {
+      isClickInside = true
+    }
+    if (!isClickInside) {
+      $(".clone-product-tr").each(function (i, e) {
+        if ($(e).attr("id")) {
+          count_tr = $("#purchase_body").find("tr").length;
+          current_index = parseInt(count_tr) - 1
+          var quantity_el = document.getElementsByClassName("inp_quantity")[current_index];
+          var quantity = quantity_el.value
+          $(quantity_el).css("display", "none");
+          var quantity_span = document.createElement("span");
+          quantity_span.innerHTML = quantity;
+          td_quantity = document.getElementsByClassName("td_quantity")[current_index];
+          $(quantity_span).appendTo($(td_quantity))
+        } else {
+          $(e).remove()
+        }
+      })
+    }
+  }
+})
+
+
+function autocomplete(inp, arr) {
+  /*the autocomplete function takes two arguments,
+    the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  document.addEventListener("input", function (e) {
+    if (e.target == inp) {
+      var a, b, val = e.target.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) {
+        return false;
+      }
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", e.target.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      e.target.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      values = []
+      $.each(arr, function () {
+        var key = Object.keys(this)[0];
+        values.push(this[key])
+      })
+      $.each(arr, function () {
+        var key = Object.keys(this)[0];
+        var value = this[key];
+        /*check if the item starts with the same letters as the text field value:*/
+        if (value && value.toLowerCase().includes(val.toLowerCase())) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          b.classList.add("is-click-inside");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + value.substr(0, val.length) + "</strong>";
+          b.innerHTML += value.substr(val.length);
+
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + value + "'>";
+          b.getElementsByTagName("input")[0].classList.add("is-click-inside");
+          /*execute a function when someone clicks on the item value (DIV element):*/
+          b.addEventListener("click", function (e) {
+            /*insert the value for the autocomplete text field:*/
+            inp.value = this.getElementsByTagName("input")[0].value;
+            if (current_href.indexOf("/purchase/new/request-for-quotation") >= 0) {
+              get_product_purchase_details(key);
+              post_product_purchase(key)
+            }
+            /*close the list of autocompleted values,
+                  (or any other open lists of autocompleted values:*/
+            closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      })
+      if (!values.includes(val)) {
+        b = document.createElement("DIV");
+        b.classList.add("is-click-inside");
+        /*make the matching letters bold:*/
+        b.innerHTML = "Create <strong>" + val + "</strong>";
+        a.appendChild(b);
+      }
+    }
+  })
+
+  /*execute a function presses a key on the keyboard:*/
+  document.addEventListener("keydown", function (e) {
+    if (e.target == inp) {
+      var x = document.getElementById(e.target.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+            increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) {
+        //up
+        /*If the arrow UP key is pressed,
+            decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+    }
+  });
+
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = x.length - 1;
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+      except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  /*execute a function when someone clicks in the document:*/
+  document.addEventListener("click", function (e) {
+    closeAllLists(e.target);
   });
 }

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "6081d927-d260-4f50-a80d-f725ef357654",
+    "name": "Units",
+    "category_id": "12e279ba-a69b-4067-9a29-127ccb33103d"
+  },
+  {
+    "id": "ca72cd0c-8a80-4e40-95bb-dd4a55cf3e03",
+    "name": "Dozens",
+    "category_id": "12e279ba-a69b-4067-9a29-127ccb33103d"
+  },
+  {
+    "id": "64a80c79-a36f-4dee-9f7c-ef6b8c4a2957",
+    "name": "g",
+    "category_id": "45fbde4f-85b4-47d1-a186-f353b0def701"
+  },
+  {
+    "id": "3de0fea0-0e59-4713-b2f1-4fdaeca40b28",
+    "name": "oz",
+    "category_id": "45fbde4f-85b4-47d1-a186-f353b0def701"
+  },
+  {
+    "id": "9689c95a-4a1a-4e77-9d3c-77cb0e5ca786",
+    "name": "lb",
+    "category_id": "45fbde4f-85b4-47d1-a186-f353b0def701"
+  },
+  {
+    "id": "b6eadff6-3cbf-427e-9556-4cc516191bdd",
+    "name": "kg",
+    "category_id": "45fbde4f-85b4-47d1-a186-f353b0def701"
+  },
+  {
+    "id": "fc76e459-86a9-45c4-8121-bd9e16d508e2",
+    "name": "t",
+    "category_id": "45fbde4f-85b4-47d1-a186-f353b0def701"
+  },
+  {
+    "id": "7a9e1c6b-f3fe-4b6c-bdb0-c3cdffe71ea2",
+    "name": "Hours",
+    "category_id": "d5be2862-68ec-464b-963e-03b94641e382"
+  },
+  {
+    "id": "88f6b5cf-da68-40e4-913e-eb2f62e64f4f",
+    "name": "Days",
+    "category_id": "d5be2862-68ec-464b-963e-03b94641e382"
+  },
+  {
+    "id": "68eb22ce-0f6c-4aa8-b427-3c007c5eab92",
+    "name": "mm",
+    "category_id": "12e279ba-a69b-4067-9a29-127ccb33103d"
+  },
+  {
+    "id": "7c72bdf9-070a-4d4e-91c0-1aa6afac04ff",
+    "name": "mm",
+    "category_id": "12e279ba-a69b-4067-9a29-127ccb33103d"
+  },
+  {
+    "id": "99dae972-ad87-4b9e-b0c0-db840ea749e7",
+    "name": "in",
+    "category_id": "12e279ba-a69b-4067-9a29-127ccb33103d"
+  },
+  {
+    "id": "7a56fabf-2bf4-4613-a0f9-4a1df89a5d5b",
+    "name": "ft",
+    "category_id": "12e279ba-a69b-4067-9a29-127ccb33103d"
+  },
+  {
+    "id": "11d281ed-2587-4278-b662-92a248f01849",
+    "name": "m",
+    "category_id": "12e279ba-a69b-4067-9a29-127ccb33103d"
+  },
+  {
+    "id": "520c9401-a238-4f04-92a2-b27e9594dd3a",
+    "name": "km",
+    "category_id": "12e279ba-a69b-4067-9a29-127ccb33103d"
+  },
+  {
+    "id": "5769b617-6aeb-4c23-9d4c-5e405d9e1c28",
+    "name": "mi",
+    "category_id": "12e279ba-a69b-4067-9a29-127ccb33103d"
+  }
+]

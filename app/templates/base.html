@@ -18,6 +18,7 @@
         rel="stylesheet">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
     {{ moment.include_moment() }}
     <style>
         .nk-content-wrap {
@@ -27,6 +28,35 @@
         .nk-aside {
             display: none;
             margin-right: 0% !important;
+        }
+
+        .autocomplete {
+            position: relative;
+            display: inline-block;
+        }
+
+        .autocomplete-items div {
+            padding: 10px;
+            cursor: pointer;
+            background-color: #fff;
+            border-bottom: 1px solid #d4d4d4;
+            border-left: 1px solid #d4d4d4;
+            border-right: 1px solid #d4d4d4;
+        }
+
+        .autocomplete-items div:hover {
+            background-color: #e9e9e9;
+        }
+
+        .autocomplete-active {
+            background-color: dodgerblue !important;
+            color: #ffffff;
+        }
+
+        .discharge {
+            width: 40% !important;
+            max-height: 100% !important;
+            overflow-y: auto;
         }
     </style>
 </head>
@@ -234,11 +264,20 @@
     <script src="{{url_for('static', filename='js/libs/tagify.js')}}"></script>
     {% endif %}
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    {% if title == 'New Request for Quotation | Olam ERP' %}
+    <script>
+        var quill = new Quill('.quill-editor', {
+            theme: 'bubble'
+        });
+    </script>
+    {% else %}
     <script>
         var quill = new Quill('.quill-editor', {
             theme: 'snow'
         });
-
+    </script>
+    {% endif %}
+    <script>
         var quill_editor = document.querySelector(".quill-editor");
         quill_editor.oninput = handleInput
 
