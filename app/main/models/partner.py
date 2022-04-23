@@ -22,6 +22,13 @@ partner_teams = db.Table(
     db.Column('team_id', db.Integer, db.ForeignKey('partner_team.id'), primary_key=True))
 
 
+partner_tags = db.Table(
+    'PartnerTags',
+    db.Column('partner_id', UUID(as_uuid=True), db.ForeignKey(
+        'partner.id'), primary_key=True),
+    db.Column('partner_tag_id', UUID(as_uuid=True), db.ForeignKey('partner_tag.id'), primary_key=True))
+
+
 class Partner(db.Model):
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     name = db.Column(db.String(120), index=True)
@@ -59,8 +66,10 @@ class Partner(db.Model):
     assigned_activities = db.relationship(
         'Activity', backref='assignee', lazy='dynamic')
     rfqs = db.relationship('Purchase', backref='partner', lazy='dynamic')
-    products = db.relationship('ProductPurchase', backref='vendor', lazy='dynamic')
-    
+    products = db.relationship(
+        'ProductPurchase', backref='vendor', lazy='dynamic')
+    tags = db.relationship(
+        'PartnerTag', secondary=partner_tags, back_populates="partners")
 
     def generate_slug(self):
         _slug = unique_slug_generator(self)
@@ -98,3 +107,10 @@ class PartnerTeam(db.Model):
         hash_object = hashlib.sha1((str.encode(str(partner_id))))
         hex_dig = hash_object.hexdigest()
         self.token = hex_dig
+
+
+class PartnerTag(db.Model):
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    name = db.Column(db.String(120), index=True, unique=True)
+    partners = db.relationship(
+        'Partner', secondary=partner_tags, back_populates="tags")

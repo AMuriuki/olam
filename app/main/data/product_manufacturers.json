@@ -74,5 +74,29 @@
   {
     "id": "78cc9db6-5777-4c7c-8d17-71a7897d1495",
     "name": "LG"
+  },
+  {
+    "id": "ba6ec27c-2d0b-43e8-90d8-88862d4d60c0",
+    "name": "Karspersky"
+  },
+  {
+    "id": "e69a0757-b19a-4610-a109-b7aa955e919d",
+    "name": "Canon"
+  },
+  {
+    "id": "17c8fd61-4040-47d7-80c0-b75ccabfca43",
+    "name": "Epson"
+  },
+  {
+    "id": "a4c2ccf1-1dd4-42b4-960f-a372cfb83064",
+    "name": "Logitech"
+  },
+  {
+    "id": "b66d9fa6-bf6b-447a-8732-779df53d5265",
+    "name": "JBL"
+  },
+  {
+    "id":"2c6749ee-f3c9-4357-9bfc-c9de724684a7",
+    "name": "Sony"
   }
 ]

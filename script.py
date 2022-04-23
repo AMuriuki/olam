@@ -2,6 +2,7 @@ import pkgutil
 import encodings
 import os
 
+
 def all_encodings():
     modnames = set([modname for importer, modname, ispkg in pkgutil.walk_packages(
         path=[os.path.dirname(encodings.__file__)], prefix='')])

@@ -28,6 +28,7 @@ from flask_login import login_user, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from urllib.parse import urlparse
 from app.decorators import active_user_required, model_access_required, module_access_required
+from sqlalchemy.sql.elements import or_
 
 
 @bp.route('/', methods=['GET', 'POST'])
@@ -114,7 +115,7 @@ def invite_colleagues():
 def get_product_purchase_details():
     if request.method == "POST":
         product = Product.query.filter_by(id=request.form['product']).first()
-        return jsonify({'name': product.manufacturer.name + ' ' + product.category.name, 'description': product.model.name + ' ' + product.cpu, 'price': product.price, 'id': product.id})
+        return jsonify({'name': product.name, 'description': product.description, 'id': product.id, 'unit_price': product.price})
 
 
 @bp.route('/get_products', methods=['GET', 'POST'])
@@ -126,9 +127,10 @@ def get_items():
     products = []
     results = Product.query.all()
     for result in results:
-        manufacturer = result.manufacturer.name
-        category = result.category.name
-        products.append({str(result.id): manufacturer+' '+category})
+        manufacturer = result.manufacturer.name if result.manufacturer else None
+        category = result.category.name if result.category else None
+        name = result.name
+        products.append({str(result.id): name})
     return Response(json.dumps(products), mimetype='application/json')
 
 
@@ -142,5 +144,17 @@ def get_uom():
     results = Uom.query.all()
     for result in results:
         uoms.append({str(result.id): result.name})
-    print(uoms)
     return Response(json.dumps(uoms), mimetype='application/json')
+
+
+@bp.route('/get_partners', methods=['GET', 'POST'])
+@login_required
+@active_user_required
+@model_access_required(3)
+def get_partners():
+    partners = []
+    results = db.session.query(Partner).filter(or_(
+        Partner.is_company == True, Partner.is_individual == True)).all()
+    for result in results:
+        partners.append({str(result.id): result.get_name()})
+    return Response(json.dumps(partners), mimetype='application/json')

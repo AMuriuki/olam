@@ -82,10 +82,20 @@ def new_request_for_quotation():
                 db.session.add(purchase_product)
                 db.session.commit()
         else:
-            purchase = Purchase(
-                vendor=vendor, representative=current_user.get_id())
-            purchase.generate_reference()
-            db.session.add(purchase)
-            db.session.commit()
+            exists = Purchase.query.filter_by(active=False).first()
+            if exists:
+                purchase = exists
+                purchase.updated_on = datetime.utcnow()
+                purchase.vendor = vendor
+                purchase.due_date = due_date
+                purchase.time = time
+                purchase.representative = current_user.id
+                db.session.commit()
+            else:
+                purchase = Purchase(
+                    vendor=vendor, representative=current_user.get_id())
+                purchase.generate_reference()
+                db.session.add(purchase)
+                db.session.commit()
         return jsonify({"success": True, "purchase_id": purchase.id})
     return render_template("purchase/purchase_order.html", title=_("New Request for Quotation | Olam ERP"), statuses=statuses, new=new, form=form, products=products)

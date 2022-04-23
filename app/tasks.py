@@ -1,9 +1,10 @@
 from locale import currency
 from math import prod
+from threading import Thread
 from app.auth.models.user import Access, Group, Users
 from app.auth.routes import get_access_groups
 from app.auth.utils import get_users
-from app.contacts.utils import get_partners
+from app.contacts.utils import get_partner_tags, get_partners
 from app.crm.models.crm_recurring_plan import RecurringPlan
 from app.crm.models.crm_stage import Stage
 from app.crm.models.crm_lead import Lead
@@ -11,14 +12,14 @@ from app.helper_functions import set_default_user_groups
 from app.main.models.activities import Activity, ActivityType
 from app.main.models.company import Company
 from app.main.models.module import Model, Module, ModuleCategory
-from app.main.models.partner import Partner
+from app.main.models.partner import Partner, PartnerTag
 from app.main.models.country import City, Country
 from flask import current_app
 from app import db
-from app.main.models.product import Product, ProductCategory, ProductManufacturer, ProductModel
+from app.main.models.product import Cores, InstructionSet, Memory, MemoryType, Processor, ProcessorSpeed, Product, ProductCategory, ProductManufacturer, ProductModel
 from app.main.models.uom import Uom, UomCategory
 from app.models import Task
-from app.main.utils import get_activities, get_activity_types, get_calling_codes, get_company, get_countries, get_countries_cities, get_models, get_moduleCategories, get_modules, get_product_categories, get_product_manufacturers, get_product_models, get_products, get_uom_categories, get_uoms
+from app.main.utils import get_activities, get_activity_types, get_calling_codes, get_company, get_cores, get_countries, get_countries_cities, get_instruction_sets, get_memory, get_memory_type, get_models, get_moduleCategories, get_modules, get_processor_speeds, get_processors, get_product_categories, get_product_manufacturers, get_product_models, get_products, get_uom_categories, get_uoms
 from app.crm.utils import get_opportunities, get_recurring_plans, get_stages
 from rq import get_current_job
 from app.models import Task
@@ -211,6 +212,17 @@ def dummy_data():
                     record.generate_slug()
                     db.session.add(record)
                     db.session.commit()
+                print("Partner " + record.get_name() + " added")
+
+        # partner tags
+        partner_tags = get_partner_tags()
+        for tag in partner_tags:
+            exists = PartnerTag.query.filter_by(id=tag['id']).first()
+            if not exists:
+                record = PartnerTag(id=tag['id'], name=tag['name'])
+                db.session.add(record)
+                db.session.commit()
+                print("Partner Tag " + record.name + " added")
 
         # users
         users = get_users()
@@ -381,17 +393,72 @@ def dummy_data():
                 print("Manufacturer " +
                       manufacturer['name'] + " created")
 
-        # product models
-        models = get_product_models()
-        for model in models:
-            exists = ProductModel.query.filter_by(
-                id=model['id']).first()
+        # processors
+        processors = get_processors()
+        for processor in processors:
+            exists = Processor.query.filter_by(id=processor['id']).first()
             if not exists:
-                product_model = ProductModel(
-                    id=model['id'], name=model['name'])
-                db.session.add(product_model)
+                processor_ = Processor(
+                    id=processor['id'], name=processor['name'])
+                db.session.add(processor_)
                 db.session.commit()
-                print("Model " + model['name'] + " created")
+                print("Processor " + processor_.name + " created")
+
+        # processors
+        cores = get_cores()
+        for core in cores:
+            exists = Cores.query.filter_by(id=core['id']).first()
+            if not exists:
+                core_ = Cores(id=core['id'], name=core['name'])
+                db.session.add(core_)
+                db.session.commit()
+                print("Core " + core_.name + " created")
+
+        # processor speeds
+        processor_speeds = get_processor_speeds()
+        for processor_speed in processor_speeds:
+            exists = ProcessorSpeed.query.filter_by(
+                id=processor_speed['id']).first()
+            if not exists:
+                processor_speed_ = ProcessorSpeed(
+                    id=processor_speed['id'], name=processor_speed['name'])
+                db.session.add(processor_speed_)
+                db.session.commit()
+                print("Processor speed " + processor_speed_.name + " created")
+
+        # memory
+        memories = get_memory()
+        for memory in memories:
+            exists = Memory.query.filter_by(id=memory['id']).first()
+            if not exists:
+                memory_ = Memory(id=memory['id'], name=memory['name'])
+                db.session.add(memory_)
+                db.session.commit()
+                print("Memory " + memory_.name + " created")
+
+        # memory types
+        memory_types = get_memory_type()
+        for memory_type in memory_types:
+            exists = MemoryType.query.filter_by(id=memory_type['id']).first()
+            if not exists:
+                memory_type_ = MemoryType(
+                    id=memory_type['id'], name=memory_type['name'])
+                db.session.add(memory_type_)
+                db.session.commit()
+                if memory_type_.name:
+                    print("Memory type " + memory_type_.name + " created")
+
+        # instruction set
+        instruction_sets = get_instruction_sets()
+        for instruction_set in instruction_sets:
+            exists = InstructionSet.query.filter_by(
+                id=instruction_set['id']).first()
+            if not exists:
+                instruction_set_ = InstructionSet(
+                    id=instruction_set['id'], name=instruction_set['name'])
+                db.session.add(instruction_set_)
+                db.session.commit()
+                print("Instruction set " + instruction_set_.name + " created")
 
         # product categories
         categories = get_product_categories()
@@ -408,10 +475,18 @@ def dummy_data():
         # products
         products = get_products()
         for product in products:
-            exists = Product.query.filter_by(id=product['id']).first()
-            if not exists:
-                _product = Product(id=product['id'], manufacturer_id=product['manufacturer_id'], model_id=product['model_id'], category_id=product['category_id'], price=float(product['price']), screen_size=product['screen_size'], cpu=product[
-                    'cpu'], ram=product['ram'], storage=product['storage'], gpu=product['gpu'], os=product['os'], os_version=product['os_version'], weight=product['weight'])
+            if 'id' in product:
+                exists = Product.query.filter_by(id=product['id']).first()
+                if not exists:
+                    _product = Product(id=product['id'], name=product['name'], manufacturer_id=product['manufacturer_id'] if product['manufacturer_id']
+                                       else None, category_id=product['category_id'] if product['category_id'] else None, cost=product['cost'], price=product['price'])
+                    _product.generate_sku()
+                    db.session.add(_product)
+                    db.session.commit()
+                    print("Product record " + str(_product.id) + " created")
+            else:
+                _product = Product(name=product['Name'], manufacturer_id=product['manufacturer_id'] if 'manufacturer_id' in product else None,
+                                   category_id=product['category_id'] if 'category_id' in product else None, cost=product['Cost'], price=product['Price'])
                 _product.generate_sku()
                 db.session.add(_product)
                 db.session.commit()

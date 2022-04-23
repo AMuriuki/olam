@@ -2,6 +2,7 @@
     {
         "name": "deed pc collective",
         "domain_name": "deed",
-        "currency": "KES"
+        "currency": "KES",
+        "vat_rate": "16"
     }
 ]

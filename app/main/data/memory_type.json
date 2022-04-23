@@ -1,0 +1,574 @@
+[
+  {
+    "id": "6dec563e-53fc-4640-822e-74e99940d8da",
+    "name": "LPDDR3-1866, DDR3L-1600"
+  },
+  {
+    "id": "5c61082d-54f3-427a-9cf7-1e0af57faa16",
+    "name": "DDR4-2400, LPDDR3-2133"
+  },
+  {
+    "id": "a1da57ba-5ef4-487c-81d4-7d3b369959bc",
+    "name": "DDR3 1066/1333/1600"
+  },
+  {
+    "id": "b8d36250-f167-44df-8a0b-3376ae70dcc1",
+    "name": "DDR3L 1333/1600 LPDDR3 1333/1600"
+  },
+  {
+    "id": "880a5359-9949-4503-ad6f-25c2d882cc8f",
+    "name": "DDR3L 1066"
+  },
+  {
+    "id": "c6b0feab-ceb4-4c40-a725-f09c51ad22a7",
+    "name": "DDR3L 1333"
+  },
+  {
+    "id": "02a6cb46-c13c-4f14-a36a-1c451fd51a0d",
+    "name": "DDR3 1333"
+  },
+  {
+    "id": "64575e57-869d-4c12-baa7-420eef5406ad",
+    "name": ""
+  },
+  {
+    "id": "183ce8fc-7775-4de2-90ad-74ec7a41a1f9",
+    "name": "DDR3/L/-RS 1333/1600"
+  },
+  {
+    "id": "8bede87b-1836-4b47-9d2f-8a17fd0d099b",
+    "name": "DDR4-1866/2133, LPDDR3-1600/1866"
+  },
+  {
+    "id": "7fcec792-cf8e-48da-ba91-7bcae563b879",
+    "name": "DDR3L-1600"
+  },
+  {
+    "id": "25d43232-28a0-4c22-ae16-51a1ee6de303",
+    "name": "DDR3L/LPDDR3 up to 1866 MT/s; LPDDR4 up to 2400 MT/s"
+  },
+  {
+    "id": "0852532d-d578-41a9-aab0-fb19db5a2732",
+    "name": "DDR3L/LPDDR3 up to 1866 MT/s; ,LPDDR4 up to 2400 MT/s"
+  },
+  {
+    "id": "24289188-1ba7-49f9-96cb-387c8336cd20",
+    "name": "DDR4-2133, LPDDR3-1866, DDR3L-1600"
+  },
+  {
+    "id": "f223d009-c6ab-462d-9b8d-80c8685ad85c",
+    "name": "DDR3L 1333/1600, LPDDR3 1333/1600"
+  },
+  {
+    "id": "009866dc-fa29-429a-b1d1-a22fc796f6bc",
+    "name": "DDR3L 1333/1600"
+  },
+  {
+    "id": "598b3124-f19c-4f65-8c3b-f23fb74cab78",
+    "name": "DDR3/L/-RS 1333/1600\\t"
+  },
+  {
+    "id": "e80cffd2-cc0f-407c-a809-c400e6d83bb2",
+    "name": "DDR3 800/1066 "
+  },
+  {
+    "id": "eba3b9d0-0bbc-4e20-9340-ee879ff72a43",
+    "name": "DDR3 800/1066/1333 "
+  },
+  {
+    "id": "ce380524-c376-4b5a-ab1c-a26549eaa41b",
+    "name": "DDR3 1066"
+  },
+  {
+    "id": "a857c985-7844-4d4a-84ca-ff13f9c57d24",
+    "name": "DDR3 1066/1333"
+  },
+  {
+    "id": "34d2e1b2-c62d-4c42-8aef-a96b867a4ae6",
+    "name": "DDR3 800"
+  },
+  {
+    "id": "8c58557b-bd63-4016-b629-49d474c70c6c",
+    "name": "DDR3-1333, DDR3L-1333 @ 1.5V"
+  },
+  {
+    "id": "f1042557-80f5-4a97-aae3-b36028557d01",
+    "name": "DDR4-1866/2133, DDR3L-1333/1600 @ 1.35V"
+  },
+  {
+    "id": "93ac8c4e-7c62-44ec-8858-3a5b85fcf88c",
+    "name": "DDR4 2133, DDR3L 1333/1600 @ 1.35V"
+  },
+  {
+    "id": "39a54737-664f-4860-bf86-fac596c21b24",
+    "name": "DDR4-2133, DDR3L-1600"
+  },
+  {
+    "id": "cca5a12b-1e15-473f-b308-35fef7fc47cd",
+    "name": "DDR4-1866/2133, LPDDR3-1600/1866, DDR3L-1333/1600"
+  },
+  {
+    "id": "f12546b6-9ba2-4504-86e0-52ea599e1125",
+    "name": "DDR4-2400, LPDDR3-2133, DDR3L-1600"
+  },
+  {
+    "id": "7a4981cb-20de-4e30-852a-f8b4765943c9",
+    "name": "DDR4-2133/2400, DDR3L-1333/1600 @ 1.35V"
+  },
+  {
+    "id": "d9d04212-cf1b-4752-b42e-38d874d300fe",
+    "name": "DDR4-2400"
+  },
+  {
+    "id": "4c8a3af8-76aa-4c18-a82b-0fdf8ce714d5",
+    "name": "DDR3 1333/1600/1866"
+  },
+  {
+    "id": "b00cc239-67c3-4f0b-ab4e-6c1dae01c397",
+    "name": "DDR4 1333/1600/2133"
+  },
+  {
+    "id": "34bc18c9-fb42-466a-9460-0115d583b656",
+    "name": "DDR4 2400/2133"
+  },
+  {
+    "id": "e80a042f-1d06-4ed6-8b63-480475c043b3",
+    "name": "DDR4-2666"
+  },
+  {
+    "id": "78b65f07-ffcc-43ba-bf39-6af57268e329",
+    "name": "DDR4-2133, LPDDR3 - 1866, DDR3L-1600"
+  },
+  {
+    "id": "50f62133-8b45-4826-8f2b-34f4c3c441c3",
+    "name": "LPDDR2 800"
+  },
+  {
+    "id": "e298e03e-c18a-4592-bd99-a0bb7eb6e2f0",
+    "name": "DDR2 800"
+  },
+  {
+    "id": "1276eff0-155e-495d-a4ba-a1de1ac3e145",
+    "name": "LPDDR3 1600"
+  },
+  {
+    "id": "e35ee238-4186-40d1-ad19-b3ab59afc72e",
+    "name": "DDR3"
+  },
+  {
+    "id": "0d57cdfc-5c4f-4104-a6b2-90b97e339fd2",
+    "name": "DDR3L 1067"
+  },
+  {
+    "id": "08cfd991-9324-4a12-94f5-277ed0a3e369",
+    "name": "DDR 1333"
+  },
+  {
+    "id": "25df7d3d-27e7-4456-a6d3-a9c94ebeb78f",
+    "name": "DDR3/DDR3L 1333"
+  },
+  {
+    "id": "b9535733-3d0a-4dcf-bb45-a651cd1693cb",
+    "name": "DDR3/DDR3L 1600"
+  },
+  {
+    "id": "d770000b-de8b-4e33-8de0-f0b4fdcd6c2e",
+    "name": "DDR4: 2400"
+  },
+  {
+    "id": "6dc58a1b-152a-47b9-a945-6557e85e5532",
+    "name": "DDR4: 2133"
+  },
+  {
+    "id": "0fa961b8-ff75-41a9-80e6-ff635a394039",
+    "name": "DDR4: 1866"
+  },
+  {
+    "id": "9fc9c876-cc4b-4f19-998f-02b7db0e1479",
+    "name": "1x32 LPDDR2 800"
+  },
+  {
+    "id": "d7742584-fbfc-454f-96a9-36ed6c5f084e",
+    "name": "1x32 LPDDR2/3 1066 2x16 DDR3L 1333"
+  },
+  {
+    "id": "b5fc640f-8ae9-46f6-8e57-964ae975e024",
+    "name": "1x32 LPDDR2/3 1066"
+  },
+  {
+    "id": "ad41538b-3805-49c3-837a-7f7fbd5ef2e7",
+    "name": "DDR3L-RS 1600"
+  },
+  {
+    "id": "d95026f8-89e4-4c12-a0e3-7b99ccb4790c",
+    "name": "DDR3L (ECC and Non ECC) up to 1866 MT/s;,LPDDR4 up to 2133 MT/s"
+  },
+  {
+    "id": "fa6c75be-c748-4270-aff2-e52f7cdc9514",
+    "name": "DDR3L (ECC and Non ECC) up to 1866 MT/s; ,LPDDR4 up to 2133 MT/s"
+  },
+  {
+    "id": "a1851ac1-4959-493c-844c-7ec4284720df",
+    "name": "DDR3L (ECC and Non ECC) up to 1866MT/s; ,LPDDR4 up to 2400 MT/s"
+  },
+  {
+    "id": "91e1972a-d1f5-4f5f-85c5-3d7b54857457",
+    "name": "LPDDR2 1066"
+  },
+  {
+    "id": "ccc66f0b-5021-402c-869c-8facaf842392",
+    "name": "LPDDR3 1066"
+  },
+  {
+    "id": "08e9afc5-b8fb-4b6b-98ae-86a6eb64aa7d",
+    "name": "DDR3L-RS 1333"
+  },
+  {
+    "id": "10490e06-50c0-43fb-8b8a-33f334a82544",
+    "name": "LPDDR3 1333"
+  },
+  {
+    "id": "fe6a86ef-9947-4a0d-95e1-7d920e52a87a",
+    "name": "LPDDR1 400"
+  },
+  {
+    "id": "cad5b10f-3724-45a9-a012-72e39a36ad42",
+    "name": "DDR2 667"
+  },
+  {
+    "id": "005afa26-5062-48ed-b395-0ae6fc8eb4cd",
+    "name": "DDR2/3"
+  },
+  {
+    "id": "9b1b85cf-a1b4-4dad-9154-163cf091ebc3",
+    "name": "DDR2 667/800"
+  },
+  {
+    "id": "0b0cb759-5b6c-4e99-b7db-7256895a5451",
+    "name": "DDR3 800 (SODIMM only); DDR2 667/800"
+  },
+  {
+    "id": "f49e4983-7c1e-4b7e-8f51-9bf973d6a4bf",
+    "name": "DDR4, DDR3"
+  },
+  {
+    "id": "e09e0ae5-97b1-4dc9-89c2-e1faf541f260",
+    "name": "DDR3 and DDR3L 1333/1600 at 1.5V"
+  },
+  {
+    "id": "173d4749-f4ab-4cbe-b0cf-38bb8e7aeb70",
+    "name": "DDR3L 1600"
+  },
+  {
+    "id": "e1eba485-6ff1-4c70-b36d-c2d38e5e132e",
+    "name": "DDR4-2400, DDR3L-1866"
+  },
+  {
+    "id": "29346a85-ca24-468b-b903-d047f91a7d07",
+    "name": "DDR3 800/1066/1333/1600"
+  },
+  {
+    "id": "fca4a178-df13-4f37-ad7d-69c2fc593587",
+    "name": "DDR3 800/1066/1333/1600/1866"
+  },
+  {
+    "id": "17095707-f7ed-4a31-adce-9f9e3a7f17fb",
+    "name": "DDR4 1600/1866/2133/2400"
+  },
+  {
+    "id": "db33a9ba-967a-4ec1-b8b3-222759462217",
+    "name": "DDR4 1600/1866"
+  },
+  {
+    "id": "75750a01-6e3d-4e24-a4d9-52e8a5f9fe8b",
+    "name": "DDR4 1600/1866/2133"
+  },
+  {
+    "id": "885d09fc-2a82-42dc-a372-5250e325afe8",
+    "name": "DDR4"
+  },
+  {
+    "id": "d81eb3f8-41d9-4f97-9397-0a873ff028db",
+    "name": "DDR4 1600"
+  },
+  {
+    "id": "83d8d7d4-2661-4eba-a4d9-9abda7c06f4b",
+    "name": "DDR4 "
+  },
+  {
+    "id": "0a2baf62-2c5f-4f31-a116-24ee1ba0bb2b",
+    "name": "DDR4 1333/1600/1866/2133"
+  },
+  {
+    "id": "42dd0739-6847-4524-9439-68acb575bed7",
+    "name": "DDR3L, DDR4 2133MHz at 1.2V"
+  },
+  {
+    "id": "fa80e131-9283-45a9-bffd-2a106530730f",
+    "name": "DDR3L,LPDDR3 1600MHz, DDR4 2133MHz at 1.2V"
+  },
+  {
+    "id": "861b865c-c160-44cd-89a1-ccdcb1eb9e01",
+    "name": "DDR3 and DDR3L 1333/1600/1866 at 1.5V"
+  },
+  {
+    "id": "4969fedd-c5aa-416a-a3f6-28544a9ca3b7",
+    "name": "DDR3 1333/1600"
+  },
+  {
+    "id": "daabdf7b-aa42-47be-a580-b76361f7eb8a",
+    "name": "DDR3/DDR3L 1066/1333/1600"
+  },
+  {
+    "id": "c6f23b4f-efa3-4a96-ad61-10e0c8a16a4f",
+    "name": "DDR3 800/1066/1333"
+  },
+  {
+    "id": "137ab8e5-01e8-413d-8a8b-ebe5c782ea40",
+    "name": "DDR4 1600/1866/2133/2400/2666"
+  },
+  {
+    "id": "ff1057ad-970f-433e-a468-334a09d9c7d5",
+    "name": "DDR3 800/978/1066/1333 (Max Speed 1066 MHz)"
+  },
+  {
+    "id": "5cbb742c-1571-4992-b28a-19b84227e113",
+    "name": "DDR4-2133"
+  },
+  {
+    "id": "70f3c690-c8b6-4866-ab85-de3374dc0447",
+    "name": "DDR3 800/978/1066/1333 (Max Speed 800 MHz)"
+  },
+  {
+    "id": "b9f3fec5-8e85-4c6c-89ed-15782d38c7fc",
+    "name": "DDR4-1333/1600/1866,\\nDDR3-1066/1333"
+  },
+  {
+    "id": "56fe3292-964d-4ca1-85b4-6370db64b62a",
+    "name": "DDR4-1333/1600/1866   DDR3-1066/1333"
+  },
+  {
+    "id": "23f4284e-34c2-4b30-94a1-3f54611e7f10",
+    "name": "DDR3-1333/1600, DDR3L-1333/1600 @ 1.5V"
+  },
+  {
+    "id": "6eb2263d-08c4-4ec2-97a1-388337787a24",
+    "name": "DDR3L-1333, 1600;\\nLPDDR3-1333, 1600"
+  },
+  {
+    "id": "bbf98942-4dad-41a5-be96-a0c35d9829ea",
+    "name": "LPDDR3 1333/1600; DDR3L/DDR3L-RS 1600"
+  },
+  {
+    "id": "8400206d-d2a7-4aa9-b84a-b803e6534b0a",
+    "name": "DDR3L 1333/1600, LPDDR3 1600/1866"
+  },
+  {
+    "id": "54d7f298-2c59-47bf-a7e0-98734140a159",
+    "name": "DDR3L 1600/1866 LPDDR3 1600/1866"
+  },
+  {
+    "id": "5d0cfcd6-9a5d-4814-9c8d-997d72432fd1",
+    "name": "DDR3L-1333/1600/1866 @ 1.5V"
+  },
+  {
+    "id": "91f46b6a-c604-49e4-a1d5-8952319bc3d0",
+    "name": "DDR3L-1333/1600 @ 1.5V"
+  },
+  {
+    "id": "d8d19c00-a6f3-4b97-9077-b80fb00ccdbc",
+    "name": "DDR3L 1333/1600  LPDDR 1333 /1600"
+  },
+  {
+    "id": "557477bd-6057-46c2-98a4-764854abee53",
+    "name": "DDR3/DDR3L 1066/1333"
+  },
+  {
+    "id": "4901f98e-5313-4ba1-abe5-1e07094684ac",
+    "name": "DDR3/DDR3L 1333/1600"
+  },
+  {
+    "id": "bc4ca5bd-013a-4407-a07d-3633bd464818",
+    "name": "DDR3 1067/1333/1600, DDR3L 1333/1600"
+  },
+  {
+    "id": "37489e89-1aa6-4001-9059-978b55b24061",
+    "name": "DDR3/DDR3L 1067/1333/1600"
+  },
+  {
+    "id": "5e7ff531-887a-4024-85bc-c1ea97049fe8",
+    "name": "DDR4-1333/1600/1866   DDR3-1066/1333/1600"
+  },
+  {
+    "id": "490b81d1-b57c-4a91-8ca4-ab35a857809b",
+    "name": "DDR4-1333/1600/1866 DDR3-1066/1333/1600"
+  },
+  {
+    "id": "c6cba153-01d5-4af5-ab30-0ff007f8ea84",
+    "name": "DDR4-1333/1600/1866\\nDDR3-1066/1333/1600"
+  },
+  {
+    "id": "e2293789-3630-4a43-be42-20298f8d5235",
+    "name": "DDR4-1333/1600/1866   \\nDDR3-1066/1333/1600"
+  },
+  {
+    "id": "871e38ce-3454-4aa2-a438-41bfc2ba204c",
+    "name": "DDR3L-1600, DDR4-2400"
+  },
+  {
+    "id": "6e2c0a23-ef7c-4204-ab07-ffcc80750a16",
+    "name": "DDR4 - Up to 3200MHz, LPDDR4 - Up to 4266MHz"
+  },
+  {
+    "id": "e8d71f18-edcd-4489-a70f-58722f406d66",
+    "name": "LPDDR4"
+  },
+  {
+    "id": "44508c41-9631-4623-91ae-afa88f646933",
+    "name": null
+  },
+  {
+    "id": "f9e63223-90cf-4e4b-b896-bebee405bf5d",
+    "name": "DDR4, LPDDR4"
+  },
+  {
+    "id": "e95dafc8-6e6b-436a-9ce7-797140aa8741",
+    "name": "DDR3/DDR3L"
+  },
+  {
+    "id": "94c7e908-5efd-4eb3-b37b-de1194cebb73",
+    "name": "Not Listed"
+  },
+  {
+    "id": "a271218d-45ff-4efc-a986-7f96421d2b96",
+    "name": "DDR3L"
+  },
+  {
+    "id": "a5bf7d55-bf35-4e65-ab73-1d8eab3531ed",
+    "name": "DDR2"
+  },
+  {
+    "id": "bcf0158f-09e2-4856-9aaf-972fb2ade84c",
+    "name": "DDR3L-1333, 1600; LPDDR3-1333, 1600"
+  },
+  {
+    "id": "f7c7c65d-3b3a-42db-a341-12c975fa2af6",
+    "name": "DDR4/LPDDR4 upto 2400 MT/s"
+  },
+  {
+    "id": "0b67ef32-2c14-4995-be10-19d0b5ed6fc0",
+    "name": "2667"
+  },
+  {
+    "id": "72e20cbb-7ab2-4716-8c43-38b325dae1c2",
+    "name": "DDR4-2933"
+  },
+  {
+    "id": "4d9c5fa9-9ff5-4017-a7f2-a0619c9026c9",
+    "name": "4x32 LPDDR4/x 3733MT/s Max (8GB, 16GB @3200MT/s) / 2x64 DDR4 3200MT/s Max 32GB"
+  },
+  {
+    "id": "f749b439-b49f-4e5a-81d1-5d9acca6d488",
+    "name": "DDR4-2666, LPDDR3-2133"
+  },
+  {
+    "id": "3303d2ea-cc8f-419e-ba16-7a2e1fa8a94a",
+    "name": "DDR4-2667"
+  },
+  {
+    "id": "2e769359-26ef-47cc-a668-1de766e95950",
+    "name": "DDR4/LPDDR4 upto 2400MT/s"
+  },
+  {
+    "id": "6b271bc9-14a6-4c21-b5ea-2c4fa10799d7",
+    "name": "DDR4/LPDDR4 (SRET0) up to 2400 MT/s DDR4 (SRKLL) up to 2400 MT/s"
+  },
+  {
+    "id": "d7088d97-05f7-4b9e-a863-20497448e407",
+    "name": "DDR4/LPDDR4 up to 2400 MT/s"
+  },
+  {
+    "id": "43301b2b-2344-4823-aaa9-a1049b8ee743",
+    "name": "4x32 LPDDR4/x 3200MT/s Max 16GB / 2x64 DDR4 3200MT/s Max 32GB"
+  },
+  {
+    "id": "2d0e7292-3b09-461e-83fd-f6bf4a01778e",
+    "name": "DDR4 LPDDR4x"
+  },
+  {
+    "id": "535cb9cb-446f-4b88-9471-adc63f63ecc8",
+    "name": "LPDDR3-2133, DDR3L-1600"
+  },
+  {
+    "id": "f4d2ce43-083e-4f0d-8559-b1a4ffba0328",
+    "name": "DDR4 RDIMM"
+  },
+  {
+    "id": "ffe7bdaa-7e01-435e-b282-d6b258587753",
+    "name": "LPDDR4-3733"
+  },
+  {
+    "id": "93e040fe-8ba7-4a22-ba98-def14e896d70",
+    "name": "DDR4-3200, LPDDR4-3733"
+  },
+  {
+    "id": "b573adef-1e35-4b21-945e-d8d41a332168",
+    "name": "DDR4-2666, LPDDR3-2133, LPDDR4-2933"
+  },
+  {
+    "id": "de198637-27de-475d-accc-3fa83c4e6533",
+    "name": "DDR4-3200"
+  },
+  {
+    "id": "ea496c46-b909-4285-8356-fdbfeb1bec9c",
+    "name": "RDIMM"
+  },
+  {
+    "id": "9b1a3d3b-80da-4b6e-8a86-5f6fdcc43516",
+    "name": "DDR4-2400, LPDDR4/x-2400"
+  },
+  {
+    "id": "4e2a86bc-7385-4425-848e-8998cb39755f",
+    "name": "DDR4-1866"
+  },
+  {
+    "id": "93f704c4-20cb-4718-a81a-048931d6a491",
+    "name": "DDR4-2133, LPDDR3-1866"
+  },
+  {
+    "id": "01ed929a-bb76-41d7-9a19-33a9bd757bc3",
+    "name": "DDR4-3200, LPDDR4x-3733"
+  },
+  {
+    "id": "7eca8ecf-c59a-4fe3-84e5-dd451b0ff352",
+    "name": "LPDDR4x-4267"
+  },
+  {
+    "id": "f5d97098-322d-4a97-8d93-cee2ee369596",
+    "name": "DDR4-3200, LPDDR4x-4267"
+  },
+  {
+    "id": "8bb6d97d-f859-49d9-834f-59f18b1cfd19",
+    "name": "DDR4-3200, LPDDR4x-4267, In-Band ECC"
+  },
+  {
+    "id": "34e0194c-8c88-4f70-83ee-2fbffec6d87e",
+    "name": "DDR-2400"
+  },
+  {
+    "id": "5a5cc10e-3ab7-465e-9b0e-c52b02a43245",
+    "name": "Up to 3200 MT/s"
+  },
+  {
+    "id": "c30e9386-10cc-402c-a385-35c6a4dcfc2c",
+    "name": "DDR4-3200, LPDDR4x-3733, In -Band ECC"
+  },
+  {
+    "id": "875b3738-8970-4e2d-909b-e57a49bf9e2e",
+    "name": "DDR4 2933"
+  },
+  {
+    "id": "d2a8384e-b567-4c83-8da2-9d95bfebe3a5",
+    "name": "DDR4 2666"
+  }
+]

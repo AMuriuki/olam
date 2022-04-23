@@ -25,6 +25,22 @@ var data;
 var purchase_id
 var product_no
 
+function insertCommas(number) {
+  if (number !== null || number !== undefined) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  } else {
+    return "0.00";
+  }
+}
+
+function removeComma(number) {
+  return number.toString().replace(/\,/g, "");
+}
+
+function extractID(string) {
+  return string.replace(/\-/g, "");
+}
+
 current_href = $(location).attr("href");
 
 if (current_href.toLowerCase().indexOf("contacts/view_contact") >= 0) {
@@ -163,8 +179,7 @@ $(".select_contact").on("change", function () {
   }
 });
 
-$(".select-vendor").on("change", function () {
-  vendor = this.value
+function post_vendor(vendor) {
   if (sessionStorage.getItem('purchase_id')) {
     purchase_id = sessionStorage.getItem('purchase_id');
   } else {
@@ -176,7 +191,7 @@ $(".select-vendor").on("change", function () {
   }).done(function (response) {
     sessionStorage.setItem('purchase_id', response['purchase_id']);
   })
-})
+}
 
 $(".set-due-date").on("change", function () {
   var due_date = $(this).val();
@@ -191,6 +206,16 @@ $(".set-due-date").on("change", function () {
 
 $(".inp_quantity").on("change", function () {
   var quantity = $(this).val();
+  var product_id = $(this).attr("id"); //EXTRACT ID
+  var unit_price_input = document.getElementById("unit-price-for-" + response['id'])
+  var unit_price_span = document.getElementById("unit-price-span-for-" + response['id'])
+  if (unit_price_input) {
+    var unit_price = unit_price_input.value
+  } else if (unit_price_span) {
+    var unit_price = unit_price_input.innerHTML
+  }
+  var new_sub_total = parent(quantity) * parseFloat(unit_price)
+  document.getElementById("sub-total-for-" + response['id']).innerHTML = new_sub_total
   var purchase_id = sessionStorage.getItem('purchase_id');
   $.post("/purchase/new/request-for-quotation", {
     purchase_id: purchase_id,
@@ -244,9 +269,18 @@ function get_product_purchase_details(product) {
       document.getElementsByClassName("inp_quantity")[current_index].id = "quantity-for-" + response["id"]
       document.getElementsByClassName("inp_product_desc")[current_index].id = "inp-desc-for-" + response["id"]
       document.getElementsByClassName("product_description")[current_index].id = "desc-for-" + response["id"]
-      $("#inp-desc-for-" + response["id"]).css("display", "none");
+      document.getElementsByClassName("inp_uom")[current_index].id = "uom-for-" + response["id"]
+      document.getElementsByClassName("inp_unit_price")[current_index].id = "unit-price-for-" + response['id']
+      document.getElementsByClassName("sub_total")[current_index].id = "sub-total-for-" + response['id']
+      $("#inp-desc-for-" + response["id"]).val(response['description']);
+      $("#unit-price-for-" + response["id"]).val(response['unit_price']);
       $("#quantity-for-" + response["id"]).val("1.00");
-      $("#desc-for-" + response["id"]).text(response['description']);
+      document.getElementById("sub-total-for-" + response['id']).innerHTML = insertCommas(response['unit_price'])
+      console.log(document.getElementsByClassName("total")[0].innerHTML, response['unit_price'])
+      current_total = document.getElementsByClassName("total")[0].innerHTML
+      new_total = parseInt(removeComma(current_total)) + parseInt(removeComma(response['unit_price']))
+      document.getElementsByClassName("total")[0].innerHTML = insertCommas(new_total)
+      // $("#desc-for-" + response["id"]).text(response['description']);
       td_product = document.getElementsByClassName("td_product")[current_index];
       $(product_span).appendTo($(td_product))
       $(td_product).removeClass("w-25");
@@ -877,6 +911,8 @@ $(".add-a-product").on("click", function (e) {
     count_tr = $("#purchase_body").find("tr").length;
     current_index = parseInt(count_tr) - 1
     var inp_quantity_id = $(".inp_quantity:last").attr("id")
+    var uom_id = $(".inp_uom:last").attr("id")
+    var unit_price_id = $(".inp_unit_price:last").attr("id")
     if (inp_quantity_id) {
       var quantity = document.getElementById(inp_quantity_id)
       var quantity_span = document.createElement("span");
@@ -884,6 +920,24 @@ $(".add-a-product").on("click", function (e) {
       td_quantity = document.getElementsByClassName("td_quantity")[current_index];
       $(quantity_span).appendTo($(td_quantity))
       $(quantity).css("display", "none")
+    }
+    if (uom_id) {
+      var uom = document.getElementById(uom_id)
+      var uom_span = document.createElement("span");
+      uom_span.innerHTML = uom.value;
+      td_uom = document.getElementsByClassName("td_uom")[current_index];
+      $(uom_span).appendTo($(td_uom))
+      $(uom).css("display", "none")
+    }
+    if (unit_price_id) {
+      var unit_price = document.getElementById(unit_price_id)
+      var unit_price_span = document.createElement("span");
+      unit_price_span.innerHTML = insertCommas(unit_price.value);
+      var product_id = unit_price_id //EXTRACT ID
+      unit_price_span.id = "unit-price-span-for-" + product_id
+      td_unit_price = document.getElementsByClassName("td_unit_price")[current_index];
+      $(unit_price_span).appendTo($(td_unit_price))
+      $(unit_price).css("display", "none")
     }
     if ($(".clone-product-tr:last").attr("id")) {
       var clone = $(".og-product-tr").clone();
@@ -1774,8 +1828,13 @@ function autocomplete(inp, arr) {
             /*insert the value for the autocomplete text field:*/
             inp.value = this.getElementsByTagName("input")[0].value;
             if (current_href.indexOf("/purchase/new/request-for-quotation") >= 0) {
-              get_product_purchase_details(key);
-              post_product_purchase(key)
+              if (inp.classList.contains("inp_products")) {
+                get_product_purchase_details(key);
+                post_product_purchase(key)
+              }
+              if (inp.classList.contains("inp_vendor")) {
+                post_vendor(key);
+              }
             }
             /*close the list of autocompleted values,
                   (or any other open lists of autocompleted values:*/
@@ -1790,6 +1849,24 @@ function autocomplete(inp, arr) {
         /*make the matching letters bold:*/
         b.innerHTML = "Create <strong>" + val + "</strong>";
         a.appendChild(b);
+        b.innerHTML += "<input type='hidden' value='" + val + "'>";
+        b.getElementsByTagName("input")[0].classList.add("is-click-inside");
+        /*execute a function when someone clicks on the item value (DIV element):*/
+        b.addEventListener("click", function (e) {
+          /*insert the value for the autocomplete text field:*/
+          inp.value = this.getElementsByTagName("input")[0].value;
+          if (current_href.indexOf("/purchase/new/request-for-quotation") >= 0) {
+            if (inp.classList.contains("inp_products")) {
+              $("#AddProductModal").modal("show");
+            }
+            if (inp.classList.contains("inp_vendor")) {
+              $("#AddPartner").modal("show");
+            }
+          }
+          /*close the list of autocompleted values,
+                (or any other open lists of autocompleted values:*/
+          closeAllLists();
+        });
       }
     }
   })

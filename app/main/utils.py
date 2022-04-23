@@ -86,7 +86,7 @@ def get_activity_types():
 
 def get_products():
     SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
-    json_url = os.path.join(SITE_ROOT, "data", "products.json")
+    json_url = os.path.join(SITE_ROOT, "data", "deed_products.json")
     data = json.load(open(json_url))
     return data
 
@@ -101,6 +101,47 @@ def get_product_categories():
 def get_product_manufacturers():
     SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
     json_url = os.path.join(SITE_ROOT, "data", "product_manufacturers.json")
+    data = json.load(open(json_url))
+    return data
+
+
+def get_processors():
+    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+    json_url = os.path.join(SITE_ROOT, "data", "processors.json")
+    data = json.load(open(json_url))
+    return data
+
+
+def get_cores():
+    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+    json_url = os.path.join(SITE_ROOT, "data", "cores.json")
+    data = json.load(open(json_url))
+    return data
+
+def get_processor_speeds():
+    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+    json_url = os.path.join(SITE_ROOT, "data", "processor_speed.json")
+    data = json.load(open(json_url))
+    return data
+
+
+def get_memory():
+    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+    json_url = os.path.join(SITE_ROOT, "data", "memory.json")
+    data = json.load(open(json_url))
+    return data
+
+
+def get_memory_type():
+    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+    json_url = os.path.join(SITE_ROOT, "data", "memory_type.json")
+    data = json.load(open(json_url))
+    return data
+
+
+def get_instruction_sets():
+    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+    json_url = os.path.join(SITE_ROOT, "data", "instruction_set.json")
     data = json.load(open(json_url))
     return data
 

@@ -19,6 +19,10 @@
     .og-product-tr {
         display: none;
     }
+
+    .modal-dialog {
+        max-width: 90% !important;
+    }
 </style>
 <div class="nk-content-body">
     <div class="nk-content-wrap">
@@ -44,13 +48,8 @@
                                 <div class="form-group">
                                     <label class="form-label">Vendor</label>
                                     <div class="form-control-wrap">
-                                        <select id="vendor" class="form-select select-vendor is-click-inside"
-                                            data-search="on">
-                                            <option value="#">Select Vendor</option>
-                                            {% for partner in partners %}
-                                            <option value="{{partner.id}}">{{partner.get_name()}}</option>
-                                            {% endfor %}
-                                        </select>
+                                        <input type="text" class="form-control inp_vendor"
+                                            placeholder="Start typing to select vendor">
                                     </div>
                                 </div>
                             </div>
@@ -127,18 +126,19 @@
                                                                     placeholder="0.00">
                                                             </div>
                                                         </td>
-                                                        <td>
+                                                        <td class="td_uom">
                                                             <input type="text" class="form-control inp_uom"
                                                                 placeholder="Start typing...">
                                                         </td>
-                                                        <td>
+                                                        <td class="td_unit_price">
                                                             <input type="text" class="form-control inp_unit_price"
                                                                 placeholder="0.00">
                                                         </td>
-                                                        <td>
+                                                        <td class="td_taxes">
+                                                        </td>
+                                                        <td class="td_subtotal">
                                                             <span class="sub_total"></span>
                                                         </td>
-                                                        <td></td>
                                                     </tr>
                                                 </tbody>
                                                 <tfoot>
@@ -155,7 +155,7 @@
                                                     <tr>
                                                         <td colspan="5"></td>
                                                         <td colspan="1"><b>Total</b></td>
-                                                        <td>KES 0.00</td>
+                                                        <td>KES <span class="total">0.00</span></td>
                                                     </tr>
                                                 </tfoot>
                                             </table>
@@ -228,76 +228,510 @@
     {% include "footer.html" %}
     <!-- footer @e -->
 </div>
-<div class="modal fade" tabindex="-1" role="dialog" id="AddProductModal">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Add Product</h5>
-                <a href="#" class="close" data-dismiss="modal" aria-label="Close">
-                    <em class="icon ni ni-cross"></em>
+<div class="modal fade is-click-inside" tabindex="-1" role="dialog" id="AddProductModal">
+    <div class="modal-dialog modal-lg is-click-inside" role="document">
+        <div class="modal-content is-click-inside">
+            <div class="modal-header is-click-inside">
+                <h5 class="modal-title is-click-inside">Add Product</h5>
+                <a href="#" class="close is-click-inside" data-dismiss="modal" aria-label="Close">
+                    <em class="icon ni ni-cross is-click-inside"></em>
                 </a>
             </div>
-            <div class="modal-body modal-body-md">
-                <div class="col-7 col-sm-4alert alert-success alert-icon selected"
+            <div class="modal-body modal-body-md is-click-inside">
+                <div class="col-7 col-sm-4alert alert-success alert-icon selected is-click-inside"
                     style="display: none; max-width: 35% !important; margin-bottom: 2% !important;"></div>
-                <div class="card card-preview" style="overflow: auto;">
-                    <div class="card-inner">
-                        <table class="table">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col">Product</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Quantity</th>
-                                    <th scope="col">UoM</th>
-                                    <th scope="col">Unit Price</th>
-                                    <th scope="col">Taxes</th>
-                                    <th scope="col">Subtotal</th>
-                                    <th scope="col"></th>
-                                </tr>
-                            </thead>
-                            <tbody id="tbody_access_rights">
-                                <tr class="tr-add-access-right">
-                                    <td class="td_name">
-                                        <input type="text" id="add_access_name" class="form-control add_access_name"
-                                            placeholder="Name of access right">
-                                    </td>
-                                    <td class="td_model">
-                                        <select id="select_model" class="form-select select_model" data-search="on">
-                                            <option value="default_option">Select model</option>
-                                            {% for model in models %}
-                                            <option value="{{model.id}}">{{model.name}}</option>
-                                            {% endfor %}
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <div class="custom-control custom-checkbox">
-                                            <input id="read_access" type="checkbox" class="custom-control-input">
-                                            <label class="custom-control-label" for="read_access"></label>
+                <div class="nk-block">
+                    <form id="new_product" action="/settings/new/product" method="post">
+                        <div class="card card-preview">
+                            <div class="card-inner">
+                                <input id="csrf_token" name="csrf_token" type="hidden"
+                                    value="IjY2NzI1YTE0YzczZTEyODI0OTRhN2I0OTM1OGY4YjZjYjQyYjgwMmQi.Yl-7SQ.8y5lEZgGk9ibi0o4O-_HUW4rEpU">
+                                <div class="row gy-4">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Produt Name</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control" name="name" id="name"
+                                                    placeholder="Product name" required="">
+                                            </div>
                                         </div>
-                                    </td>
-                                    <td>
-                                        <div class="custom-control custom-checkbox">
-                                            <input id="write_access" type="checkbox" class="custom-control-input">
-                                            <label class="custom-control-label" for="write_access"></label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <ul class="custom-control-group g-3 align-center">
+                                        <li>
+                                            <div class="custom-control custom-control-sm custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="can-be-sold">
+                                                <label class="custom-control-label" for="can-be-sold">Can be
+                                                    Sold</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="custom-control custom-control-sm custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input"
+                                                    id="can-be-purchased">
+                                                <label class="custom-control-label" for="can-be-purchased">Can be
+                                                    Purchased</label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card card-bordered">
+                                <ul class="nav nav-tabs nav-tabs-mb-icon nav-tabs-card">
+                                    <li class="nav-item">
+                                        <a id="lnk_users" class="nav-link active" href="#gi" data-toggle="tab"><em
+                                                class="icon ni ni-lock-alt-fill"></em><span>General
+                                                Information</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a id="lnk_access_rights" class="nav-link" href="#sales" data-toggle="tab"><em
+                                                class="icon ni ni-account-setting-fill"></em><span>Sales</span></a>
+                                    </li>
+                                </ul><!-- .nav-tabs -->
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="gi">
+                                        <div class="card-inner">
+                                            <div class="row g-3 align-center">
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="form-label">SETTINGS</label>
+                                                        <div class="form-control-wrap">
+                                                            <select id="1"
+                                                                class="form-select set-access select2-hidden-accessible"
+                                                                data-search="on" data-select2-id="1" tabindex="-1"
+                                                                aria-hidden="true">
+                                                                <option value="#" data-select2-id="2">Select Access
+                                                                </option>
+
+
+                                                                <option value="e8e96379-887b-4d7b-b558-adde472c2f93">
+                                                                    Administrator</option>
+
+
+
+
+
+
+
+                                                                <option value="3b13fec1-8a40-4c34-b29b-36a6da1e9be1">
+                                                                    Manager</option>
+
+
+
+                                                                <option value="001277dc-8768-42fc-884c-b6a9567f0bf1">
+                                                                    User</option>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                <option value="788a9529-a58c-4c9e-946c-e3856aea2f67">
+                                                                    Administrator</option>
+
+
+
+                                                                <option value="a563682b-8dc7-45c0-ac8e-c9775b9f4cc9">
+                                                                    Manager</option>
+
+
+
+                                                                <option value="84eb5a45-e137-41e3-9915-58877c98d841">
+                                                                    User</option>
+
+
+                                                            </select><span
+                                                                class="select2 select2-container select2-container--default"
+                                                                dir="ltr" data-select2-id="1"
+                                                                style="width: 113.111px;"><span class="selection"><span
+                                                                        class="select2-selection select2-selection--single"
+                                                                        role="combobox" aria-haspopup="true"
+                                                                        aria-expanded="false" tabindex="0"
+                                                                        aria-disabled="false"
+                                                                        aria-labelledby="select2-1-container"><span
+                                                                            class="select2-selection__rendered"
+                                                                            id="select2-1-container" role="textbox"
+                                                                            aria-readonly="true"
+                                                                            title="Select Access">Select
+                                                                            Access</span><span
+                                                                            class="select2-selection__arrow"
+                                                                            role="presentation"><b
+                                                                                role="presentation"></b></span></span></span><span
+                                                                    class="dropdown-wrapper"
+                                                                    aria-hidden="true"></span></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="form-label">CRM</label>
+                                                        <div class="form-control-wrap">
+                                                            <select id="2"
+                                                                class="form-select set-access select2-hidden-accessible"
+                                                                data-search="on" data-select2-id="2" tabindex="-1"
+                                                                aria-hidden="true">
+                                                                <option value="#" data-select2-id="4">Select Access
+                                                                </option>
+
+
+
+
+                                                                <option value="306aef03-7f21-43c8-8431-f00181135d05"
+                                                                    data-select2-id="5">Administrator</option>
+
+
+
+
+
+
+
+
+
+                                                                <option value="950f2df6-64bf-4a99-8659-6abba655e8d5"
+                                                                    data-select2-id="6">Manager</option>
+
+
+
+
+
+                                                                <option value="d8e22748-0eb3-4352-a0b0-164a3627df27"
+                                                                    data-select2-id="7">User</option>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                            </select><span
+                                                                class="select2 select2-container select2-container--default"
+                                                                dir="ltr" data-select2-id="3"
+                                                                style="width: 113.111px;"><span class="selection"><span
+                                                                        class="select2-selection select2-selection--single"
+                                                                        role="combobox" aria-haspopup="true"
+                                                                        aria-expanded="false" tabindex="0"
+                                                                        aria-disabled="false"
+                                                                        aria-labelledby="select2-2-container"><span
+                                                                            class="select2-selection__rendered"
+                                                                            id="select2-2-container" role="textbox"
+                                                                            aria-readonly="true"
+                                                                            title="Select Access">Select
+                                                                            Access</span><span
+                                                                            class="select2-selection__arrow"
+                                                                            role="presentation"><b
+                                                                                role="presentation"></b></span></span></span><span
+                                                                    class="dropdown-wrapper"
+                                                                    aria-hidden="true"></span></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="form-label">CONTACTS</label>
+                                                        <div class="form-control-wrap">
+                                                            <select id="3"
+                                                                class="form-select set-access select2-hidden-accessible"
+                                                                data-search="on" data-select2-id="3" tabindex="-1"
+                                                                aria-hidden="true">
+                                                                <option value="#" data-select2-id="9">Select Access
+                                                                </option>
+
+
+
+
+
+
+                                                                <option value="8a10dcf6-954d-485e-959a-93eb3c63a2b2">
+                                                                    Administrator</option>
+
+
+
+
+
+
+
+
+
+                                                                <option value="885d0c81-f058-426e-bf43-e661386976ea">
+                                                                    Manager</option>
+
+
+
+
+
+                                                                <option value="457fae5d-eecd-4b4f-98c5-519fb3317ee1">
+                                                                    User</option>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                            </select><span
+                                                                class="select2 select2-container select2-container--default"
+                                                                dir="ltr" data-select2-id="8"
+                                                                style="width: 113.111px;"><span class="selection"><span
+                                                                        class="select2-selection select2-selection--single"
+                                                                        role="combobox" aria-haspopup="true"
+                                                                        aria-expanded="false" tabindex="0"
+                                                                        aria-disabled="false"
+                                                                        aria-labelledby="select2-3-container"><span
+                                                                            class="select2-selection__rendered"
+                                                                            id="select2-3-container" role="textbox"
+                                                                            aria-readonly="true"
+                                                                            title="Select Access">Select
+                                                                            Access</span><span
+                                                                            class="select2-selection__arrow"
+                                                                            role="presentation"><b
+                                                                                role="presentation"></b></span></span></span><span
+                                                                    class="dropdown-wrapper"
+                                                                    aria-hidden="true"></span></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="form-label">PURCHASE</label>
+                                                        <div class="form-control-wrap">
+                                                            <select id="4"
+                                                                class="form-select set-access select2-hidden-accessible"
+                                                                data-search="on" data-select2-id="4" tabindex="-1"
+                                                                aria-hidden="true">
+                                                                <option value="#" data-select2-id="11">Select Access
+                                                                </option>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                <option value="34755e2d-2293-43a2-8925-5c61ecd061a6"
+                                                                    data-select2-id="12">Administrator</option>
+
+
+
+                                                                <option value="ab86dc1f-99ae-4a24-ac3d-8863a76635ef"
+                                                                    data-select2-id="13">Manager</option>
+
+
+
+                                                                <option value="39fa6ffb-b562-45f4-8aed-5cd351d4ef76"
+                                                                    data-select2-id="14">User</option>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                            </select><span
+                                                                class="select2 select2-container select2-container--default"
+                                                                dir="ltr" data-select2-id="10"
+                                                                style="width: 113.111px;"><span class="selection"><span
+                                                                        class="select2-selection select2-selection--single"
+                                                                        role="combobox" aria-haspopup="true"
+                                                                        aria-expanded="false" tabindex="0"
+                                                                        aria-disabled="false"
+                                                                        aria-labelledby="select2-4-container"><span
+                                                                            class="select2-selection__rendered"
+                                                                            id="select2-4-container" role="textbox"
+                                                                            aria-readonly="true"
+                                                                            title="Select Access">Select
+                                                                            Access</span><span
+                                                                            class="select2-selection__arrow"
+                                                                            role="presentation"><b
+                                                                                role="presentation"></b></span></span></span><span
+                                                                    class="dropdown-wrapper"
+                                                                    aria-hidden="true"></span></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="form-label">INVENTORY</label>
+                                                        <div class="form-control-wrap">
+                                                            <select id="5"
+                                                                class="form-select set-access select2-hidden-accessible"
+                                                                data-search="on" data-select2-id="5" tabindex="-1"
+                                                                aria-hidden="true">
+                                                                <option value="#" data-select2-id="16">Select Access
+                                                                </option>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                <option value="8538f394-1e8e-474b-8a83-28f75d79fc11"
+                                                                    data-select2-id="17">Administrator</option>
+
+
+
+                                                                <option value="629b33c4-d07b-4da9-81b0-aea9e4230b76"
+                                                                    data-select2-id="18">Manager</option>
+
+
+
+                                                                <option value="786c83c7-24d2-43ce-b046-4d1908335e34"
+                                                                    data-select2-id="19">User</option>
+
+
+
+
+
+
+
+
+                                                            </select><span
+                                                                class="select2 select2-container select2-container--default"
+                                                                dir="ltr" data-select2-id="15"
+                                                                style="width: 113.111px;"><span class="selection"><span
+                                                                        class="select2-selection select2-selection--single"
+                                                                        role="combobox" aria-haspopup="true"
+                                                                        aria-expanded="false" tabindex="0"
+                                                                        aria-disabled="false"
+                                                                        aria-labelledby="select2-5-container"><span
+                                                                            class="select2-selection__rendered"
+                                                                            id="select2-5-container" role="textbox"
+                                                                            aria-readonly="true"
+                                                                            title="Select Access">Select
+                                                                            Access</span><span
+                                                                            class="select2-selection__arrow"
+                                                                            role="presentation"><b
+                                                                                role="presentation"></b></span></span></span><span
+                                                                    class="dropdown-wrapper"
+                                                                    aria-hidden="true"></span></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
                                         </div>
-                                    </td>
-                                    <td>
-                                        <div class="custom-control custom-checkbox">
-                                            <input id="create_access" type="checkbox" class="custom-control-input">
-                                            <label class="custom-control-label" for="create_access"></label>
+                                    </div>
+                                    <div class="tab-pane" id="preferences">
+                                        <div class="card-inner">
+                                            <table class="table">
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <th scope="col" style="padding-right: 100px;">Name</th>
+                                                        <th scope="col" style="padding-right: 100px;">Model</th>
+                                                        <th scope="col">Read Access</th>
+                                                        <th scope="col">Write Access</th>
+                                                        <th scope="col">Create Access</th>
+                                                        <th scope="col">Delete Access</th>
+                                                        <th scope="col"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tbody_access_rights">
+
+                                                </tbody>
+                                            </table>
+                                            <div class="preview-btn-item  col-sm-6 col-lg-3">
+                                                <a href="#" class="btn btn-m btn-primary btn-block" data-toggle="modal"
+                                                    data-target="#modalAccessRights"
+                                                    style="padding: 0.4375rem 4.125rem;">
+                                                    <em class="icon ni ni-plus"></em><span>Add Record</span>
+                                                </a>
+                                            </div>
                                         </div>
-                                    </td>
-                                    <td>
-                                        <div class="custom-control custom-checkbox">
-                                            <input id="delete_access" type="checkbox" class="custom-control-input">
-                                            <label class="custom-control-label" for="delete_access"></label>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div><!-- .card-preview -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- .card-preview -->
+                    </form>
+                </div>
             </div>
             <div class="modal-footer">
                 <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
@@ -318,4 +752,11 @@
         </div>
     </div>
 </div> <!-- .modal -->
+<script>
+    $.get("/get_partners", function (data) {
+        autocomplete(document.getElementsByClassName("inp_vendor")[0], data)
+        return data;
+    });
+</script>
+{% include "modals/create_contact.html" %}
 {% endblock %}

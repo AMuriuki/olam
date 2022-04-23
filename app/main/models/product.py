@@ -21,17 +21,22 @@ class ProductModel(db.Model):
 
 class Product(db.Model):
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    name = db.Column(db.String(255))
     manufacturer_id = db.Column(
-        UUID(as_uuid=True), db.ForeignKey('product_manufacturer.id'))
+        UUID(as_uuid=True), db.ForeignKey('product_manufacturer.id'), nullable=True)
     model_id = db.Column(
-        UUID(as_uuid=True), db.ForeignKey('product_model.id'))
+        UUID(as_uuid=True), db.ForeignKey('product_model.id'), nullable=True)
+    cost = db.Column(db.Float())
     price = db.Column(db.Float())
+    tax_rate = db.Column(db.Float())
     category_id = db.Column(
         UUID(as_uuid=True), db.ForeignKey('product_category.id'))
     screen_size = db.Column(db.String(10), index=True)
     screen = db.Column(db.String(50), index=True)
-    cpu = db.Column(db.String(50), index=True)
-    ram = db.Column(db.String(10), index=True)
+    processor = db.Column(UUID(as_uuid=True), db.ForeignKey(
+        'processor.id'), nullable=True)
+    ram = db.Column(UUID(as_uuid=True), db.ForeignKey(
+        'memory.id'), nullable=True)
     storage = db.Column(db.String(50), index=True)
     gpu = db.Column(db.String(50), index=True)
     os = db.Column(db.String(50), index=True)
@@ -48,6 +53,8 @@ class Product(db.Model):
     approved_for_sale = db.Column(db.Boolean, default=False)
     in_stock = db.Column(db.Boolean, default=False)
     sku = db.Column(db.String(120), index=True, unique=True)
+    description = db.Column(db.Text())
+    color = db.Column(db.String(50), index=True)
 
     def generate_sku(self):
         _sku = sku_generator(self)
@@ -67,3 +74,35 @@ class ProductCategory(db.Model):
     deleted = db.Column(db.Boolean, default=False)
     products = db.relationship(
         'Product', backref='category', lazy='dynamic')
+
+
+class Processor(db.Model):
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    name = db.Column(db.String(120), index=True)
+    products = db.relationship('Product', backref='_processor', lazy=True)
+
+
+class Cores(db.Model):
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    name = db.Column(db.String(120), index=True)
+
+
+class ProcessorSpeed(db.Model):
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    name = db.Column(db.String(120), index=True)
+
+
+class Memory(db.Model):
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    name = db.Column(db.String(120), index=True)
+    products = db.relationship('Product', backref='memory', lazy=True)
+
+
+class MemoryType(db.Model):
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    name = db.Column(db.String(120), index=True)
+
+
+class InstructionSet(db.Model):
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    name = db.Column(db.String(120), index=True)

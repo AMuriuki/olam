@@ -1,0 +1,5845 @@
+[
+  {
+    "id": "9cd1b79b-dce4-4906-8209-687bedc95d0a",
+    "name": "7th Generation Intel® Core™ i7 Processors"
+  },
+  {
+    "id": "905ed74d-2c19-4bec-bf3a-04995eae1379",
+    "name": "8th Generation Intel® Core™ i5 Processors"
+  },
+  {
+    "id": "4ffe7cb7-45da-4318-bf27-5d4f2c580ca0",
+    "name": "8th Generation Intel® Core™ i7 Processors"
+  },
+  {
+    "id": "4d149939-e2fa-4dd3-81ef-95467097e632",
+    "name": "Intel® Core™ X-series Processors"
+  },
+  {
+    "id": "1210aefc-5b91-4a05-b5e2-6a8cbc694b1a",
+    "name": "7th Generation Intel® Core™ i5 Processors"
+  },
+  {
+    "id": "821cf523-c359-4bd8-9395-0a9ecc8c391c",
+    "name": "Intel® Celeron® Processor 3000 Series"
+  },
+  {
+    "id": "5f177137-f977-4f75-b13d-68b1b146ca86",
+    "name": "Intel® Celeron® Processor N Series"
+  },
+  {
+    "id": "9b38ec07-b9bd-4d19-93fc-33419fa26271",
+    "name": "Intel® Celeron® Processor J Series"
+  },
+  {
+    "id": "9af24034-d8f9-419c-8e83-5fab97690ae4",
+    "name": "Intel® Celeron® Processor G Series"
+  },
+  {
+    "id": "5288790f-72d9-4bac-afa9-1e4bcbee7381",
+    "name": "Legacy Intel® Pentium® Processor"
+  },
+  {
+    "id": "9147dbfe-3039-4055-9bc2-6cac1a92a168",
+    "name": "Intel® Pentium® Processor 2000 Series"
+  },
+  {
+    "id": "231c960a-c67b-4f6e-9a8a-f661c064caa8",
+    "name": "Intel® Pentium® Processor 3000 Series"
+  },
+  {
+    "id": "761e2644-6277-4200-aeb1-e3a98068eacd",
+    "name": "Intel® Pentium® Processor 4000 Series"
+  },
+  {
+    "id": "0df49972-3c32-408d-a2b7-fdb464e42b42",
+    "name": "Intel® Pentium® Processor N Series"
+  },
+  {
+    "id": "5287beb6-e714-4fbc-8ba4-52b986098dda",
+    "name": "Intel® Quark™ SE C1000 Microcontroller Series"
+  },
+  {
+    "id": "0c669db0-97cf-4e7f-a501-1d711012f028",
+    "name": "Intel® Pentium® Processor J Series"
+  },
+  {
+    "id": "eef8afe6-fdd3-4925-95d1-3595ea6027d1",
+    "name": "Intel® Pentium® Processor 1000 Series"
+  },
+  {
+    "id": "6e83f6fa-e433-48c2-870d-aa661caf1e47",
+    "name": "Intel® Quark™ Microcontroller D2000 Series"
+  },
+  {
+    "id": "86163832-622e-4b99-9d98-81437385c0e5",
+    "name": "Intel® Quark™ SoC X1000 Series"
+  },
+  {
+    "id": "90835efc-d0fd-4de5-938c-c980940dab38",
+    "name": "Intel® Atom™ Processor Z Series"
+  },
+  {
+    "id": "9dbbc07b-19bd-4a63-a752-f95ba815e3a4",
+    "name": "Intel® Quark™ Microcontroller D1000 Series"
+  },
+  {
+    "id": "eb9fb3ee-ceb2-4167-8304-c4ddfa23b490",
+    "name": "Legacy Intel Atom® Processors"
+  },
+  {
+    "id": "cbcb7603-b690-435c-8c01-4fe5cbd76f89",
+    "name": "Intel® Atom™ Processor X Series"
+  },
+  {
+    "id": "d8a8b447-44a4-41c4-90d5-626da57bd009",
+    "name": "Intel® Atom™ Processor N Series"
+  },
+  {
+    "id": "1a530c12-420b-4707-8471-a29d59717798",
+    "name": "Intel® Atom™ Processor E Series"
+  },
+  {
+    "id": "8339fb0e-7c2c-46fb-9a84-0a885624254d",
+    "name": "Intel® Atom™ Processor D Series"
+  },
+  {
+    "id": "7045e0d2-178f-4e81-ba4a-acca324bcd4c",
+    "name": "Intel® Atom™ Processor C Series"
+  },
+  {
+    "id": "b4383bfa-fc6d-4bac-8a7a-e44fd6937c7e",
+    "name": "Intel® Itanium® Processors with 677 MHz FSB"
+  },
+  {
+    "id": "895c38b2-b181-4629-994c-9fa950675392",
+    "name": "Intel® Itanium® Processors with 533 MHz FSB"
+  },
+  {
+    "id": "25ae9c9a-6324-4b92-8fd8-25d2870ca83f",
+    "name": "Intel® Itanium® Processors with 400 MHz FSB"
+  },
+  {
+    "id": "cede2406-d88a-450f-8275-fde3703c1969",
+    "name": "Intel® Itanium® Processor 9000 Series"
+  },
+  {
+    "id": "d2b34f81-4bcc-422d-b3bf-93f77346533b",
+    "name": "Intel® Itanium® Processor 9100 Series"
+  },
+  {
+    "id": "989ab8ae-b1f0-4dbc-b6dd-69a0d08f7355",
+    "name": "Intel® Itanium® Processor 9300 Series"
+  },
+  {
+    "id": "521ff75f-a86b-489d-be1b-5f303ece86c6",
+    "name": "Intel® Atom™ Processor S Series"
+  },
+  {
+    "id": "e1317879-bd38-4d7a-9948-2782f9033832",
+    "name": "Intel® Itanium® Processor 9500 Series"
+  },
+  {
+    "id": "813f3b7f-0abc-4e4f-aac2-83ed9a49ce94",
+    "name": "Intel® Itanium® Processor 9700 Series"
+  },
+  {
+    "id": "2ddbb699-621b-4af3-8b73-3c0e6c62383d",
+    "name": "Intel® Xeon Phi™ x200 Product Family"
+  },
+  {
+    "id": "5751149c-f275-44c5-8ef7-b08b324865d1",
+    "name": "Intel® Xeon Phi™ x100 Product Family"
+  },
+  {
+    "id": "f946b939-c51c-4c37-8372-bbd98a091ca6",
+    "name": "Intel® Xeon® Processor E3 Family"
+  },
+  {
+    "id": "ac5f2cab-59b9-4ec2-a681-83ca0f72b1f4",
+    "name": "Intel® Xeon® Processor D Family"
+  },
+  {
+    "id": "5cb1e1a0-8ee3-43b2-8c63-9e538cba103c",
+    "name": "Legacy Intel® Xeon® Processors"
+  },
+  {
+    "id": "92a9d209-97ed-48f6-9723-64f5deb535d2",
+    "name": "Intel® Xeon® Processor E3 v3 Family"
+  },
+  {
+    "id": "24b166e6-1d78-405f-8b3c-d3bd25f20557",
+    "name": "Intel® Xeon® Processor E3 v4 Family"
+  },
+  {
+    "id": "fd9a6273-fc95-4dd8-b2b9-f3a6bb64849e",
+    "name": "Intel® Xeon® Processor E3 v5 Family"
+  },
+  {
+    "id": "ebfc0c95-9395-45be-a20b-976029cd2338",
+    "name": "Intel® Xeon® Processor E3 v6 Family"
+  },
+  {
+    "id": "33505675-8247-4c63-b5e4-1d455c104d6d",
+    "name": "Intel® Xeon® Processor E5 Family"
+  },
+  {
+    "id": "c47b1afc-d122-4672-aed8-c87cc2786d7a",
+    "name": "Intel® Xeon® Processor E5 v2 Family"
+  },
+  {
+    "id": "ca1c1854-0fb4-4c8c-ba68-7b8ab8d56725",
+    "name": "Intel® Xeon® Processor E5 v4 Family"
+  },
+  {
+    "id": "923cf077-13ed-425c-ac52-aa076b42fe25",
+    "name": "Intel® Xeon® Processor E5 v3 Family"
+  },
+  {
+    "id": "7e85d582-7437-4f59-9dc3-9f48d2f6e39f",
+    "name": "Intel® Xeon® Processor E3 v2 Family"
+  },
+  {
+    "id": "6f8c9d7f-b89b-47dc-af5a-6327e599d419",
+    "name": "Intel® Xeon® Processor W Family"
+  },
+  {
+    "id": "bf960060-eda7-4189-8f6c-18ef1ec0242f",
+    "name": "Intel® Xeon® Processor E7 Family"
+  },
+  {
+    "id": "0026f883-a9fd-47ed-b5b9-066443daea0f",
+    "name": "Intel® Xeon® Processor E7 v2 Family"
+  },
+  {
+    "id": "b6d2f3be-ac76-497d-b420-2d37c1c32402",
+    "name": "Intel® Xeon® Processor E7 v3 Family"
+  },
+  {
+    "id": "c1e2b591-33c7-42fd-a636-6482d191b1da",
+    "name": "Intel® Xeon® Processor E7 v4 Family"
+  },
+  {
+    "id": "d4abf09a-c60d-45ec-bed5-50e76fd6eeb2",
+    "name": "Intel® Xeon® Scalable Processors"
+  },
+  {
+    "id": "653dd182-29c4-4adb-8ea1-57322620d283",
+    "name": "Legacy Intel® Celeron® Processor"
+  },
+  {
+    "id": "22fe462d-964e-4f88-8611-8fa3bc7bfbeb",
+    "name": "Intel® Celeron® Processor 1000 Series"
+  },
+  {
+    "id": "f02b3c8f-4c4e-4c9a-9cd4-a75a4f8a8bf8",
+    "name": "Intel® Celeron® Processor 2000 Series"
+  },
+  {
+    "id": "e197a1f2-61f9-41c1-94ca-6b1c6e6d54ae",
+    "name": "Intel® Pentium® Processor G Series"
+  },
+  {
+    "id": "a3b358f4-1f2e-488b-bc22-34e5708467c0",
+    "name": "Intel® Pentium® Processor D Series"
+  },
+  {
+    "id": "6a756838-5c5f-4463-99fd-0112aac8196e",
+    "name": "Legacy Intel® Core™ Processors"
+  },
+  {
+    "id": "9bd33b7c-5095-4f5b-b0eb-e13b13b61964",
+    "name": "4th Generation Intel® Core™ i3 Processors"
+  },
+  {
+    "id": "6efb1f83-4e14-43a4-9b0f-828f7a4e360e",
+    "name": "4th Generation Intel® Core™ i5 Processors"
+  },
+  {
+    "id": "ec5d39bc-935e-4c80-a91c-fac996d88fd2",
+    "name": "4th Generation Intel® Core™ i7 Processors"
+  },
+  {
+    "id": "e9a5894c-76c4-4d8e-a0dd-616ea2e1ed69",
+    "name": "5th Generation Intel® Core™ M Processors"
+  },
+  {
+    "id": "9f69121c-fe7f-45f0-af11-edf7d3b27658",
+    "name": "5th Generation Intel® Core™ i5 Processors"
+  },
+  {
+    "id": "a058dab3-cd9f-4d01-8e17-b4beebdea3f7",
+    "name": "5th Generation Intel® Core™ i3 Processors"
+  },
+  {
+    "id": "995b2b81-1441-4572-81e2-0a157ea6f273",
+    "name": "5th Generation Intel® Core™ i7 Processors"
+  },
+  {
+    "id": "16eaa685-2210-4955-b807-9729b7ac1ec4",
+    "name": "6th Generation Intel® Core™ m Processors"
+  },
+  {
+    "id": "bdd6f607-d294-4b03-aa66-18c65372d0e1",
+    "name": "6th Generation Intel® Core™ i3 Processors"
+  },
+  {
+    "id": "0a11d141-5a2b-4d3d-b455-42dbb056be88",
+    "name": "6th Generation Intel® Core™ i5 Processors"
+  },
+  {
+    "id": "bfb03aed-22bc-4b95-8e6c-d9dc6861761f",
+    "name": "7th Generation Intel® Core™ m Processors"
+  },
+  {
+    "id": "6a04bbf7-4a11-460a-b6bf-f3df9c78f08a",
+    "name": "7th Generation Intel® Core™ i3 Processors"
+  },
+  {
+    "id": "7cf3b220-b812-4957-b01a-db53160745d2",
+    "name": "6th Generation Intel® Core™ i7 Processors"
+  },
+  { "id": "06fa98f9-e101-4a9a-b320-888d5388ceea", "name": "AMD Ryzen 9 5950X" },
+  { "id": "e34a7436-e531-4d59-8c16-541a3c4b5c72", "name": "AMD Ryzen 9 5900X" },
+  {
+    "id": "30035916-fe67-4468-98eb-650226f19279",
+    "name": "AMD Ryzen 9 5900 (OEM Only)"
+  },
+  { "id": "da4f157a-fbac-4338-99a4-937443e1bbf0", "name": "AMD Ryzen 7 5800X" },
+  {
+    "id": "d196732c-98d7-4a33-811f-302293a29401",
+    "name": "AMD Ryzen 7 5800 (OEM Only)"
+  },
+  { "id": "75db94e9-3c19-4ab8-9ee2-3e30b73b34e1", "name": "AMD Ryzen 5 5600X" },
+  {
+    "id": "7a5ec10f-6ecb-4c00-a08a-07b4207b5bd9",
+    "name": "AMD Ryzen 9 3900XT"
+  },
+  {
+    "id": "4758106b-2249-48e5-86fd-cd6bb6bbef4d",
+    "name": "AMD Ryzen 7 3800XT"
+  },
+  {
+    "id": "c08cf65a-1900-4d37-8999-ed54dafa49ba",
+    "name": "AMD Ryzen 5 3600XT"
+  },
+  {
+    "id": "017c7078-6957-4d2c-940f-631636d8d92e",
+    "name": "AMD Ryzen Threadripper PRO 3995WX"
+  },
+  {
+    "id": "ed78e046-fe62-4ba4-8868-9565be497f0a",
+    "name": "AMD Ryzen Threadripper PRO 3975WX"
+  },
+  {
+    "id": "6ea19ee7-f52d-48f1-892f-c3ea9507a441",
+    "name": "AMD Ryzen Threadripper PRO 3955WX"
+  },
+  {
+    "id": "5d00fde5-ee51-4f5c-a6ea-4749ae4ef211",
+    "name": "AMD Ryzen Threadripper PRO 3945WX"
+  },
+  {
+    "id": "234c007f-a3e3-488d-9568-58dd3202322e",
+    "name": "AMD Ryzen Threadripper 3990X"
+  },
+  {
+    "id": "aaef8c6e-f66b-4ce9-ae4f-8ee6f16765f6",
+    "name": "AMD Ryzen 9 5980HX"
+  },
+  {
+    "id": "6be77467-35ba-46c2-9294-10651288dc49",
+    "name": "AMD Ryzen 9 5980HS"
+  },
+  {
+    "id": "e215c1d1-c01a-45c1-b708-7961c735c05b",
+    "name": "AMD Ryzen Threadripper 3970X"
+  },
+  {
+    "id": "db6ea30c-0f58-448b-96ab-ad36367d5fac",
+    "name": "AMD Ryzen 9 5900HX"
+  },
+  {
+    "id": "494a6dd3-488f-485e-b0b2-3b0da7d60192",
+    "name": "AMD Ryzen 9 5900HS"
+  },
+  { "id": "f69bb137-a522-45b8-ae3a-cd5b146f61e0", "name": "AMD Ryzen 7 5800H" },
+  {
+    "id": "12551783-04de-4666-9e34-37b6ad439bde",
+    "name": "AMD Ryzen Threadripper 3960X"
+  },
+  {
+    "id": "6a1e637b-1711-4414-a3c5-2e570d74b719",
+    "name": "AMD Ryzen 7 5800HS"
+  },
+  { "id": "690cb9c3-4e24-4db6-b53a-a218daf58448", "name": "AMD Ryzen 5 5600H" },
+  { "id": "f7fdf72c-5055-4349-8f45-5227e49b383a", "name": "AMD Ryzen 9 3950X" },
+  {
+    "id": "0f4d772b-7738-41c0-9269-e06d787e8986",
+    "name": "AMD Ryzen 5 5600HS"
+  },
+  { "id": "bf7af604-5601-415f-9fe7-647888f96469", "name": "AMD Ryzen 9 3900X" },
+  { "id": "f2630142-4030-4819-a5ad-a9b666b04da2", "name": "AMD Ryzen 7 5800U" },
+  { "id": "8d0772a5-4c6d-4fef-9ef6-21e48e438b91", "name": "AMD Ryzen 7 5700U" },
+  {
+    "id": "2d9658a7-b20a-42e1-b4e5-360984e8a2b4",
+    "name": "AMD Ryzen 9 3900 Processor (OEM Only)"
+  },
+  { "id": "f3908a28-e3cd-4a4d-9e38-8fda56caacdc", "name": "AMD Ryzen 5 5600U" },
+  { "id": "b3c73e02-c546-454a-9f11-a8215b60d14f", "name": "AMD Ryzen 5 5500U" },
+  { "id": "97fa11a7-876c-4c3b-a1a3-0d1640338877", "name": "AMD Ryzen 7 3800X" },
+  { "id": "5c46b131-9718-4b64-a1d7-407458cfc76a", "name": "AMD Ryzen 3 5400U" },
+  { "id": "e3fcab52-e2d3-4184-a22f-22b87626e2f6", "name": "AMD Ryzen 3 5300U" },
+  { "id": "e5723516-e086-46d3-b862-b2587e36e680", "name": "AMD Ryzen 7 3700X" },
+  { "id": "44808e32-d1a3-4cad-933e-d9238399a4d9", "name": "AMD Ryzen 7 5700G" },
+  {
+    "id": "9734d903-c65e-4b36-be31-5bd0a1a5e86e",
+    "name": "AMD Ryzen 7 5700GE"
+  },
+  { "id": "7054c4ce-1c92-4154-8916-ea60dae8f5b5", "name": "AMD Ryzen 5 3600X" },
+  { "id": "5d091dc1-0118-4cb0-b26d-2194ab471166", "name": "AMD Ryzen 5 5600G" },
+  {
+    "id": "901b15e4-a4e0-4a72-8b66-16df36e58fc3",
+    "name": "AMD Ryzen 5 5600GE"
+  },
+  { "id": "ecce2c30-3f69-4d89-b589-e902c8f22796", "name": "AMD Ryzen 5 3600" },
+  {
+    "id": "cf874a63-174d-4ee4-ac4c-99729b30c4b2",
+    "name": "AMD Ryzen 3 5300G (OEM Only)"
+  },
+  {
+    "id": "4a5bc6a9-1787-436f-9ff6-38d582deb04f",
+    "name": "AMD Ryzen 3 5300GE (OEM Only)"
+  },
+  { "id": "7cca8519-b634-4b00-aa86-0f74a6042ae8", "name": "AMD Ryzen 3 3300X" },
+  {
+    "id": "c9b61f23-0706-4b6e-8196-c2bf71195a18",
+    "name": "AMD Ryzen 7 4700G (OEM Only)"
+  },
+  { "id": "acbec6a3-b95b-43ee-8995-a24a6995283e", "name": "AMD Ryzen 3 3100" },
+  {
+    "id": "bc6853d2-06ea-41cf-9c53-b915c863fd2e",
+    "name": "AMD Ryzen 5 4600G (OEM Only)"
+  },
+  {
+    "id": "3fbd1823-0d84-40fe-bad1-bb40a129c8cb",
+    "name": "AMD Ryzen 3 4300G (OEM Only)"
+  },
+  {
+    "id": "ed700b0a-0e6a-4fda-8f7b-e41d4b7ba333",
+    "name": "AMD Ryzen 5 3500 Processor (OEM Only)"
+  },
+  {
+    "id": "3f816583-1533-4095-98e7-e635b03774b9",
+    "name": "AMD Ryzen 7 4700GE (OEM Only)"
+  },
+  {
+    "id": "6cf165e4-51e7-42e1-93e0-da492b6683f9",
+    "name": "AMD Ryzen 5 4600GE (OEM Only)"
+  },
+  {
+    "id": "2abefb98-5847-47e5-aca3-1216ee154db1",
+    "name": "AMD Ryzen 3 4300GE (OEM Only)"
+  },
+  { "id": "f6bef967-4183-4801-9996-70cca9611424", "name": "AMD Ryzen 9 4900H" },
+  {
+    "id": "7dac1c4a-8158-4bba-b3f0-18156e7e387a",
+    "name": "AMD Ryzen 9 4900HS"
+  },
+  {
+    "id": "c753c72e-ec65-4c93-b24d-4d1cfb8e9427",
+    "name": "AMD Ryzen 7 4800HS"
+  },
+  { "id": "4ed5c08c-4bc8-4fbc-8c37-22672282a852", "name": "AMD Ryzen 7 4800H" },
+  { "id": "88f56800-2d8e-4bad-a027-3988d2efea9e", "name": "AMD Ryzen 5 4600H" },
+  { "id": "c711632e-ae26-4d89-bbbd-b8b02f0dc17c", "name": "AMD Ryzen 7 4800U" },
+  { "id": "e1e3d4eb-d563-462b-9e72-174a3ce53f17", "name": "AMD Ryzen 7 4700U" },
+  { "id": "839023b3-f2b0-4ba8-9306-5584bf75d6a7", "name": "AMD Ryzen 5 4600U" },
+  { "id": "2d35eedf-6a23-4236-a8c2-398b5878bca9", "name": "AMD Ryzen 5 4500U" },
+  { "id": "a8907b73-aabb-47d7-942c-74038a754053", "name": "AMD Ryzen 3 4300U" },
+  { "id": "d0ddbaee-5aec-4b9d-aecc-c1c3a75916da", "name": "AMD Ryzen 3 3250U" },
+  {
+    "id": "bac12430-2574-4801-829a-9a7f4478cae5",
+    "name": "AMD Ryzen 7 4980U Microsoft Surface Edition"
+  },
+  {
+    "id": "e10aa188-26ac-44a4-8bc5-bf1b33f95dab",
+    "name": "AMD Ryzen 5 3400G with Radeon RX Vega 11 Graphics"
+  },
+  {
+    "id": "352a95ca-4e41-40df-a02e-59cd3eb52926",
+    "name": "AMD Ryzen 5 4680U Microsoft Surface Edition"
+  },
+  {
+    "id": "a97e0f05-0e29-4085-b37a-eb7da770c1cd",
+    "name": "AMD Ryzen 5 3400GE (OEM Only)"
+  },
+  {
+    "id": "88f61a55-1fde-47fb-89aa-217e117dc6e4",
+    "name": "AMD Ryzen 7 3780U Microsoft Surface Edition"
+  },
+  {
+    "id": "cc81029d-42ea-4762-be10-ce88e0bb08d6",
+    "name": "AMD Ryzen 3 3200G with Radeon Vega 8 Graphics"
+  },
+  {
+    "id": "ba33399d-c7ca-4b26-b952-97708aa31b64",
+    "name": "AMD Ryzen 3 3200GE (OEM Only)"
+  },
+  { "id": "3eb16686-ebde-48bf-9afd-33a0f2a83384", "name": "AMD Athlon 320GE" },
+  { "id": "c3be4335-cbef-4c91-8252-dc3ca3a93c9e", "name": "AMD Athlon 300GE" },
+  { "id": "34e3a7d7-c72f-47f4-9506-70aa5feef8f4", "name": "AMD Ryzen 7 3750H" },
+  { "id": "ac6be95f-3eed-40e5-bf89-8d3318a24b7b", "name": "AMD Ryzen 5 3550H" },
+  { "id": "957ed329-8d2c-45e7-8624-a6b8c1a24dcc", "name": "AMD Ryzen 7 3700U" },
+  { "id": "5be59f0b-df04-4383-93c4-7db22b65d79f", "name": "AMD Ryzen 5 3500U" },
+  { "id": "c9149d24-82c1-40a5-aa7e-a10ebed852b2", "name": "AMD Ryzen 3 3350U" },
+  { "id": "10f56982-3f32-44ac-85a4-8dc1c1f478af", "name": "AMD Ryzen 5 3450U" },
+  { "id": "57a91a41-00ec-4600-aef3-53d8a2be4386", "name": "AMD Ryzen 3 3300U" },
+  {
+    "id": "3ba0ec09-fb16-430a-a4a9-731eaf29f276",
+    "name": "AMD Ryzen 5 3580U Microsoft Surface Edition"
+  },
+  { "id": "96595c0e-898d-46ca-a1a9-e0ae6e8142bc", "name": "AMD Ryzen 7 3700C" },
+  { "id": "1a9d7253-48c0-4974-991e-183d1b6b9d45", "name": "AMD Ryzen 3 3200U" },
+  { "id": "7880604a-5cf7-4e27-aa05-72ad455c66b8", "name": "AMD Ryzen 5 3500C" },
+  {
+    "id": "3f00ef6e-1a58-4d70-b4f9-c95deab8db9f",
+    "name": "AMD Athlon Gold 3150U"
+  },
+  { "id": "8b9ef7a2-2e1b-4c33-921e-aed1d6d93975", "name": "AMD Ryzen 3 3250C" },
+  { "id": "4cf6d7ca-6b15-428d-a988-ecaf644dc142", "name": "AMD Athlon 300U" },
+  {
+    "id": "bf94a25a-44a3-4f49-82d9-840a32b09961",
+    "name": "AMD Athlon Silver 3050U"
+  },
+  {
+    "id": "53be4c6a-4311-4609-9bfc-907c904a10f3",
+    "name": "AMD Athlon Silver 3050e"
+  },
+  {
+    "id": "8dcc21d0-a7fe-4dc6-886b-df97b893a030",
+    "name": "AMD Athlon Gold 3150C"
+  },
+  {
+    "id": "dcd57781-71dd-4ee5-a00a-ab51805eeeaf",
+    "name": "AMD Athlon  Silver 3050C"
+  },
+  {
+    "id": "e2cea246-6044-402f-a49e-dc4e10217bb1",
+    "name": "AMD Athlon Gold 3150GE (OEM Only)"
+  },
+  { "id": "06bab53e-56a2-4112-a7bd-bc16b1c0bc12", "name": "AMD 3020e" },
+  {
+    "id": "acd6dd88-fbb6-476a-b933-4e055d21b0fc",
+    "name": "AMD Athlon Gold 3150G (OEM Only)"
+  },
+  { "id": "7f882303-138f-423b-8184-217f01bcf861", "name": "AMD 3015e" },
+  {
+    "id": "793a146c-de4d-40e2-b0d2-ac826afd5260",
+    "name": "AMD Athlon Silver 3050GE (OEM Only)"
+  },
+  { "id": "ee8cd66b-887d-4bd9-bb31-d7dbe20633c0", "name": "AMD 3015Ce" },
+  {
+    "id": "0b974581-4f16-4057-bbac-e86349a6c2d6",
+    "name": "AMD Ryzen Threadripper 2990WX"
+  },
+  {
+    "id": "8a12af07-bacc-40e0-9669-989e74b48a49",
+    "name": "AMD Ryzen Threadripper 2970WX"
+  },
+  {
+    "id": "9b2f58da-94c6-4c33-b3db-a0f0649b09ca",
+    "name": "AMD Ryzen Threadripper 2950X"
+  },
+  {
+    "id": "f8cade8f-889d-4707-bf5a-8c00e8bddd02",
+    "name": "AMD Ryzen Threadripper 2920X"
+  },
+  { "id": "730b0b4b-f1f6-4217-a3ab-64d9c048f783", "name": "AMD Ryzen 7 2700X" },
+  { "id": "15438445-6a73-44e1-a135-281d9cf128bf", "name": "AMD Ryzen 7 2700" },
+  {
+    "id": "2c5cd39b-f0a5-4e87-a7f5-6426f2380c68",
+    "name": "AMD Ryzen 7 2700E Processor"
+  },
+  { "id": "8f7ab993-1cd6-418b-af67-60382b546446", "name": "AMD Ryzen 5 2600X" },
+  { "id": "938fa2ac-c2a0-446b-950a-ffcb2a062751", "name": "AMD Ryzen 5 2600" },
+  { "id": "cbed8c98-3369-4ca5-a006-0bd0354da2de", "name": "AMD Ryzen 5 2600E" },
+  { "id": "813f4cbd-8cbd-4bc9-932d-5ea008e8bbfa", "name": "AMD Ryzen 5 2500X" },
+  {
+    "id": "6285a44a-8365-416a-884f-c270e32affff",
+    "name": "AMD Ryzen 5 2400G with Radeon RX Vega 11 Graphics"
+  },
+  {
+    "id": "73df7108-ce7d-4753-a79b-aefc97bd2219",
+    "name": "AMD Ryzen 5 2400GE with Radeon RX Vega 11 Graphics"
+  },
+  { "id": "6bb609ca-a82d-4ceb-a7b2-4fc17afe177d", "name": "AMD Ryzen 3 2300X" },
+  {
+    "id": "65b6970d-ad74-4a82-8ea7-7b09118b54ba",
+    "name": "AMD Ryzen 3 2200G with Radeon Vega 8 Graphics"
+  },
+  {
+    "id": "08e2b61a-2600-4fc2-80c6-5b0ae185c32f",
+    "name": "AMD Ryzen 3 2200GE with Radeon Vega 8 Graphics"
+  },
+  { "id": "167a051b-5eef-4c31-9f7b-1dda4100c614", "name": "AMD Ryzen 7 2800H" },
+  { "id": "07aee070-6aa9-4d39-b644-e724befc05dc", "name": "AMD Ryzen 5 2600H" },
+  { "id": "d120b760-34be-4b60-b09d-ceb5fb284553", "name": "AMD Ryzen 7 2700U" },
+  { "id": "c1f28362-8daa-4d08-b9c8-562daad477d6", "name": "AMD Ryzen 5 2500U" },
+  { "id": "587371ce-aa83-47e6-aa91-e03a0debd704", "name": "AMD Ryzen 3 2300U" },
+  { "id": "af8990a4-f158-4b9e-9841-f302e154203b", "name": "AMD Ryzen 3 2200U" },
+  {
+    "id": "c2e6c219-d39c-47b4-b4be-add8cb55a0e5",
+    "name": "AMD Ryzen Threadripper 1950X"
+  },
+  {
+    "id": "4f5a85bd-fdc9-4fd9-b842-2b2ca881e302",
+    "name": "AMD Ryzen Threadripper 1920X"
+  },
+  {
+    "id": "eec8edfb-ed98-44ad-aa4c-716fe8da2cda",
+    "name": "AMD Ryzen Threadripper 1900X"
+  },
+  { "id": "52303cfd-5178-43f5-8630-d47820020491", "name": "AMD Ryzen 7 1800X" },
+  {
+    "id": "aaf0ec36-6595-42da-91c4-967b3c60b255",
+    "name": "AMD Ryzen 5 PRO 5650G"
+  },
+  {
+    "id": "65da1b01-18e2-42bc-8a3b-92958e58a601",
+    "name": "AMD Ryzen 5 PRO 5650GE"
+  },
+  { "id": "ea5998a6-0286-4c91-ac14-f0b8d4e2befc", "name": "AMD Ryzen 7 1700X" },
+  {
+    "id": "adc45692-dce9-40e1-8544-d3f6b546205e",
+    "name": "AMD Ryzen 9 PRO 3900"
+  },
+  {
+    "id": "c5aa9004-24c0-40a1-bfa7-b569c2839374",
+    "name": "AMD Ryzen 7 1700 Processor"
+  },
+  {
+    "id": "0c99e8b0-4769-4347-a1c6-e1b10625ee9c",
+    "name": "AMD Ryzen 7 PRO 3700"
+  },
+  {
+    "id": "e7222774-9280-4887-a7ee-4165a8581b1f",
+    "name": "AMD Ryzen 7 PRO 5850U"
+  },
+  {
+    "id": "70158d35-63e3-4edd-b6fb-9e93be3b0ca3",
+    "name": "AMD Ryzen 5 PRO 5650U"
+  },
+  {
+    "id": "67513f07-c86b-49fc-8040-042971819709",
+    "name": "AMD Ryzen 7 PRO 5750G"
+  },
+  {
+    "id": "3b97da23-42d4-4a68-ad91-d229b39db02e",
+    "name": "AMD Ryzen 3 PRO 5450U"
+  },
+  {
+    "id": "0f69ffce-5a0b-4966-a29d-82bd86b23427",
+    "name": "AMD Ryzen 7 PRO 5750GE"
+  },
+  {
+    "id": "19d0a027-8f2b-417c-8fa7-d3ba37546f6c",
+    "name": "AMD Ryzen 3 PRO 5350G"
+  },
+  {
+    "id": "5562a675-84f8-470e-801e-25254952f58e",
+    "name": "AMD Ryzen 7 PRO 4750G"
+  },
+  {
+    "id": "7aad2a02-7a63-4fe7-87ea-4deab01c9dc0",
+    "name": "AMD Ryzen 7 PRO 4750GE"
+  },
+  {
+    "id": "75392c38-bbb1-4369-ae58-9f3e453d4ded",
+    "name": "AMD Ryzen 5 PRO 3600"
+  },
+  { "id": "a114729f-f55d-458b-9885-e71db2895c55", "name": "AMD Ryzen 5 1600X" },
+  {
+    "id": "e6258d01-2829-4a48-9e77-ee178a820fa7",
+    "name": "AMD Ryzen 3 PRO 5350GE"
+  },
+  {
+    "id": "a78d2ffa-af4e-4467-8ab2-683d8c9773d5",
+    "name": "AMD Ryzen 5 PRO 4650G"
+  },
+  {
+    "id": "76206b2b-2acd-4a64-8188-83d67f2a2c9b",
+    "name": "AMD Ryzen 5 PRO 4650GE"
+  },
+  {
+    "id": "d51c0f21-53e8-44f2-bb7d-98187230feb0",
+    "name": "AMD Ryzen 3 PRO 4350G"
+  },
+  {
+    "id": "095d0789-8019-4bd8-a83f-4f4b1a10031d",
+    "name": "AMD Ryzen 3 PRO 4350GE"
+  },
+  { "id": "f62ee30c-3e69-4d91-bfa3-a556ec3417be", "name": "AMD Ryzen 5 1600" },
+  {
+    "id": "98f2a64d-f198-4b89-9af1-3b421c4081e9",
+    "name": "AMD Ryzen 5 1600 (AF)"
+  },
+  {
+    "id": "08a22a35-074d-4b78-ab8a-96efb7dd655c",
+    "name": "AMD Ryzen 5 PRO 3400G"
+  },
+  {
+    "id": "a4ae49a7-60a2-4241-9652-3fdcf3b1a551",
+    "name": "AMD Ryzen 5 PRO 3400GE"
+  },
+  { "id": "3ff07688-944d-4c5a-a134-8bcbc7acb62d", "name": "AMD Ryzen 5 1500X" },
+  {
+    "id": "9b61d5e1-93aa-4e84-a714-9512bebceb4a",
+    "name": "AMD Ryzen 5 PRO 3350G"
+  },
+  {
+    "id": "2b05d3ae-343e-48d1-95cf-c09c5bd0479e",
+    "name": "AMD Ryzen 5 PRO 3350GE"
+  },
+  { "id": "788873c3-19a3-4849-8793-f9fe5d366864", "name": "AMD Ryzen 5 1400" },
+  {
+    "id": "685111e0-517a-4766-9b6e-125fd5cf6acd",
+    "name": "AMD Ryzen 3 PRO 3200G"
+  },
+  {
+    "id": "e15b89b2-b409-429c-91f9-7e474e2bf793",
+    "name": "AMD Ryzen 3 PRO 3200GE"
+  },
+  { "id": "6e09d3ae-5521-4691-b948-e45092a26cc6", "name": "AMD Ryzen 3 1300X" },
+  {
+    "id": "b181c4c9-b2b8-4fb7-bf00-f20e32c52495",
+    "name": "AMD Athlon Gold PRO 3150G"
+  },
+  {
+    "id": "a9324efe-066c-4f81-821d-126ebbd3bafb",
+    "name": "AMD Athlon Gold PRO 3150GE"
+  },
+  {
+    "id": "2d3dfa67-2b4b-46b0-9a89-2e08c936e005",
+    "name": "AMD Athlon Silver PRO 3125GE"
+  },
+  {
+    "id": "91c167d0-f73c-4e14-9eb2-4a1a46f90aa9",
+    "name": "AMD Athlon PRO 300GE"
+  },
+  { "id": "51911bf1-7cbc-4a78-ad81-26c908554eca", "name": "AMD Ryzen 3 1200" },
+  {
+    "id": "6ca577a9-17ca-4ee0-ada3-503665a07ee3",
+    "name": "AMD Ryzen 7 PRO 2700X"
+  },
+  {
+    "id": "3ac6dbfe-b2de-4dcd-90a1-6a4a8a38af5c",
+    "name": "AMD Ryzen 7 PRO 4750U"
+  },
+  {
+    "id": "0f30d98a-c1c2-4e94-85b0-38533ffbe710",
+    "name": "AMD Ryzen 7 PRO 2700"
+  },
+  {
+    "id": "dc50c9b8-3300-450b-b733-31e6b6250f78",
+    "name": "AMD Ryzen 5 PRO 4650U"
+  },
+  {
+    "id": "154aabd5-0a32-4c06-8016-83594bfaf5a1",
+    "name": "AMD Ryzen 3 PRO 4450U"
+  },
+  {
+    "id": "b7e1dd79-e595-4d1b-b0fb-1b1da0d25335",
+    "name": "AMD Ryzen 7 PRO 1700X Processor"
+  },
+  {
+    "id": "68cfb51f-4a23-4e7d-9634-f28850605633",
+    "name": "AMD Ryzen 7 PRO 3700U"
+  },
+  {
+    "id": "721d6264-777a-4d8f-92b1-e0a04dddf034",
+    "name": "AMD Ryzen 5 PRO 3500U"
+  },
+  {
+    "id": "12bb09a0-fcb9-4997-b10c-651672017894",
+    "name": "AMD Ryzen 7 PRO 1700"
+  },
+  {
+    "id": "21168b24-28df-4bdb-8d87-f4a9a1563676",
+    "name": "AMD Ryzen 5 PRO 2600"
+  },
+  {
+    "id": "26fdff01-aaa7-486c-b373-78ad0f5e5b21",
+    "name": "AMD Athlon PRO 3145B"
+  },
+  {
+    "id": "66fac82a-b899-41f4-9bb7-4dbde4c716ee",
+    "name": "AMD Ryzen 3 PRO 3300U"
+  },
+  {
+    "id": "0e264bcc-696f-4bb5-8e64-bf9c006b9347",
+    "name": "AMD Athlon PRO 3045B"
+  },
+  {
+    "id": "58760cb1-6040-4299-973a-5a44b75bb0df",
+    "name": "AMD Ryzen 5 PRO 1600"
+  },
+  {
+    "id": "073372cc-3914-4a8c-911c-420ef834a76c",
+    "name": "AMD Athlon PRO 300U Mobile Processor with Radeon Vega 3 Graphics"
+  },
+  {
+    "id": "b10fe1a2-b25e-42b7-b895-123cd5c1a056",
+    "name": "AMD Ryzen 5 PRO 1500"
+  },
+  {
+    "id": "10ccbfd1-d614-4023-8dc2-57e1e40f245e",
+    "name": "AMD Ryzen 7 PRO 2700U"
+  },
+  {
+    "id": "0070de73-6a32-466c-b631-0e1c97e1fa9c",
+    "name": "AMD Ryzen 5 PRO 2400G with Radeon Vega 11 Graphics"
+  },
+  {
+    "id": "41eddbf9-f8ab-4073-9420-172ed88e2ab9",
+    "name": "AMD Ryzen 5 PRO 2400GE with Radeon Vega 11 Graphics"
+  },
+  {
+    "id": "60cf89f5-ee25-43cb-a7af-2c411c75170b",
+    "name": "AMD Ryzen 3 PRO 1300"
+  },
+  {
+    "id": "3eb49ec5-3df0-4d49-9677-e97b629fe4f2",
+    "name": "AMD Ryzen 5 PRO 2500U"
+  },
+  {
+    "id": "508d8dd5-4a23-40d1-858f-a2eaaed4503b",
+    "name": "AMD Ryzen 3 PRO 2200G with Radeon Vega 8 Graphics"
+  },
+  {
+    "id": "bb65d953-7da5-48fe-a261-d578e7b2ab41",
+    "name": "AMD Ryzen 3 PRO 2200GE with Radeon Vega 8 Graphics"
+  },
+  {
+    "id": "a645bc31-bbe8-42f7-bc11-fbb4ccf7b229",
+    "name": "AMD Ryzen 3 PRO 1200"
+  },
+  {
+    "id": "13a67511-b346-4636-a868-bb7115b97dde",
+    "name": "AMD Ryzen 3 PRO 2300U"
+  },
+  {
+    "id": "3ed5be76-7706-40db-950c-251a61260acd",
+    "name": "7th Gen AMD PRO A4-5350B APU"
+  },
+  {
+    "id": "338c9fc7-5496-40c4-9f97-f2f3f4291f12",
+    "name": "7th Gen AMD PRO A4-4350B APU"
+  },
+  {
+    "id": "a3fe31fd-48a3-4e7a-8a16-7a73d50d6a64",
+    "name": "7th Gen AMD PRO A6-8350B APU"
+  },
+  {
+    "id": "14fd74d5-5c9d-4148-8062-513ae1e165b2",
+    "name": "7th Gen AMD PRO A6-7350B APU"
+  },
+  {
+    "id": "e1139a88-5684-4b34-90e3-59eede727add",
+    "name": "7th Gen A12-9800 APU"
+  },
+  {
+    "id": "8a79f66a-857c-4090-90a7-7efa7785ec66",
+    "name": "7th Gen A12-9800E APU"
+  },
+  {
+    "id": "151c096f-a37e-4959-bb3c-3ec675d03183",
+    "name": "7th Gen A10-9700 APU"
+  },
+  {
+    "id": "de07b846-2f30-4f69-97fa-562eb57a840e",
+    "name": "7th Gen A10-9700E APU"
+  },
+  {
+    "id": "59d1700f-fbee-4875-b72e-83b78c454577",
+    "name": "7th Gen A8-9600 APU"
+  },
+  {
+    "id": "62fce4fd-d3a4-4584-9f08-ed13f8b3b00f",
+    "name": "7th Gen A6-9550 APU"
+  },
+  {
+    "id": "b8f8a921-940b-4270-82d5-cfcc7aed5d5d",
+    "name": "7th Gen A6-9500 APU"
+  },
+  {
+    "id": "c75dafea-7528-4c81-803e-849549903acf",
+    "name": "7th Gen A6-9500E APU"
+  },
+  {
+    "id": "2eb10d2a-0ca2-462a-aaa0-3ed7eb4ca0dc",
+    "name": "7th Gen A12-9730P APU"
+  },
+  {
+    "id": "9cd5f37a-4828-405f-814b-84b67dc9eaf6",
+    "name": "7th Gen A12-9700P APU"
+  },
+  {
+    "id": "9da05633-e2d7-45a1-ac0c-ddea34a3f089",
+    "name": "7th Gen A10-9630P APU"
+  },
+  {
+    "id": "359f3a99-bb41-45cd-a568-bf03751eee44",
+    "name": "7th Gen A10-9600P APU"
+  },
+  {
+    "id": "1c1e5746-5ff9-4b40-a34e-46eeb22f63de",
+    "name": "7th Gen A9-9425 APU"
+  },
+  {
+    "id": "ca91d797-da0c-4cfe-b2f1-5e8d657785ef",
+    "name": "7th Gen A9-9420 APU"
+  },
+  {
+    "id": "fd2b071b-ab57-4e37-bd82-b50ae5144c94",
+    "name": "7th Gen A9-9410 APU"
+  },
+  {
+    "id": "d0178086-5fb5-4090-b298-0da5c66cffd0",
+    "name": "7th Gen A6-9225 APU"
+  },
+  {
+    "id": "825008cc-fc8e-43b3-835e-dfc663513aaf",
+    "name": "7th Gen A6-9220 APU"
+  },
+  {
+    "id": "fd547130-1597-4c45-9c55-24ea88ff6b63",
+    "name": "7th Gen A6-9220C APU"
+  },
+  {
+    "id": "002ed4b0-15c3-4848-b485-d824bb06db27",
+    "name": "7th Gen A6-9210 APU"
+  },
+  {
+    "id": "47b58c24-fead-4094-b546-0f35421b6587",
+    "name": "7th Gen A4-9125 APU"
+  },
+  {
+    "id": "8713c064-e4ed-4ebc-a98a-85ab06bb72d7",
+    "name": "7th Gen A4-9120 APU"
+  },
+  {
+    "id": "ed50f552-c686-4ac7-8e50-9a81e2f3d290",
+    "name": "7th Gen A4-9120C APU"
+  },
+  {
+    "id": "b79c5552-83c4-456c-819f-965c3e0d89e2",
+    "name": "7th Gen AMD PRO A12-9800 APU"
+  },
+  {
+    "id": "3bb8b284-c789-4ec5-96c7-d9a4f761fd77",
+    "name": "7th Gen AMD PRO A12-9800E APU"
+  },
+  {
+    "id": "39f9f626-0efe-4cb3-b677-4b12c312afc9",
+    "name": "7th Gen AMD PRO A10-9700 APU"
+  },
+  {
+    "id": "7a948fac-7593-4b17-94d8-a4435d99d876",
+    "name": "7th Gen AMD PRO A10-9700E APU"
+  },
+  {
+    "id": "ea46703a-c71e-45f4-ad94-be3072fd2aa1",
+    "name": "7th Gen AMD PRO A8-9600 APU"
+  },
+  {
+    "id": "9119008b-9d98-41cd-add6-3898dec441bd",
+    "name": "7th Gen AMD PRO A6-9500 APU"
+  },
+  {
+    "id": "bf9c46d9-c6d9-4c7f-8cc3-a811cf459f61",
+    "name": "7th Gen AMD PRO A6-9500E APU"
+  },
+  {
+    "id": "7813074d-995a-43e6-b6fc-57cf43cdc6dc",
+    "name": "7th Gen AMD PRO A12-9830B APU"
+  },
+  {
+    "id": "b4e4cb2e-8f3e-47e5-a5f7-88775e0b4e21",
+    "name": "7th Gen AMD PRO A12-9800B APU"
+  },
+  {
+    "id": "d02662a5-80d7-435e-bbbe-6fd8a9a89f9c",
+    "name": "7th Gen AMD PRO A10-9730B APU"
+  },
+  {
+    "id": "ddd55a82-3fd0-4bb7-9ad7-6ce6598266dd",
+    "name": "7th Gen AMD PRO A10-9700B APU"
+  },
+  {
+    "id": "fecfb85d-8dc1-476e-b102-12b418642947",
+    "name": "7th Gen AMD PRO A8-9630B"
+  },
+  {
+    "id": "a1c2c5b9-1836-4119-9555-20e53751ec35",
+    "name": "7th Gen AMD PRO A8-9600B APU"
+  },
+  {
+    "id": "63e69e66-8e26-4ffd-a128-89c39d1beb28",
+    "name": "7th Gen AMD PRO A6-9500B APU"
+  },
+  {
+    "id": "911441d1-82c6-471d-ad02-925b8ee28029",
+    "name": "7th Gen FX 9830P APU"
+  },
+  {
+    "id": "dd24568f-ddc2-4646-a809-8722ea443550",
+    "name": "7th Gen FX 9800P APU"
+  },
+  {
+    "id": "8f4c9359-7083-4029-8f22-7586f9efba87",
+    "name": "7th Gen E2-9010 APU"
+  },
+  {
+    "id": "0b201b80-cb80-43ae-8a28-63b48637686e",
+    "name": "6th Gen A10-8700P APU"
+  },
+  {
+    "id": "4f4b912e-e382-4dc3-8edd-d91765cdcfa3",
+    "name": "6th Gen A8-8600P APU"
+  },
+  {
+    "id": "67cf7386-9edc-4092-a1ec-0c21ef8625f3",
+    "name": "6th Gen AMD PRO A12-8870 APU"
+  },
+  {
+    "id": "cfe7c924-2a97-41a7-869b-86164f004c99",
+    "name": "6th Gen AMD PRO A12-8870E APU"
+  },
+  {
+    "id": "d87d0dc7-3d2c-4357-a0cf-8912b570ea25",
+    "name": "6th Gen AMD PRO A10-8850B APU"
+  },
+  {
+    "id": "dbeb2676-823d-4306-a514-918022c0c51e",
+    "name": "6th Gen AMD PRO A10-8770 APU"
+  },
+  {
+    "id": "085debe6-f133-494c-814e-8351eccddce5",
+    "name": "6th Gen AMD PRO A10-8770E APU"
+  },
+  {
+    "id": "f9fbd6e7-a637-4d2a-a29f-0c9ba2c4beae",
+    "name": "6th Gen AMD PRO A10-8750B APU"
+  },
+  {
+    "id": "0a57067e-ecc4-497b-9245-678dc515799a",
+    "name": "6th Gen AMD PRO A8-8650B APU"
+  },
+  {
+    "id": "477dafea-adb0-4ee8-ab97-125d44bf4f73",
+    "name": "6th Gen AMD PRO A6-8570 APU"
+  },
+  {
+    "id": "1656271b-e815-412f-b63f-7df97b9f9c1c",
+    "name": "6th Gen AMD PRO A6-8570E APU"
+  },
+  {
+    "id": "6c97ee32-7ea2-4a79-a435-aea6d9770ad6",
+    "name": "6th Gen AMD PRO A6-8550B APU"
+  },
+  {
+    "id": "ff4fe339-8472-439b-837d-be8241967b81",
+    "name": "6th Gen AMD PRO A4-8350B APU"
+  },
+  {
+    "id": "eb7c199f-1be1-4d30-82f5-e0563455a809",
+    "name": "6th Gen AMD PRO A12-8830B APU"
+  },
+  {
+    "id": "63665d25-8d9a-491a-9957-96745edea458",
+    "name": "6th Gen AMD PRO A12-8800B APU"
+  },
+  {
+    "id": "2c2c595b-a214-448d-bb04-d7afe9745e3c",
+    "name": "6th Gen AMD PRO A10-8730B APU"
+  },
+  {
+    "id": "9ce61ba9-1b69-4494-8391-1edd2d6e049d",
+    "name": "6th Gen AMD PRO A10-8700B APU"
+  },
+  {
+    "id": "834eb564-0ebf-497a-9a02-2061653e11af",
+    "name": "6th Gen AMD PRO A8-8600B APU"
+  },
+  {
+    "id": "c18b6ebe-ef1f-4766-8132-93225012fc94",
+    "name": "6th Gen AMD PRO A6-8530B APU"
+  },
+  {
+    "id": "4ace25b5-e15c-4e85-a705-e7b3b83528ad",
+    "name": "6th Gen AMD PRO A6-8500B APU"
+  },
+  {
+    "id": "fc8549c7-2b1f-4716-a1bd-71b8ae195b33",
+    "name": "6th Gen FX-8800P APU"
+  },
+  {
+    "id": "113ef77a-fdd8-4446-82f5-ebff9e4c9e6d",
+    "name": "A10-7890K with Radeon R7 Graphics and Wraith cooler"
+  },
+  {
+    "id": "409a2344-9a5c-47f7-87ce-fd66520e62d9",
+    "name": "A10-7870K with Radeon R7 Series"
+  },
+  {
+    "id": "5f5e8b44-95ca-4063-a73c-52e581c4beae",
+    "name": "A10-7870K with Radeon R7 Graphics and Near Silent Thermal Solution"
+  },
+  {
+    "id": "9811b06e-617d-4720-8105-c9aed28205d1",
+    "name": "A10-7860K with Radeon R7 Series"
+  },
+  {
+    "id": "ea0cc13d-d606-4247-b1a9-e5eae3b92960",
+    "name": "A10-7860K with Radeon R7 Graphics and Near Silent Thermal Solution"
+  },
+  {
+    "id": "8a45e9c3-e055-4544-b084-9f316715c22c",
+    "name": "A10-7850K with Radeon R7 Series"
+  },
+  {
+    "id": "bcc76bdb-a39e-42a0-a317-6fa45ed21504",
+    "name": "A10-7800 with Radeon R7 Series"
+  },
+  {
+    "id": "74c9ab2d-e9f2-4bb9-bd8e-eb557e395c41",
+    "name": "A10-7700K with Radeon R7 Series"
+  },
+  {
+    "id": "5c0170bd-d2b3-4c3a-a417-2eec5ff9cbdb",
+    "name": "A10-6800K with Radeon HD 8670D"
+  },
+  {
+    "id": "ce4670d5-a1af-4bfd-859a-7f961f6ee5d0",
+    "name": "A10-6790K with Radeon HD 8670D"
+  },
+  {
+    "id": "9c734ede-a0cb-4cb2-a847-f859d963850f",
+    "name": "A10-6700 with Radeon HD 8670D"
+  },
+  {
+    "id": "8efacec5-371b-41fa-8c2e-8de0ef527a87",
+    "name": "A10-6700T with Radeon HD 8650D"
+  },
+  { "id": "96af3565-db95-4769-a059-b71d6bdc1503", "name": "AMD EPYC 7763" },
+  { "id": "8b65f5f9-fa2a-4662-9388-e40b149f8d50", "name": "AMD EPYC 7713P" },
+  { "id": "bc9acadb-2936-4176-a998-ab11e5ad5c74", "name": "AMD EPYC 7713" },
+  { "id": "d8381895-2eed-49e2-83e2-07413d27fbb0", "name": "AMD EPYC 7663" },
+  { "id": "3a8cda8f-c0d2-4279-9dd4-f715c59aaec1", "name": "AMD EPYC 7643" },
+  { "id": "77cffb5a-459a-411d-bf0f-bb5e34fa4c39", "name": "AMD EPYC 75F3" },
+  { "id": "7157723b-0383-4554-b98f-80b6b64a1035", "name": "AMD EPYC 7543P" },
+  { "id": "58a76c66-e20f-4c94-83a5-dae7d0c16638", "name": "AMD EPYC 7543" },
+  { "id": "19a1820b-7985-4122-ab72-3075737d6f91", "name": "AMD EPYC 7513" },
+  { "id": "8c20df53-540c-4109-9793-ab52f0d5285b", "name": "AMD EPYC 7453" },
+  { "id": "8699ca8e-944c-415e-80a7-25005ef4f35a", "name": "AMD EPYC 74F3" },
+  { "id": "85311551-0ef1-4ae2-87d3-8b7dfc5121ff", "name": "AMD EPYC 7443P" },
+  { "id": "053ef68d-c701-4427-bba7-7f34690dd70c", "name": "AMD EPYC 7443" },
+  { "id": "3ce5897e-093c-4b0f-aca3-87ebb4b55117", "name": "AMD EPYC 7413" },
+  { "id": "ca2fa114-5b80-486e-b7c7-2505b18c5f43", "name": "AMD EPYC 73F3" },
+  { "id": "48d1acd7-7f2b-458e-95ea-6fae0dc2bfdb", "name": "AMD EPYC 7343" },
+  { "id": "ff14ffa8-484d-4392-8dcd-7b3fb8503b7d", "name": "AMD EPYC 7313P" },
+  { "id": "5c01a432-ba03-482d-b191-da3f1f23f1a4", "name": "AMD EPYC 7313" },
+  {
+    "id": "41f91b55-2b9e-4b52-ac8f-88958332449d",
+    "name": "A8-7670K with Radeon R7 Graphics and Near Silent Thermal Solution"
+  },
+  { "id": "23c839b7-369d-4274-9643-1d9d16721fe9", "name": "AMD EPYC 72F3" },
+  { "id": "e71b8cea-453a-4f98-aee4-e2c333e9f3a2", "name": "AMD EPYC 7F72" },
+  {
+    "id": "574492e5-6b23-429f-8c05-dadbb3583d0c",
+    "name": "A8-7650K with Radeon R7 Series"
+  },
+  { "id": "bf3633f3-d9b2-4eed-8bad-3cca4a7f3e43", "name": "AMD EPYC 7F52" },
+  { "id": "c17ca9e3-7a45-43e7-941e-a0e4a6ed1688", "name": "AMD EPYC 7F32" },
+  { "id": "33a2dba3-b0cb-4b0d-85e0-5386f8f80c2e", "name": "AMD EPYC 7H12" },
+  { "id": "6043a27d-616a-4260-b2ad-c23088ab3fca", "name": "AMD EPYC 7742" },
+  {
+    "id": "c4ad8f0c-656d-4cbd-adc4-3d3838308d17",
+    "name": "A8-7650K with Radeon R7 Graphics and Near Silent Thermal Solution"
+  },
+  { "id": "2ad761a0-f963-4d06-addd-75b7bd80ec66", "name": "AMD EPYC 7702" },
+  {
+    "id": "c6852ca5-4d33-45e9-b005-af400ac2464f",
+    "name": "A8-7600 with Radeon R7 Series"
+  },
+  { "id": "0b22b8db-b235-4998-9ade-edccdf011c9d", "name": "AMD EPYC 7702P" },
+  {
+    "id": "69680983-d023-4c63-ba0b-854ba25412fc",
+    "name": "A8-6600K with Radeon HD 8570D"
+  },
+  { "id": "1d013990-ad74-4ded-8a95-01b2e8f0b7c1", "name": "AMD EPYC 7662" },
+  {
+    "id": "0c6a62ca-2a78-4cd1-8bb6-da835f24b35a",
+    "name": "A8-6500 with Radeon HD 8570D"
+  },
+  { "id": "5ae4466c-8e3c-4321-b5bf-f08f000c8f35", "name": "AMD EPYC 7642" },
+  { "id": "36838a1f-2c32-4ff0-9800-59512c53c913", "name": "AMD EPYC 7552" },
+  {
+    "id": "410c3d55-df02-4c52-8a07-dce113ab2875",
+    "name": "A8-6500T with Radeon HD 8550D"
+  },
+  { "id": "dddd971b-f501-42c3-89e0-b2425a7cf9e2", "name": "AMD EPYC 7542" },
+  { "id": "c8206981-182b-4d53-99d8-5015a16a2420", "name": "AMD EPYC 7532" },
+  { "id": "02b4382b-268d-468a-b7c7-66b7d2fe15b0", "name": "AMD EPYC 7502" },
+  { "id": "5c71d040-5f35-4655-b0c3-254a092dd1ed", "name": "AMD EPYC 7502P" },
+  { "id": "f158877e-959e-457b-b8f6-7c9d99ec5ada", "name": "AMD EPYC 7452" },
+  { "id": "55417dd9-8292-457a-b491-07ce7767d769", "name": "AMD EPYC 7402" },
+  { "id": "780864f1-9bdc-4a21-8460-60a509095d55", "name": "AMD EPYC 7402P" },
+  { "id": "b4160b17-5680-42ad-a0c5-b02f92747937", "name": "AMD EPYC 7352" },
+  {
+    "id": "31a8e118-b3cd-473a-96fb-81d75699e465",
+    "name": "A6-7470K with Radeon R5 Series"
+  },
+  {
+    "id": "2f79fcda-7137-413f-aa88-0a4ef52a7c4d",
+    "name": "A6-7400K with Radeon R5 Series"
+  },
+  { "id": "5eed0c8c-f312-4805-8bdc-4e9965ef2fcc", "name": "AMD EPYC 7302" },
+  {
+    "id": "b640c08e-f85c-4c33-943d-a73ac781f0f2",
+    "name": "A6-6420K with Radeon HD 8470D"
+  },
+  { "id": "84cf2b2f-d882-4fe1-8f1d-c71742a12b86", "name": "AMD EPYC 7302P" },
+  {
+    "id": "b1d5d40e-0965-49f0-9209-1646a6137d79",
+    "name": "A6-6310 with Radeon R4 Graphics"
+  },
+  { "id": "aa33a849-8a26-4c65-b749-9a2468c5e4a5", "name": "AMD EPYC 7282" },
+  {
+    "id": "fc984fea-9549-4531-bf39-a50aa261fe25",
+    "name": "A6-6400K with Radeon HD 8470D"
+  },
+  { "id": "2f1b3921-4939-4b69-bb31-0f9f0f1017f1", "name": "AMD EPYC 7272" },
+  { "id": "aab605c7-f763-4a28-8bc6-c01f507a6692", "name": "AMD EPYC 7262" },
+  {
+    "id": "865dce3b-6fed-411d-9e3a-96c201172c1e",
+    "name": "A6-5200 with Radeon HD 8400"
+  },
+  { "id": "f74ab4ad-11a9-4d30-8766-6201409345f8", "name": "AMD EPYC 7252" },
+  { "id": "e2259b46-1a10-4653-ace8-952022324349", "name": "AMD EPYC 7232P" },
+  { "id": "b5614d47-de61-4934-9230-a9f65f3e1a1e", "name": "AMD EPYC 7601" },
+  { "id": "45043753-3f3a-4fe4-9eb2-d2b8c67e52eb", "name": "AMD EPYC 7551P" },
+  { "id": "cfdf6343-62f9-4846-bde4-30e7eac50652", "name": "AMD EPYC 7551" },
+  { "id": "06b15e1c-9c1a-43f1-a165-36b42ea92fe0", "name": "AMD EPYC 7501" },
+  {
+    "id": "5d7e174e-60df-42b4-a54e-1171f66a253f",
+    "name": "A4-7300 with Radeon HD 8470D"
+  },
+  { "id": "beb0aa4c-c8e5-4545-9fcc-e45073a4f275", "name": "AMD EPYC 7451" },
+  {
+    "id": "116fda81-6e81-4f7e-80e2-ac974894266e",
+    "name": "A4-6320 with Radeon HD 8370D"
+  },
+  { "id": "2ae9bc2f-5d74-40d7-bc52-0bf34f2f5a14", "name": "AMD EPYC 7401P" },
+  { "id": "da912820-12aa-44d1-878c-1bab3d2a27f7", "name": "AMD EPYC 7401" },
+  {
+    "id": "2b393bdb-12fe-4482-8119-fcd03c4bf3a3",
+    "name": "A4-6300 with Radeon HD 8370D"
+  },
+  { "id": "18841d4e-e822-42d5-af0b-68f5fd3a48a5", "name": "AMD EPYC 7371" },
+  { "id": "7b51e374-023c-4cd7-8202-41f2cafa74d6", "name": "AMD EPYC 7351P" },
+  { "id": "84c7dc95-e378-46e2-b6ee-7beeed78fcde", "name": "AMD EPYC 7351" },
+  { "id": "122e818d-18cd-4b72-ae9f-555b1429c6f6", "name": "AMD EPYC 7301" },
+  {
+    "id": "2109eed3-d0e1-4d52-9034-e50a4b65e3f2",
+    "name": "A4-5100 with Radeon HD 8330"
+  },
+  { "id": "61729eb9-6aaa-44ed-bc59-75b9c1a3ab2c", "name": "AMD EPYC 7281" },
+  {
+    "id": "58e04f0a-f09d-4253-9cf0-e603c55dc2c0",
+    "name": "A4-5000 with Radeon HD 8330"
+  },
+  { "id": "46744b05-d55a-404d-be5b-4741a1e6fea0", "name": "AMD EPYC 7261" },
+  { "id": "37f00c1a-a61e-4abf-915e-a2c3047f9e5b", "name": "AMD EPYC 7251" },
+  { "id": "b90bf9f0-c90c-4ec8-a348-864fc7fd564f", "name": "FX-9590" },
+  { "id": "334e890c-1118-49b4-a1c1-b0d0603653b4", "name": "FX-9370" },
+  {
+    "id": "53203b5e-cc1a-4a62-ae11-4978f566bc95",
+    "name": "FX-8370 with Wraith cooler"
+  },
+  { "id": "7a347f82-9db3-4598-824b-22919025e754", "name": "FX-8370E" },
+  {
+    "id": "eea2b8d8-b7c8-4e65-930c-97c199b97c7f",
+    "name": "A10-7400P with Radeon R6 Graphics"
+  },
+  { "id": "321d01b0-aacd-4071-869e-668560229266", "name": "FX-8370" },
+  {
+    "id": "8d370772-05b3-4046-a9b3-b289160487c3",
+    "name": "A10-7300 with Radeon R6 Graphics"
+  },
+  {
+    "id": "c0fd9071-bff7-470c-9c08-af7a5c94a63e",
+    "name": "FX-8350 with Wraith cooler"
+  },
+  { "id": "a0de39e9-7a6a-47f9-a790-da293a093b4c", "name": "FX-8350" },
+  {
+    "id": "fc8f1879-1202-4d40-a003-ed8d55625290",
+    "name": "A10 Micro-6700T with Radeon R6 Graphics"
+  },
+  { "id": "52b12672-7c7e-4a5e-93f1-bc82fed8d70e", "name": "FX-8320E" },
+  { "id": "29d1f357-f0cd-46ea-aaf3-be2aa7c46873", "name": "FX-8320" },
+  { "id": "1ec118e6-f459-44a9-aaad-495041a3e5e6", "name": "FX-8310" },
+  { "id": "a7283c66-8ce6-4ede-85d8-3641585b2945", "name": "FX-8300" },
+  { "id": "0278c3a9-4fc2-42fb-aeef-673ae083c5c9", "name": "FX-8150" },
+  { "id": "2ba4ef23-ed2b-4fc8-af0b-fc8e45622001", "name": "FX-8120" },
+  {
+    "id": "b9cd9f40-5284-4130-94c3-babe288c0a0e",
+    "name": "A8-7410 with Radeon R5 Graphics"
+  },
+  {
+    "id": "5f41e378-c6da-4a19-8aed-183ce87ded05",
+    "name": "FX-6350 with Wraith cooler"
+  },
+  {
+    "id": "a833bc8c-105c-41aa-9dd3-320a54d92b92",
+    "name": "A8-7200P with Radeon R5 Graphics"
+  },
+  { "id": "f992f6ed-dfff-4b62-8e1d-9f2a8739f29f", "name": "FX-6350" },
+  {
+    "id": "56197f04-e25e-414c-ae1a-982f27f1f00c",
+    "name": "A8-7100 with Radeon R5 Graphics"
+  },
+  {
+    "id": "3f9723b2-f9c9-4598-a938-af64696901d6",
+    "name": "A8-6410 with Radeon R5 Graphics"
+  },
+  { "id": "3a97610c-7cdd-4cfc-81d4-dd641ad2cc02", "name": "FX-6300" },
+  { "id": "a53fd73e-85a1-4ba9-b94a-1e1fc59e3444", "name": "FX-6200" },
+  { "id": "9d7028d8-f589-4d58-ab9c-de6bb40a152e", "name": "FX 6100" },
+  { "id": "171156ff-3074-412d-9391-fc6ccd66756c", "name": "FX-4350" },
+  { "id": "a7292dde-8ca4-4a2b-90ee-770ae2eecd54", "name": "FX-4320" },
+  { "id": "f7e6f863-9b48-47cc-9fa4-38124c6a3d4d", "name": "FX-4300" },
+  { "id": "90c0220f-92f2-4bcb-8c0b-29297625fdfc", "name": "FX-4170" },
+  { "id": "8e2a544f-0b68-4ad6-9981-3bd285b9f389", "name": "FX-4130" },
+  { "id": "ad03f3fd-4b51-496d-beac-e82152af6f4a", "name": "FX-4100" },
+  { "id": "2c817f05-2b62-4696-b8be-c007878eeefc", "name": "1075T" },
+  { "id": "27cbbd24-7bdd-4b62-9df0-5a7e24daeebc", "name": "1045T" },
+  { "id": "e1fccff0-4604-4360-a58c-1767fb58b10b", "name": "980" },
+  {
+    "id": "0d4a87c7-546a-44d0-ac97-fc9b3a5deabd",
+    "name": "A6-8500P with Radeon R5 Graphics"
+  },
+  {
+    "id": "1a626b9e-b0e4-4aeb-9ccd-032039471317",
+    "name": "A6-7310 with Radeon R4 Graphics"
+  },
+  { "id": "d8017188-d92c-470c-af4f-6c98f4e834ab", "name": "975" },
+  { "id": "309ebf09-e48b-40ca-9574-422dfd8d0e5e", "name": "965" },
+  {
+    "id": "d3c807cb-c25c-476b-8dba-b3d3f0e81c3a",
+    "name": "A6-7000 with Radeon R4 Graphics"
+  },
+  { "id": "0ff20b97-10bd-45f3-aaba-6b621560343e", "name": "960T" },
+  { "id": "7fd6a058-a3b7-4c5c-8e7c-c14004385429", "name": "850" },
+  { "id": "f89427d3-a376-40eb-b9a5-7728296170a2", "name": "840" },
+  {
+    "id": "158d8181-0993-4c62-a9d0-99ec6b04fe44",
+    "name": "A6-5350M with Radeon HD 8450G"
+  },
+  { "id": "6e8f0aa0-f90d-4223-bb98-690d807adf53", "name": "570" },
+  { "id": "eb9c3926-53eb-4174-9524-67bede859909", "name": "565" },
+  {
+    "id": "f3ee56b8-262e-4e8d-b8d9-b690dc79ec00",
+    "name": "A6-5200M with Radeon HD 8400"
+  },
+  { "id": "7371a2d4-9075-44a5-88c5-9221afb2735b", "name": "555" },
+  { "id": "697f5a5d-37ab-4523-af13-199206784bc0", "name": "X940" },
+  { "id": "22fbb35d-0776-40e9-a2e0-6db3faa173e4", "name": "N970" },
+  { "id": "3e0b3576-e19d-4590-aed4-086970efe63e", "name": "N960" },
+  { "id": "842bf6f6-670e-4c57-9952-b76fcbaee342", "name": "N870" },
+  { "id": "7ba5dfaa-117e-40bf-b870-4bca1534e899", "name": "P860" },
+  { "id": "0fbf7681-3d9a-4be0-814e-14dcdcbe2002", "name": "N660" },
+  {
+    "id": "49cef2ee-9dc0-4ba7-baf5-ec4af9ed9a45",
+    "name": "A4-7210 with Radeon R3 Graphics"
+  },
+  { "id": "1d2a9591-b0d3-466b-a5c9-5af98641a29f", "name": "P650" },
+  {
+    "id": "d0fe92d3-56a2-491b-8d19-e0e462f36b66",
+    "name": "A4 Micro-6400T with Radeon R3 Graphics"
+  },
+  { "id": "64e3671a-8142-4f8d-83c1-e399162785cb", "name": "N640" },
+  {
+    "id": "a1a5cbab-6943-41f5-bb40-207b6993197e",
+    "name": "A4-6210 with Radeon R3 Graphics"
+  },
+  { "id": "97be7970-7f17-4fc0-ac3a-b303bb39a2d8", "name": "B99" },
+  { "id": "a9c6a275-ffe7-415c-a02f-e6c6fb39bede", "name": "B97" },
+  { "id": "8f53709a-4a67-4c97-a29a-31df682a09da", "name": "B95" },
+  { "id": "aa31dc7c-6970-4f79-abd9-9eaff842ef20", "name": "B77" },
+  { "id": "c28d8f8e-e0f4-4845-a42f-65796e0e5580", "name": "B75" },
+  { "id": "9629987d-8c1d-4512-8f6b-26bfbcbc2004", "name": "B60" },
+  { "id": "8c2f5330-0cda-415a-b9d7-527d6942f020", "name": "B59" },
+  { "id": "6646789a-6a3e-4af7-b99c-9372ba1f8f1c", "name": "B57" },
+  { "id": "df641bb0-b0d6-47f7-bfe6-7bb8e30fd199", "name": "641" },
+  { "id": "25531d55-4897-4584-a4b7-8c2593ed45f0", "name": "638" },
+  { "id": "e70838b7-337b-411a-a194-8fcc4aa7c894", "name": "631" },
+  { "id": "431cef13-c3c0-41f8-ba58-a1a27e66e033", "name": "620e" },
+  { "id": "d99c4f07-8647-4235-b3b1-bde68111673d", "name": "460" },
+  { "id": "b753d56b-8f78-42a7-a734-91eef305b562", "name": "425e" },
+  { "id": "e3f20929-d236-4395-84f8-7a37d413a7b2", "name": "255e" },
+  {
+    "id": "c6f16e63-0371-46ea-b7cd-7db04bceae33",
+    "name": "A10-8700P with Radeon R6 Graphics"
+  },
+  {
+    "id": "22b56a1b-e6b0-46ae-8150-300147cee03d",
+    "name": "7th Gen AMD Athlon X4 970"
+  },
+  {
+    "id": "b65fc2a6-834a-4f61-b1de-ba26f490767d",
+    "name": "A8-8600P with Radeon R6 Graphics"
+  },
+  {
+    "id": "369f96e0-107c-4f36-b9fa-1becd99d4e6e",
+    "name": "7th Gen AMD Athlon X4 950"
+  },
+  {
+    "id": "d16ded60-bd9c-4a03-bbaf-9820cf3f4fbf",
+    "name": "7th Gen AMD Athlon X4 940"
+  },
+  {
+    "id": "f4fb31e7-9b56-4bdd-b468-d8b099e76b1f",
+    "name": "880K with Near Silent Thermal Solution"
+  },
+  {
+    "id": "cd12e0e3-19d8-4366-a694-5ac812829803",
+    "name": "870K with Near Silent Thermal Solution"
+  },
+  {
+    "id": "5d251f12-de8a-40bb-a758-d3ed05526e7c",
+    "name": "A10-6800B with Radeon HD 8670D"
+  },
+  { "id": "7307b395-ab50-4523-ace3-3215c7374104", "name": "860K" },
+  {
+    "id": "f7bdadb0-9333-405d-8e46-1023b1226a00",
+    "name": "A10-6790B with Radeon HD 8670D"
+  },
+  {
+    "id": "f17fe609-5a48-4d62-9b3a-38cc5bc42ba6",
+    "name": "860K with Near Silent Thermal Solution"
+  },
+  {
+    "id": "9b149ba8-3207-4606-ba41-d0589bfe1ca1",
+    "name": "845 with Near Silent Thermal Solution"
+  },
+  {
+    "id": "50cb7b46-9b81-4540-94cf-ae7b62f6007d",
+    "name": "A8-6500B with Radeon HD 8570D"
+  },
+  { "id": "ac0c9c22-5e5f-42f8-bb7e-d806807df951", "name": "760K" },
+  { "id": "0075b932-b85c-44af-ba07-1578e67618c7", "name": "750" },
+  {
+    "id": "a40b3c11-10b9-4d2f-9a52-07019efc6a68",
+    "name": "A6-6420B with Radeon HD 8470D"
+  },
+  { "id": "0f60226c-07fd-4853-9a84-6571eb393efe", "name": "750K" },
+  { "id": "5fd5eee6-9cad-4d3d-8c4d-84a4d17dbd44", "name": "740" },
+  {
+    "id": "246b7d9f-094e-4a64-8b6e-cb923c1fd46b",
+    "name": "A6-6400B with Radeon HD 8470D"
+  },
+  { "id": "a5d1ed5a-316e-4e5a-aa41-fd309b5201d7", "name": "2800+" },
+  { "id": "3d7abf5f-fce8-46e1-abe9-1103cb32692b", "name": "X1150" },
+  { "id": "e6ef7255-ca7c-4232-9898-1386165692a2", "name": "6386 SE" },
+  { "id": "6934612c-7dcd-4575-a2b4-185c66e8fa20", "name": "6380" },
+  {
+    "id": "d7e82ef6-90a6-46ca-ae0c-d1a3ec38caed",
+    "name": "A10 PRO-7850B with Radeon R7 Graphics"
+  },
+  { "id": "74b7f591-1a19-44e5-b6c5-44022358c9d4", "name": "6378" },
+  {
+    "id": "02dfba04-3584-4ca6-b9d5-7af347926c88",
+    "name": "A10 PRO-7800B with Radeon R7 Graphics"
+  },
+  { "id": "a121ea74-0c7d-4d78-8d63-757f76d16c56", "name": "6376" },
+  {
+    "id": "a9c56e3b-986f-424d-857b-f2f966862e47",
+    "name": "A8 PRO-7600B with Radeon R7 Graphics"
+  },
+  { "id": "de383e11-068c-4d73-93cc-31712f2e8d99", "name": "6370P" },
+  {
+    "id": "840341c1-009b-4c23-8b34-6e63d5945908",
+    "name": "A6 PRO-7400B with Radeon R5 Graphics"
+  },
+  { "id": "ffb05c3f-6d8c-47d6-8305-f2950852e694", "name": "6366 HE" },
+  {
+    "id": "0c0eb4a5-b33f-4033-aed3-0e18091ccf74",
+    "name": "A4 PRO-7350B with Radeon R5 Graphics"
+  },
+  { "id": "065a20dc-5694-4638-92c8-b8b16da31309", "name": "6348" },
+  { "id": "956f2a68-5f06-48d5-a3a4-041c9e725708", "name": "6344" },
+  {
+    "id": "fcef09c2-e6e7-4f3e-8b3d-c6921d03e322",
+    "name": "A4 PRO-7300B with Radeon HD 8470D"
+  },
+  { "id": "bdaf67e7-47c9-4c90-b74f-1a6fee438e36", "name": "6338P" },
+  {
+    "id": "c095fa90-7f17-46ef-aa07-1dc19c243130",
+    "name": "A10 PRO-7350B with Radeon R6 Graphics"
+  },
+  {
+    "id": "86935c3d-60ff-4dfd-a11b-3521bb149a55",
+    "name": "A8 PRO-7150B with Radeon R5 Graphics"
+  },
+  { "id": "fb4ecd92-890e-46f1-81da-fbde79dbf3a5", "name": "6328" },
+  {
+    "id": "02e37de5-eca7-4f5c-a35d-fa89e6f2d29f",
+    "name": "A6 PRO-7050B with Radeon R4 Graphics"
+  },
+  { "id": "f3cb1a6a-0151-4c52-b1ab-22a3fd662dfe", "name": "6320" },
+  {
+    "id": "026b65d8-8530-4b9e-a30e-c1226334def4",
+    "name": "A4 PRO-3350B with Radeon R4 Graphics"
+  },
+  { "id": "866403da-c3bf-4a08-b9cb-26fcb99d402b", "name": "6308" },
+  {
+    "id": "20fef377-9b20-4cc9-9120-5b1131434ddd",
+    "name": "A4 PRO-3340B with Radeon HD 8240 Graphics"
+  },
+  { "id": "41bce639-8fe0-40bb-8fbb-14a9e23dc6cc", "name": "6284 SE" },
+  { "id": "c887e88f-a51e-4579-beee-d6da5c5848ce", "name": "AMD Athlon 3000G" },
+  { "id": "59dd183f-4e86-4368-acf4-c27ec54b7fd9", "name": "6282 SE" },
+  {
+    "id": "23496462-886f-447e-9dd4-3df5a04abf27",
+    "name": "FX-7600P with Radeon R7 Graphics"
+  },
+  { "id": "465ef754-7bcf-477a-a41c-7bde307429c8", "name": "AMD Athlon 240GE" },
+  { "id": "44d30ac8-75c3-444e-a99b-414b112e5f45", "name": "6278" },
+  {
+    "id": "274f9889-fe8e-45fa-9164-64ca26b340d7",
+    "name": "FX-7500 with Radeon R7 Graphics"
+  },
+  {
+    "id": "94080c3a-fb5e-4f07-9a83-51406b3767b5",
+    "name": "FX-8800P with Radeon R7 Graphics"
+  },
+  { "id": "b1b39276-979c-4b64-abcc-4d465c718851", "name": "6276" },
+  { "id": "b3e40054-dbb3-42bb-a593-03f99d656e17", "name": "AMD Athlon 220GE" },
+  { "id": "d8afcc8c-9bd2-4192-bff6-d3951db396e1", "name": "AMD Athlon 200GE" },
+  {
+    "id": "4d25e092-ea62-4289-a27d-7d5f3255abef",
+    "name": "Athlon 5370 APU with Radeon R3 Series"
+  },
+  { "id": "180a68ed-9f69-4a51-b048-0a9087b01542", "name": "6274" },
+  { "id": "b097473e-de53-40bd-a57d-13f0a91d1350", "name": "6272" },
+  {
+    "id": "ba4f30cf-a57b-4842-93dc-eb3ce26ececd",
+    "name": "Athlon 5350 APU with Radeon R3 Series"
+  },
+  {
+    "id": "f7aa3ceb-4be5-482a-9742-325d3b51cb83",
+    "name": "AMD Athlon PRO 200U Mobile Processor with Radeon Vega 3 Graphics"
+  },
+  { "id": "5befc36a-f12b-4375-8c25-d4f8981a05c2", "name": "6262 HE" },
+  {
+    "id": "f710cdff-5584-46ec-a840-809a10beb9da",
+    "name": "Athlon 5150 APU with Radeon R3 Series"
+  },
+  {
+    "id": "b5211c41-96ab-4bc6-a6c8-096bd7d22794",
+    "name": "AMD Athlon PRO 200GE"
+  },
+  { "id": "b6c512e2-34e9-434c-a2f5-64461c0fae00", "name": "6238" },
+  {
+    "id": "e870cedc-ac9d-4d62-9b39-b2d2fd9e8c05",
+    "name": "Sempron 3850 APU with Radeon R3 Series"
+  },
+  { "id": "8ae68940-c407-4eb9-b90f-55448f7aa315", "name": "6234" },
+  {
+    "id": "6647bcc8-ec50-44b6-a138-9800034ed38a",
+    "name": "Sempron 2650 APU with Radeon R3 Series"
+  },
+  { "id": "e9f19a3c-cd12-46f7-b4ef-17dc40f1bf9f", "name": "6220" },
+  {
+    "id": "26b2bdd0-8e18-4431-84f9-bda09ed59197",
+    "name": "E2-7110 with Radeon R2 Graphics"
+  },
+  {
+    "id": "e7daf4c1-b50d-4ee8-a869-bc7238fdd4fe",
+    "name": "E2-6110 with Radeon R2 Graphics"
+  },
+  { "id": "76d4c0fb-fb2f-4bf6-a45c-26d7ee87d7fa", "name": "6212" },
+  {
+    "id": "948fefe9-4f2c-4d60-bedc-e3628387b19b",
+    "name": "E2-3800 with Radeon HD 8280"
+  },
+  { "id": "13b770b0-8446-4bd3-825c-6e8c43e56e31", "name": "6204" },
+  {
+    "id": "335fcd8b-5a0c-4e59-b91f-d402066d40b8",
+    "name": "E2-3000 with Radeon HD 8280"
+  },
+  { "id": "9b9e0cb1-4a6c-4d15-a07d-2655847827d7", "name": "6180 SE" },
+  { "id": "278d3bc3-1a6c-44d5-bc0b-8b00dc6414d4", "name": "6176" },
+  { "id": "2f413c2a-a7bf-459e-aa23-1ebfc5bbc929", "name": "6166 HE" },
+  { "id": "a58f051e-fba4-423c-98a3-772da14321b9", "name": "6140" },
+  { "id": "b9ca0c71-c7f8-4749-b629-ba1887c0b7b5", "name": "6132 HE" },
+  { "id": "c796f1e4-7762-40e0-b3fa-917ce1a0e8d2", "name": "4386" },
+  { "id": "d53b6e64-2529-432b-8f11-631b69c097bb", "name": "4376 HE" },
+  { "id": "251c9cde-6c0e-4ecc-8420-56d34143adc5", "name": "4365" },
+  { "id": "11ffab4a-8eb3-4197-8f43-cdd718525e1a", "name": "4340" },
+  { "id": "768d5544-8162-403f-99c2-be37723f0346", "name": "4334" },
+  { "id": "ea016ece-b40d-4767-b288-ec42f955cc15", "name": "4332 HE" },
+  {
+    "id": "64e3675d-1a4f-4714-a986-d68e96cb4cd3",
+    "name": "E1-7010 with Radeon R2 Graphics"
+  },
+  {
+    "id": "46e1f76b-0389-4d2c-8a40-d61b9b3d0968",
+    "name": "E1 Micro-6200T with Radeon R2 Graphics"
+  },
+  { "id": "a8f2d760-b6fb-4ab1-b8d3-a4fc3b156a34", "name": "4310 EE" },
+  { "id": "09b2673e-74e0-448c-b449-3f81650f73d8", "name": "4284" },
+  {
+    "id": "1020d169-2e10-42e9-9e32-c142d629c776",
+    "name": "E1-6010 with Radeon R2 Graphics"
+  },
+  { "id": "6de96d44-a46d-497c-8d61-31d08122b509", "name": "4280" },
+  { "id": "7954b855-3805-42fb-917d-24c53f57d868", "name": "4276 HE" },
+  {
+    "id": "b9d7425b-dd34-4d09-9de3-8b8b4443f918",
+    "name": "E1-2500 with Radeon HD 8240"
+  },
+  { "id": "6cd93678-eb8a-4e89-8020-5683d6c8b085", "name": "4274 HE" },
+  {
+    "id": "7583afde-05ee-4d9d-8b58-99a3e954eaad",
+    "name": "E1-2200 with Radeon HD 8210"
+  },
+  { "id": "5b291ebe-1968-4954-9a84-f2bc5fa2bf44", "name": "4256 EE" },
+  {
+    "id": "f481fc05-c2dc-43ed-9bc3-ffa7896cab50",
+    "name": "E1-2100 with Radeon HD 8210"
+  },
+  { "id": "a16c8093-ccd6-4a7a-8053-3f9d90c0d898", "name": "4240" },
+  { "id": "0e7d3666-6689-4e96-8bf7-13942172cb2b", "name": "4238" },
+  { "id": "79e709a4-dee8-436b-9482-dc2575e97781", "name": "4234" },
+  { "id": "e6c9379b-b326-4772-8504-6798b5ac6c9d", "name": "4230 HE" },
+  { "id": "ec1e5a92-8070-4c90-8266-720c344aa0a8", "name": "4228 HE" },
+  { "id": "5d98cdcd-e78e-4f22-97f9-e67e0d51563e", "name": "4226" },
+  { "id": "c275351c-5bce-4c3f-956f-9713b87c6896", "name": "3380" },
+  { "id": "4c1ab414-db0d-41a2-bf22-12eba2dae433", "name": "3365" },
+  { "id": "1766028b-b494-4924-ae8d-118e0252a084", "name": "3350 HE" },
+  { "id": "78a865d0-fc1a-47bb-a198-2e1a18a93e5d", "name": "3320 EE" },
+  { "id": "62f35ed8-aed5-4949-b2cb-9e069b4b9b9a", "name": "3280" },
+  { "id": "ac13411e-3998-4ae3-b15d-d9ca03bbd0f9", "name": "3260 HE" },
+  { "id": "438d6ac9-83bb-4fad-a0b5-03a652b62f0e", "name": "AMD Opteron X2170" },
+  { "id": "21931f59-66cd-4912-b364-fe701c374f13", "name": "3250 HE" },
+  {
+    "id": "6c27d072-b547-40df-be87-6722ec7082ba",
+    "name": "AMD Opteron X2150 APU"
+  },
+  { "id": "8f0ddf93-2f2c-4619-8e73-a1a3545c8fe8", "name": "TL-64" },
+  { "id": "2bad122f-8a00-4d68-bdff-b4553a4df284", "name": "TL-60" },
+  { "id": "7ac3d68e-1691-44b3-ae32-0bc31e1011a5", "name": "TL-56" },
+  { "id": "23f5c517-1444-4fb6-90d7-0eff2d5a34c8", "name": "TL-52" },
+  { "id": "96c77c4b-3b3d-4b50-ac40-7de8f289cdad", "name": "Intel Atom C2338" },
+  {
+    "id": "2a58c6ec-5fce-4a3c-bd2a-376faba759c6",
+    "name": "Intel Atom Processor C Series"
+  },
+  { "id": "b96b2529-a301-4932-b672-f92a0d49861d", "name": "Intel Atom C2350" },
+  { "id": "994befd6-0759-4639-8534-ad5a7311a447", "name": "Intel Atom C2358" },
+  { "id": "ecd3041c-8bd1-4fce-bab7-ad98ecd7ec4e", "name": "Intel Atom C2518" },
+  {
+    "id": "8fc55b36-46a3-4fd2-a029-6350b8f87524",
+    "name": "Intel Core i7-8709G"
+  },
+  {
+    "id": "8affa853-b958-4996-ad05-e889ecf54107",
+    "name": "8th Generation Intel Core i7 Processors"
+  },
+  {
+    "id": "a8c6c12f-e4b2-4f4d-8194-440bc9ca7c6b",
+    "name": "Intel Core i7-6700"
+  },
+  {
+    "id": "025b9e15-5a37-4a3b-b4ff-5b48f494a6b3",
+    "name": "6th Generation Intel Core i7 Processors"
+  },
+  {
+    "id": "1b72a71d-babe-45ed-bab4-e7b44a44d777",
+    "name": "Intel Core i7-4720HQ"
+  },
+  {
+    "id": "ae80880c-a1e6-49fe-b1b4-3e1671fa4afe",
+    "name": "4th Generation Intel Core i7 Processors"
+  },
+  {
+    "id": "fe0bbd90-2c68-4682-bcbe-5027f631babb",
+    "name": "Intel Core i7-4722HQ"
+  },
+  {
+    "id": "12a10721-23f2-4edd-b720-de32e0c20f2f",
+    "name": "Intel Core i7-5550U"
+  },
+  {
+    "id": "2a3782d0-d1b4-4a03-a3f5-14af410008d5",
+    "name": "5th Generation Intel Core i7 Processors"
+  },
+  {
+    "id": "5ccda55d-57b7-4fb4-b0f2-b1e385371ce4",
+    "name": "Intel Core i7-5557U"
+  },
+  {
+    "id": "4cce958f-143e-46e3-8fd1-df225955fbf7",
+    "name": "Intel Core i7-5650U"
+  },
+  {
+    "id": "277d0b5a-b5f2-4a5e-913a-e9a36f7316cb",
+    "name": "Intel Core i7-5500U"
+  },
+  {
+    "id": "fcc14f94-8941-408c-82d0-e50e064d732a",
+    "name": "Intel Core i7-5600U"
+  },
+  {
+    "id": "8672ed4a-e57f-428d-9d47-2b8b8e31b431",
+    "name": "Intel Core i7-5850EQ"
+  },
+  {
+    "id": "67d4dbeb-c031-4865-a79c-857e60a0896b",
+    "name": "Intel Core i7-4810MQ"
+  },
+  {
+    "id": "356e499c-5f48-41f8-a6f1-cc2f878ec87e",
+    "name": "Intel Core i7-4702MQ"
+  },
+  {
+    "id": "bc3bc5fd-8144-43f5-9e99-548850144f55",
+    "name": "Intel Core i7-4765T"
+  },
+  {
+    "id": "5eb89fc1-5154-4998-a6c2-89175fe8b268",
+    "name": "Intel Core i7-4770"
+  },
+  {
+    "id": "d5cd15cf-56c3-44e9-b957-786a37af13e8",
+    "name": "Intel Core i7-4770K"
+  },
+  {
+    "id": "2fe87678-ddac-4ee2-81cd-58b26f7d380f",
+    "name": "Intel Core i7-4770S"
+  },
+  {
+    "id": "7974fee2-8826-4a65-8706-93afa4c9d07d",
+    "name": "Intel Core i7-4770T"
+  },
+  {
+    "id": "bf6af14d-34ea-4ab4-9205-6c7939aff3de",
+    "name": "Intel Core i7-4700MQ"
+  },
+  {
+    "id": "81ac6025-a91a-458b-b2e4-49de8b553928",
+    "name": "Intel Core i7-4900MQ"
+  },
+  {
+    "id": "761b8662-83d3-4240-b084-a74cb4b28822",
+    "name": "Intel Core i7-4700HQ"
+  },
+  {
+    "id": "0fcdc00c-146e-41fb-a068-3a9dbc2968eb",
+    "name": "Intel Core i7-4702HQ"
+  },
+  {
+    "id": "f18d237c-1de1-4487-93d9-fb90d5d6f1eb",
+    "name": "Intel Core i5-4250U"
+  },
+  {
+    "id": "0fd12751-c992-4234-8212-60ff7db38c69",
+    "name": "4th Generation Intel Core i5 Processors"
+  },
+  {
+    "id": "622f41bf-7587-4b57-836a-5fd7d64a69b4",
+    "name": "Intel Core i5-4288U"
+  },
+  {
+    "id": "1c1ce87a-d55d-4510-a5ad-bf797a927ff0",
+    "name": "Intel Core i5-4570R"
+  },
+  {
+    "id": "8c6cd1d1-c76f-400c-8c75-4b92197f73d5",
+    "name": "Intel Core i5-4670R"
+  },
+  {
+    "id": "890c5e42-a896-4672-b020-4cbff79137bb",
+    "name": "Intel Core i5-4210Y"
+  },
+  {
+    "id": "55548b8b-6dbc-4ae1-8f5e-938978a6b388",
+    "name": "Intel Core i5-4430"
+  },
+  {
+    "id": "190f7f56-8237-4351-a077-4076c3ec3a40",
+    "name": "Intel Core i5-4570TE"
+  },
+  {
+    "id": "271d6515-ea3d-485c-b89d-37d88aebfcc1",
+    "name": "Intel Core i5-4670T"
+  },
+  {
+    "id": "523f9ad8-d4ff-472b-b899-54ef32b2a4c9",
+    "name": "Intel Core i5-4430S"
+  },
+  {
+    "id": "9d7f26da-0cbd-49c5-b706-e7f3bba04f76",
+    "name": "Intel Core i5-4670S"
+  },
+  {
+    "id": "7f1f433d-cfe2-4826-833c-e9a1f85a1ec3",
+    "name": "Intel Core i5-4670K"
+  },
+  {
+    "id": "b3e3da0d-3af6-4cd5-ba2e-88d96864af63",
+    "name": "Intel Core i5-4570"
+  },
+  {
+    "id": "99aa886b-2e5c-4739-adee-be76935d118e",
+    "name": "Intel Core i5-4570S"
+  },
+  {
+    "id": "2efa8e1c-ce4f-4afa-893f-d1525097c8fc",
+    "name": "Intel Core i5-4570T"
+  },
+  {
+    "id": "8beaeccf-2cf8-43de-b257-aa0fdfb0b2fa",
+    "name": "Intel Core i5-4670"
+  },
+  {
+    "id": "16cce4b6-0ddd-42fa-92bd-9853bf76faf4",
+    "name": "Intel Core i5-4258U"
+  },
+  {
+    "id": "f86d1c01-cd39-4409-bbd6-e9b1c6b9f19e",
+    "name": "Intel Core i5-4200Y"
+  },
+  {
+    "id": "6a234fc5-d6c9-4919-a468-8e5a57d85812",
+    "name": "Intel Core i5-4200U"
+  },
+  {
+    "id": "5faa64be-308b-4145-a142-329086bb5f8c",
+    "name": "Intel Core i5-4350U"
+  },
+  {
+    "id": "6e07b302-8099-460a-a079-978e9f091d5d",
+    "name": "Intel Core i5-4200M"
+  },
+  {
+    "id": "931c84fc-7a66-4f9d-99aa-788ad504334b",
+    "name": "Intel Core i5-4300Y"
+  },
+  {
+    "id": "a36854ea-cb2e-4066-82af-86e8e5fd2b0b",
+    "name": "Intel Core i5-4302Y"
+  },
+  {
+    "id": "2f975f55-1f49-43b9-86ac-da5cc22f2e9d",
+    "name": "Intel Core i5-4330M"
+  },
+  {
+    "id": "4236e383-7235-4f1c-bbcd-0183538afd99",
+    "name": "Intel Core i5-4202Y"
+  },
+  {
+    "id": "cf1d8c52-c38e-4ba1-b3cb-26771c250270",
+    "name": "Intel Core i5-4300M"
+  },
+  {
+    "id": "bdb47e45-a588-4afb-a6c7-4f639b0b6111",
+    "name": "Intel Core i5-4300U"
+  },
+  {
+    "id": "b37dfccf-9166-4807-964b-4738c0288c0f",
+    "name": "Intel Core i5-4402E"
+  },
+  {
+    "id": "24974f67-39b9-4980-b1b8-17fe89df56fd",
+    "name": "Intel Core i5-4440S"
+  },
+  {
+    "id": "2db58b9a-7d29-49ed-b366-6fb560fd1394",
+    "name": "Intel Core i5-4440"
+  },
+  {
+    "id": "e69c3ff7-d583-4e42-9178-d1ba04771188",
+    "name": "Intel Core i5-4200H"
+  },
+  {
+    "id": "2bc69e94-18ae-4693-9dc2-46c97698389d",
+    "name": "Intel Core i5-4360U"
+  },
+  {
+    "id": "5819c770-fab4-426c-b031-6286fefaf222",
+    "name": "Intel Core i5-4310M"
+  },
+  {
+    "id": "9ae896df-92ec-499e-b8ed-9d2e1e730515",
+    "name": "Intel Core i7-4800MQ"
+  },
+  {
+    "id": "f20728a4-2303-42ca-9a8e-57056c1c06e7",
+    "name": "Intel Core i7-4700EQ"
+  },
+  {
+    "id": "a5b96622-5e1f-4c9e-b625-c5329eca0144",
+    "name": "Intel Core i7-4770TE"
+  },
+  {
+    "id": "9397ff55-536d-46d5-be7e-a3a0da2a1d58",
+    "name": "Intel Core i7-4500U"
+  },
+  {
+    "id": "e823b191-2960-4556-9bdd-becdaa60be3c",
+    "name": "Intel Core i5-4310U"
+  },
+  {
+    "id": "28dcd9d4-2261-4665-bebe-fb4482b239dd",
+    "name": "Intel Core i5-4340M"
+  },
+  {
+    "id": "15c2c168-9d73-4855-bc95-1ed92356d23c",
+    "name": "Intel Core i5-4402EC"
+  },
+  {
+    "id": "192dbd08-4608-4757-9d46-f36006908dc5",
+    "name": "Intel Core i5-4260U"
+  },
+  {
+    "id": "72c2f38a-c36d-4b4c-a619-ea4e781e944d",
+    "name": "Intel Core i5-4410E"
+  },
+  {
+    "id": "4f05fe7d-842b-4406-8117-01c4064e82c8",
+    "name": "Intel Core i5-4422E"
+  },
+  {
+    "id": "48df1788-d8a1-400c-aa9d-37cf38efaa0b",
+    "name": "Intel Core i5-4210M"
+  },
+  {
+    "id": "15e2e983-19d0-41b5-af65-8b258cc8973b",
+    "name": "Intel Core i5-4210U"
+  },
+  {
+    "id": "8cd53752-9b69-4fbf-ae6d-383e5b46f7b4",
+    "name": "Intel Core i5-4220Y"
+  },
+  {
+    "id": "814a0d8e-741c-4916-a18b-63cf85cd6557",
+    "name": "Intel Core i5-4460T"
+  },
+  {
+    "id": "f4f97d02-e779-45bd-a1b4-0a852fa4474e",
+    "name": "Intel Core i5-4590T"
+  },
+  {
+    "id": "2699a079-f8ef-4ce7-9cc6-0c92efd1290a",
+    "name": "Intel Core i5-4690T"
+  },
+  {
+    "id": "2b89c7a0-e762-4f5e-a98b-2a035a0fa8b8",
+    "name": "Intel Core i5-4590"
+  },
+  {
+    "id": "57a8882d-8b08-4924-ba69-3978ab48a201",
+    "name": "Intel Core i5-4590S"
+  },
+  {
+    "id": "0b282e5e-4c5e-45b3-bf2f-ead4488030b2",
+    "name": "Intel Core i5-4460"
+  },
+  {
+    "id": "d30b72bc-8da5-4b72-9040-6b1a9a7d7c1e",
+    "name": "Intel Core i5-4460S"
+  },
+  {
+    "id": "452de1e5-07bb-43de-8361-05e23103071b",
+    "name": "Intel Core i5-4690S"
+  },
+  {
+    "id": "ea2a7ae9-0b9f-4497-8438-1c19925a3b4f",
+    "name": "Intel Core i5-4690K"
+  },
+  {
+    "id": "2c134379-6b93-4e83-8a7b-889667dbb4bd",
+    "name": "Intel Core i7-4558U"
+  },
+  {
+    "id": "0d91d0f1-38ef-4228-ae0e-da2b9d9a1b95",
+    "name": "Intel Core i7-4650U"
+  },
+  {
+    "id": "283bf9fb-20f4-446d-a66b-d635da8858ee",
+    "name": "Intel Core i7-4550U"
+  },
+  {
+    "id": "a624be86-6b87-45c6-baf7-0a03254b1a9f",
+    "name": "Intel Core i7-4770R"
+  },
+  {
+    "id": "b7bde056-51aa-44d9-b072-e55c4fc8e359",
+    "name": "Intel Core i7-4950HQ"
+  },
+  {
+    "id": "9ab233e4-5d72-4296-b46e-edbffa432a21",
+    "name": "Intel Core i7-4850HQ"
+  },
+  {
+    "id": "4abb6a03-e39b-4516-a615-88ea8430b6b3",
+    "name": "Intel Core i7-4750HQ"
+  },
+  {
+    "id": "2f423dd5-5c26-4649-90a8-3bea8ad79d20",
+    "name": "Intel Core i7-4850EQ"
+  },
+  {
+    "id": "22b867f9-c336-466f-9ff0-c9dc9279dea4",
+    "name": "Intel Core i7-4860EQ"
+  },
+  {
+    "id": "15a1c6bd-20ba-4a4c-a647-6bc903a24a48",
+    "name": "Intel Core i7-4610Y"
+  },
+  {
+    "id": "4f7245a1-7af2-48c7-bfa5-f612e9b0163a",
+    "name": "Intel Core i7-4600U"
+  },
+  {
+    "id": "e4109d09-bd71-4521-a8c5-02e504cbff05",
+    "name": "Intel Core i7-4600M"
+  },
+  {
+    "id": "64f94f94-8df0-469b-b55f-a38cd72f1d29",
+    "name": "Intel Core i7-4771"
+  },
+  {
+    "id": "61354168-18ee-4362-b96c-ca9b2d22b228",
+    "name": "Intel Core i7-4960HQ"
+  },
+  {
+    "id": "5b3cced8-21f7-408a-bf0c-77365d11bcb9",
+    "name": "Intel Core i7-4701EQ"
+  },
+  {
+    "id": "3a9f351e-396c-47e2-8fbe-ccd66ec8242c",
+    "name": "Intel Core i7-4610M"
+  },
+  {
+    "id": "79c17139-8997-41da-bb89-c314dd842116",
+    "name": "Intel Core i5"
+  },
+  {
+    "id": "fdca162c-0468-4443-be6a-bc0642d8aef1",
+    "name": "Intel Core i5-4210H"
+  },
+  {
+    "id": "1deca5c2-01f0-4b92-ac86-92bf6d80361e",
+    "name": "Intel Core i5-4278U"
+  },
+  {
+    "id": "99646cf8-5ff8-4dd9-a953-fb7bde8297f2",
+    "name": "Intel Core i5-4308U"
+  },
+  {
+    "id": "fa0b2353-2123-410c-a474-7bcad190ac67",
+    "name": "Intel Core i5-5300U"
+  },
+  {
+    "id": "07f538ef-f663-4877-8c80-f3b3e550da9e",
+    "name": "5th Generation Intel Core i5 Processors"
+  },
+  {
+    "id": "7005d988-ca16-4a3b-90b2-80d2d6e215f7",
+    "name": "Intel Core i5-5200U"
+  },
+  {
+    "id": "3782d474-e043-4272-bfae-09ead45e954b",
+    "name": "Intel Core i5-5350U"
+  },
+  {
+    "id": "d0a38547-dbd7-42c6-8606-ccbac5f97c67",
+    "name": "Intel Core i5-5287U"
+  },
+  {
+    "id": "077e594e-b4c0-41b4-8a05-36eb085418df",
+    "name": "Intel Core i5-5250U"
+  },
+  {
+    "id": "5fd1e753-6614-43f4-a479-d0b842b3c1e3",
+    "name": "Intel Core i5-5257U"
+  },
+  {
+    "id": "898b1da7-a4d0-43bd-97e0-3efa172cfcb0",
+    "name": "Intel Core i5-5350H"
+  },
+  {
+    "id": "c1a1ea9e-60fe-4137-a92f-f8f70d8b7c15",
+    "name": "Intel Core i5-5575R"
+  },
+  {
+    "id": "6005c876-d666-4aae-bf08-2991d55a36da",
+    "name": "Intel Core i5-5675R"
+  },
+  {
+    "id": "142ed847-5e61-4800-9368-aeba4013a777",
+    "name": "Intel Xeon Gold 6135"
+  },
+  {
+    "id": "53a92fad-1e96-4bb5-b3c3-8ef30cc8826c",
+    "name": "Intel Xeon Scalable Processors"
+  },
+  {
+    "id": "32fb78d4-23f4-4c40-a023-51c44bf53fd2",
+    "name": "Intel Xeon Gold 6137"
+  },
+  {
+    "id": "9db76818-c79c-4b4c-a39d-054f1cae7e71",
+    "name": "Intel Xeon Gold 6143"
+  },
+  {
+    "id": "1a3239fb-83df-443a-85b5-37f6347bb989",
+    "name": "Intel Xeon Gold 5117"
+  },
+  {
+    "id": "42c53a2a-26d4-4531-99fa-779ffe794d42",
+    "name": "Intel Xeon Gold 6132"
+  },
+  {
+    "id": "e9c5a0e6-eea3-494d-9ca3-f0d6753ad001",
+    "name": "Intel Xeon Gold 6138T"
+  },
+  {
+    "id": "a581fb71-0cd8-43fc-b955-41367904d623",
+    "name": "Intel Xeon Gold 6130T"
+  },
+  {
+    "id": "b8a98614-8d7d-487d-992f-a3570f9ad22b",
+    "name": "Intel Xeon Gold 6126T"
+  },
+  {
+    "id": "b2039544-e4ab-4e28-ba89-1fc136409309",
+    "name": "Intel Xeon Gold 6142F"
+  },
+  {
+    "id": "80f3d184-964e-489e-9b2e-1691e2692783",
+    "name": "Intel Xeon Gold 6138F"
+  },
+  {
+    "id": "82ca55a3-7698-411e-a8bf-9a6e9f0b3456",
+    "name": "Intel Core i7-4910MQ"
+  },
+  {
+    "id": "cba4d8ee-dfc1-4559-9443-b7cb3f7af0f9",
+    "name": "Intel Core i7-4860HQ"
+  },
+  {
+    "id": "2db7a3ae-1a19-4da9-b80d-0eff9bec0175",
+    "name": "Intel Core i7-4702EC"
+  },
+  {
+    "id": "030e4563-3d07-4f2a-94a5-55650713b968",
+    "name": "Intel Core i7-4700EC"
+  },
+  {
+    "id": "ca999fce-fb11-4540-9232-32b422026ed3",
+    "name": "Intel Core i7-4710HQ"
+  },
+  {
+    "id": "029ae45c-f568-4d21-867c-1a4606f98e29",
+    "name": "Intel Core i7-4710MQ"
+  },
+  {
+    "id": "ea4aa962-3449-4425-a124-e0a191b991dc",
+    "name": "Intel Core i7-4712HQ"
+  },
+  {
+    "id": "c1b6b4ac-1127-420d-9bf3-49ff16727a67",
+    "name": "Intel Core i7-4712MQ"
+  },
+  {
+    "id": "245ad448-398b-4e88-b037-cb89dca1ac06",
+    "name": "Intel Core i7-4760HQ"
+  },
+  {
+    "id": "48204224-3a60-47e6-8709-1936c58cc043",
+    "name": "Intel Core i7-4510U"
+  },
+  {
+    "id": "ef0e12a3-164b-4a76-b123-206f86e41329",
+    "name": "Intel Core i7-4790"
+  },
+  {
+    "id": "ed5bc705-cc47-45a5-a545-3f806e8a9b8a",
+    "name": "Intel Core i7-4790S"
+  },
+  {
+    "id": "69f1e750-9686-4ad3-8882-2b48b7e08df0",
+    "name": "Intel Core i7-4790T"
+  },
+  {
+    "id": "fe2062ab-56f6-40ea-b4a2-33d7fd0af24c",
+    "name": "Intel Core i7-4785T"
+  },
+  {
+    "id": "8babfeb2-59df-48a1-b8e0-3bb9e5e62eee",
+    "name": "Intel Core i7-4790K"
+  },
+  {
+    "id": "075c10bc-9cb4-4b8d-8617-407afe6b63de",
+    "name": "Intel Core i7-4870HQ"
+  },
+  {
+    "id": "4dc4a9a9-0c63-443b-93e3-6631db7e76c4",
+    "name": "Intel Core i7-4578U"
+  },
+  {
+    "id": "ec14b6a7-38bd-47e7-90ec-464304e38df6",
+    "name": "Intel Core i7-4770HQ"
+  },
+  {
+    "id": "b3a0f0c1-f89c-4ef9-b9a0-4f60d5ca6d1a",
+    "name": "Intel Core i7-4980HQ"
+  },
+  {
+    "id": "866af766-f86e-4b02-ae83-a6089c6fa71f",
+    "name": "Intel Core i5-5675C"
+  },
+  {
+    "id": "99ba3a95-3bf4-4e56-8366-5c3c3782f528",
+    "name": "Intel Core i5-6600K"
+  },
+  {
+    "id": "95700637-1aff-46a9-a001-fefa9812e356",
+    "name": "6th Generation Intel Core i5 Processors"
+  },
+  {
+    "id": "f82e7a8b-e934-485e-a8ed-2ac2b712a128",
+    "name": "Intel Core i5-6600"
+  },
+  {
+    "id": "46edb5bd-edeb-487c-9a13-358ac9de06e3",
+    "name": "Intel Core i5-6400T"
+  },
+  {
+    "id": "96538561-db62-4a08-8330-b6995a73941a",
+    "name": "Intel Core i5-6400"
+  },
+  {
+    "id": "7fe6991f-ef08-438b-914b-cac60e2d4214",
+    "name": "Intel Core i5-6500T"
+  },
+  {
+    "id": "68cda4ac-7702-4522-a23a-563b6bbbb974",
+    "name": "Intel Core i5-6600T"
+  },
+  {
+    "id": "ef6df06f-8a0f-41ae-845a-832081e6cecf",
+    "name": "Intel Core i5-6500"
+  },
+  {
+    "id": "61bb5872-edac-4184-8287-eb44d61e4ceb",
+    "name": "Intel Core i5-6267U"
+  },
+  {
+    "id": "b76412f6-4443-4101-9363-4b17d9d25997",
+    "name": "Intel Core i5-6260U"
+  },
+  {
+    "id": "f04ffa1f-eca5-4f72-934f-c2ca951b01a5",
+    "name": "Intel Core i5-6360U"
+  },
+  {
+    "id": "a920229b-6a15-40f5-93b3-2d13cfc38bae",
+    "name": "Intel Core i5-6440HQ"
+  },
+  {
+    "id": "aa7cdad4-f7af-4d02-b831-24bca4e8e2a7",
+    "name": "Intel Core i5-6300HQ"
+  },
+  {
+    "id": "d44f05c2-ee2a-487e-bd4b-e675c1cf2cbf",
+    "name": "Intel Core i5-6300U"
+  },
+  {
+    "id": "7779441c-161b-4ec6-84e0-cf93976ecf2e",
+    "name": "Intel Core i5-6200U"
+  },
+  {
+    "id": "7d968f94-42be-4523-9e7e-51a3533ac4b4",
+    "name": "Intel Core i5-6287U"
+  },
+  {
+    "id": "db36bae7-24f0-43b7-b17a-2c0ccf4aa412",
+    "name": "Intel Core i5-6440EQ"
+  },
+  {
+    "id": "35632e4a-1fd9-4ea1-be2b-4480fb73268d",
+    "name": "Intel Core i5-6442EQ"
+  },
+  {
+    "id": "26febcc2-d38e-4efb-b9bc-0fb2812ab4df",
+    "name": "Intel Core i5-6500TE"
+  },
+  {
+    "id": "8d591a68-91bb-4f20-abda-d3391fcfbe36",
+    "name": "Intel Xeon Gold 6130F"
+  },
+  {
+    "id": "f2f91461-b791-4099-996d-6b90a16aa985",
+    "name": "Intel Xeon Gold 6154"
+  },
+  {
+    "id": "14dac0ee-c165-47fa-9ef1-0fe12101d123",
+    "name": "Intel Xeon Gold 6148F"
+  },
+  {
+    "id": "58e1b939-7732-48b1-a0c5-552931affc68",
+    "name": "Intel Xeon Gold 6146"
+  },
+  {
+    "id": "b4b8e8f7-777f-4946-998b-d95a07860a61",
+    "name": "Intel Xeon Gold 6144"
+  },
+  {
+    "id": "d2683e3d-8420-4c54-996d-8928cdc64d7c",
+    "name": "Intel Xeon Gold 5117F"
+  },
+  {
+    "id": "4fb4346d-5c24-4c67-baec-eec545899d3b",
+    "name": "Intel Xeon Gold 5119T"
+  },
+  {
+    "id": "5134c78c-3404-4afc-92cc-bce4f1d02bb7",
+    "name": "Intel Xeon Gold 6126F"
+  },
+  {
+    "id": "86b7c970-ce84-42c6-903f-458270b2ad3a",
+    "name": "Intel Xeon Gold 5120"
+  },
+  {
+    "id": "729e9e9f-b95d-4ead-ad1e-507122e58a7c",
+    "name": "Intel Xeon Gold 5118"
+  },
+  {
+    "id": "a59afd94-e6bd-4218-b2cc-5328d60dfb66",
+    "name": "Intel Xeon Gold 5122"
+  },
+  {
+    "id": "54b29c49-e937-4813-8371-8aca789b7932",
+    "name": "Intel Xeon Gold 6138"
+  },
+  {
+    "id": "cd791b6f-c323-4983-883d-9eb3aaff8b2e",
+    "name": "Intel Xeon Gold 5120T"
+  },
+  {
+    "id": "2df6541f-8d03-48cc-8f5f-fb34663a454f",
+    "name": "Intel Xeon Gold 6136"
+  },
+  {
+    "id": "fe51dbf1-33c7-437b-836e-40f69fb2cf47",
+    "name": "Intel Xeon Gold 6128"
+  },
+  {
+    "id": "333365fb-0c71-45f9-80f1-94e1d385b6b5",
+    "name": "Intel Xeon Gold 6126"
+  },
+  {
+    "id": "02a37872-1fbf-42e9-9036-e1d104a55f74",
+    "name": "Intel Xeon Gold 6140"
+  },
+  {
+    "id": "b5aa83e5-ae0e-46f7-a055-5ad9d48667eb",
+    "name": "Intel Xeon Gold 6140M"
+  },
+  {
+    "id": "10192162-fb21-4f39-8936-475db3c9129c",
+    "name": "Intel Core i7-5700EQ"
+  },
+  {
+    "id": "1df3d797-b249-48ff-839a-30a6410ac924",
+    "name": "Intel Core i7-5775C"
+  },
+  {
+    "id": "57d55444-5b35-4d3e-8d2b-3bc5ba37327c",
+    "name": "Intel Core i7-5850HQ"
+  },
+  {
+    "id": "9b5892a6-7c58-4811-8b7f-d785d4261b96",
+    "name": "Intel Core i7-5775R"
+  },
+  {
+    "id": "ba260efd-41c7-4f02-8982-05c86f0ffdfb",
+    "name": "Intel Core i7-5750HQ"
+  },
+  {
+    "id": "63c5262c-75a3-48c3-9b85-f08ca9e6dbde",
+    "name": "Intel Core i7-5700HQ"
+  },
+  {
+    "id": "bb75cb61-76fc-456f-a134-fa64b805b65b",
+    "name": "Intel Core i7-5950HQ"
+  },
+  {
+    "id": "7db17583-3b7f-4862-8a6a-d49360428ad5",
+    "name": "Intel Core i7-6567U"
+  },
+  {
+    "id": "fd92f5ef-02ca-46dd-a34a-8c8c516bb888",
+    "name": "Intel Core i7-6700K"
+  },
+  {
+    "id": "007bfc3d-8fd0-4de4-b38a-de6927776715",
+    "name": "Intel Celeron J1850"
+  },
+  {
+    "id": "3cb1f297-0bb0-4a63-ad98-737ce5cb1aeb",
+    "name": "Intel Celeron Processor J Series"
+  },
+  {
+    "id": "abdfa8da-ec22-4f0a-82a0-588b00c5d884",
+    "name": "Intel Celeron J1750"
+  },
+  {
+    "id": "1d372fb5-7d8d-479f-88f7-81998740ae54",
+    "name": "Intel Celeron J1900"
+  },
+  {
+    "id": "831d8eb5-6b8f-4b1b-9998-906bd835b75e",
+    "name": "Intel Celeron J1800"
+  },
+  {
+    "id": "94889d18-8424-4be6-a8e1-ec1bc00c0278",
+    "name": "Intel Celeron J3160"
+  },
+  {
+    "id": "6c313f29-cb45-48ce-b2e2-b73b90ae2569",
+    "name": "Intel Celeron J3060"
+  },
+  {
+    "id": "c26c238f-445d-4cf4-94de-848c51e0f27a",
+    "name": "Intel Celeron J3355"
+  },
+  {
+    "id": "ef5cd3d4-7156-4753-aaa9-23b40c4d4aa7",
+    "name": "Intel Celeron J3455"
+  },
+  {
+    "id": "7be712be-0f5e-4210-8535-424e97bc8fd8",
+    "name": "Intel Celeron J4105"
+  },
+  {
+    "id": "52c2502d-f4de-49da-890d-fb52b6610973",
+    "name": "Intel Core i5-6402P"
+  },
+  {
+    "id": "743a7df1-9cd2-43fe-9c13-786fe6821e0a",
+    "name": "Intel Core i5-6198DU"
+  },
+  {
+    "id": "3484973f-5936-4678-9021-1de53de97a11",
+    "name": "Intel Core i5-6350HQ"
+  },
+  {
+    "id": "061b0dd5-eda5-4913-ab96-91bc8c7ce771",
+    "name": "Intel Core i5-6585R"
+  },
+  {
+    "id": "999556d5-a3ad-4bea-9547-e2fb9c6e4786",
+    "name": "Intel Core i5-6685R"
+  },
+  {
+    "id": "a9f0f730-b28f-416c-9b9e-2ce8bc529273",
+    "name": "Intel Core i5-7200U"
+  },
+  {
+    "id": "9bd630aa-8840-4ce3-b944-0e53d6eab8be",
+    "name": "7th Generation Intel Core i5 Processors"
+  },
+  {
+    "id": "6dfa30e1-d1ca-4322-b2b2-72d0bb9048a9",
+    "name": "Intel Core i5-7Y54"
+  },
+  {
+    "id": "e5cdc4fe-38bf-4331-9cb8-ccd0b3404ba8",
+    "name": "Intel Core i5-7360U"
+  },
+  {
+    "id": "645c93e8-b561-4e40-923c-7092935429c4",
+    "name": "Intel Core i5-7442EQ"
+  },
+  {
+    "id": "9617568d-7ed6-4565-bc5f-18f6490eaf01",
+    "name": "Intel Core i5-7287U"
+  },
+  {
+    "id": "3ef53f58-66fa-4bd7-9021-ec55d27fde5e",
+    "name": "Intel Core i5-7267U"
+  },
+  {
+    "id": "8d018aa0-6281-459c-b14f-05811481227f",
+    "name": "Intel Core i5-7440EQ"
+  },
+  {
+    "id": "8cf1167f-e12a-41ca-a8e6-afe654de945a",
+    "name": "Intel Core i5-7300U"
+  },
+  {
+    "id": "f08d64f4-59b8-4bdb-b7eb-fe1adf28c0d2",
+    "name": "Intel Core i5-7Y57"
+  },
+  {
+    "id": "f5213668-e37a-43cd-b38c-4dd8ef634b05",
+    "name": "Intel Core i5-7260U"
+  },
+  {
+    "id": "d4a779fd-9241-47d4-b864-8c18e5b04b70",
+    "name": "Intel Core i5-7300HQ"
+  },
+  {
+    "id": "7ac8c425-b271-41d5-a49e-1b9369e5d3a4",
+    "name": "Intel Core i5-7400T"
+  },
+  {
+    "id": "31c9e957-521f-4f60-82cc-ecffc594eccf",
+    "name": "Intel Core i5-7600T"
+  },
+  {
+    "id": "d07bf109-9102-4e1f-a7e6-c65587a781d9",
+    "name": "Intel Core i5-7600"
+  },
+  {
+    "id": "ef83bfc3-4599-4e07-997e-58d12a096794",
+    "name": "Intel Xeon Gold 6142"
+  },
+  {
+    "id": "ca9ee79b-d96a-40f7-872e-837b96601b6f",
+    "name": "Intel Xeon Gold 6142M"
+  },
+  {
+    "id": "b90798ed-c03f-4115-8b5c-9cd2367fe5f1",
+    "name": "Intel Xeon Gold 6148"
+  },
+  {
+    "id": "34a1ad9b-de88-41ae-8999-64f8664c6c8c",
+    "name": "Intel Xeon Gold 6150"
+  },
+  {
+    "id": "5eb964aa-1f58-43f8-80a3-9339fb42112e",
+    "name": "Intel Xeon Gold 6152"
+  },
+  {
+    "id": "2a82c15e-b1a8-4070-99b0-fdf31e25aa09",
+    "name": "Intel Xeon Gold 6130"
+  },
+  {
+    "id": "4e6d10ff-9ea9-4708-8f83-bd5c39a03b74",
+    "name": "Intel Xeon Gold 6134"
+  },
+  {
+    "id": "621702e8-d479-4546-8e58-e92e22dc7f6c",
+    "name": "Intel Xeon Gold 6134M"
+  },
+  {
+    "id": "b6a56b96-385a-4329-867b-2b8c8d99f815",
+    "name": "Intel Xeon Gold 5115"
+  },
+  {
+    "id": "34eac4e3-0c2a-470a-a181-6d4b1d478905",
+    "name": "Intel Xeon Gold 6122"
+  },
+  {
+    "id": "ca109a38-c4b7-4dc0-a616-d9268e1c98f9",
+    "name": "Intel Xeon Gold 6129"
+  },
+  {
+    "id": "d6a2eb5a-cf0a-4ac2-8cf9-c60832b747bb",
+    "name": "Intel Xeon Gold 6138P"
+  },
+  {
+    "id": "73ec72dd-3c5a-4cd6-a4dc-7619771e8a33",
+    "name": "Intel Xeon Gold 6162"
+  },
+  {
+    "id": "619e754c-07d3-4fff-a44c-c2ff25cfc6eb",
+    "name": "Intel Xeon Gold 6130H"
+  },
+  {
+    "id": "8ad4db11-dc1d-4d46-b24e-f517eccc2932",
+    "name": "Intel Xeon Gold 5219Y"
+  },
+  {
+    "id": "f6736a62-c9ce-4232-a7d9-7699a8de0f05",
+    "name": "2nd Generation Intel Xeon Scalable Processors"
+  },
+  {
+    "id": "b31058e7-6174-4cdc-9217-4ad7f0f4f060",
+    "name": "Intel Xeon Gold 6212U"
+  },
+  {
+    "id": "74d5894e-32eb-47fa-a695-f45cc085193c",
+    "name": "Intel Xeon Gold 6210U"
+  },
+  {
+    "id": "54abf077-d635-4f42-aa75-9688e3ee0136",
+    "name": "Intel Xeon Gold 6254"
+  },
+  {
+    "id": "30f39934-2603-490f-957e-4000212bbd91",
+    "name": "Intel Xeon Gold 6230N"
+  },
+  {
+    "id": "ea2ae01f-f799-4194-beb7-f408bc3ef1bc",
+    "name": "Intel Core i3-4010U"
+  },
+  {
+    "id": "cc938b27-1fd2-4c82-9faa-42d8e9a87fd8",
+    "name": "4th Generation Intel Core i3 Processors"
+  },
+  {
+    "id": "6dcd5324-0745-4f09-8cd2-391a27cbe1f9",
+    "name": "Intel Core i3-4100U"
+  },
+  {
+    "id": "d8621ac1-1ae4-44a7-8553-f4c3611ec825",
+    "name": "Intel Core i3-4010Y"
+  },
+  {
+    "id": "5568a7fd-2a19-4ada-9353-49ab7613aae4",
+    "name": "Intel Core i3-4158U"
+  },
+  {
+    "id": "ebe83098-b900-46e8-8b38-fc03639a2c0a",
+    "name": "Intel Core i3-4330TE"
+  },
+  {
+    "id": "086f0e48-2672-40f4-a5e6-5c727bf62c10",
+    "name": "Intel Core i3-4340"
+  },
+  {
+    "id": "1b489487-46e6-4dd9-9126-2da60b35a417",
+    "name": "Intel Core i3-4330T"
+  },
+  {
+    "id": "666d1252-780d-4c36-be15-2848669c0d1e",
+    "name": "Intel Core i3-4330"
+  },
+  {
+    "id": "14eead7d-6ba7-49cd-88ac-171ce9ddb3b0",
+    "name": "Intel Core i7-6700T"
+  },
+  {
+    "id": "5a13ba39-a1b9-4071-b034-dd093e7cd401",
+    "name": "Intel Core i7-6650U"
+  },
+  {
+    "id": "e1a579c6-e6c5-4198-905f-403407cf3bbe",
+    "name": "Intel Core i7-6600U"
+  },
+  {
+    "id": "d2504b5b-120c-4677-ab02-5f273b9ab6c6",
+    "name": "Intel Core i7-6560U"
+  },
+  {
+    "id": "63fef8d2-ca26-46f6-b11e-f8a1a2268042",
+    "name": "Intel Core i7-6920HQ"
+  },
+  {
+    "id": "ae7d991b-fcdd-4139-b6a8-a494d836c174",
+    "name": "Intel Core i7-6820HQ"
+  },
+  {
+    "id": "e53fc0aa-72b9-4df8-abcf-8c21e533609d",
+    "name": "Intel Core i7-6820HK"
+  },
+  {
+    "id": "10e08188-a246-4691-8050-154fdd5bda6e",
+    "name": "Intel Core i7-6700HQ"
+  },
+  {
+    "id": "f40143c4-9105-4eae-b1cf-dd6ee90185e0",
+    "name": "Intel Core i7-6500U"
+  },
+  {
+    "id": "1048a896-2049-4952-8127-9e92ad713031",
+    "name": "Intel Core i7-6820EQ"
+  },
+  {
+    "id": "2a22ac4e-6b8a-4642-b2fd-7106aa39b67b",
+    "name": "Intel Core i7-6822EQ"
+  },
+  {
+    "id": "7e782e7c-c24c-449e-b698-9583c7ad4bd1",
+    "name": "Intel Core i7-6700TE"
+  },
+  {
+    "id": "d7f7b50d-2914-4786-b784-e4019f988b2d",
+    "name": "Intel Core i7-6498DU"
+  },
+  {
+    "id": "7af48803-9071-4301-9c9e-907d80fc675b",
+    "name": "Intel Core i7-6970HQ"
+  },
+  {
+    "id": "4a25d677-f2ea-4d0e-aeb8-a40ebdfc46d6",
+    "name": "Intel Core i7-6870HQ"
+  },
+  {
+    "id": "bcfb0229-35d5-48d0-ba37-6565e9fb8d2f",
+    "name": "Intel Core i7-6770HQ"
+  },
+  {
+    "id": "e2996844-0f46-4169-8a6a-a4ac907d8090",
+    "name": "Intel Core i7-6660U"
+  },
+  {
+    "id": "10429fa2-4b8a-439f-b3b9-eda749df4a62",
+    "name": "Intel Core i7-6785R"
+  },
+  {
+    "id": "b602cf0b-c9f8-4d42-a3bc-891ec5faf994",
+    "name": "Intel Celeron J4005"
+  },
+  {
+    "id": "6436fedd-4737-4215-9d36-cec6e591bc2f",
+    "name": "Intel Celeron J4115"
+  },
+  {
+    "id": "51e05983-1667-4c6d-a6e9-eef31d35f8ac",
+    "name": "Intel Celeron J3455E"
+  },
+  {
+    "id": "9a635afa-1ae0-46f8-80e1-55c56635a095",
+    "name": "Intel Celeron J3355E"
+  },
+  {
+    "id": "14aad3af-31b5-42c8-89c5-2bcd038e5e6f",
+    "name": "Intel Celeron J4125"
+  },
+  {
+    "id": "3f9c6631-4806-41ca-9cf1-3eeeed979447",
+    "name": "Intel Celeron J4025"
+  },
+  {
+    "id": "91753700-750f-47e0-96f2-ce5a808b4730",
+    "name": "Intel Celeron J6413"
+  },
+  {
+    "id": "169827c3-abf5-4d97-b568-ab026eed04d7",
+    "name": "Intel Celeron J6412"
+  },
+  {
+    "id": "de8906c2-16cc-4d90-bd82-063a99582030",
+    "name": "Intel Celeron N2910"
+  },
+  {
+    "id": "9e25581e-458b-48ce-9969-4edf90d976e5",
+    "name": "Intel Celeron Processor N Series"
+  },
+  {
+    "id": "c50a52de-3793-4025-9612-448ec279057f",
+    "name": "Intel Celeron N2810"
+  },
+  {
+    "id": "1d267594-fbc5-4072-bc9e-8303be377adf",
+    "name": "Intel Celeron N2805"
+  },
+  {
+    "id": "fd4c2f47-45d0-457e-968d-3f65375c7dcb",
+    "name": "Intel Celeron N2806"
+  },
+  {
+    "id": "06801516-51a1-46a2-84f6-696ed9620cd4",
+    "name": "Intel Celeron N2815"
+  },
+  {
+    "id": "c0bd3e6e-e9ef-4659-928b-a87daa2dce1a",
+    "name": "Intel Celeron N2820"
+  },
+  {
+    "id": "a785afd0-95e1-408c-9072-b6aeb5b47341",
+    "name": "Intel Celeron N2930"
+  },
+  {
+    "id": "519c8bad-1e93-45ad-93ad-d28e5dd22ae8",
+    "name": "Intel Celeron N2830"
+  },
+  {
+    "id": "ed26ac8b-610a-4bb5-bbd1-0a1bcda22d29",
+    "name": "Intel Celeron N2807"
+  },
+  {
+    "id": "48313afd-4000-4254-b529-df65c5204ffd",
+    "name": "Intel Celeron N2940"
+  },
+  {
+    "id": "6ec2438d-de5f-442f-bdb4-6347906fb46d",
+    "name": "Intel Core i5-7400"
+  },
+  {
+    "id": "cceb6d23-5366-440f-81f9-fe3771eff118",
+    "name": "Intel Core i5-7600K"
+  },
+  {
+    "id": "632d38a9-8f89-49aa-869f-153406777145",
+    "name": "Intel Core i5-7500"
+  },
+  {
+    "id": "8c60f07e-1648-4199-824d-1389d555c1d0",
+    "name": "Intel Core i5-7500T"
+  },
+  {
+    "id": "7b8e3079-2a00-447a-8f89-6a9dc85b9647",
+    "name": "Intel Core i5-7440HQ"
+  },
+  {
+    "id": "8ffb6fcb-d455-40af-825d-cace544cec36",
+    "name": "Intel Core i5-8250U"
+  },
+  {
+    "id": "72c899f6-5878-46fb-93b6-c18c46604c8e",
+    "name": "8th Generation Intel Core i5 Processors"
+  },
+  {
+    "id": "afd3d1e2-474e-4435-aa5e-a8794150253f",
+    "name": "Intel Core i5-8350U"
+  },
+  {
+    "id": "e1b63ff1-be29-4079-bc1e-cd43fa1386bb",
+    "name": "Intel Core i5-8600K"
+  },
+  {
+    "id": "ba368382-4b4a-44dc-a7b0-d8d9bd551677",
+    "name": "Intel Core i5-8400"
+  },
+  {
+    "id": "6a9be395-7389-46d2-8009-28db390164c8",
+    "name": "Intel Core i5-8305G"
+  },
+  {
+    "id": "b27abc8f-fe52-4595-a2b6-b07a46755406",
+    "name": "Intel Core i5+8500 (9M Cache, up to 4.10 GHz) includes Intel Optane Memory (16GB)"
+  },
+  {
+    "id": "68c10859-d20e-46ab-8bc6-dc7e521b9297",
+    "name": "Intel Core i5-8269U"
+  },
+  {
+    "id": "7591f24d-da08-44f0-8fee-f9a7d85db6ed",
+    "name": "Intel Core i5-8259U"
+  },
+  {
+    "id": "4ab96f2c-becf-4364-b84a-d37ed8ebba28",
+    "name": "Intel Core i5-8500B"
+  },
+  {
+    "id": "0065986d-79fa-4c7e-a8cc-bbc62d8668d4",
+    "name": "Intel Core i5-8400B"
+  },
+  {
+    "id": "c872069a-8270-4a7c-a884-b1c1e5dd191a",
+    "name": "Intel Core i5-8400H"
+  },
+  {
+    "id": "6acefe1e-3111-4c08-a3f8-ab47a50bb7f9",
+    "name": "Intel Core i5-8300H"
+  },
+  {
+    "id": "1a968ed5-7364-4b2d-bad1-d92383f341b1",
+    "name": "Intel Xeon Gold 6262"
+  },
+  {
+    "id": "1db9bcaa-5519-4579-a642-3b59769df939",
+    "name": "Intel Xeon Gold 6240Y"
+  },
+  {
+    "id": "403adfda-767f-46b2-8bc7-55231323b277",
+    "name": "Intel Xeon Gold 6252"
+  },
+  {
+    "id": "4dbbe79f-b1ea-407f-8522-3cb0a810729b",
+    "name": "Intel Xeon Gold 6248"
+  },
+  {
+    "id": "08bc9396-2134-48d0-a1d3-fe7c172cd9a8",
+    "name": "Intel Xeon Gold 5222"
+  },
+  {
+    "id": "2621f56f-3bad-4821-82b5-89b93f79d6bb",
+    "name": "Intel Xeon Gold 5218"
+  },
+  {
+    "id": "48144cd1-297a-444a-ac19-35548b4e19a5",
+    "name": "Intel Xeon Gold 6240"
+  },
+  {
+    "id": "15f73926-e2a9-446e-a660-c611c6cb4d89",
+    "name": "Intel Xeon Gold 6244"
+  },
+  {
+    "id": "21e70d68-0e02-45ae-a593-6b96c86f1e90",
+    "name": "Intel Xeon Gold 6222"
+  },
+  {
+    "id": "d64d18a0-3f71-4f25-8fed-8dbaa34297d8",
+    "name": "Intel Xeon Gold 6242"
+  },
+  {
+    "id": "36eb3e90-f2c1-483e-91c0-839ead3decbd",
+    "name": "Intel Xeon Gold 6238T"
+  },
+  {
+    "id": "54a5c30e-b3c7-4748-bd07-04522ee009d3",
+    "name": "Intel Xeon Gold 6230"
+  },
+  {
+    "id": "84372fdd-8c25-4880-b491-93239bd825f1",
+    "name": "Intel Xeon Gold 6269Y"
+  },
+  {
+    "id": "ac511610-7015-438c-9dd6-4403b67a40a5",
+    "name": "Intel Core i3-4130T"
+  },
+  {
+    "id": "581633ba-7a24-45fa-af85-ff3f1e1487e8",
+    "name": "Intel Core i3-4130"
+  },
+  {
+    "id": "8e0df419-eec9-4ff9-bac9-cab3da584f42",
+    "name": "Intel Core i3-4020Y"
+  },
+  {
+    "id": "a70597e2-8b97-4ebd-ac95-1298f70b8011",
+    "name": "Intel Core i3-4012Y"
+  },
+  {
+    "id": "d3afb11e-ebcc-4c33-b9fd-04165c2fe0a5",
+    "name": "Intel Core i3-4100M"
+  },
+  {
+    "id": "de79cb4d-1705-4b77-a86f-e781198b77b5",
+    "name": "Intel Core i3-4102E"
+  },
+  {
+    "id": "64ebed0e-ceca-4af2-adcc-693b4b0df015",
+    "name": "Intel Core i3-4100E"
+  },
+  {
+    "id": "b8e456a3-e7ae-4582-9349-cc7b0db02fb7",
+    "name": "Intel Core i3-4005U"
+  },
+  {
+    "id": "1e7c36d9-42a7-43c0-afb0-86ccba545c94",
+    "name": "Intel Core i3-4000M"
+  },
+  {
+    "id": "9eeef62f-0ded-443c-8102-e649bbe98fd9",
+    "name": "Intel Core i3-4030Y"
+  },
+  {
+    "id": "20535659-50f3-4a8c-ac88-1195c668a016",
+    "name": "Intel Core i3-4110E"
+  },
+  {
+    "id": "5bebebe7-a57d-4a56-b09f-5a9ca5d814aa",
+    "name": "Intel Core i3-4112E"
+  },
+  {
+    "id": "007fedd4-6f0c-4bea-aa2c-914e8acf49ad",
+    "name": "Intel Core i3-4120U"
+  },
+  {
+    "id": "c0cdac8f-be8a-49de-af9f-adc698b4cd42",
+    "name": "Intel Core i3-4030U"
+  },
+  {
+    "id": "774f4b3d-73c9-48c9-8ed4-766e48e9038a",
+    "name": "Intel Core i3-4025U"
+  },
+  {
+    "id": "0dbca876-643c-4fd2-97c7-47e32905833b",
+    "name": "Intel Core i3-4110M"
+  },
+  {
+    "id": "276b4437-2cf0-4fbe-aa8e-83b531838dc4",
+    "name": "Intel Core i3-4350"
+  },
+  {
+    "id": "99d9ef78-5acd-4665-b8fe-f0195536ff72",
+    "name": "Intel Core i3-4360"
+  },
+  {
+    "id": "2473bdf7-3ff4-4dd1-be61-cce34627f066",
+    "name": "Intel Core i3-4340TE"
+  },
+  {
+    "id": "2ca35ef2-296c-455c-a985-4ea2cd4cb71e",
+    "name": "Intel Core i7-7Y75"
+  },
+  {
+    "id": "62bab8de-bef7-400e-a85c-55805e3fee5d",
+    "name": "7th Generation Intel Core i7 Processors"
+  },
+  {
+    "id": "acaf00df-62ed-454a-8003-9d8cac2d4117",
+    "name": "Intel Core i7-7500U"
+  },
+  {
+    "id": "8501fb8c-4a4e-412b-9d1c-266cc371a51a",
+    "name": "Intel Core i7-7700T"
+  },
+  {
+    "id": "00f939fc-b3fd-4fc6-9b4c-38b8acbcba14",
+    "name": "Intel Core i7-7820EQ"
+  },
+  {
+    "id": "99b0c0b2-4dba-4be7-9014-74b9180d3e9d",
+    "name": "Intel Core i7-7700"
+  },
+  {
+    "id": "0c318a98-cb42-4cdd-ab2a-34944a877fc2",
+    "name": "Intel Core i7-7700K"
+  },
+  {
+    "id": "b4e4c855-6aac-4134-9ec6-addf3fd53721",
+    "name": "Intel Core i7-7700HQ"
+  },
+  {
+    "id": "5c33bdcb-e038-4588-a15a-c84e84d11b80",
+    "name": "Intel Core i7-7920HQ"
+  },
+  {
+    "id": "e14236c5-f2f1-4867-9967-f8da6a50943d",
+    "name": "Intel Core i7-7820HK"
+  },
+  {
+    "id": "27925c5f-207e-49d1-9c5c-28d851f1273d",
+    "name": "Intel Core i7-7600U"
+  },
+  {
+    "id": "5f16f441-f6cb-4ea5-9c36-2bc5be782453",
+    "name": "Intel Core i7-7820HQ"
+  },
+  {
+    "id": "d316b0a7-c7b2-41bb-8ea9-4d33e7a3d7bd",
+    "name": "Intel Core i7-7660U"
+  },
+  {
+    "id": "a2ab6a95-622d-4166-84aa-d3843dfc2370",
+    "name": "Intel Core i7-7560U"
+  },
+  {
+    "id": "be72d4d0-9796-431f-8f9e-3f65549cb710",
+    "name": "Intel Core i7-7567U"
+  },
+  {
+    "id": "a8dc0179-157a-4fe9-9d45-93dbdd40f5b8",
+    "name": "Intel Core i7-8550U"
+  },
+  {
+    "id": "a323115e-bcd7-4541-a5dd-4a91e32a22f2",
+    "name": "Intel Core i7-8650U"
+  },
+  {
+    "id": "44944652-1119-4bad-99b0-fb598459811f",
+    "name": "Intel Core i7-8700K"
+  },
+  {
+    "id": "aa7ebb1c-a10b-48d7-8798-2a77cb7644e7",
+    "name": "Intel Core i7-8700"
+  },
+  {
+    "id": "ff21ad9a-11ed-4cb8-bac1-ce0d17b337e7",
+    "name": "Intel Core i7-8706G"
+  },
+  {
+    "id": "24a065dd-3978-496c-8ccf-089b8f37bf45",
+    "name": "Intel Celeron N2840"
+  },
+  {
+    "id": "fe3f1710-7596-4522-86ce-6a60bc388f8e",
+    "name": "Intel Celeron N2808"
+  },
+  {
+    "id": "b2b2957d-9fcf-4b15-8ff3-7701cf1cfe7e",
+    "name": "Intel Celeron N3050"
+  },
+  {
+    "id": "0e723c70-40f5-4267-baa2-265ef5145bff",
+    "name": "Intel Celeron N3150"
+  },
+  {
+    "id": "95a6a7c3-22df-4f47-a4f4-d090a239576f",
+    "name": "Intel Celeron N3000"
+  },
+  {
+    "id": "965f794e-5fe7-4844-9977-6873b762454b",
+    "name": "Intel Celeron N3060"
+  },
+  {
+    "id": "42e07bb4-0b9f-4ac4-b71b-cfc15f291542",
+    "name": "Intel Celeron N3160"
+  },
+  {
+    "id": "0c4ffc1a-6d73-4b5d-8ecb-b63cadccae07",
+    "name": "Intel Celeron N3010"
+  },
+  {
+    "id": "f4c271df-be1d-43dc-bae9-c04ababc2b1f",
+    "name": "Intel Celeron N3450"
+  },
+  {
+    "id": "7eefe802-9c11-4388-a4aa-e2b40c80dbbd",
+    "name": "Intel Celeron N3350"
+  },
+  {
+    "id": "4f35eb8b-ccce-4b41-bbd7-0272fa8f6f6b",
+    "name": "Intel Celeron N4100"
+  },
+  {
+    "id": "d73db515-34d3-47e5-8a89-375c7a832fbe",
+    "name": "Intel Celeron N4000"
+  },
+  {
+    "id": "a75fb9a5-f6e6-48e6-9b26-780eb1140e8a",
+    "name": "Intel Celeron N3350E"
+  },
+  {
+    "id": "ea0dc6e9-9c16-4658-8e9e-4389ea36257d",
+    "name": "Intel Celeron N4120"
+  },
+  {
+    "id": "6cc1fcc3-d1cd-48e2-94b8-bc994910d99f",
+    "name": "Intel Celeron N4020"
+  },
+  {
+    "id": "d1b3bfbf-f208-4bca-a8c3-df82a30c98db",
+    "name": "Intel Celeron N4000C"
+  },
+  {
+    "id": "edbb9ca8-5de4-4f97-abc6-c01cc959d725",
+    "name": "Intel Celeron N6211"
+  },
+  {
+    "id": "248163c3-3f5a-4850-8296-31a8adc52673",
+    "name": "Intel Celeron N5095"
+  },
+  {
+    "id": "dca3f897-40c0-427d-82ee-6db4da7f016e",
+    "name": "Intel Celeron N4505"
+  },
+  {
+    "id": "b80abc3e-f8f9-4376-941c-d2af031cf5a7",
+    "name": "Intel Celeron N4500"
+  },
+  {
+    "id": "548d9671-6d03-4429-8c57-c26cb753335c",
+    "name": "Intel Core i5-8500T"
+  },
+  {
+    "id": "faed1f1a-f6ed-4dbe-9b56-f68be4c1a581",
+    "name": "Intel Core i5-8600"
+  },
+  {
+    "id": "11611afd-cee3-489a-92c7-cde71807188d",
+    "name": "Intel Core i5+8400 (9M Cache, up to 4.00 GHz) includes Intel Optane Memory (16GB)"
+  },
+  {
+    "id": "d633d186-77b4-4c27-b361-9c2ebdb02391",
+    "name": "Intel Core i5-8400T"
+  },
+  {
+    "id": "ae363634-ce79-4b81-83d0-ba2bef58c6b1",
+    "name": "Intel Core i5-8500"
+  },
+  {
+    "id": "3e98ebe5-8743-402e-a3ec-953e18a56f65",
+    "name": "Intel Core i5-8600T"
+  },
+  {
+    "id": "eb5d4718-1295-4a1e-a38a-c53a1daaf218",
+    "name": "Intel Core i5-8265U"
+  },
+  {
+    "id": "a069eba8-f689-410d-9d14-2ede7ec4a584",
+    "name": "Intel Core i5-8200Y"
+  },
+  {
+    "id": "920f191a-d3b2-42d4-b5e1-384fc5ffb18d",
+    "name": "Intel Core i5-8210Y"
+  },
+  {
+    "id": "22555b96-7f4a-4d00-9259-69abbefdec3f",
+    "name": "Intel Core i5-8310Y"
+  },
+  {
+    "id": "94db0884-29bf-46e9-a35e-f6ddc3b007af",
+    "name": "Intel Core i5-8365U"
+  },
+  {
+    "id": "e676f215-f383-4b56-9a6c-164abb78ceb0",
+    "name": "Intel Core i5-8279U"
+  },
+  {
+    "id": "6b60e580-8d5c-4808-a5a7-f17b6460faed",
+    "name": "Intel Core i5-8365UE"
+  },
+  {
+    "id": "c734beee-2b5d-4a2c-8dd2-d1f3e8b8255e",
+    "name": "Intel Core i5-8257U"
+  },
+  {
+    "id": "2ff8613d-f44b-4742-9897-4100b470b867",
+    "name": "Intel Core i5-9600K"
+  },
+  {
+    "id": "beec51b0-b30f-4ded-a117-d7d9ef8826dc",
+    "name": "9th Generation Intel Core i5 Processors"
+  },
+  {
+    "id": "5c29b11d-faab-4ad0-81fb-4aa3ff6a0a5f",
+    "name": "Intel Core i5-9400F"
+  },
+  {
+    "id": "c7d4aace-2642-4a2f-b625-00fb66ad5a59",
+    "name": "Intel Core i5-9600KF"
+  },
+  {
+    "id": "3cb3f59e-db6d-41e0-a4a0-fa04f44b5bcb",
+    "name": "Intel Core i5-9400"
+  },
+  {
+    "id": "f1dcb77e-22d4-4dd7-8ac8-340c0ab12840",
+    "name": "Intel Xeon Gold 5220"
+  },
+  {
+    "id": "7f88b61c-ae7d-4595-beb7-623ef10ec808",
+    "name": "Intel Xeon Gold 6262V"
+  },
+  {
+    "id": "e57a9176-cbc0-4b5a-8977-42f227ca647f",
+    "name": "Intel Xeon Gold 6209U"
+  },
+  {
+    "id": "a8498fc1-c6f0-413c-b195-532639cd6a44",
+    "name": "Intel Xeon Gold 5220T"
+  },
+  {
+    "id": "aaa9ac81-b40f-4d96-ba18-3f743ca47a41",
+    "name": "Intel Xeon Gold 6246"
+  },
+  {
+    "id": "cc256422-c428-4317-a1d2-249deff1cd4b",
+    "name": "Intel Xeon Gold 6222V"
+  },
+  {
+    "id": "765a9bd4-70a0-4954-bdbe-267db5e32c23",
+    "name": "Intel Xeon Gold 6240L"
+  },
+  {
+    "id": "ded6a01f-adf6-45b6-a265-722a3005a647",
+    "name": "Intel Xeon Gold 6238L"
+  },
+  {
+    "id": "3f3e42f1-9fc2-46e7-9f5b-51913aef2249",
+    "name": "Intel Xeon Gold 6226"
+  },
+  {
+    "id": "c65261f8-6780-48fc-897e-69308d8544dd",
+    "name": "Intel Xeon Gold 6234"
+  },
+  {
+    "id": "e73d3d08-1c70-4736-ae13-f60f1d6498d6",
+    "name": "Intel Xeon Gold 5218T"
+  },
+  {
+    "id": "b42aa380-9aca-47df-9ce8-1bd7fd6acadf",
+    "name": "Intel Xeon Gold 6230T"
+  },
+  {
+    "id": "7d61df38-6907-4ccc-99d5-62e6176b8854",
+    "name": "Intel Xeon Gold 6252N"
+  },
+  {
+    "id": "f2450877-f0b7-4687-b6c0-5c23c6152dc4",
+    "name": "Intel Xeon Gold 5220S"
+  },
+  {
+    "id": "f61f09d3-ad62-4590-88e8-fa7ef9d614b5",
+    "name": "Intel Xeon Gold 6238"
+  },
+  {
+    "id": "c3b0fc2e-0031-49ec-bde4-7d05b825b132",
+    "name": "Intel Xeon Gold 5218B"
+  },
+  {
+    "id": "3c87c406-341c-4be5-aa58-24fe44eaf95a",
+    "name": "Intel Xeon Gold 5218N"
+  },
+  {
+    "id": "19d54e5d-bf39-4025-96e6-ad24b1c477dc",
+    "name": "Intel Xeon Gold 5217"
+  },
+  {
+    "id": "50897254-ce16-45f6-9d7b-f614af229f78",
+    "name": "Intel Xeon Gold 5215L"
+  },
+  {
+    "id": "97c50a3f-8a92-4de6-94c2-417db9d95465",
+    "name": "Intel Xeon Gold 5215"
+  },
+  {
+    "id": "e7a87530-5068-492c-bce3-d2cf20e2bc05",
+    "name": "Intel Xeon Platinum 8174"
+  },
+  {
+    "id": "569e0b7e-4580-444b-bea6-168c83f7d626",
+    "name": "Intel Xeon Platinum 8176F"
+  },
+  {
+    "id": "34895447-846d-4f64-bc51-3841d5c745e7",
+    "name": "Intel Xeon Platinum 8160F"
+  },
+  {
+    "id": "09f7e8e0-3379-4ded-ac6e-97fcf072f324",
+    "name": "Intel Xeon Platinum 8160T"
+  },
+  {
+    "id": "3cb291e7-cfa4-4e69-97cc-beb791e98b10",
+    "name": "Intel Xeon Platinum 8176"
+  },
+  {
+    "id": "4bf40365-0b21-41e0-a1f8-9710cf9651de",
+    "name": "Intel Xeon Platinum 8170M"
+  },
+  {
+    "id": "9142d066-e179-4608-b1a1-5d212e861f50",
+    "name": "Intel Xeon Platinum 8170"
+  },
+  {
+    "id": "37e6cbc2-eb57-4f76-b664-911616e0ef17",
+    "name": "Intel Xeon Platinum 8176M"
+  },
+  {
+    "id": "7a3555c0-f784-4046-8211-6dfedbc3fc52",
+    "name": "Intel Xeon Platinum 8168"
+  },
+  {
+    "id": "3dd3f422-6a6c-4362-9d7d-08a8f247aca8",
+    "name": "Intel Xeon Platinum 8164"
+  },
+  {
+    "id": "d22aa0dc-caa3-4405-9ecc-ecbc76c85a37",
+    "name": "Intel Xeon Platinum 8160M"
+  },
+  {
+    "id": "07fe42bb-94f2-4ea0-84f6-f2ca50e7c6e7",
+    "name": "Intel Xeon Platinum 8160"
+  },
+  {
+    "id": "48a76dd0-7776-4291-aeec-bdf5a5282527",
+    "name": "Intel Xeon Platinum 8158"
+  },
+  {
+    "id": "b0e6f719-bfde-42e3-ad9e-fe0839611488",
+    "name": "Intel Xeon Platinum 8156"
+  },
+  {
+    "id": "eb92b573-43ed-47c3-b946-77beeb29e37b",
+    "name": "Intel Xeon Platinum 8180M"
+  },
+  {
+    "id": "0d0e0bba-4273-418b-8917-51051ad9ab6b",
+    "name": "Intel Xeon Platinum 8180"
+  },
+  {
+    "id": "b3980f61-ccfc-49e8-99e2-1592c8cd5c4c",
+    "name": "Intel Xeon Platinum 8153"
+  },
+  {
+    "id": "a84b464e-bd6b-4a18-af4a-a1d3f65a45f7",
+    "name": "Intel Core i3-4150T"
+  },
+  {
+    "id": "9afa80d1-dcfc-4866-9ef0-c6b7c5d92dda",
+    "name": "Intel Core i3-4150"
+  },
+  {
+    "id": "f53c796b-b23a-40cd-893d-c4893e115ec2",
+    "name": "Intel Core i3-4350T"
+  },
+  {
+    "id": "4335306f-fc2a-44fd-9167-bc7e58b14bd7",
+    "name": "Intel Core i3-4360T"
+  },
+  {
+    "id": "652ea55c-994c-46b4-8038-ee1696cd5520",
+    "name": "Intel Core i3-4370"
+  },
+  {
+    "id": "bcaabe29-3294-4b2c-9fee-9e95cdfad8aa",
+    "name": "Intel Core i3-4160T"
+  },
+  {
+    "id": "a54eb078-ea84-43c9-bb13-42906b6e2ced",
+    "name": "Intel Core i3-4160"
+  },
+  {
+    "id": "43ffbcdf-3d6e-46d5-90b4-b4f21a5cdc91",
+    "name": "Intel Core i3-4170"
+  },
+  {
+    "id": "54fb2bc5-bbc5-4d12-8b49-ea0656251a6b",
+    "name": "Intel Core i3-4370T"
+  },
+  {
+    "id": "ba9f25eb-0e6b-45d4-a500-3613b68e5482",
+    "name": "Intel Core i3-4170T"
+  },
+  {
+    "id": "7b5eecb9-1eb5-480d-87e3-694751340ad8",
+    "name": "Intel Core i3-5010U"
+  },
+  {
+    "id": "a10bcbbd-fdb5-4d4e-a3b0-25ffec7a4c57",
+    "name": "5th Generation Intel Core i3 Processors"
+  },
+  {
+    "id": "4e102a49-169d-441b-9fa9-0d650ac8d505",
+    "name": "Intel Core i3-5005U"
+  },
+  {
+    "id": "d478eeed-5b60-4adb-9c0a-43b80de4f471",
+    "name": "Intel Core i3-5157U"
+  },
+  {
+    "id": "09972f15-9bcc-4dc0-bb81-8b64fe69169b",
+    "name": "Intel Core i3-5015U"
+  },
+  {
+    "id": "a7d38ab2-aeb0-44a6-9146-ffcc5c6b0d35",
+    "name": "Intel Core i3-5020U"
+  },
+  {
+    "id": "6348d409-203c-4087-94da-1d9f3bd3c5b5",
+    "name": "Intel Core i3-6300"
+  },
+  {
+    "id": "cc3c0ff8-15a0-4dd4-9f53-f3d614e8b894",
+    "name": "6th Generation Intel Core i3 Processors"
+  },
+  {
+    "id": "bef24eae-103a-4f23-a0d4-f64c5d77d29b",
+    "name": "Intel Core i3-6320"
+  },
+  {
+    "id": "696f2d1e-c6b5-480e-bdbc-fca4ec5f366c",
+    "name": "Intel Core i3-6100T"
+  },
+  {
+    "id": "c94d9f10-8ee9-4857-9cb3-208e0eb97dc5",
+    "name": "Intel Core i7-8809G"
+  },
+  {
+    "id": "77d7346a-7653-46a3-ab2b-bf5f2e0ec868",
+    "name": "Intel Core i7-8705G"
+  },
+  {
+    "id": "776a95a6-1292-483f-96f1-d0314726a3c6",
+    "name": "Intel Core i7-8559U"
+  },
+  {
+    "id": "e953e8fc-7565-4ba4-8eae-55fa7715b146",
+    "name": "Intel Core i7-8750H"
+  },
+  {
+    "id": "63efbe07-87f5-4f6b-8f2e-2dfeeaeafe17",
+    "name": "Intel Core i7-8700B"
+  },
+  {
+    "id": "bf0d5f3d-6056-4b01-845c-b4c56379a337",
+    "name": "Intel Core i7-8850H"
+  },
+  {
+    "id": "aba08a4d-3d45-4a9a-b573-5f1a7c5759c9",
+    "name": "Intel Core i7-8700T"
+  },
+  {
+    "id": "ccfb55c9-2cdb-4b9c-a861-0ff971a8df84",
+    "name": "Intel Core i7+8700 (12M Cache, up to 4.60 GHz) includes Intel Optane Memory (16GB)"
+  },
+  {
+    "id": "89fce0ec-8a8e-4ad8-b071-3a0c6cc7a13f",
+    "name": "Intel Core i7-8086K"
+  },
+  {
+    "id": "b02693c2-5790-4dfb-a485-1556fa138a14",
+    "name": "Intel Celeron N5105"
+  },
+  {
+    "id": "c0b21516-839f-4da6-9ed6-ec2bdc7df7b7",
+    "name": "Intel Celeron N5100"
+  },
+  {
+    "id": "bfde511f-f814-4981-a000-dccfd2b4fe8c",
+    "name": "Intel Celeron N4020C"
+  },
+  {
+    "id": "2652b1b9-66eb-42f0-a0b1-7254d5e8779e",
+    "name": "Intel Celeron N6210"
+  },
+  {
+    "id": "c7176a01-8cd2-4194-ba79-e0dfa5a891e4",
+    "name": "Intel Celeron N5095A"
+  },
+  {
+    "id": "1426a98d-ec2b-47d9-92b8-bc1764e1bb18",
+    "name": "Intel Celeron G1101"
+  },
+  {
+    "id": "4e858805-2df7-49fc-a858-61df03411b9b",
+    "name": "Intel Celeron Processor G Series"
+  },
+  {
+    "id": "648d8fdf-8cbd-44da-a301-753adf7dfd54",
+    "name": "Intel Core i5-9300HF"
+  },
+  {
+    "id": "bf5d70e8-fb71-4415-8147-b3ef4f1f8929",
+    "name": "Intel Core i5-9500"
+  },
+  {
+    "id": "0ce84936-a628-49be-a6da-e9f72ca8c4b8",
+    "name": "Intel Core i5-9400H"
+  },
+  {
+    "id": "caf7ae9f-d374-4186-85cc-a6bd8e53253e",
+    "name": "Intel Core i5-9400T"
+  },
+  {
+    "id": "88a78436-cc35-44a2-8b42-895a91f96045",
+    "name": "Intel Core i5-9500T"
+  },
+  {
+    "id": "5d858c41-6eb4-4000-bd39-896188ca34d6",
+    "name": "Intel Core i5-9600T"
+  },
+  {
+    "id": "2bc96822-7262-4c8c-8401-5617db6ef392",
+    "name": "Intel Core i5-9500F"
+  },
+  {
+    "id": "74352c67-0a70-4b5c-a742-fa5714cf4463",
+    "name": "Intel Core i5-9600"
+  },
+  {
+    "id": "0a002e25-5334-4928-8b31-28d342a50db6",
+    "name": "Intel Core i5-9300H"
+  },
+  {
+    "id": "8d92b192-2740-4eec-97b9-16f2deb6288c",
+    "name": "Intel Core i5-9500E"
+  },
+  {
+    "id": "af54702d-f20f-4832-a728-ed2cfad9fc66",
+    "name": "Intel Core i5-9500TE"
+  },
+  {
+    "id": "cef050c2-03f1-498b-b60c-821ea1f34fd1",
+    "name": "Intel Xeon Gold 6250L"
+  },
+  {
+    "id": "ec7c2faf-ac31-4c7f-acc8-16bbe404a1de",
+    "name": "Intel Xeon Gold 5220R"
+  },
+  {
+    "id": "943fc058-aa7b-434f-8688-6c7990d3464d",
+    "name": "Intel Xeon Gold 6208U"
+  },
+  {
+    "id": "2907ceae-842c-4742-980a-0bcd6549c4aa",
+    "name": "Intel Xeon Gold 6242R"
+  },
+  {
+    "id": "58c9c1a4-d1c5-4ea9-bebe-a8349c8d337e",
+    "name": "Intel Xeon Gold 6248R"
+  },
+  {
+    "id": "3bf20344-4fe3-492f-9e90-8288eb36a7c6",
+    "name": "Intel Xeon Gold 6258R"
+  },
+  {
+    "id": "17f0ee70-838c-4a1a-a93e-3e29706e3c80",
+    "name": "Intel Xeon Gold 6226R"
+  },
+  {
+    "id": "79b100b3-dd7b-4308-a43d-d5b6514f6450",
+    "name": "Intel Xeon Gold 6230R"
+  },
+  {
+    "id": "1c83bebb-9ea3-4c6b-bbad-141321582d9d",
+    "name": "Intel Xeon Gold 6238R"
+  },
+  {
+    "id": "4d4cddbc-3a6e-4124-9aa9-4db5d0410da9",
+    "name": "Intel Xeon Gold 6240R"
+  },
+  {
+    "id": "9f3f483b-a4b5-4677-9f5c-811db7d37584",
+    "name": "Intel Xeon Gold 5218R"
+  },
+  {
+    "id": "32874a3e-9e69-4e18-9db6-3c5ae15a69b3",
+    "name": "Intel Xeon Gold 6256"
+  },
+  {
+    "id": "5ccfc1dc-5669-4f54-a376-a58d01d3715b",
+    "name": "Intel Xeon Gold 6250"
+  },
+  {
+    "id": "c8da5935-1721-46e7-b9d2-15c7dbc3575c",
+    "name": "Intel Xeon Gold 6246R"
+  },
+  {
+    "id": "fbf028c5-67da-4498-a750-88d909239f3d",
+    "name": "Intel Xeon Gold 6328HL"
+  },
+  {
+    "id": "77f01099-0b31-41ad-a4ae-68094b7f6601",
+    "name": "3rd Generation Intel Xeon Scalable Processors"
+  },
+  {
+    "id": "3ff4015d-b70e-4174-b26f-649924b7ba76",
+    "name": "Intel Xeon Gold 5320H"
+  },
+  {
+    "id": "52033936-9679-4c12-8281-94e71ba00df4",
+    "name": "Intel Xeon Gold 6328H"
+  },
+  {
+    "id": "d6c3485e-fd5e-49d2-b921-a53b31d9d116",
+    "name": "Intel Xeon Gold 5318H"
+  },
+  {
+    "id": "7ba72165-d2cc-4ecb-9d22-15f2441ab6c8",
+    "name": "Intel Xeon Gold 6348H"
+  },
+  {
+    "id": "79c7e7a2-bae6-49de-b39a-78e8954567c2",
+    "name": "Intel Xeon Gold 6330H"
+  },
+  {
+    "id": "c8119167-25fc-47f6-a715-a338c199ebb8",
+    "name": "Intel Xeon Platinum 8165"
+  },
+  {
+    "id": "64e7c400-51bf-4080-96ac-20286cc937f9",
+    "name": "Intel Xeon Platinum 8160H"
+  },
+  {
+    "id": "68101e5a-423d-4a58-b5d7-54547c0edd04",
+    "name": "Intel Xeon Platinum 8260Y"
+  },
+  {
+    "id": "1f4088b8-7c8a-4ae1-8c8a-54b4336ac35e",
+    "name": "Intel Xeon Platinum 8280"
+  },
+  {
+    "id": "32133745-81d3-41df-8852-ddc49381e94d",
+    "name": "Intel Xeon Platinum 8260L"
+  },
+  {
+    "id": "8fd2d27d-df43-434b-8185-348a54d2470c",
+    "name": "Intel Xeon Platinum 8276L"
+  },
+  {
+    "id": "ef978b06-0ec1-4a58-947c-5ab798b1d36e",
+    "name": "Intel Xeon Platinum 8260"
+  },
+  {
+    "id": "9b26a986-3931-4c05-af3d-470b1763f98a",
+    "name": "Intel Xeon Platinum 8280L"
+  },
+  {
+    "id": "033e2d51-2e6b-41ad-8583-79ca6acf7a42",
+    "name": "Intel Xeon Platinum 8276"
+  },
+  {
+    "id": "a1083459-17d4-438c-9981-1a3ee12a1d8d",
+    "name": "Intel Xeon Platinum 8256"
+  },
+  {
+    "id": "c485869d-7905-40d4-92b8-fcee766cd9db",
+    "name": "Intel Xeon Platinum 8253"
+  },
+  {
+    "id": "ed0cd346-cfc4-4b49-9387-0f6071596be1",
+    "name": "Intel Xeon Platinum 8268"
+  },
+  {
+    "id": "53ffbfd8-21bd-4503-a02b-a89b547c3e26",
+    "name": "Intel Xeon Platinum 8274"
+  },
+  {
+    "id": "e9d8f6e0-5131-41bf-8deb-1d8916b3bbad",
+    "name": "Intel Xeon Platinum 8284"
+  },
+  {
+    "id": "8d0877a2-4558-4342-89a7-59d3b42fe9e7",
+    "name": "Intel Xeon Platinum 9282"
+  },
+  {
+    "id": "daa43aa5-45ce-4823-81f2-17143012ff19",
+    "name": "Intel Xeon Platinum 8270"
+  },
+  {
+    "id": "6a3d7825-259c-4a79-b3a7-45564d260f67",
+    "name": "Intel Xeon Platinum 9221"
+  },
+  {
+    "id": "abb803e6-a514-46ef-80fb-8a22ea98c696",
+    "name": "Intel Xeon Platinum 9222"
+  },
+  {
+    "id": "52bd5816-27e8-4708-8343-d82fd3fafb62",
+    "name": "Intel Core i3-6300T"
+  },
+  {
+    "id": "66f4cc72-6cac-42ee-b213-f3b2dd57b4bb",
+    "name": "Intel Core i3-6167U"
+  },
+  {
+    "id": "3fe3f53b-bf20-4234-bfae-e20e79f92560",
+    "name": "Intel Core i3-6100U"
+  },
+  {
+    "id": "fd9e59e5-10ad-41b7-857a-6c9f67fd3910",
+    "name": "Intel Core i3-6100H"
+  },
+  {
+    "id": "6aadbcca-c3d3-4673-8420-597420cc654e",
+    "name": "Intel Core i3-6100TE"
+  },
+  {
+    "id": "a5c3a01c-8b68-4bc0-92a9-557a0e58d4b6",
+    "name": "Intel Core i3-6100E"
+  },
+  {
+    "id": "4dabe610-017a-4976-9d42-d3ad60a4d886",
+    "name": "Intel Core i3-6098P"
+  },
+  {
+    "id": "8da7d6ca-fa8e-4d48-a6b2-874f9eb7569b",
+    "name": "Intel Core i3-6157U"
+  },
+  {
+    "id": "5d53ce8f-4ef6-4ce9-b688-2f25d1a01d2d",
+    "name": "Intel Core i3-6006U"
+  },
+  {
+    "id": "d1a14cbf-7dab-43ce-a859-6eb4add26fc2",
+    "name": "Intel Core i3-7100U"
+  },
+  {
+    "id": "4fcd44ba-ec92-474c-93c2-b99b0c97390a",
+    "name": "7th Generation Intel Core i3 Processors"
+  },
+  {
+    "id": "bc15d067-c362-4ff2-b07e-018113c23b36",
+    "name": "Intel Core i3-7102E"
+  },
+  {
+    "id": "57b811bd-770f-4ee6-9e69-d02340bb04e3",
+    "name": "Intel Core i3-7101TE"
+  },
+  {
+    "id": "ca6949bb-ff1f-460d-90e7-74a20be8d39c",
+    "name": "Intel Core i3-7100H"
+  },
+  {
+    "id": "b00696ee-199e-4646-b3f3-010cc841ac34",
+    "name": "Intel Core i3-7101E"
+  },
+  {
+    "id": "581751c9-ee01-431a-8841-c87fca9fc08c",
+    "name": "Intel Core i3-7100E"
+  },
+  {
+    "id": "9caa2adf-4df5-4b66-98af-1862f1bbd6f4",
+    "name": "Intel Core i3-7100"
+  },
+  {
+    "id": "3bd0f3d7-2775-43c1-97fa-b7a7962d4fb5",
+    "name": "Intel Core i3-7300T"
+  },
+  { "id": "62ed74c6-8dc5-4908-aa92-d5f492eed769", "name": "Intel Atom C2530" },
+  { "id": "ac6fc850-63a3-466b-ba3c-ed0ac40fc56c", "name": "Intel Atom C2538" },
+  { "id": "1aa67ca1-96e2-40a0-8aa2-5668b214ca1a", "name": "Intel Atom C2550" },
+  { "id": "4c1004b2-ef97-4711-80dc-0e537dce833b", "name": "Intel Atom C2558" },
+  { "id": "21b64369-1d7d-4a29-9888-b87c4e067c7f", "name": "Intel Atom C2718" },
+  { "id": "7b0ccbe9-871b-4261-83fc-b19bc976e99e", "name": "Intel Atom C2730" },
+  { "id": "6c24ad46-3c0a-4757-b581-a33a0e148ae2", "name": "Intel Atom C2738" },
+  { "id": "c50550a4-9f0d-41d3-ad7c-c3e99ce1c1fb", "name": "Intel Atom C2758" },
+  { "id": "78c31f00-f6fd-41ee-8d5d-a28f55509cf1", "name": "Intel Atom C2750" },
+  { "id": "9255931c-d842-4e06-b946-939c381e0876", "name": "Intel Atom C2508" },
+  { "id": "380f6ad0-d738-4baa-84ce-8d413be9ba27", "name": "Intel Atom C2308" },
+  { "id": "735117d9-4ae8-4cc9-9c88-300aca2513f2", "name": "Intel Atom C3338" },
+  {
+    "id": "e2e8ea38-347f-4c90-8c6a-9896e9156b6f",
+    "name": "Intel Pentium Gold 4410Y"
+  },
+  {
+    "id": "91f6b695-1edb-46ad-994f-b0f4cb2d1ddd",
+    "name": "Intel Pentium Gold Processor Series"
+  },
+  {
+    "id": "66c3774a-3f06-4dcb-9b7f-52534469c382",
+    "name": "Intel Pentium Gold 4415U"
+  },
+  {
+    "id": "e60cee65-ed13-4e65-b1f9-b71b1fe62ea6",
+    "name": "Intel Pentium Gold 4415Y"
+  },
+  {
+    "id": "63318588-c33f-4a52-ba50-3fbf916dc40a",
+    "name": "Intel Pentium Gold G5500"
+  },
+  {
+    "id": "7dc1681e-263a-4798-a9ec-5119a89979df",
+    "name": "Intel Pentium Gold G5500T"
+  },
+  {
+    "id": "b9cf214a-46e4-4d37-bb21-adc698cc8991",
+    "name": "Intel Pentium Gold G5400T"
+  },
+  {
+    "id": "84b0b206-4ab5-4d9d-8827-d9bac43dfa7a",
+    "name": "Intel Pentium Gold G5400"
+  },
+  {
+    "id": "65d3fc53-240c-4cf9-9a5e-68283db13370",
+    "name": "Intel Pentium Gold G5600"
+  },
+  {
+    "id": "c78b70cb-a8b3-4f5a-b533-05f4810979a3",
+    "name": "Intel Pentium Gold 4417U"
+  },
+  {
+    "id": "c4ec43db-7b03-488d-8db9-1b6205e5bcc6",
+    "name": "Intel Core i7-8565U"
+  },
+  {
+    "id": "e37b66e3-0b3f-4384-ba62-34f6e587d5f9",
+    "name": "Intel Core i7-8500Y"
+  },
+  {
+    "id": "97fc6226-b6fa-4283-a329-7c1c4f5a3bd9",
+    "name": "Intel Core i7-8665U"
+  },
+  {
+    "id": "c7209c82-f39c-4a65-84ea-302d6d85aaff",
+    "name": "Intel Core i7-8569U"
+  },
+  {
+    "id": "1e69ab15-12ce-44c9-b44f-78937564f762",
+    "name": "Intel Core i7-8665UE"
+  },
+  {
+    "id": "95ae85a6-de81-4980-a0bb-d505fc66ce80",
+    "name": "Intel Core i7-8557U"
+  },
+  {
+    "id": "6eecc04e-affc-454c-81ec-7ae7fa6870e1",
+    "name": "Intel Core i7-9700K"
+  },
+  {
+    "id": "286fe6e7-0271-4d6a-81df-cc26d2dd74ef",
+    "name": "9th Generation Intel Core i7 Processors"
+  },
+  {
+    "id": "f909f3bd-674f-496d-b1cf-620d41ca76eb",
+    "name": "Intel Core i7-9700KF"
+  },
+  {
+    "id": "105e00ae-54d4-483e-be4b-bbc685688161",
+    "name": "Intel Core i7-9700"
+  },
+  {
+    "id": "79376430-e80d-49b2-92e6-51782076f59a",
+    "name": "Intel Core i7-9700F"
+  },
+  {
+    "id": "688c926a-247a-4a07-8788-b9ffb75c93b4",
+    "name": "Intel Core i7-9700T"
+  },
+  {
+    "id": "abb2a9ff-525a-4f06-994d-6b815c60ff49",
+    "name": "Intel Core i7-9850H"
+  },
+  {
+    "id": "14ee4612-6783-4bee-bad5-d270e271a628",
+    "name": "Intel Core i7-9750HF"
+  },
+  {
+    "id": "1552ac20-ad15-4b7b-91a5-82dd0dbd37d2",
+    "name": "Intel Core i7-9750H"
+  },
+  {
+    "id": "df0722a2-7f1e-4920-819d-8c470924facb",
+    "name": "Intel Core i7-9700E"
+  },
+  {
+    "id": "b72e36cc-8996-4aef-9b24-7a90321bcbfe",
+    "name": "Intel Core i7-9850HE"
+  },
+  {
+    "id": "c3fb2fff-7009-4ee5-bdf8-ab3adfd81809",
+    "name": "Intel Core i7-9700TE"
+  },
+  {
+    "id": "a6f9ba49-b071-442e-9708-a83999e91a58",
+    "name": "Intel Core i7-9850HL"
+  },
+  {
+    "id": "33248f27-88a0-437c-97bb-fd9eba5a653b",
+    "name": "Intel Core i7-1060G7"
+  },
+  {
+    "id": "cbf4db64-6f5a-42e6-9818-179ecebca2a0",
+    "name": "10th Generation Intel Core i7 Processors"
+  },
+  {
+    "id": "88c7594f-8790-4179-b695-2ab7d23d1194",
+    "name": "Intel Celeron G1610"
+  },
+  {
+    "id": "ebea3060-869f-4e08-97c8-466fc18b3331",
+    "name": "Intel Celeron G1620"
+  },
+  {
+    "id": "eeb7a284-6c8b-4f6a-b0d3-bee1ad565dd5",
+    "name": "Intel Celeron G1610T"
+  },
+  {
+    "id": "5305343d-3b02-43cd-b160-2257923d34a3",
+    "name": "Intel Celeron G1620T"
+  },
+  {
+    "id": "c255ae54-0a48-4023-85b4-37d5a03f823e",
+    "name": "Intel Celeron G1630"
+  },
+  {
+    "id": "40357be5-5970-4dd4-b851-11077c782deb",
+    "name": "Intel Celeron G1830"
+  },
+  {
+    "id": "83438a75-0904-40db-86e4-9977ea758f5f",
+    "name": "Intel Celeron G1820T"
+  },
+  {
+    "id": "674fa85f-42ae-4cd4-8c96-fadcaac0dad4",
+    "name": "Intel Celeron G1820"
+  },
+  {
+    "id": "7dddf371-954a-41f7-94a6-ce7e4d165cb0",
+    "name": "Intel Celeron G1820TE"
+  },
+  {
+    "id": "189fa23e-489d-4bff-a3d0-df5bcda816c3",
+    "name": "Intel Celeron G1840T"
+  },
+  {
+    "id": "b38e8004-ec48-440a-89cd-69c3f5fb1b25",
+    "name": "Intel Celeron G1840"
+  },
+  {
+    "id": "701db35c-94cc-464a-ada6-9424ecc05b1c",
+    "name": "Intel Celeron G1850"
+  },
+  {
+    "id": "4c416b12-141b-4319-9126-16889c11e492",
+    "name": "Intel Celeron G3900"
+  },
+  {
+    "id": "8b857302-6f63-4811-ac9e-8b3b751cb324",
+    "name": "Intel Celeron G3900T"
+  },
+  {
+    "id": "7e10c203-08f6-469b-9488-fa79df9a00e0",
+    "name": "Intel Celeron G3920"
+  },
+  {
+    "id": "707d03de-f4d3-4512-a077-68b08436b199",
+    "name": "Intel Celeron G3900TE"
+  },
+  {
+    "id": "231ef519-7243-4a11-9a42-f9787b6810bf",
+    "name": "Intel Celeron G3900E"
+  },
+  {
+    "id": "24f2815f-b9cf-4f43-ae63-2196795b4043",
+    "name": "Intel Core i5-1035G1"
+  },
+  {
+    "id": "ab4af4c4-6d85-4731-8526-7de4bc79d393",
+    "name": "10th Generation Intel Core i5 Processors"
+  },
+  {
+    "id": "67d301ec-3cae-4bdc-a3c5-5e5d55afb637",
+    "name": "Intel Core i5-1035G7"
+  },
+  {
+    "id": "59baba54-65ba-40f4-9c8f-e6fc9d0aedf7",
+    "name": "Intel Core i5-1035G4"
+  },
+  {
+    "id": "77117cc8-a823-4375-9406-06535bdd0afa",
+    "name": "Intel Core i5-1030G7"
+  },
+  {
+    "id": "34974601-f4e0-427d-867e-8470273fcf11",
+    "name": "Intel Core i5-1030G4"
+  },
+  {
+    "id": "67ffd3ec-2e7c-486c-8687-e6d7f2cd0025",
+    "name": "Intel Core i5-10210Y"
+  },
+  {
+    "id": "bdcc7bf6-c670-48d2-9b11-75367eb427c6",
+    "name": "Intel Core i5-10310Y"
+  },
+  {
+    "id": "c730f735-97db-4b92-ae03-6fe36d7efb43",
+    "name": "Intel Core i5-10210U"
+  },
+  {
+    "id": "0527fadf-ce6f-4926-9cec-3d9f869a7f20",
+    "name": "Intel Core i5-1030NG7"
+  },
+  {
+    "id": "8883f80f-7d5f-4081-895f-74d2de125e4c",
+    "name": "Intel Core i5-10400H"
+  },
+  {
+    "id": "f3d9f643-1faf-4bc9-9b1a-bdac9d864fc2",
+    "name": "Intel Core i5-10300H"
+  },
+  {
+    "id": "0f0188cd-c7fd-4e2f-95b2-24d7f692b093",
+    "name": "Intel Core i5-10500E"
+  },
+  {
+    "id": "555e2b15-b5cd-4997-9edd-b00a86306bc3",
+    "name": "Intel Core i5-10500TE"
+  },
+  {
+    "id": "f98ba2a0-866b-4a43-abb9-7b6ac43c19d4",
+    "name": "Intel Xeon Gold 6334"
+  },
+  {
+    "id": "986d4c24-60b9-41ef-ae76-4fc136973b22",
+    "name": "Intel Xeon Gold 5320"
+  },
+  {
+    "id": "8ae4f0a7-96cc-4831-ac67-940dcb973b46",
+    "name": "Intel Xeon Gold 5320T"
+  },
+  {
+    "id": "bf93fda5-ec39-47a0-b9ae-315970281b8e",
+    "name": "Intel Xeon Gold 6312U"
+  },
+  {
+    "id": "19046f5e-bea7-488e-893d-3062e58b3874",
+    "name": "Intel Xeon Gold 5318N"
+  },
+  {
+    "id": "7bd7a0e0-59f7-4adc-a64b-93cb79b2860e",
+    "name": "Intel Xeon Gold 6336Y"
+  },
+  {
+    "id": "ac74f9c3-3db0-4409-acfe-b47225d6a7d3",
+    "name": "Intel Xeon Gold 5318S"
+  },
+  {
+    "id": "b15a532f-4ede-4a69-8c81-e088f1923d75",
+    "name": "Intel Xeon Gold 6338T"
+  },
+  {
+    "id": "37f424cc-ee06-4e05-a94f-21adc96ab535",
+    "name": "Intel Xeon Gold 6342"
+  },
+  {
+    "id": "49edec21-5c29-4957-90a2-7c2245071892",
+    "name": "Intel Xeon Gold 6326"
+  },
+  {
+    "id": "7de38543-8601-4b37-aaeb-6c5bb5a4815c",
+    "name": "Intel Xeon Gold 5317"
+  },
+  {
+    "id": "dc0c1caa-c8cb-4979-8cc7-1413b112877b",
+    "name": "Intel Xeon Gold 5318Y"
+  },
+  {
+    "id": "f65ffdbf-13bc-407c-91b5-2e990e5b1cbf",
+    "name": "Intel Xeon Gold 6338N"
+  },
+  {
+    "id": "fec1a606-6479-4b14-9f02-c75e8d329571",
+    "name": "Intel Xeon Gold 6314U"
+  },
+  {
+    "id": "849cb4a1-65b8-4f66-aeb6-90fcfbe96289",
+    "name": "Intel Xeon Gold 6354"
+  },
+  {
+    "id": "b130c96f-e557-4765-99e9-fbe6cf571805",
+    "name": "Intel Xeon Gold 6330"
+  },
+  {
+    "id": "05a8af86-ffd7-474e-9f6f-36e6c3446199",
+    "name": "Intel Xeon Gold 6346"
+  },
+  {
+    "id": "973c89d8-475d-4d2e-b97a-076d6c84b481",
+    "name": "Intel Xeon Gold 6348"
+  },
+  {
+    "id": "db49285e-6f55-4a3c-b3a8-3fe61a430b40",
+    "name": "Intel Xeon Gold 6330N"
+  },
+  {
+    "id": "cb0e7dc6-0bab-4b27-9c64-364ae82068f5",
+    "name": "Intel Xeon Gold 6338"
+  },
+  {
+    "id": "268fa366-d96a-4f94-a5cf-aaf2605a9f4d",
+    "name": "Intel Xeon Platinum 8380H"
+  },
+  {
+    "id": "4c7b79cb-c869-4e68-9e12-f41dba85a747",
+    "name": "Intel Xeon Platinum 8353H"
+  },
+  {
+    "id": "3cb0f411-ede0-4201-a8a2-9d6eb9206a75",
+    "name": "Intel Xeon Platinum 8354H"
+  },
+  {
+    "id": "0d5c44b6-13b1-4e01-9add-502358ec5db1",
+    "name": "Intel Xeon Platinum 8376H"
+  },
+  {
+    "id": "b7595744-60f0-4e80-a04f-e4f89adf7341",
+    "name": "Intel Xeon Platinum 8380HL"
+  },
+  {
+    "id": "06c6f6d4-474e-4e78-8bcc-4f90082fe94d",
+    "name": "Intel Xeon Platinum 8376HL"
+  },
+  {
+    "id": "8874b51f-f9ff-4616-9268-f957543d0c5d",
+    "name": "Intel Xeon Platinum 8356H"
+  },
+  {
+    "id": "624e2211-2497-4116-a108-3a369932bebe",
+    "name": "Intel Xeon Platinum 8360H"
+  },
+  {
+    "id": "e0f1322f-bd6d-482f-8808-a5592725b8ed",
+    "name": "Intel Xeon Platinum 8360HL"
+  },
+  {
+    "id": "08bcff1c-fd95-4cec-9ea9-cbeb9dd381c4",
+    "name": "Intel Xeon Platinum 8321HC"
+  },
+  {
+    "id": "7c4cec3c-3993-4600-a417-6fbca4213ae1",
+    "name": "Intel Xeon Platinum 8358"
+  },
+  {
+    "id": "f6c77ed1-bbad-4a40-92f3-9db45b9ffce3",
+    "name": "Intel Xeon Platinum 8352Y"
+  },
+  {
+    "id": "bb261ae7-22c5-486b-a801-85ca124c7aff",
+    "name": "Intel Xeon Platinum 8351N"
+  },
+  {
+    "id": "552af6e3-c43c-4508-94f1-eee358f62334",
+    "name": "Intel Xeon Platinum 8368Q"
+  },
+  {
+    "id": "293c054c-50d6-461e-a567-2e7da0b9b489",
+    "name": "Intel Xeon Platinum 8352S"
+  },
+  {
+    "id": "75fa676b-41f5-46ae-a86b-09a6b047e81e",
+    "name": "Intel Xeon Platinum 8358P"
+  },
+  {
+    "id": "7bd5efff-3cdb-44e5-a2d3-5f33ed2b6294",
+    "name": "Intel Xeon Platinum 8352V"
+  },
+  {
+    "id": "f7126cec-b3ab-43aa-8541-86e36b53e0b9",
+    "name": "Intel Xeon Platinum 8368"
+  },
+  {
+    "id": "6d2512f9-f4da-4ad0-a29f-1e9d198184a9",
+    "name": "Intel Xeon Platinum 8360Y"
+  },
+  {
+    "id": "515b2bcf-ca45-4851-8b23-9e0c2db93554",
+    "name": "Intel Xeon Platinum 8352M"
+  },
+  {
+    "id": "ee185faa-5ac4-4aa4-8610-01326bcb4aed",
+    "name": "Intel Core i3-7300"
+  },
+  {
+    "id": "3312e373-1fef-44f6-9db6-dc0071433956",
+    "name": "Intel Core i3-7320"
+  },
+  {
+    "id": "ee809a1d-b0d7-4755-8ecb-5259f905d95d",
+    "name": "Intel Core i3-7100T"
+  },
+  {
+    "id": "02eac399-efc9-4d3c-9d46-63e25b34e7e5",
+    "name": "Intel Core i3-7350K"
+  },
+  {
+    "id": "b987e03c-dc7b-461f-9542-a7c34ad1325a",
+    "name": "Intel Core i3-7167U"
+  },
+  {
+    "id": "09569466-005c-4ce9-a4b9-74c0e0b9b21f",
+    "name": "Intel Core i3-7130U"
+  },
+  {
+    "id": "187db1b2-5ddc-4367-9a97-5f932a83811b",
+    "name": "Intel Core i3-7020U"
+  },
+  {
+    "id": "a9ba326d-e5c6-4904-85bf-fd9ff5ad2f33",
+    "name": "Intel Core i3-8100"
+  },
+  {
+    "id": "5da3d266-293d-4452-b78b-8f40791f0921",
+    "name": "8th Generation Intel Core i3 Processors"
+  },
+  {
+    "id": "37e52c8f-ce56-4b1d-b4d8-84b4410dc63d",
+    "name": "Intel Core i3-8350K"
+  },
+  {
+    "id": "43fe3f94-af8d-4c16-9ddd-ed9422b5d555",
+    "name": "Intel Core i3-8130U"
+  },
+  {
+    "id": "d57fe151-4803-4b27-9a60-584d8770db36",
+    "name": "Intel Core i3-8300"
+  },
+  {
+    "id": "c3e53304-9619-477b-b258-e63d698f6553",
+    "name": "Intel Core i3-8300T"
+  },
+  {
+    "id": "c0385cbc-ca8a-4ec1-acb6-ae4de48fe9bb",
+    "name": "Intel Core i3-8100T"
+  },
+  {
+    "id": "1568ac0f-e136-4548-8ff8-6089bef9a157",
+    "name": "Intel Core i3-8109U"
+  },
+  {
+    "id": "27eb64eb-b220-4cf2-9474-6c6698729c57",
+    "name": "Intel Core i3-8121U"
+  },
+  {
+    "id": "ad6328a6-987e-46f8-b304-3268f8c131be",
+    "name": "Intel Core i3-8100H"
+  },
+  {
+    "id": "d2d2336e-ab99-4c89-841c-8ee180c8cc09",
+    "name": "Intel Core i3-8145U"
+  },
+  {
+    "id": "e69c4c30-349b-4180-b47f-33c38e6d27bd",
+    "name": "Intel Core i3-8100B"
+  },
+  {
+    "id": "5cd4533a-f8f4-4c99-9a48-d7d39895d757",
+    "name": "Intel Core i3-8145UE"
+  },
+  { "id": "158a5b61-55be-4455-945a-bafb270b167c", "name": "Intel Atom C2316" },
+  { "id": "96cb7842-d45c-433e-ae71-ddeb4d947233", "name": "Intel Atom C2516" },
+  { "id": "788ab17f-cf2b-40ec-af23-585be55b9a4b", "name": "Intel Atom C3950" },
+  { "id": "0071fcf4-e486-412f-800b-5c379a301f8a", "name": "Intel Atom C3808" },
+  { "id": "2d9ce9d5-ec92-4f6a-a04e-7ac82b85c399", "name": "Intel Atom C3750" },
+  { "id": "b8e7cfa2-85d2-4561-a489-7530945d47ad", "name": "Intel Atom C3558" },
+  { "id": "408394ff-90f4-4940-a5a9-fbfc78531828", "name": "Intel Atom C3308" },
+  { "id": "f55d9d64-1c07-46e7-a78f-1ae09bf65ca5", "name": "Intel Atom C3708" },
+  { "id": "e140dc7e-a20a-4c53-9fb5-e1c26a673fd7", "name": "Intel Atom C3955" },
+  { "id": "aa436d7f-0475-43d4-b306-e05d90739721", "name": "Intel Atom C3850" },
+  { "id": "fcc39c47-8462-4d87-a519-5f9d57cc72d0", "name": "Intel Atom C3830" },
+  { "id": "c0c40097-aef7-4e90-b956-3709f50740a0", "name": "Intel Atom C3508" },
+  { "id": "ba9345ac-8ee2-4728-afa4-33702a7dfe3c", "name": "Intel Atom C3538" },
+  { "id": "4f81f22a-eadc-404a-8ae9-63c595d5558b", "name": "Intel Atom C3958" },
+  { "id": "6de06229-efd3-4c28-aebc-2c02513c6370", "name": "Intel Atom C3758" },
+  { "id": "de4a426a-af81-46a2-874f-b7f3699a2452", "name": "Intel Atom C3858" },
+  { "id": "0fb4146c-67f8-4f40-9a8b-87ad24cfa5b6", "name": "Intel Atom C3336" },
+  { "id": "d9142249-cded-4b01-a1a1-f672de45144b", "name": "Intel Atom C3436L" },
+  { "id": "5dbab5e2-7b08-46d9-89f2-6200c5e7a74c", "name": "Intel Atom C3558R" },
+  { "id": "71d2bdef-231a-492c-aafa-7799ae984a5e", "name": "Intel Atom C3758R" },
+  {
+    "id": "c3a3547e-bb9f-418f-948e-8d219cd21158",
+    "name": "Intel Pentium Silver N5000"
+  },
+  {
+    "id": "50a368e3-db29-4346-bd0e-5ff1a66e1c3d",
+    "name": "Intel Pentium Silver Processor Series"
+  },
+  {
+    "id": "0665da3e-6002-4ebc-ae88-5af86c1ba36e",
+    "name": "Intel Pentium Silver J5005"
+  },
+  {
+    "id": "2cfdd609-31a6-4eac-92ee-dbfd62f2f737",
+    "name": "Intel Pentium Silver N5030"
+  },
+  {
+    "id": "77bdd8d7-92ff-4e12-9b13-853dd927027f",
+    "name": "Intel Pentium Silver J5040"
+  },
+  {
+    "id": "c5370778-308a-4f7b-96c1-71b0566055cb",
+    "name": "Intel Core i7-3960X"
+  },
+  {
+    "id": "14b57778-dc7f-40ce-a85e-bb02a713771d",
+    "name": "Intel Core X-series Processors"
+  },
+  {
+    "id": "be0a2cf4-3907-40fc-acec-d1503ae7727d",
+    "name": "Intel Core i7-3930K"
+  },
+  {
+    "id": "918f2595-36d8-4e37-87a8-665899cb9df2",
+    "name": "Intel Core i7-3820"
+  },
+  {
+    "id": "13dcf3a6-a46f-44ea-b09f-80cb98c196b6",
+    "name": "Intel Core i7-3920XM"
+  },
+  {
+    "id": "92b2cb02-9079-4b83-8692-e98b3172874e",
+    "name": "Intel Core i7-3940XM"
+  },
+  {
+    "id": "7e00ba4e-ca68-46ae-b878-67ab12125afe",
+    "name": "Intel Core i7-3970X"
+  },
+  {
+    "id": "63e6eb98-0dc1-402a-b282-b08b53ff9fcb",
+    "name": "Intel Core i7-4930MX"
+  },
+  {
+    "id": "2e2cd819-9e16-4cd0-b10e-7374bbfd0d81",
+    "name": "Intel Core i7-4820K"
+  },
+  {
+    "id": "5cd74a2d-0e6d-4dd4-944c-d9b76bfd1540",
+    "name": "Intel Core i7-4930K"
+  },
+  {
+    "id": "c66ad9fe-c421-4535-9955-e6bb1d63065c",
+    "name": "Intel Core i7-4960X"
+  },
+  {
+    "id": "7337e246-176c-4166-b931-db1beb0ca0f9",
+    "name": "Intel Core i7-4940MX"
+  },
+  {
+    "id": "614eeb1e-cdfe-4ca9-8474-100e2ed0869f",
+    "name": "Intel Core i7-5820K"
+  },
+  {
+    "id": "f1cc360e-f0cb-4182-822a-fe7aa2a1a396",
+    "name": "Intel Core i7-5930K"
+  },
+  {
+    "id": "20a4500f-3619-4fd2-9ef6-f34c0fe5581f",
+    "name": "Intel Core i7-5960X"
+  },
+  {
+    "id": "32e1f958-e80f-43fe-929d-d7c00b95ef5b",
+    "name": "Intel Core i7-6850K"
+  },
+  {
+    "id": "a4a0bf61-bf4f-4076-b9b4-b83e7db4fed6",
+    "name": "Intel Core i7-6800K"
+  },
+  {
+    "id": "e7945ec9-5fe7-4649-b5ff-946d6576cd98",
+    "name": "Intel Core i7-6900K"
+  },
+  {
+    "id": "6079a9f9-f82f-434c-b0da-d3cd7f8db2b2",
+    "name": "Intel Pentium Gold 5405U"
+  },
+  {
+    "id": "16183f24-bdb5-4ded-aed3-6970a6c7861d",
+    "name": "Intel Pentium Gold 4425Y"
+  },
+  {
+    "id": "158cc807-03be-4a81-aa16-e806425f7099",
+    "name": "Intel Pentium Gold G5600T"
+  },
+  {
+    "id": "5f2654e8-a204-4082-b227-202b97193b2b",
+    "name": "Intel Pentium Gold G5420"
+  },
+  {
+    "id": "1709ef09-2284-4bed-91f3-6e82ac1335a8",
+    "name": "Intel Pentium Gold G5620"
+  },
+  {
+    "id": "46425f4a-9491-428a-8253-ecfc6bad3079",
+    "name": "Intel Pentium Gold G5420T"
+  },
+  {
+    "id": "dc09d48b-c7e4-4a6d-a514-31ffe1031e7e",
+    "name": "Intel Pentium Gold 6405U"
+  },
+  {
+    "id": "6981cc01-fe54-4346-8332-d5070a161449",
+    "name": "Intel Pentium Gold G6500T"
+  },
+  {
+    "id": "c5646c06-ba88-447f-bf4e-0db7a7c54e2c",
+    "name": "Intel Pentium Gold G6600"
+  },
+  {
+    "id": "4eed2160-c23f-4398-b48c-f6151f6fa4fe",
+    "name": "Intel Pentium Gold G6500"
+  },
+  {
+    "id": "f3892890-135e-4590-8fc2-579ba7dd6c80",
+    "name": "Intel Pentium Gold G6400"
+  },
+  {
+    "id": "9729db06-8a88-43d9-ba4c-551a44c45db1",
+    "name": "Intel Pentium Gold G6400T"
+  },
+  {
+    "id": "a2b26103-3de9-49f0-a4d2-01f6ce4f253b",
+    "name": "Intel Pentium Gold G6400TE"
+  },
+  {
+    "id": "e035df3b-c084-4435-b2a0-8bc98d75aeab",
+    "name": "Intel Pentium Gold G6400E"
+  },
+  {
+    "id": "056e2e91-1804-4323-a198-c4e133700628",
+    "name": "Intel Pentium Gold 7505"
+  },
+  {
+    "id": "0cce5185-4f0b-49d5-baba-f11d41a9d49a",
+    "name": "Intel Pentium Gold 6500Y"
+  },
+  {
+    "id": "4df8c5c5-5358-4f16-b16c-68e81f7378d7",
+    "name": "Intel Pentium Gold G6605"
+  },
+  {
+    "id": "f2055bfa-9209-4129-980a-99eb2f933427",
+    "name": "Intel Pentium Gold G6405T"
+  },
+  {
+    "id": "c8919139-026b-4d2a-b801-b2eb07bbe856",
+    "name": "Intel Pentium Gold G6405"
+  },
+  {
+    "id": "9b614360-ab89-4a68-8a38-d2941ef4fe49",
+    "name": "Intel Pentium Gold G6505"
+  },
+  {
+    "id": "1d61bb6f-defd-46bc-9744-0743afaa9b92",
+    "name": "Intel Core i9-8950HK"
+  },
+  {
+    "id": "0fc9e84c-2450-4a07-bf34-3b7153d02eec",
+    "name": "8th Generation Intel Core i9 Processors"
+  },
+  {
+    "id": "612be5a1-90d3-4625-89b4-5ddedea9b4e0",
+    "name": "Intel Core i9-9900K"
+  },
+  {
+    "id": "a4903a7c-321e-4f0a-b817-01ab1631d242",
+    "name": "9th Generation Intel Core i9 Processors"
+  },
+  {
+    "id": "81ba80a7-aa1c-4337-80d0-45aaadff1b8b",
+    "name": "Intel Core i9-9900KF"
+  },
+  {
+    "id": "5319dc01-6fb6-4f21-a6c8-a98a1c81b1fa",
+    "name": "Intel Core i9-9900T"
+  },
+  {
+    "id": "a843484c-d288-4823-a63c-b2c4a264459d",
+    "name": "Intel Core i9-9900"
+  },
+  {
+    "id": "aeae231f-fb76-4f70-b0a4-e35f9e49acf6",
+    "name": "Intel Core i9-9880H"
+  },
+  {
+    "id": "647ce9f2-6598-492f-b025-b6a7b4ece5ca",
+    "name": "Intel Core i9-9980HK"
+  },
+  {
+    "id": "355ba683-4cbf-445e-911d-749ad8ee36cb",
+    "name": "Intel Core i9-9900KS"
+  },
+  {
+    "id": "32ae5cc5-50a4-4332-a9f8-1e03b99cd2b3",
+    "name": "Intel Core i7-1065G7"
+  },
+  {
+    "id": "989e0e87-0760-4d8e-af6d-0efbd5d9ffec",
+    "name": "Intel Core i7-10710U"
+  },
+  {
+    "id": "4d8aea5a-c564-42ad-82c0-7745e79eaa74",
+    "name": "Intel Core i7-10510Y"
+  },
+  {
+    "id": "2b26d5dd-e40f-46bd-bc0a-3d1e2075af5e",
+    "name": "Intel Core i7-10510U"
+  },
+  {
+    "id": "34ee32ff-f602-429b-a85a-1832fcbb6e68",
+    "name": "Intel Core i7-1060NG7"
+  },
+  {
+    "id": "8fe702d5-f4c2-46b2-b5e4-d54787237ebc",
+    "name": "Intel Core i7-10875H"
+  },
+  {
+    "id": "c8440811-bfe0-43be-a913-6b47cc7df8c5",
+    "name": "Intel Core i7-10750H"
+  },
+  {
+    "id": "fd7cf1e2-0469-46ac-ab91-2834c71613eb",
+    "name": "Intel Core i7-10850H"
+  },
+  {
+    "id": "0a19e7f1-8b75-4398-a4b5-7616af052da2",
+    "name": "Intel Core i7-10700TE"
+  },
+  {
+    "id": "3ddd03a7-e328-4d1b-90e4-ce7400f0a945",
+    "name": "Intel Core i7-10700T"
+  },
+  {
+    "id": "beb781c3-f4ed-4973-af16-a53b9d0aa8b8",
+    "name": "Intel Core i7-10700"
+  },
+  {
+    "id": "a3c4a8be-fcf1-4b53-bc45-133bc644be5d",
+    "name": "Intel Core i7-10700F"
+  },
+  {
+    "id": "c8f0ff19-77ec-4146-a597-076a9b34376d",
+    "name": "Intel Core i7-10700E"
+  },
+  {
+    "id": "1f2ce9b0-e8a8-4737-a0f1-5002a1d268f1",
+    "name": "Intel Core i7-10700KF"
+  },
+  {
+    "id": "e8cff2e3-6e6b-4ed9-b404-490e21656d13",
+    "name": "Intel Core i7-10700K"
+  },
+  {
+    "id": "95dacd5c-74f7-4c7a-afcd-b13d98bc6435",
+    "name": "Intel Core i7-1068NG7"
+  },
+  {
+    "id": "20946fa3-b1e8-4b4b-9e3c-0e79b53bea2a",
+    "name": "Intel Core i7-10810U"
+  },
+  {
+    "id": "b8daa9c5-c10d-45ac-aad1-740afeab7bc7",
+    "name": "Intel Core i7-10610U"
+  },
+  {
+    "id": "53145858-b65b-4483-a35e-434028c9a0df",
+    "name": "Intel Core i7-10870H"
+  },
+  {
+    "id": "c699c418-cbd5-4b46-8350-669af8c84571",
+    "name": "Intel Core i7-1160G7"
+  },
+  {
+    "id": "4d0ee937-9417-4e91-9a92-004397c8a693",
+    "name": "11th Generation Intel Core i7 Processors"
+  },
+  {
+    "id": "84cf498b-3e67-4e69-97ad-110d05ced0ac",
+    "name": "Intel Celeron G3902E"
+  },
+  {
+    "id": "6538104d-3aa1-49f8-a6f9-792aadf2a577",
+    "name": "Intel Celeron G3930"
+  },
+  {
+    "id": "6c20733c-5542-4035-a554-0d396d023ead",
+    "name": "Intel Celeron G3930T"
+  },
+  {
+    "id": "0fb50e65-83bf-4d4d-92ac-87f2ad87c2e9",
+    "name": "Intel Celeron G3930E"
+  },
+  {
+    "id": "579b6d1f-16ea-42d9-80b0-f7fc1ea07ee7",
+    "name": "Intel Celeron G3930TE"
+  },
+  {
+    "id": "26c109eb-d846-4647-9264-8e8787f3a33d",
+    "name": "Intel Celeron G4900"
+  },
+  {
+    "id": "afd68f0d-bbfc-421e-babf-03f9d930b4b8",
+    "name": "Intel Celeron G4920"
+  },
+  {
+    "id": "8291bae7-8e94-481b-b91d-b2e6e6e6d336",
+    "name": "Intel Celeron G4900T"
+  },
+  {
+    "id": "218e4995-b419-46fe-bee4-8f435af650cf",
+    "name": "Intel Celeron G4930"
+  },
+  {
+    "id": "e196a242-3ba2-4212-8c84-715fa45578d6",
+    "name": "Intel Celeron G4930T"
+  },
+  {
+    "id": "6ebcbb78-b1c7-4e37-a4cc-b3c5ab9c0afe",
+    "name": "Intel Celeron G4950"
+  },
+  {
+    "id": "176dc47e-9154-481a-950f-cfed8652c926",
+    "name": "Intel Celeron G4932E"
+  },
+  {
+    "id": "7c9774fc-22bc-4a34-a542-42b44cd68866",
+    "name": "Intel Celeron G4930E"
+  },
+  {
+    "id": "5cadcebe-6ea2-4b29-a347-a88a231e8a03",
+    "name": "Intel Celeron G5900"
+  },
+  {
+    "id": "dfd1bfd5-d540-4c43-aea1-d177b979ee2c",
+    "name": "Intel Celeron G5900T"
+  },
+  {
+    "id": "16cd1ec1-1908-4570-acae-648a111793b9",
+    "name": "Intel Celeron G5920"
+  },
+  {
+    "id": "6d294694-8bf4-4fd4-813f-937e8c9d08e3",
+    "name": "Intel Celeron G5900TE"
+  },
+  {
+    "id": "cb755b76-33ce-4c3b-b492-feceed5f9c47",
+    "name": "Intel Celeron G5900E"
+  },
+  {
+    "id": "133ad08d-ca23-47f9-be93-fa82a34345da",
+    "name": "Intel Celeron G5905T"
+  },
+  {
+    "id": "f105cb01-3be8-4ea0-bf9d-425d75062c9b",
+    "name": "Intel Celeron G5925"
+  },
+  {
+    "id": "72d3935d-7350-44e7-99ef-caf0d2c3c2aa",
+    "name": "Intel Core i5-10600KF"
+  },
+  {
+    "id": "1cd71d41-305b-43af-820f-fda41a091ea1",
+    "name": "Intel Core i5-10600K"
+  },
+  {
+    "id": "3cdfcdc0-a57f-4dc0-a0d0-23c0afd87ab5",
+    "name": "Intel Core i5-10400F"
+  },
+  {
+    "id": "b0b355a2-23f4-4daf-94ac-d702e5c6b156",
+    "name": "Intel Core i5-10500"
+  },
+  {
+    "id": "a34a0c1c-f516-44da-9f32-e1d8fd2b6bd0",
+    "name": "Intel Core i5-10400T"
+  },
+  {
+    "id": "06c7b685-2047-4c34-ad32-d92a74c79952",
+    "name": "Intel Core i5-10500T"
+  },
+  {
+    "id": "b51b147a-2c1f-411c-8fc3-ee83923abbd5",
+    "name": "Intel Core i5-10600"
+  },
+  {
+    "id": "5baac3f5-20ac-45c7-b082-cd12071dd60d",
+    "name": "Intel Core i5-10400"
+  },
+  {
+    "id": "d12d24cb-a906-4274-bd9b-7923c9c4286c",
+    "name": "Intel Core i5-10600T"
+  },
+  {
+    "id": "11bd5b52-a4ec-4077-8f52-f740e6a652c6",
+    "name": "Intel Core i5-1038NG7"
+  },
+  {
+    "id": "6948abb5-4349-49fd-a74d-6ef936a95493",
+    "name": "Intel Core i5-10310U"
+  },
+  {
+    "id": "f4fc7e5c-bdbd-45b4-94f5-f22404c94b3c",
+    "name": "Intel Core i5-10200H"
+  },
+  {
+    "id": "b188c1eb-72e4-40d3-ad67-a7e59bc269a8",
+    "name": "Intel Core i5-10500H"
+  },
+  {
+    "id": "068c8c2e-e178-497c-9e33-5760db5ab6ea",
+    "name": "Intel Core i5-10505"
+  },
+  {
+    "id": "33b6f43f-10f8-45cf-852b-08e041a2269d",
+    "name": "Intel Core i5-1135G7"
+  },
+  {
+    "id": "9e592d62-e5f5-4734-a1e6-4ff3a240c249",
+    "name": "11th Generation Intel Core i5 Processors"
+  },
+  {
+    "id": "eb5b6f8d-8e34-4a88-b79e-94a318174b8b",
+    "name": "Intel Core i5-1130G7"
+  },
+  {
+    "id": "d05a215e-26cc-4ccd-abab-fdae99a143b7",
+    "name": "Intel Core i5-1145GRE"
+  },
+  {
+    "id": "1ea61a50-3907-4a82-a291-a789361e85f0",
+    "name": "Intel Core i5-1145G7E"
+  },
+  {
+    "id": "cba1de87-dda5-4c68-a29a-21112a6fc89f",
+    "name": "Intel Core i5-1145G7"
+  },
+  {
+    "id": "94a65c30-bb72-4845-8dcb-c73688b56896",
+    "name": "Intel Xeon Gold 5315Y"
+  },
+  {
+    "id": "82035a6e-6889-4d42-97fb-1a04d9f614fa",
+    "name": "Intel Xeon Platinum 8362"
+  },
+  { "id": "c58eb764-c945-410e-84dd-f06548e31e58", "name": "Intel Atom P5942B" },
+  {
+    "id": "2784c5ae-1449-4d78-a0f1-cce051e05234",
+    "name": "Intel Atom Processor P Series"
+  },
+  { "id": "d51f83aa-55bc-403b-9abd-6a738e97c062", "name": "Intel Atom P5921B" },
+  { "id": "c1933efb-8626-453e-aaf9-2631b36d3601", "name": "Intel Atom P5962B" },
+  { "id": "0caefc1f-a7c7-45a9-a4b7-aac02eb6a82d", "name": "Intel Atom P5931B" },
+  {
+    "id": "221274ca-1983-4c81-ab80-70579806c663",
+    "name": "Intel Core i3-8140U"
+  },
+  {
+    "id": "6f28447a-5ed3-441a-9b5d-4a0f0cb809b3",
+    "name": "Intel Core i3-9350KF"
+  },
+  {
+    "id": "85b4a5e4-0a7c-4774-859a-e109fd86d269",
+    "name": "9th Generation Intel Core i3 Processors"
+  },
+  {
+    "id": "02c34ed4-489c-4006-9af4-3c4c3a121640",
+    "name": "Intel Core i3-9300"
+  },
+  {
+    "id": "e1751e62-53fe-47f1-986e-aa71e7f4f9d2",
+    "name": "Intel Core i3-9300T"
+  },
+  {
+    "id": "a7ff905e-11a6-404b-a1fe-5419863fe48b",
+    "name": "Intel Core i3-9100T"
+  },
+  {
+    "id": "133d0a3d-235f-4f7f-863c-19ea7a674ff1",
+    "name": "Intel Core i3-9350K"
+  },
+  {
+    "id": "34b7b0c5-a7e8-4331-953f-05f74de5aa0b",
+    "name": "Intel Core i3-9100F"
+  },
+  {
+    "id": "3924ebfc-fba6-4261-8e30-bd649e932522",
+    "name": "Intel Core i3-9320"
+  },
+  {
+    "id": "b3644269-ad3a-4439-bdca-eaf3d836af04",
+    "name": "Intel Core i3-9100"
+  },
+  {
+    "id": "df3ad8d0-8d1b-4340-b90e-b6503f307ed2",
+    "name": "Intel Core i3-9100E"
+  },
+  {
+    "id": "8153bfe2-6a57-4f0d-85ca-392b42423953",
+    "name": "Intel Core i3-9100HL"
+  },
+  {
+    "id": "bf46aa88-46d8-4855-a930-cea844c4c643",
+    "name": "Intel Core i3-9100TE"
+  },
+  {
+    "id": "24ba8117-d805-43ae-a4af-5c167f1202ca",
+    "name": "Intel Core i3-1000G4"
+  },
+  {
+    "id": "14115db4-869a-4b45-b51c-0349d2310493",
+    "name": "10th Generation Intel Core i3 Processors"
+  },
+  {
+    "id": "cb45499d-32f8-4691-be9e-c24f746b81f0",
+    "name": "Intel Core i3-1000G1"
+  },
+  {
+    "id": "eb632dcd-8e7b-4561-94ac-90b65dcf9b9a",
+    "name": "Intel Core i3-1005G1"
+  },
+  {
+    "id": "f741cc6a-b0da-40dd-bbce-b46be852a4e1",
+    "name": "Intel Core i3-10110Y"
+  },
+  {
+    "id": "bc2c892b-41b6-4a3a-b3c0-07fd0dcec1b3",
+    "name": "Intel Core i3-10110U"
+  },
+  {
+    "id": "7fb52481-9836-4284-8537-5d0ee15f3df0",
+    "name": "Intel Core i3-1000NG4"
+  },
+  {
+    "id": "899d45c8-e17a-49ab-a9c2-e7676dabde69",
+    "name": "Intel Core i3-10320"
+  },
+  { "id": "6a9edd86-46f9-481d-8624-ef292aa422f1", "name": "Intel Atom C3338R" },
+  {
+    "id": "1ff937cf-d689-4624-9e39-abc764159d75",
+    "name": "Intel Pentium Silver A1030"
+  },
+  {
+    "id": "04a1d087-6dd2-42ed-b8d0-4d34b9cefa61",
+    "name": "Intel Pentium Silver N6000"
+  },
+  {
+    "id": "407d9a62-a1db-4a54-b01a-1c82b942553d",
+    "name": "Intel Pentium Silver N6005"
+  },
+  {
+    "id": "c696ecde-09ff-4def-8499-53615a7ae179",
+    "name": "Intel Core i7-6950X"
+  },
+  {
+    "id": "834f4475-d155-4a89-9ae2-db9680b7dab4",
+    "name": "Intel Core i7-7820X"
+  },
+  {
+    "id": "cb229884-dba0-463d-93a3-a552378adb87",
+    "name": "Intel Core i7-7740X"
+  },
+  {
+    "id": "3f4e720d-a584-42d6-b377-8836265f46f3",
+    "name": "Intel Core i7-7800X"
+  },
+  {
+    "id": "4ef50bd9-8109-400d-9580-050df5ded02b",
+    "name": "Intel Core i9-7900X"
+  },
+  {
+    "id": "d16547a6-9c83-4aab-95ca-4275295272e7",
+    "name": "Intel Core i5-7640X"
+  },
+  {
+    "id": "430bfdd4-203f-4c36-bd3f-4c7aff240966",
+    "name": "Intel Core i9-7920X"
+  },
+  {
+    "id": "d6838d59-4db7-4d99-9284-3ca5180b49af",
+    "name": "Intel Core i9-7980XE"
+  },
+  {
+    "id": "74910785-c347-4504-b0f0-6885cfc3f36e",
+    "name": "Intel Core i9-7960X"
+  },
+  {
+    "id": "419e3cc7-0ffb-4220-891e-632e671cc5b3",
+    "name": "Intel Core i9-7940X"
+  },
+  {
+    "id": "e18f2514-3ac2-405d-a408-a52378a7967e",
+    "name": "Intel Core i9-9920X"
+  },
+  {
+    "id": "8de6b526-b75e-4f06-bdda-c47091acd945",
+    "name": "Intel Core i9-9980XE"
+  },
+  {
+    "id": "8dac60a0-1dc3-4202-bcb8-8cf0fd659c57",
+    "name": "Intel Core i9-9940X"
+  },
+  {
+    "id": "f914d4a1-ba3b-49c9-b586-78007f6e335f",
+    "name": "Intel Core i9-9900X"
+  },
+  {
+    "id": "57133d19-8499-4f37-b8d0-475af5d14807",
+    "name": "Intel Core i9-9960X"
+  },
+  {
+    "id": "b2730cfe-2bdf-40b3-948a-37c369aba824",
+    "name": "Intel Core i7-9800X"
+  },
+  {
+    "id": "7a4e941e-0a9b-490e-9203-81727e81cf30",
+    "name": "Intel Core i9-9820X"
+  },
+  {
+    "id": "f8a58182-565a-4f42-bead-80c75ad4e504",
+    "name": "Intel Core i9-10920X"
+  },
+  {
+    "id": "827b09d6-00a6-43a3-adf1-e219b5227cc9",
+    "name": "Intel Core i9-10940X"
+  },
+  {
+    "id": "45dc35d0-e8fe-4a5f-9195-4ebb7c29885d",
+    "name": "Intel Core i9-10980XE"
+  },
+  {
+    "id": "a197503b-4805-4678-89ef-c9bd321c5e03",
+    "name": "Intel Pentium Gold G6505T"
+  },
+  {
+    "id": "94a18689-43e3-4e4c-9b98-6b2b3f7c73f8",
+    "name": "Intel Core i9-10980HK"
+  },
+  {
+    "id": "aa0f6624-2392-4453-9ba6-b8949e637690",
+    "name": "10th Generation Intel Core i9 Processors"
+  },
+  {
+    "id": "0014d228-b97b-4064-84ae-b58025402616",
+    "name": "Intel Core i9-10900T"
+  },
+  {
+    "id": "f1ced54c-7e7a-43df-8ef5-52963c28a37e",
+    "name": "Intel Core i9-10900"
+  },
+  {
+    "id": "0a0df9d1-9d44-470c-9a34-b83adebac81d",
+    "name": "Intel Core i9-10900F"
+  },
+  {
+    "id": "449562f7-bc61-46dc-a613-edb616fbb926",
+    "name": "Intel Core i9-10900KF"
+  },
+  {
+    "id": "7c01dce7-d3a0-4bea-90de-ffe887688747",
+    "name": "Intel Core i9-10900E"
+  },
+  {
+    "id": "49f231f4-a5d7-4ba0-9c41-a8c8188220c8",
+    "name": "Intel Core i9-10900TE"
+  },
+  {
+    "id": "5fbaa03b-6f7b-4282-a0f7-043344ed0eef",
+    "name": "Intel Core i9-10900K"
+  },
+  {
+    "id": "5ada9380-f287-430a-8cf4-362553c9bba9",
+    "name": "Intel Core i9-10885H"
+  },
+  {
+    "id": "d396524d-0739-4847-b1bf-f7890d3b862e",
+    "name": "Intel Core i9-10850K"
+  },
+  {
+    "id": "36ae217a-0429-47e2-b2e5-e4c5a6ead169",
+    "name": "Intel Core i9-10910"
+  },
+  {
+    "id": "050cb5a7-b4c5-4be7-9c63-c7b69a362b34",
+    "name": "Intel Core i9-11900"
+  },
+  {
+    "id": "67cb386c-e26b-4cfb-993d-544816b0e73f",
+    "name": "11th Generation Intel Core i9 Processors"
+  },
+  {
+    "id": "2ab64763-53e6-4cf0-bf19-616b4c036b14",
+    "name": "Intel Core i9-11900F"
+  },
+  {
+    "id": "90ebaa77-6418-4afe-88da-a7309cac26e6",
+    "name": "Intel Core i9-11900T"
+  },
+  {
+    "id": "1a6a190d-440e-44bb-a0fb-8bdc932834ac",
+    "name": "Intel Core i9-11900KF"
+  },
+  {
+    "id": "6f145d00-1858-4451-82ec-4002ebb396de",
+    "name": "Intel Core i9-11900K"
+  },
+  {
+    "id": "4ffea9ca-3179-4ed8-b343-7ac6fbc8a771",
+    "name": "Intel Core i9-11950H"
+  },
+  {
+    "id": "dd3f9a6c-ca55-4016-8c9b-424bb09f5a7a",
+    "name": "Intel Core i9-11980HK"
+  },
+  {
+    "id": "ecaeec39-57df-417f-88f9-42b1b3edd384",
+    "name": "Intel Core i9-11900H"
+  },
+  {
+    "id": "40ab7dce-9f5b-4ee6-ae0b-4f278a880bb7",
+    "name": "Intel Core i7-1165G7"
+  },
+  {
+    "id": "9b88ad11-7770-44ee-88a0-54d65d9e99f5",
+    "name": "Intel Core i7-1185G7"
+  },
+  {
+    "id": "8806fe9b-1acd-4830-9cd7-8b7ccc496d56",
+    "name": "Intel Core i7-1185G7E"
+  },
+  {
+    "id": "7be1c533-ddf4-4ad9-adb7-b342ee57292c",
+    "name": "Intel Core i7-1185GRE"
+  },
+  {
+    "id": "055f40ef-c861-4d4e-9991-ec24e6956611",
+    "name": "Intel Core i7-11370H"
+  },
+  {
+    "id": "3749965f-360d-4400-a4bc-4a82e3601db1",
+    "name": "Intel Core i7-11375H"
+  },
+  {
+    "id": "11d1905c-bafb-4dad-88b1-ea866a84e51b",
+    "name": "Intel Core i7-1180G7"
+  },
+  {
+    "id": "ae9c2fa6-2de8-44c6-96a8-bcd3d53d427f",
+    "name": "Intel Core i7-11700F"
+  },
+  {
+    "id": "4083e2c2-b642-428f-95dd-4e4c26481b73",
+    "name": "Intel Core i7-11700"
+  },
+  {
+    "id": "afa8f82f-bd27-4b36-b339-255178ef35c3",
+    "name": "Intel Core i7-11700T"
+  },
+  {
+    "id": "d35c4f5c-e255-47a2-8fc0-eae774c469d7",
+    "name": "Intel Core i7-11700KF"
+  },
+  {
+    "id": "45541fa9-da94-464e-9fd1-166f2aefabe4",
+    "name": "Intel Core i7-11700K"
+  },
+  {
+    "id": "b297ca77-bc98-45ed-b42e-28a7d5cd703d",
+    "name": "Intel Core i7-11850H"
+  },
+  {
+    "id": "a72bf864-a13e-4839-a110-578f9074a0fb",
+    "name": "Intel Core i7-11800H"
+  },
+  {
+    "id": "367d9982-dbd9-473b-8c85-142d55ed55de",
+    "name": "Intel Core i7-11700B"
+  },
+  {
+    "id": "f19f7f21-61f7-469b-9f40-68124bdd897c",
+    "name": "Intel Core i7-1195G7"
+  },
+  {
+    "id": "abd5b31c-2d02-45c7-bfe5-8e2f962d12cf",
+    "name": "Intel Core i7-11390H"
+  },
+  {
+    "id": "1fe5776e-a08f-4488-ab61-8b4604f6dee0",
+    "name": "Intel Core i7-11600H"
+  },
+  {
+    "id": "8b4243e0-6eb2-4775-a182-88b8dcbaa850",
+    "name": "Intel Celeron G5905"
+  },
+  {
+    "id": "dcdb4b1f-9bc9-4554-8a6e-c501a23b6cbc",
+    "name": "Intel Core i5-1140G7"
+  },
+  {
+    "id": "3794d27d-f4d4-4fcf-b74f-d260800436ba",
+    "name": "Intel Core i5-11300H"
+  },
+  {
+    "id": "9badb786-e5a7-4174-8bbf-603b8451f0d2",
+    "name": "Intel Core i5-11600T"
+  },
+  {
+    "id": "d329a5fb-cbcf-419b-a69f-1625e2130f5d",
+    "name": "Intel Core i5-11600KF"
+  },
+  {
+    "id": "63d1c7f9-1bfa-4f73-8a32-5ea0b1229b30",
+    "name": "Intel Core i5-11600K"
+  },
+  {
+    "id": "3d05346f-da53-4f09-b7a2-cff74cab7c60",
+    "name": "Intel Core i5-11600"
+  },
+  {
+    "id": "1d34e2ff-3443-4611-bdca-b284b6a0999f",
+    "name": "Intel Core i5-11400T"
+  },
+  {
+    "id": "d19a7bcb-a3f7-4041-ad08-74edf995f20f",
+    "name": "Intel Core i5-11500T"
+  },
+  {
+    "id": "35b2e46a-8e5c-4a85-8c54-b610d2affb68",
+    "name": "Intel Core i5-11400F"
+  },
+  {
+    "id": "52c01bb6-8073-4f31-acd6-dc48bd87df1f",
+    "name": "Intel Core i5-11400"
+  },
+  {
+    "id": "7ea3a2bb-da36-41a1-927d-65d59b29c598",
+    "name": "Intel Core i5-11500"
+  },
+  {
+    "id": "37cb3917-734c-470d-81a6-7c1e2b5dc66d",
+    "name": "Intel Core i5-11500H"
+  },
+  {
+    "id": "c6b99d62-6b77-41cd-bacb-f1a677763d1a",
+    "name": "Intel Core i5-11400H"
+  },
+  {
+    "id": "2ba67524-132f-4762-bda7-19c33b2ebe7d",
+    "name": "Intel Core i5-11260H"
+  },
+  {
+    "id": "4ede02b9-43bb-43a5-80e3-a607a7abd1c3",
+    "name": "Intel Core i5-11500B"
+  },
+  {
+    "id": "82b1d829-9509-4a84-8be8-731b4ac3a4ee",
+    "name": "Intel Core i5-1155G7"
+  },
+  {
+    "id": "53ce47ef-1081-45b1-91db-45a7b17f86f3",
+    "name": "Intel Core i5-11320H"
+  },
+  {
+    "id": "a6cbc3df-b6be-49ac-a105-aadb0e85c3d5",
+    "name": "Intel Core i3-10300"
+  },
+  {
+    "id": "4dd531c6-86aa-4b0f-a155-b10ae5bfe43b",
+    "name": "Intel Core i3-10300T"
+  },
+  {
+    "id": "98b20645-19a2-409a-9f5b-1cac95bbf445",
+    "name": "Intel Core i3-10100"
+  },
+  {
+    "id": "d2fecc8b-7555-411c-91b7-6183f8490e25",
+    "name": "Intel Core i3-10100T"
+  },
+  {
+    "id": "cd5fe326-8e6b-433d-a846-7846987369c2",
+    "name": "Intel Core i3-10100TE"
+  },
+  {
+    "id": "80aaab6c-cae2-41d5-aaf6-48a100dafa41",
+    "name": "Intel Core i3-10100E"
+  },
+  {
+    "id": "fb819b12-186b-40e3-bf4a-b6829e9508cb",
+    "name": "Intel Core i3-10100F"
+  },
+  {
+    "id": "c404834b-d451-4575-800a-b86e84a41335",
+    "name": "Intel Core i3-10100Y"
+  },
+  {
+    "id": "8f305baa-8daa-43d4-bc4a-11a1ecc7868b",
+    "name": "Intel Core i3-10105F"
+  },
+  {
+    "id": "081ef649-bfbb-4e42-bf9c-b2d0284cf417",
+    "name": "Intel Core i3-10305T"
+  },
+  {
+    "id": "0e832407-d3a8-46eb-a369-98e190791ff4",
+    "name": "Intel Core i3-10105"
+  },
+  {
+    "id": "9fb5ec91-af17-41ed-8b09-f777aaa0a600",
+    "name": "Intel Core i3-10305"
+  },
+  {
+    "id": "33a423bd-e409-446b-a144-a56e5d38c102",
+    "name": "Intel Core i3-10105T"
+  },
+  {
+    "id": "4ed404f3-d531-45ac-867c-aa8e769b7ae2",
+    "name": "Intel Core i3-10325"
+  },
+  {
+    "id": "46520ae0-da06-40f8-bdef-9cf4fe970e6f",
+    "name": "Intel Core i3-1115G4"
+  },
+  {
+    "id": "a3f681d5-cbca-4ed2-8476-ec955c3eafde",
+    "name": "11th Generation Intel Core i3 Processors"
+  },
+  {
+    "id": "d75cf252-5c85-4e6d-a649-ffef91eb5127",
+    "name": "Intel Core i3-1110G4"
+  },
+  {
+    "id": "1f9ec950-7f90-4e04-943f-834f289950b4",
+    "name": "Intel Core i9-10900X"
+  },
+  {
+    "id": "3ae7e74a-f5e6-4a77-84c7-11368722e91e",
+    "name": "Intel Core i9-11900KB"
+  },
+  {
+    "id": "8f8e6d29-0210-4b9e-b8f0-b47f51d1d8ab",
+    "name": "Intel Core i7-11850HE"
+  },
+  {
+    "id": "d912ddf9-27b7-4102-af1c-45f26d51d3b8",
+    "name": "Intel Core i5-11500HE"
+  },
+  {
+    "id": "6866559d-4cb7-46ca-99b9-984646ef6410",
+    "name": "Intel Core i3-1115G4E"
+  },
+  {
+    "id": "f2f4fbff-e762-4ea0-8287-f43c6f6724fc",
+    "name": "Intel Core i3-1125G4"
+  },
+  {
+    "id": "5408b430-a7f3-4d1a-96cd-d61578a34c8d",
+    "name": "Intel Core i3-1120G4"
+  },
+  {
+    "id": "36c99057-be6f-4c54-b473-3809259f2f8d",
+    "name": "Intel Core i3-1115GRE"
+  },
+  {
+    "id": "af2f6fcd-39b9-4d2d-be3c-867bbceb642b",
+    "name": "Intel Core i3-11100B"
+  },
+  {
+    "id": "2f330a80-54a3-4519-8e03-dea3c414df6a",
+    "name": "Intel Core i3-11100HE"
+  },
+  {
+    "id": "43a30b5d-0ae9-45fc-a122-bea9860fb911",
+    "name": "Intel Xeon Silver 4310T"
+  },
+  {
+    "id": "706eb7f5-b6be-4438-bd5f-96797dba7763",
+    "name": "Intel Xeon Silver 4214R"
+  },
+  {
+    "id": "5c745bba-1a73-4a1f-939c-198c7e3f6bd5",
+    "name": "Intel Xeon Silver 4210T"
+  },
+  {
+    "id": "3a19d568-417a-4b9d-99b7-d8e871820d30",
+    "name": "Intel Xeon Silver 4215R"
+  },
+  {
+    "id": "6b3b8011-bba9-46b3-b9f8-f2c69be43589",
+    "name": "Intel Xeon Silver 4314"
+  },
+  {
+    "id": "36e139fc-6156-4c6d-b726-39c42f6c9d55",
+    "name": "Intel Xeon Silver 4316"
+  },
+  {
+    "id": "8e82def6-8a10-4fc3-8f40-f9bab901e6b0",
+    "name": "Intel Xeon Silver 4309Y"
+  },
+  {
+    "id": "73e2c350-4e2e-4c61-9667-255e65314b56",
+    "name": "Intel Xeon Silver 4310"
+  },
+  {
+    "id": "8ab97e6b-015f-40ab-a501-327089371eb1",
+    "name": "Intel Xeon Silver 4108"
+  },
+  {
+    "id": "8277ce9a-1479-45c5-b969-21910bc36fb5",
+    "name": "Intel Xeon Silver 4110"
+  },
+  {
+    "id": "f059cd03-942d-4a00-b640-df801ce072e8",
+    "name": "Intel Xeon Silver 4109T"
+  },
+  {
+    "id": "a7d9704f-6a02-470e-9f88-a8861952aac6",
+    "name": "Intel Xeon Silver 4114"
+  },
+  {
+    "id": "60f57961-d572-4530-8ca2-cf1a8d1da8bb",
+    "name": "Intel Xeon Silver 4112"
+  },
+  {
+    "id": "5bd4432a-dc4a-436d-ac65-dd05d85395fd",
+    "name": "Intel Xeon Silver 4114T"
+  },
+  {
+    "id": "a15bcbd9-d4cd-4103-8de1-1aa4850aa4f8",
+    "name": "Intel Xeon Silver 4116T"
+  },
+  {
+    "id": "a44ea49a-23e6-4cf2-bd5a-944a2f06cb3a",
+    "name": "Intel Xeon Silver 4116"
+  },
+  {
+    "id": "d82ed849-5805-46e7-b3e0-8af6aca6f918",
+    "name": "Intel Xeon Silver 4123"
+  },
+  {
+    "id": "27d786c4-363a-42dc-8764-e0fd9dee8e98",
+    "name": "Intel Xeon Silver 4106H"
+  },
+  {
+    "id": "e6bcd177-a97e-4c34-a7e9-d571d834963f",
+    "name": "Intel Xeon Silver 4209T"
+  },
+  {
+    "id": "b3877f65-9620-40c7-bd43-192b14cea985",
+    "name": "Intel Xeon Silver 4210"
+  },
+  {
+    "id": "a3dda922-f9b1-49c6-a93d-7b8761ffffa1",
+    "name": "Intel Xeon Silver 4214"
+  },
+  {
+    "id": "ac18e3b8-3c31-4e2c-bad6-7a0626df6f63",
+    "name": "Intel Xeon Bronze 3206R"
+  },
+  {
+    "id": "5e4b96e7-3875-42c8-bbff-cc1c08012079",
+    "name": "Intel Xeon Bronze 3104"
+  },
+  {
+    "id": "41857ac8-1b48-4bfa-b118-cdf2887ac2d2",
+    "name": "Intel Xeon Bronze 3106"
+  },
+  {
+    "id": "6aae310a-e384-4816-8452-1a86cb36bd58",
+    "name": "Intel Xeon Bronze 3204"
+  },
+  {
+    "id": "91376b1e-6335-4166-8173-9e277b986148",
+    "name": "Intel Xeon E-2386G"
+  },
+  {
+    "id": "c52eca17-e20a-4400-b8d1-6e7f37374c42",
+    "name": "Intel Xeon E Processor"
+  },
+  {
+    "id": "2fcedcf2-69d5-4057-9e90-fa1e88cfe4b2",
+    "name": "Intel Xeon Silver 4208"
+  },
+  {
+    "id": "5d9b9891-68f7-438b-8a07-be91221d138c",
+    "name": "Intel Xeon Silver 4216"
+  },
+  {
+    "id": "7c8c70dc-025d-4056-a665-ce1dafc4ff65",
+    "name": "Intel Xeon Silver 4214Y"
+  },
+  {
+    "id": "eff503e3-6c7e-41fa-9d6e-0f5439f3d1a2",
+    "name": "Intel Xeon Silver 4215"
+  },
+  {
+    "id": "0a81a522-f905-4809-a005-30994f13b984",
+    "name": "Intel Xeon Silver 4210R"
+  },
+  {
+    "id": "0706d373-a32c-4a49-a7b5-6a19a6e93779",
+    "name": "Intel Xeon E-2288G"
+  },
+  {
+    "id": "135afa6d-ae2a-4130-ad30-58efa7dd9bae",
+    "name": "Intel Xeon E-2278G"
+  },
+  {
+    "id": "56610eb3-0704-491c-abe0-f2aa12801cda",
+    "name": "Intel Xeon E-2226GE"
+  },
+  {
+    "id": "1c28de27-cc31-483e-9fc9-9e1062c93f81",
+    "name": "Intel Xeon E-2278GEL"
+  },
+  {
+    "id": "cd6150a9-0372-4d51-826d-fec2cc54745f",
+    "name": "Intel Xeon E-2276ML"
+  },
+  {
+    "id": "6a6cfec4-bc7d-47ca-a637-ebf788a46521",
+    "name": "Intel Xeon E-2254ML"
+  },
+  {
+    "id": "7a43b7fb-0127-4eae-a216-aed2f62a6aaa",
+    "name": "Intel Xeon E-2276ME"
+  },
+  {
+    "id": "64abb44c-e3f8-4300-86f7-5a6d315c2477",
+    "name": "Intel Xeon E-2254ME"
+  },
+  {
+    "id": "176ed1b8-6ced-4809-889b-7562ccb8fe2e",
+    "name": "Intel Xeon E-2176G"
+  },
+  {
+    "id": "d2814a63-8f8a-41a3-9b2f-d451846f4315",
+    "name": "Intel Xeon E-2176M"
+  },
+  {
+    "id": "f3dfff52-9ce7-4416-b4b1-35fac6e0e560",
+    "name": "Intel Xeon E-2186M"
+  },
+  {
+    "id": "b38ac714-3fc9-419d-83da-04a3bd43ea80",
+    "name": "Intel Xeon E-2104G"
+  },
+  {
+    "id": "371303cd-5733-4ec6-9988-b20a8b3c19c0",
+    "name": "Intel Xeon E-2146G"
+  },
+  {
+    "id": "3d58cf1c-ee98-4d80-9890-7fe8582412bc",
+    "name": "Intel Xeon E-2174G"
+  },
+  {
+    "id": "6c24ef8b-d404-4eb2-8a0c-b65d5c362488",
+    "name": "Intel Xeon E-2126G"
+  },
+  {
+    "id": "a23dbec0-3e58-457e-b085-898e369ac1d8",
+    "name": "Intel Xeon W-11155MRE"
+  },
+  {
+    "id": "c3de7bb5-1e09-4106-9906-bc587498002d",
+    "name": "Intel Xeon W Processor"
+  },
+  {
+    "id": "3bf9f92f-024d-44cd-86aa-0868a4dfdfbc",
+    "name": "Intel Xeon E-2144G"
+  },
+  { "id": "7ed2c8e6-1ea2-489f-bda4-8d9ccc373ecf", "name": "Intel Xeon E-2134" },
+  { "id": "585a90a0-247b-4b40-bf97-0c7134f96ece", "name": "Intel Xeon E-2136" },
+  { "id": "5b1144d8-bcaa-4104-8a5e-600642f48135", "name": "Intel Xeon E-2124" },
+  {
+    "id": "f04c1272-aae7-4820-8a80-ce15cc0862b8",
+    "name": "Intel Xeon E-2124G"
+  },
+  {
+    "id": "11f1a935-2aa2-44d9-be51-7b71c5378b55",
+    "name": "Intel Xeon E-2186G"
+  },
+  {
+    "id": "d985af14-50d7-422e-8e6a-8f418ce2130e",
+    "name": "Intel Xeon E-2286G"
+  },
+  {
+    "id": "1f2f0b34-028e-46cf-8bac-c2ab74073864",
+    "name": "Intel Xeon E-2276G"
+  },
+  { "id": "161b0a83-d758-44d9-bf95-513963e36998", "name": "Intel Xeon E-2224" },
+  {
+    "id": "9133086c-d1a8-4445-b5c5-9f8a49931e5d",
+    "name": "Intel Xeon E-2224G"
+  },
+  {
+    "id": "72aefd7a-8762-43c1-a654-92f2104a1a9c",
+    "name": "Intel Xeon W-1350P"
+  },
+  {
+    "id": "8a436ffd-2475-423a-b7d3-d223b4d836cd",
+    "name": "Intel Xeon W-1290T"
+  },
+  {
+    "id": "53281d6e-7234-4f4a-bb3c-ef32eedd654f",
+    "name": "Intel Xeon W-10855M"
+  },
+  {
+    "id": "95ddf429-8b30-4625-92a3-a8ef11371f98",
+    "name": "Intel Xeon W-10885M"
+  },
+  {
+    "id": "4264a60f-5c4f-442e-9cb4-53f2eff565e6",
+    "name": "Intel Xeon W-1250E"
+  },
+  {
+    "id": "7ebcc794-72d0-42a9-8ade-17a9ef5f4ad2",
+    "name": "Intel Xeon W-1250TE"
+  },
+  { "id": "cbf8ba71-2035-459f-9b52-99a1a09415d7", "name": "Intel Xeon W-3275" },
+  {
+    "id": "15710bf5-e861-47a7-a3a3-a3b2598b043c",
+    "name": "Intel Xeon W-3265M"
+  },
+  { "id": "dd5355c0-7200-44df-b97d-2997f3444d86", "name": "Intel Xeon W-3235" },
+  { "id": "c745ae76-1332-47fa-a482-0dee368f82a8", "name": "Intel Xeon W-3225" },
+  { "id": "ed6187e1-a846-4c6b-bc2c-86e509ba32fe", "name": "Intel Xeon W-3265" },
+  { "id": "dcdbc00b-aa9b-42f7-ba2b-743d020c2475", "name": "Intel Xeon W-3223" },
+  {
+    "id": "7a49b869-89d5-44c5-8199-f77171ed287d",
+    "name": "Intel Xeon W-3245M"
+  },
+  { "id": "7f1fb9d1-bcb5-42b0-812e-42fd2e3519e6", "name": "Intel Xeon W-2275" },
+  { "id": "6bede077-45a1-4e4e-8ef2-bb6ad3919135", "name": "Intel Xeon W-2295" },
+  { "id": "83fe783b-5317-44e6-90bc-685fd1fb7283", "name": "Intel Xeon W-2265" },
+  { "id": "f347ee8e-2b71-4642-9276-c8e2f85a5cb7", "name": "Intel Xeon W-2255" },
+  { "id": "78f7861a-7590-41e0-aead-bdd459c437d5", "name": "Intel Xeon W-2223" },
+  { "id": "d90ec6a9-b4c4-4f8f-abcb-c345936ff6c5", "name": "Intel Xeon W-2235" },
+  { "id": "4c6f59b3-69b6-4a42-a8f8-580e88d95fc2", "name": "Intel Xeon W-2102" },
+  { "id": "1c2fe4e5-3f48-4f27-9df3-21d53978d0c0", "name": "Intel Xeon W-2104" },
+  { "id": "3badc5b2-7b9e-4fee-aa88-09c758bf8f59", "name": "Intel Xeon W-2133" },
+  { "id": "467c7b49-964f-429f-98ab-e975f8189139", "name": "Intel Xeon W-2155" },
+  { "id": "a2da1810-38ed-46e1-8663-7669fa34dd58", "name": "Intel Xeon W-2145" },
+  { "id": "3e6b607f-1957-4f0e-8bd0-4801a619a51e", "name": "Intel Xeon W-2125" },
+  { "id": "0b72a7a9-2d13-47e7-8e63-698275df8203", "name": "Intel Xeon W-2135" },
+  { "id": "a12a6a1c-cb8e-42c6-b45c-47085b6cf317", "name": "Intel Xeon W-2195" },
+  { "id": "5d1a55a2-543e-42d7-97fd-3c948e7ec63d", "name": "Intel Xeon W-2175" },
+  { "id": "833123d4-6cec-44f4-a1b4-f12ab58ac6be", "name": "Intel Xeon W-2123" },
+  {
+    "id": "27738b4a-afba-4daf-bd5f-2ba248d6cd16",
+    "name": "Intel Xeon W-3175X"
+  },
+  {
+    "id": "6c24dc04-921d-42da-ae4a-eb74b9703123",
+    "name": "Intel Xeon W-3275M"
+  },
+  { "id": "f6c45eab-3871-4c0e-85ec-c266d2647e46", "name": "Intel Xeon W-2245" },
+  { "id": "2c7283da-693e-4d2f-830d-6a10fa24a3fd", "name": "Intel Xeon W-2225" },
+  { "id": "4846efa4-c275-44a5-ad33-ba5d311a1694", "name": "Intel Xeon W-1250" },
+  {
+    "id": "38638add-44cc-4b5b-bd83-dc6f421e0ba8",
+    "name": "Intel Xeon W-1290P"
+  },
+  { "id": "7d5d89d0-33d2-4b08-a1a3-826482b58255", "name": "Intel Xeon W-1290" },
+  { "id": "e65aa14f-95ae-47a5-8ad9-b54e3a0ffa9f", "name": "Intel Xeon W-1270" },
+  {
+    "id": "616bcd66-20e8-4822-aa5f-0e5e8c263978",
+    "name": "Intel Xeon W-1250P"
+  },
+  {
+    "id": "5e8933d4-8c0a-4ac9-bac4-258fbdc4e68e",
+    "name": "Intel Xeon W-1290E"
+  },
+  {
+    "id": "7eb6c17a-8e88-42fa-ae4a-0d3dca28b010",
+    "name": "Intel Xeon W-1270E"
+  },
+  {
+    "id": "94f0bcf3-5698-4f4f-af26-e209452b1b56",
+    "name": "Intel Xeon W-1270TE"
+  },
+  {
+    "id": "f2bf2962-93e1-4f19-9502-f08b83c3a69d",
+    "name": "Intel Xeon W-1290TE"
+  },
+  {
+    "id": "0b0359f9-e46c-4464-8779-eebe32f9c3fc",
+    "name": "Intel Xeon W-1270P"
+  },
+  {
+    "id": "c267ad0a-9bb2-4751-99fd-0d8756c01224",
+    "name": "Intel Xeon W-1390T"
+  },
+  {
+    "id": "06486884-65cd-4fc4-9a42-8967f9017823",
+    "name": "Intel Xeon W-1390P"
+  },
+  {
+    "id": "b4d4ee8e-e401-4200-b330-be6ba42cff18",
+    "name": "Intel Xeon W-1370P"
+  },
+  { "id": "75a7e751-d34a-470b-9ab3-519ac43e93d1", "name": "Intel Xeon W-1370" },
+  { "id": "a700f560-bced-456e-834e-85ea4e940c4f", "name": "Intel Xeon W-1350" },
+  { "id": "6412541e-f101-416b-b7cb-d73045ad73dc", "name": "Intel Xeon W-1390" },
+  {
+    "id": "c10a6dfd-a68a-451d-88dd-89713a29b6c4",
+    "name": "Intel Xeon W-11955M"
+  },
+  {
+    "id": "8bdaeda3-43e5-4d89-8557-e8432fa961d0",
+    "name": "Intel Xeon W-11855M"
+  },
+  { "id": "5d93f7ff-0b54-4ff0-a07c-d3fef1520526", "name": "Intel Xeon W-3323" },
+  { "id": "44c6f032-5b7b-4906-bdaf-83f34b300a39", "name": "Intel Xeon W-3345" },
+  { "id": "b084c56c-5f6d-4642-8a5b-cef121b38030", "name": "Intel Xeon W-3335" },
+  { "id": "f36991cd-4d39-4ae9-88f3-968f237dd4e1", "name": "Intel Xeon W-3365" },
+  { "id": "002ad381-d307-4c6b-8ed9-5570f8d89bfa", "name": "Intel Xeon W-3375" },
+  {
+    "id": "e83bdc6f-6b8d-4592-a4ba-16a6b8e27dd4",
+    "name": "Intel Xeon W-11865MRE"
+  },
+  {
+    "id": "edb4484d-ad21-4ef8-8878-9d6ad8a7de71",
+    "name": "Intel Xeon W-11865MLE"
+  },
+  {
+    "id": "51b6835e-8ed9-4ec9-a23c-656fed0ba250",
+    "name": "Intel Xeon W-11155MLE"
+  },
+  {
+    "id": "491d4a80-2fd1-410e-8bfb-2bdec117e8b8",
+    "name": "Intel Xeon W-11555MRE"
+  },
+  {
+    "id": "67e0cf25-88bd-487b-8337-11f4bee44606",
+    "name": "Intel Xeon W-11555MLE"
+  },
+  {
+    "id": "d586d7f4-a778-49cb-9138-2cb4622e2c19",
+    "name": "Intel Xeon E-2226G"
+  },
+  { "id": "bdf98f19-218c-4cba-874c-09000b5cfcd5", "name": "Intel Xeon E-2234" },
+  { "id": "5e2efa4d-a6fb-4a21-ba4c-ff0a02a9c69b", "name": "Intel Xeon E-2236" },
+  {
+    "id": "239b3e20-d88a-4f56-b4fd-def14c05a39f",
+    "name": "Intel Xeon E-2244G"
+  },
+  {
+    "id": "542b924d-9ea5-4d0c-9fe6-abfd02a2863d",
+    "name": "Intel Xeon E-2274G"
+  },
+  {
+    "id": "47300b35-3dfb-4f2d-85f9-a6cc60a0f18d",
+    "name": "Intel Xeon E-2276M"
+  },
+  {
+    "id": "ac910f77-64ce-4c86-8733-9af07f12724f",
+    "name": "Intel Xeon E-2286M"
+  },
+  {
+    "id": "3750a3ff-7fca-4a5c-9ef8-fd9dcdff1735",
+    "name": "Intel Xeon E-2246G"
+  },
+  {
+    "id": "5b05846f-0fcc-4251-8e9c-8168815ff78c",
+    "name": "Intel Xeon E-2278GE"
+  },
+  { "id": "47c795d8-c65c-4208-bf7c-00ccc1c49828", "name": "Intel Xeon E-2336" },
+  {
+    "id": "17f750ef-64d2-4f57-9094-0fbd8cdb021d",
+    "name": "Intel Xeon E-2324G"
+  },
+  {
+    "id": "89c75177-3dff-4e83-8096-76deef3d0f7f",
+    "name": "Intel Xeon E-2356G"
+  },
+  { "id": "02555569-2a07-4921-860d-43ca96d81367", "name": "Intel Xeon E-2334" },
+  { "id": "4bc49682-e3da-4c49-8c15-de6c8308debf", "name": "Intel Xeon E-2314" },
+  {
+    "id": "4418c825-0a91-4faf-8e9f-9d4063422380",
+    "name": "Intel Xeon E-2374G"
+  },
+  { "id": "cc74b5d9-4c82-4750-a67a-f4cf18194e01", "name": "Intel Xeon E-2378" },
+  {
+    "id": "b554fc55-9477-4635-b56f-ae0f6ba79bb6",
+    "name": "Intel Xeon E-2378G"
+  },
+  {
+    "id": "4260a019-b18c-4294-96b1-b81d4475d409",
+    "name": "Intel Xeon E-2388G"
+  },
+  {
+    "id": "0dec8e29-4f59-4ff5-9cad-d31ab6261e16",
+    "name": "Intel Xeon D-1649N"
+  },
+  {
+    "id": "7f0a68ac-5991-49cd-ba83-78bbf6ffaf83",
+    "name": "Intel Xeon D Processor"
+  },
+  {
+    "id": "3180bc21-69b7-4200-921f-1e0983914aa4",
+    "name": "Intel Xeon D-2166NT"
+  },
+  {
+    "id": "8d6d77a5-2950-4109-8375-a96ff2111a5c",
+    "name": "Intel Xeon D-2187NT"
+  },
+  {
+    "id": "a1af9030-553f-4fe2-87c1-ff76ff3bdc33",
+    "name": "Intel Xeon D-2183IT"
+  },
+  {
+    "id": "2d130956-1cdd-4aab-a4f8-a05b4311bdab",
+    "name": "Intel Xeon D-2123IT"
+  },
+  { "id": "47932961-9139-4548-960b-583b297aceb7", "name": "Intel Xeon D-2191" },
+  {
+    "id": "91a33210-0216-4cb0-8120-2694878c0899",
+    "name": "Intel Xeon D-2143IT"
+  },
+  {
+    "id": "43196db3-fd2f-4153-89f8-7e489b84311c",
+    "name": "Intel Xeon D-1524N"
+  },
+  {
+    "id": "e2f09ba5-ccec-4bf6-a740-a5d5d5a1db3c",
+    "name": "Intel Xeon D-1563N"
+  },
+  {
+    "id": "f5a33883-aa21-4f5a-8cbb-c75ffb45c538",
+    "name": "Intel Xeon D-1573N"
+  },
+  { "id": "547a8d35-29bf-43db-9f54-4f9ba68165f7", "name": "Intel Xeon D-1637" },
+  {
+    "id": "dafc2685-bc7a-418c-92c3-72140b7f7ea2",
+    "name": "Intel Xeon D-1633N"
+  },
+  { "id": "be1e6b93-46b4-4ec5-b6f5-03f4269f085d", "name": "Intel Xeon D-1632" },
+  {
+    "id": "5ce7a5cd-5433-4e36-902b-cc319b72da27",
+    "name": "Intel Xeon D-1653N"
+  },
+  { "id": "68189774-a7a4-4820-a239-5282739fb94a", "name": "Intel Xeon D-1612" },
+  { "id": "a8e9bfc4-3428-42ed-88ea-9c44ffa4fe77", "name": "Intel Xeon D-1602" },
+  { "id": "611243b6-8128-4f60-a4ed-5747cf14061b", "name": "Intel Xeon D-1622" },
+  {
+    "id": "4c8caef3-0aab-4271-9f5b-df0be6e3efde",
+    "name": "Intel Xeon D-1623N"
+  },
+  { "id": "7d8533ff-4b80-4cbe-b696-e5af1ff91c05", "name": "Intel Xeon D-1627" },
+  { "id": "e75710ab-8f8f-4967-9401-49ba31e6a697", "name": "Intel Xeon D-1539" },
+  {
+    "id": "296b664a-300e-406d-a906-009f02432d77",
+    "name": "Intel Xeon D-1553N"
+  },
+  { "id": "8e8a0855-7e82-4ac4-8001-f0708e9337e9", "name": "Intel Xeon D-1540" },
+  { "id": "312e7335-f080-4b25-8253-17e106dbf9e2", "name": "Intel Xeon D-1520" },
+  { "id": "0c2e5eda-aa9d-4cfa-a818-642ff8990cdb", "name": "Intel Xeon D-1527" },
+  { "id": "b78f3981-ca36-459f-b335-54b80701705b", "name": "Intel Xeon D-1537" },
+  { "id": "43f7fa3b-632e-4b51-b0c3-e6e8db0209ff", "name": "Intel Xeon D-1528" },
+  { "id": "94482a33-c539-4743-bf23-7954c3d836b3", "name": "Intel Xeon D-1541" },
+  { "id": "7388d9dd-dbd8-42af-b46c-1d56143095e4", "name": "Intel Xeon D-1518" },
+  { "id": "5df0e349-873b-4273-bd02-dcce3ccf4ad1", "name": "Intel Xeon D-1521" },
+  { "id": "06db7862-feea-4b9d-837f-edb48ab1fbd0", "name": "Intel Xeon D-1548" },
+  { "id": "81165dee-ee13-4678-917b-b8efcdc46c17", "name": "Intel Xeon D-1531" },
+  { "id": "04fea77e-d801-466a-ba6e-87a6781dfbfc", "name": "Intel Xeon D-1577" },
+  { "id": "96b30ac3-67bc-4cb4-bef4-f1cc8aa75f7d", "name": "Intel Xeon D-1571" },
+  { "id": "036f1ec7-e994-482a-aaf4-31bc3e750014", "name": "Intel Xeon D-1581" },
+  { "id": "871d84ad-4045-4046-b3cf-2095a352a370", "name": "Intel Xeon D-1587" },
+  { "id": "5bb506e6-46a5-4618-8752-4bdfcf3c4a29", "name": "Intel Xeon D-1567" },
+  { "id": "b6e9780f-bbe3-4fa8-ab1f-85172a2c3706", "name": "Intel Xeon D-1557" },
+  { "id": "732d7143-fb5c-4ab0-86de-a342049e064d", "name": "Intel Xeon D-1529" },
+  { "id": "a1fe92e7-a830-4ea3-9719-8a82a61a980e", "name": "Intel Xeon D-1559" },
+  {
+    "id": "881c77f7-e3b3-4bfc-952b-1c79cf02b9b3",
+    "name": "Intel Xeon D-1533N"
+  },
+  {
+    "id": "893a10fa-40ee-4175-99bb-67ee3e3e007e",
+    "name": "Intel Xeon D-1543N"
+  },
+  {
+    "id": "2bce7dc7-39d9-4260-9065-52d3ec48248e",
+    "name": "Intel Xeon D-1523N"
+  },
+  {
+    "id": "093c0b69-42b5-40b3-a761-6b154aba44ee",
+    "name": "Intel Xeon D-1513N"
+  },
+  {
+    "id": "a04a062d-c134-465e-aeb0-b2524087c73c",
+    "name": "Intel Xeon D-2141I"
+  },
+  {
+    "id": "c339279c-7941-4465-85b5-39a1dc34ace3",
+    "name": "Intel Xeon D-2142IT"
+  },
+  {
+    "id": "176a6a5d-a635-474a-a107-ffff055aa826",
+    "name": "Intel Xeon D-2145NT"
+  },
+  {
+    "id": "18daf820-ce8a-4ff0-bd39-19101c3c5664",
+    "name": "Intel Xeon D-2146NT"
+  },
+  {
+    "id": "7ea37b70-9431-4e6b-9869-868ae940a141",
+    "name": "Intel Xeon D-2161I"
+  },
+  {
+    "id": "18d9f99c-e441-47d6-aa97-9e370b387424",
+    "name": "Intel Xeon D-2177NT"
+  },
+  {
+    "id": "b7154d7f-2aad-44dd-acd7-043ea8a1cae6",
+    "name": "Intel Xeon D-2163IT"
+  },
+  {
+    "id": "66ee0785-af6d-4758-b140-0dfaec365acb",
+    "name": "Intel Xeon D-2173IT"
+  }
+]

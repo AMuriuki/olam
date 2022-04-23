@@ -53,6 +53,7 @@ class Purchase(db.Model):
     updated_on = db.Column(db.DateTime)
     products = db.relationship(
         'ProductPurchase', backref='purchase_order', lazy='dynamic')
+    active = db.Column(db.Boolean, default=True)
 
     def generate_reference(self):
         _reference = purchase_reference_generator(self)
