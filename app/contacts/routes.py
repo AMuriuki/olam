@@ -7,7 +7,7 @@ from flask_login import login_required
 from sqlalchemy import log
 from app import contacts
 from app.contacts import bp
-from app.main.models.partner import Partner
+from app.main.models.partner import Partner, PartnerTitle
 from flask import render_template, redirect
 from flask_babel import _, get_locale
 from app.contacts.forms import BasicCompanyInfoForm, BasicIndividualInfoForm, TITLES, AddressInfoForm, TaxInfoForm
@@ -32,7 +32,7 @@ def create():
     form1 = BasicCompanyInfoForm()
     form2 = BasicIndividualInfoForm()
 
-    titles = TITLES
+    titles = PartnerTitle.query.all()
     countries = Country.query.order_by('name').all()
     companies = Partner.query.filter_by(is_company=True).all()
 
@@ -64,7 +64,7 @@ def view_contact(slug):
     form3 = AddressInfoForm()
     form4 = TaxInfoForm()
     partner = Partner.query.filter_by(slug=slug).first()
-    titles = TITLES
+    titles = PartnerTitle.query.all()
     companies = Partner.query.filter_by(is_company=True).all()
     partners = Partner.query.all()
     countries = Country.query.order_by('name').all()
@@ -74,7 +74,6 @@ def view_contact(slug):
             current_index = idx
             prev_index = current_index - 1
             next_index = current_index + 1
-        
 
     if "submit1" in request.form and form1.validate_on_submit():
         if partner.is_company:

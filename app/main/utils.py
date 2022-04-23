@@ -131,6 +131,12 @@ def get_memory():
     data = json.load(open(json_url))
     return data
 
+def get_storage():
+    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+    json_url = os.path.join(SITE_ROOT, "data", "memory.json")
+    data = json.load(open(json_url))
+    return data
+
 
 def get_memory_type():
     SITE_ROOT = os.path.realpath(os.path.dirname(__file__))

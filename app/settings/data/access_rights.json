@@ -9,6 +9,33 @@
     "delete": true
   },
   {
+    "id": "a9ccd261-cf0e-44fb-adc4-d62f3d73fe5e",
+    "name": "Manage titles",
+    "model_id": 11,
+    "read": true,
+    "write": true,
+    "create": true,
+    "delete": true
+  },
+  {
+    "id": "763af197-9821-41c8-9cb1-49539334e1c1",
+    "name": "Manage positions",
+    "model_id": 13,
+    "read": true,
+    "write": true,
+    "create": true,
+    "delete": true
+  },
+  {
+    "id": "12b2927d-23f8-4339-b316-9ba82507a09b",
+    "name": "Manage tags",
+    "model_id": 12,
+    "read": true,
+    "write": true,
+    "create": true,
+    "delete": true
+  },
+  {
     "id": "2b42be7a-9570-4c73-a097-16dda1da1873",
     "name": "View users",
     "model_id": 1,

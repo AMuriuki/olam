@@ -1,7 +1,8 @@
 from crypt import methods
 import json
+from platform import processor
 from app.helper_functions import set_default_user_groups
-from app.main.models.partner import Partner
+from app.main.models.partner import Partner, PartnerPosition, PartnerTag, PartnerTitle
 import os
 from app.auth.email import send_database_activation_email, send_invite_email
 import re
@@ -115,7 +116,20 @@ def invite_colleagues():
 def get_product_purchase_details():
     if request.method == "POST":
         product = Product.query.filter_by(id=request.form['product']).first()
-        return jsonify({'name': product.name, 'description': product.description, 'id': product.id, 'unit_price': product.price})
+        if product.processor:
+            processor = product.processor.name + ','
+        else:
+            processor = ''
+        if product.memory_id:
+            memory = product.memory.name + '-' + 'RAM,'
+        else:
+            memory = ''
+        if product.storage_id:
+            storage = product.storage.name + '-' + 'storage,'
+        else:
+            storage = ''
+        print(product.processor, product.memory, product.storage)
+        return jsonify({'name': product.name, 'description': processor + ' ' + memory + ' ' + storage, 'id': product.id, 'unit_price': product.price})
 
 
 @bp.route('/get_products', methods=['GET', 'POST'])
@@ -158,3 +172,39 @@ def get_partners():
     for result in results:
         partners.append({str(result.id): result.get_name()})
     return Response(json.dumps(partners), mimetype='application/json')
+
+
+@bp.route('/get_partner_titles', methods=['GET', 'POST'])
+@login_required
+@active_user_required
+@model_access_required(11)
+def get_partner_titles():
+    titles = []
+    results = PartnerTitle.query.all()
+    for result in results:
+        titles.append({str(result.id): result.name})
+    return Response(json.dumps(titles), mimetype='application/json')
+
+
+@bp.route('/get_partner_tags', methods=['GET', 'POST'])
+@login_required
+@active_user_required
+@model_access_required(12)
+def get_partner_tags():
+    tags = []
+    results = PartnerTag.query.all()
+    for result in results:
+        tags.append({str(result.id): result.name})
+    return Response(json.dumps(tags), mimetype='application/json')
+
+
+@bp.route('/get_partner_positions', methods=['GET', 'POST'])
+@login_required
+@active_user_required
+@model_access_required(13)
+def get_partner_positions():
+    positions = []
+    results = PartnerPosition.query.all()
+    for result in results:
+        positions.append({str(result.id): result.name})
+    return Response(json.dumps(positions), mimetype='application/json')

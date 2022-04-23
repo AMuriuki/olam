@@ -1,10 +1,11 @@
+from concurrent.futures import process
 from locale import currency
 from math import prod
 from threading import Thread
 from app.auth.models.user import Access, Group, Users
 from app.auth.routes import get_access_groups
 from app.auth.utils import get_users
-from app.contacts.utils import get_partner_tags, get_partners
+from app.contacts.utils import get_partner_tags, get_partner_titles, get_partners
 from app.crm.models.crm_recurring_plan import RecurringPlan
 from app.crm.models.crm_stage import Stage
 from app.crm.models.crm_lead import Lead
@@ -12,14 +13,14 @@ from app.helper_functions import set_default_user_groups
 from app.main.models.activities import Activity, ActivityType
 from app.main.models.company import Company
 from app.main.models.module import Model, Module, ModuleCategory
-from app.main.models.partner import Partner, PartnerTag
+from app.main.models.partner import Partner, PartnerTag, PartnerTitle
 from app.main.models.country import City, Country
 from flask import current_app
 from app import db
-from app.main.models.product import Cores, InstructionSet, Memory, MemoryType, Processor, ProcessorSpeed, Product, ProductCategory, ProductManufacturer, ProductModel
+from app.main.models.product import Cores, InstructionSet, Memory, MemoryType, Processor, ProcessorSpeed, Product, ProductCategory, ProductManufacturer, ProductModel, Storage
 from app.main.models.uom import Uom, UomCategory
 from app.models import Task
-from app.main.utils import get_activities, get_activity_types, get_calling_codes, get_company, get_cores, get_countries, get_countries_cities, get_instruction_sets, get_memory, get_memory_type, get_models, get_moduleCategories, get_modules, get_processor_speeds, get_processors, get_product_categories, get_product_manufacturers, get_product_models, get_products, get_uom_categories, get_uoms
+from app.main.utils import get_activities, get_activity_types, get_calling_codes, get_company, get_cores, get_countries, get_countries_cities, get_instruction_sets, get_memory, get_memory_type, get_models, get_moduleCategories, get_modules, get_processor_speeds, get_processors, get_product_categories, get_product_manufacturers, get_product_models, get_products, get_storage, get_uom_categories, get_uoms
 from app.crm.utils import get_opportunities, get_recurring_plans, get_stages
 from rq import get_current_job
 from app.models import Task
@@ -223,6 +224,16 @@ def dummy_data():
                 db.session.add(record)
                 db.session.commit()
                 print("Partner Tag " + record.name + " added")
+
+        # partner titles
+        partner_titles = get_partner_titles()
+        for title in partner_titles:
+            exists = PartnerTitle.query.filter_by(id=title['id']).first()
+            if not exists:
+                record = PartnerTitle(id=title['id'], name=title['name'])
+                db.session.add(record)
+                db.session.commit()
+                print("Partner title " + record.name + " added")
 
         # users
         users = get_users()
@@ -436,6 +447,17 @@ def dummy_data():
                 db.session.commit()
                 print("Memory " + memory_.name + " created")
 
+        # memory
+        storages = get_storage()
+        for storage in storages:
+            exists = Storage.query.filter_by(id=storage['id']).first()
+            if not exists:
+                storage_record = Storage(
+                    id=storage['id'], name=storage['name'])
+                db.session.add(storage_record)
+                db.session.commit()
+                print("Storage " + storage_record.name + " created")
+
         # memory types
         memory_types = get_memory_type()
         for memory_type in memory_types:
@@ -475,22 +497,15 @@ def dummy_data():
         # products
         products = get_products()
         for product in products:
-            if 'id' in product:
-                exists = Product.query.filter_by(id=product['id']).first()
-                if not exists:
-                    _product = Product(id=product['id'], name=product['name'], manufacturer_id=product['manufacturer_id'] if product['manufacturer_id']
-                                       else None, category_id=product['category_id'] if product['category_id'] else None, cost=product['cost'], price=product['price'])
-                    _product.generate_sku()
-                    db.session.add(_product)
-                    db.session.commit()
-                    print("Product record " + str(_product.id) + " created")
-            else:
-                _product = Product(name=product['Name'], manufacturer_id=product['manufacturer_id'] if 'manufacturer_id' in product else None,
-                                   category_id=product['category_id'] if 'category_id' in product else None, cost=product['Cost'], price=product['Price'])
-                _product.generate_sku()
-                db.session.add(_product)
+            exists = Product.query.filter_by(id=product['id']).first()
+            if not exists:
+                product_record = Product(id=product['id'], name=product['name'], manufacturer_id=product['manufacturer_id'], model_id=product['model_id'], category_id=product['category_id'],
+                                         cost=product['cost'], price=product['price'], sku=product['sku'], processor_id=product['processor_id'], memory_id=product['memory_id'], storage_id=product['storage_id'])
+                product_record.generate_sku()
+                db.session.add(product_record)
                 db.session.commit()
-                print("Product record " + str(_product.id) + " created")
+                print("Product record " + product_record.name + " created")
+
     except Exception as e:
         print(e)
         print(traceback.format_exc())

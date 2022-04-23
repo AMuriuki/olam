@@ -33,11 +33,12 @@ class Product(db.Model):
         UUID(as_uuid=True), db.ForeignKey('product_category.id'))
     screen_size = db.Column(db.String(10), index=True)
     screen = db.Column(db.String(50), index=True)
-    processor = db.Column(UUID(as_uuid=True), db.ForeignKey(
+    processor_id = db.Column(UUID(as_uuid=True), db.ForeignKey(
         'processor.id'), nullable=True)
-    ram = db.Column(UUID(as_uuid=True), db.ForeignKey(
+    memory_id = db.Column(UUID(as_uuid=True), db.ForeignKey(
         'memory.id'), nullable=True)
-    storage = db.Column(db.String(50), index=True)
+    storage_id = db.Column(UUID(as_uuid=True), db.ForeignKey(
+        'storage.id'), nullable=True)
     gpu = db.Column(db.String(50), index=True)
     os = db.Column(db.String(50), index=True)
     os_version = db.Column(db.String(50), index=True)
@@ -79,7 +80,7 @@ class ProductCategory(db.Model):
 class Processor(db.Model):
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     name = db.Column(db.String(120), index=True)
-    products = db.relationship('Product', backref='_processor', lazy=True)
+    products = db.relationship('Product', backref='processor', lazy=True)
 
 
 class Cores(db.Model):
@@ -96,6 +97,12 @@ class Memory(db.Model):
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     name = db.Column(db.String(120), index=True)
     products = db.relationship('Product', backref='memory', lazy=True)
+
+
+class Storage(db.Model):
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    name = db.Column(db.String(120), index=True)
+    products = db.relationship('Product', backref='storage', lazy=True)
 
 
 class MemoryType(db.Model):

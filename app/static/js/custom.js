@@ -179,6 +179,14 @@ $(".select_contact").on("change", function () {
   }
 });
 
+const tags = []
+function add_tag(key, value) {
+  var tag_span = document.createElement("span");
+  tag_span.innerHTML = value;
+  tag_span.className = "badge badge-pill badge-primary mr-1";
+  $(".tags").after(tag_span);
+}
+
 function post_vendor(vendor) {
   if (sessionStorage.getItem('purchase_id')) {
     purchase_id = sessionStorage.getItem('purchase_id');
@@ -206,6 +214,7 @@ $(".set-due-date").on("change", function () {
 
 $(".inp_quantity").on("change", function () {
   var quantity = $(this).val();
+  console.log(quantity);
   var product_id = $(this).attr("id"); //EXTRACT ID
   var unit_price_input = document.getElementById("unit-price-for-" + response['id'])
   var unit_price_span = document.getElementById("unit-price-span-for-" + response['id'])
@@ -1748,15 +1757,10 @@ function get_item() {
   });
 }
 
-
-
-
-
 document.addEventListener('click', function (event) {
   var isClickInside = null
   var el;
   if (current_href.toLowerCase().indexOf("purchase/new/request-for-quotation") >= 0) {
-
     el = $(event.target).closest('tr')
     if (el.hasClass('is-click-inside') || $(event.target).hasClass("is-click-inside") || $(event.target).hasClass("add-a-product") || $(event.target).hasClass('select2-selection__rendered') || $(event.target).hasClass('select2-selection__arrow')) {
       isClickInside = true
@@ -1778,6 +1782,31 @@ document.addEventListener('click', function (event) {
         }
       })
     }
+  }
+})
+
+document.addEventListener('change', function (event) {
+  count_tr = $("#purchase_body").find("tr").length;
+  current_index = parseInt(count_tr) - 1
+  if (event.target == document.getElementsByClassName("inp_quantity")[current_index]) {
+    console.log(event.target);
+    var quantity_el = document.getElementsByClassName("inp_quantity")[current_index];
+    var quantity = quantity_el.value
+    var unit_price_el = document.getElementsByClassName("inp_unit_price")[current_index];
+    var unit_price = unit_price_el.value
+    var sub_total_el = document.getElementsByClassName("sub_total")[current_index];
+    var sub_total = quantity * unit_price
+    sub_total_el.innerHTML = insertCommas(sub_total)
+    var total = 0
+    for (i = 0; i < count_tr; i++) {
+      var sub_total_el = document.getElementsByClassName("sub_total")[i];
+      var sub_total = sub_total_el.innerHTML
+      console.log(total, parseInt(sub_total), total+parseInt(sub_total))
+      total += parseInt(sub_total.replace(/,/g, ""))
+    }
+    var total_el = document.getElementsByClassName("total")[0];
+    var total = insertCommas(total)
+    total_el.innerHTML = total
   }
 })
 
@@ -1834,6 +1863,9 @@ function autocomplete(inp, arr) {
               }
               if (inp.classList.contains("inp_vendor")) {
                 post_vendor(key);
+              }
+              if (inp.classList.contains("inp_tags")) {
+                add_tag(key, value);
               }
             }
             /*close the list of autocompleted values,

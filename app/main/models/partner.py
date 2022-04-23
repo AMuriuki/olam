@@ -32,7 +32,6 @@ partner_tags = db.Table(
 class Partner(db.Model):
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     name = db.Column(db.String(120), index=True)
-    title = db.Column(db.String(60), index=True)
     company_name = db.Column(db.String(120), index=True)
     email = db.Column(db.String(120), index=True)
     function = db.Column(db.String(60), index=True)
@@ -44,6 +43,9 @@ class Partner(db.Model):
     is_deleted = db.Column(db.Boolean, default=False)
     phone_no = db.Column(db.String(120), index=True)
     parent_id = db.Column(UUID(as_uuid=True), db.ForeignKey('partner.id'))
+    title_id = db.Column(UUID(as_uuid=True), db.ForeignKey('partner_title.id'))
+    position_id = db.Column(
+        UUID(as_uuid=True), db.ForeignKey('partner_position.id'))
     parent = db.relationship('Partner', remote_side=[id])
     website = db.Column(db.String(120), index=True)
     postal_code = db.Column(db.String(120), index=True)
@@ -114,3 +116,15 @@ class PartnerTag(db.Model):
     name = db.Column(db.String(120), index=True, unique=True)
     partners = db.relationship(
         'Partner', secondary=partner_tags, back_populates="tags")
+
+
+class PartnerTitle(db.Model):
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    name = db.Column(db.String(120), index=True, unique=True)
+    partners = db.relationship('Partner', backref='title', lazy='dynamic')
+
+
+class PartnerPosition(db.Model):
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    name = db.Column(db.String(120), index=True, unique=True)
+    partners = db.relationship('Partner', backref='position', lazy='dynamic')

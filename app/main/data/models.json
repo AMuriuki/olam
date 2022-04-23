@@ -58,5 +58,23 @@
     "name": "UOM",
     "description": "Records for units of measurement.",
     "module_id": 5
+  },
+  {
+    "id": 11,
+    "name": "Partner Titles",
+    "description": "Records titles for various individuals.",
+    "module_id": 1
+  },
+  {
+    "id": 12,
+    "name": "Partner Tags",
+    "description": "Records tags for partner entities.",
+    "module_id": 1
+  },
+  {
+    "id": 13,
+    "name": "Partner Positions",
+    "description": "Records job positions.",
+    "module_id": 1
   }
 ]
