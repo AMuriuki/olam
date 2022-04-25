@@ -29,14 +29,18 @@
                 {% for module in modules %}
                 {% if module.id != 1 %}
                 {% if module.id|can_view_module %}
-                <div class="col-sm-6 col-xl-3" onclick="location.href='/{{module.bp_name}}/';" style="cursor: pointer;">
+                <div class="col-sm-6 col-xl-3" onclick="location.href='/{{module.bp_name}}/index';" style="cursor: pointer;">
                     <div class="card card-bordered h-100">
                         <div class="card-inner">
                             <div class="project">
                                 <div class="project-head">
-                                    <a href="/{{module.bp_name}}/" class="project-title">
+                                    <a href="/{{module.bp_name}}/index" class="project-title">
                                         <div class="project-info">
-                                            <h6 class="title">{{module.official_name}}</h6>
+                                            {% if module.bp_name == 'crm' %}
+                                            <h6 class="title">{{module.bp_name|upper}}</h6>
+                                            {% else %}
+                                            <h6 class="title">{{module.bp_name|title}}</h6>
+                                            {% endif %}
                                         </div>
                                     </a>
                                 </div>

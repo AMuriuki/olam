@@ -1801,7 +1801,7 @@ document.addEventListener('change', function (event) {
     for (i = 0; i < count_tr; i++) {
       var sub_total_el = document.getElementsByClassName("sub_total")[i];
       var sub_total = sub_total_el.innerHTML
-      console.log(total, parseInt(sub_total), total+parseInt(sub_total))
+      console.log(total, parseInt(sub_total), total + parseInt(sub_total))
       total += parseInt(sub_total.replace(/,/g, ""))
     }
     var total_el = document.getElementsByClassName("total")[0];
@@ -1809,6 +1809,7 @@ document.addEventListener('change', function (event) {
     total_el.innerHTML = total
   }
 })
+
 
 
 function autocomplete(inp, arr) {

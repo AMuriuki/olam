@@ -77,9 +77,13 @@
                     {% if module.id != 1 %}
                     {% if module.id|can_view_module %}
                     <li class="nk-menu-item" id="li_ogApp">
-                        <a href="/{{module.bp_name}}/" id="general_settings" class="nk-menu-link" data-original-title=""
+                        <a href="/{{module.bp_name}}/index" id="general_settings" class="nk-menu-link" data-original-title=""
                             title="">
-                            <span class="nk-menu-text dv-app-name">{{module.official_name}}</span></a>
+                            {% if module.bp_name == 'crm' %}
+                            <span class="nk-menu-text dv-app-name">{{module.bp_name|upper}}</span></a>
+                            {% else %}
+                            <span class="nk-menu-text dv-app-name">{{module.bp_name|title}}</span></a>
+                            {% endif %}
                     </li>
                     {% endif %}
                     {% endif %}

@@ -39,8 +39,8 @@
             {% endfor %}
             {% endif %}
             {% endwith %}
-            <div class="card card-preview">
-                <div class="card-inner">
+            <div class="card card-preview border-0">
+                <div class="card-inner pr-0 pl-0">
                     <form id="group_details" {% if slug %} action="{{url_for('settings.newgroup', slug=slug)}}" {% else
                         %} action="{{url_for('settings.new_group')}}" method="post" {% endif %}>
                         {{form.hidden_tag()}}
@@ -91,7 +91,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="card card-bordered">
+                <div class="card card-bordered margin-0">
                     <ul class="nav nav-tabs nav-tabs-mb-icon nav-tabs-card">
                         <li class="nav-item active current-page">
                             <a id="lnk_users" class="nav-link active" href="#users" data-toggle="tab"><em

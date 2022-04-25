@@ -6,6 +6,19 @@ from datetime import datetime
 
 from app.utils import sku_generator
 
+FILTERS = [
+    ('0', 'Services'),
+    ('1', 'Products'),
+    ('2', 'Raw Materials'),
+    ('3', 'Accessories'),	
+    ('4', 'Refurbished Laptops'),
+    ('5', 'New Laptop'),
+    ('6', 'Desktop PC'),		
+    ('6', 'Published'),
+    ('7', 'Available in POS'),
+    ('8', 'Can be sold'),
+]
+
 
 class ProductManufacturer(db.Model):
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)

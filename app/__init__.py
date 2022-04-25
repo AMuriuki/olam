@@ -75,6 +75,9 @@ def create_app(config_class=Config):
     from app.purchase import bp as purchase_bp
     app.register_blueprint(purchase_bp, url_prefix='/purchase')
 
+    from app.inventory import bp as inventory_bp
+    app.register_blueprint(inventory_bp, url_prefix='/inventory')
+
     from app.contacts import bp as contact_bp
     app.register_blueprint(contact_bp, url_prefix='/contacts')
 

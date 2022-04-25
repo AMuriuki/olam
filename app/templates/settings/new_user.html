@@ -32,8 +32,8 @@
             {% endif %}
             {% endwith %}
             <form id="new_user" action="{{url_for('settings.create_user')}}" method="post">
-                <div class="card card-preview">
-                    <div class="card-inner">
+                <div class="card card-preview border-0">
+                    <div class="card-inner pl-0 pr-0">
                         {{form.hidden_tag()}}
                         <div class="row gy-4">
                             <div class="col-sm-6">
@@ -57,7 +57,7 @@
                         </div>
 
                     </div>
-                    <div class="card card-bordered">
+                    <div class="card card-bordered margin-0">
                         <ul class="nav nav-tabs nav-tabs-mb-icon nav-tabs-card">
                             <li class="nav-item active current-page">
                                 <a id="lnk_users" class="nav-link active" href="#access" data-toggle="tab"><em
@@ -80,8 +80,9 @@
                                                     <li>
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
-                                                                name="user-type" id="{{user_type}}" value="{{user_type}}" {% if
-                                                                user_type==user_type.IU %}checked {% endif %}>
+                                                                name="user-type" id="{{user_type}}"
+                                                                value="{{user_type}}" {% if user_type==user_type.IU
+                                                                %}checked {% endif %}>
                                                             <label class="custom-control-label"
                                                                 for="{{user_type}}">{{user_type.value}}</label>
                                                         </div>
@@ -94,19 +95,22 @@
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-label">{{module.bp_name|upper}}</label>
-                                                <div class="form-control-wrap">
-                                                    <select id="{{module.id}}" class="form-select set-access" data-search="on">
-                                                        <option value="#">Select Access</option>
-                                                        {% for group in groups %}
-                                                        {% if group.module_id == module.id %}
-                                                        <option value="{{group.id}}">{{group.name}}</option>
-                                                        {% endif %}
-                                                        {% endfor %}
-                                                    </select>
-                                                </div>
+                                                <ul class="custom-control-group g-3 align-center">
+                                                    {% for group in groups %}
+                                                    {% if group.module_id == module.id %}
+                                                    <li>
+                                                        <div class="custom-control custom-control-sm custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" id="{{group.id}}">
+                                                            <label class="custom-control-label" for="{{group.id}}">{{group.name}}</label>
+                                                        </div>
+                                                    </li>
+                                                    {% endif %}
+                                                    {% endfor %}                                                    
+                                                </ul>                                                
                                             </div>
                                         </div>
-                                        {% endfor %}
+                                        {% endfor %}                                        
+                                        
                                     </div>
                                 </div>
                             </div>

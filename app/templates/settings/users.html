@@ -2,11 +2,12 @@
 
 {% block content %}
 <style>
-    .btn-trigger+.dropdown-menu-right, .btn-trigger+.dropdown-menu-left{
+    .btn-trigger+.dropdown-menu-right,
+    .btn-trigger+.dropdown-menu-left {
         margin: 5rem 0 !important;
     }
 
-    .nk-search-box{
+    .nk-search-box {
         margin-top: 0rem !important;
         margin-bottom: 1.25rem !important;
     }
@@ -17,17 +18,17 @@
         <div class="nk-search-box">
             <div class="form-group">
                 <div class="form-control-wrap">
-                    <input id="search_users" type="text" class="form-control form-control-lg"
-                        placeholder="Search..." value="{{selectedFilters}}">
+                    <input id="search_users" type="text" class="form-control form-control-lg" placeholder="Filter..."
+                        value="{{selectedFilters}}">
                     <button class="form-icon form-icon-right">
-                        <em class="icon ni ni-search"></em>
+                        <em class="d-none d-sm-inline icon ni ni-filter-alt"></em>
                     </button>
                 </div>
             </div>
         </div>
         <div class="nk-block">
-            <div class="card card-preview">
-                <div class="card-inner">
+            <div class="card card-preview border-0">
+                <div class="card-inner p-0">
                     <table id="tbl_groups" class="datatable-init nk-tb-list nk-tb-ulist" data-auto-responsive="false">
                         <thead>
                             <tr class="nk-tb-item nk-tb-head">
@@ -48,25 +49,21 @@
                             <tr id="{{user.slug}}" class="nk-tb-item">
                                 <td class="nk-tb-col nk-tb-col-check">
                                     <div class="custom-control custom-control-sm custom-checkbox notext">
-                                        <input type="checkbox" class="custom-control-input chk_user"
-                                            id="{{user.id}}">
+                                        <input type="checkbox" class="custom-control-input chk_user" id="{{user.id}}">
                                         <label class="custom-control-label" for="{{user.id}}"></label>
                                     </div>
                                 </td>
-                                <td class="nk-tb-col select-user"
-                                    style="cursor: pointer !important;">
+                                <td class="nk-tb-col select-user" style="cursor: pointer !important;">
                                     <div class="user-card">
                                         <div class="user-info">
                                             <span class="tb-lead">{{user.id|get_user_name}}</span>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="nk-tb-col tb-col-md select-user"
-                                style="cursor: pointer !important;">
+                                <td class="nk-tb-col tb-col-md select-user" style="cursor: pointer !important;">
                                     <span>{{ moment(user.last_seen).format('LLL')}}</span>
                                 </td>
-                                <td class="nk-tb-col tb-col-md select-user"
-                                style="cursor: pointer !important;">
+                                <td class="nk-tb-col tb-col-md select-user" style="cursor: pointer !important;">
                                     <span>{{ user.company.name|remove_hyphens|title }}</span>
                                 </td>
                                 <td class="nk-tb-col nk-tb-col-tools">
@@ -83,14 +80,17 @@
                                                                     class="icon ni ni-download"></em><span>Export</span></a>
                                                         </li>
                                                         {% if current_user|can_write(1) %}
-                                                        <li><a id="{{user.slug}}" href="#" class="confirm-archive-user"><em
+                                                        <li><a id="{{user.slug}}" href="#"
+                                                                class="confirm-archive-user"><em
                                                                     class="icon ni ni-archive"></em><span>Archive</span></a>
                                                         </li>
-                                                        <li><a id="unarchive.{{user.slug}}" href="#" class="unarchive-user"><em
+                                                        <li><a id="unarchive.{{user.slug}}" href="#"
+                                                                class="unarchive-user"><em
                                                                     class="icon ni ni-unarchive"></em><span>Unarchive</span></a>
                                                         </li>
                                                         <li class="divider"></li>
-                                                        <li><a id="{{user.slug}}" href="#" class="confirm-delete-user"><em
+                                                        <li><a id="{{user.slug}}" href="#"
+                                                                class="confirm-delete-user"><em
                                                                     class="icon ni ni-delete"></em><span>Delete</span></a>
                                                         </li>
                                                         <li><a href="#"><em

@@ -141,7 +141,71 @@
                                             </li>
                                         </ul><!-- .nk-menu-sub -->
                                     </li><!-- .nk-menu-item -->
-                                    <!-- .nk-menu-item -->
+                                    {% elif "inventory." in request.url_rule.endpoint %}
+                                    <li class="nk-menu-item">
+                                        <a href="{{url_for('inventory.index')}}" class="nk-menu-link"
+                                            data-original-title="" title=""><span
+                                                class="nk-menu-text">Overview</span></a>
+                                    </li>
+                                    <li class="nk-menu-item has-sub">
+                                        <a href="#" class="nk-menu-link nk-menu-toggle"
+                                            data-original-title="" title="">
+                                            <span class="nk-menu-text">Products</span>
+                                        </a>
+                                        <ul class="nk-menu-sub">
+                                            <li class="nk-menu-item">
+                                                <a href="{{url_for('inventory.products')}}" class="nk-menu-link" data-original-title="" title=""><span
+                                                        class="nk-menu-text">Products</span></a>
+                                            </li>
+                                            <li class="nk-menu-item">
+                                                <a href="#" class="nk-menu-link" data-original-title="" title=""><span
+                                                        class="nk-menu-text">Product Variants</span></a>
+                                            </li>
+                                            <li class="nk-menu-item">
+                                                <a href="#" class="nk-menu-link" data-original-title="" title=""><span
+                                                        class="nk-menu-text">Lots/Serial Numbers</span></a>
+                                            </li>
+                                        </ul><!-- .nk-menu-sub -->
+                                    </li><!-- .nk-menu-item -->
+                                    <li class="nk-menu-item">
+                                        <a href="{{url_for('crm.reporting')}}" class="nk-menu-link"
+                                            data-original-title="" title="">
+                                            <span class="nk-menu-text">Reporting</span>
+                                        </a>
+                                    </li>
+                                    <li class="nk-menu-item has-sub">
+                                        <a href="{{url_for('crm.configuration')}}" class="nk-menu-link nk-menu-toggle"
+                                            data-original-title="" title="">
+                                            <span class="nk-menu-text">Configuration</span>
+                                        </a>
+                                        <ul class="nk-menu-sub">
+                                            <li class="nk-menu-item">
+                                                <a href="html/apps-messages.html" class="nk-menu-link"
+                                                    data-original-title="" title=""><span
+                                                        class="nk-menu-text">Settings</span></a>
+                                            </li>
+                                            <li class="nk-menu-item">
+                                                <a href="{{url_for('crm.sales_teams')}}" class="nk-menu-link"
+                                                    data-original-title="" title=""><span class="nk-menu-text">Sales
+                                                        Teams</span></a>
+                                            </li>
+                                            <li class="nk-menu-item">
+                                                <a href="html/apps-file-manager.html" class="nk-menu-link"
+                                                    data-original-title="" title=""><span class="nk-menu-text">Activity
+                                                        Types</span></a>
+                                            </li>
+                                            <li class="nk-menu-item">
+                                                <a href="html/apps-chats.html" class="nk-menu-link"
+                                                    data-original-title="" title=""><span
+                                                        class="nk-menu-text">Pipeline</span></a>
+                                            </li>
+                                            <li class="nk-menu-item">
+                                                <a href="html/apps-calendar.html" class="nk-menu-link"
+                                                    data-original-title="" title=""><span class="nk-menu-text">Lead
+                                                        Generation</span></a>
+                                            </li>
+                                        </ul><!-- .nk-menu-sub -->
+                                    </li><!-- .nk-menu-item -->
                                     {% endif %}
                                 </ul><!-- .nk-menu -->
                             </div>

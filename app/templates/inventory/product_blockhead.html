@@ -1,0 +1,81 @@
+<div class="nk-block-head nk-block-head-sm">
+    <div class="nk-block-between">
+        {% if title == 'Products | Olam ERP' %}
+        <div class="nk-block-head-content">
+            <h3 class="nk-block-title page-title">
+                <a href="{{url_for('inventory.index')}}">Inventory</a>
+                /
+                <strong class="text-primary small">
+                    <span id="#">Products</span>
+                </strong>
+            </h3>
+            <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                {% if current_user|can_create(9) %}
+                <li>
+                    <a href="{{url_for('inventory.create_product')}}" class="btn btn-m btn-primary btn-block">CREATE</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        <div class="nk-block-head-content">
+            <div class="toggle-wrap nk-block-tools-toggle">
+                <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em
+                        class="icon ni ni-menu-alt-r"></em></a>
+                <div class="toggle-expand-content" data-content="pageMenu">
+                    <ul class="nk-block-tools g-3">
+                        <li>
+                            <div class="drodown">
+                                <a href="#" class="dropdown-toggle btn btn-white btn-dim btn-outline-light"
+                                    data-toggle="dropdown"><em
+                                        class="d-none d-sm-inline icon ni ni-filter-alt"></em><span>Filter
+                                        By</span><em class="dd-indc icon ni ni-chevron-right"></em></a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <ul class="link-list-opt no-bdr">
+                                        {% for filter in filters %}
+                                        <li>
+                                            <a id="{{filter[0]}}" class="filter-users" href="#">
+                                                {% if filter[1]|contains(selectedFilters) %}
+                                                <em class="icon ni ni-check-thick"></em>
+                                                {% endif %}
+                                                <span>{{filter[1]}}</span>
+                                            </a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div><!-- .toggle-wrap -->
+        </div><!-- .nk-block-head-content -->
+        {% elif title == 'New Product | Olam ERP' %}
+        <div class="nk-block-head-content">
+            <h3 class="nk-block-title page-title">
+                <a href="{{url_for('inventory.index')}}">
+                    Inventory
+                </a>
+                /
+                <strong class="text-primary small">
+                    <a href="{{url_for('inventory.products')}}">Products</a>
+                </strong>
+                /
+                <strong class="text-primary small">
+                    <span id="#">New</span>
+                </strong>
+            </h3>
+            <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                <li>
+                    <a href="#" class="btn btn-m btn-primary btn-block create-user">SAVE</a>
+                </li>
+                <li>
+                    <a href="{{url_for('inventory.products')}}" class="btn btn-outline-light">
+                        DISCARD
+                    </a>
+                    <span class="btn selected-groups"></span>
+                </li>
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</div>

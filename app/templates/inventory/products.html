@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="nk-content-body">
+    <div class="nk-content-wrap">
+        {% include "inventory/product_blockhead.html" %}
+        <div class="nk-search-box">
+            <div class="form-group">
+                <div class="form-control-wrap">
+                    <input id="search_users" type="text" class="form-control form-control-lg" placeholder="Filter..."
+                        value="{{selectedFilters}}">
+                    <button class="form-icon form-icon-right">
+                        <em class="d-none d-sm-inline icon ni ni-filter-alt"></em>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="nk-block nk-block-lg">
+            <div class="card-inner p-0">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="card card-bordered">
+                            <img src="https://deed.co.ke/assets/uploads/03795959406adc00044a547b34202759.jpg"
+                                class="card-img-top p-4 w-60" alt="">
+                            <div class="card-inner">
+                                <h6>HP CHROMEBOOK 14-X006NA</h6>
+                                <table style="width: 100%;">
+                                    <tr>
+                                        <th>Cost:</th>
+                                        <td>Ksh. 10,000.00</td>                                        
+                                    </tr>
+                                    <tr>
+                                        <th>Price:</th>
+                                        <td>Ksh. 15,000.00</td>                                        
+                                    </tr>
+                                    <tr>
+                                        <th>Units:</th>
+                                        <td>1.00</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Variants:</th>
+                                        <td>1.00</td>
+                                    </tr>
+                                </table>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

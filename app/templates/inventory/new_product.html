@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="nk-content-body">
+    <div class="nk-content-wrap">
+        {% include "inventory/product_blockhead.html" %}
+        <div class="nk-block">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-fill alert-success alert-icon">
+                <em class="icon ni ni-check-circle"></em>
+                {{ message }}
+                <button class="close" data-dismiss="alert"></button>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <form id="new_product" action="{{url_for('inventory.create_product')}}" method="post">
+                <div class="card card-preview border-0">
+                    <div class="card-inner pl-0 pr-0">
+                        {{form.hidden_tag()}}
+                        <div class="row gy-4">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label">Product Name</label>
+                                    <div class="form-control-wrap">
+                                        <input type="text" class="form-control" name="name" id="name"
+                                            placeholder="e.g. HP Chromebook" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row gy-4">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <ul class="custom-control-group g-3 align-center">
+                                        <li>
+                                            <div class="custom-control custom-control-sm custom-checkbox checked">
+                                                <input type="checkbox" class="custom-control-input" id="promotion"
+                                                    data-toggle="collapse" data-target="#accordion-item-2-1">
+                                                <label class="custom-control-label" for="promotion">Promotion</label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div id="accordion-2" class="accordion accordion-s3">
+                                        <div class="accordion-item">
+                                            <div class="accordion-body collapse" id="accordion-item-2-1"
+                                                data-parent="#accordion-2">
+                                                <div class="accordion-inner pl-0">
+                                                    <div class="row gy-4 pt-2">
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <label class="form-label">Price</label>
+                                                                <div class="form-control-wrap">
+                                                                    <div class="form-text-hint">
+                                                                        <span class="overline-title">KES</span>
+                                                                    </div>
+                                                                    <input type="number" class="form-control" id="price"
+                                                                        placeholder="1.00">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <label class="form-label">Start Date</label>
+                                                                <div class="form-control-wrap">
+                                                                    <input type="date" class="form-control" id="start_date">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <label class="form-label">End Date</label>
+                                                                <div class="form-control-wrap">
+                                                                    <input type="date" class="form-control" id="end_date">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
