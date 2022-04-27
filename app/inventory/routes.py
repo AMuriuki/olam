@@ -3,7 +3,7 @@ from flask_login import login_required
 from app.decorators import active_user_required, can_create_access_required, model_access_required, module_access_required
 from app.inventory import bp
 from app.inventory.forms import NewProductForm
-from app.main.models.product import FILTERS, Product
+from app.main.models.product import FILTERS, Product, ProductCategory, ProductType
 from flask_babel import _
 
 
@@ -30,4 +30,6 @@ def products():
 @active_user_required
 def create_product():
     form = NewProductForm()
-    return render_template("inventory/new_product.html", title=_("New Product | Olam ERP"), form=form)
+    categories = ProductCategory.query.all()
+    types = ProductType.query.all()
+    return render_template("inventory/new_product.html", title=_("New Product | Olam ERP"), form=form, categories=categories, types=types)

@@ -181,7 +181,7 @@ def update_activity(activity_id):
         return redirect(url_for('crm.pipeline'))
 
 
-@bp.route('/', methods=['GET', 'POST'])
+@bp.route('/index', methods=['GET', 'POST'])
 @login_required
 @active_user_required
 @module_access_required(2)

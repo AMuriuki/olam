@@ -261,6 +261,15 @@ function get_partner_details(value) {
     });
 }
 
+function get_attribute_values(attribute) {
+  $.post("/get_attribute_values", {
+    attribute: attribute,
+  }).done(function (response) {
+
+  })
+}
+
+
 // get product description
 function get_product_purchase_details(product) {
   $.post("/get_product_purchase_details", {
@@ -1867,6 +1876,9 @@ function autocomplete(inp, arr) {
               }
               if (inp.classList.contains("inp_tags")) {
                 add_tag(key, value);
+              }
+              if (inp.classList.contains("inp_attribute")) {
+                get_attribute_values(key)
               }
             }
             /*close the list of autocompleted values,

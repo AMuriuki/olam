@@ -11,7 +11,7 @@ from os import fsync
 from app.main.models.database import Database
 from app.main.models.company import Company
 from app.auth.models.user import Group, Users, user_group
-from app.main.models.product import Product
+from app.main.models.product import Product, ProductAttribute
 from app.main.models.uom import Uom
 from app.main.utils import search_dict, updating
 from app.main.models.module import Module
@@ -208,3 +208,25 @@ def get_partner_positions():
     for result in results:
         positions.append({str(result.id): result.name})
     return Response(json.dumps(positions), mimetype='application/json')
+
+
+@bp.route('/get_product_attributes', methods=['GET', 'POST'])
+@login_required
+@active_user_required
+@model_access_required(14)
+def get_product_attributes():
+    attributes = []
+    results = ProductAttribute.query.all()
+    for result in results:
+        attributes.append({str(result.id): result.name})
+    return Response(json.dumps(attributes), mimetype='application/json')
+
+
+@bp.route('/get_attribute_values', methods=['GET', 'POST'])
+@login_required
+@active_user_required
+@model_access_required(14)
+def get_attribute_values():
+    if request.method == "POST":
+        pass
+        

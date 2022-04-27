@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
+<style>
+    .badge {
+        position: absolute;
+        left: 3px;
+        top: 3px;
+    }
+</style>
 <div class="nk-content-body">
     <div class="nk-content-wrap">
         {% include "inventory/product_blockhead.html" %}
@@ -65,7 +72,8 @@
                                                             <div class="form-group">
                                                                 <label class="form-label">Start Date</label>
                                                                 <div class="form-control-wrap">
-                                                                    <input type="date" class="form-control" id="start_date">
+                                                                    <input type="date" class="form-control"
+                                                                        id="start_date">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -73,7 +81,8 @@
                                                             <div class="form-group">
                                                                 <label class="form-label">End Date</label>
                                                                 <div class="form-control-wrap">
-                                                                    <input type="date" class="form-control" id="end_date">
+                                                                    <input type="date" class="form-control"
+                                                                        id="end_date">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -86,9 +95,157 @@
                             </div>
                         </div>
                     </div>
+                    <div class="card card-bordered margin-0">
+                        <ul class="nav nav-tabs nav-tabs-mb-icon nav-tabs-card">
+                            <li class="nav-item active current-page">
+                                <a id="lnk_generalInfo" class="nav-link active" href="#general_info" data-toggle="tab">
+                                    <em class="icon ni ni-info-i"></em>
+                                    <span>General Information</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="lnk_attributes" class="nav-link" href="#attr" data-toggle="tab">
+                                    <em class="icon ni ni-tile-thumb"></em>
+                                    <span>Attributes</span>
+                                </a>
+                            </li>
+                        </ul><!-- .nav-tabs -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="general_info">
+                                <div class="card-inner">
+                                    <div class="row g-3 align-center">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="form-label" for="address-county">Product Type</label>
+                                                <select id="product_type" name="product_type"
+                                                    class="form-select product_type" data-search="on">
+                                                    <option value="default_option">Select Product Type</option>
+                                                    {% for type in types %}
+                                                    <option value="{{type.id}}">{{type.name}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label class="form-label">Price</label>
+                                            <div class="form-control-wrap">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">KES</span>
+                                                    </div>
+                                                    <input type="text" class="form-control">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">(= 3.00 Incl. Taxes)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label class="form-label">Unit of Measure</label>
+                                            <div class="form-control-wrap">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control"
+                                                        aria-label="Text input with segmented dropdown button">
+                                                    <div class="input-group-append">
+                                                        <button
+                                                            class="btn btn-icon btn-outline-light btn-dim dropdown-toggle dropdown-toggle-split"
+                                                            data-toggle="dropdown">
+                                                            <em class="icon ni ni-chevron-down"></em>
+                                                        </button>
+                                                        <button class="btn btn-outline-light btn-dim">
+                                                            <em class="icon ni ni-external"></em>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label class="form-label">Cost</label>
+                                            <div class="form-control-wrap">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">KES</span>
+                                                    </div>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label class="form-label">Quantity</label>
+                                            <div class="form-control-wrap">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" placeholder="e.g 1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label class="form-label">Customer Taxes</label>
+                                            <div class="form-control-wrap">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control"
+                                                        aria-label="Text input with segmented dropdown button">
+                                                    <span class="badge badge-pill badge-outline-primary">Tax
+                                                        16.00%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="attr">
+                                <div class="invoice">
+                                    <div class="invoice-bills">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Attribute</th>
+                                                        <th>Values</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="attributes_body">
+                                                    <tr class="og-attribute-tr is-click-inside">
+                                                        <td class="w-25 td_attribute">
+                                                            <div class="form-control-wrap">
+                                                                <input type="text" class="form-control inp_attribute">
+                                                                <a href="#" class="form-icon form-icon-right" data-toggle="">
+                                                                    <em class="d-none d-sm-inline icon ni ni-external"></em>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control inp_product_desc">
+                                                            <span class="product_description"></span>
+                                                        </td>
+                                                        <td class="td_subtotal">
+                                                            <span class="sub_total"></span>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="preview-btn-item  col-sm-6 col-lg-3">
+                                                <a href="#" class="add-attribute" style="color: #017e84;">Add an
+                                                    attribute</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
     </div>
+    <!-- footer @s -->
+    {% include "footer.html" %}
+    <!-- footer @e -->
 </div>
+<script>
+    $.get("/get_product_attributes", function (data) {
+        autocomplete(document.getElementsByClassName("inp_attribute")[0], data)
+        return data;
+    });
+</script>
 {% endblock %}

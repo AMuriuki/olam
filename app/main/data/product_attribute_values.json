@@ -1,0 +1,986 @@
+[
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "7th Generation Intel® Core™ i7 Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "8th Generation Intel® Core™ i5 Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "8th Generation Intel® Core™ i7 Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Core™ X-series Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "7th Generation Intel® Core™ i5 Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Celeron® Processor 3000 Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Celeron® Processor N Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Celeron® Processor J Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Celeron® Processor G Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Legacy Intel® Pentium® Processor"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Pentium® Processor 2000 Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Pentium® Processor 3000 Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Pentium® Processor 4000 Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Pentium® Processor N Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Quark™ SE C1000 Microcontroller Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Pentium® Processor J Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Pentium® Processor 1000 Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Quark™ Microcontroller D2000 Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Quark™ SoC X1000 Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Atom™ Processor Z Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Quark™ Microcontroller D1000 Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Legacy Intel Atom™ Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Atom™ Processor X Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Atom™ Processor N Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Atom™ Processor E Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Atom™ Processor D Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Atom™ Processor C Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Itanium® Processors with 677 MHz FSB"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Itanium® Processors with 533 MHz FSB"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Itanium® Processors with 400 MHz FSB"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Itanium® Processor 9000 Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Itanium® Processor 9100 Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Itanium® Processor 9300 Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Atom™ Processor S Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Itanium® Processor 9500 Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Itanium® Processor 9700 Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Xeon Phi™ x200 Product Family"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Xeon Phi™ x100 Product Family"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Xeon® Processor E3 Family"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Xeon® Processor D Family"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Legacy Intel® Xeon® Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Xeon® Processor E3 v3 Family"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Xeon® Processor E3 v4 Family"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Xeon® Processor E3 v5 Family"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Xeon® Processor E3 v6 Family"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Xeon® Processor E5 Family"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Xeon® Processor E5 v2 Family"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Xeon® Processor E5 v4 Family"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Xeon® Processor E5 v3 Family"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Xeon® Processor E3 v2 Family"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Xeon® Processor W Family"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Xeon® Processor E7 Family"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Xeon® Processor E7 v2 Family"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Xeon® Processor E7 v3 Family"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Xeon® Processor E7 v4 Family"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Xeon® Scalable Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Legacy Intel® Celeron® Processor"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Celeron® Processor 1000 Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Celeron® Processor 2000 Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Pentium® Processor G Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Intel® Pentium® Processor D Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "Legacy Intel® Core™ Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "4th Generation Intel® Core™ i3 Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "4th Generation Intel® Core™ i5 Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "4th Generation Intel® Core™ i7 Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "5th Generation Intel® Core™ M Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "5th Generation Intel® Core™ i5 Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "5th Generation Intel® Core™ i3 Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "5th Generation Intel® Core™ i7 Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "6th Generation Intel® Core™ m Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "6th Generation Intel® Core™ i3 Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "6th Generation Intel® Core™ i5 Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "7th Generation Intel® Core™ m Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "7th Generation Intel® Core™ i3 Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "6th Generation Intel® Core™ i7 Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Opteron™ X1100 Series Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Phenom™ II Black Edition Quad-Core Mobile Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Turion™ 64 X2 Dual-Core Mobile Technology"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Sempron™ Quad-Core APU"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Sempron™ Dual-Core APU"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Phenom™ II Triple-Core Mobile Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Phenom™ II Dual-Core Mobile Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Phenom™ II Quad-Core Mobile Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD FX 8-Core Black Edition Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD FX-Series Processors for AIOs"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD FX-Series Processors for Laptops"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD FX 6-Core Black Edition Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD FX 4-Core Black Edition Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD E2-Series APU for Laptops"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD E2-Series APU for AIOs"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD E1-Series APU for Laptops"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD E1-Series APU for AIOs"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Business Class - AMD Phenom™ X4 Quad-Core"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Business Class - AMD Phenom™ X3 Triple-Core"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Business Class - AMD Phenom™ X2 Dual-Core"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Athlon™ Quad-Core APU"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Ryzen™ Threadripper™ Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Ryzen™ 9 Desktop Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Ryzen™ 7 PRO Mobile Processors with Radeon™ Vega Graphics"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Ryzen™ 7 PRO Desktop Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Ryzen™ 7 Desktop Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Ryzen™ 7 Mobile Processors with Radeon™ RX Vega Graphics"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Ryzen™ 5 PRO Mobile Processors with Radeon™ Vega Graphics"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Ryzen™ 5 PRO Desktop Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Ryzen™ 5 PRO Desktop Processors with Radeon™ Vega Graphics"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Ryzen™ 5 Desktop Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Ryzen™ 5 Mobile Processors with Radeon™ Vega Graphics"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Ryzen™ 5 Desktop Processors with Radeon™ Vega Graphics"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Ryzen™ 3 PRO Mobile Processors with Radeon™ Vega Graphics"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Ryzen™ 3 PRO Desktop Processors with Radeon™ Vega Graphics"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Ryzen™ 3 PRO Desktop Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Ryzen™ 3 Mobile Processors with Radeon™ Vega Graphics"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Ryzen™ 3 Desktop Processors with Radeon™ Vega Graphics"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Ryzen™ 3 Desktop Processors"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Opteron™ X2100 Series APU"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD EPYC™ 7002 Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD EPYC™ 7001 Series"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Athlon™ PRO Mobile Processors with Radeon™ Vega Graphics"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Athlon™ PRO Desktop Processors with Radeon™ Vega Graphics"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Athlon™ Mobile Processors with Radeon™ Vega Graphics"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Athlon™ Desktop Processors with Radeon™ Vega Graphics"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD A10-Series APU for AIOs"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD A10-Series APU for Desktops"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD A10-Series APU for Laptops"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Business Class - Quad-Core A10-Series APU for Desktops"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD PRO A-Series A10 APU for Desktops"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD PRO A-Series A10 APU for Laptops"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD A8-Series APU for AIOs"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD A8-Series APU for Desktops"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD A8-Series APU for Laptops"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Business Class - Quad-Core A8-Series APU for Desktops"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD PRO A-Series A8 APU for Desktops"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD PRO A-Series A8 APU for Laptops"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD A6-Series APU for Laptops"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD A6-Series APU for AIOs"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD A6-Series APU for Desktops"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Business Class - Dual-Core A6-Series APU for Desktops"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD PRO A-Series A6 APU for Desktops"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD PRO A-Series A6 APU for Laptops"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD A4-Series APU for Desktops"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD A4-Series APU for Laptops"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD A4-Series APU for AIOs"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD PRO A-Series A4 APU for Desktops"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD PRO A-Series A4 APU for Laptops"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Opteron™ 6300 Series Processor"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Opteron™ 6200 Series Processor"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Opteron™ 6100 Series Processor"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Opteron™ 4300 Series Processor"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Opteron™ 4200 Series Processor"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Opteron™ 3300 Series Processor"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Opteron™ 3200 Series Processor"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Sempron™"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Phenom™ II X6"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Phenom™ II X4 Black"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Athlon™ X4"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Phenom™ II X4"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Athlon™ II X4"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Phenom™ II X2 Black"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Phenom™ II X2"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Athlon™ II X3"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD Athlon™ II X2"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD PRO A-Series A12 APU for Laptops"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD PRO A-Series A12 APU for Desktops"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD A12-Series APU for Desktops"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD A12-Series APU for Laptops"
+  },
+  {
+    "attribute_id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "attribute_name": "AMD A9-Series APU for Laptops"
+  },
+  {
+    "attribute_id": "4ddfe6ca-c0fc-4a44-a8dc-d651f079ccea",
+    "attribute_name": 13.3
+  },
+  {
+    "attribute_id": "4ddfe6ca-c0fc-4a44-a8dc-d651f079ccea",
+    "attribute_name": 15.6
+  },
+  {
+    "attribute_id": "4ddfe6ca-c0fc-4a44-a8dc-d651f079ccea",
+    "attribute_name": 15.4
+  },
+  {
+    "attribute_id": "4ddfe6ca-c0fc-4a44-a8dc-d651f079ccea",
+    "attribute_name": 14
+  },
+  {
+    "attribute_id": "4ddfe6ca-c0fc-4a44-a8dc-d651f079ccea",
+    "attribute_name": 12
+  },
+  {
+    "attribute_id": "4ddfe6ca-c0fc-4a44-a8dc-d651f079ccea",
+    "attribute_name": 11.6
+  },
+  {
+    "attribute_id": "4ddfe6ca-c0fc-4a44-a8dc-d651f079ccea",
+    "attribute_name": 17.3
+  },
+  {
+    "attribute_id": "4ddfe6ca-c0fc-4a44-a8dc-d651f079ccea",
+    "attribute_name": 10.1
+  },
+  {
+    "attribute_id": "4ddfe6ca-c0fc-4a44-a8dc-d651f079ccea",
+    "attribute_name": 13.5
+  },
+  {
+    "attribute_id": "4ddfe6ca-c0fc-4a44-a8dc-d651f079ccea",
+    "attribute_name": 12.5
+  },
+  {
+    "attribute_id": "4ddfe6ca-c0fc-4a44-a8dc-d651f079ccea",
+    "attribute_name": 13
+  },
+  {
+    "attribute_id": "4ddfe6ca-c0fc-4a44-a8dc-d651f079ccea",
+    "attribute_name": 18.4
+  },
+  {
+    "attribute_id": "4ddfe6ca-c0fc-4a44-a8dc-d651f079ccea",
+    "attribute_name": 13.9
+  },
+  {
+    "attribute_id": "4ddfe6ca-c0fc-4a44-a8dc-d651f079ccea",
+    "attribute_name": 12.3
+  },
+  {
+    "attribute_id": "4ddfe6ca-c0fc-4a44-a8dc-d651f079ccea",
+    "attribute_name": 17
+  },
+  {
+    "attribute_id": "4ddfe6ca-c0fc-4a44-a8dc-d651f079ccea",
+    "attribute_name": 15
+  },
+  {
+    "attribute_id": "4ddfe6ca-c0fc-4a44-a8dc-d651f079ccea",
+    "attribute_name": 14.1
+  },
+  {
+    "attribute_id": "4ddfe6ca-c0fc-4a44-a8dc-d651f079ccea",
+    "attribute_name": 11.3
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "IPS Panel Retina Display 2560x1600"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "1440x900"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "Full HD 1920x1080"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "IPS Panel Retina Display 2880x1800"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "1366x768"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "IPS Panel Full HD 1920x1080"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "IPS Panel Retina Display 2304x1440"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "IPS Panel Full HD / Touchscreen 1920x1080"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "Full HD / Touchscreen 1920x1080"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "Touchscreen / Quad HD+ 3200x1800"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "IPS Panel Touchscreen 1920x1200"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "Touchscreen 2256x1504"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "Quad HD+ / Touchscreen 3200x1800"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "IPS Panel 1366x768"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "IPS Panel 4K Ultra HD / Touchscreen 3840x2160"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "IPS Panel Full HD 2160x1440"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "4K Ultra HD / Touchscreen 3840x2160"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "Touchscreen 2560x1440"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "1600x900"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "IPS Panel 4K Ultra HD 3840x2160"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "4K Ultra HD 3840x2160"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "Touchscreen 1366x768"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "IPS Panel Full HD 1366x768"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "IPS Panel 2560x1440"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "IPS Panel Full HD 2560x1440"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "IPS Panel Retina Display 2736x1824"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "Touchscreen 2400x1600"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "2560x1440"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "IPS Panel Quad HD+ 2560x1440"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "IPS Panel Quad HD+ 3200x1800"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "IPS Panel Quad HD+ / Touchscreen 3200x1800"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "IPS Panel Touchscreen 1366x768"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "1920x1080"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "IPS Panel Full HD 1920x1200"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "IPS Panel Touchscreen / 4K Ultra HD 3840x2160"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "IPS Panel Touchscreen 2560x1440"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "Touchscreen / Full HD 1920x1080"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "Quad HD+ 3200x1800"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "Touchscreen / 4K Ultra HD 3840x2160"
+  },
+  {
+    "attribute_id": "19450f11-6e25-407a-8c12-61b172cc99de",
+    "attribute_name": "IPS Panel Touchscreen 2400x1600"
+  },
+  {
+    "attribute_id": "5edf898a-719d-4dec-9411-5bf66b91def7",
+    "attribute_name": "Apple"
+  },
+  {
+    "attribute_id": "5edf898a-719d-4dec-9411-5bf66b91def7",
+    "attribute_name": "HP"
+  },
+  {
+    "attribute_id": "5edf898a-719d-4dec-9411-5bf66b91def7",
+    "attribute_name": "Acer"
+  },
+  {
+    "attribute_id": "5edf898a-719d-4dec-9411-5bf66b91def7",
+    "attribute_name": "Asus"
+  },
+  {
+    "attribute_id": "5edf898a-719d-4dec-9411-5bf66b91def7",
+    "attribute_name": "Dell"
+  },
+  {
+    "attribute_id": "5edf898a-719d-4dec-9411-5bf66b91def7",
+    "attribute_name": "Lenovo"
+  },
+  {
+    "attribute_id": "5edf898a-719d-4dec-9411-5bf66b91def7",
+    "attribute_name": "Chuwi"
+  },
+  {
+    "attribute_id": "5edf898a-719d-4dec-9411-5bf66b91def7",
+    "attribute_name": "MSI"
+  },
+  {
+    "attribute_id": "5edf898a-719d-4dec-9411-5bf66b91def7",
+    "attribute_name": "Microsoft"
+  },
+  {
+    "attribute_id": "5edf898a-719d-4dec-9411-5bf66b91def7",
+    "attribute_name": "Toshiba"
+  },
+  {
+    "attribute_id": "5edf898a-719d-4dec-9411-5bf66b91def7",
+    "attribute_name": "Huawei"
+  },
+  {
+    "attribute_id": "5edf898a-719d-4dec-9411-5bf66b91def7",
+    "attribute_name": "Xiaomi"
+  },
+  {
+    "attribute_id": "5edf898a-719d-4dec-9411-5bf66b91def7",
+    "attribute_name": "Vero"
+  },
+  {
+    "attribute_id": "5edf898a-719d-4dec-9411-5bf66b91def7",
+    "attribute_name": "Razer"
+  },
+  {
+    "attribute_id": "5edf898a-719d-4dec-9411-5bf66b91def7",
+    "attribute_name": "Mediacom"
+  },
+  {
+    "attribute_id": "5edf898a-719d-4dec-9411-5bf66b91def7",
+    "attribute_name": "Samsung"
+  },
+  {
+    "attribute_id": "5edf898a-719d-4dec-9411-5bf66b91def7",
+    "attribute_name": "Google"
+  },
+  {
+    "attribute_id": "5edf898a-719d-4dec-9411-5bf66b91def7",
+    "attribute_name": "Fujitsu"
+  },
+  {
+    "attribute_id": "5edf898a-719d-4dec-9411-5bf66b91def7",
+    "attribute_name": "LG"
+  },
+  {
+    "attribute_id": "4fb14d35-8f34-47ba-bc24-32652e0a175d",
+    "attribute_name": "SSD"
+  },
+  {
+    "attribute_id": "4fb14d35-8f34-47ba-bc24-32652e0a175d",
+    "attribute_name": "HDD"
+  },
+  {
+    "attribute_id": "4fb14d35-8f34-47ba-bc24-32652e0a175d",
+    "attribute_name": "Flash Storage"
+  }
+]

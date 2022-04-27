@@ -17,10 +17,10 @@ from app.main.models.partner import Partner, PartnerTag, PartnerTitle
 from app.main.models.country import City, Country
 from flask import current_app
 from app import db
-from app.main.models.product import Cores, InstructionSet, Memory, MemoryType, Processor, ProcessorSpeed, Product, ProductCategory, ProductManufacturer, ProductModel, Storage
+from app.main.models.product import Product, ProductAttribute, ProductAttributeValue, ProductCategory, ProductType
 from app.main.models.uom import Uom, UomCategory
 from app.models import Task
-from app.main.utils import get_activities, get_activity_types, get_calling_codes, get_company, get_cores, get_countries, get_countries_cities, get_instruction_sets, get_memory, get_memory_type, get_models, get_moduleCategories, get_modules, get_processor_speeds, get_processors, get_product_categories, get_product_manufacturers, get_product_models, get_products, get_storage, get_uom_categories, get_uoms
+from app.main.utils import get_activities, get_activity_types, get_calling_codes, get_company, get_countries, get_countries_cities, get_models, get_moduleCategories, get_modules, get_product_attribute_values, get_product_attributes, get_product_categories, get_product_models, get_product_types, get_products, get_uom_categories, get_uoms
 from app.crm.utils import get_opportunities, get_recurring_plans, get_stages
 from rq import get_current_job
 from app.models import Task
@@ -391,96 +391,42 @@ def dummy_data():
                 db.session.commit()
                 print("Purchase record " + purchase['vendor'] + " created")
 
-        # manufacturers
-        manufacturers = get_product_manufacturers()
-        for manufacturer in manufacturers:
-            exists = ProductManufacturer.query.filter_by(
-                id=manufacturer['id']).first()
+        # product types
+        product_types = get_product_types()
+        for product_type in product_types:
+            exists = ProductType.query.filter_by(id=product_type['id']).first()
             if not exists:
-                product_manufacturer = ProductManufacturer(
-                    id=manufacturer['id'], name=manufacturer['name'])
-                db.session.add(product_manufacturer)
+                producttype = ProductType(
+                    id=product_type['id'], name=product_type['name'])
+                db.session.add(producttype)
                 db.session.commit()
-                print("Manufacturer " +
-                      manufacturer['name'] + " created")
+                print("Product type " + str(producttype.name) + " created")
 
-        # processors
-        processors = get_processors()
-        for processor in processors:
-            exists = Processor.query.filter_by(id=processor['id']).first()
+        # product attributes
+        attributes = get_product_attributes()
+        for attribute in attributes:
+            exists = ProductAttribute.query.filter_by(
+                id=attribute['id']).first()
             if not exists:
-                processor_ = Processor(
-                    id=processor['id'], name=processor['name'])
-                db.session.add(processor_)
+                product_attribute = ProductAttribute(
+                    id=attribute['id'], name=attribute['name'])
+                db.session.add(product_attribute)
                 db.session.commit()
-                print("Processor " + processor_.name + " created")
+                print("Product attribute " +
+                      str(product_attribute.name) + " created")
 
-        # processors
-        cores = get_cores()
-        for core in cores:
-            exists = Cores.query.filter_by(id=core['id']).first()
+        # product attribute values
+        attribute_values = get_product_attribute_values()
+        for attribute_value in attribute_values:
+            exists = ProductAttributeValue.query.filter_by(
+                id=attribute_value['id']).first()
             if not exists:
-                core_ = Cores(id=core['id'], name=core['name'])
-                db.session.add(core_)
+                product_attribute_value = ProductAttributeValue(
+                    id=attribute_value['id'], name=attribute_value['name'], attribute_id=attribute_value['attribute_id'])
+                db.session.add(product_attribute_value)
                 db.session.commit()
-                print("Core " + core_.name + " created")
-
-        # processor speeds
-        processor_speeds = get_processor_speeds()
-        for processor_speed in processor_speeds:
-            exists = ProcessorSpeed.query.filter_by(
-                id=processor_speed['id']).first()
-            if not exists:
-                processor_speed_ = ProcessorSpeed(
-                    id=processor_speed['id'], name=processor_speed['name'])
-                db.session.add(processor_speed_)
-                db.session.commit()
-                print("Processor speed " + processor_speed_.name + " created")
-
-        # memory
-        memories = get_memory()
-        for memory in memories:
-            exists = Memory.query.filter_by(id=memory['id']).first()
-            if not exists:
-                memory_ = Memory(id=memory['id'], name=memory['name'])
-                db.session.add(memory_)
-                db.session.commit()
-                print("Memory " + memory_.name + " created")
-
-        # memory
-        storages = get_storage()
-        for storage in storages:
-            exists = Storage.query.filter_by(id=storage['id']).first()
-            if not exists:
-                storage_record = Storage(
-                    id=storage['id'], name=storage['name'])
-                db.session.add(storage_record)
-                db.session.commit()
-                print("Storage " + storage_record.name + " created")
-
-        # memory types
-        memory_types = get_memory_type()
-        for memory_type in memory_types:
-            exists = MemoryType.query.filter_by(id=memory_type['id']).first()
-            if not exists:
-                memory_type_ = MemoryType(
-                    id=memory_type['id'], name=memory_type['name'])
-                db.session.add(memory_type_)
-                db.session.commit()
-                if memory_type_.name:
-                    print("Memory type " + memory_type_.name + " created")
-
-        # instruction set
-        instruction_sets = get_instruction_sets()
-        for instruction_set in instruction_sets:
-            exists = InstructionSet.query.filter_by(
-                id=instruction_set['id']).first()
-            if not exists:
-                instruction_set_ = InstructionSet(
-                    id=instruction_set['id'], name=instruction_set['name'])
-                db.session.add(instruction_set_)
-                db.session.commit()
-                print("Instruction set " + instruction_set_.name + " created")
+                print("Product attribute value " +
+                      str(product_attribute_value.name) + " created")
 
         # product categories
         categories = get_product_categories()

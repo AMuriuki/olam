@@ -187,5 +187,14 @@
     "write": true,
     "create": true,
     "delete": true
+  },
+  {
+    "id": "0ac74714-f09b-4b6b-b7e5-b38e39c83aae",
+    "name": "Manage product attributes",
+    "model_id": 14,
+    "read": true,
+    "write": true,
+    "create": true,
+    "delete": true
   }
 ]

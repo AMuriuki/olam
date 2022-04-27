@@ -8,10 +8,6 @@
         margin-bottom: 1.5rem;
     }
 
-    .hide {
-        display: none;
-    }
-
     .w-25 {
         width: 25% !important;
     }
@@ -40,8 +36,8 @@
             {% endif %}
             {% endwith %}
             <form id="new_user" action="{{url_for('purchase.new_request_for_quotation')}}" method="post">
-                <div class="card card-preview">
-                    <div class="card-inner">
+                <div class="card card-preview border-0">
+                    <div class="card-inner pl-0 pr-0">
                         {{form.hidden_tag()}}
                         <div class="row gy-4">
                             <div class="col-sm-6">
@@ -78,7 +74,7 @@
                         </div>
 
                     </div>
-                    <div class="card card-bordered">
+                    <div class="card card-bordered margin-0">
                         <ul class="nav nav-tabs nav-tabs-mb-icon nav-tabs-card">
                             <li class="nav-item active current-page">
                                 <a id="lnk_users" class="nav-link active" href="#products" data-toggle="tab">

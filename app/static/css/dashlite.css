@@ -43916,4 +43916,8 @@ body.dark-mode.nk-body.ui-softy, body.dark-mode.nk-body.ui-shady {
   margin: 0px !important
 }
 
+.hide {
+  display: none;
+}
+
 /*! END @iO */

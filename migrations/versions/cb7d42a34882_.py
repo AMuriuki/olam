@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: da29cce10256
+Revision ID: cb7d42a34882
 Revises: 
-Create Date: 2022-04-24 00:33:26.250563
+Create Date: 2022-04-27 15:51:30.771324
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.
-revision = 'da29cce10256'
+revision = 'cb7d42a34882'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -25,14 +25,6 @@ def upgrade():
     )
     with op.batch_alter_table('company_category', schema=None) as batch_op:
         batch_op.create_index(batch_op.f('ix_company_category_name'), ['name'], unique=False)
-
-    op.create_table('cores',
-    sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
-    sa.Column('name', sa.String(length=120), nullable=True),
-    sa.PrimaryKeyConstraint('id', name=op.f('pk_cores'))
-    )
-    with op.batch_alter_table('cores', schema=None) as batch_op:
-        batch_op.create_index(batch_op.f('ix_cores_name'), ['name'], unique=False)
 
     op.create_table('currency',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -53,30 +45,6 @@ def upgrade():
     )
     with op.batch_alter_table('database', schema=None) as batch_op:
         batch_op.create_index(batch_op.f('ix_database_name'), ['name'], unique=False)
-
-    op.create_table('instruction_set',
-    sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
-    sa.Column('name', sa.String(length=120), nullable=True),
-    sa.PrimaryKeyConstraint('id', name=op.f('pk_instruction_set'))
-    )
-    with op.batch_alter_table('instruction_set', schema=None) as batch_op:
-        batch_op.create_index(batch_op.f('ix_instruction_set_name'), ['name'], unique=False)
-
-    op.create_table('memory',
-    sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
-    sa.Column('name', sa.String(length=120), nullable=True),
-    sa.PrimaryKeyConstraint('id', name=op.f('pk_memory'))
-    )
-    with op.batch_alter_table('memory', schema=None) as batch_op:
-        batch_op.create_index(batch_op.f('ix_memory_name'), ['name'], unique=False)
-
-    op.create_table('memory_type',
-    sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
-    sa.Column('name', sa.String(length=120), nullable=True),
-    sa.PrimaryKeyConstraint('id', name=op.f('pk_memory_type'))
-    )
-    with op.batch_alter_table('memory_type', schema=None) as batch_op:
-        batch_op.create_index(batch_op.f('ix_memory_type_name'), ['name'], unique=False)
 
     op.create_table('module_category',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -115,32 +83,22 @@ def upgrade():
     with op.batch_alter_table('partner_title', schema=None) as batch_op:
         batch_op.create_index(batch_op.f('ix_partner_title_name'), ['name'], unique=True)
 
-    op.create_table('processor',
+    op.create_table('product_attribute',
     sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('name', sa.String(length=120), nullable=True),
-    sa.PrimaryKeyConstraint('id', name=op.f('pk_processor'))
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_product_attribute'))
     )
-    with op.batch_alter_table('processor', schema=None) as batch_op:
-        batch_op.create_index(batch_op.f('ix_processor_name'), ['name'], unique=False)
+    with op.batch_alter_table('product_attribute', schema=None) as batch_op:
+        batch_op.create_index(batch_op.f('ix_product_attribute_name'), ['name'], unique=False)
 
-    op.create_table('processor_speed',
+    op.create_table('product_type',
     sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('name', sa.String(length=120), nullable=True),
-    sa.PrimaryKeyConstraint('id', name=op.f('pk_processor_speed'))
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_product_type'))
     )
-    with op.batch_alter_table('processor_speed', schema=None) as batch_op:
-        batch_op.create_index(batch_op.f('ix_processor_speed_name'), ['name'], unique=False)
+    with op.batch_alter_table('product_type', schema=None) as batch_op:
+        batch_op.create_index(batch_op.f('ix_product_type_name'), ['name'], unique=False)
 
-    op.create_table('product_manufacturer',
-    sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
-    sa.Column('name', sa.String(length=255), nullable=False),
-    sa.PrimaryKeyConstraint('id', name=op.f('pk_product_manufacturer'))
-    )
-    op.create_table('product_model',
-    sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
-    sa.Column('name', sa.String(length=255), nullable=False),
-    sa.PrimaryKeyConstraint('id', name=op.f('pk_product_model'))
-    )
     op.create_table('purchase_filters',
     sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('index', sa.Integer(), nullable=True),
@@ -174,14 +132,6 @@ def upgrade():
     )
     with op.batch_alter_table('stage', schema=None) as batch_op:
         batch_op.create_index(batch_op.f('ix_stage_name'), ['name'], unique=True)
-
-    op.create_table('storage',
-    sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
-    sa.Column('name', sa.String(length=120), nullable=True),
-    sa.PrimaryKeyConstraint('id', name=op.f('pk_storage'))
-    )
-    with op.batch_alter_table('storage', schema=None) as batch_op:
-        batch_op.create_index(batch_op.f('ix_storage_name'), ['name'], unique=False)
 
     op.create_table('uom_category',
     sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
@@ -264,6 +214,16 @@ def upgrade():
         batch_op.create_index(batch_op.f('ix_module_bp_name'), ['bp_name'], unique=False)
         batch_op.create_index(batch_op.f('ix_module_official_name'), ['official_name'], unique=False)
         batch_op.create_index(batch_op.f('ix_module_technical_name'), ['technical_name'], unique=False)
+
+    op.create_table('product_attribute_value',
+    sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('name', sa.String(length=120), nullable=True),
+    sa.Column('attribute_id', postgresql.UUID(as_uuid=True), nullable=True),
+    sa.ForeignKeyConstraint(['attribute_id'], ['product_attribute.id'], name=op.f('fk_product_attribute_value_attribute_id_product_attribute')),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_product_attribute_value'))
+    )
+    with op.batch_alter_table('product_attribute_value', schema=None) as batch_op:
+        batch_op.create_index(batch_op.f('ix_product_attribute_value_name'), ['name'], unique=False)
 
     op.create_table('uom',
     sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
@@ -610,21 +570,10 @@ def upgrade():
     op.create_table('product',
     sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('name', sa.String(length=255), nullable=True),
-    sa.Column('manufacturer_id', postgresql.UUID(as_uuid=True), nullable=True),
-    sa.Column('model_id', postgresql.UUID(as_uuid=True), nullable=True),
     sa.Column('cost', sa.Float(), nullable=True),
     sa.Column('price', sa.Float(), nullable=True),
     sa.Column('tax_rate', sa.Float(), nullable=True),
     sa.Column('category_id', postgresql.UUID(as_uuid=True), nullable=True),
-    sa.Column('screen_size', sa.String(length=10), nullable=True),
-    sa.Column('screen', sa.String(length=50), nullable=True),
-    sa.Column('processor_id', postgresql.UUID(as_uuid=True), nullable=True),
-    sa.Column('memory_id', postgresql.UUID(as_uuid=True), nullable=True),
-    sa.Column('storage_id', postgresql.UUID(as_uuid=True), nullable=True),
-    sa.Column('gpu', sa.String(length=50), nullable=True),
-    sa.Column('os', sa.String(length=50), nullable=True),
-    sa.Column('os_version', sa.String(length=50), nullable=True),
-    sa.Column('weight', sa.String(length=50), nullable=True),
     sa.Column('created_by', sa.Integer(), nullable=True),
     sa.Column('approved_for_sale_by', sa.Integer(), nullable=True),
     sa.Column('created_on', sa.DateTime(), nullable=True),
@@ -637,28 +586,15 @@ def upgrade():
     sa.Column('in_stock', sa.Boolean(), nullable=True),
     sa.Column('sku', sa.String(length=120), nullable=True),
     sa.Column('description', sa.Text(), nullable=True),
-    sa.Column('color', sa.String(length=50), nullable=True),
     sa.ForeignKeyConstraint(['approved_for_sale_by'], ['users.id'], name=op.f('fk_product_approved_for_sale_by_users')),
     sa.ForeignKeyConstraint(['category_id'], ['product_category.id'], name=op.f('fk_product_category_id_product_category')),
     sa.ForeignKeyConstraint(['created_by'], ['users.id'], name=op.f('fk_product_created_by_users')),
     sa.ForeignKeyConstraint(['deleted_by'], ['users.id'], name=op.f('fk_product_deleted_by_users')),
-    sa.ForeignKeyConstraint(['manufacturer_id'], ['product_manufacturer.id'], name=op.f('fk_product_manufacturer_id_product_manufacturer')),
-    sa.ForeignKeyConstraint(['memory_id'], ['memory.id'], name=op.f('fk_product_memory_id_memory')),
-    sa.ForeignKeyConstraint(['model_id'], ['product_model.id'], name=op.f('fk_product_model_id_product_model')),
-    sa.ForeignKeyConstraint(['processor_id'], ['processor.id'], name=op.f('fk_product_processor_id_processor')),
-    sa.ForeignKeyConstraint(['storage_id'], ['storage.id'], name=op.f('fk_product_storage_id_storage')),
     sa.ForeignKeyConstraint(['updated_by'], ['users.id'], name=op.f('fk_product_updated_by_users')),
     sa.PrimaryKeyConstraint('id', name=op.f('pk_product'))
     )
     with op.batch_alter_table('product', schema=None) as batch_op:
-        batch_op.create_index(batch_op.f('ix_product_color'), ['color'], unique=False)
-        batch_op.create_index(batch_op.f('ix_product_gpu'), ['gpu'], unique=False)
-        batch_op.create_index(batch_op.f('ix_product_os'), ['os'], unique=False)
-        batch_op.create_index(batch_op.f('ix_product_os_version'), ['os_version'], unique=False)
-        batch_op.create_index(batch_op.f('ix_product_screen'), ['screen'], unique=False)
-        batch_op.create_index(batch_op.f('ix_product_screen_size'), ['screen_size'], unique=False)
         batch_op.create_index(batch_op.f('ix_product_sku'), ['sku'], unique=True)
-        batch_op.create_index(batch_op.f('ix_product_weight'), ['weight'], unique=False)
 
     op.create_table('purchase_activity',
     sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
@@ -685,14 +621,7 @@ def downgrade():
     op.drop_table('product_purchase')
     op.drop_table('purchase_activity')
     with op.batch_alter_table('product', schema=None) as batch_op:
-        batch_op.drop_index(batch_op.f('ix_product_weight'))
         batch_op.drop_index(batch_op.f('ix_product_sku'))
-        batch_op.drop_index(batch_op.f('ix_product_screen_size'))
-        batch_op.drop_index(batch_op.f('ix_product_screen'))
-        batch_op.drop_index(batch_op.f('ix_product_os_version'))
-        batch_op.drop_index(batch_op.f('ix_product_os'))
-        batch_op.drop_index(batch_op.f('ix_product_gpu'))
-        batch_op.drop_index(batch_op.f('ix_product_color'))
 
     op.drop_table('product')
     op.drop_table('note')
@@ -773,6 +702,10 @@ def downgrade():
 
     op.drop_table('city')
     op.drop_table('uom')
+    with op.batch_alter_table('product_attribute_value', schema=None) as batch_op:
+        batch_op.drop_index(batch_op.f('ix_product_attribute_value_name'))
+
+    op.drop_table('product_attribute_value')
     with op.batch_alter_table('module', schema=None) as batch_op:
         batch_op.drop_index(batch_op.f('ix_module_technical_name'))
         batch_op.drop_index(batch_op.f('ix_module_official_name'))
@@ -798,10 +731,6 @@ def downgrade():
 
     op.drop_table('company')
     op.drop_table('uom_category')
-    with op.batch_alter_table('storage', schema=None) as batch_op:
-        batch_op.drop_index(batch_op.f('ix_storage_name'))
-
-    op.drop_table('storage')
     with op.batch_alter_table('stage', schema=None) as batch_op:
         batch_op.drop_index(batch_op.f('ix_stage_name'))
 
@@ -816,16 +745,14 @@ def downgrade():
         batch_op.drop_index(batch_op.f('ix_purchase_filters_index'))
 
     op.drop_table('purchase_filters')
-    op.drop_table('product_model')
-    op.drop_table('product_manufacturer')
-    with op.batch_alter_table('processor_speed', schema=None) as batch_op:
-        batch_op.drop_index(batch_op.f('ix_processor_speed_name'))
+    with op.batch_alter_table('product_type', schema=None) as batch_op:
+        batch_op.drop_index(batch_op.f('ix_product_type_name'))
 
-    op.drop_table('processor_speed')
-    with op.batch_alter_table('processor', schema=None) as batch_op:
-        batch_op.drop_index(batch_op.f('ix_processor_name'))
+    op.drop_table('product_type')
+    with op.batch_alter_table('product_attribute', schema=None) as batch_op:
+        batch_op.drop_index(batch_op.f('ix_product_attribute_name'))
 
-    op.drop_table('processor')
+    op.drop_table('product_attribute')
     with op.batch_alter_table('partner_title', schema=None) as batch_op:
         batch_op.drop_index(batch_op.f('ix_partner_title_name'))
 
@@ -843,18 +770,6 @@ def downgrade():
 
     op.drop_table('partner_position')
     op.drop_table('module_category')
-    with op.batch_alter_table('memory_type', schema=None) as batch_op:
-        batch_op.drop_index(batch_op.f('ix_memory_type_name'))
-
-    op.drop_table('memory_type')
-    with op.batch_alter_table('memory', schema=None) as batch_op:
-        batch_op.drop_index(batch_op.f('ix_memory_name'))
-
-    op.drop_table('memory')
-    with op.batch_alter_table('instruction_set', schema=None) as batch_op:
-        batch_op.drop_index(batch_op.f('ix_instruction_set_name'))
-
-    op.drop_table('instruction_set')
     with op.batch_alter_table('database', schema=None) as batch_op:
         batch_op.drop_index(batch_op.f('ix_database_name'))
 
@@ -864,10 +779,6 @@ def downgrade():
         batch_op.drop_index(batch_op.f('ix_currency_code'))
 
     op.drop_table('currency')
-    with op.batch_alter_table('cores', schema=None) as batch_op:
-        batch_op.drop_index(batch_op.f('ix_cores_name'))
-
-    op.drop_table('cores')
     with op.batch_alter_table('company_category', schema=None) as batch_op:
         batch_op.drop_index(batch_op.f('ix_company_category_name'))
 
