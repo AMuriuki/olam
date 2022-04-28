@@ -11,7 +11,7 @@ from os import fsync
 from app.main.models.database import Database
 from app.main.models.company import Company
 from app.auth.models.user import Group, Users, user_group
-from app.main.models.product import Product, ProductAttribute
+from app.main.models.product import Product, ProductAttribute, ProductAttributeValue
 from app.main.models.uom import Uom
 from app.main.utils import search_dict, updating
 from app.main.models.module import Module
@@ -128,7 +128,6 @@ def get_product_purchase_details():
             storage = product.storage.name + '-' + 'storage,'
         else:
             storage = ''
-        print(product.processor, product.memory, product.storage)
         return jsonify({'name': product.name, 'description': processor + ' ' + memory + ' ' + storage, 'id': product.id, 'unit_price': product.price})
 
 
@@ -216,7 +215,7 @@ def get_partner_positions():
 @model_access_required(14)
 def get_product_attributes():
     attributes = []
-    results = ProductAttribute.query.all()
+    results = ProductAttribute.query.order_by('name').all()
     for result in results:
         attributes.append({str(result.id): result.name})
     return Response(json.dumps(attributes), mimetype='application/json')
@@ -228,5 +227,12 @@ def get_product_attributes():
 @model_access_required(14)
 def get_attribute_values():
     if request.method == "POST":
-        pass
-        
+        values = []
+        results = ProductAttributeValue.query.filter_by(
+            attribute_id=request.form['attribute']).order_by('name').all()
+        for result in results:
+            values.append({str(result.id): result.name})
+    else:
+        values = None
+
+    return Response(json.dumps(values), mimetype='application/json')

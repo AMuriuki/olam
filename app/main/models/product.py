@@ -3,6 +3,7 @@ from app import db
 from sqlalchemy.dialects.postgresql import UUID, JSONB
 import uuid
 from datetime import datetime
+from app.models import PaginatedAPIMixin
 
 from app.utils import sku_generator
 
@@ -102,8 +103,15 @@ class ProductAttribute(db.Model):
                              backref='attribute', lazy=True)
 
 
-class ProductAttributeValue(db.Model):
+class ProductAttributeValue(PaginatedAPIMixin, db.Model):
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     name = db.Column(db.String(120), index=True)
     attribute_id = db.Column(UUID(as_uuid=True), db.ForeignKey(
         'product_attribute.id'), nullable=True)
+
+    def to_dict(self):
+        data = {
+            'id': str(self.id),
+            'name': self.name
+        }
+        return data

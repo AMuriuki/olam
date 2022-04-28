@@ -24,6 +24,7 @@ var product_desc;
 var data;
 var purchase_id
 var product_no
+var type;
 
 function insertCommas(number) {
   if (number !== null || number !== undefined) {
@@ -214,7 +215,7 @@ $(".set-due-date").on("change", function () {
 
 $(".inp_quantity").on("change", function () {
   var quantity = $(this).val();
-  console.log(quantity);
+  
   var product_id = $(this).attr("id"); //EXTRACT ID
   var unit_price_input = document.getElementById("unit-price-for-" + response['id'])
   var unit_price_span = document.getElementById("unit-price-span-for-" + response['id'])
@@ -265,7 +266,11 @@ function get_attribute_values(attribute) {
   $.post("/get_attribute_values", {
     attribute: attribute,
   }).done(function (response) {
-
+    
+    count_tr = $("#attributes_body").find("tr").length;
+    current_index = parseInt(count_tr) - 1
+    type = "product_attributes_values"
+    autocomplete(document.getElementsByClassName("inp_value")[current_index], response)
   })
 }
 
@@ -280,7 +285,7 @@ function get_product_purchase_details(product) {
       current_index = parseInt(count_tr) - 1
       document.getElementsByClassName("inp_products")[current_index].id = "product-" + response["id"]
       $("#product-" + response["id"]).css("display", "none");
-      $(".clone-product-tr").attr("id", response["id"] + "-product-tr");
+      // $(".clone-product-tr").attr("id", response["id"] + "-product-tr");
       var product_span = document.createElement("span");
       product_span.innerHTML = response['name']
       $(product_span).attr("id", "product-span-" + response['id']);
@@ -294,7 +299,7 @@ function get_product_purchase_details(product) {
       $("#unit-price-for-" + response["id"]).val(response['unit_price']);
       $("#quantity-for-" + response["id"]).val("1.00");
       document.getElementById("sub-total-for-" + response['id']).innerHTML = insertCommas(response['unit_price'])
-      console.log(document.getElementsByClassName("total")[0].innerHTML, response['unit_price'])
+      
       current_total = document.getElementsByClassName("total")[0].innerHTML
       new_total = parseInt(removeComma(current_total)) + parseInt(removeComma(response['unit_price']))
       document.getElementsByClassName("total")[0].innerHTML = insertCommas(new_total)
@@ -660,9 +665,9 @@ function renderUsers(users) {
     slicedList = user.slice(0, 20);
     for (var i = 0; i < slicedList.length; i++) { }
   } else {
-    console.log(users, users["items"].length);
+    
     for (var i = 0; i < users["items"].length; i++) {
-      console.log(element);
+      
     }
   }
 }
@@ -921,68 +926,6 @@ $(".dv-module").on("click", function () {
   }
 });
 
-$(".add-a-product").on("click", function (e) {
-  e.preventDefault();
-  if ($(".clone-product-tr").length) {
-    count_tr = $("#purchase_body").find("tr").length;
-    current_index = parseInt(count_tr) - 1
-    count_tr = $("#purchase_body").find("tr").length;
-    current_index = parseInt(count_tr) - 1
-    var inp_quantity_id = $(".inp_quantity:last").attr("id")
-    var uom_id = $(".inp_uom:last").attr("id")
-    var unit_price_id = $(".inp_unit_price:last").attr("id")
-    if (inp_quantity_id) {
-      var quantity = document.getElementById(inp_quantity_id)
-      var quantity_span = document.createElement("span");
-      quantity_span.innerHTML = quantity.value;
-      td_quantity = document.getElementsByClassName("td_quantity")[current_index];
-      $(quantity_span).appendTo($(td_quantity))
-      $(quantity).css("display", "none")
-    }
-    if (uom_id) {
-      var uom = document.getElementById(uom_id)
-      var uom_span = document.createElement("span");
-      uom_span.innerHTML = uom.value;
-      td_uom = document.getElementsByClassName("td_uom")[current_index];
-      $(uom_span).appendTo($(td_uom))
-      $(uom).css("display", "none")
-    }
-    if (unit_price_id) {
-      var unit_price = document.getElementById(unit_price_id)
-      var unit_price_span = document.createElement("span");
-      unit_price_span.innerHTML = insertCommas(unit_price.value);
-      var product_id = unit_price_id //EXTRACT ID
-      unit_price_span.id = "unit-price-span-for-" + product_id
-      td_unit_price = document.getElementsByClassName("td_unit_price")[current_index];
-      $(unit_price_span).appendTo($(td_unit_price))
-      $(unit_price).css("display", "none")
-    }
-    if ($(".clone-product-tr:last").attr("id")) {
-      var clone = $(".og-product-tr").clone();
-      $(clone).addClass("clone-product-tr");
-      $(clone).removeClass("og-product-tr");
-      $(clone).appendTo("#purchase_body");
-      count_tr = $("#purchase_body").find("tr").length;
-      current_index = parseInt(count_tr) - 1
-      $.get("/get_products", function (data) {
-        autocomplete(document.getElementsByClassName("inp_products")[current_index], data)
-        return data;
-      });
-    }
-  } else {
-    var clone = $(".og-product-tr").clone();
-    $(clone).addClass("clone-product-tr");
-    $(clone).removeClass("og-product-tr");
-    $(clone).appendTo("#purchase_body");
-    count_tr = $("#purchase_body").find("tr").length;
-    current_index = parseInt(count_tr) - 1
-    $.get("/get_products", function (data) {
-      autocomplete(document.getElementsByClassName("inp_products")[current_index], data)
-      return data;
-    });
-  }
-})
-
 function pipeline_stage(value) {
   $.post("/crm/pipeline_stage", {
     pipeline_stage: value,
@@ -1161,7 +1104,7 @@ $(".chk_user").change(function (e) {
     $(".selected-groups").show();
     $(".li-actions").show();
     $(".selected-groups").text(selected + " selected");
-    console.log(selectedUsers);
+    
   } else {
     const index = selectedUsers.indexOf(user_id);
     selectedUsers.splice(index);
@@ -1413,7 +1356,7 @@ $(".select-group").click(function (e) {
 $(".set-access").change(function (e) {
   var group_id = $(this).val();
   var module_id = $(this).attr("id");
-  console.log(group_id, module_id);
+  
   $.post("/settings/set-access", {
     group: group_id,
     module: module_id,
@@ -1503,9 +1446,9 @@ async function get_models() {
   });
 
   const content = await rawResponse.json();
-  console.log(content["items"].length);
+  
   for (var i = 0; i < content["items"].length; i++) {
-    console.log(content["items"][i]["id"], content["items"][i]["name"]);
+    
     $("#select_" + new_access_id).append(
       $("<option>", {
         value: content["items"][i]["id"],
@@ -1766,39 +1709,10 @@ function get_item() {
   });
 }
 
-document.addEventListener('click', function (event) {
-  var isClickInside = null
-  var el;
-  if (current_href.toLowerCase().indexOf("purchase/new/request-for-quotation") >= 0) {
-    el = $(event.target).closest('tr')
-    if (el.hasClass('is-click-inside') || $(event.target).hasClass("is-click-inside") || $(event.target).hasClass("add-a-product") || $(event.target).hasClass('select2-selection__rendered') || $(event.target).hasClass('select2-selection__arrow')) {
-      isClickInside = true
-    }
-    if (!isClickInside) {
-      $(".clone-product-tr").each(function (i, e) {
-        if ($(e).attr("id")) {
-          count_tr = $("#purchase_body").find("tr").length;
-          current_index = parseInt(count_tr) - 1
-          var quantity_el = document.getElementsByClassName("inp_quantity")[current_index];
-          var quantity = quantity_el.value
-          $(quantity_el).css("display", "none");
-          var quantity_span = document.createElement("span");
-          quantity_span.innerHTML = quantity;
-          td_quantity = document.getElementsByClassName("td_quantity")[current_index];
-          $(quantity_span).appendTo($(td_quantity))
-        } else {
-          $(e).remove()
-        }
-      })
-    }
-  }
-})
-
 document.addEventListener('change', function (event) {
   count_tr = $("#purchase_body").find("tr").length;
   current_index = parseInt(count_tr) - 1
   if (event.target == document.getElementsByClassName("inp_quantity")[current_index]) {
-    console.log(event.target);
     var quantity_el = document.getElementsByClassName("inp_quantity")[current_index];
     var quantity = quantity_el.value
     var unit_price_el = document.getElementsByClassName("inp_unit_price")[current_index];
@@ -1810,7 +1724,6 @@ document.addEventListener('change', function (event) {
     for (i = 0; i < count_tr; i++) {
       var sub_total_el = document.getElementsByClassName("sub_total")[i];
       var sub_total = sub_total_el.innerHTML
-      console.log(total, parseInt(sub_total), total + parseInt(sub_total))
       total += parseInt(sub_total.replace(/,/g, ""))
     }
     var total_el = document.getElementsByClassName("total")[0];
@@ -1822,6 +1735,7 @@ document.addEventListener('change', function (event) {
 
 
 function autocomplete(inp, arr) {
+  data = arr
   /*the autocomplete function takes two arguments,
     the text field element and an array of possible autocompleted values:*/
   var currentFocus;
@@ -1864,6 +1778,7 @@ function autocomplete(inp, arr) {
           b.getElementsByTagName("input")[0].classList.add("is-click-inside");
           /*execute a function when someone clicks on the item value (DIV element):*/
           b.addEventListener("click", function (e) {
+            
             /*insert the value for the autocomplete text field:*/
             inp.value = this.getElementsByTagName("input")[0].value;
             if (current_href.indexOf("/purchase/new/request-for-quotation") >= 0) {
@@ -1877,6 +1792,8 @@ function autocomplete(inp, arr) {
               if (inp.classList.contains("inp_tags")) {
                 add_tag(key, value);
               }
+            }
+            if (current_href.indexOf("/inventory/new/product") >= 0) {
               if (inp.classList.contains("inp_attribute")) {
                 get_attribute_values(key)
               }
