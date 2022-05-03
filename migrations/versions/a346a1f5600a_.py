@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: cb7d42a34882
+Revision ID: a346a1f5600a
 Revises: 
-Create Date: 2022-04-27 15:51:30.771324
+Create Date: 2022-04-30 00:49:15.777505
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.
-revision = 'cb7d42a34882'
+revision = 'a346a1f5600a'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -499,6 +499,7 @@ def upgrade():
     op.create_table('product_category',
     sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('name', sa.String(length=120), nullable=True),
+    sa.Column('parent_id', postgresql.UUID(as_uuid=True), nullable=True),
     sa.Column('description', sa.Text(), nullable=True),
     sa.Column('created_by', sa.Integer(), nullable=True),
     sa.Column('created_on', sa.DateTime(), nullable=True),
@@ -509,6 +510,7 @@ def upgrade():
     sa.Column('deleted', sa.Boolean(), nullable=True),
     sa.ForeignKeyConstraint(['created_by'], ['users.id'], name=op.f('fk_product_category_created_by_users')),
     sa.ForeignKeyConstraint(['deleted_by'], ['users.id'], name=op.f('fk_product_category_deleted_by_users')),
+    sa.ForeignKeyConstraint(['parent_id'], ['product_category.id'], name=op.f('fk_product_category_parent_id_product_category')),
     sa.ForeignKeyConstraint(['updated_by'], ['users.id'], name=op.f('fk_product_category_updated_by_users')),
     sa.PrimaryKeyConstraint('id', name=op.f('pk_product_category'))
     )
@@ -574,6 +576,7 @@ def upgrade():
     sa.Column('price', sa.Float(), nullable=True),
     sa.Column('tax_rate', sa.Float(), nullable=True),
     sa.Column('category_id', postgresql.UUID(as_uuid=True), nullable=True),
+    sa.Column('sub_category_id', postgresql.UUID(as_uuid=True), nullable=True),
     sa.Column('created_by', sa.Integer(), nullable=True),
     sa.Column('approved_for_sale_by', sa.Integer(), nullable=True),
     sa.Column('created_on', sa.DateTime(), nullable=True),
@@ -590,6 +593,7 @@ def upgrade():
     sa.ForeignKeyConstraint(['category_id'], ['product_category.id'], name=op.f('fk_product_category_id_product_category')),
     sa.ForeignKeyConstraint(['created_by'], ['users.id'], name=op.f('fk_product_created_by_users')),
     sa.ForeignKeyConstraint(['deleted_by'], ['users.id'], name=op.f('fk_product_deleted_by_users')),
+    sa.ForeignKeyConstraint(['sub_category_id'], ['product_category.id'], name=op.f('fk_product_sub_category_id_product_category')),
     sa.ForeignKeyConstraint(['updated_by'], ['users.id'], name=op.f('fk_product_updated_by_users')),
     sa.PrimaryKeyConstraint('id', name=op.f('pk_product'))
     )

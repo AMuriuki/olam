@@ -11,7 +11,7 @@ from os import fsync
 from app.main.models.database import Database
 from app.main.models.company import Company
 from app.auth.models.user import Group, Users, user_group
-from app.main.models.product import Product, ProductAttribute, ProductAttributeValue
+from app.main.models.product import Product, ProductAttribute, ProductAttributeValue, ProductCategory
 from app.main.models.uom import Uom
 from app.main.utils import search_dict, updating
 from app.main.models.module import Module
@@ -236,3 +236,15 @@ def get_attribute_values():
         values = None
 
     return Response(json.dumps(values), mimetype='application/json')
+
+
+@bp.route('/get_product_categories', methods=['GET', 'POST'])
+@login_required
+@active_user_required
+@model_access_required(15)
+def get_product_categories():
+    categories = []
+    results = ProductCategory.query.order_by('name').all()
+    for result in results:
+        categories.append({str(result.id): result.name})
+    return Response(json.dumps(categories), mimetype='application/json')

@@ -196,5 +196,14 @@
     "write": true,
     "create": true,
     "delete": true
+  },
+  {
+    "id": "8bccc4fe-7569-4461-820d-e7e85e222150",
+    "name": "Manage product categories",
+    "model_id": 15,
+    "read": true,
+    "write": true,
+    "create": true,
+    "delete": true
   }
 ]

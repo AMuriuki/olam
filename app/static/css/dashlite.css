@@ -43920,4 +43920,8 @@ body.dark-mode.nk-body.ui-softy, body.dark-mode.nk-body.ui-shady {
   display: none;
 }
 
+.lh-3 {
+  line-height: 3 !important
+}
+
 /*! END @iO */

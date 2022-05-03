@@ -82,5 +82,11 @@
     "name": "Product Attributes",
     "description": "Records product attributes.",
     "module_id": 1
+  },
+  {
+    "id": 15,
+    "name": "Product Categories",
+    "description": "Records product categories.",
+    "module_id": 1
   }
 ]

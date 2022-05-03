@@ -141,7 +141,7 @@
                                                 <label class="form-label" for="accessory_products">Product
                                                     Category</label>
                                                 <div class="form-control-wrap">
-                                                    <input type="text" class="form-control inp_products is-click-inside"
+                                                    <input type="text" class="form-control inp_category is-click-inside"
                                                         placeholder="Start typing to select category...">
                                                 </div>
                                             </div>
@@ -151,11 +151,11 @@
                                             <div class="form-control-wrap">
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text">KES</span>
+                                                        <span class="overline-title lh-3">KES</span>
                                                     </div>
                                                     <input type="text" class="form-control">
                                                     <div class="input-group-append">
-                                                        <span class="input-group-text">(= 3.00 Incl. Taxes)</span>
+                                                        <span class="overline-title lh-3">(= 3.00 Incl. Taxes)</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -165,7 +165,7 @@
                                             <div class="form-control-wrap">
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text">KES</span>
+                                                        <span class="overline-title lh-3">KES</span>
                                                     </div>
                                                     <input type="text" class="form-control">
                                                 </div>
@@ -174,20 +174,13 @@
                                         <div class="col-lg-6">
                                             <label class="form-label">Unit of Measure</label>
                                             <div class="form-control-wrap">
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control"
-                                                        aria-label="Text input with segmented dropdown button">
-                                                    <div class="input-group-append">
-                                                        <button
-                                                            class="btn btn-icon btn-outline-light dropdown-toggle dropdown-toggle-split"
-                                                            data-toggle="dropdown">
-                                                            <em class="icon ni ni-chevron-down"></em>
-                                                        </button>
-                                                        <button class="btn btn-outline-light">
-                                                            <em class="icon ni ni-external"></em>
-                                                        </button>
-                                                    </div>
-                                                </div>
+                                                <input type="text" class="form-control inp_uom"
+                                                    aria-label="Text input with segmented dropdown button">
+                                                <a href="#" class="form-icon form-icon-right is-click-inside"
+                                                    data-toggle="">
+                                                    <em
+                                                        class="d-none d-sm-inline icon ni ni-external is-click-inside"></em>
+                                                </a>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
@@ -331,4 +324,15 @@
     {% include "footer.html" %}
     <!-- footer @e -->
 </div>
+<script>
+    $.get("/get_UOM", function (data) {
+        autocomplete(document.getElementsByClassName("inp_uom")[0], data)
+        return data;
+    });
+
+    $.get("/get_product_categories", function(data){
+        autocomplete(document.getElementsByClassName("inp_category")[0], data)
+        return data;
+    })
+</script>
 {% endblock %}

@@ -215,7 +215,7 @@ $(".set-due-date").on("change", function () {
 
 $(".inp_quantity").on("change", function () {
   var quantity = $(this).val();
-  
+
   var product_id = $(this).attr("id"); //EXTRACT ID
   var unit_price_input = document.getElementById("unit-price-for-" + response['id'])
   var unit_price_span = document.getElementById("unit-price-span-for-" + response['id'])
@@ -266,7 +266,7 @@ function get_attribute_values(attribute) {
   $.post("/get_attribute_values", {
     attribute: attribute,
   }).done(function (response) {
-    
+
     count_tr = $("#attributes_body").find("tr").length;
     current_index = parseInt(count_tr) - 1
     type = "product_attributes_values"
@@ -299,7 +299,7 @@ function get_product_purchase_details(product) {
       $("#unit-price-for-" + response["id"]).val(response['unit_price']);
       $("#quantity-for-" + response["id"]).val("1.00");
       document.getElementById("sub-total-for-" + response['id']).innerHTML = insertCommas(response['unit_price'])
-      
+
       current_total = document.getElementsByClassName("total")[0].innerHTML
       new_total = parseInt(removeComma(current_total)) + parseInt(removeComma(response['unit_price']))
       document.getElementsByClassName("total")[0].innerHTML = insertCommas(new_total)
@@ -328,54 +328,6 @@ $(".first-opportunity").click(function (e) {
   $(".modal-backdrop").hide();
 });
 
-// add new company contact
-$("#new_company_contact").submit(function (e) {
-  e.preventDefault();
-  var form = $(this);
-  var url = form.attr("action");
-
-  $.ajax({
-    type: "POST",
-    url: url,
-    data: form.serialize(),
-    success: function (data) {
-      $("#profile-edit").modal("hide");
-      $("#newItem1").show();
-      $("#pipeline_select_org-" + stage_id).append(
-        $("<option>", { value: data["partner_id"], text: data["partner_name"] })
-      );
-      $("#select_company").append(
-        $("<option>", { value: data["partner_id"], text: data["partner_name"] })
-      );
-      $("#pipeline_select_org-" + stage_id)
-        .val(data["partner_id"])
-        .change();
-    },
-  });
-});
-
-// add new individual contact
-$("#new_individual_contact").submit(function (e) {
-  e.preventDefault();
-  var form = $(this);
-  var url = form.attr("action");
-
-  $.ajax({
-    type: "POST",
-    url: url,
-    data: form.serialize(),
-    success: function (data) {
-      $("#profile-edit").modal("hide");
-      $("#newItem1").show();
-      $("#pipeline_select_org-" + stage_id).append(
-        $("<option>", { value: data["partner_id"], text: data["partner_name"] })
-      );
-      $("#pipeline_select_org-" + stage_id)
-        .val(data["partner_id"])
-        .change();
-    },
-  });
-});
 
 $(".select-priority").click(function (e) {
   e.preventDefault();
@@ -533,29 +485,6 @@ $(".recurring-plan").on("change", function () {
   }
 });
 
-// submit new plan
-$("#new_recurring_plan").submit(function (e) {
-  e.preventDefault();
-  var form = $(this);
-  var url = form.attr("action");
-
-  $.ajax({
-    type: "POST",
-    url: url,
-    data: form.serialize(),
-    success: function (data) {
-      $("#modalNewPlan").modal("hide");
-      $("#newItem_" + stage_id).show();
-      $("#recurring_plan-" + stage_id).append(
-        $("<option>", { value: data["plan_id"], text: data["plan_name"] })
-      );
-      $("#recurring_plan-" + stage_id)
-        .val(data["plan_id"])
-        .change();
-    },
-  });
-});
-
 $(".discard-item").click(function (e) {
   e.preventDefault();
   stage_id = getId(this.id);
@@ -665,38 +594,12 @@ function renderUsers(users) {
     slicedList = user.slice(0, 20);
     for (var i = 0; i < slicedList.length; i++) { }
   } else {
-    
+
     for (var i = 0; i < users["items"].length; i++) {
-      
+
     }
   }
 }
-
-// invite new user
-$("#frm_invite").submit(function (e) {
-  e.preventDefault();
-  // $('#modalLoading').modal('show');
-  $("#dv_notification").show();
-  $("#dv_notification").text("Sending email invitation...");
-  var form = $(this);
-  var url = form.attr("action");
-
-  $.ajax({
-    type: "POST",
-    url: url,
-    data: form.serialize(),
-    success: function (data) {
-      // $('#modalLoading').modal('hide');
-      $("#dv_notification").hide();
-      if (data["response"] === "success") {
-        location.href = "/settings/general_settings";
-      } else {
-        $("#modalInvite").modal("show");
-        $("#spn_invite_error").text(data["response"]["email"]);
-      }
-    },
-  });
-});
 
 // utilities
 function getCookie(c_name) {
@@ -985,28 +888,6 @@ $(window).bind("scroll", function () {
   }
 });
 
-jQuery(document).ready(function () {
-  $("#frm_setup").submit(function (e) {
-    e.preventDefault();
-    var form = $(this);
-    var url = form.attr("action");
-
-    $(".nk-main").hide();
-    $("#bdy_newdb").addClass("bg-black").removeClass("bg-white");
-    $("#modalInstalling").modal({ backdrop: "static", keyboard: false });
-    $("#modalInstalling").modal("show");
-
-    $.ajax({
-      type: "POST",
-      url: url,
-      data: form.serialize(),
-      success: function (data) {
-        location.href = "/home";
-      },
-    });
-  });
-});
-
 $("#individual").change(function () {
   if (this.checked) {
     $("#company-block").hide();
@@ -1104,7 +985,7 @@ $(".chk_user").change(function (e) {
     $(".selected-groups").show();
     $(".li-actions").show();
     $(".selected-groups").text(selected + " selected");
-    
+
   } else {
     const index = selectedUsers.indexOf(user_id);
     selectedUsers.splice(index);
@@ -1256,98 +1137,6 @@ $(".new-users").click(function (e) {
   }
 });
 
-$(".create-user").click(function (e) {
-  e.preventDefault();
-  var form = $("#new_user");
-  var url = form.attr("action");
-  $.ajax({
-    type: "POST",
-    url: url,
-    data: form.serialize(),
-    success: function (data) {
-      if (data["response"] == "success") {
-        window.location = "/settings/users";
-      } else if (data["response"] == "user email exists!") {
-        alert("A user with this email already exists");
-      }
-    },
-  });
-});
-
-$(".edit-user").click(function (e) {
-  e.preventDefault();
-  var form = $("#edit_user");
-  var url = form.attr("action");
-  $.ajax({
-    type: "POST",
-    url: url,
-    data: form.serialize(),
-    success: function (data) {
-      if (data["response"] == "success") {
-        window.location = "/settings/user/" + data["slug"];
-      } else if (
-        data["response"] == "there is a user with this email address!"
-      ) {
-        alert("There is a user with this email address!");
-      }
-    },
-  });
-});
-
-$(".save-group").click(function (e) {
-  e.preventDefault();
-  if ($("#select_app").val() == "default_option") {
-    alert("Select an App");
-  } else if ($("#group_name").val() == "") {
-    alert("Provide a name for this group");
-  } else {
-    var form = $("#group_details");
-    var url = form.attr("action");
-    slug = $(".span-new-group").attr("id");
-    $.ajax({
-      type: "POST",
-      url: url,
-      data: form.serialize(),
-      success: function (data) {
-        if (data["response"] == "group name exists!") {
-          location.href = "/settings/edit_group/" + slug;
-        } else if (data["response"] == "success") {
-          if (
-            current_href.toLowerCase().indexOf("settings/edit_group") >= 0 ||
-            current_href.toLowerCase().indexOf("settings/new_group/") >= 0
-          ) {
-            location.href = "/settings/group/" + slug;
-          }
-        }
-      },
-    });
-  }
-});
-
-$(".save-new-group").click(function (e) {
-  e.preventDefault();
-  if ($("#select_app").val() == "default_option") {
-    alert("Select an App");
-  } else if ($("#group_name").val() == "") {
-    alert("Provide a name for this group");
-  } else {
-    var form = $("#group_details");
-    var url = form.attr("action");
-    $.ajax({
-      type: "POST",
-      url: url,
-      data: form.serialize(),
-      success: function (data) {
-        if (data["response"] == "group name exists!") {
-          window.location.reload();
-        } else if (data["response"] == "success") {
-          location.href = "/settings/group/" + data["slug"];
-        }
-      },
-    });
-  }
-});
-
 $(".select-group").click(function (e) {
   slug = $(this).attr("id");
   location.href = "/settings/group/" + slug;
@@ -1356,7 +1145,7 @@ $(".select-group").click(function (e) {
 $(".set-access").change(function (e) {
   var group_id = $(this).val();
   var module_id = $(this).attr("id");
-  
+
   $.post("/settings/set-access", {
     group: group_id,
     module: module_id,
@@ -1446,9 +1235,9 @@ async function get_models() {
   });
 
   const content = await rawResponse.json();
-  
+
   for (var i = 0; i < content["items"].length; i++) {
-    
+
     $("#select_" + new_access_id).append(
       $("<option>", {
         value: content["items"][i]["id"],
@@ -1778,7 +1567,7 @@ function autocomplete(inp, arr) {
           b.getElementsByTagName("input")[0].classList.add("is-click-inside");
           /*execute a function when someone clicks on the item value (DIV element):*/
           b.addEventListener("click", function (e) {
-            
+
             /*insert the value for the autocomplete text field:*/
             inp.value = this.getElementsByTagName("input")[0].value;
             if (current_href.indexOf("/purchase/new/request-for-quotation") >= 0) {
