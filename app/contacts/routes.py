@@ -14,7 +14,7 @@ from app.contacts.forms import BasicCompanyInfoForm, BasicIndividualInfoForm, TI
 from app import db
 
 
-@bp.route('/', methods=['GET', 'POST'])
+@bp.route('/index', methods=['GET', 'POST'])
 @login_required
 @active_user_required
 def index():

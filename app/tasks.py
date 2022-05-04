@@ -184,7 +184,7 @@ def dummy_data():
             exists = Company.query.filter_by(name=company['name']).first()
             if not exists:
                 record = Company(
-                    name=company['name'], domain_name=company['domain_name'], currency=company['currency'])
+                    name=company['name'], domain_name=company['domain_name'], currency=company['currency'], tax=company['tax'])
                 db.session.add(record)
                 db.session.commit()
 
@@ -427,6 +427,7 @@ def dummy_data():
                 db.session.commit()
                 print("Product attribute value " +
                       str(product_attribute_value.name) + " created")
+        
 
         # product categories
         categories = get_product_categories()

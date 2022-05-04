@@ -1228,5 +1228,3105 @@
     "id": "63ab5c10-4bf1-4a63-acdb-957ae4f17037",
     "name": "Flash Storage",
     "attribute_id": "4fb14d35-8f34-47ba-bc24-32652e0a175d"
+  },
+  {
+    "id": "dbb35843-aa67-4cfd-9f38-51d11327c8d8",
+    "name": "MacBook Pro",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "4207b638-7034-45de-a8a1-7228bed940f0",
+    "name": "Macbook Air",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "ac6809cd-09d2-478c-85ab-6256052c7d57",
+    "name": "250 G6",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "fbb32142-dd0c-4e7d-a54e-307554c023dd",
+    "name": "Aspire 3",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3adc94a6-0f70-4547-9588-3eb8c03860e6",
+    "name": "ZenBook UX430UN",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "9e394617-5985-4295-b470-8d2495d21861",
+    "name": "Swift 3",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "d4b26f88-f2b4-4ba0-afc2-937b8204d71a",
+    "name": "Inspiron 3567",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "8191b724-66d5-4e04-aea8-89d1b8d39daf",
+    "name": "MacBook 12",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "8efec85e-a8ed-4163-938f-a85b4a42a30d",
+    "name": "IdeaPad 320-15IKB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "25c8da00-e54e-4573-9216-abd3f460b156",
+    "name": "XPS 13",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "9ac85eb3-50a5-4dea-8751-6663b1bcef76",
+    "name": "Vivobook E200HA",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "ac596844-9fbb-41f6-9e4f-45bef657cff0",
+    "name": "Legion Y520-15IKBN",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "e321d6c4-beee-4c4b-a224-5985f6dd3969",
+    "name": "255 G6",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "1d6034b4-e6bb-4321-9826-2931199d82c5",
+    "name": "Inspiron 5379",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3f49ba65-fbd6-4efd-8803-4afe26d115fd",
+    "name": "15-BS101nv (i7-8550U/8GB/256GB/FHD/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "7406a667-cf2e-4820-a27e-a65540e70a16",
+    "name": "MacBook Air",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "c92da88f-7e02-489b-ade2-1407efe9fac9",
+    "name": "Inspiron 5570",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3dd99970-0af6-41c6-9f58-c7b8840150e7",
+    "name": "Latitude 5590",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3c5cbbc2-4998-4236-a3fc-d39ea83496e3",
+    "name": "ProBook 470",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "41267052-a860-4d8c-9444-a6d1bad6cb1b",
+    "name": "LapBook 15.6",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "1c2d485b-eeb5-4d40-b632-78842c4a1e6c",
+    "name": "E402WA-GA010T (E2-6110/2GB/32GB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "d02a9c2b-6e7e-45bc-a061-59c443a9b523",
+    "name": "17-ak001nv (A6-9220/4GB/500GB/Radeon)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3a69a750-7a6c-4b05-a054-7658b51be127",
+    "name": "IdeaPad 120S-14IAP",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "7785ee4f-0442-4821-857e-1b7e1778ba72",
+    "name": "Inspiron 5770",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "eb3a2a4d-17f4-475c-ab2f-9f16044f99f8",
+    "name": "ProBook 450",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "522047e9-8098-4a60-9d0f-0e029fea9b8f",
+    "name": "X540UA-DM186 (i3-6006U/4GB/1TB/FHD/Linux)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "f8a69e43-0ce8-4b21-b1d3-5e76ad5fda53",
+    "name": "Inspiron 7577",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3f4c3ae0-4186-4f5c-9c1e-75d27ac713b9",
+    "name": "X542UQ-GO005 (i5-7200U/8GB/1TB/GeForce)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "16bad1ee-b6fe-4f02-9993-d33a02981751",
+    "name": "Aspire A515-51G",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "ab3b9079-ccc2-4277-90ad-544d30695310",
+    "name": "Inspiron 7773",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "86218c31-fa2b-405b-8c74-e220c1c11043",
+    "name": "IdeaPad 320-15ISK",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "bcea1df6-6b2e-4b34-b82e-bc2910a716e7",
+    "name": "Rog Strix",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "5af162f3-2b2f-4001-9198-5d4e20cc95a5",
+    "name": "X751NV-TY001T (N4200/4GB/1TB/GeForce)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "389e618d-495b-43f3-a03b-30339a154d85",
+    "name": "Yoga Book",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "a839382e-6bdb-4fe5-bff5-ebf2c55f102a",
+    "name": "ProBook 430",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "95d31d4c-b0d4-4170-92b2-cbe5f73846ba",
+    "name": "Inspiron 3576",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "6a39684d-fd16-48d5-aaf7-6e5caf65178e",
+    "name": "15-bs002nv (i3-6006U/4GB/128GB/FHD/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "a27736e0-c542-40d9-98d1-abfed7b9f0f1",
+    "name": "VivoBook Max",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "e58818f7-4dd1-4391-a0a5-bb855606b784",
+    "name": "GS73VR 7RG",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3579eb09-d358-44b0-a151-a5f7a042a7ec",
+    "name": "X541UA-DM1897 (i3-6006U/4GB/256GB/FHD/Linux)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "6d8a17d6-3116-4793-9350-7cae1b26abec",
+    "name": "Vostro 5471",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "305301c6-7324-4e6c-841c-9630f08c7ad0",
+    "name": "IdeaPad 520S-14IKB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "aca0d8cd-31c0-44d7-8b0d-8465b3f76d43",
+    "name": "UX410UA-GV350T (i5-8250U/8GB/256GB/FHD/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "effd8e11-4f01-4605-84f3-2b1175277b1d",
+    "name": "ZenBook Pro",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "94c837ba-5965-4c67-bf3d-4e89cf0a0e4d",
+    "name": "Stream 14-AX040wm",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "e9fa44ce-7880-44cf-9e8e-ca01fd0e021d",
+    "name": "V310-15ISK (i5-7200U/4GB/1TB/FHD/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3e657d8b-dc38-4484-bf5f-a2ab33198f92",
+    "name": "FX753VE-GC093 (i7-7700HQ/12GB/1TB/GeForce)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "922f4087-03b0-4412-a502-943fc2351931",
+    "name": "Surface Laptop",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "ba154dfa-8d8b-4c6a-a8d6-e8ce23ba1a30",
+    "name": "Inspiron 5370",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "f9da64aa-f704-414e-bc8f-05c03d26a812",
+    "name": "GL72M 7RDX",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "be8d95c3-b2c7-4f41-9162-629231b90479",
+    "name": "Aspire E5-475",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "87d4af86-d9da-4418-971f-89247a8dca28",
+    "name": "FX503VD-E4022T (i7-7700HQ/8GB/1TB/GeForce)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "755e93b4-d0e4-4749-84d3-31c7c2c8e994",
+    "name": "IdeaPad 320-15IKBN",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "16284394-0af0-4125-893e-631b47334133",
+    "name": "Aspire A515-51G-32MX",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "f53e02f4-b53c-4791-a77d-c54b7a62ebc3",
+    "name": "ProBook 440",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "4e72a8aa-8a54-41fd-842d-8c9271ef0a7f",
+    "name": "IdeaPad 320-15AST",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "563f18af-8fb9-447f-bd1a-e9a45fd42a64",
+    "name": "Pavilion 15-CK000nv",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "d18a54bb-80ac-47c6-8762-2944338e7ee7",
+    "name": "FX503VM-E4007T (i7-7700HQ/16GB/1TB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "5866bfa0-ea03-4084-a42f-be8674977863",
+    "name": "FX550IK-DM018T (FX-9830P/8GB/1TB/Radeon",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "d16d0583-3dc1-44b9-aaca-6626674e2fec",
+    "name": "Aspire 5",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "ad5b40cc-4785-41a8-a9ca-6f93d3baccbc",
+    "name": "Probook 430",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "e04be119-1134-40a8-9769-56d67419448f",
+    "name": "Zenbook UX430UA",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3eeaeae6-572f-446f-930c-9b87d3734b63",
+    "name": "Spin 5",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "bb0f75cd-fead-4a5d-a6af-0d08356daa8b",
+    "name": "X541UV-DM1439T (i3-7100U/6GB/256GB/GeForce)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "810d08ae-acc1-4c70-affe-83b6e7e4b403",
+    "name": "Omen 15-ce007nv",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "5e5e9903-e1db-464f-97b0-7d9cd79036d5",
+    "name": "15-bs017nv (i7-7500U/8GB/256GB/Radeon",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "e662227b-95ba-4443-b976-fde6ff789f5a",
+    "name": "15-bw000nv (E2-9000e/4GB/500GB/Radeon",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "216f2531-114d-4a3b-a2ec-f802df80ade2",
+    "name": "Envy 13-ad009n",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "4f3eba0a-5ce4-43fc-9cac-f561d6b93541",
+    "name": "Pavilion 14-BK001nv",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "4bb30111-6db6-44db-b7ba-3456021a2b0b",
+    "name": "Ideapad 310-15ISK",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "2ad27663-d359-4ab9-a0f2-7b55b44afa42",
+    "name": "UX430UQ-GV209R (i7-7500U/8GB/256GB/GeForce)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "2677d560-db57-469f-8539-c4872b26fee4",
+    "name": "GP62M 7REX",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "8104cccf-4f8f-4726-bbb0-fced4f64b8c2",
+    "name": "Thinkpad T470",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "06747073-f1cb-435c-ad79-f3abdf2b2f03",
+    "name": "VivoBook S15",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "c69cadf0-aaa4-4d0b-be9f-06c2b82a0cd9",
+    "name": "ThinkPad Yoga",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "a9e16dff-9755-42af-93db-6dc526d740e2",
+    "name": "Probook 440",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "5e715c61-0976-4cc9-9117-dc1644893f19",
+    "name": "Spectre x360",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "6253ea96-b7b2-4d1b-9892-ff3a50112a80",
+    "name": "Inspiron 7570",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "c53cd19d-618a-4fe5-8d1d-c46bc4210a9d",
+    "name": "X705UV-BX074T (i3-6006U/4GB/1TB/GeForce)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "d010ae08-898a-4ce6-968e-aebc1adf4fff",
+    "name": "Spin 3",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "96fe8b32-82bc-4b53-aec1-843ddc43945d",
+    "name": "GS63VR 7RG",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "663d918e-c40b-44e0-b541-a0af074af6a0",
+    "name": "Probook 470",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "75000a75-ea9a-470f-894a-dfcc011b5721",
+    "name": "E402WA-GA007T (E2-6110/4GB/64GB/W10",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "87ebc6e9-2385-45f7-a134-04af89ff5841",
+    "name": "Inspiron 5567",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "b72ce243-311b-4045-8f41-81c1a5848521",
+    "name": "Aspire A515-51G-37JS",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "2603aed4-4ef2-4c7b-9c82-f6d2f044c8a3",
+    "name": "15-BS078nr (i7-7500U/8GB/1TB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "38b9c69a-d11e-4de9-a83f-71eb0a672aee",
+    "name": "V110-15IAP (N3350/4GB/1TB/No",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "32131ac9-69e2-411d-a0ca-98cb92ab1aca",
+    "name": "FX753VD-GC086T (i5-7300HQ/8GB/1TB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3b500240-ece5-438b-af1f-2ae270eddb31",
+    "name": "Envy 13-AD007nv",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "36b3f185-1320-486a-885e-fdc3249c8363",
+    "name": "ThinkPad E480",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3b6c1c5a-ce23-4a3d-b0c6-33a3c08ddee4",
+    "name": "Satellite Pro",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "9fe56222-1749-4855-a6b9-96d558d1d3a1",
+    "name": "ZenBook UX430UA",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "537bb7b8-3b92-445c-9ceb-7e79042be2f8",
+    "name": "EliteBook Folio",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "f50e3df1-5b35-42f2-bf5a-4cf537ba0838",
+    "name": "X541NA (N3350/4GB/1TB/FHD/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "67db6d0f-9a3a-43ab-819d-ff9669156e0e",
+    "name": "GE72MVR 7RG",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "ceeaaae3-7d6f-429e-b27e-c79ff762471c",
+    "name": "Aspire A315-51",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "e16dd623-0894-44e9-b05d-5f889f980e28",
+    "name": "Inspiron 5577",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "8b9486c9-87c3-44f6-8675-b6d62e7a102f",
+    "name": "Inspiron 7567",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "2be02255-4162-454d-a668-2a834ac6ef01",
+    "name": "V110-15IKB (i5-7200U/4GB/128GB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "afc2762a-3cdf-4be1-bcca-fcb3a67745d5",
+    "name": "GE73VR 7RE",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "8e8d0628-414b-44be-849b-eb4e161ec173",
+    "name": "EliteBook 840",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "4b20e707-0e43-40b8-a27e-0afc59b9e72d",
+    "name": "15-BS103nv (i5-8250U/6GB/256GB/Radeon",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "8faa41b5-b544-43f7-be5c-8c92ba557873",
+    "name": "Yoga 520-14IKB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "6bd6fd0e-df4f-4958-a8ed-3d712e7bd49e",
+    "name": "ZenBook Flip",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "85a61a1f-3db2-4fbe-b4f9-23d95a7b9958",
+    "name": "Inspiron 5579",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "649cf9f2-995a-49f6-b125-068d5b9a767d",
+    "name": "X555BP-XX180T (A9-9420/4GB/1TB/Radeon",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "daf434f8-c054-4a7b-be30-daa20be202ba",
+    "name": "Aspire A517-51G",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "15c093cd-aeb2-4396-8b07-8aea9672bb41",
+    "name": "Aspire A315-31",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "bd09c0fb-7e21-499a-b2a4-10e8cbf6af11",
+    "name": "GE63VR 7RE",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "2bc1e0d8-720a-4ee1-a95b-59f381fae7a9",
+    "name": "MateBook X",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "f38a51d3-eefe-440b-872a-0c503ded9f57",
+    "name": "17-bs001nv (i5-7200U/6GB/2TB/Radeon",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "6763aba7-cf72-4cf2-950a-ccb131f19500",
+    "name": "GT80S 6QF-074US",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "2918b29e-4dee-48cd-96b4-2799692c31a2",
+    "name": "V310-15IKB (i5-7200U/8GB/1TB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "6f4600ae-f41e-496c-96bc-99d7190f89f1",
+    "name": "Yoga 920-13IKB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "6ed40b8f-df77-4898-acc7-ee4b49b34a00",
+    "name": "Mi Notebook",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "adc43640-4e49-416a-a34b-358dc8633518",
+    "name": "XPS 15",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "d46913f3-5448-49f2-89e6-3ba71df0dd6e",
+    "name": "Swift 7",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "bda5b6e2-2b34-4ef0-8f05-1686c3c36a6f",
+    "name": "Thinkpad Yoga",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "e86eb2f8-a3fe-41c2-ba64-88ef30f71793",
+    "name": "K147 (N3350/4GB/32GB/FHD/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "fb1fdfc0-465f-4047-a034-7a54879535b7",
+    "name": "IdeaPad 320-17IKBR",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "4d5da203-8f41-44c7-8f03-b5ffa9edf3f7",
+    "name": "Blade Pro",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "247c0ba0-d5fa-40c8-82ee-6b8d80f5794d",
+    "name": "Omen 17-W295",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "cbdcf9ef-2b08-4d1d-a26a-a52f230c2e4b",
+    "name": "V110-15ISK (i5-6200U/4GB/128GB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "8724dee5-826e-45bd-a54c-f1538e745b41",
+    "name": "Aspire E5-576G",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "ca98bd8b-9f6b-4eff-9a92-f7d863bc1f7b",
+    "name": "Legion Y720-15IKB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "7ed9455f-0c65-4924-b177-051babae8303",
+    "name": "Precision 7520",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "552cf66a-d451-4a7d-b474-d0570756af43",
+    "name": "Aspire 7",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "bf00fb78-8199-4d12-a150-9ef7a17f66be",
+    "name": "ROG GL703VD-GC028T",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "127d07a5-18f3-442e-b5ed-b38a1489887b",
+    "name": "15-bs018nq (i3-6006U/4GB/500GB/FHD/No",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "116b6e2a-c024-4f04-a466-b2edd685be52",
+    "name": "IdeaPad 320-17IKB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "d2d6e372-7b07-4fee-b944-04e428d31c19",
+    "name": "Latitude 5490",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "fade3105-7567-48af-b3a0-1aa3c6b4f3f1",
+    "name": "Portege Z30-C-16L",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "9d0a5410-1f02-47cf-91a5-cd0e3aec1fd4",
+    "name": "Alienware 17",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "8c4848c0-27d4-4b18-954f-a69450996ba6",
+    "name": "Vivobook X541UV-DM1217T",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "0b00b0b2-42cf-4067-a289-5cd81f9404d8",
+    "name": "K756UX-T4340T (i5-7200U/8GB/500GB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "4b63ddb0-bf18-46e5-8ecb-61a77b462a6e",
+    "name": "ZBook 15u",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "1cc7353e-1a5c-4e85-bd1f-3bbd7fd930f5",
+    "name": "Pro P2540UA-XO0198T",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "82822b32-d75e-4a00-abbe-4c1a1d2f3a8b",
+    "name": "15-rb013nv (E2-9000e/4GB/500GB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "ef565bd3-03a8-48f8-8067-2d98a3abfee8",
+    "name": "Vostro 5468",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "f745da79-997c-4dba-bb3b-1e8d32b31f47",
+    "name": "Aspire R7",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "5ae43681-271b-4d9b-bfcd-a78ab513925c",
+    "name": "X555QG-DM242T (A10-9620P/4GB/1TB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "c9f90a82-8a78-4cc3-85d7-bc2e132fbe46",
+    "name": "ROG G703VI-E5062T",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "1e2c1953-57cf-4383-bbd1-f0064a5ddee6",
+    "name": "Nitro AN515-51",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "b7b1811f-b0b4-4230-a00b-61c8d81cda35",
+    "name": "VivoBook Pro",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "01ed3285-aab1-444e-b8a3-dad642458f63",
+    "name": "F756UX-T4201D (i7-7500U/8GB/128GB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "19302157-0626-4178-8ed9-70be52c842d8",
+    "name": "Yoga 910-13IKB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "b6a58068-2ef3-4b65-ad17-4259a6e9ef9e",
+    "name": "15-bs015dx (i5-7200U/8GB/1TB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "f56de702-cb0f-4e6c-8aa6-1fd4448e8847",
+    "name": "Rog G701VIK-BA060T",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "a5d96835-cbc9-4de5-bf11-61817be23cdc",
+    "name": "ROG G752VSK-GC493T",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "5ab57b88-5ed2-4be6-a870-467837e687c2",
+    "name": "X505BP-BR019T (A9-9420/4GB/1TB/Radeon",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "aa0d7883-cc37-4a11-948a-31848f59a75b",
+    "name": "Vostro 5370",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "4b4757bc-bf28-4300-8429-6f90819a1c88",
+    "name": "15-BW094nd (A6-9220/8GB/128GB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "21b312a8-ab65-481e-9b31-1d2951595bb6",
+    "name": "Envy 17-U275cl",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "b00270ff-ff74-4773-b9b1-a49da9181532",
+    "name": "GT73EVR 7RE",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "2f8f029b-dc0c-43a0-81c8-c1d0352eda1f",
+    "name": "Yoga 720-15IKB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "76452664-e423-47db-91c3-fa9a9869ffea",
+    "name": "Vostro 3568",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "d6e8c904-6133-4f11-b817-d78400993591",
+    "name": "V330-15IKB (i7-8550U/8GB/256GB/FHD/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "c949a3e9-6b36-44ed-bc8a-bcd701b49c8b",
+    "name": "ThinkPad X1",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "df1e7eac-0836-4113-84ff-b60ebfe55080",
+    "name": "IdeaPad 320-17ISK",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "562097aa-9835-4be0-9ae0-cdc314bad1d9",
+    "name": "Ideapad 320-15IKBN",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "ab290eeb-7d3c-4666-9fe0-595a73e4f4db",
+    "name": "SP315-51 (i7-7500U/12GB/1TB/FHD/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "4afc878f-916a-48fa-b0e4-e66cbed47738",
+    "name": "Thinkpad T570",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "884f9d30-3328-47b4-a1ef-73ba406d1784",
+    "name": "Chromebook C910-C2ST",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "1395057e-5a6f-4921-95eb-dd86d3cb2e18",
+    "name": "FX753VD-GC071T (i7-7700HQ/8GB/1TB/GeForce)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "b54b6185-7f38-4602-83cd-086eae7024ac",
+    "name": "17-BS037cl (i3-6006U/8GB/1TB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "cba900e2-77ea-4201-a2be-695a9f4fb57e",
+    "name": "V330-15IKB (i5-8250U/8GB/256GB/FHD/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "6612d7cc-c621-4d6a-9c7b-7562d48e0438",
+    "name": "Aspire A715-71G",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "79ba79e9-0f48-4818-a55a-7e1f8dcc6af3",
+    "name": "Precision 7720",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "faadfb2a-9462-4bde-bb55-9bbb3078227c",
+    "name": "IdeaPad 310-15ABR",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "e2e2b710-d742-43e3-b099-ed7caeea82aa",
+    "name": "ZenBook UX530UQ-PRO",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "0729f60b-f3b1-4342-8b3d-bfb50f55690b",
+    "name": "VivoBook S14",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "320a6a35-fad0-4bb1-ab77-554e7d1a42e5",
+    "name": "Rog GL702VS-GC095T",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "6545d55c-482d-4168-acc5-1b91f14a4f37",
+    "name": "GL553VE-FY082T (i7-7700HQ/8GB/1TB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "5901680e-0a52-4f14-a54a-64960af0bdd5",
+    "name": "IdeaPad 320-15IAP",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "ed91a685-f287-439e-aa5d-98edc54cbf85",
+    "name": "EliteBook x360",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "84df4fb3-da2d-4573-b747-d8969dbdf134",
+    "name": "IdeaPad 720S-13IKB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "b795f518-8c9a-45e0-a02a-98d9358ba28c",
+    "name": "GE63VR 7RF",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "ac71ab66-17af-4bfc-8e65-e8e9e175d932",
+    "name": "ES1-523-84K7 (A8-7410/8GB/256GB/FHD/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "be253725-b9b0-449b-907b-e8e1903b07dc",
+    "name": "VivoBook Flip",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "f6dddb61-69ff-4526-9aef-3f53f82eac55",
+    "name": "ThinkPad 13",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3e5c50c2-517c-40bd-ae3a-07c261416233",
+    "name": "ProBook 640",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "6120d540-b157-4fcb-98d3-d4f93a1cac05",
+    "name": "TravelMate B",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "bd17c5a4-0167-4ec7-93c5-123a6a712d9e",
+    "name": "Elitebook 840",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "e9b87ba4-ce82-4fd1-8c18-4355fc4c996e",
+    "name": "ZenBook UX410UA-GV183T",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "475a7eae-b4c7-45da-a0d5-d90ce784ce29",
+    "name": "Aspire E5-575",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "1f9de0f4-12d5-413b-b924-0e6c9ce62ed9",
+    "name": "Elitebook 820",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "69a6768e-7148-4d15-b05c-d0fb068e6d2e",
+    "name": "GL72M 7REX",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "97da662f-cae0-473f-a208-f9ab709da826",
+    "name": "UX510UX-CN269T (i7-7500U/8GB/256GB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "ba7128e2-ea8b-4adc-9773-a738f2d23ee6",
+    "name": "V310-15ISK (i3-6006U/4GB/1TB/FHD/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "97c5aa24-1e9d-4349-ae25-3e3df5243851",
+    "name": "FX553VD-FY647T (i7-7700HQ/8GB/256GB/GeForce)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "ffe7130a-75ec-49d3-8e6f-e4d85e1f74cb",
+    "name": "Elitebook 850",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "2b10164e-0677-405a-bee1-86c12a280e06",
+    "name": "X541NA (N3350/4GB/1TB/Linux)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "56c9b958-a849-4657-b885-97c30555e32f",
+    "name": "Inspiron 3552",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "51c0e5bf-c950-4861-9cf6-62187f5282b0",
+    "name": "IdeaPad 320-15ABR",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3d3631e9-1270-4171-a87a-df9dadcb1772",
+    "name": "Stream 14-AX001nv",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3584c2fd-2d3c-469b-bfcc-1165bcc18a91",
+    "name": "GP72MVR 7RFX",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "b3611482-fc08-4f17-998a-a99e5fffd672",
+    "name": "Zbook 15",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "c69574b8-f8b4-475a-8603-8c1f8391d2b4",
+    "name": "Tecra A50-C-21G",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "c421aad6-a9ee-497d-8e94-392adac2344a",
+    "name": "Latitude 7480",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "5704eaa8-00ad-4eb0-9560-14b12d4fd045",
+    "name": "Zenbook UX410UA-GV027T",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "90dae559-11cf-47b9-a021-15b222961900",
+    "name": "15-AY023na (N3710/8GB/2TB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "f32fce85-2b69-47ea-b781-26558aadb77b",
+    "name": "Elitebook 1040",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "31d8d499-f214-4c7d-b3ca-3c506de7381a",
+    "name": "IdeaPad 110-17ACL",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "0704153f-4ace-4b42-b87a-25ed054b1a8c",
+    "name": "15-bw003nv (A9-Series-9420/4GB/256GB/FHD/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "347d7fbc-a497-4e85-8cc2-c6651f75e593",
+    "name": "Yoga 11e",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "7582d11a-aa49-4f05-90c9-e1fb795cfa88",
+    "name": "VivoBook E403NA",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "fe34e5d9-4849-45b7-a4ef-09df621abe2b",
+    "name": "Omen 17-w212nv",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "dbf93035-adeb-4d80-8e0e-a33591a9d1c3",
+    "name": "V310-15ISK (i3-6006U/4GB/128GB/FHD/No",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "24fc8dc1-35f2-4be5-a7b9-60e11f776105",
+    "name": "ROG Strix",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "1cb49b9c-d2b0-4911-9650-c9e036f39e3a",
+    "name": "IdeaPad 720S-14IKB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "e7d47ec5-efaa-4b37-8457-461cc33c43a9",
+    "name": "Zenbook Flip",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "f7c1bb80-a403-4468-a212-525c4e5c0efa",
+    "name": "Thinkpad X1",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3dc53f9d-1723-4eaf-9984-549c7af14b05",
+    "name": "Ideapad 510S-13IKB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "b223bb50-6a63-4d01-a4e8-fa4b70780a20",
+    "name": "Precision 3510",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "da07af41-7e46-414d-a66e-3f91cf6e1e26",
+    "name": "Precision 5520",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "b0b650dc-0a86-41ab-a4b5-c65f3d55672f",
+    "name": "Rog GL753VD-GC042T",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "4c903b01-2973-4c10-810c-a81d1f519458",
+    "name": "Rog GL753VE-GC070T",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "aefb40ee-810d-4819-9c30-95e53914d7cc",
+    "name": "Leopard GP72M",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "a9e35a4d-0686-439e-a219-b76624defd14",
+    "name": "15-BW004nv (A9-9420/4GB/256GB/Radeon",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "e5fcef3c-81bb-4561-acef-2a75ce291660",
+    "name": "ThinkPad E580",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "285fc4b1-506e-4a47-a7c5-47f0ff04d772",
+    "name": "ThinkPad L470",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3d7bdfe7-42e0-454b-8ba6-2b7d8fbb1c11",
+    "name": "Precision M5520",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "bda62783-16f0-4aec-8584-6faa64ddf4a4",
+    "name": "FX753VD-GC461T (i7-7700HQ/16GB/1TB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "c79e2d46-d257-4a47-9f9b-80d4d7b86426",
+    "name": "GE73VR 7RF",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "9ad4e04a-969c-4149-83b3-03f422a60ec0",
+    "name": "Zenbook 3",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "bebe4704-62f8-41e2-a596-091a9f24467b",
+    "name": "Portege Z30-C-16P",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "5282c960-766c-4d66-b263-b5d53b45bb89",
+    "name": "Lenovo IdeaPad",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "7796e8b8-3b51-47de-a382-40c7acbf64ec",
+    "name": "ThinkPad P51",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "b5549173-2858-4e02-a633-2bd6a1fca41a",
+    "name": "Thinkpad T470p",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "65464b42-b17c-4b5b-83c9-0ef131ba03e7",
+    "name": "15-BS028nv (i3-6006U/4GB/1TB/Radeon",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "432c73c0-3a87-490e-9549-9827691d308f",
+    "name": "Latitude 3380",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "ce858e47-8da8-43e5-9a94-5c7ec03072bd",
+    "name": "EliteBook 1040",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "82f3687b-e959-40b5-806a-95a831a2b8a0",
+    "name": "LapBook 12.3",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "75f8d854-e76f-42a8-8537-93e8fbd43b61",
+    "name": "ProBook 650",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "ed76bbf1-8fcb-4072-a3b4-e193da5c9588",
+    "name": "X542UQ-DM117 (i3-7100U/8GB/1TB/GeForce)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "1f1cdfac-24dd-4b0b-890f-b587fd237a3b",
+    "name": "Latitude 5480",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "9c7b7456-76b5-40f3-b55f-c89c64425694",
+    "name": "Omen 17-w207nv",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "ffb5434d-6e67-4092-90fe-348e20f6a60a",
+    "name": "FlexBook Edge",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "b0f872b2-e6a4-426a-8fa0-12e587d8c872",
+    "name": "Chromebook 3",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "de03656f-fa4b-4d52-984c-f5e3518b64a6",
+    "name": "Thinkpad 13",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "2bb30cd2-b502-4dd8-ae31-046e05f42f21",
+    "name": "IdeaPad 320s-14IKB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "67939795-712f-433f-a502-2295c2565667",
+    "name": "Thinkpad P51",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "b825c395-ae70-45f9-8d5d-084947a78687",
+    "name": "Chromebook X360",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "fb21c884-3f9f-40b7-b152-6793a763791a",
+    "name": "15-ra044nv (N3060/4GB/500GB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "73497863-f542-4a41-95cb-9746dfb31078",
+    "name": "Pixelbook (Core",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "eb242884-6f99-43ae-8393-73e8efd35fe5",
+    "name": "ThinkPad T470s",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "320603ff-6bc7-40be-90ae-da27f4794358",
+    "name": "ThinkPad X270",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "cfb72795-92a6-45a2-8ce1-b8a401e17b87",
+    "name": "Omen 15-AX205na",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "0c4d5835-8209-42f2-87d5-cede0d750af4",
+    "name": "Aspire ES1-572",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "4b9dfcef-eb21-46c2-b728-89d4c40d4865",
+    "name": "Precision 3520",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "ef71444b-12e0-4d8b-94c2-3d47c23d97b1",
+    "name": "GV62 7RD-1686NL",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "521fce1f-f0e1-4b18-9f67-70dc3108a823",
+    "name": "15-bs024nv (i5-7200U/8GB/128GB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "86c0797f-0fb9-4013-b187-26ed650ded09",
+    "name": "ThinkPad T470",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "9ed86dbd-6e9b-44df-b538-d324a98f20c9",
+    "name": "Inspiron 3168",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "dde109f2-2607-4092-b7d1-af079e4b2fb4",
+    "name": "17-BS092ND (i3-6006U/8GB/256GB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "cc480857-2f28-4415-a33c-7f97f1ccc678",
+    "name": "Pro P2540UA-AB51",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "c149ce75-2627-4a96-b04d-0ca6e12e7934",
+    "name": "IdeaPad 510s-14IKB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "7d532ff1-b13a-41ee-8070-6e83e7520e2b",
+    "name": "X541NA-PD1003Y (N4200/4GB/500GB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "ba59db9a-a4de-4518-99d8-1045b151aa35",
+    "name": "Omen 17-an006nv",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3fd8532a-3739-404f-866c-5962361222e8",
+    "name": "Thinkpad T460s",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "5fb62184-4b5d-485c-b9d8-a0242e81b4de",
+    "name": "Latitude 7390",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "7d6f9ded-a8e6-42eb-aa89-908e3ff504c6",
+    "name": "Latitude E5470",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "96fc0093-9d43-4f38-8bed-1cd7a299f820",
+    "name": "Portege X30-D-10J",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "aab31165-c8ea-4d29-a545-fbbbbeeb3650",
+    "name": "Lapbook 15,6",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "644100cc-b92c-4283-bb21-bbbb39db45e8",
+    "name": "ThinkPad E570",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "0a17c813-e14d-46b0-880e-10c2f16b9ebe",
+    "name": "Thinkpad X270",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "20345271-8e5a-49c1-b74d-57223e066c76",
+    "name": "Zenbook UX390UA",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "c0ba09a9-574c-4e3c-a132-c0db1db2b014",
+    "name": "Thinkpad E570",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "36cb9d20-49ea-46d3-b403-781a437f12c4",
+    "name": "Portege X30-D-10L",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "187f6dea-afd2-47f4-8d27-e19f2e960780",
+    "name": "Rog G752VL-UH71T",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "ad6ac276-b450-4df0-8d5d-add02f26c207",
+    "name": "Thinkpad X260",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "52f61fc4-98d9-4849-8cb8-92e5e3a9aed7",
+    "name": "Ideapad 520-15IKBR",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "51029f34-375b-4d27-8cb3-6802ce15e77e",
+    "name": "ThinkPad L570",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3057bb95-e52b-43ab-ab69-64db944d4de1",
+    "name": "VivoBook E201NA",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "0ef07be9-9585-4feb-8ca4-cf80474ed746",
+    "name": "15-BS026nv (i5-7200U/8GB/256GB/Radeon",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "21b02764-69e1-4ed1-bc6e-9bafcf27051d",
+    "name": "IdeaPad 320-14IAP",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "49cddf41-7052-41de-b9c3-bd50afb0745f",
+    "name": "Chromebook N23",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "731a1ac9-11ed-4546-a691-a7e319e37096",
+    "name": "ZenBook UX510UX-CN211T",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "16843e5b-4f8b-46bb-897f-a92f674beb54",
+    "name": "Aspire A515-51G-59QF",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "535b048f-2d21-4867-bc31-b83fb2c9d202",
+    "name": "Envy 13-AB002nv",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "6a9ed91a-ddc0-44a6-8fe1-c78c007b28a7",
+    "name": "Vostro 5568",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "4713bed8-09c2-43a9-a845-102f439fb901",
+    "name": "VivoBook E12",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "226e7a67-5c20-4458-81ee-7a4d1b1ed0df",
+    "name": "15-bs190od (i5-8250U/4GB/1TB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "ff7bbb9a-acb4-41ef-aed1-24e707e85319",
+    "name": "ROG Zephyrus",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "bf443adf-4d65-4eb5-8159-6beec283e92d",
+    "name": "Probook 450",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "b1e7b9f4-35e9-4d61-bd9d-14e54599fa94",
+    "name": "FX753VE-GC155T (i7-7700HQ/16GB/1TB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "146e63a7-95ed-41ce-b019-e5695136a93b",
+    "name": "Spectre X360",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "4e89d1fa-aede-4de2-93cc-75a272ff3acf",
+    "name": "Latitude 5580",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "5fb2e4d6-d3b8-4021-aaa9-331905d7cf0c",
+    "name": "Zenbook UX510UW-FI095T",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "aaf09617-fff0-404a-b64b-c9919f4e83e6",
+    "name": "SmartBook Edge",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "b7620319-ab40-410b-af00-2aeb30b616ed",
+    "name": "Omen 15-ce006nv",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "a4c69073-3fe3-400e-bf4c-3c065b79d6a5",
+    "name": "Thinkpad E470",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "7cc4d0a0-77e6-4262-b548-819d0f34cbc2",
+    "name": "Envy 13-AB020nr",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "080a5a72-b6b4-4b30-b075-603315550a7b",
+    "name": "VivoBook X540YA-XX519T",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "6d67ae66-a87c-478b-aa6a-6a7603fe2429",
+    "name": "ThinkPad E470",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "403ff71c-cba8-412f-8a05-4eb281d9eedf",
+    "name": "V310-15ISK (i5-6200U/4GB/1TB/FHD/No",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "91f9c741-6bc3-4a4c-b41a-75c645501ccc",
+    "name": "ThinkPad T570",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "0ecadc68-dbc4-402a-80b7-748080af6b8f",
+    "name": "17-X047na (i3-6006U/8GB/1TB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "87a0f83a-d924-450f-aad7-38f6ce22a09a",
+    "name": "A541NA-GO342 (N3350/4GB/500GB/Linux)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "f463692a-52fb-462c-9bdd-0e9503209a0b",
+    "name": "SmartBook 130",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "7aa6573f-d205-4958-815c-c756db24b716",
+    "name": "15-bw007nv (A10-9620P/6GB/128GB/Radeon",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "0ad5ba53-11c7-4096-9520-c7a3dd692a55",
+    "name": "Spin SP111-31",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "4b337f67-a922-471c-a386-ebc0fe7f23cf",
+    "name": "V330-15IKB (i3-7130U/4GB/128GB/FHD/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "da37fde3-087d-4c6d-9059-381912a7cdbe",
+    "name": "EliteBook 1030",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "9e7d117a-89a1-4a37-a81f-e9f9b10394b8",
+    "name": "Thinkpad P71",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "0649c371-5f2c-4636-ae08-419aada1d986",
+    "name": "FX553VD-DM627T (i5-7300HQ/8GB/1TB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "e1142b83-37cd-4c75-83c7-151af76411f6",
+    "name": "Lifebook A557",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "9f55fb16-6d2c-4cc6-84fd-3c2e01c9a3fc",
+    "name": "ZBook 17",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "9c0aa421-94a0-40b0-bb7e-3293f99ca925",
+    "name": "14-am079na (N3710/8GB/2TB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "2cc8d737-54a0-4c50-9e2b-28646a4f8fa5",
+    "name": "15-cd005nv (A9-9420/6GB/256GB/Radeon",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "2a5afc68-5937-4de2-96d7-5ea6ebb18c9a",
+    "name": "V330-15IKB (i5-8250U/4GB/500GB/FHD/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "68c90291-a0a4-491e-8289-ff62dd18aefe",
+    "name": "SmartBook 141",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "1e2bc7da-a168-4ea5-8bae-4890de734c98",
+    "name": "Tecra X40-D-10H",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "d560693d-47c9-4da8-a770-f75039ba7129",
+    "name": "IdeaPad Y910-17ISK",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "e5f6bc57-dc37-4034-a527-d30d17be5b5d",
+    "name": "GT73VR Titan",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "6f21ea0a-d617-4f89-ac81-c8262f8d1f9e",
+    "name": "Chromebook 11",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "eaa1bce2-5cc3-4a72-be6b-e97325bbe211",
+    "name": "GT80S 6QE",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "febb7a66-a938-4458-a5e0-34672e6669b1",
+    "name": "Omen 17-AN010nv",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "6d641006-dd98-4076-affb-a023ebfa0f1c",
+    "name": "Ideapad 320-15IKBR",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "32467ec3-112a-444b-954b-214aa7d78ab4",
+    "name": "TP501UA-CJ131T (i5-7200U/8GB/1TB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "4542ed7d-58a6-4ec9-bf6c-f8d16406fbf8",
+    "name": "Inspiron 3179",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "a6a8ff1c-b324-4c25-b4d5-b587b49cc6ff",
+    "name": "Notebook Odyssey",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "4140c450-bb2e-481a-8725-886635b2f066",
+    "name": "V320-17ISK (i3-6006U/4GB/500GB/FHD/No",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "dd8fc20c-7e76-41dd-b410-49a766b6f53e",
+    "name": "IdeaPad 110-15ISK",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "70fc8f46-bba7-4413-be39-22f855fd7eee",
+    "name": "Latitude 5289",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "05ce6745-4e93-42a8-9ddb-a3a3f34a923d",
+    "name": "EliteBook 850",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "2e5669d7-d37e-4aca-8770-be9ceb8743b1",
+    "name": "Aspire 1",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "4f327460-697c-4c53-83ed-dff852c7fc27",
+    "name": "Laptop MSI",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "18f774a2-b11d-4a1b-9bfa-8497c89a1d17",
+    "name": "GS63VR 7RF",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "fa1eb1d8-54fd-45e4-866f-297b08cd3678",
+    "name": "Tecra Z50-C-144",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "c21aad6e-837f-4217-958e-a827659daf42",
+    "name": "IdeaPad 310-15IKB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "6873dc89-747e-4793-8eb7-3d3a57f1136b",
+    "name": "Swift SF114-31-P5HY",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "348f8478-7819-480e-b4e8-c6a9cc2daf6d",
+    "name": "Inspiron 7559",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "d6931ae3-16a6-4702-a502-a38bc34f4d70",
+    "name": "FX753VD-GC007T (i7-7700HQ/8GB/1TB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "30325822-0e69-46b8-8ef4-8e18ff4a3ce7",
+    "name": "GT62VR 7RE",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "5dfb5efe-7b18-4c4c-86df-72e3175e8947",
+    "name": "CB5-132T-C9KK (N3160/4GB/32GB/Chrome",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "c496d419-fbf9-469c-a7f8-0deb0c06bb5d",
+    "name": "LifeBook A557",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3b0e652f-9c2f-44f7-8de9-af00392fd951",
+    "name": "SmartBook 140",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "f319eab8-5908-42b3-854d-e132d0da1ce5",
+    "name": "Q304UA-BHI5T11 (i5-7200U/6GB/1TB/FHD/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "898155b7-cb06-45be-8c5c-ae5cf2e857c6",
+    "name": "ZenBook 3",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "5414d4d2-bc61-405e-8605-11defab5e838",
+    "name": "V330-15IKB (i5-8250U/4GB/256GB/FHD/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "fe6be53b-8c2b-4ecb-b4e8-9a2b557a30e7",
+    "name": "Ideapad 320-15ISK",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "ccca8ab9-3e16-4576-85ce-88de76bd0aeb",
+    "name": "X541NA-GO414T (N3350/8GB/1TB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "1896d7a6-7322-466f-9ca1-f596278469b1",
+    "name": "IdeaPad 100S-14IBR",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "00c8a236-2a9b-492b-9ca7-7564e27d37b7",
+    "name": "17-AK091ND (A9-9420/8GB/1TB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "c033f99a-90f9-4b75-bb35-c3dfc26f8281",
+    "name": "ROG GL553VE-FY022",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "7ee9ce9f-7157-4c7e-8c2d-209ea035a838",
+    "name": "Extensa EX2540",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "e578a333-6aae-45d0-8067-0c268cd74d47",
+    "name": "Portege Z30-C-16J",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "db8b6a9d-0fee-4ebc-9e4c-1483976b5071",
+    "name": "ROG G701VI",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "9068352d-ad71-4e49-8def-c33e3e122907",
+    "name": "A715-71G-59DH (i5-7300HQ/8GB/1TB/GeForce)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "d870c523-5670-43d5-a99a-ed3c9077acea",
+    "name": "GL62M 7REX",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "df949cc6-2570-4297-85e7-277730dd42d1",
+    "name": "Tecra A50-D-11M",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "0a707408-6626-4052-a854-6f2a8cfc368a",
+    "name": "IdeaPad Y700-15ISK",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "e52c85aa-ae12-4e79-814b-b8598935e635",
+    "name": "Latitude E7470",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "02179c1a-55b3-4962-829c-ee731a4770fe",
+    "name": "Ideapad 320-15IAP",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "335f8849-8756-426a-b30f-228e27b536e0",
+    "name": "15-ay047nv (i3-6006U/6GB/1TB/Radeon",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "0ff489ab-9612-4197-a688-245454429933",
+    "name": "GP72VR Leopard",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "1ff7cee6-d5d2-4a37-9e2e-1838b93cba0e",
+    "name": "Latitude 3580",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "1e7866a9-73cb-4d6a-8e1b-3c7b3600532d",
+    "name": "15-bs012nv (i7-7500U/8GB/1TB/Radeon",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "85102641-66c6-4984-ad4e-eb3988b48761",
+    "name": "Tecra Z50-D-10E",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "15010a50-219d-4255-8294-663b4d76df41",
+    "name": "V310-15ISK (i5-7200U/8GB/1TB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "e388d58b-83fa-44de-a8f0-b4686448dae8",
+    "name": "Yoga 720-13IKB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "9ba483bf-d4d1-4a4c-94eb-2c71d2685df1",
+    "name": "Pavilion X360",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "dbf3493a-f04b-4ae3-b8ba-976ba3374265",
+    "name": "GP62 7RDX",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "b4433e21-fa59-422c-b71f-1264eae3ec4e",
+    "name": "Gram 15Z975",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "9d295f74-b147-4716-9228-b7a9faea590a",
+    "name": "Aspire VX5-591G",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "351ebf57-5a0a-4778-a659-5f732651d3dd",
+    "name": "GV62M 7RD",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3dd8720e-32d1-48fb-8c13-855d431bfca4",
+    "name": "L502NA-GO052T (N3350/4GB/128GB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "676eed49-cb33-4b9b-b6c1-da2494ac7c46",
+    "name": "Alienware 15",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "b852b5a8-47fc-4e11-89d9-9d1313281ac6",
+    "name": "17-bs000nv I3",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "51d80744-e85d-4a72-9ba6-6d1fe0a43f8c",
+    "name": "Yoga 730",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "23a67998-f3bf-4c8d-9046-439aea4cf1f9",
+    "name": "17-Y002nv (A10-9600P/6GB/2TB/Radeon",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "8ab7ec4f-db2a-408c-9460-f73e79c697c0",
+    "name": "V110-15ISK (3855U/4GB/500GB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "025d990c-4020-42a6-83a8-75d74c61bb02",
+    "name": "Chromebook 14",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "44484647-1574-4f4f-a691-475a6caf69ba",
+    "name": "Chromebook 14-X006NA",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "fa4f5acb-a9d8-4d54-b27c-f74d2954205e",
+    "name": "IdeaPad 520s-14IKB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "8fc8fce1-1be8-4eea-ab24-0c104eeefcdd",
+    "name": "TravelMate B117-M",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "0177bc58-c7f5-41f1-a79d-48393131c00a",
+    "name": "Chromebook Flip",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "a8916e7e-af8b-4de1-93fc-1821e532f14d",
+    "name": "Portege Z30T-C-133",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "bd90861b-b14c-4dfc-a79c-3256848655ec",
+    "name": "15-bs011nv (i7-7500U/4GB/500GB/Radeon",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "96c72dee-7d85-4a2b-b31e-2b5b797c654b",
+    "name": "V310-15IKB (i5-7200U/4GB/1TB/FHD/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "29dc298b-f550-4457-808f-1a0847d38c65",
+    "name": "V310-15ISK (i3-6006U/4GB/500GB/No",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "406b21ef-c2c8-4ffd-b8c6-240c406c2dda",
+    "name": "ThinkPad P51s",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "cd99a259-843a-40be-9a72-4c35dd653c07",
+    "name": "Thinkpad T460p",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "63f979ab-2200-4cf8-acf3-d688026d2edb",
+    "name": "17-ak002nv (A10-9620P/6GB/2TB/Radeon",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "f1356aac-15aa-4c80-a5f7-d51b1ddb5f13",
+    "name": "110-15ACL (A6-7310/4GB/500GB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "d46fa627-811b-41c8-b5a0-b465a8339c58",
+    "name": "Smartbook 142",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "16ac5786-b935-4657-a73e-113032078a09",
+    "name": "V310-15IKB (i5-7200U/4GB/1TB/No",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "68fba5d9-32cc-4a7d-9fbc-84919b68c32c",
+    "name": "Inspiron 5378",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "5e161df0-74a6-4812-b2ed-82f75245be24",
+    "name": "15-BW037na (A9-9420/4GB/1TB/Radeon",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "0e207723-7109-41fd-affc-0d902a5d1b4c",
+    "name": "Predator 17",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "da72cb30-f93a-464f-98ac-46f40e06d27a",
+    "name": "15-BW091ND (A9-9420/6GB/1TB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "a6f6d858-f5db-411b-8c9e-104e1d98366b",
+    "name": "Extensa EX2540-58KR",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "e4a20f7b-0f34-4e0f-ae2a-221def9ed201",
+    "name": "V310-15IKB (i7-7500U/4GB/1TB/FHD/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "4d5cdc75-2eff-4b55-b290-f58efa939add",
+    "name": "ZBook 15",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3a265426-ad70-42f3-be68-44e155a44958",
+    "name": "Inspiron 7560",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "cd9998b4-9da2-4ade-abd5-bf2343ee0d88",
+    "name": "Tecra X40-D-10G",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "4af33109-a118-40cb-bd2e-a215ddf96d51",
+    "name": "Flex 5",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "45e8db4b-2f3e-45ca-a6b3-eaeba7fdf813",
+    "name": "Thinkpad P51s",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "f0ac2b3b-4b0d-4275-b2a7-26c726d9b422",
+    "name": "Notebook 9",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "cd188e46-13e9-49f8-b8e1-b56e3ea88513",
+    "name": "Zbook 17",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "4f5163c6-e094-4d6f-a551-a7e5b30c9dd2",
+    "name": "N23 (N3060/4GB/128GB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "7a700404-bf84-4ac0-a46b-68fff24887cc",
+    "name": "X550VX-XX015D (i5-6300HQ/4GB/1TB/GeForce)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "36e2e091-6903-444b-af26-486a6e6c325d",
+    "name": "Thinkpad T460",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "32beb328-a58f-4d29-8e2e-11ce0909af4c",
+    "name": "Pro P2540UA-XO0192R",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "070c604b-a5fe-4b7e-885b-2fdeef81399a",
+    "name": "Yoga 900-13ISK",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "aacc9633-b198-4cb1-85ad-bcd45e1c4437",
+    "name": "15-cb003na (i5-7300HQ/8GB/1TB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "c5831846-915c-40ad-81a6-322c44b73597",
+    "name": "Latitude 7280",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "d8181370-050d-438a-86e1-99ae6234dc30",
+    "name": "Zenbook UX330UA-AH5Q",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "f575de79-d54b-4e4d-bb03-d9d50ac1f470",
+    "name": "TravelMate P238-M",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "c72d8ecd-df4d-4838-b3a6-5059587b21ff",
+    "name": "X751NV-TY001 (N4200/4GB/1TB/GeForce)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "ae46e981-2379-4102-b6d3-4f8148914881",
+    "name": "Tecra A40-C-1E5",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "4704db67-0f2a-4621-b8e8-ea7727b72056",
+    "name": "EliteBook 820",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "35a4b702-07e6-4228-b306-15ac9ff9df6a",
+    "name": "Q524UQ-BHI7T15 (i7-7500U/12GB/2TB/GeForce)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "2b2fbe21-c71c-4f99-8fdf-6c165471c9cb",
+    "name": "Thinkpad P50",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "a22668b2-190f-4311-8eff-9fdab0c4ac3d",
+    "name": "Vivobook Max",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "bb8308c9-6151-46d1-8dd0-a2f8150b4c64",
+    "name": "Rog G752VS-BA171T",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "0871f000-89cf-4c44-835c-dd0077bb0f6f",
+    "name": "Tecra Z40-C-161",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "a873603c-eed2-49a4-b6eb-51139239c1c4",
+    "name": "IdeaPad 110-15IBR",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "24c19c65-2b2f-4302-b17f-144425f9b8f8",
+    "name": "GS43VR 7RE",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "db84a103-06ab-4155-b6f0-6689fb15f5ee",
+    "name": "GL62M (i5-7300HQ/8GB/1TB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "51d8eacc-89ac-43d7-b9c9-73811fb07d1c",
+    "name": "Predator G9-793",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "c77c0eb8-4be6-46ba-a8ab-0b28ad71b4a5",
+    "name": "FX502VM-DM560T (i7-7700HQ/8GB/1TB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "cdecca89-d900-4a6f-a54a-b32749b32943",
+    "name": "K146 (N3350/4GB/32GB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "adb11efc-d83e-4981-8ef6-56760de6b2e4",
+    "name": "Yoga 510-15IKB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "cf724934-1d0f-4ff2-b5e0-f54ff0483adb",
+    "name": "R417NA-RS01 (N3350/4GB/32GB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3cc6b37c-9b90-495c-9c58-7c0f0950f604",
+    "name": "Pro P2540UA-XS51",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "7ce5ea94-148f-4d7f-a1d9-95c302f2aca3",
+    "name": "Latitude 3180",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "5abc5960-f8e5-459c-ace6-ed081b5185ee",
+    "name": "15-ba043na (A12-9700P/8GB/2TB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "58237704-0c5a-464d-95d5-4b86cbb95139",
+    "name": "Omen 17-an012dx",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "ab45278f-8c01-4b45-bf32-2446f42a91ae",
+    "name": "Thinkpad T470s",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "95588982-0f01-490c-b9c2-6303ff5e5cf9",
+    "name": "Blade Stealth",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "b8d0b56f-70db-4cbe-822b-b5c6ddce0828",
+    "name": "Latitude 3480",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "b0036ef0-388a-4700-81f5-cd9ed0a2bad8",
+    "name": "V110-15ISK (i3-6006U/4GB/500GB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "910303d1-c5af-429a-9eaf-c7f267d850d0",
+    "name": "Tecra X40-D-10Z",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "986a7d82-d3ab-4574-99ab-39cf56babc76",
+    "name": "GL62M 7RD",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "1bc83a65-9741-4730-8548-76a5d68e9f57",
+    "name": "Rog GL702VS-BA023T",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "817d4dde-4b84-461d-906f-15bd14e618f3",
+    "name": "N42-20 Chromebook",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "40181578-b605-4127-b226-8b9d109ba3b8",
+    "name": "R558UA-DM966T (i5-7200U/8GB/128GB/FHD/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "285e4b37-ff6e-4a60-829e-3fcd002f807a",
+    "name": "Rog GL702VM-GC017T",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "1118e8a2-a7ad-4c64-8e10-ebf74a90d419",
+    "name": "ZenBook UX310UQ-GL026T",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "d3c5cf35-1c88-4229-8d18-7d375efc7baf",
+    "name": "Rog GL502VM-DS74",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "22702f62-fced-4ff9-96f9-c667cc84626a",
+    "name": "Inspiron 5767",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "873a824d-8336-4bd4-a8f7-8f3443a1b536",
+    "name": "ThinkPad T470p",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "bf47d3b2-d564-435a-b467-671831fb478c",
+    "name": "K556UR-DM621T (i7-7500U/8GB/256GB/GeForce)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "65038e10-1faf-4db2-bbfc-5bd9ca6ca59c",
+    "name": "X541NA (N4200/4GB/1TB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "a55e0a81-985e-48b4-be68-542f743d5ed0",
+    "name": "Inspiron 5368",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "ffa5cd2a-5d73-496f-8528-16d0b90f089e",
+    "name": "Portege X30-D-10X",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "0adf0345-db57-429a-935a-077140fc6a69",
+    "name": "Port�g� Z30-C-188",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "87f0f3dd-1217-4933-a80a-27af805dfff6",
+    "name": "TMX349-G2-M-50FS (i5-7200U/8GB/256GB/FHD/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "682c9701-aa96-4f7f-b5dc-dabd91ce372f",
+    "name": "Tecra A50-D-11D",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "ea04fe72-7a28-4f3c-8bcf-b71cb0d38cbf",
+    "name": "X541NA-GO121 (N4200/4GB/1TB/Linux)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "f05ffcb7-90cc-483a-b7a9-1fab70ece8b2",
+    "name": "Pavilion x360",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "10e8935e-98ab-44c9-a1c8-7a53fdc52fe0",
+    "name": "VivoBook L402NA",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "89fd51d5-02b3-42be-97dc-5ada4db9c5d6",
+    "name": "IdeaPad 510-15ISK",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "932d287d-354e-46b6-b25a-beb582158e97",
+    "name": "Rog GL753VD-GC082T",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "250f8208-ecc2-40b0-b7f3-accafc0caf4f",
+    "name": "Chromebook C731-C78G",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "bf7cefcf-60df-445a-89bb-1a5a75304b56",
+    "name": "Probook 640",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "27f1f010-100b-4c71-bcd5-3c2f981b4e21",
+    "name": "Envy x360",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "43627cca-becb-4d10-9a05-01a6790cfffe",
+    "name": "GS73VR Stealth",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "45a46dcf-02e3-4cde-bb9f-acb1180bdfc2",
+    "name": "Portege X30-D-10V",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3684ad3c-b016-4787-99f8-9c43363e3fc3",
+    "name": "G701VO-IH74K (i7-6820HK/32GB/2x",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "92f4a159-be6f-4070-8799-f3834f676541",
+    "name": "Gram 15Z970",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "fe3c6b74-d2fd-4923-a360-086fa0fd6660",
+    "name": "Chromebook CB5-571-C1DZ",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "f1ef3145-508b-4d98-b73d-3974b36506ba",
+    "name": "Gram 14Z970",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "e148fab4-932e-4439-9321-84dc17df16e2",
+    "name": "Elitebook Folio",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "c64397bc-e7a0-42ab-9049-2022a2939387",
+    "name": "IdeaPad 510-15IKB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "6556d785-0998-4b09-8aa4-61d4ec2ff9f8",
+    "name": "GE72VR 6RF",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "1e199fed-5e26-494d-bcba-6236ee8e547f",
+    "name": "Envy 13-AB077cl",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "52069d1c-df8d-4540-b9eb-ea5c4a77dce7",
+    "name": "Tecra Z50-C-140",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "70939ad4-7f45-41c3-ba14-14e87d725bab",
+    "name": "Probook 650",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "db6ab02d-5cd6-41e8-bf7c-e530a1a017f2",
+    "name": "Tecra Z40-C-12X",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "a676effd-0410-46b9-b3eb-3b0619fdc76e",
+    "name": "GP62M Leopard",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "aec405f2-4176-4d09-b95c-55c41bc99320",
+    "name": "Omen 17-W006na",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "8650f99e-b59b-4194-99a5-8a99e4a7ffe4",
+    "name": "X751SV-TY001T (N3710/4GB/1TB/GeForce)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "64b1d2ee-3e9d-4eb7-8f92-e6eaf0cb1231",
+    "name": "TravelMate P259-G2",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "c778c6d6-9ff9-45f1-af80-0f7f251a3804",
+    "name": "Tecra A50-C-1ZV",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "44668ebc-2c7c-4902-b0a3-e079147a1fe1",
+    "name": "Yoga 700-11ISK",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "e0c4ca84-2cf6-4e76-b615-29837d8b627a",
+    "name": "IdeaPad Y700-15ACZ",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "61524e7d-9a1c-4a12-8bd9-9abe656d389e",
+    "name": "Insprion 5767",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "8d42e21a-1b6f-4833-90ec-5a2bcffc482b",
+    "name": "ZBook Studio",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "0615afcd-d003-4cc0-9750-10b189c0e6a6",
+    "name": "Portege Z30-C-1CW",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "4ca59231-04d3-4a60-b3e2-c8dbff97c2b5",
+    "name": "ProBook x360",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "9ac022a2-e369-431e-8efb-7c6ae5e25567",
+    "name": "Chromebook C738T-C2EJ",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "b29919b2-15e0-4a34-8e31-af370bb1d0b7",
+    "name": "Portege Z30-C-16Z",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3e647a79-c7bf-46fc-a398-c1166a7cc30c",
+    "name": "Aspire F5-573G-510L",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "00873147-fd46-4b2c-8d3f-030c0d3f768c",
+    "name": "Portege X20W-D-10V",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3af5d139-fe55-4c2c-bb5a-c0fcefd8d00c",
+    "name": "Tecra A40-C-1DF",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "714ea198-72eb-4d26-8810-843d6fa6753a",
+    "name": "ThinkPad T460",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "4f7ad364-56a0-44e9-bd27-3a3d2d515894",
+    "name": "Q534UX-BHI7T19 (i7-7500U/16GB/2TB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "42e02772-0f3c-4332-8140-95161911895e",
+    "name": "15-bs053od (i7-7500U/6GB/1TB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "70298212-de18-4622-923a-3d39fef583b9",
+    "name": "Rog GL753VE-DS74",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "f5419bcb-7676-426b-8f70-cce9f7859f1a",
+    "name": "Inspiron 7579",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "160523f4-8d19-4ca8-96ce-19d208fb42ab",
+    "name": "Portege Z30-C-1CV",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "6f24ffd3-36db-49f2-802b-501da091747f",
+    "name": "LifeBook A556",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "a5a30556-0587-49a0-8598-aff63ccc4adc",
+    "name": "Tecra A40-C-1KF",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "2a7f7622-553c-419f-ba38-c8c79fac3b8e",
+    "name": "15-bs005nv (i3-6006U/4GB/1TB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "d66c92c4-5180-4fcc-82d8-9da3223b4061",
+    "name": "V110-15IAP (N3350/4GB/128GB/No",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "6376affd-4429-4db1-92f4-9742705c1411",
+    "name": "ThinkPad T560",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "29cefa59-b228-468c-b1b2-d5160f89e128",
+    "name": "ZenBook UX310UA-FB485T",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "d3664116-6cc5-43e3-89fb-b44957f14da4",
+    "name": "Spectre 13-V111dx",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "e8931e1e-c920-448e-900d-01432625066e",
+    "name": "Aspire ES1-533",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "403af9a6-16b2-4f72-a21f-7818466efa05",
+    "name": "Rog GL553VE-DS74",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "09931141-e7cb-4a89-b767-3e6219704bf4",
+    "name": "Nitro 5",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "7f7dc98f-cca1-4701-bd21-28546991e9a6",
+    "name": "ENVY -",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "12247683-4f49-4d4f-b340-254f03857375",
+    "name": "Portege Z30-C-16H",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "90b78d9e-4927-488e-abcb-c0b04c3c075b",
+    "name": "Portege A30-C-1CZ",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "86c200b0-78e4-40a7-ac8e-518e32910d0e",
+    "name": "ThinkPad P70",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "63256832-5442-4156-8831-e257b9d0c13c",
+    "name": "Tecra Z40-C-12Z",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "4df14bab-0c37-4a26-9d13-6c9886600c14",
+    "name": "Inspiron 5568",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "f37eb657-b895-4338-b0e5-8cd59e09055e",
+    "name": "Port�g� Z30-C-16K",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "d79f53b8-3ba6-4807-aac9-ed0a876178da",
+    "name": "Spectre 13-V100nv",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "8a69272d-8351-41c1-ba3c-c087d3558d0c",
+    "name": "Latitude E5570",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "6b748590-2671-4c88-a927-fe668195ab55",
+    "name": "Tecra Z40-C-136",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "b5ccbdcd-a1b9-44bf-ab94-a7f86f2aba74",
+    "name": "Yoga 500-15ISK",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "7f7dac02-424a-4e5e-b597-77e39eb4aea7",
+    "name": "V142 (X5-Z8350/2GB/32GB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "558f8f0a-e77e-4bd1-a4c0-a74e8779ffa0",
+    "name": "Tecra A50-C-218",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "5321504c-d65e-4646-a43c-8217434a5db8",
+    "name": "Thinkpad L560",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "bb01aefa-4bb8-4eb3-a25c-006bb7c4da99",
+    "name": "GT72S Dominator",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "23b0a59d-afd2-4ef8-a9d9-332e8df8f3f2",
+    "name": "IdeaPad Y900-17ISK",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "b325a5d6-7ea9-49f5-a124-844510bf7549",
+    "name": "Chromebook C202SA",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3a2b5ac5-45f5-4c2a-9282-963c9edbe5a7",
+    "name": "Noteb Pav",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "ea230fe7-6eb4-4ea3-8a4a-bb323369cb45",
+    "name": "Inspiron 5578",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "1644ce32-e1a1-4794-8b6a-9a6ab2424769",
+    "name": "250 G5",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "bc3e3643-b631-4ca7-967b-6b255d747ae9",
+    "name": "Aspire ES1-523",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "7f577477-5a0b-4bb8-9558-9ac7472cdf54",
+    "name": "Inspiron 7378",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "fa559866-fa49-4e3f-8712-5d4e3a4bb6a9",
+    "name": "GT62VR 6RD",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "0147609e-f93c-4150-9f35-af0f76304f2a",
+    "name": "Rog G752VL-GC088D",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "b2fc5d88-2681-4c55-be64-40e4583fe1f4",
+    "name": "GS63VR 6RF",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "48554a91-6a47-4fc9-a36f-f5753daff86a",
+    "name": "ROG G701VO",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "48fef926-31c7-410d-a6ee-f969ae2d07c3",
+    "name": "Latitude 3570",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "d427cc0b-158a-46eb-a7eb-28c106da12ef",
+    "name": "IdeaPad 300-17ISK",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "a942861e-fd05-4ca2-8e70-b1c82ab2ce87",
+    "name": "Ideapad 700-15ISK",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "b015abad-39e3-4cf2-bf08-34b8f81193a4",
+    "name": "GT72VR Dominator",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "d8190371-5a1e-427a-8033-aa2d1081b5bf",
+    "name": "V110-15ISK (i5-6200U/4GB/500GB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "a5b35a0f-e5e2-4155-b778-46819f75a700",
+    "name": "Yoga 900S-12ISK",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "4d4c2125-3ed7-492b-9cef-3a4e4bc57264",
+    "name": "Chromebook 13",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "bbedc2cd-d8f6-4bb6-9faf-ca41f90e41fa",
+    "name": "Rog GL702VM-GC354T",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "a4908fc7-c498-4d53-9731-6be0e5e8220d",
+    "name": "Aspire F5-573G",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3f7113c9-102c-40c6-b34b-85dcbb935941",
+    "name": "GS70 Stealth",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "4e405fc3-8f62-44c6-980b-481d97704d75",
+    "name": "G752VY-GC162T (i7-6700HQ/16GB/1TB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "187be74c-53f9-48eb-9b26-7a73bc57c06f",
+    "name": "Latitude E5270",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3013c69e-fbb9-4cd8-b866-146b2d9c07c8",
+    "name": "Chromebook 15",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "5ace7639-db46-4925-9df7-a951122e7ab2",
+    "name": "GE72 Apache",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "40da25d1-ee3d-423b-ac63-94df2d96c0b0",
+    "name": "15-bw011nv (A6-9220/4GB/1TB/FHD/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "62e8bf19-5624-4329-81f2-1129eb618281",
+    "name": "Rog GL552VW-CN470T",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "8b55c040-214b-40bd-a499-fc95a59c1f1d",
+    "name": "Vostro 3559",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "18fc06ef-5f92-4e89-89f1-513d549afa3e",
+    "name": "V110-15ISK (i3-6006U/4GB/128GB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "ea5481d4-dd8a-4408-b0fe-423538c8cf03",
+    "name": "Spectre Pro",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3ae355df-16cd-4141-a3e6-101f58f5f1ad",
+    "name": "Portege X30-D-10K",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "65cb46ca-1649-43fc-95ec-90be1c0c7104",
+    "name": "Rog GL752VW-T4308T",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "5c2e2e88-1b09-4e6a-a53a-2856d0217380",
+    "name": "V131 (X5-Z8350/4GB/32GB/FHD/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "8c162cd6-2995-4825-80e9-cbb35db021e7",
+    "name": "Omen -",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "d26ca85e-252f-4626-a5df-b737c8a8e5cf",
+    "name": "15-bs078cl (i7-7500U/8GB/2TB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "77e2ad03-36b3-42c1-ae37-51c0989c356d",
+    "name": "ThinkPad P40",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "8ac81df6-a0b2-4a55-8308-5cba5242f694",
+    "name": "L403NA-GA013TS (N3350/4GB/32GB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "5b86451d-8c4b-45f0-b14c-f655a7513d34",
+    "name": "IdeaPad 500-15ISK",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "9abc1735-369a-4415-8f7c-c62a1afd9e3d",
+    "name": "GP62M 7RDX",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "1ee9203f-a4c9-421b-890f-86497b759d46",
+    "name": "V110-15ISK (i3-6006U/4GB/1TB/No",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "d9dc39e1-3ac3-454a-a1c7-ad7ba6834386",
+    "name": "15-BA015wm (E2-7110/4GB/500GB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "fd80793e-4b17-42d0-b0d5-52973441de80",
+    "name": "B51-80 (i5-6200U/8GB/1TB/Radeon",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "409b95e3-c9cd-4e3d-b5f3-6c58007256bd",
+    "name": "15-bw002nv (A6-9220/4GB/256GB/Radeon",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "d57e422b-9587-47ab-891e-bff59aa0b1cb",
+    "name": "GP72M 7REX",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "5289b7bd-e971-435b-8fd1-790a56667dfc",
+    "name": "ThinkPad T460s",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "65cfe3df-fd27-4795-9781-2b1e139f5747",
+    "name": "B51-80 (i5-6200U/8GB/1008GB/Radeon",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "c8a49a33-51e7-446c-aa93-65f2bc730d31",
+    "name": "GS40 Phantom",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "5cd80505-ba02-41ee-b617-b708d802568d",
+    "name": "Pavilion 15-cb003nv",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "3cc6a890-ac74-4a3f-9686-a4e264b2686e",
+    "name": "IdeaPad 310-15ISK",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "1aaf9b74-8266-43da-828f-53fbc2fc5e00",
+    "name": "250 G4",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "4a4540de-2cf6-4a63-adc5-31873092f3e6",
+    "name": "320-15ISK (i3-6006U/4GB/1TB/GeForce)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "1d42a6c9-47e4-4470-8904-e4a7468ae28b",
+    "name": "Stream 14-AX000nv",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "1e307308-78b1-4141-bd20-d98b623b5eb6",
+    "name": "PL60 7RD",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "6e938339-9077-4aa6-832a-86481589a4a0",
+    "name": "X553SA-XX021T (N3050/4GB/500GB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "bc98da65-963c-454b-bcff-6af12c99f23d",
+    "name": "V110-15ISK (i5-6200U/4GB/500GB/No",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "6797a7dd-866b-4e85-b54d-35d5a9b52e02",
+    "name": "UX410UA-GV097T (i3-7100U/4GB/256GB/FHD/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "e33b5598-b11b-498b-aebc-92d946db7c0e",
+    "name": "B51-80 (i7-6500U/4GB/1008GB/FHD/W7)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "5720f38c-5095-41f2-97eb-2c6bad32ce28",
+    "name": "GS60 Ghost",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "b273a7c7-714e-4c02-845c-d55e80da0883",
+    "name": "Pavilion 15-BC000nv",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "cf46ccac-a292-4fba-8457-77ca040bd2b2",
+    "name": "Rog GL552VW-DM201T",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "709745db-807d-42fb-868a-09efed398cfd",
+    "name": "Chromebook Plus",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "1ad6cb57-5b38-4ff4-ab3d-d5dcdbe4c5e6",
+    "name": "Pavilion Power",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "e5cab5f4-5332-40bd-af2c-6eefda7eb955",
+    "name": "V110-15ISK (i3-6006U/4GB/1TB/Radeon",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "d30371a6-9da9-4418-a51f-67e81b9e41be",
+    "name": "Rog G752VY-GC229T",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "7423a206-776e-414f-b3e4-57253c0039e2",
+    "name": "GS73VR 7RF",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "faeb78df-1cd7-41de-926e-80f28771506a",
+    "name": "FX502VM-DM105T (i7-6700HQ/8GB/1TB/GeForce)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "6f79398e-f529-4d50-8278-f04feff9025d",
+    "name": "15-bs025nv (i5-7200U/8GB/256GB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "bacdefaf-f214-4ee0-aa3c-ef51618af712",
+    "name": "Aspire E5-774G",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "f0726d6a-32c2-42c0-8800-162eb86f31f1",
+    "name": "FX502VM-AS73 (i7-7700HQ/16GB/1TB",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "9f97375b-86aa-4bb5-8e58-d06a16509338",
+    "name": "C740-C9QX (3205U/2GB/32GB/Chrome",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "b91fa2e1-18a1-4b87-9df5-982650e608cd",
+    "name": "E5 774G",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "22dc6e5c-9207-42b8-b7e1-b7c8ab799b06",
+    "name": "SP714-51 (i7-7Y75/8GB/256GB/FHD/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "9a520a79-52ec-4373-8cb7-381ea849ac2c",
+    "name": "Thinkpad T560",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "a613dedd-2593-4e31-a52e-3dd6e09482f2",
+    "name": "GP62MVR 6RF",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "0546d63c-63b7-446b-94ba-8d774e41b5ff",
+    "name": "15-bw009nv (A12-9720P/6GB/1TB/Radeon",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "8e975da5-c7ff-4ea0-ae5c-73612ddbc634",
+    "name": "Latitude E7270",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "328482ea-a229-45e2-a605-a34f4e004778",
+    "name": "X540SA-RBPDN09 (N3710/4GB/1TB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "5828fe20-3e0d-44c4-a014-195013f03fdc",
+    "name": "GL62M 7RDX",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "da9709a4-2b38-4a2b-96a0-b17dd6379043",
+    "name": "GE72VR Apache",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "f4ece79b-fab3-447c-8edb-7129bcffc159",
+    "name": "15-bs023nv (i3-6006U/4GB/1TB/FHD/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "44f61875-610e-460d-b1b1-22e5bff119b2",
+    "name": "GL62 6QF",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "11c93c08-8c02-4dad-8514-7737fa499772",
+    "name": "ZenBook UX310UA-WB71",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "192273cb-c1c5-4faf-a876-ece15920d19a",
+    "name": "Inspiron 7779",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "dc2b107a-8d45-42e4-8321-c170e3216046",
+    "name": "Rog GL553VE-FY052T",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "e49ec129-4460-4868-a403-9b0776d4f958",
+    "name": "Rog GL502VS",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "181aec17-fb97-49fc-bafd-b74455d1502b",
+    "name": "V510-15IKB (i5-7200U/8GB/256GB/FHD/No",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "25b679bc-0ced-48ba-8f3c-eaa07fcc658f",
+    "name": "ThinkPad L460",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "37452852-35e6-4907-a17b-64600dfce1ff",
+    "name": "X541NA-GO020T (N3350/4GB/1TB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "6c378ac8-5ace-4822-a8dc-b11ddc809e8c",
+    "name": "Rog G752VT-GC073T",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "267cd745-85c2-4256-99ce-3a6779169811",
+    "name": "B51-80 (i7-6500U/8GB/1008GB/Radeon",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "4efe7f4b-790d-4176-91ec-3e2df0dbf999",
+    "name": "GE62 Apache",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "49b0c006-616e-49f1-9e89-2056daa7c3ff",
+    "name": "Yoga 500-14IBD",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "a14bcc01-a647-435f-8641-ad4ee5dee98f",
+    "name": "ZenBook UX305CA-UBM1",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "32dc4f78-18fe-4e2f-acce-1df01a3efad7",
+    "name": "Aspire ES1-531",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "6155afac-534e-4197-b408-dd5b0e99ea9c",
+    "name": "Pavilion 15-AW003nv",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "353c8204-d73b-45f6-9e44-5be3f09ba27e",
+    "name": "Stream 11-Y000na",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "441e9825-6bb6-430d-89a6-342c2561a295",
+    "name": "X556UJ-XO044T (i7-6500U/4GB/500GB/GeForce)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "d4c25efe-5f93-4318-8612-807572b94278",
+    "name": "Yoga 500-14ISK",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "2c1b129e-8f79-4c4c-a5a5-7bff80a12791",
+    "name": "15-AC110nv (i7-6500U/6GB/1TB/Radeon)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "869b46a4-1031-41d3-8d14-37f7821ad701",
+    "name": "X553SA-XX031T (N3050/4GB/500GB/W10)",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
+  },
+  {
+    "id": "0a977b4b-b6e1-414d-b9cb-484a78b331cb",
+    "name": "Lapbook 15.6",
+    "attribute_id": "96f65155-e8e3-4680-93bf-f305275062a7"
   }
 ]

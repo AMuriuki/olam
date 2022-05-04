@@ -1594,6 +1594,7 @@ function autocomplete(inp, arr) {
           a.appendChild(b);
         }
       })
+      
       if (!values.includes(val)) {
         b = document.createElement("DIV");
         b.classList.add("is-click-inside");

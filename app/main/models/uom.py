@@ -8,6 +8,8 @@ class Uom(db.Model):
     name = db.Column(db.String(120), nullable=False)
     category_id = db.Column(
         UUID(as_uuid=True), db.ForeignKey('uom_category.id'))
+    products = db.relationship(
+        'Product', backref='uom', lazy='dynamic')
 
 
 class UomCategory(db.Model):

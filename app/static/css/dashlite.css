@@ -43924,4 +43924,22 @@ body.dark-mode.nk-body.ui-softy, body.dark-mode.nk-body.ui-shady {
   line-height: 3 !important
 }
 
+.ul-items {
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+  /* optional, for equal spacing */
+  border-collapse: collapse;
+}
+
+.li-items {
+  display: table-cell;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.item-header {
+  font-weight: bold;
+}
+
 /*! END @iO */

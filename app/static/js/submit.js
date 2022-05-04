@@ -187,3 +187,29 @@ $(".save-group").click(function (e) {
         });
     }
 });
+
+// add new product
+$(".create-product").click(function (e) {
+    e.preventDefault();
+    $("#modalLoading").modal("show");
+    var form = $("#new_product");
+    var url = form.attr("action")
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: form.serialize(),
+        success: function (data) {
+            location.href = "/inventory/product/" + data["product_id"];
+        }
+    })
+})
+
+$(".select-access-group").on("change", function (e) {
+    e.preventDefault();
+    var group_id = $(this).attr("id");
+    current_href = $(location).attr("href");
+    $.post(current_href, {
+        group_id: group_id,
+        checked: $(this).prop("checked")
+    })
+})

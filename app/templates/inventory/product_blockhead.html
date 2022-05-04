@@ -33,7 +33,7 @@
                                     <ul class="link-list-opt no-bdr">
                                         {% for filter in filters %}
                                         <li>
-                                            <a id="{{filter[0]}}" class="filter-users" href="#">
+                                            <a id="{{filter[0]}}" class="filter-products" href="#">
                                                 {% if filter[1]|contains(selectedFilters) %}
                                                 <em class="icon ni ni-check-thick"></em>
                                                 {% endif %}
@@ -66,7 +66,7 @@
             </h3>
             <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                 <li>
-                    <a href="#" class="btn btn-m btn-primary btn-block create-user">SAVE</a>
+                    <a href="#" class="btn btn-m btn-primary btn-block create-product">SAVE</a>
                 </li>
                 <li>
                     <a href="{{url_for('inventory.products')}}" class="btn btn-outline-light">
@@ -90,6 +90,88 @@
                             <a href="#" class="btn btn-primary"><span>Publish to Website</span><em
                                     class="icon ni ni-globe"></em></a>
                         </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% elif title == 'Product | Olam ERP' %}
+        <div class="nk-block-head-content">
+            <h3 class="nk-block-title page-title">
+                <a href="{{url_for('inventory.index')}}">
+                    Inventory
+                </a>
+                /
+                <strong class="text-primary small">
+                    <a href="{{url_for('inventory.products')}}">Products</a>
+                </strong>
+                /
+                <strong class="text-primary small">
+                    <span id="#">{{product.name}}</span>
+                </strong>
+            </h3>
+            <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                {% if current_user|can_write(9) %}
+                <li>
+                    <a href="#" class="btn btn-m btn-primary btn-block create-product">EDIT</a>
+                </li>
+                {% endif %}
+                {% if current_user|can_create(9) %}
+                <li>
+                    <a href="{{url_for('inventory.create_product')}}" class="btn btn-outline-light">
+                        CREATE
+                    </a>
+                    <span class="btn selected-groups"></span>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        <div class="nk-block-head-content">
+            <div class="toggle-wrap nk-block-tools-toggle">
+                <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em
+                        class="icon ni ni-menu-alt-r"></em></a>
+                <div class="toggle-expand-content" data-content="pageMenu">
+                    <ul class="nk-block-tools g-3">
+                        <li style="margin-left: auto !important;">
+                            <span>{{current_index}}</span>/<span>{{products|length}}</span>
+                        </li>
+                        {% if current_index != 1 %}
+                        <li>
+                            {% if edit %}
+                            <a href="{{url_for('inventory.edit_product', product_id=products[prev_index].slug)}}"
+                                class="btn btn-icon btn-m btn-primary d-none d-sm-inline-flex"><em
+                                    class="icon ni ni-caret-left"></em></a>
+                            <a href="{{url_for('inventory.edit_product', product_id=products[prev_index].slug)}}"
+                                class="btn btn-icon btn-m btn-primary d-inline-flex d-sm-none"><em
+                                    class="icon ni ni-caret-left"></em></a>
+                            {% else %}
+                            <a href="{{url_for('inventory.product', product_id=products[prev_index].slug)}}"
+                                class="btn btn-icon btn-m btn-primary d-none d-sm-inline-flex"><em
+                                    class="icon ni ni-caret-left"></em></a>
+                            <a href="{{url_for('inventory.product', product_id=products[prev_index].slug)}}"
+                                class="btn btn-icon btn-m btn-primary d-inline-flex d-sm-none"><em
+                                    class="icon ni ni-caret-left"></em></a>
+                            {% endif %}
+                        </li>
+                        {% endif %}
+                        {% if next_index != products|length %}
+                        <li>
+                            {% if edit %}
+                            <a href="{{url_for('inventory.edit_product', product_id=products[next_index].slug)}}"
+                                class="btn btn-icon btn-m btn-primary d-none d-sm-inline-flex"><em
+                                    class="icon ni ni-caret-right"></em></em></a>
+                            <a href="{{url_for('inventory.edit_product', product_id=products[next_index].slug)}}"
+                                class="btn btn-icon btn-m btn-primary d-inline-flex d-sm-none"><em
+                                    class="icon ni ni-caret-right"></em></a>
+                            {% else %}
+                            <a href="{{url_for('inventory.product', product_id=products[next_index].slug)}}"
+                                class="btn btn-icon btn-m btn-primary d-none d-sm-inline-flex"><em
+                                    class="icon ni ni-caret-right"></em></em></a>
+                            <a href="{{url_for('inventory.product', product_id=products[next_index].slug)}}"
+                                class="btn btn-icon btn-m btn-primary d-inline-flex d-sm-none"><em
+                                    class="icon ni ni-caret-right"></em></a>
+                            {% endif %}
+                        </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>

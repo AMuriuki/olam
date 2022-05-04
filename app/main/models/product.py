@@ -29,6 +29,10 @@ class Product(db.Model):
     tax_rate = db.Column(db.Float())
     category_id = db.Column(
         UUID(as_uuid=True), db.ForeignKey('product_category.id'))
+    type_id = db.Column(
+        UUID(as_uuid=True), db.ForeignKey('product_type.id'))
+    uom_id = db.Column(
+        UUID(as_uuid=True), db.ForeignKey('uom.id'))
     created_by = db.Column(db.Integer, db.ForeignKey('users.id'))
     approved_for_sale_by = db.Column(db.Integer, db.ForeignKey('users.id'))
     created_on = db.Column(db.DateTime, default=datetime.utcnow)
@@ -41,7 +45,8 @@ class Product(db.Model):
     in_stock = db.Column(db.Boolean, default=False)
     sku = db.Column(db.String(120), index=True, unique=True)
     description = db.Column(db.Text())
-    # color = db.Column(db.String(50), index=True)
+    quantity = db.Column(db.String(20))
+    tax = db.Column(db.String(50), index=True)
 
     def generate_sku(self):
         _sku = sku_generator(self)
@@ -69,6 +74,8 @@ class ProductCategory(db.Model):
 class ProductType(db.Model):
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     name = db.Column(db.String(120), index=True)
+    products = db.relationship(
+        'Product', backref='type', lazy='dynamic')
 
 
 class ProductAttribute(db.Model):

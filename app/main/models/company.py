@@ -16,6 +16,7 @@ class Company(db.Model):
     street = db.Column(db.String(100))
     street2 = db.Column(db.String(100))
     city = db.Column(db.String(100))
+    tax = db.Column(db.String(100))
     county = db.Column(db.String(100))
     country = db.Column(db.String(100))
     postal_address = db.Column(db.String(100))

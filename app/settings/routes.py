@@ -19,6 +19,7 @@ from app.auth.models.user import USERTYPES, Access, Permission, UserType, Users,
 
 selected_groups = {}
 
+
 def removekey(d, key):
     r = dict(d)
     del r[key]
@@ -191,7 +192,7 @@ def select_users():
         session['selected_users'] = request.form.getlist(
             'selected_users[]')
         for select_user in session['selected_users']:
-            user = Users.query.filter_by(id=int(select_user)).first()
+            user = Users.query.filter_by(partner_id=select_user).first()
             group.users.append(user)
             db.session.commit()
     return jsonify({"response": "success", "slug": group.slug})
@@ -547,12 +548,9 @@ def edit_user(slug):
     user_types = UserType
     groups = Group.query.filter_by(is_active=True).all()
     form = NewUserForm()
-    modules = Module.query.all()
-    
-    user_groups = [g.id for g in current_user.groups]
-    for module, group in zip(modules, user_groups):
-        selected_groups[module.id] = group
-        print(selected_groups)
+
+    user_groups = [g.id for g in user.groups]
+
     for idx, _user in enumerate(users):
         if user.id == _user.id:
             current_index = idx
@@ -570,16 +568,20 @@ def edit_user(slug):
             partner.company_id = current_user.company_id
             partner.is_tenant = True
             db.session.commit()
-            print("!!!!!")
-            print(selected_groups)
-            group_ids = list(selected_groups.values())
-            for group_id in group_ids:
-                group = Group.query.filter_by(id=group_id).first()
-                group.users.append(user)
-                db.session.commit()
             return jsonify({"response": "success", "slug": slug})
 
-    return render_template("settings/edit_user.html", title=_("Edit " + partner.name + " | Olam ERP"), user=user, partner=partner, users=users, current_index=current_index+1, prev_index=prev_index, next_index=next_index, page="groups", user_types=user_types, form=form, edit=edit, groups=groups, slug=slug)
+    if request.method == "POST":
+        group_id = request.form['group_id']
+        checked = request.form['checked']
+        group = Group.query.filter_by(id=group_id).first()
+        if checked == "true":
+            group.users.append(user)
+            db.session.commit()
+        else:
+            group.users.remove(user)
+            db.session.commit()
+
+    return render_template("settings/edit_user.html", title=_("Edit " + partner.name + " | Olam ERP"), user=user, partner=partner, users=users, current_index=current_index+1, prev_index=prev_index, next_index=next_index, page="groups", user_types=user_types, form=form, edit=edit, groups=groups, slug=slug, user_groups=user_groups)
 
 
 @bp.route("/set-access", methods=['GET', 'POST'])

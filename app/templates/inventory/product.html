@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="nk-content-body">
+    <div class="nk-content-wrap">
+        {% include "inventory/product_blockhead.html" %}
+        <div class="nk-block">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-fill alert-success alert-icon">
+                <em class="icon ni ni-check-circle"></em>
+                {{ message }}
+                <button class="close" data-dismiss="alert"></button>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <div class="card card-preview border-0">
+                <div class="card-inner pl-0 pr-0">
+                    <div class="row gy-4">
+                        <div class="col-sm-4">
+                            <div class="card-title-group">
+                                <div class="card-title">
+                                    <h6 class="title">
+                                        <span class="mr-2"><strong>Product Name:</strong></span>
+                                        <span class="mr-2">{{product.name}}</span>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="card-title-group">
+                                <div class="card-title">
+                                    <h6 class="title">
+                                        <span class="mr-2"><strong>Model:</strong></span>
+                                        <span class="mr-2"></span>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-bordered margin-0">
+                    <ul class="nav nav-tabs nav-tabs-mb-icon nav-tabs-card">
+                        <li class="nav-item active current-page">
+                            <a id="lnk_generalInfo" class="nav-link active" href="#general_info" data-toggle="tab">
+                                <em class="icon ni ni-info-i"></em>
+                                <span>General Information</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="lnk_attributes" class="nav-link" href="#attr" data-toggle="tab">
+                                <em class="icon ni ni-tile-thumb"></em>
+                                <span>Attributes</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="lnk_attributes" class="nav-link" href="#sales" data-toggle="tab">
+                                <em class="icon ni ni-coins"></em>
+                                <span>Sales</span>
+                            </a>
+                        </li>
+                    </ul><!-- .nav-tabs -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="general_info">
+                            <div class="card-inner">
+                                <div class="row g-3 align-center">
+                                    <div class="col-lg-6">
+                                        <ul class="ul-items">
+                                            <li class="li-items item-header">Product Type</li>
+                                            <li class="li-items">{{product.type.name}}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <ul class="ul-items">
+                                            <li class="li-items item-header">Product Category</li>
+                                            <li class="li-items">{{product.category.name}}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <ul class="ul-items">
+                                            <li class="li-items item-header">Sales Price</li>
+                                            <li class="li-items">{{product.price}}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <ul class="ul-items">
+                                            <li class="li-items item-header">Cost</li>
+                                            <li class="li-items">{{product.cost}}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <ul class="ul-items">
+                                            <li class="li-items item-header">Customer Taxes</li>
+                                            <li class="li-items">{{product.tax}}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <ul class="ul-items">
+                                            <li class="li-items item-header">Unit of Measure</li>
+                                            <li class="li-items">{{product.uom.name}}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <ul class="ul-items">
+                                            <li class="li-items item-header">Quantity</li>
+                                            <li class="li-items">{{product.quantity}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="attr">
+                            <div class="invoice">
+                                <div class="invoice-bills">
+                                    <div class="table-responsive is-click-inside">
+                                        <table class="table table-striped is-click-inside">
+                                            <thead class="is-click-inside">
+                                                <tr class="is-click-inside">
+                                                    <th class="is-click-inside">Attribute</th>
+                                                    <th class="is-click-inside">Values</th>
+                                                    <th class="is-click-inside"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="tbody is-click-inside" id="attributes_body">
+                                                <tr class="og-attribute-tr is-click-inside">
+                                                    <td class="w-25 td_attribute is-click-inside">
+                                                        <div class="form-control-wrap is-click-inside dv-attribute">
+                                                            <input type="text"
+                                                                class="form-control inp_attribute is-click-inside"
+                                                                placeholder="Start typing to add attribute...">
+                                                            <a href="#"
+                                                                class="form-icon form-icon-right is-click-inside"
+                                                                data-toggle="">
+                                                                <em
+                                                                    class="d-none d-sm-inline icon ni ni-external is-click-inside"></em>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                    <td class="td_value is-click-inside">
+                                                        <input type="text"
+                                                            class="form-control inp_value is-click-inside">
+                                                    </td>
+                                                    <td class="td_delete is-click-inside">
+                                                        <a href="#" class="is-click-inside"><em
+                                                                class="icon ni ni-trash is-click-inside"></em></a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="preview-btn-item col-sm-6 col-lg-3 is-click-inside">
+                                            <a href="#" class="add-attribute add-line is-click-inside"
+                                                style="color: #017e84;">Add
+                                                an
+                                                attribute</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="sales">
+                            <div class="card-inner">
+                                <div class="row g-3 align-center">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="optional_products">
+                                                Optional Products
+                                                <em class="icon ni ni-info" data-toggle="tooltip" data-placement="top"
+                                                    title="Recommend when 'Adding to Cart'"></em>
+                                            </label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control inp_products is-click-inside"
+                                                    placeholder="Start typing to add optional products...">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="optional_products">Point of Sales</label>
+                                            <div class="form-control-wrap">
+                                                <div class="custom-control custom-control-sm custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="pay-card">
+                                                    <label class="custom-control-label" for="pay-card">Available in
+                                                        POS</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="accessory_products">
+                                                Accessory Products
+                                                <em class="icon ni ni-info" data-toggle="tooltip" data-placement="top"
+                                                    title="Suggested accessories in the eCommerce cart"></em>
+                                            </label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control inp_products is-click-inside"
+                                                    placeholder="Start typing to add accessory products...">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="accessory_products">
+                                                Alternative Products
+                                                <em class="icon ni ni-info" data-toggle="tooltip" data-placement="top"
+                                                    title="Displayed in bottom of product pages"></em>
+                                            </label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control inp_products is-click-inside"
+                                                    placeholder="Start typing to add alternative products...">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -36,7 +36,7 @@
                                 <div class="form-group">
                                     <label class="form-label">Product Name</label>
                                     <div class="form-control-wrap">
-                                        <input type="text" class="form-control" name="name" id="name"
+                                        <input type="text" class="form-control inp_products" name="name" id="name"
                                             placeholder="e.g. HP Chromebook" required>
                                     </div>
                                 </div>
@@ -129,7 +129,7 @@
                                                 <label class="form-label" for="product_type">Product Type</label>
                                                 <select id="product_type" name="product_type"
                                                     class="form-select product_type" data-search="on">
-                                                    <option value="default_option">Select Product Type</option>
+                                                    <option value="">Select Product Type</option>
                                                     {% for type in types %}
                                                     <option value="{{type.id}}">{{type.name}}</option>
                                                     {% endfor %}
@@ -141,7 +141,8 @@
                                                 <label class="form-label" for="accessory_products">Product
                                                     Category</label>
                                                 <div class="form-control-wrap">
-                                                    <input type="text" class="form-control inp_category is-click-inside"
+                                                    <input type="text" name="category"
+                                                        class="form-control inp_category is-click-inside"
                                                         placeholder="Start typing to select category...">
                                                 </div>
                                             </div>
@@ -153,7 +154,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="overline-title lh-3">KES</span>
                                                     </div>
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="price">
                                                     <div class="input-group-append">
                                                         <span class="overline-title lh-3">(= 3.00 Incl. Taxes)</span>
                                                     </div>
@@ -167,7 +168,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="overline-title lh-3">KES</span>
                                                     </div>
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="cost">
                                                 </div>
                                             </div>
                                         </div>
@@ -175,7 +176,7 @@
                                             <label class="form-label">Unit of Measure</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" class="form-control inp_uom"
-                                                    aria-label="Text input with segmented dropdown button">
+                                                    aria-label="Text input with segmented dropdown button" name="uom">
                                                 <a href="#" class="form-icon form-icon-right is-click-inside"
                                                     data-toggle="">
                                                     <em
@@ -187,7 +188,8 @@
                                             <label class="form-label">Quantity</label>
                                             <div class="form-control-wrap">
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control" placeholder="e.g 1">
+                                                    <input type="text" class="form-control" placeholder="e.g 1"
+                                                        name="quantity">
                                                 </div>
                                             </div>
                                         </div>
@@ -196,9 +198,8 @@
                                             <div class="form-control-wrap">
                                                 <div class="input-group">
                                                     <input type="text" class="form-control"
-                                                        aria-label="Text input with segmented dropdown button">
-                                                    <span class="badge badge-pill badge-outline-primary">Tax
-                                                        16.00%</span>
+                                                        aria-label="Text input with segmented dropdown button"
+                                                        name="tax" value="{{company.tax}}%">
                                                 </div>
                                             </div>
                                         </div>
@@ -324,13 +325,19 @@
     {% include "footer.html" %}
     <!-- footer @e -->
 </div>
+{% include "modals/loading.html" %}
 <script>
+    $.get("/get_products", function (data) {
+        autocomplete(document.getElementsByClassName("inp_products")[0], data)
+        return data;
+    });
+
     $.get("/get_UOM", function (data) {
         autocomplete(document.getElementsByClassName("inp_uom")[0], data)
         return data;
     });
 
-    $.get("/get_product_categories", function(data){
+    $.get("/get_product_categories", function (data) {
         autocomplete(document.getElementsByClassName("inp_category")[0], data)
         return data;
     })
