@@ -27,7 +27,7 @@
             {% endfor %}
             {% endif %}
             {% endwith %}
-            <form id="new_product" action="{{url_for('inventory.create_product')}}" method="post">
+            <form id="new_product" action="{{url_for('inventory.edit_product', product_id=product.id)}}" method="post">
                 <div class="card card-preview border-0">
                     <div class="card-inner pl-0 pr-0">
                         {{form.hidden_tag()}}
@@ -37,7 +37,7 @@
                                     <label class="form-label">Product Name</label>
                                     <div class="form-control-wrap">
                                         <input type="text" class="form-control inp_products" name="name" id="name"
-                                            placeholder="e.g. HP Chromebook" required>
+                                            value="{{product.name}}" required>
                                     </div>
                                 </div>
                             </div>
@@ -131,7 +131,9 @@
                                                     class="form-select product_type" data-search="on">
                                                     <option value="">Select Product Type</option>
                                                     {% for type in types %}
-                                                    <option value="{{type.id}}">{{type.name}}</option>
+                                                    {% if type.id == product.type_id %}
+                                                    <option value="{{type.id}}" selected>{{type.name}}</option>
+                                                    {% endif %}
                                                     {% endfor %}
                                                 </select>
                                             </div>
@@ -143,10 +145,13 @@
                                                 <div class="form-control-wrap">
                                                     <input type="text" name="category"
                                                         class="form-control inp_category is-click-inside"
-                                                        placeholder="Start typing to select category...">
+                                                        placeholder="Start typing to select category..." {% if
+                                                        product.category %} value="{{product.category.name}}" {% endif
+                                                        %}>
                                                     <input id="category_id" type="text" name="category_id"
                                                         class="form-control inp_category is-click-inside"
-                                                        placeholder="Start typing to select category..." hidden>
+                                                        placeholder="Start typing to select category..."
+                                                        value="{{product.category_id}}" hidden>
                                                 </div>
                                             </div>
                                         </div>
@@ -157,8 +162,8 @@
                                                     <div class="input-group-prepend">
                                                         <span class="overline-title lh-3">KES</span>
                                                     </div>
-                                                    <input type="number" class="form-control price" name="price"
-                                                        value="1.00">
+                                                    <input type="text" class="form-control price" name="price"
+                                                        value="{{product.price|numberFormat}}">
                                                     <div class="input-group-append">
                                                         <span class="overline-title lh-3 total_price"></span>
                                                     </div>
@@ -172,7 +177,8 @@
                                                     <div class="input-group-prepend">
                                                         <span class="overline-title lh-3">KES</span>
                                                     </div>
-                                                    <input type="text" class="form-control" name="cost">
+                                                    <input type="text" class="form-control" name="cost"
+                                                        value="{{product.cost|numberFormat}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -180,10 +186,11 @@
                                             <label class="form-label">Unit of Measure</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" class="form-control inp_uom"
-                                                    aria-label="Text input with segmented dropdown button" name="uom">
+                                                    aria-label="Text input with segmented dropdown button" name="uom"
+                                                    value="{{product.uom.name}}">
                                                 <input id="uom_id" type="text" class="form-control inp_uom"
                                                     aria-label="Text input with segmented dropdown button" name="uom_id"
-                                                    hidden>
+                                                    value="{{product.uom_id}}" hidden>
                                                 <a href="#" class="form-icon form-icon-right is-click-inside"
                                                     data-toggle="">
                                                     <em
@@ -196,7 +203,7 @@
                                             <div class="form-control-wrap">
                                                 <div class="input-group">
                                                     <input type="text" class="form-control" placeholder="e.g 1"
-                                                        name="quantity">
+                                                        name="quantity" value="{{product.quantity}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -350,10 +357,10 @@
     })
 
     $.get("/get_tax", function (tax) {
-        var price = parseInt(document.getElementsByClassName("price")[1].value)
+        var price = parseInt(removeComma(document.getElementsByClassName("price")[1].value))
         var tax_amount = (price * parseInt(tax)) / 100;
         var total_price = price + tax_amount;
-        document.getElementsByClassName("total_price")[0].innerHTML = "(= " + total_price + " INCL. TAXES)";
+        document.getElementsByClassName("total_price")[0].innerHTML = "(= " + insertCommas(total_price) + " INCL. TAXES)";
     })
 </script>
 {% endblock %}

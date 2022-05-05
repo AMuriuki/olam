@@ -2279,7 +2279,7 @@ input {
   background-color: #fff;
   border-color: #017e84;
   outline: 0;
-  box-shadow: 0 0 0 3px rgba(101, 118, 255, 0.1);
+  /* box-shadow: 0 0 0 3px rgba(101, 118, 255, 0.1); */
 }
 
 .form-control::placeholder, div.dataTables_wrapper div.dataTables_filter input::placeholder, .dual-listbox .dual-listbox__search::placeholder {
@@ -8948,6 +8948,10 @@ a.bg-lighter:hover, .dual-listbox a.dual-listbox__item:hover, a.bg-lighter:focus
 
 .pt-1, .py-1 {
   padding-top: 0.375rem !important;
+}
+
+.pt1 {
+  padding-top: 1px !important;
 }
 
 .pr-1, .px-1 {

@@ -101,3 +101,7 @@ def purchase_reference_generator(instance, new_reference=None):
 
 def has_access(a):
     return len(a) > 0
+
+
+def remove_comma(str):
+    return str.replace(",", "")

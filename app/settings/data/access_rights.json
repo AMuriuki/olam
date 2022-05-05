@@ -9,18 +9,18 @@
     "delete": true
   },
   {
+    "id": "2b42be7a-9570-4c73-a097-16dda1da1873",
+    "name": "View users",
+    "model_id": 1,
+    "read": true,
+    "write": false,
+    "create": false,
+    "delete": false
+  },
+  {
     "id": "a9ccd261-cf0e-44fb-adc4-d62f3d73fe5e",
     "name": "Manage titles",
     "model_id": 11,
-    "read": true,
-    "write": true,
-    "create": true,
-    "delete": true
-  },
-  {
-    "id": "763af197-9821-41c8-9cb1-49539334e1c1",
-    "name": "Manage positions",
-    "model_id": 13,
     "read": true,
     "write": true,
     "create": true,
@@ -36,13 +36,13 @@
     "delete": true
   },
   {
-    "id": "2b42be7a-9570-4c73-a097-16dda1da1873",
-    "name": "View users",
-    "model_id": 1,
+    "id": "763af197-9821-41c8-9cb1-49539334e1c1",
+    "name": "Manage positions",
+    "model_id": 13,
     "read": true,
-    "write": false,
-    "create": false,
-    "delete": false
+    "write": true,
+    "create": true,
+    "delete": true
   },
   {
     "id": "bcfae81c-0a01-4352-8225-2b7719733e96",
@@ -201,6 +201,15 @@
     "id": "8bccc4fe-7569-4461-820d-e7e85e222150",
     "name": "Manage product categories",
     "model_id": 15,
+    "read": true,
+    "write": true,
+    "create": true,
+    "delete": true
+  },
+  {
+    "id": "c0eef292-c0d2-4023-89a5-725343e7315c",
+    "name": "Manage company information",
+    "model_id": 16,
     "read": true,
     "write": true,
     "create": true,

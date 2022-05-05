@@ -34,7 +34,11 @@
                                 <div class="card-title">
                                     <h6 class="title">
                                         <span class="mr-2"><strong>Model:</strong></span>
-                                        <span class="mr-2"></span>
+                                        <span class="mr-2">
+                                            {% if product.model %}
+                                            {{product.model}}
+                                            {% endif %}
+                                        </span>
                                     </h6>
                                 </div>
                             </div>
@@ -69,25 +73,42 @@
                                     <div class="col-lg-6">
                                         <ul class="ul-items">
                                             <li class="li-items item-header">Product Type</li>
-                                            <li class="li-items">{{product.type.name}}</li>
+                                            <li class="li-items">
+                                                {% if product.type %}
+                                                {{product.type.name}}
+                                                {% endif %}
+                                            </li>
                                         </ul>
                                     </div>
                                     <div class="col-lg-6">
                                         <ul class="ul-items">
                                             <li class="li-items item-header">Product Category</li>
-                                            <li class="li-items">{{product.category.name}}</li>
+                                            <li class="li-items">
+                                                {% if product.category %}
+                                                {{product.category.name}}
+                                                {% endif %}
+                                            </li>
                                         </ul>
                                     </div>
                                     <div class="col-lg-6">
                                         <ul class="ul-items">
                                             <li class="li-items item-header">Sales Price</li>
-                                            <li class="li-items">{{product.price}}</li>
+                                            <li class="li-items">
+                                                {% if product.price %}
+                                                KES&nbsp;{{product.price|numberFormat}}
+                                                (= KES {{product.total_price|numberFormat}} Incl. Taxes)
+                                                {% endif %}
+                                            </li>
                                         </ul>
                                     </div>
                                     <div class="col-lg-6">
                                         <ul class="ul-items">
                                             <li class="li-items item-header">Cost</li>
-                                            <li class="li-items">{{product.cost}}</li>
+                                            <li class="li-items">
+                                                {% if product.cost %}
+                                                KES&nbsp;{{product.cost|numberFormat}}
+                                                {% endif %}
+                                            </li>
                                         </ul>
                                     </div>
                                     <div class="col-lg-6">
@@ -105,7 +126,11 @@
                                     <div class="col-lg-6">
                                         <ul class="ul-items">
                                             <li class="li-items item-header">Quantity</li>
-                                            <li class="li-items">{{product.quantity}}</li>
+                                            <li class="li-items">
+                                                {% if product.quantity %}
+                                                {{product.quantity}}
+                                                {% endif %}
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>

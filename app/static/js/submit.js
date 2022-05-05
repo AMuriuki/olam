@@ -204,6 +204,22 @@ $(".create-product").click(function (e) {
     })
 })
 
+// edit product
+$(".edit-product").click(function (e) {
+    e.preventDefault();
+    $("#modalLoading").modal("show");
+    var form = $("#new_product");
+    var url = form.attr("action")
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: form.serialize(),
+        success: function (data) {
+            location.href = "/inventory/product/" + data["product_id"];
+        }
+    })
+})
+
 $(".select-access-group").on("change", function (e) {
     e.preventDefault();
     var group_id = $(this).attr("id");

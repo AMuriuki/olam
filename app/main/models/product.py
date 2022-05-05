@@ -26,6 +26,7 @@ class Product(db.Model):
     name = db.Column(db.String(255))
     cost = db.Column(db.Float())
     price = db.Column(db.Float())
+    total_price = db.Column(db.Float())
     tax_rate = db.Column(db.Float())
     category_id = db.Column(
         UUID(as_uuid=True), db.ForeignKey('product_category.id'))

@@ -19,25 +19,37 @@
             <div class="card-inner p-0">
                 <div class="row">
                     {% for product in products %}
-                    <a href="{{url_for('inventory.product', product_id=product.id)}}">
-                        <div class="col-lg-3">
+                    <div class="col-lg-3">
+                        <a href="{{url_for('inventory.product', product_id=product.id)}}">
                             <div class="card card-bordered">
                                 <img src="https://deed.co.ke/assets/uploads/03795959406adc00044a547b34202759.jpg"
                                     class="card-img-top p-4 w-60" alt="">
-                                <div class="card-inner">
+                                <div class="card-inner pt1">
                                     <h6>{{product.name}}</h6>
                                     <table style="width: 100%;">
                                         <tr>
                                             <th>Cost:</th>
-                                            <td>Ksh. 10,000.00</td>
+                                            <td>
+                                                {% if product.cost %}
+                                                Ksh. {{product.cost|numberFormat}}
+                                                {% endif %}
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th>Price:</th>
-                                            <td>Ksh. 15,000.00</td>
+                                            <td>
+                                                {% if product.price %}
+                                                Ksh. {{product.price|numberFormat}}
+                                                {% endif %}
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th>Units:</th>
-                                            <td>1.00</td>
+                                            <td>
+                                                {% if product.quantity %}
+                                                {{product.quantity}}&nbsp;{{product.uom.name}}
+                                                {% endif %}
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th>Variants:</th>
@@ -46,7 +58,8 @@
                                     </table>
                                 </div>
                             </div>
-                        </div>
+                        </a>
+                    </div>
                     </a>
                     {% endfor %}
                 </div>

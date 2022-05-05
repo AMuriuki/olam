@@ -42,6 +42,15 @@ function extractID(string) {
   return string.replace(/\-/g, "");
 }
 
+function include_tax(price) {
+  $.get("/get_tax", function (tax) {
+    var price = parseInt(document.getElementsByClassName("price")[1].value)
+    var tax_amount = (price * parseInt(tax)) / 100;
+    var total_price = price + tax_amount;
+    document.getElementsByClassName("total_price")[0].innerHTML = "(= " + insertCommas(total_price.toFixed(2)) + " INCL. TAXES)";
+  })
+}
+
 current_href = $(location).attr("href");
 
 if (current_href.toLowerCase().indexOf("contacts/view_contact") >= 0) {
@@ -1365,6 +1374,12 @@ $(".delete_access").change(function () {
   }
 });
 
+$(".price").on("keyup", function () {
+  var price = $(this).val()
+  console.log(price)
+  include_tax(price)
+})
+
 $(".submit-access-right").click(function (e) {
   e.preventDefault();
   slug = $(".span-new-group").attr("id");
@@ -1570,6 +1585,14 @@ function autocomplete(inp, arr) {
 
             /*insert the value for the autocomplete text field:*/
             inp.value = this.getElementsByTagName("input")[0].value;
+            if (inp.classList.contains("inp_uom")) {
+              document.getElementById("uom_id").value = key;
+            }
+            
+            if (inp.classList.contains("inp_category")) {
+              
+              document.getElementById("category_id").value = key;
+            }
             if (current_href.indexOf("/purchase/new/request-for-quotation") >= 0) {
               if (inp.classList.contains("inp_products")) {
                 get_product_purchase_details(key);
@@ -1594,7 +1617,7 @@ function autocomplete(inp, arr) {
           a.appendChild(b);
         }
       })
-      
+
       if (!values.includes(val)) {
         b = document.createElement("DIV");
         b.classList.add("is-click-inside");

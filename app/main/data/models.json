@@ -88,5 +88,11 @@
     "name": "Product Categories",
     "description": "Records product categories.",
     "module_id": 1
+  },
+  {
+    "id": 16,
+    "name": "Company",
+    "description": "Information about the company.",
+    "module_id": 1
   }
 ]

@@ -140,8 +140,6 @@ def get_items():
     products = []
     results = Product.query.all()
     for result in results:
-        manufacturer = result.manufacturer.name if result.manufacturer else None
-        category = result.category.name if result.category else None
         name = result.name
         products.append({str(result.id): name})
     return Response(json.dumps(products), mimetype='application/json')
@@ -248,3 +246,12 @@ def get_product_categories():
     for result in results:
         categories.append({str(result.id): result.name})
     return Response(json.dumps(categories), mimetype='application/json')
+
+
+@bp.route('/get_tax', methods=['GET', 'POST'])
+@login_required
+@active_user_required
+@model_access_required(16)
+def get_tax_rate():
+    company = Company.query.first()
+    return Response(json.dumps(company.tax), mimetype='application/json')

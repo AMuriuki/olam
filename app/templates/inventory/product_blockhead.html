@@ -112,7 +112,8 @@
             <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                 {% if current_user|can_write(9) %}
                 <li>
-                    <a href="#" class="btn btn-m btn-primary btn-block create-product">EDIT</a>
+                    <a href="{{url_for('inventory.edit_product', product_id=product.id)}}"
+                        class="btn btn-m btn-primary btn-block">EDIT</a>
                 </li>
                 {% endif %}
                 {% if current_user|can_create(9) %}
@@ -137,17 +138,17 @@
                         {% if current_index != 1 %}
                         <li>
                             {% if edit %}
-                            <a href="{{url_for('inventory.edit_product', product_id=products[prev_index].slug)}}"
+                            <a href="{{url_for('inventory.edit_product', product_id=products[prev_index].id)}}"
                                 class="btn btn-icon btn-m btn-primary d-none d-sm-inline-flex"><em
                                     class="icon ni ni-caret-left"></em></a>
-                            <a href="{{url_for('inventory.edit_product', product_id=products[prev_index].slug)}}"
+                            <a href="{{url_for('inventory.edit_product', product_id=products[prev_index].id)}}"
                                 class="btn btn-icon btn-m btn-primary d-inline-flex d-sm-none"><em
                                     class="icon ni ni-caret-left"></em></a>
                             {% else %}
-                            <a href="{{url_for('inventory.product', product_id=products[prev_index].slug)}}"
+                            <a href="{{url_for('inventory.product', product_id=products[prev_index].id)}}"
                                 class="btn btn-icon btn-m btn-primary d-none d-sm-inline-flex"><em
                                     class="icon ni ni-caret-left"></em></a>
-                            <a href="{{url_for('inventory.product', product_id=products[prev_index].slug)}}"
+                            <a href="{{url_for('inventory.product', product_id=products[prev_index].id)}}"
                                 class="btn btn-icon btn-m btn-primary d-inline-flex d-sm-none"><em
                                     class="icon ni ni-caret-left"></em></a>
                             {% endif %}
@@ -172,6 +173,51 @@
                             {% endif %}
                         </li>
                         {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% elif title == 'Edit Product | Olam ERP' %}
+        <div class="nk-block-head-content">
+            <h3 class="nk-block-title page-title">
+                <a href="{{url_for('inventory.index')}}">
+                    Inventory
+                </a>
+                /
+                <strong class="text-primary small">
+                    <a href="{{url_for('inventory.products')}}">Products</a>
+                </strong>
+                /
+                <strong class="text-primary small">
+                    <span id="#">{{product.name}}</span>
+                </strong>
+            </h3>
+            <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                <li>
+                    <a href="#" class="btn btn-m btn-primary btn-block edit-product">SAVE</a>
+                </li>
+                <li>
+                    <a href="{{url_for('inventory.product', product_id=product.id)}}" class="btn btn-outline-light">
+                        DISCARD
+                    </a>
+                    <span class="btn selected-groups"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="nk-block-head-content">
+            <div class="toggle-wrap nk-block-tools-toggle">
+                <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em
+                        class="icon ni ni-menu-alt-r"></em></a>
+                <div class="toggle-expand-content" data-content="pageMenu">
+                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                        <li>
+                            <a href="#" class="btn btn-secondary"><em class="icon ni ni-eye"></em><span>Preview on
+                                    Website</span></a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn btn-primary"><span>Publish to Website</span><em
+                                    class="icon ni ni-globe"></em></a>
+                        </li>
                     </ul>
                 </div>
             </div>
