@@ -11,7 +11,7 @@ from os import fsync
 from app.main.models.database import Database
 from app.main.models.company import Company
 from app.auth.models.user import Group, Users, user_group
-from app.main.models.product import Product, ProductAttribute, ProductAttributeValue, ProductCategory
+from app.main.models.product import Product, ProductAttribute, AttributeValue, ProductCategory
 from app.main.models.uom import Uom
 from app.main.utils import search_dict, updating
 from app.main.models.module import Module
@@ -158,6 +158,16 @@ def get_uom():
     return Response(json.dumps(uoms), mimetype='application/json')
 
 
+@bp.route("/get_uom_key", methods=['GET', 'POST'])
+@login_required
+@active_user_required
+@model_access_required(10)
+def get_uom_key():
+    uom = Uom.query.filter_by(
+        name=request.form['name']).first()
+    return jsonify({'success': True, 'key': uom.id})
+
+
 @bp.route('/get_partners', methods=['GET', 'POST'])
 @login_required
 @active_user_required
@@ -224,15 +234,12 @@ def get_product_attributes():
 @active_user_required
 @model_access_required(14)
 def get_attribute_values():
-    if request.method == "POST":
-        values = []
-        results = ProductAttributeValue.query.filter_by(
-            attribute_id=request.form['attribute']).order_by('name').all()
-        for result in results:
-            values.append({str(result.id): result.name})
-    else:
-        values = None
-
+    values = []
+    results = AttributeValue.query.order_by('name').all()
+    for result in results:
+        values.append({str(result.id): result.name,
+                       'attribute': str(result.attribute_id)})
+    print(values)
     return Response(json.dumps(values), mimetype='application/json')
 
 
@@ -248,6 +255,31 @@ def get_product_categories():
     return Response(json.dumps(categories), mimetype='application/json')
 
 
+@bp.route("/get_category_key", methods=['GET', 'POST'])
+@login_required
+@active_user_required
+@model_access_required(15)
+def get_category_key():
+    category = ProductCategory.query.filter_by(
+        name=request.form['name']).first()
+    return jsonify({'success': True, 'key': category.id})
+
+
+@bp.route("/get_attribute_value_key", methods=['GET', 'POST'])
+@login_required
+@active_user_required
+@model_access_required(14)
+def get_attribute_value_key():
+    value = AttributeValue.query.filter(
+        AttributeValue.name.ilike(request.form['name'])).first()
+    if not value:
+        value = AttributeValue(
+            name=request.form['name'], attribute_id=request.form['attribute'])
+        db.session.add(value)
+        db.session.commit()
+    return jsonify({'success': True, 'key': value.id if value else None})
+
+
 @bp.route('/get_tax', methods=['GET', 'POST'])
 @login_required
 @active_user_required
@@ -255,3 +287,23 @@ def get_product_categories():
 def get_tax_rate():
     company = Company.query.first()
     return Response(json.dumps(company.tax), mimetype='application/json')
+
+
+@bp.route('/create_product_attribute_value', methods=['GET', 'POST'])
+@login_required
+@active_user_required
+@model_access_required(14)
+def create_product_attribute_value():
+    if request.method == "POST":
+        attribute_value = AttributeValue(
+            name=request.form['value'], attribute_id=request.form['attribute'])
+        db.session.add(attribute_value)
+        db.session.commit()
+        return jsonify({'success': True, 'key': attribute_value.id})
+
+
+@bp.route('/preview_on_website', methods=['GET', 'POST'])
+@login_required
+@active_user_required
+def preview_on_website():
+    pass

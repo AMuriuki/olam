@@ -114,6 +114,18 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a id="lnk_attributes" class="nav-link" href="#product_desc" data-toggle="tab">
+                                    <em class="icon ni ni-tile-thumb"></em>
+                                    <span>Product Description</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="lnk_attributes" class="nav-link" href="#product_gallery" data-toggle="tab">
+                                    <em class="icon ni ni-img"></em>
+                                    <span>Product Gallery</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a id="lnk_attributes" class="nav-link" href="#sales" data-toggle="tab">
                                     <em class="icon ni ni-coins"></em>
                                     <span>Sales</span>
@@ -152,6 +164,7 @@
                                                         class="form-control inp_category is-click-inside"
                                                         placeholder="Start typing to select category..."
                                                         value="{{product.category_id}}" hidden>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -162,8 +175,9 @@
                                                     <div class="input-group-prepend">
                                                         <span class="overline-title lh-3">KES</span>
                                                     </div>
-                                                    <input type="text" class="form-control price" name="price"
-                                                        value="{{product.price|numberFormat}}">
+                                                    <input type="text" class="form-control price" name="price" {% if
+                                                        product.price %} value="{{product.price|numberFormat}}" {% endif
+                                                        %}>
                                                     <div class="input-group-append">
                                                         <span class="overline-title lh-3 total_price"></span>
                                                     </div>
@@ -177,8 +191,9 @@
                                                     <div class="input-group-prepend">
                                                         <span class="overline-title lh-3">KES</span>
                                                     </div>
-                                                    <input type="text" class="form-control" name="cost"
-                                                        value="{{product.cost|numberFormat}}">
+                                                    <input type="text" class="form-control" name="cost" {% if
+                                                        product.cost %} value="{{product.cost|numberFormat}}" {% endif
+                                                        %}>
                                                 </div>
                                             </div>
                                         </div>
@@ -233,29 +248,20 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody class="tbody is-click-inside" id="attributes_body">
-                                                    <tr class="og-attribute-tr is-click-inside">
-                                                        <td class="w-25 td_attribute is-click-inside">
-                                                            <div class="form-control-wrap is-click-inside dv-attribute">
-                                                                <input type="text"
-                                                                    class="form-control inp_attribute is-click-inside"
-                                                                    placeholder="Start typing to add attribute...">
-                                                                <a href="#"
-                                                                    class="form-icon form-icon-right is-click-inside"
-                                                                    data-toggle="">
-                                                                    <em
-                                                                        class="d-none d-sm-inline icon ni ni-external is-click-inside"></em>
-                                                                </a>
-                                                            </div>
+                                                    {% for attribute in attributes %}
+                                                    <tr>
+                                                        <td>
+                                                            {{attribute.attribute.name}}
                                                         </td>
-                                                        <td class="td_value is-click-inside">
-                                                            <input type="text"
-                                                                class="form-control inp_value is-click-inside">
+                                                        <td>
+                                                            {{attribute.value.name}}
                                                         </td>
                                                         <td class="td_delete is-click-inside">
                                                             <a href="#" class="is-click-inside"><em
                                                                     class="icon ni ni-trash is-click-inside"></em></a>
                                                         </td>
                                                     </tr>
+                                                    {% endfor %}
                                                 </tbody>
                                             </table>
                                             <div class="preview-btn-item col-sm-6 col-lg-3 is-click-inside">
@@ -263,6 +269,83 @@
                                                     style="color: #017e84;">Add
                                                     an
                                                     attribute</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="product_desc">
+                                <div class="card-inner">
+                                    <div class="row g-3 align-center">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label class="form-label">Product Description</label>
+                                                <textarea id="desc" name="description" hidden></textarea>
+                                                <div class="form-control-wrap">
+                                                    <div class="quill-editor">
+                                                        <p>{{product.description|safe}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="product_gallery">
+                                <div class="card-inner">
+                                    <div class="row">
+                                        <div class="col-lg-12 pb-3">
+                                            <div class="form-group">
+                                                <div class="form-control-wrap">
+                                                    <div class="custom-file">
+                                                        <input type="file" multiple class="custom-file-input"
+                                                            id="product_image">
+                                                        <label class="custom-file-label" for="customFile">Choose
+                                                            image(s)</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row preview-images">
+                                            <div class="col-lg-2 pb-2 preview-0">
+                                                <div class="card card-bordered">
+                                                    <a href="#" class="btn btn-auto btn-dim btn-danger"
+                                                        data-toggle="modal" data-target="#subscription-cancel">
+                                                        <em class="icon ni ni-cross"></em>
+                                                    </a>
+                                                    <img src="https://deed.co.ke/assets/uploads/03795959406adc00044a547b34202759.jpg"
+                                                        class="card-img-top" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2 pb-2">
+                                                <div class="card card-bordered">
+                                                    <a href="#" class="btn btn-auto btn-dim btn-danger"
+                                                        data-toggle="modal" data-target="#subscription-cancel">
+                                                        <em class="icon ni ni-cross"></em>
+                                                    </a>
+                                                    <img src="https://deed.co.ke/assets/uploads/03795959406adc00044a547b34202759.jpg"
+                                                        class="card-img-top" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2 pb-2">
+                                                <div class="card card-bordered">
+                                                    <a href="#" class="btn btn-auto btn-dim btn-danger"
+                                                        data-toggle="modal" data-target="#subscription-cancel">
+                                                        <em class="icon ni ni-cross"></em>
+                                                    </a>
+                                                    <img src="https://deed.co.ke/assets/uploads/03795959406adc00044a547b34202759.jpg"
+                                                        class="card-img-top" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2 pb-2">
+                                                <div class="card card-bordered">
+                                                    <a href="#" class="btn btn-auto btn-dim btn-danger"
+                                                        data-toggle="modal" data-target="#subscription-cancel">
+                                                        <em class="icon ni ni-cross"></em>
+                                                    </a>
+                                                    <img src="https://deed.co.ke/assets/uploads/03795959406adc00044a547b34202759.jpg"
+                                                        class="card-img-top" alt="">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -362,5 +445,14 @@
         var total_price = price + tax_amount;
         document.getElementsByClassName("total_price")[0].innerHTML = "(= " + insertCommas(total_price) + " INCL. TAXES)";
     })
+</script>
+<script>
+    var quill_editor = document.querySelector(".quill-editor");
+    quill_editor.oninput = handleInput
+
+    function handleInput(e) {
+        var html = quill_editor.children[0].innerHTML
+        $("#desc").val(html)
+    }
 </script>
 {% endblock %}

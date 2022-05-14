@@ -25,6 +25,10 @@ var data;
 var purchase_id
 var product_no
 var type;
+var attribute;
+var selected_key;
+var selected_value;
+var matching = {};
 
 function insertCommas(number) {
   if (number !== null || number !== undefined) {
@@ -179,15 +183,6 @@ $(".add-item").click(function (e) {
   pipeline_stage(stage_id);
 });
 
-// add new contact
-$(".select_contact").on("change", function () {
-  stage_id = getId(this.id);
-  if (this.value === "add_new") {
-    $("#profile-edit").modal("show");
-  } else {
-    get_partner_details(this.value);
-  }
-});
 
 const tags = []
 function add_tag(key, value) {
@@ -197,63 +192,7 @@ function add_tag(key, value) {
   $(".tags").after(tag_span);
 }
 
-function post_vendor(vendor) {
-  if (sessionStorage.getItem('purchase_id')) {
-    purchase_id = sessionStorage.getItem('purchase_id');
-  } else {
-    purchase_id = null;
-  }
-  $.post("/purchase/new/request-for-quotation", {
-    vendor: vendor,
-    purchase_id: purchase_id
-  }).done(function (response) {
-    sessionStorage.setItem('purchase_id', response['purchase_id']);
-  })
-}
 
-$(".set-due-date").on("change", function () {
-  var due_date = $(this).val();
-  var purchase_id = sessionStorage.getItem('purchase_id');
-  $.post("/purchase/new/request-for-quotation", {
-    purchase_id: purchase_id,
-    due_date: due_date
-  }).done(function (response) {
-    sessionStorage.setItem('purchase_id', response['purchase_id']);
-  })
-})
-
-$(".inp_quantity").on("change", function () {
-  var quantity = $(this).val();
-
-  var product_id = $(this).attr("id"); //EXTRACT ID
-  var unit_price_input = document.getElementById("unit-price-for-" + response['id'])
-  var unit_price_span = document.getElementById("unit-price-span-for-" + response['id'])
-  if (unit_price_input) {
-    var unit_price = unit_price_input.value
-  } else if (unit_price_span) {
-    var unit_price = unit_price_input.innerHTML
-  }
-  var new_sub_total = parent(quantity) * parseFloat(unit_price)
-  document.getElementById("sub-total-for-" + response['id']).innerHTML = new_sub_total
-  var purchase_id = sessionStorage.getItem('purchase_id');
-  $.post("/purchase/new/request-for-quotation", {
-    purchase_id: purchase_id,
-    quantity: quantity
-  }).done(function (response) {
-    sessionStorage.setItem('purchase_id', response['purchase_id']);
-  })
-})
-
-$(".set-time").on("change", function () {
-  var time = $(this).val();
-  var purchase_id = sessionStorage.getItem('purchase_id');
-  $.post("/purchase/new/request-for-quotation", {
-    purchase_id: purchase_id,
-    time: time
-  }).done(function (response) {
-    sessionStorage.setItem('purchase_id', response['purchase_id']);
-  })
-})
 
 
 
@@ -271,16 +210,19 @@ function get_partner_details(value) {
     });
 }
 
-function get_attribute_values(attribute) {
-  $.post("/get_attribute_values", {
-    attribute: attribute,
-  }).done(function (response) {
-
-    count_tr = $("#attributes_body").find("tr").length;
-    current_index = parseInt(count_tr) - 1
-    type = "product_attributes_values"
-    autocomplete(document.getElementsByClassName("inp_value")[current_index], response)
-  })
+function get_attribute_values() {
+  $.get("/get_attribute_values", function (data) {
+    attributes = []
+    for (var i = 0; i < data.length; i++) {
+      attributes.indexOf(data[i]["attribute"]) == -1 ? attributes.push(data[i]["attribute"]) : null;
+    }
+    for (var i = 0; i < attributes.length; i++) {
+      var result = data.filter(obj => {
+        return obj.attribute == attributes[i]
+      })
+      autocomplete(document.getElementById("inp-" + attributes[i]), result)
+    }
+  });
 }
 
 
@@ -486,13 +428,6 @@ $(".select-priority-update").click(function (e) {
   }
 });
 
-// add new recurring plan modal
-$(".recurring-plan").on("change", function () {
-  stage_id = getId(this.id);
-  if (this.value === "new_plan") {
-    $("#modalNewPlan").modal("show");
-  }
-});
 
 $(".discard-item").click(function (e) {
   e.preventDefault();
@@ -633,6 +568,23 @@ $(document).ready(function () {
   if ($(".dv-module").length) {
     $(".dv-module").removeAttr("href");
     $(".dv-module").css("cursor", "pointer");
+  }
+
+  if (current_href.toLowerCase().indexOf("inventory/new/product") >= 0) {
+    get_attribute_values()
+
+    document.getElementById('product_image').addEventListener('change', readImage, false);
+
+    $(".preview-images").sortable()
+
+    $(document).on('click', '.image-cancel', function () {
+      let no = $(this).data('no');
+      $(".preview-" + no).remove();
+    });
+
+    function readImage() {
+      console.log(event.target.files)
+    }
   }
 });
 
@@ -864,11 +816,6 @@ $(".back").click(function (e) {
   return false;
 });
 
-$("#company").change(function () {
-  var text = $(this).val();
-  $("#domain").val(text);
-});
-
 // $('.start-now').click(function (e) {
 //   e.preventDefault()
 //   $('#dv_start_now').css('display', 'none')
@@ -897,24 +844,7 @@ $(window).bind("scroll", function () {
   }
 });
 
-$("#individual").change(function () {
-  if (this.checked) {
-    $("#company-block").hide();
-    $("#individual-block").show();
-  }
-});
 
-$("#company").change(function () {
-  if (this.checked) {
-    $("#individual-block").hide();
-    $("#company-block").show();
-  }
-});
-
-$(".select_country").change(function () {
-  country = $(this).val();
-  get_city(country);
-});
 
 async function get_city(country) {
   const rawResponse = await fetch("/contacts/get_cities", {
@@ -985,29 +915,6 @@ function update_priority(item_id, priority) {
     .fail(function () { });
 }
 
-$(".chk_user").change(function (e) {
-  var user_id = $(this).attr("id");
-  if (this.checked) {
-    selectedUsers.push(user_id);
-    selected = selected + 1;
-    $(".export").hide();
-    $(".selected-groups").show();
-    $(".li-actions").show();
-    $(".selected-groups").text(selected + " selected");
-
-  } else {
-    const index = selectedUsers.indexOf(user_id);
-    selectedUsers.splice(index);
-    selected = selected - 1;
-    if (selected == 0) {
-      $(".export").show();
-      $(".selected-groups").hide();
-      $(".li-actions").hide();
-    } else {
-      $(".selected-groups").text(selected + " selected");
-    }
-  }
-});
 
 function select_users() {
   if (selectedUsers.length == 0) {
@@ -1151,15 +1058,6 @@ $(".select-group").click(function (e) {
   location.href = "/settings/group/" + slug;
 });
 
-$(".set-access").change(function (e) {
-  var group_id = $(this).val();
-  var module_id = $(this).attr("id");
-
-  $.post("/settings/set-access", {
-    group: group_id,
-    module: module_id,
-  }).done(function (response) { });
-});
 
 $(".select-user").click(function (e) {
   slug = $(this).closest("tr").attr("id");
@@ -1180,27 +1078,7 @@ $(".remove-user").click(function (e) {
     .fail(function () { });
 });
 
-$(".record-check").change(function (e) {
-  if (this.checked) {
-    selected = selected + 1;
-    selectedGroups.push(this.id);
-    $(".export").hide();
-    $(".selected-groups").show();
-    $(".li-actions").show();
-    $(".selected-groups").text(selected + " selected");
-  } else {
-    selected = selected - 1;
-    const index = selectedGroups.indexOf(this.id);
-    selectedGroups.splice(index);
-    if (selected == 0) {
-      $(".export").show();
-      $(".selected-groups").hide();
-      $(".li-actions").hide();
-    } else {
-      $(".selected-groups").text(selected + " selected");
-    }
-  }
-});
+
 
 $(".confirm-delete-group").click(function (e) {
   e.preventDefault();
@@ -1256,123 +1134,7 @@ async function get_models() {
   }
 }
 
-$("#add_access_name").change(function () {
-  access_name = $(this).val();
-  if ($("#select_model").val() != "default_option") {
-    $(".submit-access-right")
-      .addClass("btn-primary")
-      .removeClass("btn-secondary");
-  } else if ($(this).val() == "") {
-    $(".submit-access-right")
-      .addClass("btn-secondary")
-      .removeClass("btn-primary");
-  }
-});
 
-$("#select_model").change(function () {
-  selected_model = $(this).val();
-  if ($("#add_access_name").val().length != 0) {
-    $(".submit-access-right")
-      .addClass("btn-primary")
-      .removeClass("btn-secondary");
-  } else if ($(this).val() == "default_option") {
-    $(".submit-access-right")
-      .addClass("btn-secondary")
-      .removeClass("btn-primary");
-  }
-});
-
-$("#read_access").change(function () {
-  if (this.checked) {
-    read = true;
-  } else {
-    read = false;
-  }
-});
-
-$(".read_access").change(function () {
-  id_of_access_right = $(this).attr("id").split(".")[1];
-  if (this.checked) {
-    $.post("/settings/access-right", {
-      access: id_of_access_right,
-      read: true,
-    });
-  } else {
-    $.post("/settings/access-right", {
-      access: id_of_access_right,
-      read: false,
-    });
-  }
-});
-
-$("#write_access").change(function () {
-  if (this.checked) {
-    write = true;
-  } else {
-    write = false;
-  }
-});
-
-$(".write_access").change(function () {
-  id_of_access_right = $(this).attr("id").split(".")[1];
-  if (this.checked) {
-    $.post("/settings/access-right", {
-      access: id_of_access_right,
-      write: true,
-    });
-  } else {
-    $.post("/settings/access-right", {
-      access: id_of_access_right,
-      write: false,
-    });
-  }
-});
-
-$("#create_access").change(function () {
-  if (this.checked) {
-    create = true;
-  } else {
-    create = false;
-  }
-});
-
-$(".create_access").change(function () {
-  id_of_access_right = $(this).attr("id").split(".")[1];
-  if (this.checked) {
-    $.post("/settings/access-right", {
-      access: id_of_access_right,
-      create: true,
-    });
-  } else {
-    $.post("/settings/access-right", {
-      access: id_of_access_right,
-      create: false,
-    });
-  }
-});
-
-$("#delete_access").change(function () {
-  if (this.checked) {
-    _delete = true;
-  } else {
-    _delete = false;
-  }
-});
-
-$(".delete_access").change(function () {
-  id_of_access_right = $(this).attr("id").split(".")[1];
-  if (this.checked) {
-    $.post("/settings/access-right", {
-      access: id_of_access_right,
-      delete: true,
-    });
-  } else {
-    $.post("/settings/access-right", {
-      access: id_of_access_right,
-      delete: false,
-    });
-  }
-});
 
 $(".price").on("keyup", function () {
   var price = $(this).val()
@@ -1448,38 +1210,7 @@ function insertAfter(referenceNode, newNode) {
   referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
-$(".update_access_right_name").change(function () {
-  name_of_access_right = $(this).val();
-  var input_id = $(this).attr("id");
-  var el = document.getElementById(input_id);
 
-  $.post("/settings/access-right", {
-    name: name_of_access_right,
-    access: id_of_access_right,
-  }).done(function (response) {
-    var span = document.createElement("span");
-    span.innerHTML = name_of_access_right;
-    span.className = span_access_class;
-    insertAfter(el, span);
-    $(".update_access_right_name").hide();
-  });
-});
-
-$(".select_model").change(function () {
-  selected_model = $(this).val();
-  var div_id = $(this).closest("div").attr("id");
-  var el = document.getElementById(div_id);
-  $.post("/settings/access-right", {
-    access: id_of_access_right,
-    model_id: selected_model,
-  }).done(function (response) {
-    var span = document.createElement("span");
-    span.innerHTML = response["model_name"];
-    span.className = span_model_class;
-    insertAfter(el, span);
-    document.getElementById(div_id).style.display = "none";
-  });
-});
 
 $(".remove-access-right").click(function (e) {
   id_of_access_right = $(this).attr("id");
@@ -1513,33 +1244,7 @@ function get_item() {
   });
 }
 
-document.addEventListener('change', function (event) {
-  count_tr = $("#purchase_body").find("tr").length;
-  current_index = parseInt(count_tr) - 1
-  if (event.target == document.getElementsByClassName("inp_quantity")[current_index]) {
-    var quantity_el = document.getElementsByClassName("inp_quantity")[current_index];
-    var quantity = quantity_el.value
-    var unit_price_el = document.getElementsByClassName("inp_unit_price")[current_index];
-    var unit_price = unit_price_el.value
-    var sub_total_el = document.getElementsByClassName("sub_total")[current_index];
-    var sub_total = quantity * unit_price
-    sub_total_el.innerHTML = insertCommas(sub_total)
-    var total = 0
-    for (i = 0; i < count_tr; i++) {
-      var sub_total_el = document.getElementsByClassName("sub_total")[i];
-      var sub_total = sub_total_el.innerHTML
-      total += parseInt(sub_total.replace(/,/g, ""))
-    }
-    var total_el = document.getElementsByClassName("total")[0];
-    var total = insertCommas(total)
-    total_el.innerHTML = total
-  }
-})
-
-
-
 function autocomplete(inp, arr) {
-  data = arr
   /*the autocomplete function takes two arguments,
     the text field element and an array of possible autocompleted values:*/
   var currentFocus;
@@ -1571,8 +1276,10 @@ function autocomplete(inp, arr) {
         /*check if the item starts with the same letters as the text field value:*/
         if (value && value.toLowerCase().includes(val.toLowerCase())) {
           /*create a DIV element for each matching element:*/
+          matching[key] = value;
           b = document.createElement("DIV");
           b.classList.add("is-click-inside");
+          b.classList.add("autocomplete-item");
           /*make the matching letters bold:*/
           b.innerHTML = "<strong>" + value.substr(0, val.length) + "</strong>";
           b.innerHTML += value.substr(val.length);
@@ -1582,53 +1289,38 @@ function autocomplete(inp, arr) {
           b.getElementsByTagName("input")[0].classList.add("is-click-inside");
           /*execute a function when someone clicks on the item value (DIV element):*/
           b.addEventListener("click", function (e) {
+            count_tr = $(".tbody").find("tr").length;
+            current_index = parseInt(count_tr) - 1
 
             /*insert the value for the autocomplete text field:*/
-            inp.value = this.getElementsByTagName("input")[0].value;
-            if (inp.classList.contains("inp_uom")) {
-              document.getElementById("uom_id").value = key;
-            }
-            
-            if (inp.classList.contains("inp_category")) {
-              
-              document.getElementById("category_id").value = key;
-            }
-            if (current_href.indexOf("/purchase/new/request-for-quotation") >= 0) {
-              if (inp.classList.contains("inp_products")) {
-                get_product_purchase_details(key);
-                post_product_purchase(key)
-              }
-              if (inp.classList.contains("inp_vendor")) {
-                post_vendor(key);
-              }
-              if (inp.classList.contains("inp_tags")) {
-                add_tag(key, value);
-              }
-            }
-            if (current_href.indexOf("/inventory/new/product") >= 0) {
-              if (inp.classList.contains("inp_attribute")) {
-                get_attribute_values(key)
-              }
-            }
+            $(inp).val(this.getElementsByTagName("input")[0].value);
+            $("#hidden-" + inp.id).val(key)
+
+            handleChange(inp)
             /*close the list of autocompleted values,
                   (or any other open lists of autocompleted values:*/
             closeAllLists();
           });
+
           a.appendChild(b);
         }
       })
 
       if (!values.includes(val)) {
         b = document.createElement("DIV");
+        b.classList.add("create-new-item");
         b.classList.add("is-click-inside");
         /*make the matching letters bold:*/
-        b.innerHTML = "Create <strong>" + val + "</strong>";
+        b.innerHTML = "Create <strong class='create-new-item'>" + val + "</strong>";
         a.appendChild(b);
         b.innerHTML += "<input type='hidden' value='" + val + "'>";
         b.getElementsByTagName("input")[0].classList.add("is-click-inside");
         /*execute a function when someone clicks on the item value (DIV element):*/
         b.addEventListener("click", function (e) {
+          count_tr = $(".tbody").find("tr").length;
+          current_index = parseInt(count_tr) - 1
           /*insert the value for the autocomplete text field:*/
+
           inp.value = this.getElementsByTagName("input")[0].value;
           if (current_href.indexOf("/purchase/new/request-for-quotation") >= 0) {
             if (inp.classList.contains("inp_products")) {
@@ -1638,6 +1330,7 @@ function autocomplete(inp, arr) {
               $("#AddPartner").modal("show");
             }
           }
+
           /*close the list of autocompleted values,
                 (or any other open lists of autocompleted values:*/
           closeAllLists();
@@ -1706,3 +1399,4 @@ function autocomplete(inp, arr) {
     closeAllLists(e.target);
   });
 }
+

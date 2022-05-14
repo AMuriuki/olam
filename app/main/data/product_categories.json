@@ -1,77 +1,93 @@
 [
   {
     "id": "567d690f-efd4-4bf3-baf3-9c04e7bdd5a4",
-    "name": "New Laptop"
+    "name": "New Laptop",
+    "slug": "new-laptop"
   },
   {
     "id": "b1db21b4-f520-46ae-8c84-5ceba0c82152",
-    "name": "Refurbished Laptop"
+    "name": "Refurbished Laptop",
+    "slug": "refurbished-laptop"
   },
   {
     "id": "e38d32e8-a4f1-4733-9fd8-df1b13e5c5a8",
-    "name": "Desktop PC"
+    "name": "Desktop PC",
+    "slug": "desktop-pc"
   },
   {
     "id": "e4b7c985-d999-4f6f-bb96-c35d13dd7c29",
-    "name": "Accessories"
+    "name": "Accessories",
+    "slug": "accessories"
   },
   {
     "id": "4b136549-968e-4afd-a3db-c52d2fb129cb",
-    "name": "Printers"
+    "name": "Printers",
+    "slug": "printers"
   },
   {
     "id": "7e53118c-4d3e-47dc-88f6-f568fec7045e",
     "name": "Bags",
+    "slug": "bags",
     "parent_id": "e4b7c985-d999-4f6f-bb96-c35d13dd7c29"
   },
   {
     "id": "43bb2fee-b8aa-44f7-9b55-39e5c00bf80f",
     "name": "Batteries",
+    "slug": "batteries",
     "parent_id": "e4b7c985-d999-4f6f-bb96-c35d13dd7c29"
   },
   {
     "id": "016eb4ca-0db4-413a-b7b3-b952f046c64f",
     "name": "Chargers",
+    "slug": "chargers",
     "parent_id": "e4b7c985-d999-4f6f-bb96-c35d13dd7c29"
   },
   {
     "id": "c3f02039-254c-41d8-b956-dc0b3fccaa7d",
     "name": "Docking Station",
+    "slug": "docking-station",
     "parent_id": "e4b7c985-d999-4f6f-bb96-c35d13dd7c29"
   },
   {
     "id": "116e2b5a-13fd-48a6-8bbf-1e3c641a0fe3",
     "name": "Flash Disks",
+    "slug": "flash-disks",
     "parent_id": "e4b7c985-d999-4f6f-bb96-c35d13dd7c29"
   },
   {
     "id": "f89c13d9-9d3d-403e-89ed-a83583d72226",
     "name": "Graphic Cards",
+    "slug": "graphic-cards",
     "parent_id": "e4b7c985-d999-4f6f-bb96-c35d13dd7c29"
   },
   {
     "id": "12181412-1940-4289-a4ed-01706c021540",
     "name": "Hard Disk",
+    "slug": "hard-disk",
     "parent_id": "e4b7c985-d999-4f6f-bb96-c35d13dd7c29"
   },
   {
     "id": "6b0963b5-743a-4b2e-a1e2-5ea6234e4a98",
     "name": "Keyboard",
+    "slug": "keyboard",
     "parent_id": "e4b7c985-d999-4f6f-bb96-c35d13dd7c29"
   },
   {
     "id": "16aca1d6-def3-40b0-9b13-d457e52b0fb8",
     "name": "Motherboard",
+    "slug": "motherboard",
     "parent_id": "e4b7c985-d999-4f6f-bb96-c35d13dd7c29"
   },
   {
     "id": "cb8db811-cb8c-4ce7-b234-c3f0b8c35dd3",
     "name": "Mouse",
+    "slug": "mouse",
     "parent_id": "e4b7c985-d999-4f6f-bb96-c35d13dd7c29"
   },
   {
     "id": "71e84126-4896-43da-9542-e8bf80a00b5f",
     "name": "RAM",
+    "slug": "ram",
     "parent_id": "e4b7c985-d999-4f6f-bb96-c35d13dd7c29"
   }
 ]

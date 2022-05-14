@@ -35,9 +35,7 @@
                                     <h6 class="title">
                                         <span class="mr-2"><strong>Model:</strong></span>
                                         <span class="mr-2">
-                                            {% if product.model %}
-                                            {{product.model}}
-                                            {% endif %}
+                                            {{product.id|product_model}}
                                         </span>
                                     </h6>
                                 </div>
@@ -57,6 +55,12 @@
                             <a id="lnk_attributes" class="nav-link" href="#attr" data-toggle="tab">
                                 <em class="icon ni ni-tile-thumb"></em>
                                 <span>Attributes</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="lnk_attributes" class="nav-link" href="#product_desc" data-toggle="tab">
+                                <em class="icon ni ni-tile-thumb"></em>
+                                <span>Product Description</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -139,46 +143,45 @@
                         <div class="tab-pane" id="attr">
                             <div class="invoice">
                                 <div class="invoice-bills">
-                                    <div class="table-responsive is-click-inside">
-                                        <table class="table table-striped is-click-inside">
-                                            <thead class="is-click-inside">
-                                                <tr class="is-click-inside">
-                                                    <th class="is-click-inside">Attribute</th>
-                                                    <th class="is-click-inside">Values</th>
-                                                    <th class="is-click-inside"></th>
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Attribute</th>
+                                                    <th scope="col">Values</th>
+                                                    <th scope="col"></th>
                                                 </tr>
                                             </thead>
-                                            <tbody class="tbody is-click-inside" id="attributes_body">
-                                                <tr class="og-attribute-tr is-click-inside">
-                                                    <td class="w-25 td_attribute is-click-inside">
-                                                        <div class="form-control-wrap is-click-inside dv-attribute">
-                                                            <input type="text"
-                                                                class="form-control inp_attribute is-click-inside"
-                                                                placeholder="Start typing to add attribute...">
-                                                            <a href="#"
-                                                                class="form-icon form-icon-right is-click-inside"
-                                                                data-toggle="">
-                                                                <em
-                                                                    class="d-none d-sm-inline icon ni ni-external is-click-inside"></em>
-                                                            </a>
-                                                        </div>
+                                            <tbody>
+                                                {% for attribute in attributes %}
+                                                <tr>
+                                                    <td>
+                                                        {{attribute.attribute.name}}
                                                     </td>
-                                                    <td class="td_value is-click-inside">
-                                                        <input type="text"
-                                                            class="form-control inp_value is-click-inside">
+                                                    <td>
+                                                        {{attribute.value.name}}
                                                     </td>
-                                                    <td class="td_delete is-click-inside">
-                                                        <a href="#" class="is-click-inside"><em
-                                                                class="icon ni ni-trash is-click-inside"></em></a>
-                                                    </td>
+                                                    <td></td>
                                                 </tr>
+                                                {% endfor %}
                                             </tbody>
                                         </table>
-                                        <div class="preview-btn-item col-sm-6 col-lg-3 is-click-inside">
-                                            <a href="#" class="add-attribute add-line is-click-inside"
-                                                style="color: #017e84;">Add
-                                                an
-                                                attribute</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="product_desc">
+                            <div class="card-inner">
+                                <div class="row g-3 align-center">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Product Description</label>
+                                            <textarea id="desc" name="description" hidden></textarea>
+                                            <div class="form-control-wrap">
+                                                <div class="quill-editor">
+                                                    <p>{{product.description|safe}}</p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -195,7 +198,7 @@
                                                     title="Recommend when 'Adding to Cart'"></em>
                                             </label>
                                             <div class="form-control-wrap">
-                                                <input type="text" class="form-control inp_products is-click-inside"
+                                                <input type="text" class="form-control inp_products"
                                                     placeholder="Start typing to add optional products...">
                                             </div>
                                         </div>
@@ -220,7 +223,7 @@
                                                     title="Suggested accessories in the eCommerce cart"></em>
                                             </label>
                                             <div class="form-control-wrap">
-                                                <input type="text" class="form-control inp_products is-click-inside"
+                                                <input type="text" class="form-control inp_products"
                                                     placeholder="Start typing to add accessory products...">
                                             </div>
                                         </div>
@@ -233,7 +236,7 @@
                                                     title="Displayed in bottom of product pages"></em>
                                             </label>
                                             <div class="form-control-wrap">
-                                                <input type="text" class="form-control inp_products is-click-inside"
+                                                <input type="text" class="form-control inp_products"
                                                     placeholder="Start typing to add alternative products...">
                                             </div>
                                         </div>
@@ -247,4 +250,8 @@
         </div>
     </div>
 </div>
+<script>
+    var quill_editor = new Quill(".quill-editor");
+    quill_editor.enable(false)
+</script>
 {% endblock %}

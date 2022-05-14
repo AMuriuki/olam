@@ -192,6 +192,8 @@ $(".save-group").click(function (e) {
 $(".create-product").click(function (e) {
     e.preventDefault();
     $("#modalLoading").modal("show");
+    count_tr = $("#attributes_body").find("tr").length - 1;
+    $(".number-of-attributes").val(count_tr)
     var form = $("#new_product");
     var url = form.attr("action")
     $.ajax({
@@ -229,3 +231,27 @@ $(".select-access-group").on("change", function (e) {
         checked: $(this).prop("checked")
     })
 })
+
+function post_vendor(vendor) {
+    if (sessionStorage.getItem('purchase_id')) {
+        purchase_id = sessionStorage.getItem('purchase_id');
+    } else {
+        purchase_id = null;
+    }
+    $.post("/purchase/new/request-for-quotation", {
+        vendor: vendor,
+        purchase_id: purchase_id
+    }).done(function (response) {
+        sessionStorage.setItem('purchase_id', response['purchase_id']);
+    })
+}
+
+
+function post_product_attribute_value(attribute, value, id) {
+    $.post("/create_product_attribute_value", {
+        attribute: attribute,
+        value: value
+    }).done(function (response) {
+        $("#" + id).val(response['key'])
+    })
+}

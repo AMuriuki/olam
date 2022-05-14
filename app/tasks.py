@@ -17,7 +17,7 @@ from app.main.models.partner import Partner, PartnerTag, PartnerTitle
 from app.main.models.country import City, Country
 from flask import current_app
 from app import db
-from app.main.models.product import Product, ProductAttribute, ProductAttributeValue, ProductCategory, ProductType
+from app.main.models.product import Product, ProductAttribute, AttributeValue, ProductCategory, ProductType
 from app.main.models.uom import Uom, UomCategory
 from app.models import Task
 from app.main.utils import get_activities, get_activity_types, get_calling_codes, get_company, get_countries, get_countries_cities, get_models, get_moduleCategories, get_modules, get_product_attribute_values, get_product_attributes, get_product_categories, get_product_models, get_product_types, get_products, get_uom_categories, get_uoms
@@ -418,16 +418,15 @@ def dummy_data():
         # product attribute values
         attribute_values = get_product_attribute_values()
         for attribute_value in attribute_values:
-            exists = ProductAttributeValue.query.filter_by(
+            exists = AttributeValue.query.filter_by(
                 id=attribute_value['id']).first()
             if not exists:
-                product_attribute_value = ProductAttributeValue(
+                product_attribute_value = AttributeValue(
                     id=attribute_value['id'], name=attribute_value['name'], attribute_id=attribute_value['attribute_id'])
                 db.session.add(product_attribute_value)
                 db.session.commit()
                 print("Product attribute value " +
                       str(product_attribute_value.name) + " created")
-        
 
         # product categories
         categories = get_product_categories()
@@ -436,10 +435,17 @@ def dummy_data():
                 id=category['id']).first()
             if not exists:
                 product_category = ProductCategory(
-                    id=category['id'], name=category['name'])
+                    id=category['id'], name=category['name'], parent_id=category['parent_id'], slug=category['slug'])
                 db.session.add(product_category)
                 db.session.commit()
                 print("Product category " + category['name'] + " created")
+            else:
+                product = ProductCategory.query.filter_by(id=category['id']).first()
+                product.parent_id = category['parent_id'] if 'parent_id' in category else None
+                product.slug = category['slug']
+                db.session.commit() 
+                print("Product category " + category['name'] + " updated")
+
 
         # products
         products = get_products()

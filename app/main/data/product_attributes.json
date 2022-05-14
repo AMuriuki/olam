@@ -1,58 +1,72 @@
 [
   {
     "id": "5edf898a-719d-4dec-9411-5bf66b91def7",
-    "name": "Manufacturer"
+    "name": "Manufacturer",
+    "index": 0
   },
   {
     "id": "96f65155-e8e3-4680-93bf-f305275062a7",
-    "name": "Model"
-  },
-  {
-    "id": "4ddfe6ca-c0fc-4a44-a8dc-d651f079ccea",
-    "name": "Screen Size"
-  },
-  {
-    "id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
-    "name": "Processor"
-  },
-  {
-    "id": "94d6865f-457e-4c09-84d6-13f02df12d4f",
-    "name": "Memory Size"
-  },
-  {
-    "id": "6087449c-dc1d-4f87-a979-85a46a41180a",
-    "name": "Storage Size"
-  },
-  {
-    "id": "4fb14d35-8f34-47ba-bc24-32652e0a175d",
-    "name": "Storage Type"
+    "name": "Model",
+    "index": 1
   },
   {
     "id": "8b5c9e1b-bc7f-4952-9bf6-422f132afa08",
-    "name": "Operating System"
+    "name": "Operating System",
+    "index": 2
   },
   {
-    "id": "cb1ed462-f9a5-42d1-ad59-f9f8dd180973",
-    "name": "OS Version"
+    "id": "fb6c4df1-9ca8-4e5e-aba0-cc8fdb8c6a78",
+    "name": "Processor",
+    "index": 3
   },
   {
-    "id": "8150010a-25db-488c-8e85-28b04af599dc",
-    "name": "Battery"
+    "id": "94d6865f-457e-4c09-84d6-13f02df12d4f",
+    "name": "Memory Size",
+    "index": 4
   },
   {
-    "id": "56007bbc-c101-428c-bb2b-8f4d9f01f090",
-    "name": "Camera"
+    "id": "6087449c-dc1d-4f87-a979-85a46a41180a",
+    "name": "Storage Size",
+    "index": 5
+  },
+  {
+    "id": "4fb14d35-8f34-47ba-bc24-32652e0a175d",
+    "name": "Storage Type",
+    "index": 6
+  },
+  {
+    "id": "4ddfe6ca-c0fc-4a44-a8dc-d651f079ccea",
+    "name": "Screen Size",
+    "index": 7
   },
   {
     "id": "19450f11-6e25-407a-8c12-61b172cc99de",
-    "name": "Display"
+    "name": "Display",
+    "index": 8
+  },
+  {
+    "id": "cb1ed462-f9a5-42d1-ad59-f9f8dd180973",
+    "name": "OS Version",
+    "index": 9
+  },
+  {
+    "id": "8150010a-25db-488c-8e85-28b04af599dc",
+    "name": "Battery",
+    "index": 10
+  },
+  {
+    "id": "56007bbc-c101-428c-bb2b-8f4d9f01f090",
+    "name": "Camera",
+    "index": 11
   },
   {
     "id": "b551fe4a-0b05-4ddd-bb1c-aed2897efad0",
-    "name": "Color"
+    "name": "Color",
+    "index": 12
   },
   {
     "id": "75ec8aa0-7ebd-415f-885e-ef07e8dccc17",
-    "name": "Weight"
+    "name": "Weight",
+    "index": 13
   }
 ]

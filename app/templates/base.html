@@ -58,6 +58,10 @@
             max-height: 100% !important;
             overflow-y: auto;
         }
+
+        .ql-editor strong {
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -148,13 +152,13 @@
                                                 class="nk-menu-text">Overview</span></a>
                                     </li>
                                     <li class="nk-menu-item has-sub">
-                                        <a href="#" class="nk-menu-link nk-menu-toggle"
-                                            data-original-title="" title="">
+                                        <a href="#" class="nk-menu-link nk-menu-toggle" data-original-title="" title="">
                                             <span class="nk-menu-text">Products</span>
                                         </a>
                                         <ul class="nk-menu-sub">
                                             <li class="nk-menu-item">
-                                                <a href="{{url_for('inventory.products')}}" class="nk-menu-link" data-original-title="" title=""><span
+                                                <a href="{{url_for('inventory.products')}}" class="nk-menu-link"
+                                                    data-original-title="" title=""><span
                                                         class="nk-menu-text">Products</span></a>
                                             </li>
                                             <li class="nk-menu-item">
@@ -315,11 +319,12 @@
     <script src="{{url_for('static', filename='js/add-line.js')}}"></script>
     <script src="{{url_for('static', filename='js/click.js')}}"></script>
     <script src="{{url_for('static', filename='js/submit.js')}}"></script>
+    <script src="{{url_for('static', filename='js/onchange.js')}}"></script>
     {% if title == 'Meetings | Olam ERP' %}
     <script src="{{url_for('static', filename='js/libs/fullcalendar.js')}}"></script>
     <script src="{{url_for('static', filename='js/apps/calendar.js')}}"></script>
     {% endif %}
-    
+
     {% if title == 'New Request for Quotation | Olam ERP' %}
     <script>
         var quill = new Quill('.quill-editor', {
@@ -333,15 +338,6 @@
         });
     </script>
     {% endif %}
-    <script>
-        var quill_editor = document.querySelector(".quill-editor");
-        quill_editor.oninput = handleInput
-
-        function handleInput(e) {
-            var html = quill_editor.children[0].innerHTML
-            console.log(html)
-        }
-    </script>
 </body>
 
 

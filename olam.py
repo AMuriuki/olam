@@ -7,6 +7,7 @@ from app.main.models.activities import Activity, ActivityType
 from app.main.models.company import Company
 from app.main.models.country import Country
 from app.main.models.partner import Partner
+from app.main.models.product import AttributeValue, ProductAttributeValue
 from app.models import Task
 from app.tasks import ManageTasks
 from flask_migrate import upgrade
@@ -336,3 +337,14 @@ def contact_position(value):
     parent = Partner.query.filter_by(id=str(value)).first()
     child = Partner.query.filter_by(parent_id=parent.id).first()
     return child.function
+
+
+@app.template_filter()
+def product_model(value):
+    print("!!!!!!")
+    attribute = ProductAttributeValue.query.filter_by(
+        product_id=value, attribute_id='96f65155-e8e3-4680-93bf-f305275062a7').first()
+    if attribute:
+        value_id = attribute.attribute_value_id
+        value = AttributeValue.query.filter_by(id=value_id).first()
+        return value.name

@@ -114,7 +114,13 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a id="lnk_attributes" class="nav-link" href="#sales" data-toggle="tab">
+                                <a id="lnk_product_desc" class="nav-link" href="#product_desc" data-toggle="tab">
+                                    <em class="icon ni ni-tile-thumb"></em>
+                                    <span>Product Description</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="lnk_sales" class="nav-link" href="#sales" data-toggle="tab">
                                     <em class="icon ni ni-coins"></em>
                                     <span>Sales</span>
                                 </a>
@@ -232,6 +238,10 @@
                                                                 <input type="text"
                                                                     class="form-control inp_attribute is-click-inside"
                                                                     placeholder="Start typing to add attribute...">
+                                                                <input type="text"
+                                                                    class="form-control inp_attribute_hidden is-click-inside"
+                                                                    placeholder="Start typing to add attribute..."
+                                                                    hidden>
                                                                 <a href="#"
                                                                     class="form-icon form-icon-right is-click-inside"
                                                                     data-toggle="">
@@ -243,12 +253,35 @@
                                                         <td class="td_value is-click-inside">
                                                             <input type="text"
                                                                 class="form-control inp_value is-click-inside">
+                                                            <input type="text"
+                                                                class="form-control inp_value_hidden is-click-inside"
+                                                                hidden>
                                                         </td>
                                                         <td class="td_delete is-click-inside">
                                                             <a href="#" class="is-click-inside"><em
                                                                     class="icon ni ni-trash is-click-inside"></em></a>
                                                         </td>
                                                     </tr>
+                                                    {% for attribute in attributes %}
+                                                    <tr class="is-click-inside">
+                                                        <td class="w-25 td_attribute is-click-inside">
+                                                            {{attribute.name}}
+                                                        </td>
+                                                        <td class="td_value is-click-inside">
+                                                            <input id="inp-{{attribute.id}}" type="text"
+                                                                class="form-control inp_value is-click-inside">
+                                                            <input id="hidden-inp-{{attribute.id}}" type="text"
+                                                                class="form-control inp_value_hidden is-click-inside"
+                                                                hidden>
+                                                        </td>
+                                                        <td class="td_delete is-click-inside">
+                                                            <a href="#" class="is-click-inside"><em
+                                                                    class="icon ni ni-trash is-click-inside"></em></a>
+                                                        </td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                    <input type="text" name="number_of_attributes"
+                                                        class="number-of-attributes" hidden>
                                                 </tbody>
                                             </table>
                                             <div class="preview-btn-item col-sm-6 col-lg-3 is-click-inside">
@@ -256,6 +289,23 @@
                                                     style="color: #017e84;">Add
                                                     an
                                                     attribute</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="product_desc">
+                                <div class="card-inner">
+                                    <div class="row g-3 align-center">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label class="form-label">Product Description</label>
+                                                <textarea id="desc" name="description" hidden></textarea>
+                                                <div class="form-control-wrap">
+                                                    <div class="quill-editor">
+                                                        <p>Describe your product here...</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -355,5 +405,14 @@
         var total_price = price + tax_amount;
         document.getElementsByClassName("total_price")[0].innerHTML = "(= " + total_price + " INCL. TAXES)";
     })
+</script>
+<script>
+    var quill_editor = document.querySelector(".quill-editor");
+    quill_editor.oninput = handleInput
+
+    function handleInput(e) {
+        var html = quill_editor.children[0].innerHTML
+        $("#desc").val(html)
+    }
 </script>
 {% endblock %}
