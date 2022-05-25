@@ -12,6 +12,7 @@
     <title>{% if title %}{{ title }}{% else %}Welcome to Olam{% endif %}</title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="{{url_for('static', filename='css/dashlite.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/custom.css')}}">
     <link id="skin-default" rel="stylesheet" href="{{url_for('static', filename='css/theme.css')}}">
     <link
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap"
@@ -338,6 +339,7 @@
         });
     </script>
     {% endif %}
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </body>
 
 

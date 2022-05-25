@@ -1,4 +1,5 @@
 from crypt import methods
+import itertools
 import json
 from platform import processor
 from app.helper_functions import set_default_user_groups
@@ -236,10 +237,10 @@ def get_product_attributes():
 def get_attribute_values():
     values = []
     results = AttributeValue.query.order_by('name').all()
-    for result in results:
-        values.append({str(result.id): result.name,
-                       'attribute': str(result.attribute_id)})
-    print(values)
+    attributes = ProductAttribute.query.all()
+    for result, attribute in itertools.zip_longest(results, attributes):
+        values.append({str(result.id): result.name, 'attribute': str(result.attribute_id),
+                       'attribute_id': str(attribute.id) if attribute else None})
     return Response(json.dumps(values), mimetype='application/json')
 
 
@@ -272,11 +273,6 @@ def get_category_key():
 def get_attribute_value_key():
     value = AttributeValue.query.filter(
         AttributeValue.name.ilike(request.form['name'])).first()
-    if not value:
-        value = AttributeValue(
-            name=request.form['name'], attribute_id=request.form['attribute'])
-        db.session.add(value)
-        db.session.commit()
     return jsonify({'success': True, 'key': value.id if value else None})
 
 
@@ -295,6 +291,7 @@ def get_tax_rate():
 @model_access_required(14)
 def create_product_attribute_value():
     if request.method == "POST":
+        
         attribute_value = AttributeValue(
             name=request.form['value'], attribute_id=request.form['attribute'])
         db.session.add(attribute_value)

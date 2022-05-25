@@ -29,6 +29,9 @@ var attribute;
 var selected_key;
 var selected_value;
 var matching = {};
+var matched;
+var attributes = [];
+var attribute_values;
 
 function insertCommas(number) {
   if (number !== null || number !== undefined) {
@@ -48,7 +51,7 @@ function extractID(string) {
 
 function include_tax(price) {
   $.get("/get_tax", function (tax) {
-    var price = parseInt(document.getElementsByClassName("price")[1].value)
+    var price = parseInt(removeComma(document.getElementsByClassName("price")[1].value))
     var tax_amount = (price * parseInt(tax)) / 100;
     var total_price = price + tax_amount;
     document.getElementsByClassName("total_price")[0].innerHTML = "(= " + insertCommas(total_price.toFixed(2)) + " INCL. TAXES)";
@@ -212,14 +215,18 @@ function get_partner_details(value) {
 
 function get_attribute_values() {
   $.get("/get_attribute_values", function (data) {
-    attributes = []
+    attribute_values = data
+
     for (var i = 0; i < data.length; i++) {
-      attributes.indexOf(data[i]["attribute"]) == -1 ? attributes.push(data[i]["attribute"]) : null;
+      attributes.indexOf(data[i]["attribute_id"]) == -1 ? attributes.push(data[i]["attribute_id"]) : null;
     }
+
     for (var i = 0; i < attributes.length; i++) {
+
       var result = data.filter(obj => {
         return obj.attribute == attributes[i]
       })
+
       autocomplete(document.getElementById("inp-" + attributes[i]), result)
     }
   });
@@ -573,17 +580,46 @@ $(document).ready(function () {
   if (current_href.toLowerCase().indexOf("inventory/new/product") >= 0) {
     get_attribute_values()
 
-    document.getElementById('product_image').addEventListener('change', readImage, false);
+    document.getElementById('pro-image').addEventListener('change', readImage, false);
 
     $(".preview-images").sortable()
 
+    $(".preview-images-zone").sortable();
+
     $(document).on('click', '.image-cancel', function () {
       let no = $(this).data('no');
-      $(".preview-" + no).remove();
+      $(".preview-image.preview-show-" + no).remove();
     });
 
+    var num = 1;
     function readImage() {
-      console.log(event.target.files)
+      if (window.File && window.FileList && window.FileReader) {
+        var files = event.target.files; //FileList object
+        var output = $(".preview-images-zone");
+
+        for (let i = 0; i < files.length; i++) {
+          var file = files[i];
+          if (!file.type.match('image')) continue;
+
+          var picReader = new FileReader();
+
+          picReader.addEventListener('load', function (event) {
+            var picFile = event.target;
+            var html = '<div class="preview-image preview-show-' + num + '">' +
+              '<div class="image-cancel" data-no="' + num + '">x</div>' +
+              '<div class="image-zone"><img id="pro-img-' + num + '" src="' + picFile.result + '"></div>' +
+              '</div>';
+
+            output.append(html);
+            num = num + 1;
+          });
+
+          picReader.readAsDataURL(file);
+        }
+        $("#pro-image").val('');
+      } else {
+        console.log('Browser not support');
+      }
     }
   }
 });
@@ -1138,7 +1174,6 @@ async function get_models() {
 
 $(".price").on("keyup", function () {
   var price = $(this).val()
-  console.log(price)
   include_tax(price)
 })
 
@@ -1245,6 +1280,7 @@ function get_item() {
 }
 
 function autocomplete(inp, arr) {
+
   /*the autocomplete function takes two arguments,
     the text field element and an array of possible autocompleted values:*/
   var currentFocus;
@@ -1266,6 +1302,7 @@ function autocomplete(inp, arr) {
       e.target.parentNode.appendChild(a);
       /*for each item in the array...*/
       values = []
+
       $.each(arr, function () {
         var key = Object.keys(this)[0];
         values.push(this[key])
@@ -1281,7 +1318,7 @@ function autocomplete(inp, arr) {
           b.classList.add("is-click-inside");
           b.classList.add("autocomplete-item");
           /*make the matching letters bold:*/
-          b.innerHTML = "<strong>" + value.substr(0, val.length) + "</strong>";
+          b.innerHTML = "<strong class='autocomplete-item'>" + value.substr(0, val.length) + "</strong>";
           b.innerHTML += value.substr(val.length);
 
           /*insert a input field that will hold the current array item's value:*/
@@ -1289,9 +1326,10 @@ function autocomplete(inp, arr) {
           b.getElementsByTagName("input")[0].classList.add("is-click-inside");
           /*execute a function when someone clicks on the item value (DIV element):*/
           b.addEventListener("click", function (e) {
+            matched = true
             count_tr = $(".tbody").find("tr").length;
             current_index = parseInt(count_tr) - 1
-
+            selected_key = key;
             /*insert the value for the autocomplete text field:*/
             $(inp).val(this.getElementsByTagName("input")[0].value);
             $("#hidden-" + inp.id).val(key)
@@ -1305,6 +1343,7 @@ function autocomplete(inp, arr) {
           a.appendChild(b);
         }
       })
+
 
       if (!values.includes(val)) {
         b = document.createElement("DIV");
@@ -1322,6 +1361,14 @@ function autocomplete(inp, arr) {
           /*insert the value for the autocomplete text field:*/
 
           inp.value = this.getElementsByTagName("input")[0].value;
+          handleChange(inp)
+
+          if (current_href.indexOf("/inventory/new/product") >= 0) {
+            if (inp.classList.contains("inp_value")) {
+              post_product_attribute_value((inp.id).replace("inp-", ""), inp.value);
+            }
+          }
+
           if (current_href.indexOf("/purchase/new/request-for-quotation") >= 0) {
             if (inp.classList.contains("inp_products")) {
               $("#AddProductModal").modal("show");

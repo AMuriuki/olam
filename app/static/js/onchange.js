@@ -320,8 +320,7 @@ $(".inp_category").change(function () {
 })
 
 $(".inp_products").change(function () {
-    get_product_purchase_details(key);
-    post_product_purchase(key)
+
 })
 
 $(".inp_vendor").change(function () {
@@ -336,25 +335,53 @@ $(".inp_attribute").change(function () {
 
 })
 
+function displaySpan(inp) {
+    var span_el = document.createElement("span");
+    span_el.innerHTML = $(inp).val();
+    span_el.id = "span-attribute-value-" + ($(inp).attr("id")).replace("inp-", "")
+    span_el.classList.add('span-attribute-value');
+    var exists = document.getElementById("span-attribute-value-" + ($(inp).attr("id")).replace("inp-", ""))
+    if (!exists) {
+        $(span_el).insertAfter($(inp));
+    }
+    $(inp).remove()
+}
+
 function handleChange(inp) {
     if ($(inp).hasClass("inp_value")) {
-        var span_el = document.createElement("span");
-        span_el.innerHTML = $(inp).val();
-        span_el.id = "span-attribute-value-" + (inp.id).replace("inp-", "")
-        $(span_el).insertAfter($(inp));
-        $(inp).attr("hidden", true)
+        displaySpan(inp);
     }
 }
 
 $(".inp_value").change(function (e) {
+    inp_id = $(this).attr("id");
+    inp_val = $(this).val();
+    matched = false;
+    console.log($(this).val())
     document.addEventListener('click', function (event) {
         if (!$(event.target).hasClass("create-new-item") || !$(event.target).hasClass("autocomplete-item")) {
             for (item in matching) {
-                console.log(matching[item], $(".inp_value").val())
-                console.log(matching[item] === $(this).val())
-                if ((matching[item]).toLowerCase() === ($(this).val()).toLowerCase()) {
-                    console.log(matching[item]);
+                if ((matching[item]).toLowerCase() === inp_val.toLowerCase()) {
+                    displaySpan($("#" + inp_id));
+                    $.post("/get_attribute_value_key", {
+                        name: inp_val
+                    }).done(function (response) {
+                        $("#hidden-" + inp_id).val(response['key']);
+                    })
+                    matched = true;
                 }
+            }
+
+        }
+
+        if (!matched && !$(event.target).hasClass("create-new-item")) {
+            if (confirm('Create new attribute value ' + inp_val)) {
+                displaySpan($("#" + inp_id));
+                post_product_attribute_value(inp_id.replace("inp-", ""), inp_val)
+                matched = true
+            } else {
+                console.log("cancelled")
+                matched = true
             }
         }
     })
@@ -424,4 +451,8 @@ document.addEventListener('change', function (event) {
         var total = insertCommas(total)
         total_el.innerHTML = total
     }
+})
+
+$("#name").on("input", function () {
+    $(".prod-name-error").text("");
 })

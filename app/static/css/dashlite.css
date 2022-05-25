@@ -6412,6 +6412,17 @@ a.close.disabled {
   border-radius: 0.25rem;
 }
 
+.invalid {
+  flex-basis: 350px;
+  max-width: 350px;
+  font-size: 0.875rem;
+  background-color: #e85347;
+  background-clip: padding-box;
+  border: 1px solid #e85347;
+  opacity: 0;
+  border-radius: 0.25rem;
+}
+
 .toast:not(:last-child) {
   margin-bottom: 0.75rem;
 }

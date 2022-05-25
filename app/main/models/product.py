@@ -41,9 +41,8 @@ class Product(PaginatedAPIMixin, db.Model):
     cost = db.Column(db.Float())
     price = db.Column(db.Float())
     total_price = db.Column(db.Float())
-    # tax_rate = db.Column(db.Float())
     category_id = db.Column(
-        UUID(as_uuid=True), db.ForeignKey('product_category.id'))
+        UUID(as_uuid=True), db.ForeignKey('product_category.id'), nullable=True)
     type_id = db.Column(
         UUID(as_uuid=True), db.ForeignKey('product_type.id'))
     uom_id = db.Column(
@@ -63,6 +62,11 @@ class Product(PaginatedAPIMixin, db.Model):
     description = db.Column(db.Text())
     quantity = db.Column(db.String(20))
     tax = db.Column(db.String(50), index=True)
+    promo = db.Column(db.Boolean, default=False)
+    promo_price = db.Column(db.Float())
+    promo_start = db.Column(db.DateTime)
+    promo_end = db.Column(db.DateTime)
+    draft = db.Column(db.Boolean, default=False)
 
     def generate_sku(self):
         _sku = sku_generator(self)
@@ -74,14 +78,14 @@ class Product(PaginatedAPIMixin, db.Model):
         data = {
             'id': self.id,
             'name': self.name,
-            'price': self.price,
-            'total_price': self.total_price,
-            'tax_rate': self.tax,
-            'category': self.category.name,
-            'type': self.type.name,
-            'uom': self.uom.name,
-            'quantity': self.quantity,
-            'description': self.description,
+            'price': self.price if self.price else 0,
+            'total_price': self.total_price if self.total_price else 0,
+            'tax_rate': self.tax if self.tax else 0,
+            'category': self.category.name if self.category else None,
+            'type': self.type.name if self.type else None,
+            'uom': self.uom.name if self.uom else None,
+            'quantity': self.quantity if self.quantity else 0,
+            'description': self.description if self.description else None,
             'attributes': [
                 {
                     attribute.product_attribute.name: attribute.attribute_value.name,
@@ -128,7 +132,7 @@ class ProductAttribute(db.Model):
 
 class AttributeValue(PaginatedAPIMixin, db.Model):
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    name = db.Column(db.String(120), index=True, unique=True)
+    name = db.Column(db.String(120), index=True)
     attribute_id = db.Column(UUID(as_uuid=True), db.ForeignKey(
         'product_attribute.id'), nullable=True)
     product_attribute_values = db.relationship(

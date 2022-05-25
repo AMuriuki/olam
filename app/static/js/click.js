@@ -1,4 +1,20 @@
 
+document.addEventListener('click', function (event) {
+    var el = $(event.target);
+    
+    if (el.hasClass("span-attribute-value")){
+        var td_el = el.parent();
+        var attribute_id = el.attr("id").replace("span-attribute-value-", "");
+        var inp_id = "inp-" + attribute_id;
+        $(td_el).append('<input id="'+ inp_id +'" class="form-control inp_value is-click-inside">');
+        $(el).remove();
+        var result = attribute_values.filter(obj => {
+            return obj.attribute == attribute_id;
+        })
+        autocomplete(document.getElementById(inp_id), result);
+    }
+})
+
 // document.addEventListener('click', function (event) {
 //     var arr = data
 //     var values = []

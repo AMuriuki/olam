@@ -184,7 +184,7 @@ def dummy_data():
             exists = Company.query.filter_by(name=company['name']).first()
             if not exists:
                 record = Company(
-                    name=company['name'], domain_name=company['domain_name'], currency=company['currency'], tax=company['tax'])
+                    name=company['name'], domain_name=company['domain_name'], currency=company['currency'], tax=company['vat_rate'])
                 db.session.add(record)
                 db.session.commit()
 
@@ -435,17 +435,17 @@ def dummy_data():
                 id=category['id']).first()
             if not exists:
                 product_category = ProductCategory(
-                    id=category['id'], name=category['name'], parent_id=category['parent_id'], slug=category['slug'])
+                    id=category['id'], name=category['name'], parent_id=category['parent_id'] if 'parent_id' in category else None, slug=category['slug'])
                 db.session.add(product_category)
                 db.session.commit()
                 print("Product category " + category['name'] + " created")
             else:
-                product = ProductCategory.query.filter_by(id=category['id']).first()
+                product = ProductCategory.query.filter_by(
+                    id=category['id']).first()
                 product.parent_id = category['parent_id'] if 'parent_id' in category else None
                 product.slug = category['slug']
-                db.session.commit() 
+                db.session.commit()
                 print("Product category " + category['name'] + " updated")
-
 
         # products
         products = get_products()
