@@ -191,19 +191,33 @@ $(".save-group").click(function (e) {
 // add new product
 $(".create-product").click(function (e) {
     e.preventDefault();
-    $("#modalLoading").modal("show");
-    count_tr = $("#attributes_body").find("tr").length - 1;
-    $(".number-of-attributes").val(count_tr)
-    var form = $("#new_product");
-    var url = form.attr("action")
-    $.ajax({
-        type: "POST",
-        url: url,
-        data: form.serialize(),
-        success: function (data) {
-            location.href = "/inventory/product/" + data["product_id"];
-        }
-    })
+    if ($(".product-name").val()) {
+        $("#modalLoading").modal("show");
+        var form = $("#new_product");
+        var formData = new FormData(form[0]);
+        var fileInput = document.querySelector("#product_image");
+        selectedFiles = fileInput.files;
+        
+        selectedFiles.forEach((file) => {
+            formData.append("files", file)
+        });
+        var url = form.attr("action")
+        // form.append("file", fileInput.files[0]);
+        $.ajax({
+            type: "POST",
+            processData: false,
+            contentType: false,
+            cache: false,
+            url: url,
+            data: formData,
+            success: function (data) {
+                // location.href = "/inventory/product/" + data["product_id"];
+            }
+        })
+    } else {
+        $(".prod-name-error").text("* Provide a name for your product")
+    }
+
 })
 
 // preview product on website
@@ -226,7 +240,7 @@ $(".preview-on-website").click(function (e) {
             }
         })
     } else {
-        $(".prod-name-error").text("* Please provide a product name")
+        $(".prod-name-error").text("* Provide a name for your product")
     }
 })
 

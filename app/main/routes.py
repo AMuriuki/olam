@@ -31,6 +31,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from urllib.parse import urlparse
 from app.decorators import active_user_required, model_access_required, module_access_required
 from sqlalchemy.sql.elements import or_
+from werkzeug.utils import secure_filename
 
 
 @bp.route('/', methods=['GET', 'POST'])
@@ -291,7 +292,7 @@ def get_tax_rate():
 @model_access_required(14)
 def create_product_attribute_value():
     if request.method == "POST":
-        
+
         attribute_value = AttributeValue(
             name=request.form['value'], attribute_id=request.form['attribute'])
         db.session.add(attribute_value)

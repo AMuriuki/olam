@@ -580,7 +580,7 @@ $(document).ready(function () {
   if (current_href.toLowerCase().indexOf("inventory/new/product") >= 0) {
     get_attribute_values()
 
-    document.getElementById('pro-image').addEventListener('change', readImage, false);
+    document.getElementById('product_image').addEventListener('change', readImage, false);
 
     $(".preview-images").sortable()
 
@@ -588,10 +588,25 @@ $(document).ready(function () {
 
     $(document).on('click', '.image-cancel', function () {
       let no = $(this).data('no');
+      const file = $("#pro-img-" + no).attr("src");
+      console.log($(this).closest("div"));
       $(".preview-image.preview-show-" + no).remove();
+      const dt = new DataTransfer()
+      const input = document.getElementById("product_image");
+
+      const { files } = input
+
+      for (let i = 0; i < files.length; i++) {
+        console.log(i)
+        const file = files[i]
+        if (index !== i)
+          dt.items.add(file)
+      }
+      input.files = dt.files
+      console.log(input.files)
     });
 
-    var num = 1;
+    var num = 0;
     function readImage() {
       if (window.File && window.FileList && window.FileReader) {
         var files = event.target.files; //FileList object
@@ -599,24 +614,23 @@ $(document).ready(function () {
 
         for (let i = 0; i < files.length; i++) {
           var file = files[i];
+
           if (!file.type.match('image')) continue;
 
           var picReader = new FileReader();
 
           picReader.addEventListener('load', function (event) {
             var picFile = event.target;
-            var html = '<div class="preview-image preview-show-' + num + '">' +
-              '<div class="image-cancel" data-no="' + num + '">x</div>' +
-              '<div class="image-zone"><img id="pro-img-' + num + '" src="' + picFile.result + '"></div>' +
+            var html = '<div class="col-lg-3 preview-image preview-show-' + num + '" style="padding-bottom: 14px;">' +
+              '<div class="card card-bordered"><img class="card-img-top" id=pro-img-' + num + '" src="' + picFile.result + '" alt=""></div>' +
+              '<div class="image-cancel" data-no="' + num + '"><em style="color: red" class="icon ni ni-trash-alt"></em></div>' +
               '</div>';
-
             output.append(html);
             num = num + 1;
-          });
 
+          });
           picReader.readAsDataURL(file);
         }
-        $("#pro-image").val('');
       } else {
         console.log('Browser not support');
       }

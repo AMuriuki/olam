@@ -252,6 +252,13 @@ class Users(UserMixin, PaginatedAPIMixin, db.Model):
     def generate_slug(self):
         _slug = unique_slug_generator(self)
         self.slug = _slug
+    
+    def launch_task(self, name, description, *args, **kwargs):
+        rq_job = current_app.task_queue.enqueue('app.tasks.' + name, args, kwargs)
+        task = Task(id=rq_job.get_id(), name=name, description=description,
+                    user_id=current_user.id)
+        db.session.add(task)
+        return task
 
 
 @ login_manager.user_loader

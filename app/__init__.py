@@ -1,7 +1,9 @@
-import imp
 import logging
 import os
 import rq
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 from logging.handlers import SMTPHandler, RotatingFileHandler
 from flask import Flask, current_app, request, g
 from flask_sqlalchemy import SQLAlchemy
@@ -40,6 +42,10 @@ babel = Babel()
 jsglue = JSGlue()
 cors = CORS()
 
+
+cloud_inary = cloudinary.config(cloud_name = os.getenv('CLOUD_NAME'), api_key=os.getenv('API_KEY'), 
+    api_secret=os.getenv('API_SECRET'))
+
 api_base = "http://127.0.0.1:5000"
 get_api_token = "http://127.0.0.1:5000/api/tokens"
 get_installed_modules_api = "http://127.0.0.1:5000/api/companies/"
@@ -48,6 +54,10 @@ get_installed_modules_api = "http://127.0.0.1:5000/api/companies/"
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
+
+    app.config.from_mapping(
+        CLOUDINARY_URL=os.environ.get('CLOUDINARY_URL') or 'NOTHING HERE',
+    )
 
     db.init_app(app)
     migrate.init_app(app, db, render_as_batch=True)
@@ -62,6 +72,7 @@ def create_app(config_class=Config):
     app.redis = Redis.from_url(app.config['REDIS_URL'])
     app.task_queue = rq.Queue('olam-tenant', connection=app.redis)
     cors.init_app(app)
+
 
     from app.api import bp as api_bp
     app.register_blueprint(api_bp, url_prefix='/api')

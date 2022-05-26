@@ -37,7 +37,7 @@ class ProductAttributeValue(db.Model):
 
 class Product(PaginatedAPIMixin, db.Model):
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    name = db.Column(db.String(255), unique=True)
+    name = db.Column(db.String(255))
     cost = db.Column(db.Float())
     price = db.Column(db.Float())
     total_price = db.Column(db.Float())
@@ -67,6 +67,9 @@ class Product(PaginatedAPIMixin, db.Model):
     promo_start = db.Column(db.DateTime)
     promo_end = db.Column(db.DateTime)
     draft = db.Column(db.Boolean, default=False)
+    parent_id = db.Column(UUID(as_uuid=True),
+                          db.ForeignKey('product.id'))
+    parent = db.relationship('Product', remote_side=[id])
 
     def generate_sku(self):
         _sku = sku_generator(self)

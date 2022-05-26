@@ -14,20 +14,21 @@
 </style>
 <div class="nk-content-body">
     <div class="nk-content-wrap">
-        {% include "inventory/product_blockhead.html" %}
-        <div class="nk-block">
-            {% with messages = get_flashed_messages() %}
-            {% if messages %}
-            {% for message in messages %}
-            <div class="alert alert-fill alert-success alert-icon">
-                <em class="icon ni ni-check-circle"></em>
-                {{ message }}
-                <button class="close" data-dismiss="alert"></button>
-            </div>
-            {% endfor %}
-            {% endif %}
-            {% endwith %}
-            <form id="new_product" action="{{url_for('inventory.create_product')}}" method="post">
+        <form id="new_product" action="{{url_for('inventory.create_product')}}" method="post">
+            {% include "inventory/product_blockhead.html" %}
+            <div class="nk-block">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-fill alert-success alert-icon">
+                    <em class="icon ni ni-check-circle"></em>
+                    {{ message }}
+                    <button class="close" data-dismiss="alert"></button>
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+
                 <div class="card card-preview border-0">
                     <div class="card-inner pl-0 pr-0">
                         {{form.hidden_tag()}}
@@ -37,8 +38,8 @@
                                 <div class="form-group">
                                     <label class="form-label">Product Name</label>
                                     <div class="form-control-wrap">
-                                        <input type="text" class="form-control inp_products product-name" name="name" id="name"
-                                            placeholder="e.g. HP Chromebook" required>
+                                        <input type="text" class="form-control inp_products product-name" name="name"
+                                            id="name" placeholder="e.g. HP Chromebook" required>
                                         <span class="prod-name-error" style="color:red"></span>
                                     </div>
                                 </div>
@@ -327,15 +328,15 @@
                                             <div class="form-group">
                                                 <div class="form-control-wrap">
                                                     <div class="custom-file">
-                                                        <a href="javascript:void(0)"
-                                                            onclick="$('#pro-image').click()">Upload Image</a>
-                                                        <input type="file" id="pro-image" name="pro-image"
-                                                            style="display: none;" class="form-control" multiple>
+                                                        <input type="file" id="product_image" name="product_image"
+                                                            multiple class="custom-file-input">
+                                                        <label class="custom-file-label" for="product_image">Choose
+                                                            Images</label>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-12 pb-3 preview-images-zone">
+                                        <div class="pb-3 preview-images-zone">
                                         </div>
                                     </div>
                                 </div>
@@ -404,8 +405,9 @@
                         </div>
                     </div>
                 </div>
-            </form>
-        </div>
+
+            </div>
+        </form>
     </div>
     <!-- footer @s -->
     {% include "footer.html" %}

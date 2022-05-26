@@ -1,9 +1,11 @@
 alembic==1.6.5
+autopep8==1.6.0
 Babel==2.9.1
 blinker==1.4
 certifi==2021.5.30
 chardet==4.0.0
 click==8.0.1
+cloudinary==1.29.0
 dnspython==2.1.0
 dominate==2.6.0
 elasticsearch==7.13.3
@@ -31,6 +33,7 @@ langdetect==1.0.9
 Mako==1.1.4
 MarkupSafe==2.0.1
 psycopg2-binary==2.9.1
+pycodestyle==2.8.0
 Pygments==2.9.0
 PyJWT==2.1.0
 PySocks==1.7.1
@@ -47,6 +50,7 @@ sendgrid==6.8.1
 six==1.16.0
 SQLAlchemy==1.4.20
 starkbank-ecdsa==1.1.1
+toml==0.10.2
 typing-extensions==3.10.0.2
 urllib3==1.26.6
 visitor==0.1.3
