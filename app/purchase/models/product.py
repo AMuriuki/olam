@@ -1,9 +1,6 @@
 from app import db
 from sqlalchemy.dialects.postgresql import UUID
 import uuid
-from datetime import datetime
-
-from app.main.models.product import Product
 
 
 class ProductPurchase(db.Model):

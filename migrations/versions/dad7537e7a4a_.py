@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: a346a1f5600a
+Revision ID: dad7537e7a4a
 Revises: 
-Create Date: 2022-04-30 00:49:15.777505
+Create Date: 2022-08-04 17:14:29.910089
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.
-revision = 'a346a1f5600a'
+revision = 'dad7537e7a4a'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -86,10 +86,12 @@ def upgrade():
     op.create_table('product_attribute',
     sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('name', sa.String(length=120), nullable=True),
-    sa.PrimaryKeyConstraint('id', name=op.f('pk_product_attribute'))
+    sa.Column('index', sa.Integer(), nullable=True),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_product_attribute')),
+    sa.UniqueConstraint('index', name=op.f('uq_product_attribute_index'))
     )
     with op.batch_alter_table('product_attribute', schema=None) as batch_op:
-        batch_op.create_index(batch_op.f('ix_product_attribute_name'), ['name'], unique=False)
+        batch_op.create_index(batch_op.f('ix_product_attribute_name'), ['name'], unique=True)
 
     op.create_table('product_type',
     sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
@@ -118,7 +120,7 @@ def upgrade():
         batch_op.create_index(batch_op.f('ix_purchase_status_name'), ['name'], unique=True)
 
     op.create_table('recurring_plan',
-    sa.Column('id', sa.Integer(), autoincrement=False, nullable=False),
+    sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('name', sa.String(length=120), nullable=False),
     sa.PrimaryKeyConstraint('id', name=op.f('pk_recurring_plan'))
     )
@@ -138,6 +140,16 @@ def upgrade():
     sa.Column('name', sa.String(length=120), nullable=False),
     sa.PrimaryKeyConstraint('id', name=op.f('pk_uom_category'))
     )
+    op.create_table('attribute_value',
+    sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('name', sa.String(length=120), nullable=True),
+    sa.Column('attribute_id', postgresql.UUID(as_uuid=True), nullable=True),
+    sa.ForeignKeyConstraint(['attribute_id'], ['product_attribute.id'], name=op.f('fk_attribute_value_attribute_id_product_attribute')),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_attribute_value'))
+    )
+    with op.batch_alter_table('attribute_value', schema=None) as batch_op:
+        batch_op.create_index(batch_op.f('ix_attribute_value_name'), ['name'], unique=False)
+
     op.create_table('company',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=120), nullable=True),
@@ -150,6 +162,7 @@ def upgrade():
     sa.Column('street', sa.String(length=100), nullable=True),
     sa.Column('street2', sa.String(length=100), nullable=True),
     sa.Column('city', sa.String(length=100), nullable=True),
+    sa.Column('tax', sa.String(length=100), nullable=True),
     sa.Column('county', sa.String(length=100), nullable=True),
     sa.Column('country', sa.String(length=100), nullable=True),
     sa.Column('postal_address', sa.String(length=100), nullable=True),
@@ -215,22 +228,13 @@ def upgrade():
         batch_op.create_index(batch_op.f('ix_module_official_name'), ['official_name'], unique=False)
         batch_op.create_index(batch_op.f('ix_module_technical_name'), ['technical_name'], unique=False)
 
-    op.create_table('product_attribute_value',
-    sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
-    sa.Column('name', sa.String(length=120), nullable=True),
-    sa.Column('attribute_id', postgresql.UUID(as_uuid=True), nullable=True),
-    sa.ForeignKeyConstraint(['attribute_id'], ['product_attribute.id'], name=op.f('fk_product_attribute_value_attribute_id_product_attribute')),
-    sa.PrimaryKeyConstraint('id', name=op.f('pk_product_attribute_value'))
-    )
-    with op.batch_alter_table('product_attribute_value', schema=None) as batch_op:
-        batch_op.create_index(batch_op.f('ix_product_attribute_value_name'), ['name'], unique=False)
-
     op.create_table('uom',
     sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('name', sa.String(length=120), nullable=False),
     sa.Column('category_id', postgresql.UUID(as_uuid=True), nullable=True),
     sa.ForeignKeyConstraint(['category_id'], ['uom_category.id'], name=op.f('fk_uom_category_id_uom_category')),
-    sa.PrimaryKeyConstraint('id', name=op.f('pk_uom'))
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_uom')),
+    sa.UniqueConstraint('name', name=op.f('uq_uom_name'))
     )
     op.create_table('city',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -466,7 +470,7 @@ def upgrade():
     sa.Column('name', sa.String(length=120), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('company_id', sa.Integer(), nullable=True),
-    sa.Column('plan_id', sa.Integer(), nullable=True),
+    sa.Column('plan_id', postgresql.UUID(as_uuid=True), nullable=True),
     sa.Column('referred_by', sa.String(length=120), nullable=True),
     sa.Column('description', sa.Text(), nullable=True),
     sa.Column('active', sa.Boolean(), nullable=True),
@@ -499,6 +503,7 @@ def upgrade():
     op.create_table('product_category',
     sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('name', sa.String(length=120), nullable=True),
+    sa.Column('slug', sa.String(length=120), nullable=True),
     sa.Column('parent_id', postgresql.UUID(as_uuid=True), nullable=True),
     sa.Column('description', sa.Text(), nullable=True),
     sa.Column('created_by', sa.Integer(), nullable=True),
@@ -515,7 +520,8 @@ def upgrade():
     sa.PrimaryKeyConstraint('id', name=op.f('pk_product_category'))
     )
     with op.batch_alter_table('product_category', schema=None) as batch_op:
-        batch_op.create_index(batch_op.f('ix_product_category_name'), ['name'], unique=False)
+        batch_op.create_index(batch_op.f('ix_product_category_name'), ['name'], unique=True)
+        batch_op.create_index(batch_op.f('ix_product_category_slug'), ['slug'], unique=True)
 
     op.create_table('purchase',
     sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
@@ -574,9 +580,10 @@ def upgrade():
     sa.Column('name', sa.String(length=255), nullable=True),
     sa.Column('cost', sa.Float(), nullable=True),
     sa.Column('price', sa.Float(), nullable=True),
-    sa.Column('tax_rate', sa.Float(), nullable=True),
+    sa.Column('total_price', sa.Float(), nullable=True),
     sa.Column('category_id', postgresql.UUID(as_uuid=True), nullable=True),
-    sa.Column('sub_category_id', postgresql.UUID(as_uuid=True), nullable=True),
+    sa.Column('type_id', postgresql.UUID(as_uuid=True), nullable=True),
+    sa.Column('uom_id', postgresql.UUID(as_uuid=True), nullable=True),
     sa.Column('created_by', sa.Integer(), nullable=True),
     sa.Column('approved_for_sale_by', sa.Integer(), nullable=True),
     sa.Column('created_on', sa.DateTime(), nullable=True),
@@ -585,20 +592,32 @@ def upgrade():
     sa.Column('deleted_by', sa.Integer(), nullable=True),
     sa.Column('deleted_on', sa.DateTime(), nullable=True),
     sa.Column('deleted', sa.Boolean(), nullable=True),
+    sa.Column('published', sa.Boolean(), nullable=True),
     sa.Column('approved_for_sale', sa.Boolean(), nullable=True),
     sa.Column('in_stock', sa.Boolean(), nullable=True),
     sa.Column('sku', sa.String(length=120), nullable=True),
     sa.Column('description', sa.Text(), nullable=True),
+    sa.Column('quantity', sa.String(length=20), nullable=True),
+    sa.Column('tax', sa.String(length=50), nullable=True),
+    sa.Column('promo', sa.Boolean(), nullable=True),
+    sa.Column('promo_price', sa.Float(), nullable=True),
+    sa.Column('promo_start', sa.DateTime(), nullable=True),
+    sa.Column('promo_end', sa.DateTime(), nullable=True),
+    sa.Column('draft', sa.Boolean(), nullable=True),
+    sa.Column('parent_id', postgresql.UUID(as_uuid=True), nullable=True),
     sa.ForeignKeyConstraint(['approved_for_sale_by'], ['users.id'], name=op.f('fk_product_approved_for_sale_by_users')),
     sa.ForeignKeyConstraint(['category_id'], ['product_category.id'], name=op.f('fk_product_category_id_product_category')),
     sa.ForeignKeyConstraint(['created_by'], ['users.id'], name=op.f('fk_product_created_by_users')),
     sa.ForeignKeyConstraint(['deleted_by'], ['users.id'], name=op.f('fk_product_deleted_by_users')),
-    sa.ForeignKeyConstraint(['sub_category_id'], ['product_category.id'], name=op.f('fk_product_sub_category_id_product_category')),
+    sa.ForeignKeyConstraint(['parent_id'], ['product.id'], name=op.f('fk_product_parent_id_product')),
+    sa.ForeignKeyConstraint(['type_id'], ['product_type.id'], name=op.f('fk_product_type_id_product_type')),
+    sa.ForeignKeyConstraint(['uom_id'], ['uom.id'], name=op.f('fk_product_uom_id_uom')),
     sa.ForeignKeyConstraint(['updated_by'], ['users.id'], name=op.f('fk_product_updated_by_users')),
     sa.PrimaryKeyConstraint('id', name=op.f('pk_product'))
     )
     with op.batch_alter_table('product', schema=None) as batch_op:
         batch_op.create_index(batch_op.f('ix_product_sku'), ['sku'], unique=True)
+        batch_op.create_index(batch_op.f('ix_product_tax'), ['tax'], unique=False)
 
     op.create_table('purchase_activity',
     sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
@@ -606,6 +625,23 @@ def upgrade():
     sa.ForeignKeyConstraint(['id'], ['activity.id'], name=op.f('fk_purchase_activity_id_activity')),
     sa.ForeignKeyConstraint(['purchase_id'], ['purchase.id'], name=op.f('fk_purchase_activity_purchase_id_purchase')),
     sa.PrimaryKeyConstraint('id', name=op.f('pk_purchase_activity'))
+    )
+    op.create_table('product_attribute_value',
+    sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('product_id', postgresql.UUID(as_uuid=True), nullable=True),
+    sa.Column('attribute_id', postgresql.UUID(as_uuid=True), nullable=True),
+    sa.Column('attribute_value_id', postgresql.UUID(as_uuid=True), nullable=True),
+    sa.ForeignKeyConstraint(['attribute_id'], ['product_attribute.id'], name=op.f('fk_product_attribute_value_attribute_id_product_attribute')),
+    sa.ForeignKeyConstraint(['attribute_value_id'], ['attribute_value.id'], name=op.f('fk_product_attribute_value_attribute_value_id_attribute_value')),
+    sa.ForeignKeyConstraint(['product_id'], ['product.id'], name=op.f('fk_product_attribute_value_product_id_product')),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_product_attribute_value'))
+    )
+    op.create_table('product_image',
+    sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('product_id', postgresql.UUID(as_uuid=True), nullable=True),
+    sa.Column('image_url', sa.String(length=120), nullable=True),
+    sa.ForeignKeyConstraint(['product_id'], ['product.id'], name=op.f('fk_product_image_product_id_product')),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_product_image'))
     )
     op.create_table('product_purchase',
     sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
@@ -623,8 +659,11 @@ def upgrade():
 def downgrade():
     # ### commands auto generated by Alembic - please adjust! ###
     op.drop_table('product_purchase')
+    op.drop_table('product_image')
+    op.drop_table('product_attribute_value')
     op.drop_table('purchase_activity')
     with op.batch_alter_table('product', schema=None) as batch_op:
+        batch_op.drop_index(batch_op.f('ix_product_tax'))
         batch_op.drop_index(batch_op.f('ix_product_sku'))
 
     op.drop_table('product')
@@ -640,6 +679,7 @@ def downgrade():
 
     op.drop_table('purchase')
     with op.batch_alter_table('product_category', schema=None) as batch_op:
+        batch_op.drop_index(batch_op.f('ix_product_category_slug'))
         batch_op.drop_index(batch_op.f('ix_product_category_name'))
 
     op.drop_table('product_category')
@@ -706,10 +746,6 @@ def downgrade():
 
     op.drop_table('city')
     op.drop_table('uom')
-    with op.batch_alter_table('product_attribute_value', schema=None) as batch_op:
-        batch_op.drop_index(batch_op.f('ix_product_attribute_value_name'))
-
-    op.drop_table('product_attribute_value')
     with op.batch_alter_table('module', schema=None) as batch_op:
         batch_op.drop_index(batch_op.f('ix_module_technical_name'))
         batch_op.drop_index(batch_op.f('ix_module_official_name'))
@@ -734,6 +770,10 @@ def downgrade():
         batch_op.drop_index(batch_op.f('ix_company_domain_name'))
 
     op.drop_table('company')
+    with op.batch_alter_table('attribute_value', schema=None) as batch_op:
+        batch_op.drop_index(batch_op.f('ix_attribute_value_name'))
+
+    op.drop_table('attribute_value')
     op.drop_table('uom_category')
     with op.batch_alter_table('stage', schema=None) as batch_op:
         batch_op.drop_index(batch_op.f('ix_stage_name'))

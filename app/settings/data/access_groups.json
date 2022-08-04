@@ -21,27 +21,6 @@
     "permission": 1
   },
   {
-    "id": "a32b9491-c713-4068-adbc-318274a11844",
-    "access_rights_url": "/api/access_groups/a32b9491-c713-4068-adbc-318274a11844/access_rights",
-    "name": "Administrator",
-    "module_id": 1,
-    "permission": 3
-  },
-  {
-    "id": "ad63f8bb-3471-412e-8301-79e006c95668",
-    "access_rights_url": "/api/access_groups/ad63f8bb-3471-412e-8301-79e006c95668/access_rights",
-    "name": "Manager",
-    "module_id": 1,
-    "permission": 2
-  },
-  {
-    "id": "c944cac7-74a7-49a2-8938-aaccfa67d632",
-    "access_rights_url": "/api/access_groups/c944cac7-74a7-49a2-8938-aaccfa67d632/access_rights",
-    "name": "User",
-    "module_id": 1,
-    "permission": 1
-  }
-  {
     "id": "306aef03-7f21-43c8-8431-f00181135d05",
     "name": "Administrator",
     "access_rights_url": "/api/access_groups/306aef03-7f21-43c8-8431-f00181135d05/access_rights",

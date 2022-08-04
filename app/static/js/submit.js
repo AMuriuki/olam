@@ -305,13 +305,17 @@ function post_product_attribute_value(attribute, value, id) {
     })
 }
 
-var partner_slug;
+
 function create_partner(partner) {
     $.post("/contacts/create_partner", {
         partner: partner
     }).done(function (response) {
         partner_slug = response['slug'];
+        partner_id = response['id'];
         $("#partner_slug").val(partner_slug);
+        if (current_href.toLowerCase().indexOf("crm/index")>=0) {
+            get_partner_details(partner_slug);
+        }
     }).fail(function (xhr) {
         if (xhr.status == 403) {
             alert("You are not authorized to create a partner. Contact your site administrator for more information.");
@@ -332,3 +336,12 @@ function create_plan(plan) {
     })
 }
 
+
+// post opportunity priority
+function select_priority(value) {
+    $.post("/crm/selected_priority", {
+        selected_priority: value,
+    })
+        .done(function (response) { })
+        .fail(function () { });
+}

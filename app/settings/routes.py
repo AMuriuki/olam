@@ -695,10 +695,11 @@ def user_notifications():
 
 @bp.route('/create_plan', methods=['GET', 'POST'])
 @login_required
-@module_access_required(17)
+@module_access_required(1)
+@model_access_required(17)
 def create_plan():
     if request.method == "POST":
-        plan = RecurringPlan(name=request.form['name'])
+        plan = RecurringPlan(name=request.form['plan'])
         db.session.add(plan)
         db.session.commit()
         return jsonify({"response": "success"})

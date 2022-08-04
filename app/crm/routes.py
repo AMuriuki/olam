@@ -93,7 +93,7 @@ def update_item():
 @active_user_required
 @bp.route('/get_partner_details', methods=['GET', 'POST'])
 def get_partner_details():
-    partner = Partner.query.filter_by(id=request.form['partner_id']).first()
+    partner = Partner.query.filter_by(slug=request.form['partner_id']).first()
     return jsonify({"partner_email": partner.email, "partner_phone": partner.phone_no})
 
 

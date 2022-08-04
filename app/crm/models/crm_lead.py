@@ -22,7 +22,7 @@ class Lead(db.Model):
     name = db.Column(db.String(120), index=True, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), default=None)
     company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
-    plan_id = db.Column(db.Integer, db.ForeignKey('recurring_plan.id'))
+    plan_id = db.Column(UUID(as_uuid=True), db.ForeignKey('recurring_plan.id'))
     referred_by = db.Column(db.String(120))
     description = db.Column(db.Text())
     active = db.Column(db.Boolean, default=True)

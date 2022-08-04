@@ -400,7 +400,14 @@ function handleChange(inp, key) {
     }
 
     if ($(inp).hasClass("inp_partner")) {
-        document.getElementById("partner_slug").value = key;
+        // document.getElementById("partner_slug").value = key;
+        stage_id = getId(inp.id)
+        if (current_href.toLowerCase().indexOf("crm/index")>=0) {
+            if(key){
+                get_partner_details(key)
+            }
+            
+        }
     }
 }
 
@@ -409,7 +416,7 @@ $(".set-email").change(function () {
     var email = $(this).val();
 
     // get the partner id
-    var partner_slug = $("#partner_slug").val();
+    partner_slug = $("#partner_slug").val();
 
     // post the email to the server
     $.post("/contacts/set_email", {
@@ -423,7 +430,7 @@ $(".set-phone").change(function () {
     var phone = $(this).val();
 
     // get the partner id
-    var partner_slug = $("#partner_slug").val();
+    partner_slug = $("#partner_slug").val();
 
     // post the email to the server
     $.post("/contacts/set_phone", {

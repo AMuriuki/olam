@@ -347,3 +347,11 @@ def product_model(value):
         value_id = attribute.attribute_value_id
         value = AttributeValue.query.filter_by(id=value_id).first()
         return value.name
+
+
+@app.template_filter()
+def get_model(group_id):
+    group = Group.query.filter_by(id=group_id).first()
+    access = group.rights
+    for access in access:
+        return access.name

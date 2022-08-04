@@ -33,7 +33,7 @@ def create_partner():
         partner.generate_slug()
         db.session.add(partner)
         db.session.commit()
-        return jsonify({"success": True, "slug": partner.slug})
+        return jsonify({"success": True, "slug": partner.slug, "id": partner.id})
 
 
 @bp.route('/set_email', methods=['GET', 'POST'])
