@@ -341,7 +341,6 @@ def contact_position(value):
 
 @app.template_filter()
 def product_model(value):
-    print("!!!!!!")
     attribute = ProductAttributeValue.query.filter_by(
         product_id=value, attribute_id='96f65155-e8e3-4680-93bf-f305275062a7').first()
     if attribute:

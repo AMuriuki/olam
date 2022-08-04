@@ -34,6 +34,14 @@ class ProductAttributeValue(db.Model):
     product_attribute = db.relationship('ProductAttribute')
     product = db.relationship('Product')
 
+    def to_dict(self):
+        data = {
+            'attribute': self.attribute.name,
+            'value': self.value.name
+        }
+
+        return data
+
 
 class Product(PaginatedAPIMixin, db.Model):
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
@@ -70,6 +78,7 @@ class Product(PaginatedAPIMixin, db.Model):
     parent_id = db.Column(UUID(as_uuid=True),
                           db.ForeignKey('product.id'))
     parent = db.relationship('Product', remote_side=[id])
+    images = db.relationship('ProductImage', backref='image', lazy='dynamic')
 
     def generate_sku(self):
         _sku = sku_generator(self)
@@ -96,6 +105,13 @@ class Product(PaginatedAPIMixin, db.Model):
             ]
         }
         return data
+
+    def product_image(self):
+        product_image = ProductImage.query.filter_by(
+            product_id=self.id).first()
+        if product_image:
+            return product_image.image_url
+        return None
 
 
 class ProductCategory(db.Model):
@@ -146,4 +162,17 @@ class AttributeValue(PaginatedAPIMixin, db.Model):
             'id': str(self.id),
             'name': self.name
         }
+        return data
+
+
+class ProductImage(db.Model):
+    id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    product_id = db.Column(UUID(as_uuid=True), db.ForeignKey('product.id'))
+    image_url = db.Column(db.String(120))
+
+    def to_dict(self):
+        data = {
+            'url': self.image_url
+        }
+
         return data

@@ -1,5 +1,5 @@
 import imp
-from app import api_base, db
+from app import olam_base, db
 import requests
 import json
 from app.auth.models.user import Access, Group, Users
@@ -10,7 +10,7 @@ from app.main.models.module import Model, Module
 def get_access_groups():
     modules = Module.query.all()
     for module in modules:
-        response = requests.get(api_base+module.user_groups_api)
+        response = requests.get(olam_base+module.user_groups_api)
         response_dict = json.loads(response.content)
         for i in range(len(response_dict['items'])):
             exists = Group.query.filter_by(
@@ -27,7 +27,7 @@ def get_access_groups():
 def get_access_rights():
     groups = Group.query.all()
     for group in groups:
-        response = requests.get(api_base + group.access_rights_url)
+        response = requests.get(olam_base + group.access_rights_url)
         response_dict = json.loads(response.content)
         for i in range(len(response_dict['items'])):
             exists = Access.query.filter_by(
@@ -46,13 +46,14 @@ def get_access_rights():
 def get_models():
     modules = Module.query.all()
     for module in modules:
-        response = requests.get(api_base+module.models_api)
+        response = requests.get(olam_base+module.models_api)
         response_dict = json.loads(response.content)
         for i in range(len(response_dict['items'])):
-            exists = Model.query.filter_by(id=response_dict['items'][i]['id']).first()
+            exists = Model.query.filter_by(
+                id=response_dict['items'][i]['id']).first()
             if not exists:
                 model = Model(id=response_dict['items'][i]['id'], name=response_dict['items'][i]['name'],
-                            description=response_dict['items'][i]['description'], module_id=response_dict['items'][i]['module_id'])
+                              description=response_dict['items'][i]['description'], module_id=response_dict['items'][i]['module_id'])
                 model.generate_slug()
                 db.session.add(model)
                 db.session.commit()

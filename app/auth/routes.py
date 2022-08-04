@@ -9,7 +9,7 @@ from flask import render_template, redirect, url_for, flash, request, session, a
 from werkzeug.urls import url_parse
 from flask_login import login_user, logout_user, current_user
 from flask_babel import _
-from app import db, current_app, get_api_token, get_installed_modules_api, api_base
+from app import db, current_app, olam_get_token, olam_installed_modules, olam_base
 from app.auth import bp
 from app.auth.forms import LoginForm, RegistrationForm, \
     ResetPasswordRequestForm, ResetPasswordForm, SetPasswordForm
@@ -153,7 +153,7 @@ def set_password():
                 else:
                     # first time modules/DB set up
                     company_id = request.args.get('companyid')
-                    link = get_installed_modules_api + \
+                    link = olam_installed_modules + \
                         str(company_id) + '/modules'
                     get_installed_modules(link)
                     get_access_groups()
@@ -175,7 +175,8 @@ def get_installed_modules(link):
                 id=response_dict['items'][i]['category_id'], name=response_dict['items'][i]['category_name'])
             db.session.add(module_category)
             db.session.commit()
-        module = Module(id=response_dict['items'][i]['id'], technical_name=response_dict['items'][i]['technical_name'], official_name=response_dict['items'][i]['official_name'], bp_name=response_dict['items'][i]['bp_name'], summary=response_dict['items'][i]['summary'], category_id=response_dict['items'][i]['category_id'], user_groups_api=response_dict['items'][i]['links']['access_groups'], models_api=response_dict['items'][i]['links']['models'], url=response_dict['items'][i]['url'])
+        module = Module(id=response_dict['items'][i]['id'], technical_name=response_dict['items'][i]['technical_name'], official_name=response_dict['items'][i]['official_name'], bp_name=response_dict['items'][i]['bp_name'], summary=response_dict['items']
+                        [i]['summary'], category_id=response_dict['items'][i]['category_id'], user_groups_api=response_dict['items'][i]['links']['access_groups'], models_api=response_dict['items'][i]['links']['models'], url=response_dict['items'][i]['url'])
         db.session.add(module)
         db.session.commit()
 
@@ -183,7 +184,7 @@ def get_installed_modules(link):
 def get_access_groups():
     modules = Module.query.all()
     for module in modules:
-        response = requests.get(api_base+module.user_groups_api)
+        response = requests.get(olam_base+module.user_groups_api)
         response_dict = json.loads(response.content)
         for i in range(len(response_dict['items'])):
             exists = Group.query.filter_by(
@@ -199,7 +200,7 @@ def get_access_groups():
 def get_models():
     modules = Module.query.all()
     for module in modules:
-        response = requests.get(api_base+module.models_api)
+        response = requests.get(olam_base+module.models_api)
         response_dict = json.loads(response.content)
         for i in range(len(response_dict['items'])):
             exists = Model.query.filter_by(
@@ -215,7 +216,7 @@ def get_models():
 def get_access_rights():
     groups = Group.query.all()
     for group in groups:
-        response = requests.get(api_base + group.access_rights_url)
+        response = requests.get(olam_base + group.access_rights_url)
         response_dict = json.loads(response.content)
         for i in range(len(response_dict['items'])):
             exists = Access.query.filter_by(

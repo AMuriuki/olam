@@ -3,8 +3,9 @@ import requests
 from flask.json import jsonify
 from itsdangerous import json
 from sqlalchemy import log
-from app import db, api_base
+from app import db, olam_base
 from app.auth.email import send_invite_email
+from app.crm.models.crm_recurring_plan import RecurringPlan
 from app.decorators import active_user_required, can_create_access_required, can_write_access_required, module_access_required, model_access_required
 from app.helper_functions import set_default_user_groups
 from app.main.models.country import Country
@@ -644,10 +645,10 @@ def create_user():
 @active_user_required
 def get_apps():
     response = requests.get(
-        api_base + '/api/module_categories')
+        olam_base + '/api/module_categories')
     response_dict = json.loads(response.content)
     _response = requests.get(
-        api_base + '/api/apps')
+        olam_base + '/api/apps')
     _response_dict = json.loads(_response.content)
     return render_template("settings/apps.html", title=_("Apps | Olam ERP"), categories=response_dict['items'], apps=_response_dict['items'])
 
@@ -690,3 +691,14 @@ def user_security():
 @active_user_required
 def user_notifications():
     return render_template("settings/user_notification.html", title=_("Security | Olam ERP"))
+
+
+@bp.route('/create_plan', methods=['GET', 'POST'])
+@login_required
+@module_access_required(17)
+def create_plan():
+    if request.method == "POST":
+        plan = RecurringPlan(name=request.form['name'])
+        db.session.add(plan)
+        db.session.commit()
+        return jsonify({"response": "success"})

@@ -22,6 +22,48 @@ def index():
     return render_template('contacts/index.html', title=_('Contacts | Olam ERP'), contacts=contacts)
 
 
+@bp.route('/create_partner', methods=['GET', 'POST'])
+@login_required
+@active_user_required
+@can_create_access_required(3)
+def create_partner():
+    if request.method == "POST":
+        partner = Partner(
+            company_name=request.form['partner'], is_company=True)
+        partner.generate_slug()
+        db.session.add(partner)
+        db.session.commit()
+        return jsonify({"success": True, "slug": partner.slug})
+
+
+@bp.route('/set_email', methods=['GET', 'POST'])
+@login_required
+@active_user_required
+@can_write_access_required(3)
+def set_email():
+    if request.method == "POST":
+        # check if partner has email
+        partner = Partner.query.filter_by(slug=request.form['slug']).first()
+        if not partner.email:
+            partner.email = request.form['email']
+            db.session.commit()
+            return jsonify({"success": True})
+
+
+@bp.route('/set_phone', methods=['GET', 'POST'])
+@login_required
+@active_user_required
+@can_write_access_required(3)
+def set_phone():
+    if request.method == "POST":
+        # check if partner has email
+        partner = Partner.query.filter_by(slug=request.form['slug']).first()
+        if not partner.phone_no:
+            partner.phone_no = request.form['phone']
+            db.session.commit()
+            return jsonify({"success": True})
+
+
 @bp.route('/new', methods=['GET', 'POST'])
 @login_required
 @active_user_required

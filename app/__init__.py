@@ -43,12 +43,14 @@ jsglue = JSGlue()
 cors = CORS()
 
 
-cloud_inary = cloudinary.config(cloud_name = os.getenv('CLOUD_NAME'), api_key=os.getenv('API_KEY'), 
-    api_secret=os.getenv('API_SECRET'))
+cloud_inary = cloudinary.config(cloud_name=os.getenv('CLOUD_NAME'), api_key=os.getenv('API_KEY'),
+                                api_secret=os.getenv('API_SECRET'))
 
-api_base = "http://127.0.0.1:5000"
-get_api_token = "http://127.0.0.1:5000/api/tokens"
-get_installed_modules_api = "http://127.0.0.1:5000/api/companies/"
+olam_base = "http://127.0.0.1:5000"
+olam_get_token = "http://127.0.0.1:5000/api/tokens"
+olam_installed_modules = "http://127.0.0.1:5000/api/companies/"
+
+tenant_site = "http://127.0.0.1:8080"
 
 
 def create_app(config_class=Config):
@@ -72,7 +74,6 @@ def create_app(config_class=Config):
     app.redis = Redis.from_url(app.config['REDIS_URL'])
     app.task_queue = rq.Queue('olam-tenant', connection=app.redis)
     cors.init_app(app)
-
 
     from app.api import bp as api_bp
     app.register_blueprint(api_bp, url_prefix='/api')
@@ -100,7 +101,7 @@ def create_app(config_class=Config):
 
     from app.main import bp as main_bp
     app.register_blueprint(main_bp)
-    
+
     if not app.debug and not app.testing:
         if app.config['MAIL_SERVER']:
             auth = None

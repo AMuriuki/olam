@@ -1,37 +1,22 @@
-from crypt import methods
 import itertools
 import json
-from platform import processor
+from app.crm.models.crm_recurring_plan import RecurringPlan
 from app.helper_functions import set_default_user_groups
 from app.main.models.partner import Partner, PartnerPosition, PartnerTag, PartnerTitle
-import os
-from app.auth.email import send_database_activation_email, send_invite_email
-import re
-import time
-from os import fsync
-from app.main.models.database import Database
+from app.auth.email import send_invite_email
 from app.main.models.company import Company
-from app.auth.models.user import Group, Users, user_group
+from app.auth.models.user import Users
 from app.main.models.product import Product, ProductAttribute, AttributeValue, ProductCategory
 from app.main.models.uom import Uom
-from app.main.utils import search_dict, updating
-from app.main.models.module import Module
-from datetime import datetime
-from flask import render_template, flash, redirect, url_for, request, g, \
-    jsonify, current_app, session, request, abort, Response
+from flask import render_template, redirect, url_for, request, jsonify, request, Response
 from flask_login import current_user, login_required
-from flask_babel import _, get_locale
-from guess_language import guess_language
+from flask_babel import _
 from app import db
 from app.main import bp
-from app.main.forms import GetStartedForm, InviteForm
-from config import basedir
-from flask_login import login_user, logout_user, current_user
-from werkzeug.security import generate_password_hash, check_password_hash
-from urllib.parse import urlparse
+from app.main.forms import InviteForm
+from flask_login import current_user
 from app.decorators import active_user_required, model_access_required, module_access_required
 from sqlalchemy.sql.elements import or_
-from werkzeug.utils import secure_filename
 
 
 @bp.route('/', methods=['GET', 'POST'])
@@ -177,9 +162,9 @@ def get_uom_key():
 def get_partners():
     partners = []
     results = db.session.query(Partner).filter(or_(
-        Partner.is_company == True, Partner.is_individual == True)).all()
+        Partner.is_company == True, Partner.is_individual == True)).order_by(Partner.name, Partner.company_name).all()
     for result in results:
-        partners.append({str(result.id): result.get_name()})
+        partners.append({str(result.slug): result.get_name()})
     return Response(json.dumps(partners), mimetype='application/json')
 
 
@@ -264,6 +249,7 @@ def get_product_categories():
 def get_category_key():
     category = ProductCategory.query.filter_by(
         name=request.form['name']).first()
+    print(category.id)
     return jsonify({'success': True, 'key': category.id})
 
 
@@ -284,6 +270,17 @@ def get_attribute_value_key():
 def get_tax_rate():
     company = Company.query.first()
     return Response(json.dumps(company.tax), mimetype='application/json')
+
+
+@bp.route('/get_plans', methods=['GET', 'POST'])
+@login_required
+@active_user_required
+def recurring_plan():
+    plans = []
+    results = RecurringPlan.query.all()
+    for result in results:
+        plans.append({str(result.id): result.name})
+    return Response(json.dumps(plans), mimetype='application/json')
 
 
 @bp.route('/create_product_attribute_value', methods=['GET', 'POST'])

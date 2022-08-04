@@ -214,5 +214,14 @@
     "write": true,
     "create": true,
     "delete": true
+  },
+  {
+    "id": "7e6eed0c-db90-4188-b80c-64af6b5b57df",
+    "name": "Manage recurring plans records",
+    "model_id": 17,
+    "read": true,
+    "write": true,
+    "create": true,
+    "delete": true
   }
 ]

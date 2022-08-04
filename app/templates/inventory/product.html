@@ -64,6 +64,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a id="lnk_attributes" class="nav-link" href="#product_gallery" data-toggle="tab">
+                                <em class="icon ni ni-img"></em>
+                                <span>Product Gallery</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a id="lnk_attributes" class="nav-link" href="#sales" data-toggle="tab">
                                 <em class="icon ni ni-coins"></em>
                                 <span>Sales</span>
@@ -187,6 +193,22 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="tab-pane" id="product_gallery">
+                            <div class="card-inner">
+                                <div class="row">
+                                    <div class="pb-3 preview-images-zone">
+                                        {% for image in images %}
+                                        <div class="col-lg-3 preview-image preview-show-{{image.id}}"
+                                            style="padding-bottom: 14px;">
+                                            <div class="card card-bordered"><img class="card-img-top"
+                                                    id="pro-img-{{image.id}}" src="{{image.image_url}}" alt="">
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="tab-pane" id="sales">
                             <div class="card-inner">
                                 <div class="row g-3 align-center">
@@ -205,7 +227,8 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label class="form-label" for="optional_products">Point of Sales</label>
+                                            <label class="form-label" for="optional_products">Point of
+                                                Sales</label>
                                             <div class="form-control-wrap">
                                                 <div class="custom-control custom-control-sm custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input" id="pay-card">

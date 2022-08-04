@@ -11,6 +11,10 @@
     .og-attribute-tr {
         display: none;
     }
+
+    .invoice-bills .table th:last-child, .invoice-bills .table td:last-child{
+        text-align: left;
+    }
 </style>
 <div class="nk-content-body">
     <div class="nk-content-wrap">
@@ -238,7 +242,6 @@
                                                     <tr class="is-click-inside">
                                                         <th class="is-click-inside">Attribute</th>
                                                         <th class="is-click-inside">Values</th>
-                                                        <th class="is-click-inside"></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody class="tbody is-click-inside" id="attributes_body">
@@ -267,10 +270,6 @@
                                                                 class="form-control inp_value_hidden is-click-inside"
                                                                 hidden>
                                                         </td>
-                                                        <td class="td_delete is-click-inside">
-                                                            <a href="#" class="is-click-inside"><em
-                                                                    class="icon ni ni-trash is-click-inside"></em></a>
-                                                        </td>
                                                     </tr>
                                                     {% for attribute in attributes %}
                                                     <tr class="is-click-inside">
@@ -280,13 +279,9 @@
                                                         <td class="td_value is-click-inside">
                                                             <input id="inp-{{attribute.id}}" type="text"
                                                                 class="form-control inp_value is-click-inside">
-                                                            <input id="hidden-inp-{{attribute.id}}" type="text"
+                                                            <input id="hidden-inp-{{attribute.id}}" name="hidden-inp-{{attribute.id}}" type="text"
                                                                 class="form-control inp_value_hidden is-click-inside"
                                                                 hidden>
-                                                        </td>
-                                                        <td class="td_delete is-click-inside">
-                                                            <a href="#" class="is-click-inside"><em
-                                                                    class="icon ni ni-trash is-click-inside"></em></a>
                                                         </td>
                                                     </tr>
                                                     {% endfor %}
@@ -294,12 +289,6 @@
                                                         class="number-of-attributes" hidden>
                                                 </tbody>
                                             </table>
-                                            <div class="preview-btn-item col-sm-6 col-lg-3 is-click-inside">
-                                                <a href="#" class="add-attribute add-line is-click-inside"
-                                                    style="color: #017e84;">Add
-                                                    an
-                                                    attribute</a>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>

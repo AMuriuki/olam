@@ -19,10 +19,10 @@
             <div class="card-inner p-0">
                 <div class="row">
                     {% for product in products %}
-                    <div class="col-lg-3">
+                    <div class="col-lg-2">
                         <a href="{{url_for('inventory.product', product_id=product.id)}}">
                             <div class="card card-bordered">
-                                <img src="https://deed.co.ke/assets/uploads/03795959406adc00044a547b34202759.jpg"
+                                <img src="{{product.product_image()}}"
                                     class="card-img-top p-4 w-60" alt="">
                                 <div class="card-inner pt1">
                                     <h6>{{product.name}}</h6>

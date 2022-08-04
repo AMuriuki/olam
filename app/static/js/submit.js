@@ -197,12 +197,12 @@ $(".create-product").click(function (e) {
         var formData = new FormData(form[0]);
         var fileInput = document.querySelector("#product_image");
         selectedFiles = fileInput.files;
-        
+
         selectedFiles.forEach((file) => {
             formData.append("files", file)
         });
         var url = form.attr("action")
-        // form.append("file", fileInput.files[0]);
+
         $.ajax({
             type: "POST",
             processData: false,
@@ -223,8 +223,7 @@ $(".create-product").click(function (e) {
 // preview product on website
 $(".preview-on-website").click(function (e) {
     e.preventDefault();
-    count_tr = $("#attributes_body").find("tr").length - 1;
-    $(".number-of-attributes").val(count_tr)
+
     if ($(".product-name").val()) {
         $(".preview-mode").prop('checked', true);
         $("#modalLoading").modal("show");
@@ -249,11 +248,20 @@ $(".edit-product").click(function (e) {
     e.preventDefault();
     $("#modalLoading").modal("show");
     var form = $("#new_product");
+    var formData = new FormData(form[0]);
+    var fileInput = document.querySelector("#product_image");
+    selectedFiles = fileInput.files;
+    selectedFiles.forEach((file) => {
+        formData.append("files", file)
+    })
     var url = form.attr("action")
     $.ajax({
         type: "POST",
+        processData: false,
+        contentType: false,
+        cache: false,
         url: url,
-        data: form.serialize(),
+        data: formData,
         success: function (data) {
             location.href = "/inventory/product/" + data["product_id"];
         }
@@ -296,3 +304,31 @@ function post_product_attribute_value(attribute, value, id) {
         $("#hidden" + inp_id).val(response['key']);
     })
 }
+
+var partner_slug;
+function create_partner(partner) {
+    $.post("/contacts/create_partner", {
+        partner: partner
+    }).done(function (response) {
+        partner_slug = response['slug'];
+        $("#partner_slug").val(partner_slug);
+    }).fail(function (xhr) {
+        if (xhr.status == 403) {
+            alert("You are not authorized to create a partner. Contact your site administrator for more information.");
+        }
+    })
+}
+
+
+function create_plan(plan) {
+    $.post("/settings/create_plan", {
+        plan: plan
+    }).done(function (response) {
+        $("#plan_id").val(response['id']);
+    }).fail(function (xhr) {
+        if (xhr.status == 403) {
+            alert("You are not authorized to create a plan. Contact your site administrator for more information.");
+        }
+    })
+}
+

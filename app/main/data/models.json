@@ -94,5 +94,11 @@
     "name": "Company",
     "description": "Information about the company.",
     "module_id": 1
+  },
+  {
+    "id": 17,
+    "name": "Recurring Plan",
+    "description": "Information about the company.",
+    "module_id": 1
   }
 ]

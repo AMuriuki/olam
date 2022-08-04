@@ -1,8 +1,11 @@
 from concurrent.futures import process
+import json
 from locale import currency
 from math import prod
 import os
 from threading import Thread
+
+import requests
 from app.auth.models.user import Access, Group, Users
 from app.auth.routes import get_access_groups
 from app.auth.utils import get_users
@@ -11,14 +14,15 @@ from app.crm.models.crm_recurring_plan import RecurringPlan
 from app.crm.models.crm_stage import Stage
 from app.crm.models.crm_lead import Lead
 from app.helper_functions import set_default_user_groups
+from app.inventory.routes import product
 from app.main.models.activities import Activity, ActivityType
 from app.main.models.company import Company
 from app.main.models.module import Model, Module, ModuleCategory
 from app.main.models.partner import Partner, PartnerTag, PartnerTitle
 from app.main.models.country import City, Country
-from flask import current_app
-from app import db
-from app.main.models.product import Product, ProductAttribute, AttributeValue, ProductCategory, ProductType
+from flask import current_app, request, session
+from app import db, tenant_site
+from app.main.models.product import Product, ProductAttribute, AttributeValue, ProductCategory, ProductImage, ProductType
 from app.main.models.uom import Uom, UomCategory
 from app.models import Task
 from app.main.utils import get_activities, get_activity_types, get_calling_codes, get_company, get_countries, get_countries_cities, get_models, get_moduleCategories, get_modules, get_product_attribute_values, get_product_attributes, get_product_categories, get_product_models, get_product_types, get_products, get_uom_categories, get_uoms
@@ -31,6 +35,9 @@ from app.purchase.models.purchase import Purchase, PurchaseActivity, PurchaseSta
 from app.purchase.utils import get_purchase_status, get_purchases
 import traceback
 from app.settings.utils import get_accessGroups, get_accessGroupsRights, get_accessRights
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 
 app = create_app()
@@ -71,6 +78,24 @@ class ManageTasks(object):
 
     def get_task_in_progress(self, name):
         return True if Task.query.filter_by(name=name, user=self, complete=False).first() else False
+
+
+def upload_product_images(files, product_id):
+    image_urls = []
+    for file in list(files):
+        cloudinary.config(cloud_name=os.getenv('CLOUD_NAME'), api_key=os.getenv(
+            'API_KEY'), api_secret=os.getenv('API_SECRET'))
+        result = cloudinary.uploader.upload(file, overwrite=True)
+        image_urls.append(result['url'])
+        os.remove(file)
+        product_image = ProductImage(
+            product_id=product_id, image_url=result['url'])
+        db.session.add(product_image)
+        db.session.commit()
+        # post_response = requests.post(
+        #     tenant_site + '/api/images/product', json={'image_url': result['url'], 'product_id': str(product_id)})
+
+    # print(post_response)
 
 
 def seed_database():

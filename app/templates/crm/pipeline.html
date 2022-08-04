@@ -205,7 +205,7 @@
                         </header>
                         <main class="kanban-drag">
                             <div class="kanban-item new-item" id="new_item_{{stage.id}}">
-                                <form method="POST">
+                                <form method="POST" autocomplete="off">
                                     {{form3.hidden_tag()}}
                                     <div class="kanban-item-text new-item-text">
                                         <div class="form-group">
@@ -213,23 +213,10 @@
                                                 Organization/Contact
                                             </label>
                                             <div class="form-control-wrap">
-                                                <select id="pipeline_select_org-{{stage.id}}" name="pipeline_select_org"
-                                                    class="form-select select_contact" data-search="on" data-ui="sm">
-                                                    <option value="default_option">
-                                                        Select or add new
-                                                    </option>
-                                                    <option value="add_new">
-                                                        Add New +
-                                                    </option>
-                                                    {% for partner in partners %}
-                                                    <option value="{{partner.id}}">
-                                                        {% if partner.is_company %}{{partner.company_name}}{% elif
-                                                        partner.is_individual %}{{partner.name}} -
-                                                        {{partner.parent.company_name}}{%
-                                                        endif %}
-                                                    </option>
-                                                    {% endfor %}
-                                                </select>
+                                                <input id="partner" type="text" name="partner"
+                                                    class="form-control inp_partner is-click-inside"
+                                                    placeholder="Start typing to select an organization or contact">
+                                                <input id="partner_slug" type="text" name="partner_slug" hidden>
                                             </div>
                                         </div>
                                     </div>
@@ -248,7 +235,7 @@
                                             <label class="form-label" for="default-1-03">Email</label>
                                             <div class="form-control-wrap">
                                                 <input name="partner_email" id="partner_email_{{stage.id}}" type="email"
-                                                    class="form-control form-control-sm" placeholder="Email">
+                                                    class="form-control form-control-sm set-email" placeholder="Email">
                                             </div>
                                         </div>
                                     </div>
@@ -257,7 +244,7 @@
                                             <label class="form-label" for="default-1-03">Phone</label>
                                             <div class="form-control-wrap">
                                                 <input name="partner_phone" id="partner_phone_{{stage.id}}" type="phone"
-                                                    class="form-control form-control-sm" placeholder="Phone">
+                                                    class="form-control form-control-sm set-phone" placeholder="Phone">
                                             </div>
                                         </div>
                                     </div>
@@ -293,15 +280,10 @@
                                             <div class="form-group">
                                                 <label class="form-label">Recurring Plan</label>
                                                 <div class="form-control-wrap">
-                                                    <select name="recurring_plan" id="recurring_plan-{{stage.id}}"
-                                                        class="form-select recurring-plan" data-search="on"
-                                                        data-ui="sm">
-                                                        <option value="default_option">Select or add new</option>
-                                                        <option value="new_plan">Add New +</option>
-                                                        {% for plan in plans %}
-                                                        <option value="{{plan.id}}">{{plan.name}}</option>
-                                                        {% endfor %}
-                                                    </select>
+                                                    <input name="recurring_plan" type="text"
+                                                        class="form-control form-control-sm inp_plan"
+                                                        placeholder="e.g Monthly">
+                                                    <input id="plan_id" type="text" name="plan_id" hidden>
                                                 </div>
                                             </div>
                                         </li>
@@ -743,11 +725,8 @@
                             {{form6.hidden_tag()}}
                             <div class="input-group">
                                 {{form6.name(class="form-control", placeholder="Add stage")}}
-                                <!-- <input class="form-control" id="new_stage_name" name="new_stage_name"
-                                    placeholder="Stage name" type="text" value=""> -->
                                 <div class="input-group-append">
                                     {{form6.submit6(class="btn btn-primary")}}
-                                    <!-- <a id="submit_new_stage" href="#" class="btn btn-primary">Add</a> -->
                                 </div>
                             </div>
                         </form>
@@ -997,4 +976,15 @@
     </div>
 </div>
 {% endfor %}
+<script>
+    $.get("/get_partners", function (data) {
+        autocomplete(document.getElementsByClassName("inp_partner")[0], data);
+        return data;
+    })
+
+    $.get("/get_plans", function (data) {
+        autocomplete(document.getElementsByClassName("inp_plan")[0], data);
+        return data;
+    })
+</script>
 {% endblock %}
