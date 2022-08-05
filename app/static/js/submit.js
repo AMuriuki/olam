@@ -3,16 +3,21 @@ $(".frm-new-item").submit(function (e) {
     e.preventDefault();
     var form = $(this);
     var url = form.attr('action');
-
+    // get form id
+    var form_id = form.attr('id');
+    var stage_id = getId(form_id);
     $.ajax({
         type: "POST",
         url: url,
         data: form.serialize(),
         success: function (response) {
-            if (response['success']) {
-                $("#pipeline_items").append(response['html']);
-                $("#new-item-modal").modal('hide');
-                $("#new-item-modal").find("input").val("");
+            if (response['message'] == "success") {
+                var clone = $("#clone-" + stage_id).clone()
+                // change id 
+                $(clone).attr('id', 'item-' + response['opportunity_id']);
+                // remove class clone
+                $(clone).removeClass('clone');
+                $("#new_item-" + stage_id).after($(clone))
             } else {
                 alert(response['message']);
             }

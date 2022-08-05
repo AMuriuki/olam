@@ -201,9 +201,9 @@
                                 </div>
                             </div>
                         </header>
-                        <main class="kanban-drag new-item" id="new_item-{{stage.id}}">
+                        <main id="new_item-{{stage.id}}" class="kanban-drag new-item">
                             <div class="kanban-item">
-                                <form class="frm-new-item" action="{{url_for('crm.pipeline')}}" method="POST"
+                                <form id="frm_new_item-{{stage.id}}" class="frm-new-item" action="{{url_for('crm.pipeline')}}" method="POST"
                                     autocomplete="off">
                                     {{form3.hidden_tag()}}
                                     <div class="kanban-item-text new-item-text">
@@ -334,9 +334,102 @@
                                 </form>
                             </div>
                         </main>
+                        <main id="clone-{{stage.id}}" class="kanban-drag clone">
+                            <div class="kanban-item">
+                                <a href="/crm/lead/bXTKsSwhk3N6qPCHlwfRdU7j8">
+                                </a>
+                                <div class="kanban-item-title"><a href="/crm/lead/bXTKsSwhk3N6qPCHlwfRdU7j8">
+                                        <h6 class="title">Quote for 200 laptops</h6>
+                                    </a>
+                                    <div class="drodown"><a href="/crm/lead/bXTKsSwhk3N6qPCHlwfRdU7j8">
+                                        </a>
+                                        <div class="drodown"><a href="/crm/lead/bXTKsSwhk3N6qPCHlwfRdU7j8">
+                                            </a><a href="#"
+                                                class="dropdown-toggle btn btn-sm btn-icon btn-trigger mr-n1"
+                                                data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <ul class="link-list-opt no-bdr">
+                                                    <li><a href="/crm/edit/lead/bXTKsSwhk3N6qPCHlwfRdU7j8"><em
+                                                                class="icon ni ni-edit"></em><span>Edit</span></a>
+                                                    </li>
+                                                    <li><a href="#"><em
+                                                                class="icon ni ni-delete"></em><span>Delete</span></a>
+                                                    </li>
+                                                    <hr>
+
+                                                    <li><a href="/crm/move_stage/bXTKsSwhk3N6qPCHlwfRdU7j8/1"
+                                                            style="display: none;"><em
+                                                                class="icon ni ni-bullet"></em><span>New</span></a>
+                                                    </li>
+
+                                                    <li><a href="/crm/move_stage/bXTKsSwhk3N6qPCHlwfRdU7j8/2"><em
+                                                                class="icon ni ni-bullet"></em><span>Qualified</span></a>
+                                                    </li>
+
+                                                    <li><a href="/crm/move_stage/bXTKsSwhk3N6qPCHlwfRdU7j8/3"><em
+                                                                class="icon ni ni-bullet"></em><span>Proposition</span></a>
+                                                    </li>
+
+                                                    <li><a href="/crm/move_stage/bXTKsSwhk3N6qPCHlwfRdU7j8/4"><em
+                                                                class="icon ni ni-bullet"></em><span>Won</span></a>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="kanban-item-text">
+                                    <p>KES&nbsp;3,000,000</p>
+                                </div>
+                                <div class="kanban-item-text">
+                                    <p>Tokyo Trading Global Limited</p>
+                                </div>
+                                <div class="kanban-item-text">
+                                    <a id="_selectPriority1-3" name="3" data-toggle="tooltip" data-placement="top"
+                                        class="select-priority-update">
+                                        <em id="_priority1-3" class="icon ni ni-star-fill"></em>
+                                    </a>
+                                    <a id="_selectPriority2-3" name="3" data-toggle="tooltip" data-placement="top"
+                                        class="select-priority-update">
+                                        <em id="_priority2-3" class="icon ni ni-star-fill"></em>
+                                    </a>
+                                    <a id="_selectPriority3-3" name="3" data-toggle="tooltip" data-placement="top"
+                                        class="select-priority-update">
+                                        <em id="_priority3-3" class="icon ni ni-star-fill"></em>
+                                    </a>
+                                </div>
+                                <div class="kanban-item-text">
+                                    <div class="drodown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            <div class="icon-status icon-status-info">
+                                                <em style="font-size: 20px;" class="icon ni ni-list-thumb"></em>
+                                            </div>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-left">
+                                            <div class="dropdown-head">
+                                                <span class="sub-title nk-dropdown-title">Activities</span>
+                                            </div>
+                                            <ul class="link-list-opt no-bdr">
+                                                <li>
+                                                    <a id="3" class="schedule" href="#" data-toggle="modal"
+                                                        data-target="#modalActivity">
+                                                        <em class="icon ni ni-plus-sm"></em>
+                                                        <span>Schedule an Activity</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="kanban-item-tags">
+                                    <li><span class="badge badge-primary">Arnold Nderitu</span></li>
+                                </ul>
+                            </div>
+                        </main>
                         {% for record in pipeline %}
                         {% if record.stage_id == stage.id %}
-                        <main class="kanban-drag">
+                        <main id="item-{{record.id}}" class="kanban-drag">
                             <div class="kanban-item">
                                 <a href="{{url_for('crm.lead', slug=record.slug)}}">
                                     <div class="kanban-item-title">

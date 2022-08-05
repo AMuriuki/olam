@@ -222,7 +222,6 @@ def pipeline():
                 if stage:
                     exists.append(stage.id)
             if exists:
-                print(exists)
                 qs = qs.filter(Lead.stage_id.in_(exists))
         pipeline = qs.all()
     else:
@@ -235,14 +234,12 @@ def pipeline():
 
     if request.method == "POST":
         # get form data
-        print(request.form)
-        print(session['selected_priority'])
-
         opportunity = Lead(name=request.form['opportunity'], user_id=current_user.get_id(), partner_id=request.form['partner_id'], priority=session['selected_priority'], stage_id=int(
             session['pipeline_stage']), expected_revenue=request.form['expected_revenue'], partner_email=request.form['partner_email'], partner_phone=request.form['partner_phone'], partner_currency='KES')
         opportunity.generate_slug()
         db.session.add(opportunity)
         db.session.commit()
+        return jsonify({"message": "success", "opportunity_name": opportunity.name, "opportunity_id": opportunity.id})
 
     # if form3.submit1.data and form3.validate_on_submit():
     #     opportunity = Lead(name=request.form['opportunity'], user_id=current_user.get_id(), partner_id=request.form['pipeline_select_org'], priority=session['selected_priority'], stage_id=int(

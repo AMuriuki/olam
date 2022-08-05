@@ -57,7 +57,7 @@ def set_email():
 def set_phone():
     if request.method == "POST":
         # check if partner has email
-        partner = Partner.query.filter_by(slug=request.form['slug']).first()
+        partner = Partner.query.filter_by(id=request.form['id']).first()
         if not partner.phone_no:
             partner.phone_no = request.form['phone']
             db.session.commit()
