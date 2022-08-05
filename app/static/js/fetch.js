@@ -1,13 +1,13 @@
 // get partner details
 function get_partner_details(value) {
-    console.log(value);
+    console.log(value, stage_id);
     $.post("/crm/get_partner_details", {
         partner_id: value,
     })
         .done(function (response) {
 
-            $("#partner_email_" + stage_id).val(response["partner_email"]);
-            $("#partner_phone_" + stage_id).val(response["partner_phone"]);
+            $("#partner_email-" + stage_id).val(response["partner_email"]);
+            $("#partner_phone-" + stage_id).val(response["partner_phone"]);
         })
         .fail(function () {
             alert("Get Partner Details Error");

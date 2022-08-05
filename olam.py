@@ -98,9 +98,12 @@ def company():
 
 @app.context_processor
 def stages():
+    stagesids = []
     stages = Stage.query.filter_by(is_deleted=False).order_by('position').all()
+    for stage in stages:
+        stagesids.append(stage.id)
     if stages:
-        return dict(stages=stages)
+        return dict(stages=stages, stage_ids=stagesids)
     else:
         return dict(stages="")
 

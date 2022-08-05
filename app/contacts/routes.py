@@ -43,7 +43,7 @@ def create_partner():
 def set_email():
     if request.method == "POST":
         # check if partner has email
-        partner = Partner.query.filter_by(slug=request.form['slug']).first()
+        partner = Partner.query.filter_by(id=request.form['id']).first()
         if not partner.email:
             partner.email = request.form['email']
             db.session.commit()

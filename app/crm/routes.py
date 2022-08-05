@@ -93,7 +93,7 @@ def update_item():
 @active_user_required
 @bp.route('/get_partner_details', methods=['GET', 'POST'])
 def get_partner_details():
-    partner = Partner.query.filter_by(slug=request.form['partner_id']).first()
+    partner = Partner.query.filter_by(id=request.form['partner_id']).first()
     return jsonify({"partner_email": partner.email, "partner_phone": partner.phone_no})
 
 
@@ -233,34 +233,45 @@ def pipeline():
     activities = LeadActivity.query.all()
     assignees = Partner.query.filter_by(is_tenant=True).all()
 
-    if form3.submit1.data and form3.validate_on_submit():
-        opportunity = Lead(name=request.form['opportunity'], user_id=current_user.get_id(), partner_id=request.form['pipeline_select_org'], priority=session['selected_priority'], stage_id=int(
-            session['pipeline_stage']), expected_revenue=request.form['expected_revenue'], partner_email=request.form['partner_email'], partner_phone=request.form['partner_phone'], plan_id=request.form['recurring_plan'], partner_currency=request.form['_partner_currency'])
+    if request.method == "POST":
+        # get form data
+        print(request.form)
+        print(session['selected_priority'])
+
+        opportunity = Lead(name=request.form['opportunity'], user_id=current_user.get_id(), partner_id=request.form['partner_id'], priority=session['selected_priority'], stage_id=int(
+            session['pipeline_stage']), expected_revenue=request.form['expected_revenue'], partner_email=request.form['partner_email'], partner_phone=request.form['partner_phone'], partner_currency='KES')
         opportunity.generate_slug()
         db.session.add(opportunity)
         db.session.commit()
-        return redirect(url_for('crm.pipeline'))
 
-    if form6.submit6.data and form6.validate_on_submit():
-        max_id = Stage.max_id()
-        max_position = Stage.max_postion()
-        stage = Stage(id=max_id+1, name=form6.name.data,
-                      position=max_position+1)
-        db.session.add(stage)
-        db.session.commit()
-        new_stage = True
-        flash(_("New stage added successfully"))
-        return redirect(url_for('crm.pipeline', new_stage=new_stage))
+    # if form3.submit1.data and form3.validate_on_submit():
+    #     opportunity = Lead(name=request.form['opportunity'], user_id=current_user.get_id(), partner_id=request.form['pipeline_select_org'], priority=session['selected_priority'], stage_id=int(
+    #         session['pipeline_stage']), expected_revenue=request.form['expected_revenue'], partner_email=request.form['partner_email'], partner_phone=request.form['partner_phone'], plan_id=request.form['recurring_plan'], partner_currency=request.form['_partner_currency'])
+    #     opportunity.generate_slug()
+    #     db.session.add(opportunity)
+    #     db.session.commit()
+    #     return redirect(url_for('crm.pipeline'))
 
-    if request.method == "POST":
-        module = Module.query.filter_by(bp_name='crm').first()
-        model = Model.query.filter_by(name='Lead/Opportunity').first()
-        activity = Activity(summary=request.form['summary'], module_id=module.id, model_id=model.id, lead_id=session['opportunity_id'],
-                            activity_type=request.form['activity_type'], due_date=request.form['due_date'], assigned_to=request.form['assignee'], notes=request.form['notes'])
-        db.session.add(activity)
-        db.session.commit()
-        flash(_("New activity added"))
-        return redirect(url_for('crm.pipeline'))
+    # if form6.submit6.data and form6.validate_on_submit():
+    #     max_id = Stage.max_id()
+    #     max_position = Stage.max_postion()
+    #     stage = Stage(id=max_id+1, name=form6.name.data,
+    #                   position=max_position+1)
+    #     db.session.add(stage)
+    #     db.session.commit()
+    #     new_stage = True
+    #     flash(_("New stage added successfully"))
+    #     return redirect(url_for('crm.pipeline', new_stage=new_stage))
+
+    # if request.method == "POST":
+    #     module = Module.query.filter_by(bp_name='crm').first()
+    #     model = Model.query.filter_by(name='Lead/Opportunity').first()
+    #     activity = Activity(summary=request.form['summary'], module_id=module.id, model_id=model.id, lead_id=session['opportunity_id'],
+    #                         activity_type=request.form['activity_type'], due_date=request.form['due_date'], assigned_to=request.form['assignee'], notes=request.form['notes'])
+    #     db.session.add(activity)
+    #     db.session.commit()
+    #     flash(_("New activity added"))
+    #     return redirect(url_for('crm.pipeline'))
 
     return render_template('crm/pipeline.html', title=_('CRM Pipeline | Olam ERP'), pipeline=pipeline, form1=form1, form2=form2, form3=form3, form4=form4, form5=form5, form6=form6, titles=titles, plans=plans, filters=filters, new_stage=new_stage, selectedFilters=selectedFilters, message=message, activities=activities, assignees=assignees, csrf_token=csrf_token)
 

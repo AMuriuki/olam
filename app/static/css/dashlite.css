@@ -2251,7 +2251,7 @@ input {
   font-weight: 400;
   line-height: 1.25rem;
   color: #3c4d62;
-  background-color: #fff;
+  background-color: transparent;
   background-clip: padding-box;
   border: 1px solid #dbdfea;
   border-radius: 3px;
@@ -5165,7 +5165,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  background-color: #f5f6fa;
   background-clip: border-box;
   border: 0 solid rgba(0, 0, 0, 0.125);
   border-radius: 3px;
@@ -20378,7 +20378,7 @@ ol.linenums li {
   font-family: Roboto, sans-serif;
   font-size: 13px;
   font-weight: 400;
-  background-color: #fff;
+  background-color: transparent;
   border: 0px solid #dbdfea;
   border-bottom: 1px solid #dbdfea;
   border-radius: 3px;
@@ -27660,6 +27660,7 @@ span.fc-event-teal-dim .dot {
   position: relative;
   transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
   flex-shrink: 0;
+  width: 20%;
 }
 
 .kanban-board.disabled-board {
@@ -27745,7 +27746,7 @@ span.fc-event-teal-dim .dot {
 .kanban-item {
   border-radius: 3px;
   border: 1px solid #e5e9f2;
-  padding: 1rem 1.25rem;
+  padding: .5rem .5rem;
   margin-bottom: 0.75rem;
   background: #fff;
   transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
@@ -28466,6 +28467,7 @@ body.nav-shown {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: #f6f7fa;
 }
 
 .nk-content {

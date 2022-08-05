@@ -26,11 +26,12 @@ document.addEventListener("click", function (event) {
     }
 });
 
+
 // add new board item
 $(".add-item").click(function (e) {
     e.preventDefault();
     stage_id = getId(this.id);
-    $("#new_item_" + stage_id).show();
+    $("#new_item-" + stage_id).show();
     pipeline_stage(stage_id);
 });
 
@@ -534,7 +535,7 @@ $(".first-opportunity").click(function (e) {
     stage_id = getId(this.id);
     e.preventDefault();
 
-    $("#new_item_" + stage_id).show();
+    $("#new_item-" + stage_id).show();
     pipeline_stage(stage_id);
     $("#modalAlert").removeClass("show");
     $("#modalAlert").hide();
@@ -616,7 +617,7 @@ $(".select-priority-update").click(function (e) {
 $(".discard-item").click(function (e) {
     e.preventDefault();
     stage_id = getId(this.id);
-    $("#new_item_" + stage_id).hide();
+    $("#new_item-" + stage_id).hide();
 });
 
 // add new stage

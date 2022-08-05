@@ -8,7 +8,6 @@
 
     .new-item {
         display: none;
-        padding: 5px 5px;
     }
 
     .new-item-text {
@@ -137,12 +136,11 @@
             <div id="kanban" class="nk-kanban">
                 <div class="kanban-container" style="width: 100%;">
                     {% for stage in stages %}
-                    <div data-id="_{{stage.name}}" data-order="{{stage.id}}" class="kanban-board"
-                        style="width: 320px; margin-left: 0px; margin-right: 0px;">
+                    <div name="{{stage.name}}" id="stage-{{stage.id}}" class="kanban-board">
                         <header class="kanban-board-header kanban-light">
                             <div class="kanban-title-board">
                                 <div class="kanban-title-content">
-                                    <h6 id="stage_title_{{stage.id}}" class="title">
+                                    <h6 id="stage_title-{{stage.id}}" class="title">
                                         {{stage.name}}
                                     </h6>
                                     <span class="badge badge-pill badge-outline-light text-dark">
@@ -203,9 +201,10 @@
                                 </div>
                             </div>
                         </header>
-                        <main class="kanban-drag">
-                            <div class="kanban-item new-item" id="new_item_{{stage.id}}">
-                                <form method="POST" autocomplete="off">
+                        <main class="kanban-drag new-item" id="new_item-{{stage.id}}">
+                            <div class="kanban-item">
+                                <form class="frm-new-item" action="{{url_for('crm.pipeline')}}" method="POST"
+                                    autocomplete="off">
                                     {{form3.hidden_tag()}}
                                     <div class="kanban-item-text new-item-text">
                                         <div class="form-group">
@@ -213,10 +212,11 @@
                                                 Organization/Contact
                                             </label>
                                             <div class="form-control-wrap">
-                                                <input id="partner_name_{{stage.id}}" type="text" name="partner"
+                                                <input id="partner_name-{{stage.id}}" type="text" name="partner"
                                                     class="form-control inp_partner is-click-inside"
-                                                    placeholder="Start typing to select an organization or contact">
-                                                <input id="partner_slug" type="text" name="partner_slug" hidden>
+                                                    placeholder="Start typing to select an organization or contact"
+                                                    required>
+                                                <input id="partner_id" type="text" name="partner_id" hidden>
                                             </div>
                                         </div>
                                     </div>
@@ -226,7 +226,7 @@
                                             <div class="form-control-wrap">
                                                 <input name="opportunity" type="text"
                                                     class="form-control form-control-sm"
-                                                    placeholder="e.g Quote for 120 laptops">
+                                                    placeholder="e.g Quote for 120 laptops" required>
                                             </div>
                                         </div>
                                     </div>
@@ -234,7 +234,7 @@
                                         <div class="form-group">
                                             <label class="form-label" for="default-1-03">Email</label>
                                             <div class="form-control-wrap">
-                                                <input name="partner_email" id="partner_email_{{stage.id}}" type="email"
+                                                <input name="partner_email" id="partner_email-{{stage.id}}" type="email"
                                                     class="form-control form-control-sm set-email" placeholder="Email">
                                             </div>
                                         </div>
@@ -243,12 +243,27 @@
                                         <div class="form-group">
                                             <label class="form-label" for="default-1-03">Phone</label>
                                             <div class="form-control-wrap">
-                                                <input name="partner_phone" id="partner_phone_{{stage.id}}" type="phone"
+                                                <input name="partner_phone" id="partner_phone-{{stage.id}}" type="phone"
                                                     class="form-control form-control-sm set-phone" placeholder="Phone">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="kanban-item-text new-item-text">
+                                        <div class="form-group">
+                                            <label class="form-label" for="default-1-03">Expected Revenue</label>
+                                            <div class="form-control-wrap">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="overline-title lh-3">KES</span>
+                                                    </div>
+                                                    <input id="expected_revenue" type="text"
+                                                        class="expected_revenue form-control form-control-sm"
+                                                        placeholder="e.g 1,000,000" name="expected_revenue">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="kanban-item-text new-item-text">
                                         <div class="form-group">
                                             <label class="form-label">Currency</label>
                                             <div class="form-control-wrap">
@@ -263,19 +278,8 @@
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>
-                                    <ul class="kanban-item-tags new-item-text">
-                                        <li>
-                                            <div class="form-group">
-                                                <label class="form-label" for="default-1-03">Expected Revenue</label>
-                                                <div class="form-control-wrap">
-                                                    <input name="expected_revenue" id="expected_revenue" type="text"
-                                                        min="1" step="any"
-                                                        class="expected_revenue form-control form-control-sm"
-                                                        placeholder="e.g 1,000,000">
-                                                </div>
-                                            </div>
-                                        </li>
+                                    </div> -->
+                                    <!-- <ul class="kanban-item-tags new-item-text">
                                         <li>
                                             <div class="form-group">
                                                 <label class="form-label">Recurring Plan</label>
@@ -287,26 +291,26 @@
                                                 </div>
                                             </div>
                                         </li>
-                                    </ul>
+                                    </ul> -->
                                     <ul class="kanban-item-tags">
                                         <li>
                                             <label class="form-label">Priority</label>
                                         </li>
                                         <li>
                                             <div class="asterisk">
-                                                <a data-toggle="tooltip" data-placement="top" title="Medium"
+                                                <a data-toggle="tooltip" data-placement="top"
                                                     id="selectPriority1-{{stage.id}}" name="{{stage.id}}"
                                                     class="select-priority" href="#">
                                                     <em id="priority1-{{stage.id}}"
                                                         class="asterisk-off icon ni ni-star"></em>
                                                 </a>
-                                                <a data-toggle="tooltip" data-placement="top" title="High"
+                                                <a data-toggle="tooltip" data-placement="top"
                                                     id="selectPriority2-{{stage.id}}" name="{{stage.id}}"
                                                     class="select-priority" href="#">
                                                     <em id="priority2-{{stage.id}}"
                                                         class="asterisk-off icon ni ni-star"></em>
                                                 </a>
-                                                <a data-toggle="tooltip" data-placement="top" title="Very High"
+                                                <a data-toggle="tooltip" data-placement="top"
                                                     id="selectPriority3-{{stage.id}}" name="{{stage.id}}"
                                                     class="select-priority" href="#">
                                                     <em id="priority3-{{stage.id}}"
@@ -318,7 +322,8 @@
                                     <div class="kanban-item-meta">
                                         <ul class="kanban-item-meta-list">
                                             <li>
-                                                {{form3.submit1(class="btn btn-primary")}}
+                                                <input class="btn btn-primary" id="submit-{{stage.id}}"
+                                                    name="submit-{{stage.id}}" type="submit" value="Add">
                                             </li>
                                             <li>
                                                 <a id="discard_item-{{stage.id}}" href="#"
@@ -328,8 +333,10 @@
                                     </div>
                                 </form>
                             </div>
-                            {% for record in pipeline %}
-                            {% if record.stage_id == stage.id %}
+                        </main>
+                        {% for record in pipeline %}
+                        {% if record.stage_id == stage.id %}
+                        <main class="kanban-drag">
                             <div class="kanban-item">
                                 <a href="{{url_for('crm.lead', slug=record.slug)}}">
                                     <div class="kanban-item-title">
@@ -377,7 +384,7 @@
 
                                     <div class="kanban-item-text">
                                         {% if record.priority == '0' %}
-                                        <a data-toggle="tooltip" data-placement="top" title="Medium"
+                                        <a data-toggle="tooltip" data-placement="top"
                                             id="_selectPriority1-{{record.id}}" name="{{record.id}}"
                                             class="select-priority-update">
                                             <em id="_priority1-{{record.id}}" class="asterisk-off icon ni ni-star"></em>
@@ -392,49 +399,40 @@
                                         </a>
                                         {% elif record.priority == '1' %}
                                         <a id="_selectPriority1-{{record.id}}" class="select-priority-update"
-                                            data-toggle="tooltip" data-placement="top" title="Medium"
-                                            name="{{record.id}}"><em id="_priority1-{{record.id}}"
-                                                class="icon ni ni-star-fill"></em></a>
+                                            data-toggle="tooltip" data-placement="top" name="{{record.id}}"><em
+                                                id="_priority1-{{record.id}}" class="icon ni ni-star-fill"></em></a>
                                         <a id="_selectPriority2-{{record.id}}" class="select-priority-update"
-                                            data-toggle="tooltip" data-placement="top" title="High"
-                                            name="{{record.id}}">
+                                            data-toggle="tooltip" data-placement="top" name="{{record.id}}">
                                             <em id="_priority2-{{record.id}}" class="asterisk-off icon ni ni-star"></em>
                                         </a>
                                         <a id="_selectPriority3-{{record.id}}" class="select-priority-update"
-                                            data-toggle="tooltip" data-placement="top" title="Very High"
-                                            name="{{record.id}}">
+                                            data-toggle="tooltip" data-placement="top" name="{{record.id}}">
                                             <em id="_priority3-{{record.id}}" class="asterisk-off icon ni ni-star"></em>
                                         </a>
                                         {% elif record.priority == '2' %}
                                         <a id="_selectPriority1-{{record.id}}" name="{{record.id}}"
-                                            data-toggle="tooltip" data-placement="top" title="Medium"
-                                            class="select-priority-update">
+                                            data-toggle="tooltip" data-placement="top" class="select-priority-update">
                                             <em id="_priority1-{{record.id}}" class="icon ni ni-star-fill"></em>
                                         </a>
                                         <a id="_selectPriority2-{{record.id}}" name="{{record.id}}"
-                                            data-toggle="tooltip" data-placement="top" title="High"
-                                            class="select-priority-update">
+                                            data-toggle="tooltip" data-placement="top" class="select-priority-update">
                                             <em id="_priority2-{{record.id}}" class="icon ni ni-star-fill"></em>
                                         </a>
                                         <a id="_selectPriority3-{{record.id}}" name="{{record.id}}"
-                                            data-toggle="tooltip" data-placement="top" title="Very High"
-                                            class="select-priority-update">
+                                            data-toggle="tooltip" data-placement="top" class="select-priority-update">
                                             <em id="_priority3-{{record.id}}" class="asterisk-off icon ni ni-star"></em>
                                         </a>
                                         {% elif record.priority == '3' %}
                                         <a id="_selectPriority1-{{record.id}}" name="{{record.id}}"
-                                            data-toggle="tooltip" data-placement="top" title="Medium"
-                                            class="select-priority-update">
+                                            data-toggle="tooltip" data-placement="top" class="select-priority-update">
                                             <em id="_priority1-{{record.id}}" class="icon ni ni-star-fill"></em>
                                         </a>
                                         <a id="_selectPriority2-{{record.id}}" name="{{record.id}}"
-                                            data-toggle="tooltip" data-placement="top" title="High"
-                                            class="select-priority-update">
+                                            data-toggle="tooltip" data-placement="top" class="select-priority-update">
                                             <em id="_priority2-{{record.id}}" class="icon ni ni-star-fill"></em>
                                         </a>
                                         <a id="_selectPriority3-{{record.id}}" name="{{record.id}}"
-                                            data-toggle="tooltip" data-placement="top" title="Very High"
-                                            class="select-priority-update">
+                                            data-toggle="tooltip" data-placement="top" class="select-priority-update">
                                             <em id="_priority3-{{record.id}}" class="icon ni ni-star-fill"></em>
                                         </a>
                                         {% endif %}
@@ -497,9 +495,9 @@
                                     </ul>
                                 </a>
                             </div>
-                            {% endif %}
-                            {% endfor %}
                         </main>
+                        {% endif %}
+                        {% endfor %}
                         {% if current_user|can_create(5) %}
                         <footer>
                             <button id="btn_additem-{{stage.id}}" class="add-item kanban-add-task btn btn-block">
@@ -985,6 +983,24 @@
     $.get("/get_plans", function (data) {
         autocomplete(document.getElementsByClassName("inp_plan")[0], data);
         return data;
+    })
+
+    fetch('/get_stages').then(response => response.json()).then(stages => {
+        elements = []
+        //loop through each stage and add the stage id to the dragula array
+        for (var i = 0; i < stages.length; i++) {
+            elements.push(document.getElementById("stage-" + stages[i]['id']))
+        }
+        var drake = dragula(elements, {
+            isContainer: function (el) {
+                return false;
+            },
+            revertOnSpill: true,
+        });
+
+        drake.on('drop', function (el, target, source, sibling) {
+            console.log(el, target, source, sibling);
+        })
     })
 </script>
 {% endblock %}

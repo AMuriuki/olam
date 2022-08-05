@@ -1,6 +1,7 @@
 import itertools
 import json
 from app.crm.models.crm_recurring_plan import RecurringPlan
+from app.crm.models.crm_stage import Stage
 from app.helper_functions import set_default_user_groups
 from app.main.models.partner import Partner, PartnerPosition, PartnerTag, PartnerTitle
 from app.auth.email import send_invite_email
@@ -164,8 +165,21 @@ def get_partners():
     results = db.session.query(Partner).filter(or_(
         Partner.is_company == True, Partner.is_individual == True)).order_by(Partner.name, Partner.company_name).all()
     for result in results:
-        partners.append({str(result.slug): result.get_name()})
+        partners.append({str(result.id): result.get_name()})
     return Response(json.dumps(partners), mimetype='application/json')
+
+
+@bp.route('/get_stages', methods=['GET', 'POST'])
+@login_required
+@active_user_required
+@model_access_required(3)
+def get_stages():
+    stages = []
+    results = Stage.query.all()
+    
+    for result in results:
+        stages.append({"id":result.id})
+    return Response(json.dumps(stages), mimetype='application/json')
 
 
 @bp.route('/get_partner_titles', methods=['GET', 'POST'])

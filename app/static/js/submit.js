@@ -1,3 +1,26 @@
+// new crm pipeline item
+$(".frm-new-item").submit(function (e) {
+    e.preventDefault();
+    var form = $(this);
+    var url = form.attr('action');
+
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: form.serialize(),
+        success: function (response) {
+            if (response['success']) {
+                $("#pipeline_items").append(response['html']);
+                $("#new-item-modal").modal('hide');
+                $("#new-item-modal").find("input").val("");
+            } else {
+                alert(response['message']);
+            }
+        }
+    })
+
+})
+
 // add new company contact
 $("#new_company_contact").submit(function (e) {
     e.preventDefault();
@@ -312,8 +335,8 @@ function create_partner(partner) {
     }).done(function (response) {
         partner_slug = response['slug'];
         partner_id = response['id'];
-        $("#partner_slug").val(partner_slug);
-        if (current_href.toLowerCase().indexOf("crm/index")>=0) {
+        $("#partner_id").val(partner_id);
+        if (current_href.toLowerCase().indexOf("crm/index") >= 0) {
             get_partner_details(partner_slug);
         }
     }).fail(function (xhr) {
@@ -345,3 +368,5 @@ function select_priority(value) {
         .done(function (response) { })
         .fail(function () { });
 }
+
+
