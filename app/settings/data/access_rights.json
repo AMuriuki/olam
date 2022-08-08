@@ -90,6 +90,15 @@
     "delete": false
   },
   {
+    "id": "9997a2dc-495b-4907-842d-23769bd7fcfd",
+    "name": "Manage contacts",
+    "model_id": 3,
+    "read": true,
+    "write": true,
+    "create": true,
+    "delete": false
+  },
+  {
     "id": "87ab0d9e-6eeb-4408-9b73-daf96feb9526",
     "name": "Manage Leads",
     "model_id": 5,

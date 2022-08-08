@@ -137,13 +137,13 @@
                 <div class="kanban-container" style="width: 100%;">
                     {% for stage in stages %}
                     <div name="{{stage.name}}" id="stage-{{stage.id}}" class="kanban-board">
-                        <header class="kanban-board-header kanban-light">
+                        <header class="kanban-board-header kanban-light do-not-drag">
                             <div class="kanban-title-board">
                                 <div class="kanban-title-content">
                                     <h6 id="stage_title-{{stage.id}}" class="title">
                                         {{stage.name}}
                                     </h6>
-                                    <span class="badge badge-pill badge-outline-light text-dark">
+                                    <span class="badge badge-pill badge-outline-light text-dark count-{{stage.id}}">
                                         {{stage.id|get_pipeline_count}}
                                     </span>
                                 </div>
@@ -203,8 +203,8 @@
                         </header>
                         <main id="new_item-{{stage.id}}" class="kanban-drag new-item">
                             <div class="kanban-item">
-                                <form id="frm_new_item-{{stage.id}}" class="frm-new-item" action="{{url_for('crm.pipeline')}}" method="POST"
-                                    autocomplete="off">
+                                <form id="frm_new_item-{{stage.id}}" class="frm-new-item"
+                                    action="{{url_for('crm.pipeline')}}" method="POST" autocomplete="off">
                                     {{form3.hidden_tag()}}
                                     <div class="kanban-item-text new-item-text">
                                         <div class="form-group">
@@ -336,67 +336,101 @@
                         </main>
                         <main id="clone-{{stage.id}}" class="kanban-drag clone">
                             <div class="kanban-item">
-                                <a href="/crm/lead/bXTKsSwhk3N6qPCHlwfRdU7j8">
-                                </a>
-                                <div class="kanban-item-title"><a href="/crm/lead/bXTKsSwhk3N6qPCHlwfRdU7j8">
-                                        <h6 class="title">Quote for 200 laptops</h6>
+                                <a class="opportunity-link" href="#"></a>
+                                <div class="kanban-item-title">
+                                    <a class="opportunity-link" href="#">
+                                        <h6 class="title opportunity-name"></h6>
                                     </a>
-                                    <div class="drodown"><a href="/crm/lead/bXTKsSwhk3N6qPCHlwfRdU7j8">
-                                        </a>
-                                        <div class="drodown"><a href="/crm/lead/bXTKsSwhk3N6qPCHlwfRdU7j8">
-                                            </a><a href="#"
-                                                class="dropdown-toggle btn btn-sm btn-icon btn-trigger mr-n1"
-                                                data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                    <div class="drodown">
+                                        <a class="opportunity-link" href="#"></a>
+                                        <div class="drodown">
+                                            <a class="opportunity-link" href="#"></a>
+                                            <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mr-n1"
+                                                data-toggle="dropdown">
+                                                <em class="icon ni ni-more-h"></em>
+                                            </a>
                                             <div class="dropdown-menu dropdown-menu-right">
                                                 <ul class="link-list-opt no-bdr">
-                                                    <li><a href="/crm/edit/lead/bXTKsSwhk3N6qPCHlwfRdU7j8"><em
-                                                                class="icon ni ni-edit"></em><span>Edit</span></a>
+                                                    <li>
+                                                        <a class="edit-opportunity-link" href="#">
+                                                            <em class="icon ni ni-edit"></em>
+                                                            <span>Edit</span>
+                                                        </a>
                                                     </li>
-                                                    <li><a href="#"><em
-                                                                class="icon ni ni-delete"></em><span>Delete</span></a>
+                                                    <li>
+                                                        <a href="#">
+                                                            <em class="icon ni ni-delete"></em>
+                                                            <span>Delete</span>
+                                                        </a>
                                                     </li>
-                                                    <hr>
-
-                                                    <li><a href="/crm/move_stage/bXTKsSwhk3N6qPCHlwfRdU7j8/1"
-                                                            style="display: none;"><em
-                                                                class="icon ni ni-bullet"></em><span>New</span></a>
-                                                    </li>
-
-                                                    <li><a href="/crm/move_stage/bXTKsSwhk3N6qPCHlwfRdU7j8/2"><em
-                                                                class="icon ni ni-bullet"></em><span>Qualified</span></a>
-                                                    </li>
-
-                                                    <li><a href="/crm/move_stage/bXTKsSwhk3N6qPCHlwfRdU7j8/3"><em
-                                                                class="icon ni ni-bullet"></em><span>Proposition</span></a>
-                                                    </li>
-
-                                                    <li><a href="/crm/move_stage/bXTKsSwhk3N6qPCHlwfRdU7j8/4"><em
-                                                                class="icon ni ni-bullet"></em><span>Won</span></a>
-                                                    </li>
-
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="kanban-item-text">
-                                    <p>KES&nbsp;3,000,000</p>
+                                    <p>
+                                        <span class="currency"></span>&nbsp;
+                                        <span class="expected-revenue"></span>
+                                    </p>
                                 </div>
                                 <div class="kanban-item-text">
-                                    <p>Tokyo Trading Global Limited</p>
+                                    <p class="partner">Tokyo Trading Global Limited</p>
                                 </div>
-                                <div class="kanban-item-text">
-                                    <a id="_selectPriority1-3" name="3" data-toggle="tooltip" data-placement="top"
+                                <div class="kanban-item-text hide nil-priority">
+                                    <a id="clone__selectPriority1-3" name="3" data-toggle="tooltip" data-placement="top"
                                         class="select-priority-update">
-                                        <em id="_priority1-3" class="icon ni ni-star-fill"></em>
+                                        <em id="clone_priority-1" class="asterisk-off icon ni ni-star"></em>
                                     </a>
-                                    <a id="_selectPriority2-3" name="3" data-toggle="tooltip" data-placement="top"
+                                    <a id="clone_selectPriority2-3" name="3" data-toggle="tooltip" data-placement="top"
                                         class="select-priority-update">
-                                        <em id="_priority2-3" class="icon ni ni-star-fill"></em>
+                                        <em id="clone_priority-2" class="asterisk-off icon ni ni-star"></em>
                                     </a>
-                                    <a id="_selectPriority3-3" name="3" data-toggle="tooltip" data-placement="top"
+                                    <a id="clone__selectPriority3-3" name="3" data-toggle="tooltip" data-placement="top"
                                         class="select-priority-update">
-                                        <em id="_priority3-3" class="icon ni ni-star-fill"></em>
+                                        <em id="clone_priority-3" class="asterisk-off icon ni ni-star"></em>
+                                    </a>
+                                </div>
+                                <div class="kanban-item-text priority-1">
+                                    <a id="clone__selectPriority1-3" name="3" data-toggle="tooltip" data-placement="top"
+                                        class="select-priority-update">
+                                        <em id="clone_priority-1" class="icon ni ni-star-fill"></em>
+                                    </a>
+                                    <a id="clone_selectPriority2-3" name="3" data-toggle="tooltip" data-placement="top"
+                                        class="select-priority-update">
+                                        <em id="clone_priority-2" class="asterisk-off icon ni ni-star"></em>
+                                    </a>
+                                    <a id="clone__selectPriority3-3" name="3" data-toggle="tooltip" data-placement="top"
+                                        class="select-priority-update">
+                                        <em id="clone_priority-3" class="asterisk-off icon ni ni-star"></em>
+                                    </a>
+                                </div>
+                                <div class="kanban-item-text priority-2">
+                                    <a id="clone__selectPriority1-3" name="3" data-toggle="tooltip" data-placement="top"
+                                        class="select-priority-update">
+                                        <em id="clone_priority-1" class="icon ni ni-star-fill"></em>
+                                    </a>
+                                    <a id="clone_selectPriority2-3" name="3" data-toggle="tooltip" data-placement="top"
+                                        class="select-priority-update">
+                                        <em id="clone_priority-2" class="icon ni ni-star-fill"></em>
+                                    </a>
+                                    <a id="clone__selectPriority3-3" name="3" data-toggle="tooltip" data-placement="top"
+                                        class="select-priority-update">
+                                        <em id="clone_priority-3" class="asterisk-off icon ni ni-star"></em>
+                                    </a>
+                                </div>
+                                <div class="kanban-item-text priority-3">
+                                    <a id="clone__selectPriority1-3" name="3" data-toggle="tooltip" data-placement="top"
+                                        class="select-priority-update">
+                                        <em id="clone_priority-1" class="icon ni ni-star-fill"></em>
+                                    </a>
+                                    <a id="clone_selectPriority2-3" name="3" data-toggle="tooltip" data-placement="top"
+                                        class="select-priority-update">
+                                        <em id="clone_priority-2" class="icon ni ni-star-fill"></em>
+                                    </a>
+                                    <a id="clone__selectPriority3-3" name="3" data-toggle="tooltip" data-placement="top"
+                                        class="select-priority-update">
+                                        <em id="clone_priority-3" class="icon ni ni-star-fill"></em>
                                     </a>
                                 </div>
                                 <div class="kanban-item-text">
@@ -423,7 +457,9 @@
                                     </div>
                                 </div>
                                 <ul class="kanban-item-tags">
-                                    <li><span class="badge badge-primary">Arnold Nderitu</span></li>
+                                    <li>
+                                        <span class="badge badge-primary agent"></span>
+                                    </li>
                                 </ul>
                             </div>
                         </main>
@@ -441,20 +477,17 @@
                                                     data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     <ul class="link-list-opt no-bdr">
-                                                        <li><a href="{{url_for('crm.edit_lead', slug=record.slug)}}"><em
-                                                                    class="icon ni ni-edit"></em><span>Edit</span></a>
+                                                        <li>
+                                                            <a href="{{url_for('crm.edit_lead', slug=record.slug)}}">
+                                                                <em class="icon ni ni-edit"></em><span>Edit</span>
+                                                            </a>
                                                         </li>
-                                                        <li><a href="#"><em
-                                                                    class="icon ni ni-delete"></em><span>Delete</span></a>
+                                                        <li>
+                                                            <a id="delete-{{record.id}}" class="delete-lead-record"
+                                                                href="#">
+                                                                <em class="icon ni ni-delete"></em><span>Delete</span>
+                                                            </a>
                                                         </li>
-                                                        <hr>
-                                                        {% for stage in stages %}
-                                                        <li><a href="{{url_for('crm.move_stage', slug=record.slug, stage_id=stage.id)}}"
-                                                                {% if stage.id==record.stage_id %}style="display: none;"
-                                                                {% endif %}><em
-                                                                    class="icon ni ni-bullet"></em><span>{{stage.name}}</span></a>
-                                                        </li>
-                                                        {% endfor %}
                                                     </ul>
                                                 </div>
                                             </div>
@@ -889,7 +922,7 @@
 </div>
 <div class="modal-backdrop fade show"></div>
 {% endif %}
-<div class="modal fade" tabindex="-1" id="confirmDelete">
+<div class="modal fade" tabindex="-1" id="confirmDeleteStage">
     <div class="modal-dialog modal-dialog-top" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -903,6 +936,26 @@
                     your view.</p>
                 <div class="nk-modal-action" style="margin-top: 0rem !important">
                     <a id="deleteStage" href="#" class="btn btn-m btn-mw btn-danger">Delete</a>
+                    <a href="#" class="btn btn-m btn-mw btn-light" data-dismiss="modal">Cancel</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" id="confirmDelete">
+    <div class="modal-dialog modal-dialog-top" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm</h5>
+                <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                    <em class="icon ni ni-cross"></em>
+                </a>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this record.</p>
+                <div class="nk-modal-action" style="margin-top: 0rem !important">
+                    <a id="#" href="#" class="btn btn-m btn-mw btn-danger delete-record">Delete</a>
                     <a href="#" class="btn btn-m btn-mw btn-light" data-dismiss="modal">Cancel</a>
                 </div>
             </div>
@@ -1066,6 +1119,7 @@
         </div>
     </div>
 </div>
+{% include "modals/delete.html" %}
 {% endfor %}
 <script>
     $.get("/get_partners", function (data) {
@@ -1088,11 +1142,20 @@
             isContainer: function (el) {
                 return false;
             },
+            accepts: (el, target, source, sibling) => !sibling.classList.contains('do-not-drag'),
             revertOnSpill: true,
         });
 
         drake.on('drop', function (el, target, source, sibling) {
             console.log(el, target, source, sibling);
+            // get target id
+            var lead_id = getId(el.id)
+            var new_stage = getId(target.id)
+            var prev_stage = getId(source.id)
+            if (el.classList.contains('kanban-drag')) {
+                update_stage(lead_id, new_stage, prev_stage);
+            }
+
         })
     })
 </script>

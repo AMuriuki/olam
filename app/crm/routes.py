@@ -6,7 +6,7 @@ from app.crm import bp
 from app.crm.models.crm_lead import FILTERS, Lead, LeadActivity
 from app.crm.models.crm_recurring_plan import RecurringPlan
 from app.crm.models.crm_stage import Stage
-from app.decorators import active_user_required, can_create_access_required, model_access_required, module_access_required
+from app.decorators import active_user_required, can_create_access_required, can_delete_access_required, can_write_access_required, model_access_required, module_access_required
 from app.main.models.activities import Activity
 from app.main.models.module import Model, Module
 from flask_babel import _, get_locale
@@ -29,6 +29,35 @@ def edit_stage():
     stage.name = request.form['stage_name']
     db.session.commit()
     return jsonify({"response": "success"})
+
+
+@login_required
+@active_user_required
+@module_access_required(2)
+@can_delete_access_required(5)
+@bp.route("/delete/lead", methods=['POST', 'GET'])
+def delete_lead():
+    lead = Lead.query.filter_by(id=request.form['lead_id']).first()
+    lead.is_deleted = True
+    db.session.commit()
+    return jsonify({"response": "success"})
+
+
+@login_required
+@active_user_required
+@module_access_required(2)
+@can_write_access_required(5)
+@bp.route("/update/stage", methods=['POST', 'GET'])
+def update_stage():
+    lead = Lead.query.filter_by(is_deleted=False).filter_by(
+        id=request.form['lead_id']).first()
+    lead.stage_id = request.form['new_stage']
+    db.session.commit()
+    new_count = Lead.query.filter_by(is_deleted=False).filter_by(
+        stage_id=request.form['new_stage']).count()
+    prev_count = Lead.query.filter_by(is_deleted=False).filter_by(
+        stage_id=request.form['prev_stage']).count()
+    return jsonify({"response": "success", "prev_count": prev_count, "new_count": new_count})
 
 
 @login_required
@@ -203,7 +232,7 @@ def pipeline():
 
     selectedFilters = request.args.get('filter')
 
-    qs = Lead.query.order_by(Lead.priority.desc())
+    qs = Lead.query.filter_by(is_deleted=False).order_by(Lead.priority.desc())
 
     if selectedFilters:
         _selectedFilters = selectedFilters.split(',')
@@ -225,7 +254,7 @@ def pipeline():
                 qs = qs.filter(Lead.stage_id.in_(exists))
         pipeline = qs.all()
     else:
-        pipeline = Lead.query.filter_by(
+        pipeline = qs.filter_by(
             user_id=current_user.get_id()).order_by(Lead.priority.desc()).all()
         selectedFilters = "My Pipeline,"
 
@@ -239,7 +268,7 @@ def pipeline():
         opportunity.generate_slug()
         db.session.add(opportunity)
         db.session.commit()
-        return jsonify({"message": "success", "opportunity_name": opportunity.name, "opportunity_id": opportunity.id})
+        return jsonify({"message": "success", "opportunity_name": opportunity.name, "opportunity_id": opportunity.id, "opportunity_slug": opportunity.slug, "expected_revenue": opportunity.expected_revenue, "partner_name": opportunity.opportunity.get_name(), "partner_id": opportunity.opportunity.id, 'priority': opportunity.priority, "agent_name": opportunity.owner.get_username(), 'currency': opportunity.partner_currency})
 
     # if form3.submit1.data and form3.validate_on_submit():
     #     opportunity = Lead(name=request.form['opportunity'], user_id=current_user.get_id(), partner_id=request.form['pipeline_select_org'], priority=session['selected_priority'], stage_id=int(

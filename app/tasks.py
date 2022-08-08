@@ -337,8 +337,15 @@ def dummy_data():
                                 read=access_right['read'], write=access_right['write'], create=access_right['create'], delete=access_right['delete'])
                 db.session.add(access)
                 db.session.commit()
-                item = next(
-                    item for item in assosciations if item['access_id'] == access.id)
+                item = next(item for item in assosciations if item['access_id'] == access.id)
+                group = Group.query.filter_by(
+                    id=item['group_id']).first()
+                group.rights.append(access)
+                db.session.commit()
+                print("Access: " + access.name + " added")
+            else:
+                access = Access.query.filter_by(id=access_right['id']).first()
+                item = next(item for item in assosciations if item['access_id'] == access_right['id'])
                 group = Group.query.filter_by(
                     id=item['group_id']).first()
                 group.rights.append(access)

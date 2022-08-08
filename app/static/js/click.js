@@ -31,7 +31,11 @@ document.addEventListener("click", function (event) {
 $(".add-item").click(function (e) {
     e.preventDefault();
     stage_id = getId(this.id);
-    $("#new_item-" + stage_id).show();
+    $("#new_item-" + stage_id).fadeIn("slow");
+    $("#new_item-" + stage_id)[0].scrollIntoView({
+        behavior: "smooth", // or "auto" or "instant"
+        block: "start" // or "end"
+    });
     pipeline_stage(stage_id);
 });
 
@@ -617,7 +621,7 @@ $(".select-priority-update").click(function (e) {
 $(".discard-item").click(function (e) {
     e.preventDefault();
     stage_id = getId(this.id);
-    $("#new_item-" + stage_id).hide();
+    $("#new_item-" + stage_id).fadeOut("slow");
 });
 
 // add new stage
@@ -690,6 +694,18 @@ $(".edit-stage").click(function (e) {
     stage_id = this.id;
     $("#modalEditStage").modal("show");
 });
+
+$(".delete-lead-record").click(function (e) {
+    e.preventDefault();
+    $("#confirmDelete").modal("show");
+    $("#confirmDelete").find(".delete-record").attr("id", this.id);
+})
+
+$(".delete-record").click(function (e) {
+    e.preventDefault();
+    lead_id = getId($(this).attr("id"));
+    delete_lead(lead_id);    
+})
 
 // document.addEventListener('click', function (event) {
 //     var arr = data

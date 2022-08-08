@@ -96,6 +96,9 @@ class Users(UserMixin, PaginatedAPIMixin, db.Model):
         hash_object = hashlib.sha1((str.encode(str(partner_id))))
         hex_dig = hash_object.hexdigest()
         self.token = hex_dig
+    
+    def get_username(self):
+        return self.partner.name
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)

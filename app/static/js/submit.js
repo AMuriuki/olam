@@ -6,6 +6,7 @@ $(".frm-new-item").submit(function (e) {
     // get form id
     var form_id = form.attr('id');
     var stage_id = getId(form_id);
+
     $.ajax({
         type: "POST",
         url: url,
@@ -13,11 +14,29 @@ $(".frm-new-item").submit(function (e) {
         success: function (response) {
             if (response['message'] == "success") {
                 var clone = $("#clone-" + stage_id).clone()
-                // change id 
                 $(clone).attr('id', 'item-' + response['opportunity_id']);
-                // remove class clone
+                $(clone).find('.opportunity-name').text(response['opportunity_name']);
+                $(clone).find('.opportunity-link').attr('href', '/crm/lead/' + response['opportunity_slug']);
+                $(clone).find('.edit-opportunity-link').attr('href', '/crm/edit/lead/' + response['opportunity_slug']);
+                $(clone).find('.currency').text(response['currency']);
+                $(clone).find('.expected-revenue').text(response['expected_revenue']);
+                $(clone).find('.partner').text(response['partner_name']);
+                var priority = response['priority'];
+                if (priority == "1") {
+                    $(clone).find(".priority-2").hide();
+                    $(clone).find(".priority-3").hide();
+                } else if (priority == "2") {
+                    $(clone).find(".priority-1").hide();
+                    $(clone).find(".priority-3").hide();
+                } else if (priority == "3") {
+                    $(clone).find(".priority-1").hide();
+                    $(clone).find(".priority-2").hide();
+                }
+                $(clone).find('.agent').text(response['agent_name']);
                 $(clone).removeClass('clone');
                 $("#new_item-" + stage_id).after($(clone))
+                $(form)[0].reset();
+                $("#new_item-" + stage_id).fadeOut("slow");
             } else {
                 alert(response['message']);
             }
@@ -375,3 +394,23 @@ function select_priority(value) {
 }
 
 
+function delete_lead(id) {
+    $.post("/crm/delete/lead", {
+        lead_id: id,
+    }).done(function (response) {
+        $("#confirmDelete").modal("hide");
+        $("#item-" + id).fadeOut("slow")
+    });
+}
+
+function update_stage(lead_id, new_stage, prev_stage) {
+    console.log(lead_id, new_stage, prev_stage);
+    $.post("/crm/update/stage", {
+        lead_id: lead_id,
+        new_stage: new_stage,
+        prev_stage: prev_stage,
+    }).done(function (response) {
+        $(".count-" + prev_stage).text(response['prev_count']);
+        $(".count-" + new_stage).text(response['new_count']);
+    });
+}
