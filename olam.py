@@ -187,8 +187,7 @@ def stringChars(value):
 
 @app.template_filter()
 def get_pipeline_count(value):
-    count = Lead.query.filter_by(stage_id=value).filter_by(
-        user_id=current_user.get_id()).filter_by(is_deleted=False).count()
+    count = Lead.query.filter_by(stage_id=value).filter_by(user_id=current_user.get_id()).filter_by(is_deleted=False).count()
     return count
 
 

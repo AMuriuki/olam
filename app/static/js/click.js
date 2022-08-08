@@ -642,38 +642,60 @@ $(".filter-pipeline").click(function (e) {
     e.preventDefault();
     filter_id = $(this).attr("id");
     var filter_name = $(this).children("span").text();
-    if (hasClass($(this).children("em"), "ni-check-thick")) {
-        const index = selectedFilters.indexOf(filter_id);
-        selectedFilters.splice(index, 1);
-        $(this).children("em").removeClass("ni-check-thick");
-        var current_value = $("#search_pipeline").val();
-        if (current_value == "All") {
-            new_value = current_value.replace("All" + ",", "");
-        } else {
-            new_value = current_value.replace(filter_name + ",", "");
-        }
-        $("#search_pipeline").val(new_value);
-        if (new_value) {
-            location.href = "/crm?filter=" + new_value;
-        } else {
-            location.href = "/crm?filter=" + "All";
+    if ($(this).find('em.ni-check-thick').length > 0) {
+        $(this).find('em.ni-check-thick').remove();
+        if (filter_name.indexOf(selected_filters) == -1) {
+            $(".lead-items .kanban-drag").fadeOut();
+            $("#search_pipeline").val(function () {
+                return $.trim(this.value.replace(filter_name + ",", ""));
+            })   
+            clear_pipeline_filter(filter_name);
+        } else if (filter_name.indexOf($(this).val()) == -1) {
+            $(".lead-items .kanban-drag").fadeOut();
+            $("#search_pipeline").val(function () {
+                return $.trim(this.value.replace(filter_name + ",", ""));
+            })
+            add_pipeline_filter(filter_id);
         }
     } else {
-        selectedFilters.push(filter_id);
-        $(this).children("em").addClass("ni-check-thick");
-        var current_value = $("#search_pipeline").val();
-        if (current_value == "All") {
-            new_value = current_value.replace("All", filter_name + ", ");
-        } else {
-            new_value = current_value + filter_name + ", ";
-        }
-        $("#search_pipeline").val(new_value);
-        if (new_value) {
-            location.href = "/crm?filter=" + new_value;
-        } else {
-            location.href = "/crm?filter=" + "All";
-        }
+        // append before span
+        $(this).find('span').before("<em class='icon ni ni-check-thick'></em>");
+        $("#search_pipeline").val(function () {
+            return this.value + " " + filter_name + ", ";
+        })
     }
+    // if (hasClass($(this).children("em"), "ni-check-thick")) {
+    //     const index = selectedFilters.indexOf(filter_id);
+    //     selectedFilters.splice(index, 1);
+    //     $(this).children("em").removeClass("ni-check-thick");
+    //     var current_value = $("#search_pipeline").val();
+    //     if (current_value == "All") {
+    //         new_value = current_value.replace("All" + ",", "");
+    //     } else {
+    //         new_value = current_value.replace(filter_name + ",", "");
+    //     }
+    //     $("#search_pipeline").val(new_value);
+    //     if (new_value) {
+    //         location.href = "/crm?filter=" + new_value;
+    //     } else {
+    //         location.href = "/crm?filter=" + "All";
+    //     }
+    // } else {
+    //     selectedFilters.push(filter_id);
+    //     $(this).children("em").addClass("ni-check-thick");
+    //     var current_value = $("#search_pipeline").val();
+    //     if (current_value == "All") {
+    //         new_value = current_value.replace("All", filter_name + ", ");
+    //     } else {
+    //         new_value = current_value + filter_name + ", ";
+    //     }
+    //     $("#search_pipeline").val(new_value);
+    //     if (new_value) {
+    //         location.href = "/crm?filter=" + new_value;
+    //     } else {
+    //         location.href = "/crm?filter=" + "All";
+    //     }
+    // }
 });
 
 $(".remove-access-right").click(function (e) {
@@ -704,7 +726,7 @@ $(".delete-lead-record").click(function (e) {
 $(".delete-record").click(function (e) {
     e.preventDefault();
     lead_id = getId($(this).attr("id"));
-    delete_lead(lead_id);    
+    delete_lead(lead_id);
 })
 
 // document.addEventListener('click', function (event) {

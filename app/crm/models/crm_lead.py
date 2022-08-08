@@ -1,5 +1,6 @@
 from app import db
 from app.main.models.activities import Activity
+from app.models import PaginatedAPIMixin
 from app.utils import unique_slug_generator
 from datetime import datetime
 from sqlalchemy.dialects.postgresql import UUID
@@ -17,7 +18,7 @@ FILTERS = [
 ]
 
 
-class Lead(db.Model):
+class Lead(PaginatedAPIMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), index=True, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), default=None)
@@ -38,11 +39,25 @@ class Lead(db.Model):
     is_deleted = db.Column(db.Boolean, default=False)
     slug = db.Column(db.Text(), unique=True)
     notes = db.relationship('Note', backref='lead', lazy='dynamic')
-    activities = db.relationship('LeadActivity', backref='lead', lazy=True, uselist=False)
+    activities = db.relationship(
+        'LeadActivity', backref='lead', lazy=True, uselist=False)
 
     def generate_slug(self):
         _slug = unique_slug_generator(self)
         self.slug = _slug
+
+    def to_dict(self):
+        data = {
+            'id': self.id,
+            'opportunity_name': self.name,
+            'opportunity_slug': self.slug,
+            'expected_revenue': self.expected_revenue,
+            'partner_name': self.opportunity.get_name(),
+            'assignee_name': self.owner.get_username(),
+            'currency': self.partner_currency,
+            'stage': self.stage_id,
+        }
+        return data
 
 
 class LeadActivity(Activity):
@@ -51,5 +66,3 @@ class LeadActivity(Activity):
         'activity.id'), primary_key=True)
     lead_id = db.Column(
         db.Integer, db.ForeignKey('lead.id'), nullable=True)
-
-

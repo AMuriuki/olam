@@ -34,7 +34,8 @@ $(".frm-new-item").submit(function (e) {
                 }
                 $(clone).find('.agent').text(response['agent_name']);
                 $(clone).removeClass('clone');
-                $("#new_item-" + stage_id).after($(clone))
+                // $("#new_item-" + stage_id).after($(clone))
+                $("#stage-" + stage_id).find(".lead-items").append($(clone));
                 $(form)[0].reset();
                 $("#new_item-" + stage_id).fadeOut("slow");
             } else {
@@ -412,5 +413,61 @@ function update_stage(lead_id, new_stage, prev_stage) {
     }).done(function (response) {
         $(".count-" + prev_stage).text(response['prev_count']);
         $(".count-" + new_stage).text(response['new_count']);
+    });
+}
+
+
+function clear_pipeline_filter(filter_name) {
+    $.post("/crm/index", {
+        clear_filter_name: filter_name,
+    }).done(function (response) {
+        // get all div with class kanban-board
+        var kanban_board = $(".kanban-board");
+
+        // get length of response
+        var length = response["pipeline"];
+        console.log(response["pipeline"], typeof(response["pipeline"]))
+
+        // clone kanban-drag div
+        var clone = $(".kanban-drag-clone").clone();
+
+        // loop through response
+        for (var i = 0; i < length; i++) {
+            // get key
+            var key = Object.keys(response["pipeline"])[i];
+            // get value
+            var value = response["pipeline"][key];
+            // update html
+            $("#" + key).text(value);
+
+            $(clone).attr('id', 'item-' + value[i]['opportunity_id']);
+            $(clone).find('.opportunity-name').text(value[i]['opportunity_name']);
+            $(clone).find('.opportunity-link').attr('href', '/crm/lead/' + value[i]['opportunity_slug']);
+            $(clone).find('.edit-opportunity-link').attr('href', '/crm/edit/lead/' + value[i]['opportunity_slug']);
+            $(clone).find('.currency').text(value[i]['currency']);
+            $(clone).find('.expected-revenue').text(value[i]['expected_revenue']);
+            $(clone).find('.partner').text(value[i]['partner_name']);
+            var priority = value[i]['priority'];
+            if (priority == "1") {
+                $(clone).find(".priority-2").hide();
+                $(clone).find(".priority-3").hide();
+            } else if (priority == "2") {
+                $(clone).find(".priority-1").hide();
+                $(clone).find(".priority-3").hide();
+            } else if (priority == "3") {
+                $(clone).find(".priority-1").hide();
+                $(clone).find(".priority-2").hide();
+            }
+            $(clone).find('.agent').text(value[i]['assignee_name']);
+            $(clone).removeClass('clone');
+
+            // get kanban-board relative to stage
+            var kanban_board_stage = kanban_board.find("#stage-" + value[i]['stage']);
+
+            // get lead items from kanban-board-stage
+            var lead_item = kanban_board_stage.find(".lead-item");
+
+            $(lead_item).append($(clone));
+        }
     });
 }

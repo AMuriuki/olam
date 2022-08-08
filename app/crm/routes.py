@@ -53,9 +53,9 @@ def update_stage():
         id=request.form['lead_id']).first()
     lead.stage_id = request.form['new_stage']
     db.session.commit()
-    new_count = Lead.query.filter_by(is_deleted=False).filter_by(
+    new_count = Lead.query.filter_by(user_id=current_user.get_id()).filter_by(is_deleted=False).filter_by(
         stage_id=request.form['new_stage']).count()
-    prev_count = Lead.query.filter_by(is_deleted=False).filter_by(
+    prev_count = Lead.query.filter_by(user_id=current_user.get_id()).filter_by(is_deleted=False).filter_by(
         stage_id=request.form['prev_stage']).count()
     return jsonify({"response": "success", "prev_count": prev_count, "new_count": new_count})
 
@@ -228,47 +228,33 @@ def pipeline():
     filters = FILTERS
     new_stage = False
     message = None
-    exists = []
 
     selectedFilters = request.args.get('filter')
-
-    qs = Lead.query.filter_by(is_deleted=False).order_by(Lead.priority.desc())
-
-    if selectedFilters:
-        _selectedFilters = selectedFilters.split(',')
-        if "All" in selectedFilters:
-            qs = qs
-        else:
-            if "My Pipeline" in selectedFilters:
-                qs = qs.filter_by(user_id=current_user.get_id())
-            if "Unassigned" in selectedFilters:
-                qs = qs.filter_by(user_id=None)
-                if qs.count() == 0:
-                    message = "There are no unassigned opportunities"
-                    flash(_("No unassigned opportunities"))
-            for _filter in _selectedFilters:
-                stage = Stage.query.filter_by(name=_filter).first()
-                if stage:
-                    exists.append(stage.id)
-            if exists:
-                qs = qs.filter(Lead.stage_id.in_(exists))
-        pipeline = qs.all()
-    else:
-        pipeline = qs.filter_by(
-            user_id=current_user.get_id()).order_by(Lead.priority.desc()).all()
-        selectedFilters = "My Pipeline,"
-
+    selectedFilters = "My Pipeline,"
     activities = LeadActivity.query.all()
     assignees = Partner.query.filter_by(is_tenant=True).all()
 
+    qs = Lead.query.filter_by(is_deleted=False).order_by(Lead.priority.desc())
+
+    if request.method == "GET":
+        pipeline = qs.filter_by(
+            user_id=current_user.get_id()).order_by(Lead.priority.desc()).all()
+
     if request.method == "POST":
-        # get form data
-        opportunity = Lead(name=request.form['opportunity'], user_id=current_user.get_id(), partner_id=request.form['partner_id'], priority=session['selected_priority'], stage_id=int(
-            session['pipeline_stage']), expected_revenue=request.form['expected_revenue'], partner_email=request.form['partner_email'], partner_phone=request.form['partner_phone'], partner_currency='KES')
-        opportunity.generate_slug()
-        db.session.add(opportunity)
-        db.session.commit()
-        return jsonify({"message": "success", "opportunity_name": opportunity.name, "opportunity_id": opportunity.id, "opportunity_slug": opportunity.slug, "expected_revenue": opportunity.expected_revenue, "partner_name": opportunity.opportunity.get_name(), "partner_id": opportunity.opportunity.id, 'priority': opportunity.priority, "agent_name": opportunity.owner.get_username(), 'currency': opportunity.partner_currency})
+        if 'opportunity' in request.form:
+            opportunity = Lead(name=request.form['opportunity'], user_id=current_user.get_id(), partner_id=request.form['partner_id'], priority=session['selected_priority'], stage_id=int(
+                session['pipeline_stage']), expected_revenue=request.form['expected_revenue'], partner_email=request.form['partner_email'], partner_phone=request.form['partner_phone'], partner_currency='KES')
+            opportunity.generate_slug()
+            db.session.add(opportunity)
+            db.session.commit()
+
+            return jsonify({"message": "success", "opportunity_name": opportunity.name, "opportunity_id": opportunity.id, "opportunity_slug": opportunity.slug, "expected_revenue": opportunity.expected_revenue, "partner_name": opportunity.opportunity.get_name(), "partner_id": opportunity.opportunity.id, 'priority': opportunity.priority, "agent_name": opportunity.owner.get_username(), 'currency': opportunity.partner_currency})
+
+        if 'clear_filter_name' in request.form:
+            if request.form['clear_filter_name'] == "My Pipeline":
+                pipeline = Lead.to_collection_dict(qs)
+
+            return jsonify({"message": "success", "pipeline": pipeline})
 
     # if form3.submit1.data and form3.validate_on_submit():
     #     opportunity = Lead(name=request.form['opportunity'], user_id=current_user.get_id(), partner_id=request.form['pipeline_select_org'], priority=session['selected_priority'], stage_id=int(
