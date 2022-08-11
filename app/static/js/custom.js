@@ -664,4 +664,66 @@ function closeAllLists() {
   }
 }
 
+function updateURLParameter(url, param, paramVal) {
+  var TheAnchor = null;
+  var newAdditionalURL = "";
+  var tempArray = url.split("?");
+  var baseURL = tempArray[0];
+  var additionalURL = tempArray[1];
+  var temp = "";
+
+  if (additionalURL) {
+    var tmpAnchor = additionalURL.split("#");
+    var TheParams = tmpAnchor[0];
+    TheAnchor = tmpAnchor[1];
+    if (TheAnchor) additionalURL = TheParams;
+
+    tempArray = additionalURL.split("&");
+
+    for (var i = 0; i < tempArray.length; i++) {
+      if (tempArray[i].split("=")[0] != param) {
+        newAdditionalURL += temp + tempArray[i];
+        temp = "&";
+      }
+    }
+  } else {
+    var tmpAnchor = baseURL.split("#");
+    var TheParams = tmpAnchor[0];
+    TheAnchor = tmpAnchor[1];
+
+    if (TheParams) baseURL = TheParams;
+  }
+
+  if (TheAnchor) paramVal += "#" + TheAnchor;
+
+  var rows_txt = temp + "" + param + "=" + paramVal;
+  updated_url = baseURL + "?" + newAdditionalURL + rows_txt;
+  if (typeof history.pushState != "undefined") {
+    var obj = { Title: "Olam", Url: updated_url };
+    history.pushState(obj, obj.Title, obj.Url);
+  }
+}
+
+// remove parameter
+function removeParam(key) {
+  sourceURL = window.location.href;
+
+  var rtn = sourceURL.split("?")[0],
+    param,
+    params_arr = [],
+    queryString = sourceURL.indexOf("?") !== -1 ? sourceURL.split("?")[1] : "";
+  if (queryString !== "") {
+    params_arr = queryString.split("&");
+    for (var i = params_arr.length - 1; i >= 0; i -= 1) {
+      param = params_arr[i].split("=")[0];
+      if (param === key) {
+        params_arr.splice(i, 1);
+      }
+    }
+    if (params_arr.length) rtn = rtn + "?" + params_arr.join("&");
+  }
+  window.history.pushState("", document.title, rtn);
+
+  return rtn;
+}
 

@@ -15,7 +15,7 @@ from app import db, login_manager
 from app.search import add_to_index, remove_from_index, query_index
 from app.models import SearchableMixin, PaginatedAPIMixin, Task
 from flask_login import UserMixin, current_user
-from app.utils import has_access, unique_slug_generator
+from app.utils import get_random_color, has_access, unique_slug_generator
 from config import basedir
 import hashlib
 import enum
@@ -82,6 +82,8 @@ class Users(UserMixin, PaginatedAPIMixin, db.Model):
         'Access', secondary=user_access, back_populates="users")
     slug = db.Column(db.Text(), unique=True)
     user_type = db.Column(db.String(120), default="Internal Users")
+    # default is equal to get color function in utils.py
+    color_badge = db.Column(db.String(120), default=get_random_color)
 
     def __repr__(self):
         return '<User {}>'.format(self.id)
@@ -96,7 +98,7 @@ class Users(UserMixin, PaginatedAPIMixin, db.Model):
         hash_object = hashlib.sha1((str.encode(str(partner_id))))
         hex_dig = hash_object.hexdigest()
         self.token = hex_dig
-    
+
     def get_username(self):
         return self.partner.name
 
@@ -255,17 +257,18 @@ class Users(UserMixin, PaginatedAPIMixin, db.Model):
     def generate_slug(self):
         _slug = unique_slug_generator(self)
         self.slug = _slug
-    
+
     def launch_task(self, name, description, task_type, *args, **kwargs):
         if task_type == "background_task":
-            rq_job = current_app.task_queue.enqueue('app.tasks.' + name, *args, **kwargs)
+            rq_job = current_app.task_queue.enqueue(
+                'app.tasks.' + name, *args, **kwargs)
         elif task_type == "db_connection":
-            rq_job = current_app.task_queue.enqueue('app.database.' + name, *args, **kwargs)
+            rq_job = current_app.task_queue.enqueue(
+                'app.database.' + name, *args, **kwargs)
         task = Task(id=rq_job.get_id(), name=name, description=description,
                     user_id=current_user.id)
         db.session.add(task)
         return task
-    
 
 
 @ login_manager.user_loader

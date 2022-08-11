@@ -175,10 +175,10 @@ def get_partners():
 @model_access_required(3)
 def get_stages():
     stages = []
-    results = Stage.query.all()
-    
+    results = Stage.query.filter_by(is_deleted=False).all()
+
     for result in results:
-        stages.append({"id":result.id})
+        stages.append({"id": result.id})
     return Response(json.dumps(stages), mimetype='application/json')
 
 

@@ -7,3 +7,5 @@ def get_users():
     json_url = os.path.join(SITE_ROOT, "data", "users.json")
     data = json.load(open(json_url))
     return data
+
+

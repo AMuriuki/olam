@@ -40,7 +40,9 @@ def delete_lead():
     lead = Lead.query.filter_by(id=request.form['lead_id']).first()
     lead.is_deleted = True
     db.session.commit()
-    return jsonify({"response": "success"})
+    stage_count = Lead.query.filter_by(user_id=current_user.get_id()).filter_by(
+        is_deleted=False).filter_by(stage_id=lead.stage_id).count()
+    return jsonify({"message": "success", "stage_id": lead.stage_id, "stage_count": stage_count})
 
 
 @login_required
@@ -248,11 +250,14 @@ def pipeline():
             db.session.add(opportunity)
             db.session.commit()
 
-            return jsonify({"message": "success", "opportunity_name": opportunity.name, "opportunity_id": opportunity.id, "opportunity_slug": opportunity.slug, "expected_revenue": opportunity.expected_revenue, "partner_name": opportunity.opportunity.get_name(), "partner_id": opportunity.opportunity.id, 'priority': opportunity.priority, "agent_name": opportunity.owner.get_username(), 'currency': opportunity.partner_currency})
+            count = Lead.query.filter_by(is_deleted=False).filter_by(
+                stage_id=opportunity.stage_id).filter_by(user_id=current_user.get_id()).count()
+
+            return jsonify({"message": "success", "opportunity_name": opportunity.name, "opportunity_id": opportunity.id, "opportunity_slug": opportunity.slug, "expected_revenue": opportunity.expected_revenue, "partner_name": opportunity.opportunity.get_name(), "partner_id": opportunity.opportunity.id, 'priority': opportunity.priority, "agent_name": opportunity.owner.get_username(), 'currency': opportunity.partner_currency, 'color_badge': opportunity.owner.color_badge, 'count': count})
 
         if 'clear_filter_name' in request.form:
             if request.form['clear_filter_name'] == "My Pipeline":
-                pipeline = Lead.to_collection_dict(qs)
+                pipeline = Lead.to_collection_dict(qs)                    
 
             return jsonify({"message": "success", "pipeline": pipeline})
 

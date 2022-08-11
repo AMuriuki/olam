@@ -56,6 +56,8 @@ class Lead(PaginatedAPIMixin, db.Model):
             'assignee_name': self.owner.get_username(),
             'currency': self.partner_currency,
             'stage': self.stage_id,
+            'priority': self.priority,
+            'color_badge': self.owner.color_badge,
         }
         return data
 

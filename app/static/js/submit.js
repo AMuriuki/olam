@@ -33,9 +33,11 @@ $(".frm-new-item").submit(function (e) {
                     $(clone).find(".priority-2").hide();
                 }
                 $(clone).find('.agent').text(response['agent_name']);
+                $(clone).find('.agent').css('background-color', response['color_badge']);
+                $(clone).find('.agent').css('border-color', response['color_badge']);
                 $(clone).removeClass('clone');
-                // $("#new_item-" + stage_id).after($(clone))
-                $("#stage-" + stage_id).find(".lead-items").append($(clone));
+                $("#new_item-" + stage_id).after($(clone));
+                $(".count-" + stage_id).text(response['count']);
                 $(form)[0].reset();
                 $("#new_item-" + stage_id).fadeOut("slow");
             } else {
@@ -401,6 +403,7 @@ function delete_lead(id) {
     }).done(function (response) {
         $("#confirmDelete").modal("hide");
         $("#item-" + id).fadeOut("slow")
+        $(".count-" + response['stage_id']).text(response['stage_count'])
     });
 }
 
@@ -421,33 +424,31 @@ function clear_pipeline_filter(filter_name) {
     $.post("/crm/index", {
         clear_filter_name: filter_name,
     }).done(function (response) {
-        // get all div with class kanban-board
-        var kanban_board = $(".kanban-board");
+        // remove all items
+        $(".pipeline-item").remove();
 
         // get length of response
-        var length = response["pipeline"];
-        console.log(response["pipeline"], typeof(response["pipeline"]))
-
-        // clone kanban-drag div
-        var clone = $(".kanban-drag-clone").clone();
-
+        var length = response["pipeline"]["items"].length;
+        var item = response["pipeline"]["items"];
+        var stages = []
         // loop through response
         for (var i = 0; i < length; i++) {
-            // get key
-            var key = Object.keys(response["pipeline"])[i];
-            // get value
-            var value = response["pipeline"][key];
-            // update html
-            $("#" + key).text(value);
+            stages.push(item[i]["stage"])
+            const counts = {}
+            for (const num of stages) {
+                counts[num] = counts[num] ? counts[num] + 1 : 1;
+            }
+            var stage_count = counts[item[i]["stage"]]
 
-            $(clone).attr('id', 'item-' + value[i]['opportunity_id']);
-            $(clone).find('.opportunity-name').text(value[i]['opportunity_name']);
-            $(clone).find('.opportunity-link').attr('href', '/crm/lead/' + value[i]['opportunity_slug']);
-            $(clone).find('.edit-opportunity-link').attr('href', '/crm/edit/lead/' + value[i]['opportunity_slug']);
-            $(clone).find('.currency').text(value[i]['currency']);
-            $(clone).find('.expected-revenue').text(value[i]['expected_revenue']);
-            $(clone).find('.partner').text(value[i]['partner_name']);
-            var priority = value[i]['priority'];
+            var clone = $("#clone-" + item[i]['stage']).clone()
+            $(clone).attr('id', 'item-' + item[i]['id']);
+            $(clone).find('.opportunity-name').text(item[i]['opportunity_name']);
+            $(clone).find('.opportunity-link').attr('href', '/crm/lead/' + item[i]['opportunity_slug']);
+            $(clone).find('.edit-opportunity-link').attr('href', '/crm/edit/lead/' + item[i]['opportunity_slug']);
+            $(clone).find('.currency').text(item[i]['currency']);
+            $(clone).find('.expected-revenue').text(item[i]['expected_revenue']);
+            $(clone).find('.partner').text(item[i]['partner_name']);
+            var priority = item[i]['priority'];
             if (priority == "1") {
                 $(clone).find(".priority-2").hide();
                 $(clone).find(".priority-3").hide();
@@ -458,16 +459,13 @@ function clear_pipeline_filter(filter_name) {
                 $(clone).find(".priority-1").hide();
                 $(clone).find(".priority-2").hide();
             }
-            $(clone).find('.agent').text(value[i]['assignee_name']);
-            $(clone).removeClass('clone');
+            $(clone).find('.agent').text(item[i]['assignee_name']);
+            $(clone).find('.agent').css('background-color', item[i]['color_badge']);
+            $(clone).find('.agent').css('border-color', item[i]['color_badge']);
+            $("#new_item-" + item[i]['stage']).after($(clone));
+            $(".count-" + item[i]['stage']).text(stage_count);
+            $(clone).fadeIn("slow");
 
-            // get kanban-board relative to stage
-            var kanban_board_stage = kanban_board.find("#stage-" + value[i]['stage']);
-
-            // get lead items from kanban-board-stage
-            var lead_item = kanban_board_stage.find(".lead-item");
-
-            $(lead_item).append($(clone));
         }
     });
 }

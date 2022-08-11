@@ -105,3 +105,8 @@ def has_access(a):
 
 def remove_comma(str):
     return str.replace(",", "")
+
+
+# get random color
+def get_random_color():
+    return '#%06x' % random.randint(0, 0xFFFFFF)

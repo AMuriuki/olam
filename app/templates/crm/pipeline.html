@@ -115,12 +115,12 @@
                                 </li>
                                 {% endif %}
                             </ul>
-                            <ul class="nk-block-tools g-3 nav">
-                                <li><a data-toggle="tab" href="#file-grid-view" class="nk-switch-icon"><em
+                            <ul class="nk-block-tools g-3 nav pt-0">
+                                <li><a data-toggle="tab" href="#file-grid-view" class="nk-switch-icon active"><em
                                             class="icon ni ni-view-grid3-wd"></em></a></li>
                                 <li><a data-toggle="tab" href="#file-group-view" class="nk-switch-icon"><em
                                             class="icon ni ni-view-group-wd"></em></a></li>
-                                <li><a data-toggle="tab" href="#file-list-view" class="nk-switch-icon active"><em
+                                <li><a data-toggle="tab" href="#file-list-view" class="nk-switch-icon"><em
                                             class="icon ni ni-view-row-wd"></em></a></li>
                             </ul>
                         </div>
@@ -144,7 +144,8 @@
                 <div class="kanban-container" style="width: 100%;">
                     {% for stage in stages %}
                     <div name="{{stage.name}}" id="stage-{{stage.id}}" class="kanban-board">
-                        <header class="kanban-board-header kanban-light do-not-drag">
+                        <header id="header-{{stage.id}}" class="kanban-board-header kanban-light do-not-drag"
+                            style="border-top-color: {{stage.color_badge}};">
                             <div class="kanban-title-board">
                                 <div class="kanban-title-content">
                                     <h6 id="stage_title-{{stage.id}}" class="title">
@@ -470,184 +471,171 @@
                                 </ul>
                             </div>
                         </main>
-                        <div class="lead-items">
-                            {% for record in pipeline %}
-                            {% if record.stage_id == stage.id %}
-                            <main id="item-{{record.id}}" class="kanban-drag">
-                                <div class="kanban-item">
-                                    <a href="{{url_for('crm.lead', slug=record.slug)}}">
-                                        <div class="kanban-item-title">
-                                            <h6 class="title">{{record.name}}</h6>
+                        {% for record in pipeline %}
+                        {% if record.stage_id == stage.id %}
+                        <main id="item-{{record.id}}" class="kanban-drag pipeline-item">
+                            <div class="kanban-item">
+                                <a href="{{url_for('crm.lead', slug=record.slug)}}">
+                                    <div class="kanban-item-title">
+                                        <h6 class="title">{{record.name}}</h6>
+                                        <div class="drodown">
                                             <div class="drodown">
-                                                <div class="drodown">
-                                                    <a href="#"
-                                                        class="dropdown-toggle btn btn-sm btn-icon btn-trigger mr-n1"
-                                                        data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <ul class="link-list-opt no-bdr">
-                                                            <li>
-                                                                <a
-                                                                    href="{{url_for('crm.edit_lead', slug=record.slug)}}">
-                                                                    <em class="icon ni ni-edit"></em><span>Edit</span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a id="delete-{{record.id}}" class="delete-lead-record"
-                                                                    href="#">
-                                                                    <em
-                                                                        class="icon ni ni-delete"></em><span>Delete</span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="kanban-item-text">
-                                            <p>
-                                                {{record.partner_currency}}&nbsp;{{record.expected_revenue}}
-                                            </p>
-                                        </div>
-                                        <div class="kanban-item-text">
-                                            <p>
-                                                {% if record.opportunity.is_company %}
-                                                {{record.opportunity.company_name}}
-                                                {% elif record.opportunity.is_individual %}
-                                                {{record.opportunity.name}}&nbsp;-&nbsp;{{record.opportunity.parent.company_name}}
-                                                {% endif %}
-                                            </p>
-                                        </div>
-
-                                        <div class="kanban-item-text">
-                                            {% if record.priority == '0' %}
-                                            <a data-toggle="tooltip" data-placement="top"
-                                                id="_selectPriority1-{{record.id}}" name="{{record.id}}"
-                                                class="select-priority-update">
-                                                <em id="_priority1-{{record.id}}"
-                                                    class="asterisk-off icon ni ni-star"></em>
-                                            </a>
-                                            <a id="_selectPriority2-{{record.id}}" class="select-priority-update"
-                                                name="{{record.id}}">
-                                                <em id="_priority2-{{record.id}}"
-                                                    class="asterisk-off icon ni ni-star"></em>
-                                            </a>
-                                            <a id="_selectPriority3-{{record.id}}" class="select-priority-update"
-                                                name="{{record.id}}">
-                                                <em id="_priority3-{{record.id}}"
-                                                    class="asterisk-off icon ni ni-star"></em>
-                                            </a>
-                                            {% elif record.priority == '1' %}
-                                            <a id="_selectPriority1-{{record.id}}" class="select-priority-update"
-                                                data-toggle="tooltip" data-placement="top" name="{{record.id}}"><em
-                                                    id="_priority1-{{record.id}}" class="icon ni ni-star-fill"></em></a>
-                                            <a id="_selectPriority2-{{record.id}}" class="select-priority-update"
-                                                data-toggle="tooltip" data-placement="top" name="{{record.id}}">
-                                                <em id="_priority2-{{record.id}}"
-                                                    class="asterisk-off icon ni ni-star"></em>
-                                            </a>
-                                            <a id="_selectPriority3-{{record.id}}" class="select-priority-update"
-                                                data-toggle="tooltip" data-placement="top" name="{{record.id}}">
-                                                <em id="_priority3-{{record.id}}"
-                                                    class="asterisk-off icon ni ni-star"></em>
-                                            </a>
-                                            {% elif record.priority == '2' %}
-                                            <a id="_selectPriority1-{{record.id}}" name="{{record.id}}"
-                                                data-toggle="tooltip" data-placement="top"
-                                                class="select-priority-update">
-                                                <em id="_priority1-{{record.id}}" class="icon ni ni-star-fill"></em>
-                                            </a>
-                                            <a id="_selectPriority2-{{record.id}}" name="{{record.id}}"
-                                                data-toggle="tooltip" data-placement="top"
-                                                class="select-priority-update">
-                                                <em id="_priority2-{{record.id}}" class="icon ni ni-star-fill"></em>
-                                            </a>
-                                            <a id="_selectPriority3-{{record.id}}" name="{{record.id}}"
-                                                data-toggle="tooltip" data-placement="top"
-                                                class="select-priority-update">
-                                                <em id="_priority3-{{record.id}}"
-                                                    class="asterisk-off icon ni ni-star"></em>
-                                            </a>
-                                            {% elif record.priority == '3' %}
-                                            <a id="_selectPriority1-{{record.id}}" name="{{record.id}}"
-                                                data-toggle="tooltip" data-placement="top"
-                                                class="select-priority-update">
-                                                <em id="_priority1-{{record.id}}" class="icon ni ni-star-fill"></em>
-                                            </a>
-                                            <a id="_selectPriority2-{{record.id}}" name="{{record.id}}"
-                                                data-toggle="tooltip" data-placement="top"
-                                                class="select-priority-update">
-                                                <em id="_priority2-{{record.id}}" class="icon ni ni-star-fill"></em>
-                                            </a>
-                                            <a id="_selectPriority3-{{record.id}}" name="{{record.id}}"
-                                                data-toggle="tooltip" data-placement="top"
-                                                class="select-priority-update">
-                                                <em id="_priority3-{{record.id}}" class="icon ni ni-star-fill"></em>
-                                            </a>
-                                            {% endif %}
-                                        </div>
-                                        <div class="kanban-item-text">
-                                            <div class="drodown">
-                                                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                    <div class="icon-status icon-status-info">
-                                                        <em style="font-size: 20px;" class="icon ni ni-list-thumb"></em>
-                                                    </div>
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-left">
-                                                    <div class="dropdown-head">
-                                                        <span class="sub-title nk-dropdown-title">Activities</span>
-                                                    </div>
+                                                <a href="#"
+                                                    class="dropdown-toggle btn btn-sm btn-icon btn-trigger mr-n1"
+                                                    data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                <div class="dropdown-menu dropdown-menu-right">
                                                     <ul class="link-list-opt no-bdr">
-                                                        {% for activity in activities %}
-                                                        {% if activity.lead_id == record.id %}
                                                         <li>
-                                                            <a href="#" data-toggle="modal"
-                                                                data-target="#ActivityModal{{activity.id}}">
-                                                                {% if activity.type.name == "Call" or activity.type.name
-                                                                ==
-                                                                "Call for Demo" %}
-                                                                <em class="icon ni ni-call"></em>
-                                                                {% elif activity.type.name == "Email" %}
-                                                                <em class="icon ni ni-mail"></em>
-                                                                {% elif activity.type.name == "Meeting" %}
-                                                                <em class="icon ni ni-calendar"></em>
-                                                                {% elif activity.type.name == "Upload Document" %}
-                                                                <em class="icon ni ni-upload"></em>
-                                                                {% elif activity.type.name == "To Do" %}
-                                                                <em class="icon ni ni-todo"></em>
-                                                                {% elif activity.type.name == "Make Quote" or
-                                                                activity.type.name == "Follow-Up Quote" %}
-                                                                <em class="icon ni ni-sign-dollar"></em>
-                                                                {% else %}
-                                                                <em class="icon ni ni-property-blank"></em>
-                                                                {% endif %}
-                                                                <span>{{activity.summary}}</span>
+                                                            <a href="{{url_for('crm.edit_lead', slug=record.slug)}}">
+                                                                <em class="icon ni ni-edit"></em><span>Edit</span>
                                                             </a>
                                                         </li>
-                                                        <hr>
-                                                        {% endif %}
-                                                        {% endfor %}
                                                         <li>
-                                                            <a id="{{record.id}}" class="schedule" href="#"
-                                                                data-toggle="modal" data-target="#modalActivity">
-                                                                <em class="icon ni ni-plus-sm"></em>
-                                                                <span>Schedule an Activity</span>
+                                                            <a id="delete-{{record.id}}" class="delete-lead-record"
+                                                                href="#">
+                                                                <em class="icon ni ni-delete"></em><span>Delete</span>
                                                             </a>
                                                         </li>
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
-                                        <ul class="kanban-item-tags">
-                                            <li><span {% if record.user_id==current_user.id %}
-                                                    class="badge badge-primary" {% else %} class="badge badge-secondary"
-                                                    {% endif %}>{{record.user_id|get_user_name}}</span></li>
-                                        </ul>
-                                    </a>
-                                </div>
-                            </main>
-                            {% endif %}
-                            {% endfor %}
-                        </div>
+                                    </div>
+                                    <div class="kanban-item-text">
+                                        <p>
+                                            {{record.partner_currency}}&nbsp;{{record.expected_revenue}}
+                                        </p>
+                                    </div>
+                                    <div class="kanban-item-text">
+                                        <p>
+                                            {% if record.opportunity.is_company %}
+                                            {{record.opportunity.company_name}}
+                                            {% elif record.opportunity.is_individual %}
+                                            {{record.opportunity.name}}&nbsp;-&nbsp;{{record.opportunity.parent.company_name}}
+                                            {% endif %}
+                                        </p>
+                                    </div>
+
+                                    <div class="kanban-item-text">
+                                        {% if record.priority == '0' %}
+                                        <a data-toggle="tooltip" data-placement="top"
+                                            id="_selectPriority1-{{record.id}}" name="{{record.id}}"
+                                            class="select-priority-update">
+                                            <em id="_priority1-{{record.id}}" class="asterisk-off icon ni ni-star"></em>
+                                        </a>
+                                        <a id="_selectPriority2-{{record.id}}" class="select-priority-update"
+                                            name="{{record.id}}">
+                                            <em id="_priority2-{{record.id}}" class="asterisk-off icon ni ni-star"></em>
+                                        </a>
+                                        <a id="_selectPriority3-{{record.id}}" class="select-priority-update"
+                                            name="{{record.id}}">
+                                            <em id="_priority3-{{record.id}}" class="asterisk-off icon ni ni-star"></em>
+                                        </a>
+                                        {% elif record.priority == '1' %}
+                                        <a id="_selectPriority1-{{record.id}}" class="select-priority-update"
+                                            data-toggle="tooltip" data-placement="top" name="{{record.id}}"><em
+                                                id="_priority1-{{record.id}}" class="icon ni ni-star-fill"></em></a>
+                                        <a id="_selectPriority2-{{record.id}}" class="select-priority-update"
+                                            data-toggle="tooltip" data-placement="top" name="{{record.id}}">
+                                            <em id="_priority2-{{record.id}}" class="asterisk-off icon ni ni-star"></em>
+                                        </a>
+                                        <a id="_selectPriority3-{{record.id}}" class="select-priority-update"
+                                            data-toggle="tooltip" data-placement="top" name="{{record.id}}">
+                                            <em id="_priority3-{{record.id}}" class="asterisk-off icon ni ni-star"></em>
+                                        </a>
+                                        {% elif record.priority == '2' %}
+                                        <a id="_selectPriority1-{{record.id}}" name="{{record.id}}"
+                                            data-toggle="tooltip" data-placement="top" class="select-priority-update">
+                                            <em id="_priority1-{{record.id}}" class="icon ni ni-star-fill"></em>
+                                        </a>
+                                        <a id="_selectPriority2-{{record.id}}" name="{{record.id}}"
+                                            data-toggle="tooltip" data-placement="top" class="select-priority-update">
+                                            <em id="_priority2-{{record.id}}" class="icon ni ni-star-fill"></em>
+                                        </a>
+                                        <a id="_selectPriority3-{{record.id}}" name="{{record.id}}"
+                                            data-toggle="tooltip" data-placement="top" class="select-priority-update">
+                                            <em id="_priority3-{{record.id}}" class="asterisk-off icon ni ni-star"></em>
+                                        </a>
+                                        {% elif record.priority == '3' %}
+                                        <a id="_selectPriority1-{{record.id}}" name="{{record.id}}"
+                                            data-toggle="tooltip" data-placement="top" class="select-priority-update">
+                                            <em id="_priority1-{{record.id}}" class="icon ni ni-star-fill"></em>
+                                        </a>
+                                        <a id="_selectPriority2-{{record.id}}" name="{{record.id}}"
+                                            data-toggle="tooltip" data-placement="top" class="select-priority-update">
+                                            <em id="_priority2-{{record.id}}" class="icon ni ni-star-fill"></em>
+                                        </a>
+                                        <a id="_selectPriority3-{{record.id}}" name="{{record.id}}"
+                                            data-toggle="tooltip" data-placement="top" class="select-priority-update">
+                                            <em id="_priority3-{{record.id}}" class="icon ni ni-star-fill"></em>
+                                        </a>
+                                        {% endif %}
+                                    </div>
+                                    <div class="kanban-item-text">
+                                        <div class="drodown">
+                                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                <div class="icon-status icon-status-info">
+                                                    <em style="font-size: 20px;" class="icon ni ni-list-thumb"></em>
+                                                </div>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-left">
+                                                <div class="dropdown-head">
+                                                    <span class="sub-title nk-dropdown-title">Activities</span>
+                                                </div>
+                                                <ul class="link-list-opt no-bdr">
+                                                    {% for activity in activities %}
+                                                    {% if activity.lead_id == record.id %}
+                                                    <li>
+                                                        <a href="#" data-toggle="modal"
+                                                            data-target="#ActivityModal{{activity.id}}">
+                                                            {% if activity.type.name == "Call" or activity.type.name
+                                                            ==
+                                                            "Call for Demo" %}
+                                                            <em class="icon ni ni-call"></em>
+                                                            {% elif activity.type.name == "Email" %}
+                                                            <em class="icon ni ni-mail"></em>
+                                                            {% elif activity.type.name == "Meeting" %}
+                                                            <em class="icon ni ni-calendar"></em>
+                                                            {% elif activity.type.name == "Upload Document" %}
+                                                            <em class="icon ni ni-upload"></em>
+                                                            {% elif activity.type.name == "To Do" %}
+                                                            <em class="icon ni ni-todo"></em>
+                                                            {% elif activity.type.name == "Make Quote" or
+                                                            activity.type.name == "Follow-Up Quote" %}
+                                                            <em class="icon ni ni-sign-dollar"></em>
+                                                            {% else %}
+                                                            <em class="icon ni ni-property-blank"></em>
+                                                            {% endif %}
+                                                            <span>{{activity.summary}}</span>
+                                                        </a>
+                                                    </li>
+                                                    <hr>
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                    <li>
+                                                        <a id="{{record.id}}" class="schedule" href="#"
+                                                            data-toggle="modal" data-target="#modalActivity">
+                                                            <em class="icon ni ni-plus-sm"></em>
+                                                            <span>Schedule an Activity</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="kanban-item-tags">
+                                        <li>
+                                            <span class="badge"
+                                                style="background-color: {{record.owner.color_badge}}; border-color: {{record.owner.color_badge}}; color: #fff">
+                                                {{record.user_id|get_user_name}}
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </a>
+                            </div>
+                        </main>
+                        {% endif %}
+                        {% endfor %}
                         {% if current_user|can_create(5) %}
                         <footer>
                             <button id="btn_additem-{{stage.id}}" class="add-item kanban-add-task btn btn-block">
@@ -1179,7 +1167,7 @@
             var prev_stage = getId(source.id)
             if (el.classList.contains('kanban-drag')) {
                 update_stage(lead_id, new_stage, prev_stage);
-            }            
+            }
         })
     })
 </script>
