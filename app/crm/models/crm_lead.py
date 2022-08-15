@@ -1,3 +1,4 @@
+from email.policy import default
 from app import db
 from app.main.models.activities import Activity
 from app.models import PaginatedAPIMixin
@@ -30,7 +31,7 @@ class Lead(PaginatedAPIMixin, db.Model):
     priority = db.Column(db.String(15), index=True)
     partner_id = db.Column(UUID(as_uuid=True), db.ForeignKey('partner.id'))
     stage_id = db.Column(db.Integer, db.ForeignKey('stage.id'))
-    expected_revenue = db.Column(db.String(60))
+    expected_revenue = db.Column(db.String(60), default=0.00)
     date_open = db.Column(db.DateTime, default=datetime.utcnow)
     expected_closing = db.Column(db.DateTime, nullable=True)
     partner_email = db.Column(db.String(120), index=True)
@@ -41,6 +42,10 @@ class Lead(PaginatedAPIMixin, db.Model):
     notes = db.relationship('Note', backref='lead', lazy='dynamic')
     activities = db.relationship(
         'LeadActivity', backref='lead', lazy=True, uselist=False)
+    
+    def max_id():
+        query = Lead.query.order_by(Lead.id.desc()).first()
+        return query.id
 
     def generate_slug(self):
         _slug = unique_slug_generator(self)
@@ -48,7 +53,7 @@ class Lead(PaginatedAPIMixin, db.Model):
 
     def to_dict(self):
         data = {
-            'id': self.id,
+            'opportunity_id': self.id,
             'opportunity_name': self.name,
             'opportunity_slug': self.slug,
             'expected_revenue': self.expected_revenue,

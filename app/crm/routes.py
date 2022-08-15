@@ -244,7 +244,9 @@ def pipeline():
 
     if request.method == "POST":
         if 'opportunity' in request.form:
-            opportunity = Lead(name=request.form['opportunity'], user_id=current_user.get_id(), partner_id=request.form['partner_id'], priority=session['selected_priority'], stage_id=int(
+            # get last Lead id
+            max_id = Lead.max_id()
+            opportunity = Lead(id=max_id+1, name=request.form['opportunity'], user_id=current_user.get_id(), partner_id=request.form['partner_id'], priority=session['selected_priority'], stage_id=int(
                 session['pipeline_stage']), expected_revenue=request.form['expected_revenue'], partner_email=request.form['partner_email'], partner_phone=request.form['partner_phone'], partner_currency='KES')
             opportunity.generate_slug()
             db.session.add(opportunity)
@@ -253,11 +255,11 @@ def pipeline():
             count = Lead.query.filter_by(is_deleted=False).filter_by(
                 stage_id=opportunity.stage_id).filter_by(user_id=current_user.get_id()).count()
 
-            return jsonify({"message": "success", "opportunity_name": opportunity.name, "opportunity_id": opportunity.id, "opportunity_slug": opportunity.slug, "expected_revenue": opportunity.expected_revenue, "partner_name": opportunity.opportunity.get_name(), "partner_id": opportunity.opportunity.id, 'priority': opportunity.priority, "agent_name": opportunity.owner.get_username(), 'currency': opportunity.partner_currency, 'color_badge': opportunity.owner.color_badge, 'count': count})
+            return jsonify({"message": "success", "opportunity_name": opportunity.name, "opportunity_id": opportunity.id, "opportunity_slug": opportunity.slug, "expected_revenue": opportunity.expected_revenue, "partner_name": opportunity.opportunity.get_name(), "partner_id": opportunity.opportunity.id, 'priority': opportunity.priority, "assignee_name": opportunity.owner.get_username(), 'currency': opportunity.partner_currency, 'color_badge': opportunity.owner.color_badge, 'count': count})
 
         if 'clear_filter_name' in request.form:
             if request.form['clear_filter_name'] == "My Pipeline":
-                pipeline = Lead.to_collection_dict(qs)                    
+                pipeline = Lead.to_collection_dict(qs)                
 
             return jsonify({"message": "success", "pipeline": pipeline})
 

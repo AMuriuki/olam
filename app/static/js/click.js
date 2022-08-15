@@ -547,7 +547,7 @@ $(".first-opportunity").click(function (e) {
 });
 
 // update item priority
-$(".select-priority-update").click(function (e) {
+$(document).on('click', ".select-priority-update", function (e) {
     e.preventDefault();
     var el, el2, el3;
     var value;
@@ -656,7 +656,7 @@ $(".filter-pipeline").click(function (e) {
             $("#search_pipeline").val(function () {
                 return $.trim(this.value.replace(filter_name + ",", ""));
             })
-            
+
             add_pipeline_filter(filter_id);
         }
     } else {

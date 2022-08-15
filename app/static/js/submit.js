@@ -1,3 +1,67 @@
+function renderPipelineItem(clone, response) {
+    $(clone).attr('id', 'item-' + response['opportunity_id']);
+    $(clone).find('.opportunity-name').text(response['opportunity_name']);
+    $(clone).find('.opportunity-link').attr('href', '/crm/lead/' + response['opportunity_slug']);
+    $(clone).find('.edit-opportunity-link').attr('href', '/crm/edit/lead/' + response['opportunity_slug']);
+    $(clone).find('.currency').text(response['currency']);
+    if (response['expected_revenue']) {
+        $(clone).find('.expected-revenue').text(response['expected_revenue']);
+    } else {
+        $(clone).find('.expected-revenue').text("0.00");
+    }
+
+    $(clone).find('.partner').text(response['partner_name']);
+    var priority = response['priority'];
+    if (priority == "1") {
+        $(clone).find(".nil-priority").hide();
+        $(clone).find(".priority-0").hide();
+        $(clone).find(".priority-2").hide();
+        $(clone).find(".priority-3").hide();
+        var anchors = $(clone).find(".priority-1").find(".select-priority-update");
+        for (var i = 0; i < anchors.length; i++) {
+            $(anchors[i]).attr("id", "_selectPriority" + (i + 1) + "-" + response['opportunity_id'])
+            $(anchors[i]).attr("name", response['opportunity_id'])
+            $(anchors[i]).find("em").attr("id", "_priority" + (i + 1) + "-" + response['opportunity_id'])
+        }
+    } else if (priority == "2") {
+        $(clone).find(".nil-priority").hide();
+        $(clone).find(".priority-0").hide();
+        $(clone).find(".priority-1").hide();
+        $(clone).find(".priority-3").hide();
+        var anchors = $(clone).find(".priority-2").find(".select-priority-update");
+        for (var i = 0; i < anchors.length; i++) {
+            $(anchors[i]).attr("id", "_selectPriority" + (i + 1) + "-" + response['opportunity_id'])
+            $(anchors[i]).attr("name", response['opportunity_id'])
+            $(anchors[i]).find("em").attr("id", "_priority" + (i + 1) + "-" + response['opportunity_id'])
+        }
+    } else if (priority == "3") {
+        $(clone).find(".nil-priority").hide();
+        $(clone).find(".priority-0").hide();
+        $(clone).find(".priority-1").hide();
+        $(clone).find(".priority-2").hide();
+        var anchors = $(clone).find(".priority-3").find(".select-priority-update");
+        for (var i = 0; i < anchors.length; i++) {
+            $(anchors[i]).attr("id", "_selectPriority" + (i + 1) + "-" + response['opportunity_id'])
+            $(anchors[i]).attr("name", response['opportunity_id'])
+            $(anchors[i]).find("em").attr("id", "_priority" + (i + 1) + "-" + response['opportunity_id'])
+        }
+    } else {
+        $(clone).find(".priority-1").hide();
+        $(clone).find(".priority-2").hide();
+        $(clone).find(".priority-3").hide();
+        var anchors = $(clone).find(".nil-priority").find(".select-priority-update");
+        for (var i = 0; i < anchors.length; i++) {
+            $(anchors[i]).attr("id", "_selectPriority" + (i + 1) + "-" + response['opportunity_id'])
+            $(anchors[i]).attr("name", response['opportunity_id'])
+            $(anchors[i]).find("em").attr("id", "_priority" + (i + 1) + "-" + response['opportunity_id'])
+        }
+    }
+    $(clone).find('.agent').text(response['assignee_name']);
+    $(clone).find('.agent').css('background-color', response['color_badge']);
+    $(clone).find('.agent').css('border-color', response['color_badge']);
+    $(clone).find('.delete-lead-record').attr('id', 'delete-' + response['opportunity_id']);
+}
+
 // new crm pipeline item
 $(".frm-new-item").submit(function (e) {
     e.preventDefault();
@@ -14,29 +78,9 @@ $(".frm-new-item").submit(function (e) {
         success: function (response) {
             if (response['message'] == "success") {
                 var clone = $("#clone-" + stage_id).clone()
-                $(clone).attr('id', 'item-' + response['opportunity_id']);
-                $(clone).find('.opportunity-name').text(response['opportunity_name']);
-                $(clone).find('.opportunity-link').attr('href', '/crm/lead/' + response['opportunity_slug']);
-                $(clone).find('.edit-opportunity-link').attr('href', '/crm/edit/lead/' + response['opportunity_slug']);
-                $(clone).find('.currency').text(response['currency']);
-                $(clone).find('.expected-revenue').text(response['expected_revenue']);
-                $(clone).find('.partner').text(response['partner_name']);
-                var priority = response['priority'];
-                if (priority == "1") {
-                    $(clone).find(".priority-2").hide();
-                    $(clone).find(".priority-3").hide();
-                } else if (priority == "2") {
-                    $(clone).find(".priority-1").hide();
-                    $(clone).find(".priority-3").hide();
-                } else if (priority == "3") {
-                    $(clone).find(".priority-1").hide();
-                    $(clone).find(".priority-2").hide();
-                }
-                $(clone).find('.agent').text(response['agent_name']);
-                $(clone).find('.agent').css('background-color', response['color_badge']);
-                $(clone).find('.agent').css('border-color', response['color_badge']);
-                $(clone).removeClass('clone');
+                renderPipelineItem(clone, response);
                 $("#new_item-" + stage_id).after($(clone));
+                $(clone).fadeIn("slow");
                 $(".count-" + stage_id).text(response['count']);
                 $(form)[0].reset();
                 $("#new_item-" + stage_id).fadeOut("slow");
@@ -402,7 +446,8 @@ function delete_lead(id) {
         lead_id: id,
     }).done(function (response) {
         $("#confirmDelete").modal("hide");
-        $("#item-" + id).fadeOut("slow")
+        console.log($("#item-" + id));
+        $("#item-" + id).fadeOut("slow");
         $(".count-" + response['stage_id']).text(response['stage_count'])
     });
 }
@@ -439,33 +484,29 @@ function clear_pipeline_filter(filter_name) {
                 counts[num] = counts[num] ? counts[num] + 1 : 1;
             }
             var stage_count = counts[item[i]["stage"]]
-
-            var clone = $("#clone-" + item[i]['stage']).clone()
-            $(clone).attr('id', 'item-' + item[i]['id']);
-            $(clone).find('.opportunity-name').text(item[i]['opportunity_name']);
-            $(clone).find('.opportunity-link').attr('href', '/crm/lead/' + item[i]['opportunity_slug']);
-            $(clone).find('.edit-opportunity-link').attr('href', '/crm/edit/lead/' + item[i]['opportunity_slug']);
-            $(clone).find('.currency').text(item[i]['currency']);
-            $(clone).find('.expected-revenue').text(item[i]['expected_revenue']);
-            $(clone).find('.partner').text(item[i]['partner_name']);
-            var priority = item[i]['priority'];
-            if (priority == "1") {
-                $(clone).find(".priority-2").hide();
-                $(clone).find(".priority-3").hide();
-            } else if (priority == "2") {
-                $(clone).find(".priority-1").hide();
-                $(clone).find(".priority-3").hide();
-            } else if (priority == "3") {
-                $(clone).find(".priority-1").hide();
-                $(clone).find(".priority-2").hide();
-            }
-            $(clone).find('.agent').text(item[i]['assignee_name']);
-            $(clone).find('.agent').css('background-color', item[i]['color_badge']);
-            $(clone).find('.agent').css('border-color', item[i]['color_badge']);
+            var clone = $("#clone-" + item[i]['stage']).clone();
+            renderPipelineItem(clone, item[i])
             $("#new_item-" + item[i]['stage']).after($(clone));
-            $(".count-" + item[i]['stage']).text(stage_count);
             $(clone).fadeIn("slow");
-
+            $(".count-" + item[i]['stage']).text(stage_count);
         }
     });
+}
+
+function add_pipeline_filter(filter_name) {
+    $.post("/crm/index", {
+        add_filter_name: filter_name,
+    }).done(function (response) {
+        // remove all items
+        $(".pipeline-item").remove();
+        // get length of response
+        var length = response["pipeline"]["items"].length;
+        var item = response["pipeline"]["items"];
+        var stages = []
+        // loop through response
+        renderPipelineItem(clone, item[i])
+        $("#new_item-" + item[i]['stage']).after($(clone));
+        $(clone).fadeIn("slow");
+        $(".count-" + item[i]['stage']).text(stage_count);
+    })
 }
