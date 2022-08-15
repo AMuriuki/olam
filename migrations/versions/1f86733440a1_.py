@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: dad7537e7a4a
+Revision ID: 1f86733440a1
 Revises: 
-Create Date: 2022-08-04 17:14:29.910089
+Create Date: 2022-08-14 00:41:36.040221
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.
-revision = 'dad7537e7a4a'
+revision = '1f86733440a1'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -129,6 +129,7 @@ def upgrade():
     sa.Column('name', sa.String(length=120), nullable=True),
     sa.Column('position', sa.Integer(), nullable=True),
     sa.Column('is_deleted', sa.Boolean(), nullable=True),
+    sa.Column('color_badge', sa.String(length=120), nullable=True),
     sa.PrimaryKeyConstraint('id', name=op.f('pk_stage')),
     sa.UniqueConstraint('position', name=op.f('uq_stage_position'))
     )
@@ -441,6 +442,7 @@ def upgrade():
     sa.Column('country_code', sa.String(length=10), nullable=True),
     sa.Column('slug', sa.Text(), nullable=True),
     sa.Column('user_type', sa.String(length=120), nullable=True),
+    sa.Column('color_badge', sa.String(length=120), nullable=True),
     sa.ForeignKeyConstraint(['company_id'], ['company.id'], name=op.f('fk_users_company_id_company')),
     sa.ForeignKeyConstraint(['partner_id'], ['partner.id'], name=op.f('fk_users_partner_id_partner')),
     sa.ForeignKeyConstraint(['team_id'], ['partner_team.id'], name=op.f('fk_users_team_id_partner_team')),

@@ -233,6 +233,13 @@ def dummy_data():
                         record.generate_slug()
                         db.session.add(record)
                         db.session.commit()
+                if 'is_customer' in partner:
+                    if partner['is_customer'] == True:
+                        record = Partner(id=partner['id'], name=partner['name'], email=partner['email'],
+                                         phone_no=partner['phone_no'], is_active=partner['is_active'], is_customer=partner['is_customer'])
+                        record.generate_slug()
+                        db.session.add(record)
+                        db.session.commit()
                 if 'parent_id' in partner:
                     record = Partner(id=partner['id'], name=partner['name'], title=partner['title'], function=partner['function'], email=partner['email'], phone_no=partner['phone_no'],
                                      is_active=partner['is_active'], parent_id=partner['parent_id'], is_individual=partner['is_individual'], website=partner['website'])
@@ -267,7 +274,7 @@ def dummy_data():
             exists = Users.query.filter_by(id=user['id']).first()
             if not exists:
                 record = Users(id=user['id'], partner_id=user['partner_id'],
-                               company_id=user['company_id'], is_active=user['is_active'])
+                               company_id=user['company_id'], is_active=user['is_active'], user_type=user['user_type'])
                 record.generate_slug()
                 record.password_hash = generate_password_hash(user['password'])
                 db.session.add(record)
@@ -337,7 +344,8 @@ def dummy_data():
                                 read=access_right['read'], write=access_right['write'], create=access_right['create'], delete=access_right['delete'])
                 db.session.add(access)
                 db.session.commit()
-                item = next(item for item in assosciations if item['access_id'] == access.id)
+                item = next(
+                    item for item in assosciations if item['access_id'] == access.id)
                 group = Group.query.filter_by(
                     id=item['group_id']).first()
                 group.rights.append(access)
@@ -345,7 +353,8 @@ def dummy_data():
                 print("Access: " + access.name + " added")
             else:
                 access = Access.query.filter_by(id=access_right['id']).first()
-                item = next(item for item in assosciations if item['access_id'] == access_right['id'])
+                item = next(
+                    item for item in assosciations if item['access_id'] == access_right['id'])
                 group = Group.query.filter_by(
                     id=item['group_id']).first()
                 group.rights.append(access)
@@ -360,7 +369,7 @@ def dummy_data():
                 pass
             else:
                 lead = Lead(id=opportunity['id'], name=opportunity['name'], user_id=opportunity['user_id'], partner_id=opportunity['partner_id'], priority=opportunity['priority'], stage_id=opportunity['stage_id'], partner_email=opportunity['partner_email'],
-                            partner_phone=opportunity['partner_phone'], plan_id=opportunity['plan_id'], partner_currency=opportunity['partner_currency'], active=opportunity['active'], expected_revenue=opportunity['expected_revenue'])
+                            partner_phone=opportunity['partner_phone'], partner_currency=opportunity['partner_currency'], active=opportunity['active'], expected_revenue=opportunity['expected_revenue'])
                 lead.generate_slug()
                 db.session.add(lead)
                 db.session.commit()

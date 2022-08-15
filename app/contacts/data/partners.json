@@ -18,6 +18,23 @@
     "is_tenant": true
   },
   {
+    "id": "7ac53410-c727-4f2f-9279-398b408ea697",
+    "name": "WhatsApp",
+    "email": "",
+    "phone_no": "+254708486068",
+    "is_active": true,
+    "company_id": 1,
+    "is_tenant": true
+  },
+  {
+    "id": "7ac53610-c727-4f2f-9279-398b408ea697",
+    "name": "Erica Njeri",
+    "email": "ericanjeri@gmail.com",
+    "phone_no": "+254721095098",
+    "is_active": true,
+    "is_customer": true
+  },
+  {
     "id": "61e6adc0-aa71-4007-937d-35d65f47d2e8",
     "company_name": "Tokyo Trading Global Limited",
     "email": "contact@ttglobal.com",

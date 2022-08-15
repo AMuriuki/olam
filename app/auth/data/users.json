@@ -1,16 +1,26 @@
 [
-    {
-        "id": 1,
-        "partner_id": "2a02f572-4062-426a-953b-bc393cd37d90",
-        "company_id": 1,
-        "is_active": true,
-        "password": "demo"
-    },
-    {
-        "id": 2,
-        "partner_id": "d5fdf6c7-43aa-4e34-8c9b-e44c12e5984a",
-        "company_id": 1,
-        "is_active": true,
-        "password": "demo"
-    }
+  {
+    "id": 1,
+    "partner_id": "2a02f572-4062-426a-953b-bc393cd37d90",
+    "company_id": 1,
+    "is_active": true,
+    "password": "demo",
+    "user_type": "Internal Users"
+  },
+  {
+    "id": 2,
+    "partner_id": "d5fdf6c7-43aa-4e34-8c9b-e44c12e5984a",
+    "company_id": 1,
+    "is_active": true,
+    "password": "demo",
+    "user_type": "Internal Usersl"
+  },
+  {
+    "id": 3,
+    "partner_id": "7ac53410-c727-4f2f-9279-398b408ea697",
+    "company_id": 1,
+    "is_active": true,
+    "password": "demo",
+    "user_type": "Portal"
+  }
 ]
