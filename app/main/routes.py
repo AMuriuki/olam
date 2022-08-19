@@ -1,8 +1,10 @@
+from crypt import methods
 import itertools
 import json
 from app.crm.models.crm_recurring_plan import RecurringPlan
 from app.crm.models.crm_stage import Stage
 from app.helper_functions import set_default_user_groups
+from app.main.models.activities import ActivityType
 from app.main.models.partner import Partner, PartnerPosition, PartnerTag, PartnerTitle
 from app.auth.email import send_invite_email
 from app.main.models.company import Company
@@ -297,18 +299,40 @@ def recurring_plan():
     return Response(json.dumps(plans), mimetype='application/json')
 
 
+@bp.route('/get_activity_types', methods=['GET', 'POST'])
+@login_required
+@active_user_required
+def activity_types():
+    activity_types = []
+    results = ActivityType.query.all()
+    for result in results:
+        activity_types.append({str(result.id): result.name})
+    return Response(json.dumps(activity_types), mimetype='application/json')
+
+
 @bp.route('/create_product_attribute_value', methods=['GET', 'POST'])
 @login_required
 @active_user_required
 @model_access_required(14)
 def create_product_attribute_value():
     if request.method == "POST":
-
         attribute_value = AttributeValue(
             name=request.form['value'], attribute_id=request.form['attribute'])
         db.session.add(attribute_value)
         db.session.commit()
         return jsonify({'success': True, 'key': attribute_value.id})
+
+
+@bp.route('/create_activity_type', methods=['GET', 'POST'])
+@login_required
+@active_user_required
+@model_access_required(7)
+def create_activity_type():
+    if request.method == "POST":
+        activity_type = ActivityType(name=request.form['activity'])
+        db.session.add(activity_type)
+        db.session.commit()
+        return jsonify({'success': True, 'id': activity_type.id})
 
 
 @bp.route('/preview_on_website', methods=['GET', 'POST'])

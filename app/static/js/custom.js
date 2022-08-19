@@ -588,6 +588,10 @@ function autocomplete(inp, arr) {
             create_plan(inp.value);
           }
 
+          if (inp.classList.contains("inp_activity_type")) {
+            create_activity_plan(inp.value);
+          }
+
           if (
             current_href.indexOf("/purchase/new/request-for-quotation") >= 0
           ) {
@@ -715,7 +719,12 @@ function removeParam(key) {
   if (queryString !== "") {
     params_arr = queryString.split("&");
     for (var i = params_arr.length - 1; i >= 0; i -= 1) {
+      // if space exists in params_arr[i]
       param = params_arr[i].split("=")[0];
+      if (param.indexOf("%20") !== -1) {
+        param = param.replace(/%20/g, " ");
+        console.log(param);
+      }
       if (param === key) {
         params_arr.splice(i, 1);
       }
@@ -727,3 +736,12 @@ function removeParam(key) {
   return rtn;
 }
 
+function getURLParameters(url) {
+  var paramString = url.split('?')[1];
+  var queryString = new URLSearchParams(paramString);
+  keys = []
+  for (var pair of queryString.entries()) {
+    keys.push(pair[0])
+  }
+  return keys
+}

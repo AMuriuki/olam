@@ -110,3 +110,7 @@ def remove_comma(str):
 # get random color
 def get_random_color():
     return '#%06x' % random.randint(0, 0xFFFFFF)
+
+
+def is_valid_queryparam(param):
+    return param != '' and param is not None

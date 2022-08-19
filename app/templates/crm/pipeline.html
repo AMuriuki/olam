@@ -85,9 +85,7 @@
                                                 {% for filter in filters %}
                                                 <li>
                                                     <a id="{{filter[0]}}" class="filter-pipeline" href="#">
-                                                        {% if filter[1]|contains(selectedFilters) %}
-                                                        <em class="icon ni ni-check-thick"></em>
-                                                        {% endif %}
+                                                        <!-- <em class="icon ni ni-check-thick"></em> -->
                                                         <span>{{filter[1]}}</span>
                                                     </a>
                                                 </li>
@@ -95,9 +93,7 @@
                                                 {% for stage in stages %}
                                                 <li>
                                                     <a id="{{stage.id}}" class="filter-pipeline" href="#">
-                                                        {% if stage.name|contains(selectedFilters) %}
-                                                        <em class="icon ni ni-check-thick"></em>
-                                                        {% endif %}
+                                                        <!-- <em class="icon ni ni-check-thick"></em> -->
                                                         <span>{{stage.name}}</span>
                                                     </a>
                                                 </li>
@@ -454,7 +450,7 @@
                                             </div>
                                             <ul class="link-list-opt no-bdr">
                                                 <li>
-                                                    <a id="3" class="schedule" href="#" data-toggle="modal"
+                                                    <a id="#" class="schedule" href="#" data-toggle="modal"
                                                         data-target="#modalActivity">
                                                         <em class="icon ni ni-plus-sm"></em>
                                                         <span>Schedule an Activity</span>
@@ -613,8 +609,8 @@
                                                     {% endif %}
                                                     {% endfor %}
                                                     <li>
-                                                        <a id="{{record.id}}" class="schedule" href="#"
-                                                            data-toggle="modal" data-target="#modalActivity">
+                                                        <a id="schedule_activity-{{record.id}}" class="schedule"
+                                                            href="#" data-toggle="modal" data-target="#modalActivity">
                                                             <em class="icon ni ni-plus-sm"></em>
                                                             <span>Schedule an Activity</span>
                                                         </a>
@@ -985,21 +981,21 @@
                     <em class="icon ni ni-cross"></em>
                 </a>
             </div>
-            <form action="{{url_for('crm.pipeline')}}" class="form-validate is-alter" method="post">
+            <form action="{{url_for('crm.pipeline')}}" class="form-validate is-alter" method="post" autocomplete="off">
                 <input type="hidden" name="record_id" class="record_id" />
                 <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
                 <div class="modal-body">
                     <div class="row gy-4">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label class="form-label" for="activity_type">Activity Type</label>
+                                <label class="form-label">
+                                    Activity Type
+                                </label>
                                 <div class="form-control-wrap">
-                                    <select class="form-select" name="activity_type">
-                                        <option value="#">Select Activity Type</option>
-                                        {% for activity_type in activity_types %}
-                                        <option value="{{activity_type.id}}">{{activity_type.name|title}}</option>
-                                        {% endfor %}
-                                    </select>
+                                    <input id="select_activity" type="text" name="activity_type"
+                                        class="form-control inp_activity_type is-click-inside"
+                                        placeholder="Select activity type" required>
+                                    <input id="select_activity_type_id" type="text" name="select_activity_type" hidden>
                                 </div>
                             </div>
                         </div>
@@ -1024,7 +1020,7 @@
                             <div class="form-group">
                                 <label class="form-label" for="default-04">Assigned To</label>
                                 <div class="form-control-wrap">
-                                    <select class="form-select" name="assignee">
+                                    <select class="form-select select-assignee" name="assignee">
                                         <option value="#">Select Assignee</option>
                                         {% for assignee in assignees %}
                                         <option value="{{assignee.id}}">{{assignee.name|title}}</option>
@@ -1044,10 +1040,10 @@
                 </div>
                 <div class="modal-footer bg-light">
                     <div class="form-group">
-                        <button type="submit" class="btn btn-lg btn-primary">Schedule</button>
-                        <button class="btn btn-lg btn-secondary">Mark as Done</button>
-                        <button class="btn btn-lg btn-secondary">Done & Schedule Next</button>
-                        <button class="btn btn-lg btn-secondary" data-dismiss="modal">Discard</button>
+                        <a id="schedule_activity" href="#" class="btn btn-m btn-primary schedule-activity">Schedule</a>
+                        <a href="#" class="btn btn-m btn-secondary">Mark as Done</a>
+                        <a href="#" class="btn btn-m btn-secondary">Done & Schedule Next</a>
+                        <button class="btn btn-m btn-secondary" data-dismiss="modal">Discard</button>
                     </div>
                 </div>
             </form>
@@ -1071,6 +1067,17 @@
                     <div class="row gy-4">
                         <div class="col-sm-6">
                             <div class="form-group">
+                                <label class="form-label">
+                                    Activity Type
+                                </label>
+                                <div class="form-control-wrap">
+                                    <input id="partner_name-{{stage.id}}" type="text" name="partner"
+                                        class="form-control inp_activity_type is-click-inside"
+                                        placeholder="Select activity type" required>
+                                    <input id="activity_type_id" type="text" name="activity_type_id" hidden>
+                                </div>
+                            </div>
+                            <!-- <div class="form-group">
                                 <label class="form-label" for="activity_type">Activity Type</label>
                                 <div class="form-control-wrap">
                                     <select class="form-select" name="activity_type">
@@ -1082,7 +1089,7 @@
                                         {% endfor %}
                                     </select>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
@@ -1125,7 +1132,7 @@
                 <div class="modal-footer bg-light">
                     <div class="form-group">
                         <a href="{{url_for('crm.update_activity', id=activity.id)}}" type="submit"
-                            class="btn btn-lg btn-primary">Save</a>
+                            class="btn btn-m btn-primary">Save</a>
                     </div>
                 </div>
             </form>
@@ -1135,7 +1142,41 @@
 {% include "modals/delete.html" %}
 {% endfor %}
 <script>
-    var selected_filters = "{{selectedFilters}}"
+    function getURLParameters(url) {
+        var paramString = url.split('?')[1];
+        var queryString = new URLSearchParams(paramString);
+        keys = []
+        for (var pair of queryString.entries()) {
+            keys.push(pair[0])
+        }
+        return keys
+    }
+
+    url = $(location).attr("href");
+    keys = getURLParameters(url);
+    
+    if (keys.length === 0) {
+        window.history.pushState("object or string", "CRM Pipeline | Olam ERP", url + "?My Pipeline=true");
+        $(".filter-pipeline").find("span").filter(function () {
+            return ($(this).text() === 'My Pipeline');
+        }).before("<em class='icon ni ni-check-thick'></em>")
+        $("#search_pipeline").val("My Pipeline,");
+        var selected_filters = $("#search_pipeline").val();
+    } else {
+        // loop through keys
+        for (var i = 0; i < keys.length; i++) {
+            var filters = $(".filter-pipeline").find("span");
+            // loop through filters
+            for (var j = 0; j < filters.length; j++) {
+                if ($(filters[j]).text() == keys[i]) {
+                    $(filters[j]).before("<em class='icon ni ni-check-thick'></em>");
+                }
+            }
+        }
+        $("#search_pipeline").val(keys.join(", ") + ",");
+        var selected_filters = $("#search_pipeline").val();
+    }
+
     $.get("/get_partners", function (data) {
         autocomplete(document.getElementsByClassName("inp_partner")[0], data);
         return data;
@@ -1169,6 +1210,11 @@
                 update_stage(lead_id, new_stage, prev_stage);
             }
         })
+    })
+
+    $.get("/get_activity_types", function (data) {
+        autocomplete(document.getElementsByClassName("inp_activity_type")[0], data);
+        return data;
     })
 </script>
 {% endblock %}

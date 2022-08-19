@@ -1,7 +1,6 @@
-from genericpath import exists
-from select import select
 from flask_login import login_required, current_user
-from flask import json, render_template, session, jsonify, request, redirect, url_for, flash
+from flask import render_template, session, jsonify, request, redirect, url_for, flash
+from app.auth.models.user import Users
 from app.crm import bp
 from app.crm.models.crm_lead import FILTERS, Lead, LeadActivity
 from app.crm.models.crm_recurring_plan import RecurringPlan
@@ -16,6 +15,8 @@ from sqlalchemy import log, or_
 from app.contacts.forms import TITLES, BasicCompanyInfoForm, BasicIndividualInfoForm
 from app.crm.forms import AddStage, BoardItemForm, NewRecurringPlanForm, EditStageForm, CreateSalesTeamForm
 from flask_wtf.csrf import CSRFProtect
+
+from app.utils import is_valid_queryparam
 
 app = create_app()
 
@@ -231,18 +232,38 @@ def pipeline():
     new_stage = False
     message = None
 
-    selectedFilters = request.args.get('filter')
-    selectedFilters = "My Pipeline,"
     activities = LeadActivity.query.all()
-    assignees = Partner.query.filter_by(is_tenant=True).all()
 
-    qs = Lead.query.filter_by(is_deleted=False).order_by(Lead.priority.desc())
+    # get users with user type
+    assignees = Partner.query.filter_by(is_tenant=True).join(
+        Users).filter_by(user_type='Internal Users').all()
 
     if request.method == "GET":
-        pipeline = qs.filter_by(
-            user_id=current_user.get_id()).order_by(Lead.priority.desc()).all()
+        qs = Lead.query.filter_by(
+            is_deleted=False).order_by(Lead.priority.desc())
+
+        unassigned = request.args.get("Unassigned")
+        my_pipeline = request.args.get("My Pipeline")
+
+        if is_valid_queryparam(my_pipeline) and not is_valid_queryparam(unassigned):
+            pipeline = qs.filter_by(user_id=current_user.get_id()).all()
+        elif is_valid_queryparam(unassigned) and not is_valid_queryparam(my_pipeline):
+            pipeline = qs.join(Users).filter(Users.user_type == "Portal").all()
+        elif is_valid_queryparam(unassigned) and is_valid_queryparam(my_pipeline):
+            pipeline = qs.join(Users).filter(
+                (Users.user_type == "Portal") | (Users.id == current_user.get_id())).all()
+        else:
+            pipeline = qs.filter_by(user_id=current_user.get_id())
 
     if request.method == "POST":
+        qs = Lead.query.filter_by(
+            is_deleted=False).order_by(Lead.priority.desc())
+
+        # get url parameter
+        unassigned = request.args.get('Unassigned')
+        my_pipeline = request.args.get('My Pipeline')
+        print(request.args)
+
         if 'opportunity' in request.form:
             # get last Lead id
             max_id = Lead.max_id()
@@ -259,7 +280,36 @@ def pipeline():
 
         if 'clear_filter_name' in request.form:
             if request.form['clear_filter_name'] == "My Pipeline":
-                pipeline = Lead.to_collection_dict(qs)                
+                if is_valid_queryparam(unassigned):
+                    pipeline = Lead.to_collection_dict(qs.join(Users).filter(
+                        Users.user_type == "Portal"))
+                else:
+                    pipeline = Lead.to_collection_dict(qs.all())
+            elif request.form['clear_filter_name'] == "Unassigned":
+                if is_valid_queryparam(my_pipeline):
+                    pipeline = Lead.to_collection_dict(qs.filter_by(
+                        user_id=current_user.get_id()))
+                else:
+                    pipeline = Lead.to_collection_dict(qs.all())
+
+            return jsonify({"message": "success", "pipeline": pipeline})
+
+        if 'add_filter_name' in request.form:
+            if request.form['add_filter_name'] == "My Pipeline":
+                if is_valid_queryparam(unassigned):
+                    pipeline = Lead.to_collection_dict(qs.join(Users).filter((
+                        Users.user_type == "Portal") | (Users.id == current_user.get_id())))
+                else:
+                    pipeline = Lead.to_collection_dict(qs.filter_by(
+                        user_id=current_user.get_id()))
+
+            elif request.form['add_filter_name'] == "Unassigned":
+                if is_valid_queryparam(my_pipeline):
+                    pipeline = Lead.to_collection_dict(qs.join(Users).filter((
+                        Users.user_type == "Portal") | (Users.id == current_user.get_id())))
+                else:
+                    pipeline = Lead.to_collection_dict(qs.join(Users).filter(
+                        Users.user_type == "Portal"))
 
             return jsonify({"message": "success", "pipeline": pipeline})
 
@@ -292,26 +342,26 @@ def pipeline():
     #     flash(_("New activity added"))
     #     return redirect(url_for('crm.pipeline'))
 
-    return render_template('crm/pipeline.html', title=_('CRM Pipeline | Olam ERP'), pipeline=pipeline, form1=form1, form2=form2, form3=form3, form4=form4, form5=form5, form6=form6, titles=titles, plans=plans, filters=filters, new_stage=new_stage, selectedFilters=selectedFilters, message=message, activities=activities, assignees=assignees, csrf_token=csrf_token)
+    return render_template('crm/pipeline.html', title=_('CRM Pipeline | Olam ERP'), pipeline=pipeline, form1=form1, form2=form2, form3=form3, form4=form4, form5=form5, form6=form6, titles=titles, plans=plans, filters=filters, new_stage=new_stage, message=message, activities=activities, assignees=assignees, csrf_token=csrf_token)
 
 
-@bp.route('/pipeline', methods=['GET', 'POST'])
-@login_required
-@active_user_required
+@ bp.route('/pipeline', methods=['GET', 'POST'])
+@ login_required
+@ active_user_required
 def empty():
     return render_template('crm/pipeline.html', title=_('CRM Pipeline | Olam ERP'))
 
 
-@bp.route('/sales', methods=['GET', 'POST'])
-@login_required
-@active_user_required
+@ bp.route('/sales', methods=['GET', 'POST'])
+@ login_required
+@ active_user_required
 def sales():
     pass
 
 
-@bp.route('/sales_team', methods=['GET', 'POST'])
-@login_required
-@active_user_required
+@ bp.route('/sales_team', methods=['GET', 'POST'])
+@ login_required
+@ active_user_required
 def sales_teams():
     sales_teams = PartnerTeam.query.join(Partner).all()
     for sales_team in sales_teams:
@@ -319,17 +369,17 @@ def sales_teams():
     return render_template('crm/sales_teams.html', title=_('CRM Sales Teams | Olam ERP'), sales_teams=sales_teams)
 
 
-@bp.route('/sales_team/<token>', methods=['GET', 'POST'])
-@login_required
-@active_user_required
+@ bp.route('/sales_team/<token>', methods=['GET', 'POST'])
+@ login_required
+@ active_user_required
 def sales_team(token):
     sales_team = PartnerTeam.query.filter_by(token=token).join(Partner).first()
     return render_template('crm/sales_team.html', title=_(sales_team.name + ' | Olam ERP'), sales_team=sales_team)
 
 
-@bp.route('/create_team', methods=['GET', 'POST'])
-@login_required
-@active_user_required
+@ bp.route('/create_team', methods=['GET', 'POST'])
+@ login_required
+@ active_user_required
 def create_team():
     form = CreateSalesTeamForm()
     partners = Partner.query.filter_by(is_tenant=True).all()
@@ -343,41 +393,41 @@ def create_team():
     return render_template('crm/create_team.html', title=_('CRM Sales Teams | Olam ERP'), form=form, partners=partners)
 
 
-@bp.route('/reporting', methods=['GET', 'POST'])
-@login_required
-@active_user_required
+@ bp.route('/reporting', methods=['GET', 'POST'])
+@ login_required
+@ active_user_required
 def reporting():
     pass
 
 
-@bp.route('/configuration', methods=['GET', 'POST'])
-@login_required
-@active_user_required
+@ bp.route('/configuration', methods=['GET', 'POST'])
+@ login_required
+@ active_user_required
 def configuration():
     pass
 
 
-@login_required
-@active_user_required
-@bp.route('/lead/<slug>', methods=['GET', 'POST'])
+@ login_required
+@ active_user_required
+@ bp.route('/lead/<slug>', methods=['GET', 'POST'])
 def lead(slug):
     edit = False
     lead = Lead.query.filter_by(slug=slug).first()
     return render_template("crm/opportunity.html", title=_(lead.name + ' | Olam ERP'), lead=lead, slug=slug, edit=edit)
 
 
-@login_required
-@active_user_required
-@bp.route('/edit/lead/<slug>', methods=['GET', 'POST'])
+@ login_required
+@ active_user_required
+@ bp.route('/edit/lead/<slug>', methods=['GET', 'POST'])
 def edit_lead(slug):
     edit = True
     lead = Lead.query.filter_by(slug=slug).first()
     return render_template("crm/opportunity.html", title=_(lead.name + ' | Olam ERP'), lead=lead, edit=edit, slug=slug)
 
 
-@login_required
-@active_user_required
-@bp.route('/move_stage/<slug>/<stage_id>', methods=['GET', 'POST'])
+@ login_required
+@ active_user_required
+@ bp.route('/move_stage/<slug>/<stage_id>', methods=['GET', 'POST'])
 def move_stage(slug, stage_id):
     lead = Lead.query.filter_by(slug=slug).first()
     lead.stage_id = stage_id
@@ -385,11 +435,11 @@ def move_stage(slug, stage_id):
     return redirect(url_for('crm.pipeline'))
 
 
-@bp.route('/activities', methods=['GET', 'POST'])
-@login_required
-@module_access_required(2)
-@model_access_required(7)
-@active_user_required
+@ bp.route('/activities', methods=['GET', 'POST'])
+@ login_required
+@ module_access_required(2)
+@ model_access_required(7)
+@ active_user_required
 def activities():
     csrf_token = CSRFProtect(app)
     model_name = request.args.get('model')
@@ -401,11 +451,11 @@ def activities():
     return render_template("crm/activities.html", title=_("Activities | Olam ERP"), activities=activities, csrf_token=csrf_token)
 
 
-@bp.route('/create-activity', methods=['GET', 'POST'])
-@login_required
-@module_access_required(2)
-@can_create_access_required(7)
-@active_user_required
+@ bp.route('/create-activity', methods=['GET', 'POST'])
+@ login_required
+@ module_access_required(2)
+@ can_create_access_required(7)
+@ active_user_required
 def create_activity():
     customers = db.session.query(Partner).filter(
         Partner.is_tenant == False).all()
@@ -414,3 +464,12 @@ def create_activity():
     if request.method == "POST":
         print(request.form['notes'])
     return render_template("crm/create_activity.html", title=_("New Activity | Olam ERP"), customers=customers, sales_people=sales_people, sales_teams=sales_teams)
+
+
+@bp.route("/get_assignee", methods=['GET', 'POST'])
+@login_required
+@active_user_required
+def get_assignees():
+    lead = Lead.query.filter_by(id=request.form['opportunity_id']).first()
+    user = Users.query.filter_by(id=lead.user_id).first()
+    return jsonify({"message": "success", "assignee": user.partner_id})

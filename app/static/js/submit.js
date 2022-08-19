@@ -60,6 +60,7 @@ function renderPipelineItem(clone, response) {
     $(clone).find('.agent').css('background-color', response['color_badge']);
     $(clone).find('.agent').css('border-color', response['color_badge']);
     $(clone).find('.delete-lead-record').attr('id', 'delete-' + response['opportunity_id']);
+    $(clone).addClass("pipeline-item");
 }
 
 // new crm pipeline item
@@ -431,6 +432,19 @@ function create_plan(plan) {
 }
 
 
+function create_activity_plan(activity) {
+    $.post("/create_activity_type", {
+        activity: activity
+    }).done(function (response) {
+        $("#select_activity_type_id").val(response['id']);
+    }).fail(function (xhr) {
+        if (xhr.status == 403) {
+            alert("You are not authorized to create an activity type. Contact your site administrator for more information.");
+        }
+    })
+}
+
+
 // post opportunity priority
 function select_priority(value) {
     $.post("/crm/selected_priority", {
@@ -466,7 +480,9 @@ function update_stage(lead_id, new_stage, prev_stage) {
 
 
 function clear_pipeline_filter(filter_name) {
-    $.post("/crm/index", {
+    // get the current url
+    url = $(location).attr("href");
+    $.post(url, {
         clear_filter_name: filter_name,
     }).done(function (response) {
         // remove all items
@@ -494,7 +510,8 @@ function clear_pipeline_filter(filter_name) {
 }
 
 function add_pipeline_filter(filter_name) {
-    $.post("/crm/index", {
+    url = $(location).attr("href");
+    $.post(url, {
         add_filter_name: filter_name,
     }).done(function (response) {
         // remove all items
@@ -503,10 +520,20 @@ function add_pipeline_filter(filter_name) {
         var length = response["pipeline"]["items"].length;
         var item = response["pipeline"]["items"];
         var stages = []
+        console.log(item)
         // loop through response
-        renderPipelineItem(clone, item[i])
-        $("#new_item-" + item[i]['stage']).after($(clone));
-        $(clone).fadeIn("slow");
-        $(".count-" + item[i]['stage']).text(stage_count);
+        for (var i = 0; i < length; i++) {
+            stages.push(item[i]["stage"])
+            const counts = {}
+            for (const num of stages) {
+                counts[num] = counts[num] ? counts[num] + 1 : 1;
+            }
+            var stage_count = counts[item[i]["stage"]]
+            var clone = $("#clone-" + item[i]['stage']).clone();
+            renderPipelineItem(clone, item[i])
+            $("#new_item-" + item[i]['stage']).after($(clone));
+            $(clone).fadeIn("slow");
+            $(".count-" + item[i]['stage']).text(stage_count);
+        }
     })
 }

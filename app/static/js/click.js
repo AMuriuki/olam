@@ -40,10 +40,15 @@ $(".add-item").click(function (e) {
 });
 
 $(".schedule").click(function (e) {
+    e.preventDefault();
     record_id = this.id;
-    $.post("/crm/get_opportunityID", {
-        opportunity_id: record_id,
-    }).done(function (response) { });
+    $.post("/crm/get_assignee", {
+        opportunity_id: getId(record_id),
+    }).done(function (response) {
+        console.log($("#modalActivity").find(".select-assignee"), response["assignee"]);
+        $("#modalActivity").show();
+        $("#modalActivity").find(".select-assignee").val(response["assignee"]).trigger("change");
+    });
     $(".record_id").attr("id", record_id);
 });
 
@@ -656,8 +661,8 @@ $(".filter-pipeline").click(function (e) {
             $("#search_pipeline").val(function () {
                 return $.trim(this.value.replace(filter_name + ",", ""));
             })
-
-            add_pipeline_filter(filter_id);
+            removeParam(filter_name)
+            clear_pipeline_filter(filter_name);
         }
     } else {
         // append before span
@@ -666,6 +671,7 @@ $(".filter-pipeline").click(function (e) {
             return this.value + " " + filter_name + ", ";
         })
         updateURLParameter(window.location.href, filter_name, true)
+        add_pipeline_filter(filter_name);
     }
     // if (hasClass($(this).children("em"), "ni-check-thick")) {
     //     const index = selectedFilters.indexOf(filter_id);
