@@ -75,7 +75,7 @@
                         <div class="toggle-expand-content" data-content="pageMenu">
                             <ul class="nk-block-tools g-3">
                                 <li>
-                                    <div class="drodown">
+                                    <div class="drodown filters">
                                         <a href="#" class="dropdown-toggle btn btn-white btn-dim btn-outline-light"
                                             data-toggle="dropdown">
                                             <em class="icon ni ni-filter-fill"></em>
@@ -90,14 +90,24 @@
                                                     </a>
                                                 </li>
                                                 {% endfor %}
-                                                {% for stage in stages %}
-                                                <li>
-                                                    <a id="{{stage.id}}" class="filter-pipeline" href="#">
-                                                        <!-- <em class="icon ni ni-check-thick"></em> -->
-                                                        <span>{{stage.name}}</span>
+                                                <hr>
+                                                <li class="nk-menu-item has-sub">
+                                                    <a href="#" class="creation-date nk-menu-toggle">
+                                                        Creation Date
                                                     </a>
+                                                    <ul class="link-list-opt no-bdr hide creation-dates">
+                                                        {% for month in creation_months %}
+                                                        <li><a href="#">{{month}}</a></li>
+                                                        {% endfor %}
+                                                        {% for quarter in quarters %}
+                                                        <li><a href="#">{{quarter[0]}}</a>
+                                                        </li>
+                                                        {% endfor %}
+                                                        {% for year in creation_years %}
+                                                        <li><a href="#">{{year}}</a></li>
+                                                        {% endfor %}
+                                                    </ul>
                                                 </li>
-                                                {% endfor %}
                                             </ul>
                                         </div>
                                     </div>
@@ -1154,7 +1164,7 @@
 
     url = $(location).attr("href");
     keys = getURLParameters(url);
-    
+
     if (keys.length === 0) {
         window.history.pushState("object or string", "CRM Pipeline | Olam ERP", url + "?My Pipeline=true");
         $(".filter-pipeline").find("span").filter(function () {

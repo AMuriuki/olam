@@ -15,7 +15,15 @@ AVAILABLE_PRIORITIES = [
 
 FILTERS = [
     ('M', 'My Pipeline'),
-    ('U', 'Unassigned')
+    ('U', 'Unassigned'),
+    ('O', 'Open Opportunities')
+]
+
+QUARTERS = [
+    ('Q1', 'Quarter 1'),
+    ('Q2', 'Quarter 2'),
+    ('Q3', 'Quarter 3'),
+    ('Q4', 'Quarter 4')
 ]
 
 

@@ -369,7 +369,7 @@ def dummy_data():
                 pass
             else:
                 lead = Lead(id=opportunity['id'], name=opportunity['name'], user_id=opportunity['user_id'], partner_id=opportunity['partner_id'], priority=opportunity['priority'], stage_id=opportunity['stage_id'], partner_email=opportunity['partner_email'],
-                            partner_phone=opportunity['partner_phone'], partner_currency=opportunity['partner_currency'], active=opportunity['active'], expected_revenue=opportunity['expected_revenue'])
+                            partner_phone=opportunity['partner_phone'], partner_currency=opportunity['partner_currency'], active=opportunity['active'], expected_revenue=opportunity['expected_revenue'], date_open=opportunity['date_open'])
                 lead.generate_slug()
                 db.session.add(lead)
                 db.session.commit()

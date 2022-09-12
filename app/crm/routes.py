@@ -2,7 +2,7 @@ from flask_login import login_required, current_user
 from flask import render_template, session, jsonify, request, redirect, url_for, flash
 from app.auth.models.user import Users
 from app.crm import bp
-from app.crm.models.crm_lead import FILTERS, Lead, LeadActivity
+from app.crm.models.crm_lead import FILTERS, QUARTERS, Lead, LeadActivity
 from app.crm.models.crm_recurring_plan import RecurringPlan
 from app.crm.models.crm_stage import Stage
 from app.decorators import active_user_required, can_create_access_required, can_delete_access_required, can_write_access_required, model_access_required, module_access_required
@@ -17,6 +17,8 @@ from app.crm.forms import AddStage, BoardItemForm, NewRecurringPlanForm, EditSta
 from flask_wtf.csrf import CSRFProtect
 
 from app.utils import is_valid_queryparam
+
+import calendar
 
 app = create_app()
 
@@ -229,6 +231,9 @@ def pipeline():
     titles = TITLES
 
     filters = FILTERS
+    quarters = QUARTERS
+    creation_months = []
+    creation_years = []
     new_stage = False
     message = None
 
@@ -255,6 +260,14 @@ def pipeline():
         else:
             pipeline = qs.filter_by(user_id=current_user.get_id())
 
+        for item in qs:
+            if calendar.month_name[item.date_open.month] not in creation_months:
+                creation_months.append(
+                    calendar.month_name[item.date_open.month])
+
+            if item.date_open.year not in creation_years:
+                creation_years.append(item.date_open.year)
+
     if request.method == "POST":
         qs = Lead.query.filter_by(
             is_deleted=False).order_by(Lead.priority.desc())
@@ -262,7 +275,6 @@ def pipeline():
         # get url parameter
         unassigned = request.args.get('Unassigned')
         my_pipeline = request.args.get('My Pipeline')
-        print(request.args)
 
         if 'opportunity' in request.form:
             # get last Lead id
@@ -282,9 +294,10 @@ def pipeline():
             if request.form['clear_filter_name'] == "My Pipeline":
                 if is_valid_queryparam(unassigned):
                     pipeline = Lead.to_collection_dict(qs.join(Users).filter(
-                        Users.user_type == "Portal"))
+                        (Users.user_type == "Portal") | (Users.id != current_user.get_id())).all())
                 else:
-                    pipeline = Lead.to_collection_dict(qs.all())
+                    pipeline = Lead.to_collection_dict(
+                        qs.all())
             elif request.form['clear_filter_name'] == "Unassigned":
                 if is_valid_queryparam(my_pipeline):
                     pipeline = Lead.to_collection_dict(qs.filter_by(
@@ -342,7 +355,7 @@ def pipeline():
     #     flash(_("New activity added"))
     #     return redirect(url_for('crm.pipeline'))
 
-    return render_template('crm/pipeline.html', title=_('CRM Pipeline | Olam ERP'), pipeline=pipeline, form1=form1, form2=form2, form3=form3, form4=form4, form5=form5, form6=form6, titles=titles, plans=plans, filters=filters, new_stage=new_stage, message=message, activities=activities, assignees=assignees, csrf_token=csrf_token)
+    return render_template('crm/pipeline.html', title=_('CRM Pipeline | Olam ERP'), pipeline=pipeline, form1=form1, form2=form2, form3=form3, form4=form4, form5=form5, form6=form6, titles=titles, plans=plans, filters=filters, new_stage=new_stage, message=message, activities=activities, assignees=assignees, csrf_token=csrf_token, creation_months=creation_months, quarters=quarters, creation_years=creation_years)
 
 
 @ bp.route('/pipeline', methods=['GET', 'POST'])

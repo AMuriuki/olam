@@ -738,6 +738,11 @@ $(".delete-record").click(function (e) {
     delete_lead(lead_id);
 })
 
+$(".creation-date").click(function (e) {
+    e.preventDefault();
+    $(".creation-dates").fadeIn();
+})
+
 // document.addEventListener('click', function (event) {
 //     var arr = data
 //     var values = []
